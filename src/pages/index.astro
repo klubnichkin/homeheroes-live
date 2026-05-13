@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Services from '../components/Services.astro';
+import WhyUs from '../components/WhyUs.astro';
+import RealJobs from '../components/RealJobs.astro';
+import Process from '../components/Process.astro';
+import Reviews from '../components/Reviews.astro';
+import ServiceAreas from '../components/ServiceAreas.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>HomeHeroes | Charlotte's Most Trusted Appliance Repair</title>
+  <meta name="description" content="Same-day appliance repair across Charlotte, NC. Licensed, insured, upfront pricing. Refrigerators, washers, dryers, ovens & more. Call (704) 512-0111." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,700;1,14..32,800&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"HomeHeroes","telephone":"+17045120111","priceRange":"$$","address":{"@type":"PostalAddress","addressLocality":"Charlotte","addressRegion":"NC","addressCountry":"US"},"openingHours":["Mo-Su 08:00-19:00"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"200"}}
+  </script>
+</head>
+<body>
+  <Header />
+  <main>
+    <Hero />
+    <TrustBar />
+    <Services />
+    <WhyUs />
+    <RealJobs />
+    <Process />
+    <Reviews />
+    <ServiceAreas />
+    <ContactCTA />
+  </main>
+  <Footer />
+</body>
+</html>

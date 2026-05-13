@@ -1,0 +1,111 @@
+---
+import { phone, phoneHref } from '../data/siteData';
+---
+
+<section class="bg-pearl-section" style="position:relative;overflow:hidden;padding-bottom:0">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(180,200,225,0.6) 40%,rgba(180,200,225,0.6) 60%,transparent)"></div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div class="hero-grid" style="align-items:stretch;gap:0">
+
+      <!-- LEFT: Copy -->
+      <div class="hero-copy-col">
+
+        <div style="display:inline-flex;align-items:center;gap:9px;margin-bottom:28px;width:fit-content;padding:6px 16px 6px 8px;border-radius:100px;background:#fff;border:1px solid rgba(30,50,80,0.13);box-shadow:0 1px 6px rgba(10,20,40,0.07)">
+          <img src="/images/logo.jpg" alt="" width="24" height="24" style="border-radius:6px;object-fit:cover" aria-hidden="true" />
+          <span style="font-size:0.67rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#1a2c44">Charlotte's Most Trusted · Est. 2014</span>
+        </div>
+
+        <h1 style="font-size:clamp(2.8rem,5vw,4.5rem);font-weight:900;line-height:1.0;letter-spacing:-0.04em;color:#060c19;margin:0 0 24px">
+          Your Appliance<br />Breaks.
+          <em style="display:block;font-style:italic;color:#b01616;font-weight:900;margin-top:4px">We Fix It Today.</em>
+        </h1>
+
+        <p style="font-size:1.05rem;line-height:1.75;color:#3d506a;font-weight:400;max-width:440px;margin:0 0 38px">
+          Same-day service across Charlotte. Upfront pricing before we touch anything — licensed, insured, and backed by 200+ five-star reviews from your neighbors.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:38px">
+          <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:16px 36px">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call {phone}
+          </a>
+          <a href="#contact" class="btn-outline" style="font-size:0.95rem;padding:16px 32px">
+            <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Book Online — Free
+          </a>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px 26px">
+          {['Licensed & Insured','Same-Day Service','Upfront Pricing','90-Day Warranty'].map(t => (
+            <div style="display:flex;align-items:center;gap:7px">
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" fill="#b01616" opacity="0.1"/>
+                <path d="M5.5 10.5l3 3 6-6" stroke="#b01616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span style="font-size:0.77rem;font-weight:600;color:#2a3a50">{t}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Mobile hero image — hidden on desktop via CSS -->
+        <div class="hero-img-mobile">
+          <img src="/images/hero/hero-technician.jpg" alt="HomeHeroes certified technician servicing a refrigerator"
+               style="width:100%;height:100%;object-fit:cover;object-position:18% top;display:block" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,25,0.18) 0%,transparent 60%)"></div>
+          <div style="position:absolute;bottom:12px;left:12px;display:flex;gap:8px">
+            <div style="background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(10,20,40,0.14)">
+              <div style="font-size:1.05rem;font-weight:900;color:#060c19;line-height:1;letter-spacing:-0.02em">4.9<span style="font-size:0.72rem;color:#c09020">★</span></div>
+              <div style="font-size:0.58rem;font-weight:700;color:#6a7a8e;margin-top:2px;letter-spacing:0.04em">200+ REVIEWS</div>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(10,20,40,0.14)">
+              <div style="font-size:1.05rem;font-weight:900;color:#060c19;line-height:1;letter-spacing:-0.02em">4,800+</div>
+              <div style="font-size:0.58rem;font-weight:700;color:#6a7a8e;margin-top:2px;letter-spacing:0.04em">REPAIRS DONE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Hero photo -->
+      <div class="hero-photo" style="display:none;position:relative;align-self:stretch">
+        <div style="position:absolute;inset:20px 0 -20px 0">
+          <div class="hero-img-wrap" style="height:100%;position:relative">
+            <img src="/images/hero/hero-technician.jpg" alt="HomeHeroes certified technician servicing a refrigerator"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:20px 0 0 20px;box-shadow:-8px 8px 50px rgba(6,12,25,0.2)" />
+            <div style="position:absolute;inset:0;border-radius:20px 0 0 20px;background:linear-gradient(to right,#f5f7fa 0%,rgba(245,247,250,0.15) 20%,transparent 40%)"></div>
+          </div>
+        </div>
+
+        <div style="position:absolute;top:44px;left:-20px;z-index:10;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(10,20,40,0.12)">
+          <div style="font-size:1.65rem;font-weight:900;color:#060c19;line-height:1;letter-spacing:-0.03em">4.9<span style="font-size:0.95rem;color:#c09020">★</span></div>
+          <div style="font-size:0.65rem;font-weight:700;color:#6a7a8e;margin-top:3px;letter-spacing:0.06em">200+ REVIEWS</div>
+        </div>
+
+        <div style="position:absolute;top:50%;right:-16px;transform:translateY(-50%);z-index:10;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(10,20,40,0.12)">
+          <div style="font-size:1.65rem;font-weight:900;color:#060c19;line-height:1;letter-spacing:-0.03em">4,800+</div>
+          <div style="font-size:0.65rem;font-weight:700;color:#6a7a8e;margin-top:3px;letter-spacing:0.06em">REPAIRS DONE</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="rule" style="margin-top:48px"></div>
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr)">
+      {[
+        { v:'10+',    l:'Years Serving Charlotte', s:'Local · Established · Trusted'  },
+        { v:'4,800+', l:'Appliances Repaired',      s:'95%+ first-visit fix rate'      },
+        { v:'90 Day', l:'Parts & Labor Warranty',   s:'Every repair, guaranteed'       },
+      ].map(({ v, l, s }) => (
+        <div style="padding:24px 20px;text-align:center;border-right:1px solid rgba(30,50,80,0.08)">
+          <div style="font-size:1.5rem;font-weight:900;color:#060c19;letter-spacing:-0.03em;line-height:1">{v}</div>
+          <div style="font-size:0.78rem;font-weight:700;color:#1a2c44;margin-top:5px">{l}</div>
+          <div style="font-size:0.65rem;font-weight:500;color:#8a9aae;margin-top:2px;letter-spacing:0.04em">{s}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="rule"></div>
+</section>

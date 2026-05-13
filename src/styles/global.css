@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+@theme {
+  /* Navy palette */
+  --color-navy-950: #06101f;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0f1f3d;
+  --color-navy-700: #162b55;
+  --color-navy-600: #1e3a74;
+  --color-navy-100: #d0dcf0;
+  --color-navy-50:  #e8edf8;
+
+  /* Crimson palette */
+  --color-crimson-950: #3b0606;
+  --color-crimson-900: #5a0a0a;
+  --color-crimson-800: #7f1111;
+  --color-crimson-700: #b01616;
+  --color-crimson-600: #c92020;
+  --color-crimson-500: #e02828;
+  --color-crimson-400: #f05050;
+  --color-crimson-300: #f88080;
+
+  /* Warm ivory / cream palette */
+  --color-ivory-50:  #fdfcf9;
+  --color-ivory-100: #faf7f0;
+  --color-ivory-200: #f3ece0;
+  --color-ivory-300: #e8ddd0;
+  --color-ivory-400: #d8cfc0;
+
+  /* Warm gold */
+  --color-gold-400: #c9a84c;
+  --color-gold-500: #b8922e;
+  --color-gold-600: #9a7820;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f7fa;
+  color: #0c1525;
+}
+
+/* ─── Core section backgrounds ─── */
+.bg-white-section { background: #ffffff; }
+.bg-pearl-section  { background: #f5f7fa; }
+.bg-light-section  { background: #eef1f6; }
+.bg-navy-section   { background: #080f1e; }
+
+/* ─── Section label ─── */
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #b01616;
+}
+.sec-label::before {
+  content: '';
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #b01616;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── Buttons ─── */
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(180deg, #d42222 0%, #8e1010 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 4px 18px rgba(176,22,22,0.35);
+  transition: filter 0.15s, transform 0.15s;
+}
+.btn-red:hover { filter: brightness(1.07); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1a2c44;
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 1.5px solid rgba(30,50,80,0.22);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  box-shadow: 0 1px 4px rgba(10,20,40,0.06);
+}
+.btn-outline:hover {
+  border-color: rgba(30,50,80,0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(10,20,40,0.1);
+}
+
+/* ─── Cards ─── */
+.card {
+  background: #fff;
+  border: 1px solid rgba(30,50,80,0.1);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(10,20,40,0.06);
+}
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(10,20,40,0.12) !important;
+}
+
+/* ─── Dividers ─── */
+.rule      { height: 1px; background: rgba(30,50,80,0.08); }
+.rule-navy { height: 1px; background: rgba(255,255,255,0.06); }
+
+/* ─── Hero image treatment ─── */
+.hero-img-wrap { position: relative; }
+.hero-img-wrap img {
+  border-radius: 20px 0 0 20px;
+  box-shadow: -12px 12px 60px rgba(8,15,30,0.22);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ─── Service card image zoom ─── */
+.svc-img { transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+
+/* ─── Pulse animation ─── */
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ─── Hero copy column padding ─── */
+.hero-copy-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 52px 0 32px;
+}
+
+/* ─── Mobile hero image (shown below copy on mobile, hidden on desktop) ─── */
+.hero-img-mobile {
+  display: block;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 28px;
+  border-radius: 16px;
+}
+
+/* ─── Layout grids ─── */
+.hero-grid      { display: grid; }
+.trust-grid     { display: grid; grid-template-columns: repeat(2, 1fr); }
+.services-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+.why-grid       { display: grid; gap: 52px; }
+.steps-grid     { display: grid; gap: 28px; }
+.reviews-grid   { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.areas-grid     { display: grid; gap: 48px; }
+.footer-grid    { display: grid; gap: 40px; }
+.feat-grid      { display: grid; }
+.form-row       { display: grid; gap: 14px; }
+.jobs-grid      { display: grid; grid-template-columns: 1fr; gap: 14px; }
+
+@media (min-width: 640px) {
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(3, 1fr); }
+  .form-row   { grid-template-columns: 1fr 1fr; }
+  .jobs-grid  { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .hero-copy-col  { padding: 80px 52px 80px 8px; }
+  .hero-img-mobile { display: none; }
+  .hero-grid   { grid-template-columns: 1fr 500px; min-height: 660px; }
+  .hero-photo  { display: block !important; }
+  .trust-grid  { grid-template-columns: repeat(4, 1fr); }
+  .why-grid    { grid-template-columns: 420px 1fr; }
+  .areas-grid  { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1.8fr 1fr 1fr 1fr; }
+  .feat-grid   { grid-template-columns: 1fr 360px; }
+  .desktop-nav { display: flex !important; }
+  .desktop-cta { display: flex !important; }
+  .jobs-grid   { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 1023px) {
+  .hero-photo { display: none; }
+}
+
+@media (max-width: 639px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}

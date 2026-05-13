@@ -1,0 +1,107 @@
+---
+import { phone, phoneHref } from '../data/siteData';
+---
+
+<!-- CTA Band -->
+<section id="contact" style="position:relative;overflow:hidden;padding:80px 24px 96px;background:linear-gradient(135deg,#c92020 0%,#8a0e0e 55%,#520808 100%)">
+  <div style="position:absolute;inset:0;opacity:0.045;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Cpath d=%22M0 0h50v50H0z%22 fill=%22none%22/%3E%3Cpath d=%22M0 0L50 0M0 50L50 50M0 0L0 50M50 0L50 50%22 stroke=%22white%22 stroke-width=%221%22/%3E%3C/svg%3E')" aria-hidden="true"></div>
+  <div style="max-width:940px;margin:0 auto;position:relative;text-align:center">
+    <img src="/images/logo.jpg" alt="HomeHeroes" width="70" height="70"
+         style="border-radius:16px;object-fit:cover;margin:0 auto 22px;display:block;box-shadow:0 6px 24px rgba(6,12,25,0.38),0 0 0 2px rgba(255,255,255,0.18)" />
+    <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.04;margin:0 0 18px">
+      Appliance Down?<br />We'll Be There Today.
+    </h2>
+    <p style="font-size:1.05rem;color:rgba(255,220,220,0.82);line-height:1.74;margin:0 auto 44px;max-width:460px;font-weight:400">
+      Don't go another day without it. Book online or call now — most Charlotte appointments confirmed within minutes.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <a href="#contact-form" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#8a0e0e;padding:15px 34px;border-radius:10px;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(6,12,25,0.26);transition:transform 0.15s"
+         onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+        <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Book Online — Free
+      </a>
+      <a href={phoneHref} style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#fff;padding:15px 34px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);transition:transform 0.15s"
+         onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        Call {phone}
+      </a>
+    </div>
+    <p style="font-size:0.7rem;color:rgba(255,200,200,0.4);margin-top:22px;letter-spacing:0.08em;font-weight:600">7 DAYS A WEEK · 8AM–7PM · EMERGENCY LINE AVAILABLE</p>
+  </div>
+</section>
+
+<!-- Contact Form -->
+<section id="contact-form" class="bg-light-section" style="padding:64px 24px 80px">
+  <div style="max-width:620px;margin:0 auto">
+    <div class="card" style="overflow:hidden">
+      <div style="padding:24px 32px;border-bottom:1px solid rgba(30,50,80,0.08);display:flex;align-items:center;gap:14px;background:#fafbfd">
+        <img src="/images/logo.jpg" alt="HomeHeroes" width="46" height="46" style="border-radius:11px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(10,20,40,0.1)" />
+        <div>
+          <h3 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">Request a Same-Day Quote</h3>
+          <p style="font-size:0.76rem;color:#6a7a8e;margin:3px 0 0;font-weight:400">We'll call you back within 30 minutes.</p>
+        </div>
+      </div>
+
+      <form style="padding:24px 32px;display:flex;flex-direction:column;gap:16px" name="quote-request" method="POST" action="/success">
+
+        <div class="form-row">
+          <div>
+            <label for="first-name" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">FIRST NAME</label>
+            <input type="text" id="first-name" name="first_name" autocomplete="given-name" required placeholder="John"
+                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                   onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                   onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+          </div>
+          <div>
+            <label for="last-name" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">LAST NAME</label>
+            <input type="text" id="last-name" name="last_name" autocomplete="family-name" required placeholder="Smith"
+                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                   onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                   onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="phone" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PHONE NUMBER</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="(704) 555-0100"
+                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                   onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                   onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+          </div>
+          <div>
+            <label for="email" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">EMAIL <span style="font-weight:400;color:#9aaabe;letter-spacing:0">(optional)</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="john@example.com"
+                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                   onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                   onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+          </div>
+        </div>
+
+        <div>
+          <label for="appliance" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">APPLIANCE TYPE</label>
+          <select id="appliance" name="appliance" required
+                  style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;appearance:none;box-sizing:border-box;font-family:inherit"
+                  onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+            <option value="" disabled selected>Select appliance…</option>
+            <option>Refrigerator</option><option>Washer</option><option>Dryer</option>
+            <option>Dishwasher</option><option>Oven / Range</option><option>Microwave</option><option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="issue" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">DESCRIBE THE ISSUE</label>
+          <textarea id="issue" name="issue" rows="3" required placeholder="Briefly describe what's happening…"
+                    style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;resize:none;box-sizing:border-box;font-family:inherit"
+                    onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                    onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'"></textarea>
+        </div>
+
+        <button type="submit" class="btn-red" style="width:100%;padding:14px;font-size:0.97rem;border-radius:10px">
+          Request My Free Quote →
+        </button>
+        <p style="font-size:0.69rem;color:#9aaabe;text-align:center;margin:0;font-weight:400">We respect your privacy. Your info is never sold or shared.</p>
+      </form>
+    </div>
+  </div>
+</section>

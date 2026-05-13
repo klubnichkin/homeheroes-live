@@ -1,0 +1,57 @@
+---
+---
+
+<section class="bg-pearl-section" style="padding:64px 24px 72px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="sec-label" style="display:inline-flex;justify-content:center;margin-bottom:12px">Real Jobs · Real Homes</div>
+      <h2 style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">
+        What a HomeHeroes Service Call Looks Like
+      </h2>
+    </div>
+    <div class="jobs-grid">
+      <!-- Documentary washer repair -->
+      <div class="card-lift" style="border-radius:16px;overflow:hidden;border:1px solid rgba(30,50,80,0.1);box-shadow:0 2px 16px rgba(10,20,40,0.07);background:#fff">
+        <div style="position:relative;height:260px;overflow:hidden">
+          <img src="/images/services/emergency-repair-tech.jpg" alt="HomeHeroes technician repairing a washer inside a Charlotte home"
+               style="width:100%;height:100%;object-fit:cover;object-position:52% 22%;filter:contrast(1.08) brightness(0.9) saturate(0.9);transition:transform 0.5s ease" class="job-img" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,25,0.6) 0%,transparent 55%)"></div>
+          <div style="position:absolute;bottom:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:0.72rem;font-weight:700;color:#dde6f0">Washer Repair · Charlotte Home</span>
+            <span style="background:rgba(176,22,22,0.85);font-size:0.65rem;font-weight:800;color:#fff;padding:3px 8px;border-radius:5px;letter-spacing:0.05em">COMPLETED</span>
+          </div>
+        </div>
+        <div style="padding:18px 20px">
+          <p style="font-size:0.82rem;line-height:1.65;color:#3d506a;margin:0;font-weight:400">Every job is treated with care — tech on knee, headlamp on, working until it's right. No shortcuts. No guesswork.</p>
+        </div>
+      </div>
+
+      <!-- Stocked service van -->
+      <div class="card-lift" style="border-radius:16px;overflow:hidden;border:1px solid rgba(30,50,80,0.1);box-shadow:0 2px 16px rgba(10,20,40,0.07);background:#fff">
+        <div style="position:relative;height:260px;overflow:hidden">
+          <img src="/images/process/stocked-service-van.jpg" alt="Fully stocked HomeHeroes service van loaded with appliance parts and tools"
+               style="width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:contrast(1.1) brightness(0.86) saturate(0.82);transition:transform 0.5s ease" class="job-img" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,25,0.62) 0%,rgba(6,12,25,0.08) 60%,transparent 100%)"></div>
+          <div style="position:absolute;bottom:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:0.72rem;font-weight:700;color:#dde6f0">Fully Stocked Vans · Parts On Hand</span>
+            <span style="background:rgba(176,22,22,0.85);font-size:0.65rem;font-weight:800;color:#fff;padding:3px 8px;border-radius:5px;letter-spacing:0.05em">COMPLETED</span>
+          </div>
+        </div>
+        <div style="padding:18px 20px">
+          <p style="font-size:0.82rem;line-height:1.65;color:#3d506a;margin:0;font-weight:400">Our technicians arrive prepared with common parts and professional tools to complete most repairs on the first visit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.job-img').forEach(img => {
+    const el = img as HTMLElement;
+    const card = el.closest('div[class]');
+    if (card) {
+      card.addEventListener('mouseenter', () => { el.style.transform = 'scale(1.04)'; });
+      card.addEventListener('mouseleave', () => { el.style.transform = 'scale(1)'; });
+    }
+  });
+</script>

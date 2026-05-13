@@ -1,0 +1,77 @@
+---
+import { phone, phoneHref, year } from '../data/siteData';
+---
+
+<footer class="bg-navy-section" style="border-top:2px solid #7a0e0e">
+  <div style="max-width:1280px;margin:0 auto;padding:52px 24px">
+    <div class="footer-grid">
+      <div>
+        <a href="/" style="display:flex;align-items:center;gap:10px;margin-bottom:16px;text-decoration:none">
+          <img src="/images/logo.jpg" alt="HomeHeroes" width="42" height="42" style="border-radius:10px;object-fit:cover;box-shadow:0 3px 10px rgba(176,22,22,0.26)" />
+          <div>
+            <div style="font-size:1.05rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em">Home<span style="color:#dc2626">Heroes</span></div>
+            <div style="font-size:0.56rem;font-weight:700;color:#1a3050;letter-spacing:0.2em;text-transform:uppercase;margin-top:2px">Appliance Repair</div>
+          </div>
+        </a>
+        <p style="font-size:0.79rem;line-height:1.7;color:#1a3050;margin:0 0 18px;font-weight:400">Charlotte's most trusted appliance repair team. Honest work, fair prices, same-day service — since 2014.</p>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <a href={phoneHref} style="display:flex;align-items:center;gap:7px;font-size:0.79rem;font-weight:600;color:#2a5a8a;text-decoration:none">
+            <svg width="13" height="13" fill="#dc2626" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            {phone}
+          </a>
+          <div style="display:flex;align-items:start;gap:7px;font-size:0.75rem;color:#1a3050;font-weight:400">
+            <svg width="13" height="13" style="flex-shrink:0;margin-top:1px" fill="#dc2626" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Charlotte, NC &amp; surrounding areas
+          </div>
+          <div style="display:flex;align-items:start;gap:7px;font-size:0.75rem;color:#1a3050;font-weight:400">
+            <svg width="13" height="13" style="flex-shrink:0;margin-top:1px" fill="#dc2626" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+            Mon–Sun 8am–7pm
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.63rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#e8edf5;margin:0 0 16px">Services</h4>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px">
+          {['Refrigerator Repair','Washer & Dryer Repair','Dishwasher Repair','Oven & Range Repair','Microwave Repair','Emergency Service'].map(s => (
+            <li><a href="#services" style="font-size:0.79rem;color:#1a3050;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#7a9ab8'" onmouseout="this.style.color='#1a3050'">{s}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.63rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#e8edf5;margin:0 0 16px">Quick Links</h4>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px">
+          {[['Services','#services'],['Why HomeHeroes','#why-us'],['Customer Reviews','#reviews'],['Service Areas','#areas'],['Get a Quote','#contact']].map(([l,h]) => (
+            <li><a href={h} style="font-size:0.79rem;color:#1a3050;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#7a9ab8'" onmouseout="this.style.color='#1a3050'">{l}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.63rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#e8edf5;margin:0 0 16px">Credentials</h4>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          {[['NC License','#72041'],['Liability Insurance','Fully Covered'],['EPA Certified','All Technicians'],['BBB Accredited','A+ Rating']].map(([l,v]) => (
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#0e2038">{l}</div>
+              <div style="font-size:0.79rem;font-weight:800;color:#2a5a8a;margin-top:2px">{v}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.04)">
+    <div style="max-width:1280px;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px">
+      <div style="display:flex;align-items:center;gap:7px">
+        <img src="/images/logo.jpg" alt="" width="19" height="19" style="border-radius:4px;object-fit:cover;opacity:0.35" aria-hidden="true" />
+        <p style="font-size:0.68rem;color:#0e2038;margin:0;font-weight:400">&copy; {year} HomeHeroes LLC · Charlotte, NC · All rights reserved.</p>
+      </div>
+      <div style="display:flex;gap:18px">
+        <a href="/privacy" style="font-size:0.68rem;color:#0e2038;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#2a5a8a'" onmouseout="this.style.color='#0e2038'">Privacy Policy</a>
+        <a href="/terms"   style="font-size:0.68rem;color:#0e2038;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#2a5a8a'" onmouseout="this.style.color='#0e2038'">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

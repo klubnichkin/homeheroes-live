@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = 'HomeHeroes | Appliance Repair Charlotte, NC',
+  description = "Charlotte's most trusted appliance repair service. Same-day appointments, upfront pricing, fully licensed & insured. We fix refrigerators, washers, dryers, ovens & more.",
+  canonical = 'https://homeheroes-charlotte.com',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale"      content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "HomeHeroes",
+        "description": "Charlotte's most trusted appliance repair service.",
+        "telephone": "+17045550147",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Charlotte",
+          "addressRegion": "NC",
+          "postalCode": "28202",
+          "addressCountry": "US"
+        },
+        "openingHours": ["Mo-Fr 07:00-19:00", "Sa 08:00-17:00"],
+        "areaServed": {
+          "@type": "City",
+          "name": "Charlotte"
+        }
+      }
+    </script>
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>
