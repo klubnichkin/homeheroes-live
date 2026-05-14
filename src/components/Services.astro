@@ -24,7 +24,7 @@ import { services, phoneHref } from '../data/siteData';
       {services.map((svc) => (
         <article class="card card-lift" style="overflow:hidden;border-radius:16px">
           <div style="height:210px;position:relative;overflow:hidden;background:#e4e8ee">
-            <img src={svc.photo} alt={svc.title} class="svc-img"
+            <img src={svc.photo} alt={`${svc.title} in Charlotte, NC`} class="svc-img"
                  width="800" height="800" loading="lazy"
                  style={"width:100%;height:100%;object-fit:cover;object-position:" + svc.pos + ";filter:contrast(1.05) brightness(0.96) saturate(0.88)"} />
             <div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,rgba(6,12,25,0.55) 0%,transparent 100%)"></div>
