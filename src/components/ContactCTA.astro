@@ -37,8 +37,8 @@ import { phone, phoneHref } from '../data/siteData';
       <div style="padding:24px 32px;border-bottom:1px solid rgba(30,50,80,0.08);display:flex;align-items:center;gap:14px;background:#fafbfd">
         <img src="/images/logo.jpg" alt="HomeHeroes" width="46" height="46" style="border-radius:11px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(10,20,40,0.1)" />
         <div>
-          <h3 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">Request a Same-Day Quote</h3>
-          <p style="font-size:0.76rem;color:#6a7a8e;margin:3px 0 0;font-weight:400">We'll call you back within 30 minutes.</p>
+          <h3 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">Request Same-Day Service</h3>
+          <p style="font-size:0.76rem;color:#6a7a8e;margin:3px 0 0;font-weight:400">We'll call you back within 5 minutes.</p>
         </div>
       </div>
 
@@ -53,25 +53,8 @@ import { phone, phoneHref } from '../data/siteData';
                    onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
           </div>
           <div>
-            <label for="last-name" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">LAST NAME</label>
-            <input type="text" id="last-name" name="last_name" autocomplete="family-name" required placeholder="Smith"
-                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
-                   onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
-                   onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div>
             <label for="phone" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PHONE NUMBER</label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="(704) 555-0100"
-                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
-                   onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
-                   onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
-          </div>
-          <div>
-            <label for="email" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">EMAIL <span style="font-weight:400;color:#9aaabe;letter-spacing:0">(optional)</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" placeholder="john@example.com"
                    style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
                    onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
                    onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
@@ -91,14 +74,14 @@ import { phone, phoneHref } from '../data/siteData';
 
         <div>
           <label for="issue" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">DESCRIBE THE ISSUE</label>
-          <textarea id="issue" name="issue" rows="3" required placeholder="Briefly describe what's happening…"
+          <textarea id="issue" name="issue" rows="3" required placeholder="Briefly describe the issue…"
                     style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;resize:none;box-sizing:border-box;font-family:inherit"
                     onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
                     onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'"></textarea>
         </div>
 
         <button type="submit" class="btn-red" style="width:100%;padding:14px;font-size:0.97rem;border-radius:10px">
-          Request My Free Quote →
+          Get My Free Quote →
         </button>
         <p style="font-size:0.69rem;color:#9aaabe;text-align:center;margin:0;font-weight:400">We respect your privacy. Your info is never sold or shared.</p>
       </form>
