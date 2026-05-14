@@ -42,7 +42,9 @@ import { phone, phoneHref } from '../data/siteData';
         </div>
       </div>
 
-      <form style="padding:24px 32px;display:flex;flex-direction:column;gap:16px" name="quote-request" method="POST" action="/success">
+      <form id="quote-form" style="padding:24px 32px;display:flex;flex-direction:column;gap:16px" name="quote-request" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="98673c2a-0528-45c5-a5d0-2561df9d62fb" />
+        <input type="hidden" name="subject" value="New HomeHeroes Service Request" />
 
         <div class="form-row">
           <div>
@@ -63,7 +65,7 @@ import { phone, phoneHref } from '../data/siteData';
 
         <div>
           <label for="appliance" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">APPLIANCE TYPE</label>
-          <select id="appliance" name="appliance" required
+          <select id="appliance" name="appliance_type" required
                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;appearance:none;box-sizing:border-box;font-family:inherit"
                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
             <option value="" disabled selected>Select appliance…</option>
@@ -74,17 +76,58 @@ import { phone, phoneHref } from '../data/siteData';
 
         <div>
           <label for="issue" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">DESCRIBE THE ISSUE</label>
-          <textarea id="issue" name="issue" rows="3" required placeholder="Briefly describe the issue…"
+          <textarea id="issue" name="message" rows="3" placeholder="Briefly describe the issue…"
                     style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;resize:none;box-sizing:border-box;font-family:inherit"
                     onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
                     onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'"></textarea>
         </div>
 
-        <button type="submit" class="btn-red" style="width:100%;padding:14px;font-size:0.97rem;border-radius:10px">
+        <button id="quote-submit" type="submit" class="btn-red" style="width:100%;padding:14px;font-size:0.97rem;border-radius:10px">
           Get My Free Quote →
         </button>
         <p style="font-size:0.69rem;color:#9aaabe;text-align:center;margin:0;font-weight:400">We respect your privacy. Your info is never sold or shared.</p>
       </form>
+
+      <div id="quote-success" style="display:none;padding:40px 32px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#d42222,#8e1010);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        </div>
+        <p style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 6px;letter-spacing:-0.01em">Request received.</p>
+        <p style="font-size:0.88rem;color:#4a5e74;margin:0;font-weight:400">We'll call you shortly.</p>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('quote-form') as HTMLFormElement | null;
+  const success = document.getElementById('quote-success');
+  const btn = document.getElementById('quote-submit') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!btn) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.style.display = 'none';
+        if (success) success.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Get My Free Quote →';
+        alert('Something went wrong. Please call us directly.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Get My Free Quote →';
+      alert('Something went wrong. Please call us directly.');
+    }
+  });
+</script>
