@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://homeheroes-charlotte.com/sitemap.xml
+Sitemap: https://tryhomeheroes.com/sitemap.xml
