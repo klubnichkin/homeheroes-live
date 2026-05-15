@@ -33,8 +33,15 @@ import { phone, phoneHref, year } from '../data/siteData';
       <div>
         <h4 style="font-size:0.63rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#e8edf5;margin:0 0 16px">Services</h4>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px">
-          {['Refrigerator Repair','Washer & Dryer Repair','Dishwasher Repair','Oven & Range Repair','Microwave Repair','Emergency Service'].map(s => (
-            <li><a href="#services" style="font-size:0.79rem;color:#1a3050;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#7a9ab8'" onmouseout="this.style.color='#1a3050'">{s}</a></li>
+          {[
+            ['Refrigerator Repair',   '/charlotte-nc/refrigerator-repair'],
+            ['Washer & Dryer Repair', '/charlotte-nc/washer-repair'],
+            ['Dishwasher Repair',     '/charlotte-nc/dishwasher-repair'],
+            ['Oven & Range Repair',   '/charlotte-nc/oven-repair'],
+            ['Microwave Repair',      '/charlotte-nc/microwave-repair'],
+            ['Emergency Service',     '/charlotte-nc/appliance-repair'],
+          ].map(([label, href]) => (
+            <li><a href={href} style="font-size:0.79rem;color:#1a3050;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#7a9ab8'" onmouseout="this.style.color='#1a3050'">{label}</a></li>
           ))}
         </ul>
       </div>
@@ -42,7 +49,14 @@ import { phone, phoneHref, year } from '../data/siteData';
       <div>
         <h4 style="font-size:0.63rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#e8edf5;margin:0 0 16px">Quick Links</h4>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px">
-          {[['Services','#services'],['Why HomeHeroes','#why-us'],['Customer Reviews','#reviews'],['Service Areas','#areas'],['Get a Quote','#contact-form']].map(([l,h]) => (
+          {[
+            ['All Services',        '/charlotte-nc/services'],
+            ['Brands We Repair',    '/charlotte-nc/brands'],
+            ['Charlotte, NC Guide', '/charlotte-nc/appliance-repair'],
+            ['Why HomeHeroes',      '#why-us'],
+            ['Customer Reviews',    '#reviews'],
+            ['Get a Quote',         '#contact-form'],
+          ].map(([l,h]) => (
             <li><a href={h} style="font-size:0.79rem;color:#1a3050;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#7a9ab8'" onmouseout="this.style.color='#1a3050'">{l}</a></li>
           ))}
         </ul>
