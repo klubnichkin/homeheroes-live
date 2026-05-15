@@ -1,7 +1,41 @@
 ---
 import { phone, phoneHref } from '../data/siteData';
+
+const serviceLinks = [
+  ['Refrigerator Repair',   '/charlotte-nc/refrigerator-repair'],
+  ['Freezer Repair',        '/charlotte-nc/freezer-repair'],
+  ['Washer Repair',         '/charlotte-nc/washer-repair'],
+  ['Dryer Repair',          '/charlotte-nc/dryer-repair'],
+  ['Dishwasher Repair',     '/charlotte-nc/dishwasher-repair'],
+  ['Stove Repair',          '/charlotte-nc/stove-repair'],
+  ['Oven Repair',           '/charlotte-nc/oven-repair'],
+  ['Microwave Repair',      '/charlotte-nc/microwave-repair'],
+  ['Range Hood Repair',     '/charlotte-nc/range-hood-repair'],
+  ['Ice Maker Repair',      '/charlotte-nc/ice-maker-repair'],
+  ['Wine Cooler Repair',    '/charlotte-nc/wine-cooler-repair'],
+  ['Electric Cooktop Repair','/charlotte-nc/electric-cooktop-repair'],
+];
+
+const brandLinks = [
+  ['Samsung',    '/charlotte-nc/samsung-appliance-repair'],
+  ['LG',         '/charlotte-nc/lg-appliance-repair'],
+  ['Whirlpool',  '/charlotte-nc/whirlpool-appliance-repair'],
+  ['GE',         '/charlotte-nc/ge-appliance-repair'],
+  ['Maytag',     '/charlotte-nc/maytag-appliance-repair'],
+  ['Frigidaire', '/charlotte-nc/frigidaire-appliance-repair'],
+  ['KitchenAid', '/charlotte-nc/kitchenaid-appliance-repair'],
+  ['Bosch',      '/charlotte-nc/bosch-appliance-repair'],
+  ['Sub-Zero',   '/charlotte-nc/sub-zero-appliance-repair'],
+  ['Viking',     '/charlotte-nc/viking-appliance-repair'],
+  ['Thermador',  '/charlotte-nc/thermador-appliance-repair'],
+  ['Wolf',       '/charlotte-nc/wolf-appliance-repair'],
+  ['Miele',      '/charlotte-nc/miele-appliance-repair'],
+];
+
+const chevronDown = `<svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="chev" style="flex-shrink:0;transition:transform 0.2s"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>`;
 ---
 
+<!-- Announcement bar -->
 <div style="background:#060c19;border-bottom:1px solid rgba(255,255,255,0.04)">
   <div style="max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:36px">
     <div style="display:flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:600;color:#4a6a8a;letter-spacing:0.01em">
@@ -18,6 +52,7 @@ import { phone, phoneHref } from '../data/siteData';
   <div style="max-width:1280px;margin:0 auto;padding:0 20px">
     <div style="display:flex;align-items:center;justify-content:space-between;height:62px">
 
+      <!-- Logo -->
       <a href="/" style="display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0">
         <img src="/images/logo.webp" alt="HomeHeroes" width="40" height="40"
              style="border-radius:9px;object-fit:cover;box-shadow:0 0 0 1.5px rgba(176,22,22,0.55),0 3px 10px rgba(6,12,25,0.6)" />
@@ -31,13 +66,52 @@ import { phone, phoneHref } from '../data/siteData';
         </div>
       </a>
 
-      <nav class="desktop-nav" style="display:none;align-items:center;gap:30px" aria-label="Primary">
-        {[['Services','#services'],['Why Us','#why-us'],['Reviews','#reviews'],['Areas','#areas']].map(([l,h]) => (
-          <a href={h} style="font-size:0.83rem;font-weight:600;color:#3a5a7a;text-decoration:none;letter-spacing:0.01em;transition:color 0.12s"
-             onmouseover="this.style.color='#c8d8ea'" onmouseout="this.style.color='#3a5a7a'">{l}</a>
+      <!-- Desktop nav -->
+      <nav class="desktop-nav" style="display:none;align-items:center;gap:28px" aria-label="Primary">
+
+        <!-- Services dropdown -->
+        <div class="nav-item">
+          <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
+            Services
+            <Fragment set:html={chevronDown} />
+          </button>
+          <div class="nav-dropdown">
+            <div class="drop-header">
+              <a href="/charlotte-nc/services" class="drop-view-all">View All Services →</a>
+            </div>
+            <div class="drop-grid">
+              {serviceLinks.map(([label, href]) => (
+                <a href={href} class="drop-link">{label}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Brands dropdown -->
+        <div class="nav-item">
+          <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
+            Brands
+            <Fragment set:html={chevronDown} />
+          </button>
+          <div class="nav-dropdown">
+            <div class="drop-header">
+              <a href="/charlotte-nc/brands" class="drop-view-all">View All Brands →</a>
+            </div>
+            <div class="drop-grid">
+              {brandLinks.map(([label, href]) => (
+                <a href={href} class="drop-link">{label}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Simple nav links -->
+        {[['Why Us','#why-us'],['Reviews','#reviews'],['Areas','#areas']].map(([l,h]) => (
+          <a href={h} class="nav-plain">{l}</a>
         ))}
       </nav>
 
+      <!-- Desktop CTA -->
       <div class="desktop-cta" style="display:none;align-items:center;gap:16px">
         <a href={phoneHref} style="display:flex;align-items:center;gap:9px;text-decoration:none">
           <div style="width:33px;height:33px;border-radius:50%;background:rgba(176,22,22,0.12);border:1px solid rgba(176,22,22,0.28);display:flex;align-items:center;justify-content:center;flex-shrink:0">
@@ -51,6 +125,7 @@ import { phone, phoneHref } from '../data/siteData';
         <a href="#contact-form" class="btn-red" style="font-size:0.82rem;padding:9px 18px">Book Now</a>
       </div>
 
+      <!-- Mobile menu button -->
       <button id="mob-btn" aria-expanded="false" aria-controls="mob-menu" aria-label="Open menu"
               style="display:flex;padding:8px;border:none;background:none;cursor:pointer;color:#3a5a7a;border-radius:8px">
         <svg id="ic-open"  width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -59,11 +134,44 @@ import { phone, phoneHref } from '../data/siteData';
     </div>
   </div>
 
+  <!-- Mobile menu -->
   <div id="mob-menu" style="display:none;border-top:1px solid rgba(255,255,255,0.05);background:#040a14">
-    <div style="padding:12px 16px">
-      {[['Services','#services'],['Why Us','#why-us'],['Reviews','#reviews'],['Service Areas','#areas']].map(([l,h]) => (
-        <a href={h} style="display:block;padding:11px 14px;border-radius:8px;font-size:0.875rem;font-weight:600;color:#3a5a7a;text-decoration:none">{l}</a>
+    <div style="padding:8px 16px 12px">
+
+      <!-- Services accordion -->
+      <details class="mob-acc">
+        <summary class="mob-acc-trigger">
+          Services
+          <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="mob-chev"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="mob-drop-grid">
+          {serviceLinks.map(([label, href]) => (
+            <a href={href} class="mob-drop-link">{label}</a>
+          ))}
+          <a href="/charlotte-nc/services" class="mob-view-all" style="grid-column:1/-1">View All Services →</a>
+        </div>
+      </details>
+
+      <!-- Brands accordion -->
+      <details class="mob-acc">
+        <summary class="mob-acc-trigger">
+          Brands
+          <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="mob-chev"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="mob-drop-grid">
+          {brandLinks.map(([label, href]) => (
+            <a href={href} class="mob-drop-link">{label}</a>
+          ))}
+          <a href="/charlotte-nc/brands" class="mob-view-all" style="grid-column:1/-1">View All Brands →</a>
+        </div>
+      </details>
+
+      <!-- Simple links -->
+      {[['Why Us','#why-us'],['Reviews','#reviews'],['Service Areas','#areas']].map(([l,h]) => (
+        <a href={h} class="mob-plain-link">{l}</a>
       ))}
+
+      <!-- CTA buttons -->
       <div style="border-top:1px solid rgba(255,255,255,0.05);margin-top:10px;padding-top:10px;display:flex;flex-direction:column;gap:8px">
         <a href={phoneHref} style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;text-decoration:none;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2)">
           <svg width="16" height="16" fill="#dc2626" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
@@ -76,6 +184,178 @@ import { phone, phoneHref } from '../data/siteData';
     </div>
   </div>
 </header>
+
+<style>
+  /* ── Desktop nav plain links ── */
+  .nav-plain {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: #3a5a7a;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.12s;
+  }
+  .nav-plain:hover { color: #c8d8ea; }
+
+  /* ── Desktop dropdown trigger ── */
+  .nav-item {
+    position: relative;
+    /* extend hover zone below trigger to bridge the gap */
+    padding-bottom: 12px;
+    margin-bottom: -12px;
+  }
+  .nav-trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: #3a5a7a;
+    letter-spacing: 0.01em;
+    font-family: inherit;
+    transition: color 0.12s;
+  }
+  .nav-item:hover .nav-trigger { color: #c8d8ea; }
+  .nav-item:hover .chev { transform: rotate(180deg); }
+
+  /* ── Desktop dropdown panel ── */
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid rgba(30,50,80,0.1);
+    border-radius: 14px;
+    box-shadow: 0 12px 48px rgba(6,12,25,0.16), 0 2px 8px rgba(6,12,25,0.08);
+    padding: 12px;
+    min-width: 380px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    z-index: 200;
+  }
+  /* transparent bridge: fills gap between trigger and panel */
+  .nav-dropdown::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    height: 16px;
+  }
+  .nav-item:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  /* ── Dropdown header row ── */
+  .drop-header {
+    padding: 4px 8px 10px;
+    border-bottom: 1px solid rgba(30,50,80,0.08);
+    margin-bottom: 8px;
+  }
+  .drop-view-all {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #b01616;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+  .drop-view-all:hover { text-decoration: underline; }
+
+  /* ── Dropdown link grid ── */
+  .drop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .drop-link {
+    display: block;
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 0.79rem;
+    font-weight: 600;
+    color: #1a2c44;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.1s, color 0.1s;
+  }
+  .drop-link:hover {
+    background: rgba(176,22,22,0.07);
+    color: #b01616;
+  }
+
+  /* ── Mobile accordion ── */
+  .mob-acc { list-style: none; }
+  .mob-acc-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #3a5a7a;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  /* hide native disclosure triangle */
+  .mob-acc-trigger::-webkit-details-marker { display: none; }
+  .mob-acc-trigger::marker { display: none; }
+
+  details[open] .mob-acc-trigger { color: #c8d8ea; }
+  details[open] .mob-chev { transform: rotate(180deg); }
+  .mob-chev { transition: transform 0.2s; flex-shrink: 0; }
+
+  /* ── Mobile dropdown grid ── */
+  .mob-drop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    padding: 4px 8px 10px;
+  }
+  .mob-drop-link {
+    display: block;
+    padding: 7px 10px;
+    border-radius: 7px;
+    font-size: 0.79rem;
+    font-weight: 500;
+    color: #2a4a6a;
+    text-decoration: none;
+    transition: color 0.1s;
+  }
+  .mob-drop-link:hover { color: #c8d8ea; }
+
+  .mob-view-all {
+    display: block;
+    padding: 8px 10px 2px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #b01616;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Mobile plain link ── */
+  .mob-plain-link {
+    display: block;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #3a5a7a;
+    text-decoration: none;
+  }
+</style>
 
 <script>
   function setLayout() {
@@ -95,17 +375,28 @@ import { phone, phoneHref } from '../data/siteData';
   const menu    = document.getElementById('mob-menu')!;
   const icOpen  = document.getElementById('ic-open')!;
   const icClose = document.getElementById('ic-close')!;
+
   btn.addEventListener('click', () => {
     const open = menu.style.display === 'block';
     menu.style.display = open ? 'none' : 'block';
-    icOpen.style.display = open ? 'block' : 'none';
+    icOpen.style.display  = open ? 'block' : 'none';
     icClose.style.display = open ? 'none' : 'block';
     btn.setAttribute('aria-expanded', String(!open));
   });
+
+  // Close mobile menu when a real link (not a <summary>) is clicked
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     menu.style.display = 'none';
-    icOpen.style.display = 'block';
+    icOpen.style.display  = 'block';
     icClose.style.display = 'none';
     btn.setAttribute('aria-expanded', 'false');
   }));
+
+  // Keep aria-expanded in sync with desktop dropdown hover state
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    if (!trigger) return;
+    item.addEventListener('mouseenter', () => trigger.setAttribute('aria-expanded', 'true'));
+    item.addEventListener('mouseleave', () => trigger.setAttribute('aria-expanded', 'false'));
+  });
 </script>
