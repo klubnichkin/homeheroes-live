@@ -1,0 +1,194 @@
+---
+import type { ServicePage } from '../../data/services';
+import type { City } from '../../data/cities';
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import SEOHero from './SEOHero.astro';
+import FAQSection from './FAQSection.astro';
+import InternalLinks from './InternalLinks.astro';
+import SEOCTA from './SEOCTA.astro';
+
+interface Props {
+  service: ServicePage;
+  city: City;
+  relatedServiceLinks: { title: string; href: string; description?: string }[];
+  relatedBrandLinks: { title: string; href: string; description?: string }[];
+}
+
+const { service, city, relatedServiceLinks, relatedBrandLinks } = Astro.props;
+
+const canonical = `https://tryhomeheroes.com/${city.slug}/${service.slug}`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.name,
+  "serviceType": service.name,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://tryhomeheroes.com/#business",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": city.phoneHref.replace('tel:', ''),
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": city.name,
+      "addressRegion": city.stateAbbr,
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": { "@type": "City", "name": city.name },
+  "url": canonical,
+};
+
+const breadcrumbs = [
+  { label: city.displayName, href: `/${city.slug}/appliance-repair` },
+  { label: service.name, href: '#' },
+];
+---
+
+<SeoPageLayout
+  title={service.seoTitle}
+  description={service.metaDescription}
+  canonical={canonical}
+  schema={schema}
+  ogImage={service.imagePath}
+>
+  <!-- 1. Hero -->
+  <SEOHero
+    h1={service.h1}
+    intro={service.intro}
+    cityName={city.displayName}
+    phone={city.phone}
+    phoneHref={city.phoneHref}
+    imagePath={service.imagePath}
+    imageAlt={service.imageAlt}
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- 2. Common Problems -->
+  <section class="bg-white-section" style="padding:72px 24px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:48px">
+        <div class="sec-label" style="margin-bottom:14px">Common Problems</div>
+        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">
+          Common {service.name} Issues We See in {city.name}
+        </h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+        {service.commonProblems.map(problem => (
+          <div class="card" style="padding:28px">
+            <div style="display:flex;align-items:flex-start;gap:14px">
+              <div style="width:36px;height:36px;border-radius:8px;background:#fef2f2;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+                <svg width="18" height="18" fill="#b01616" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+              </div>
+              <div>
+                <h3 style="font-size:16px;font-weight:700;color:#060c19;margin:0 0 8px">{problem.title}</h3>
+                <p style="font-size:14px;color:#4a5568;line-height:1.65;margin:0">{problem.detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Age Timeline -->
+  <section class="bg-pearl-section" style="padding:72px 24px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:48px">
+        <div class="sec-label" style="margin-bottom:14px">Age & Repair Guide</div>
+        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">
+          How {service.name} Failures Change With Age
+        </h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+        {service.ageTimeline.map((tier, i) => (
+          <div class="card" style="padding:28px;border-top:4px solid #b01616">
+            <div style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">{tier.range}</div>
+            <div style="font-size:18px;font-weight:800;color:#060c19;margin-bottom:16px">{tier.label}</div>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+              {tier.issues.map(issue => (
+                <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.5">
+                  <svg width="16" height="16" fill="#b01616" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  {issue}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Repair vs Replace -->
+  <section class="bg-navy-section" style="padding:72px 24px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:48px">
+        <div class="sec-label" style="margin-bottom:14px">Decision Guide</div>
+        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;margin:0;letter-spacing:-0.02em">
+          Should You Repair or Replace Your {service.name}?
+        </h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+            <div style="width:32px;height:32px;background:#16a34a;border-radius:8px;display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" fill="#fff" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <h3 style="color:#fff;font-size:18px;font-weight:700;margin:0">Repair When…</h3>
+          </div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+            {service.repairVsReplace.repairWhen.map(point => (
+              <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,0.8);line-height:1.55">
+                <svg width="16" height="16" fill="#4ade80" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+            <div style="width:32px;height:32px;background:#dc2626;border-radius:8px;display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" fill="#fff" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </div>
+            <h3 style="color:#fff;font-size:18px;font-weight:700;margin:0">Replace When…</h3>
+          </div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+            {service.repairVsReplace.replaceWhen.map(point => (
+              <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,0.8);line-height:1.55">
+                <svg width="16" height="16" fill="#f87171" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Related Services -->
+  {relatedServiceLinks.length > 0 && (
+    <section class="bg-white-section" style="padding:64px 24px">
+      <InternalLinks
+        heading={`Related Services in ${city.name}`}
+        links={relatedServiceLinks}
+      />
+    </section>
+  )}
+
+  <!-- 6. Related Brands -->
+  {relatedBrandLinks.length > 0 && (
+    <section class="bg-light-section" style="padding:64px 24px">
+      <InternalLinks
+        heading={`Brands We Service in ${city.name}`}
+        links={relatedBrandLinks}
+      />
+    </section>
+  )}
+
+  <!-- 7. FAQ -->
+  <FAQSection faqs={service.faq} heading={`${service.name} FAQs — ${city.name}`} />
+
+  <!-- 8. CTA -->
+  <SEOCTA phone={city.phone} phoneHref={city.phoneHref} />
+</SeoPageLayout>

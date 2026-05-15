@@ -1,0 +1,107 @@
+---
+interface Breadcrumb {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  h1: string;
+  intro: string;
+  cityName: string;
+  phone: string;
+  phoneHref: string;
+  imagePath: string;
+  imageAlt: string;
+  breadcrumbs: Breadcrumb[];
+}
+
+const { h1, intro, cityName, phone, phoneHref, imagePath, imageAlt, breadcrumbs } = Astro.props;
+---
+
+<section style="background:#080f1e;padding:60px 24px 0;position:relative;overflow:hidden">
+  <div style="max-width:1200px;margin:0 auto">
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="margin-bottom:24px">
+      <ol style="display:flex;align-items:center;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+        <li>
+          <a href="/" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;transition:color 0.2s">Home</a>
+        </li>
+        <li style="color:rgba(255,255,255,0.3);font-size:13px">›</li>
+        {breadcrumbs.map((crumb, i) => (
+          <>
+            {crumb.href !== '#' ? (
+              <li>
+                <a href={crumb.href} style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;transition:color 0.2s">{crumb.label}</a>
+              </li>
+            ) : (
+              <li>
+                <span style="color:rgba(255,255,255,0.75);font-size:13px">{crumb.label}</span>
+              </li>
+            )}
+            {i < breadcrumbs.length - 1 && (
+              <li style="color:rgba(255,255,255,0.3);font-size:13px">›</li>
+            )}
+          </>
+        ))}
+      </ol>
+    </nav>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-bottom:56px">
+      <!-- Left: Content -->
+      <div>
+        <div class="sec-label" style="margin-bottom:16px">{cityName} · Licensed & Insured</div>
+        <h1 style="color:#fff;font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-0.02em">{h1}</h1>
+        <p style="color:rgba(255,255,255,0.72);font-size:17px;line-height:1.65;margin:0 0 32px;max-width:520px">{intro}</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none;letter-spacing:-0.01em;transition:opacity 0.2s">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call {phone}
+          </a>
+          <a href="#contact-form" style="display:inline-flex;align-items:center;padding:14px 24px;border:2px solid rgba(255,255,255,0.25);color:#fff;font-weight:600;font-size:16px;border-radius:10px;text-decoration:none;transition:border-color 0.2s,background 0.2s">
+            Get Free Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Image (hidden on mobile) -->
+      <div style="display:none" class="hero-image-wrapper">
+        <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/3;position:relative">
+          <img
+            src={imagePath}
+            alt={imageAlt}
+            style="width:100%;height:100%;object-fit:cover;display:block"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div style="background:#0d1829;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08)">
+  <div style="max-width:1200px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg width="18" height="18" fill="#dc2626" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/><path d="M13 7h-2V5h2z"/><circle cx="12" cy="12" r="10" fill="none"/><path d="M11 11h2v6h-2zm0-4h2v2h-2z"/></svg>
+      <span style="color:rgba(255,255,255,0.85);font-size:14px;font-weight:600">Same-Day Service</span>
+    </div>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.15)"></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg width="18" height="18" fill="#dc2626" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      <span style="color:rgba(255,255,255,0.85);font-size:14px;font-weight:600">Licensed &amp; Insured</span>
+    </div>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.15)"></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg width="18" height="18" fill="#dc2626" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#dc2626" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="color:rgba(255,255,255,0.85);font-size:14px;font-weight:600">90-Day Warranty</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (min-width: 768px) {
+    .hero-image-wrapper {
+      display: block !important;
+    }
+  }
+</style>

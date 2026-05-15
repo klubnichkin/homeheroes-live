@@ -1,0 +1,202 @@
+---
+import { services, getService } from '../../data/services';
+import { brands, getBrand } from '../../data/brands';
+import { cities, getCity } from '../../data/cities';
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import ServicePageTemplate from '../../components/seo/ServicePageTemplate.astro';
+import BrandPageTemplate from '../../components/seo/BrandPageTemplate.astro';
+import InternalLinks from '../../components/seo/InternalLinks.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+
+export function getStaticPaths() {
+  const allPaths: {
+    params: { city: string; slug: string };
+    props:
+      | { type: 'service'; city: (typeof cities)[0]; service: (typeof services)[0]; brand: null; hubSlug: null }
+      | { type: 'brand'; city: (typeof cities)[0]; service: null; brand: (typeof brands)[0]; hubSlug: null }
+      | { type: 'hub'; city: (typeof cities)[0]; service: null; brand: null; hubSlug: string };
+  }[] = [];
+
+  for (const city of cities) {
+    // Service pages
+    for (const service of services) {
+      allPaths.push({
+        params: { city: city.slug, slug: service.slug },
+        props: { type: 'service', city, service, brand: null, hubSlug: null },
+      });
+    }
+    // Brand pages
+    for (const brand of brands) {
+      allPaths.push({
+        params: { city: city.slug, slug: brand.slug },
+        props: { type: 'brand', city, service: null, brand, hubSlug: null },
+      });
+    }
+    // Hub pages
+    for (const hubSlug of ['appliance-repair', 'services', 'brands'] as const) {
+      allPaths.push({
+        params: { city: city.slug, slug: hubSlug },
+        props: { type: 'hub', city, service: null, brand: null, hubSlug },
+      });
+    }
+  }
+
+  return allPaths;
+}
+
+const { type, city, service, brand, hubSlug } = Astro.props;
+const { slug } = Astro.params;
+
+const baseUrl = 'https://tryhomeheroes.com';
+const canonical = `${baseUrl}/${city.slug}/${slug}`;
+
+// Build related links
+const relatedServiceLinks = service
+  ? service.relatedServices.map(rs => {
+      const s = getService(rs)!;
+      return { title: s.name, href: `/${city.slug}/${s.slug}`, description: `Same-day service in ${city.displayName}` };
+    })
+  : [];
+
+const relatedBrandLinks = service
+  ? service.relatedBrands.map(rb => {
+      const b = getBrand(rb)!;
+      return { title: `${b.name} Repair`, href: `/${city.slug}/${b.slug}`, description: b.priceRange };
+    })
+  : [];
+
+const brandServiceLinks = brand
+  ? brand.relatedServices.map(rs => {
+      const s = getService(rs)!;
+      return { title: s.name, href: `/${city.slug}/${s.slug}`, description: `Same-day service in ${city.displayName}` };
+    })
+  : [];
+
+// All service/brand links for hub pages
+const allServiceLinks = services.map(s => ({
+  title: s.name,
+  href: `/${city.slug}/${s.slug}`,
+  description: `Fast same-day service in ${city.displayName}`,
+}));
+
+const allBrandLinks = brands.map(b => ({
+  title: `${b.name} Repair`,
+  href: `/${city.slug}/${b.slug}`,
+  description: b.priceRange,
+}));
+
+// Hub page meta
+let hubTitle = '';
+let hubDescription = '';
+let hubH1 = '';
+let hubIntro = '';
+let hubSchema: object = {};
+
+if (slug === 'appliance-repair') {
+  hubTitle = `Appliance Repair in ${city.displayName} | HomeHeroes`;
+  hubDescription = `Complete appliance repair service in ${city.displayName}. Same-day service for all major appliances. Licensed & insured technicians. Call ${city.phone}.`;
+  hubH1 = `Appliance Repair in ${city.displayName}`;
+  hubIntro = `HomeHeroes is ${city.displayName}'s trusted same-day appliance repair service. We fix refrigerators, washers, dryers, ovens, dishwashers, and more — with licensed, insured technicians who arrive stocked and ready to repair on the first visit.`;
+  hubSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": city.phoneHref.replace('tel:', ''),
+    "url": canonical,
+    "address": { "@type": "PostalAddress", "addressLocality": city.name, "addressRegion": city.stateAbbr, "addressCountry": "US" }
+  };
+} else if (slug === 'services') {
+  hubTitle = `Appliance Repair Services in ${city.displayName} | HomeHeroes`;
+  hubDescription = `All appliance repair services available in ${city.displayName}, NC. Refrigerators, washers, dryers, ovens and more. Call ${city.phone}.`;
+  hubH1 = `Our Appliance Repair Services in ${city.displayName}`;
+  hubIntro = `HomeHeroes provides same-day repair for all major home appliances in ${city.displayName}. Browse our complete service list below and call us for same-day scheduling.`;
+  hubSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "url": canonical
+  };
+} else if (slug === 'brands') {
+  hubTitle = `Appliance Brands We Repair in ${city.displayName} | HomeHeroes`;
+  hubDescription = `HomeHeroes repairs all major appliance brands in ${city.displayName}: Samsung, LG, Whirlpool, GE, Bosch, Sub-Zero and more. Call ${city.phone}.`;
+  hubH1 = `Appliance Brands We Service in ${city.displayName}`;
+  hubIntro = `From everyday brands like Whirlpool and GE to luxury brands like Sub-Zero and Miele, HomeHeroes technicians in ${city.displayName} are trained on all major appliance brands. Select your brand below.`;
+  hubSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "url": canonical
+  };
+}
+---
+
+{type === 'service' && service && (
+  <ServicePageTemplate
+    service={service}
+    city={city}
+    relatedServiceLinks={relatedServiceLinks}
+    relatedBrandLinks={relatedBrandLinks}
+  />
+)}
+
+{type === 'brand' && brand && (
+  <BrandPageTemplate
+    brand={brand}
+    city={city}
+    relatedServiceLinks={brandServiceLinks}
+  />
+)}
+
+{type === 'hub' && (
+  <SeoPageLayout
+    title={hubTitle}
+    description={hubDescription}
+    canonical={canonical}
+    schema={hubSchema}
+  >
+    <!-- Hub Hero -->
+    <section style="background:#080f1e;padding:60px 24px 56px">
+      <div style="max-width:900px;margin:0 auto;text-align:center">
+        <div class="sec-label" style="margin-bottom:16px">{city.displayName}</div>
+        <h1 style="color:#fff;font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-0.02em">{hubH1}</h1>
+        <p style="color:rgba(255,255,255,0.72);font-size:17px;line-height:1.65;margin:0 0 32px;max-width:640px;margin-left:auto;margin-right:auto">{hubIntro}</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+          <a href={city.phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call {city.phone}
+          </a>
+          <a href="#contact-form" style="display:inline-flex;align-items:center;padding:14px 24px;border:2px solid rgba(255,255,255,0.25);color:#fff;font-weight:600;font-size:16px;border-radius:10px;text-decoration:none">
+            Get Free Quote
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="rule"></div>
+
+    <!-- Hub Content -->
+    {slug === 'appliance-repair' && (
+      <>
+        <section class="bg-white-section" style="padding:72px 24px">
+          <InternalLinks heading={`Our Appliance Repair Services in ${city.name}`} links={allServiceLinks} />
+        </section>
+        <section class="bg-light-section" style="padding:72px 24px">
+          <InternalLinks heading={`Brands We Service in ${city.name}`} links={allBrandLinks} />
+        </section>
+      </>
+    )}
+
+    {slug === 'services' && (
+      <section class="bg-white-section" style="padding:72px 24px">
+        <InternalLinks heading={`All Appliance Repair Services in ${city.name}`} links={allServiceLinks} />
+      </section>
+    )}
+
+    {slug === 'brands' && (
+      <section class="bg-white-section" style="padding:72px 24px">
+        <InternalLinks heading={`All Appliance Brands We Repair in ${city.name}`} links={allBrandLinks} />
+      </section>
+    )}
+
+    <SEOCTA phone={city.phone} phoneHref={city.phoneHref} />
+  </SeoPageLayout>
+)}
