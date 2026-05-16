@@ -1,0 +1,272 @@
+---
+import type { SymptomPage } from '../../data/symptoms';
+import type { City } from '../../data/cities';
+import { getService } from '../../data/services';
+import { getBrand } from '../../data/brands';
+import { getSymptom } from '../../data/symptoms';
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import SEOHero from './SEOHero.astro';
+import FAQSection from './FAQSection.astro';
+import InternalLinks from './InternalLinks.astro';
+import SEOCTA from './SEOCTA.astro';
+
+interface Props {
+  symptom: SymptomPage;
+  city: City;
+}
+
+const { symptom, city } = Astro.props;
+
+const canonical = `https://tryhomeheroes.com/${city.slug}/${symptom.slug}`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://tryhomeheroes.com/#business",
+      "name": "HomeHeroes Appliance Repair",
+      "telephone": city.phoneHref.replace('tel:', ''),
+      "url": canonical,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": city.name,
+        "addressRegion": city.stateAbbr,
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": symptom.faq.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+  ]
+};
+
+const breadcrumbs = [
+  { label: city.displayName, href: `/${city.slug}/appliance-repair` },
+  { label: `${symptom.appliance} Repair`, href: `/${city.slug}/${symptom.relatedServiceSlug}` },
+  { label: symptom.symptomShort, href: '#' },
+];
+
+const relatedService = getService(symptom.relatedServiceSlug);
+const relatedServiceLinks = relatedService
+  ? [{ title: relatedService.name, href: `/${city.slug}/${relatedService.slug}`, description: `Same-day service in ${city.displayName}` }]
+  : [];
+
+const relatedBrandLinks = symptom.relatedBrandSlugs
+  .map(bs => getBrand(bs))
+  .filter(Boolean)
+  .map(b => ({ title: `${b!.name} ${symptom.appliance} Repair`, href: `/${city.slug}/${b!.slug}`, description: b!.priceRange }));
+
+const relatedSymptomLinks = symptom.relatedSymptomSlugs
+  .map(ss => getSymptom(ss))
+  .filter(Boolean)
+  .map(s => ({ title: s!.symptomShort, href: `/${city.slug}/${s!.slug}`, description: s!.appliance }));
+---
+
+<SeoPageLayout
+  title={symptom.seoTitle}
+  description={symptom.metaDescription}
+  canonical={canonical}
+  schema={schema}
+>
+  <!-- 1. Hero -->
+  <SEOHero
+    h1={symptom.h1}
+    intro={symptom.intro}
+    cityName={city.displayName}
+    phone={city.phone}
+    phoneHref={city.phoneHref}
+    imagePath="/images/hero/hero-technician.webp"
+    imageAlt={`Technician diagnosing ${symptom.symptomShort.toLowerCase()} in ${city.displayName}`}
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- 2. Common Signs -->
+  <section class="bg-white-section" style="padding:72px 24px">
+    <div style="max-width:900px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">Warning Signs</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 32px;letter-spacing:-0.02em">
+        Common Signs of This Problem
+      </h2>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+        {symptom.commonSigns.map(sign => (
+          <li style="display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:#f8f9fc;border-radius:10px;border-left:4px solid #b01616">
+            <svg width="18" height="18" fill="#b01616" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            <span style="font-size:15px;color:#1a2c44;line-height:1.6;font-weight:500">{sign}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. Quick Self-Diagnosis Table -->
+  <section class="bg-pearl-section" style="padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">Self-Diagnosis</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 10px;letter-spacing:-0.02em">
+        Quick Diagnosis Table
+      </h2>
+      <p style="font-size:15px;color:#4a5568;margin:0 0 32px;line-height:1.6">
+        Match your symptom to narrow down the likely cause before calling us.
+      </p>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+        <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(6,12,25,0.08)">
+          <thead>
+            <tr style="background:#060c19">
+              <th style="text-align:left;padding:14px 18px;font-size:12px;font-weight:700;color:#9ab0cc;text-transform:uppercase;letter-spacing:0.08em;width:30%">What You Notice</th>
+              <th style="text-align:left;padding:14px 18px;font-size:12px;font-weight:700;color:#9ab0cc;text-transform:uppercase;letter-spacing:0.08em;width:30%">Quick Check</th>
+              <th style="text-align:left;padding:14px 18px;font-size:12px;font-weight:700;color:#9ab0cc;text-transform:uppercase;letter-spacing:0.08em">Likely Cause</th>
+            </tr>
+          </thead>
+          <tbody>
+            {symptom.diagnosisTable.map((row, i) => (
+              <tr style={`border-bottom:1px solid rgba(30,50,80,0.07);${i % 2 === 0 ? '' : 'background:#f8f9fc'}`}>
+                <td style="padding:14px 18px;font-size:14px;color:#1a2c44;font-weight:600;line-height:1.5">{row.symptom}</td>
+                <td style="padding:14px 18px;font-size:14px;color:#4a5568;line-height:1.5">{row.quickCheck}</td>
+                <td style="padding:14px 18px;font-size:14px;color:#4a5568;line-height:1.5">{row.possibleCause}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Safe Homeowner Tips -->
+  <section class="bg-white-section" style="padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">Before You Call</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">
+        Safe Homeowner Checks
+      </h2>
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:36px;padding:14px 18px;background:#fef9c3;border:1px solid #fde047;border-radius:10px">
+        <svg width="18" height="18" fill="#ca8a04" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px" aria-hidden="true"><path d="M12 2L1 21h22L12 2zm0 3l8.5 14.5H3.5L12 5zm-1 5v5h2v-5h-2zm0 7v2h2v-2h-2z"/></svg>
+        <p style="font-size:13px;color:#78350f;margin:0;line-height:1.6;font-weight:500">
+          These checks are safe for homeowners. Do not attempt to open sealed refrigerant systems, touch electrical components behind access panels, or work on gas lines — always call a licensed technician for those.
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px">
+        {symptom.safeTips.map((tip, i) => (
+          <div class="card" style="padding:26px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+              <div style="width:28px;height:28px;border-radius:7px;background:#f0fdf4;border:1px solid #86efac;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <span style="font-size:13px;font-weight:800;color:#16a34a">{i + 1}</span>
+              </div>
+              <h3 style="font-size:15px;font-weight:700;color:#060c19;margin:0">{tip.title}</h3>
+            </div>
+            <p style="font-size:13.5px;color:#4a5568;line-height:1.65;margin:0">{tip.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. When To Call A Technician -->
+  <section class="bg-navy-section" style="padding:72px 24px">
+    <div style="max-width:900px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">Stop DIY Here</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;margin:0 0 32px;letter-spacing:-0.02em">
+        When To Call a Technician
+      </h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        {symptom.whenToCall.map(warning => (
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px">
+            <svg width="18" height="18" fill="#f87171" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M12 2L1 21h22L12 2zm0 3l8.5 14.5H3.5L12 5zm-1 5v5h2v-5h-2zm0 7v2h2v-2h-2z"/></svg>
+            <span style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.6">{warning}</span>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:36px;text-align:center">
+        <a href={city.phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          Call {city.phone} Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Repair vs Replace -->
+  <section class="bg-pearl-section" style="padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:48px">
+        <div class="sec-label" style="margin-bottom:14px">Decision Guide</div>
+        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">
+          Repair or Replace Your {symptom.appliance}?
+        </h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div class="card" style="padding:32px;border-top:4px solid #16a34a">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+            <div style="width:32px;height:32px;background:#f0fdf4;border-radius:8px;display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" fill="#16a34a" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <h3 style="font-size:17px;font-weight:700;color:#060c19;margin:0">Repair When…</h3>
+          </div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px">
+            {symptom.repairVsReplace.repairWhen.map(point => (
+              <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.55">
+                <svg width="15" height="15" fill="#4ade80" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="card" style="padding:32px;border-top:4px solid #dc2626">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+            <div style="width:32px;height:32px;background:#fef2f2;border-radius:8px;display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" fill="#dc2626" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </div>
+            <h3 style="font-size:17px;font-weight:700;color:#060c19;margin:0">Replace When…</h3>
+          </div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px">
+            {symptom.repairVsReplace.replaceWhen.map(point => (
+              <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.55">
+                <svg width="15" height="15" fill="#f87171" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Internal Links -->
+  {relatedServiceLinks.length > 0 && (
+    <section class="bg-white-section" style="padding:64px 24px">
+      <InternalLinks
+        heading={`${symptom.appliance} Repair in ${city.name}`}
+        links={relatedServiceLinks}
+      />
+    </section>
+  )}
+
+  {relatedBrandLinks.length > 0 && (
+    <section class="bg-light-section" style="padding:64px 24px">
+      <InternalLinks
+        heading={`Brand-Specific Repair in ${city.name}`}
+        links={relatedBrandLinks}
+      />
+    </section>
+  )}
+
+  {relatedSymptomLinks.length > 0 && (
+    <section class="bg-white-section" style="padding:64px 24px">
+      <InternalLinks
+        heading="Related Appliance Problems"
+        links={relatedSymptomLinks}
+      />
+    </section>
+  )}
+
+  <!-- 8. FAQ -->
+  <FAQSection faqs={symptom.faq} heading={`${symptom.symptomShort} — Frequently Asked Questions`} />
+
+  <!-- 9. CTA -->
+  <SEOCTA phone={city.phone} phoneHref={city.phoneHref} />
+</SeoPageLayout>

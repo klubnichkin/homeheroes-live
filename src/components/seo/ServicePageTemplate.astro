@@ -12,9 +12,10 @@ interface Props {
   city: City;
   relatedServiceLinks: { title: string; href: string; description?: string }[];
   relatedBrandLinks: { title: string; href: string; description?: string }[];
+  relatedSymptomLinks: { title: string; href: string; description?: string }[];
 }
 
-const { service, city, relatedServiceLinks, relatedBrandLinks } = Astro.props;
+const { service, city, relatedServiceLinks, relatedBrandLinks, relatedSymptomLinks } = Astro.props;
 
 const canonical = `https://tryhomeheroes.com/${city.slug}/${service.slug}`;
 
@@ -166,7 +167,17 @@ const breadcrumbs = [
     </div>
   </section>
 
-  <!-- 5. Related Services -->
+  <!-- 5. Common Symptom Guides -->
+  {relatedSymptomLinks.length > 0 && (
+    <section class="bg-white-section" style="padding:64px 24px">
+      <InternalLinks
+        heading={`Common ${service.name.replace(' Repair', '')} Problems — Symptom Guides`}
+        links={relatedSymptomLinks}
+      />
+    </section>
+  )}
+
+  <!-- 6. Related Services -->
   {relatedServiceLinks.length > 0 && (
     <section class="bg-white-section" style="padding:64px 24px">
       <InternalLinks

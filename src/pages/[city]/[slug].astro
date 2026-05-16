@@ -2,6 +2,7 @@
 import { services, getService } from '../../data/services';
 import { brands, getBrand } from '../../data/brands';
 import { cities, getCity } from '../../data/cities';
+import { symptoms } from '../../data/symptoms';
 import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
 import ServicePageTemplate from '../../components/seo/ServicePageTemplate.astro';
 import BrandPageTemplate from '../../components/seo/BrandPageTemplate.astro';
@@ -33,7 +34,7 @@ export function getStaticPaths() {
       });
     }
     // Hub pages
-    for (const hubSlug of ['appliance-repair', 'services', 'brands'] as const) {
+    for (const hubSlug of ['appliance-repair', 'services', 'brands', 'common-appliance-problems'] as const) {
       allPaths.push({
         params: { city: city.slug, slug: hubSlug },
         props: { type: 'hub', city, service: null, brand: null, hubSlug },
@@ -70,6 +71,19 @@ const brandServiceLinks = brand
       const s = getService(rs)!;
       return { title: s.name, href: `/${city.slug}/${s.slug}`, description: `Same-day service in ${city.displayName}` };
     })
+  : [];
+
+// Symptom links for service and brand pages
+const serviceSymptomLinks = service
+  ? symptoms
+      .filter(s => s.relatedServiceSlug === service.slug)
+      .map(s => ({ title: s.symptomShort, href: `/${city.slug}/${s.slug}`, description: `${s.appliance} symptom guide` }))
+  : [];
+
+const brandSymptomLinks = brand
+  ? symptoms
+      .filter(s => s.relatedBrandSlugs.includes(brand.slug))
+      .map(s => ({ title: s.symptomShort, href: `/${city.slug}/${s.slug}`, description: s.appliance }))
   : [];
 
 // All service/brand links for hub pages
@@ -127,7 +141,27 @@ if (slug === 'appliance-repair') {
     "name": "HomeHeroes Appliance Repair",
     "url": canonical
   };
+} else if (slug === 'common-appliance-problems') {
+  hubTitle = `Common Appliance Problems in ${city.displayName} | HomeHeroes`;
+  hubDescription = `Diagnose your appliance problem in ${city.displayName}. Refrigerator not cooling, washer not draining, dryer not heating — find your symptom and get same-day repair. Call ${city.phone}.`;
+  hubH1 = `Common Appliance Problems in ${city.displayName}`;
+  hubIntro = `Find your exact symptom below. Each guide covers the most likely causes, safe homeowner checks, and when to call a technician. HomeHeroes offers same-day repair for all of these issues across ${city.displayName}.`;
+  hubSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": city.phoneHref.replace('tel:', ''),
+    "url": canonical,
+    "address": { "@type": "PostalAddress", "addressLocality": city.name, "addressRegion": city.stateAbbr, "addressCountry": "US" }
+  };
 }
+
+// Group symptoms by appliance for hub page
+const symptomsByAppliance = symptoms.reduce((acc, s) => {
+  if (!acc[s.appliance]) acc[s.appliance] = [];
+  acc[s.appliance].push(s);
+  return acc;
+}, {} as Record<string, typeof symptoms>);
 ---
 
 {type === 'service' && service && (
@@ -136,6 +170,7 @@ if (slug === 'appliance-repair') {
     city={city}
     relatedServiceLinks={relatedServiceLinks}
     relatedBrandLinks={relatedBrandLinks}
+    relatedSymptomLinks={serviceSymptomLinks}
   />
 )}
 
@@ -144,6 +179,7 @@ if (slug === 'appliance-repair') {
     brand={brand}
     city={city}
     relatedServiceLinks={brandServiceLinks}
+    relatedSymptomLinks={brandSymptomLinks}
   />
 )}
 
@@ -194,6 +230,32 @@ if (slug === 'appliance-repair') {
     {slug === 'brands' && (
       <section class="bg-white-section" style="padding:72px 24px">
         <InternalLinks heading={`All Appliance Brands We Repair in ${city.name}`} links={allBrandLinks} />
+      </section>
+    )}
+
+    {slug === 'common-appliance-problems' && (
+      <section class="bg-white-section" style="padding:72px 24px">
+        <div style="max-width:1100px;margin:0 auto">
+          {Object.entries(symptomsByAppliance).map(([appliance, applianceSymptoms]) => (
+            <div style="margin-bottom:56px">
+              <h2 style="font-size:clamp(18px,2.5vw,26px);font-weight:800;color:#060c19;margin:0 0 24px;padding-bottom:14px;border-bottom:2px solid #b01616;letter-spacing:-0.02em">
+                {appliance} Problems
+              </h2>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+                {applianceSymptoms.map(s => (
+                  <a href={`/${city.slug}/${s.slug}`} style="display:block;padding:20px 22px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;text-decoration:none;transition:box-shadow 0.15s" class="prob-card">
+                    <div style="font-size:15px;font-weight:700;color:#060c19;margin-bottom:6px">{s.symptomShort}</div>
+                    <div style="font-size:13px;color:#4a5e74;line-height:1.5">{s.intro.slice(0, 90)}…</div>
+                    <div style="margin-top:12px;font-size:12px;font-weight:700;color:#b01616;letter-spacing:0.04em">DIAGNOSE NOW →</div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+          <div style="margin-top:24px">
+            <InternalLinks heading={`Our Appliance Repair Services in ${city.name}`} links={allServiceLinks} />
+          </div>
+        </div>
       </section>
     )}
 

@@ -205,7 +205,7 @@ body {
   .trust-grid  { grid-template-columns: repeat(4, 1fr); }
   .why-grid    { grid-template-columns: 420px 1fr; }
   .areas-grid  { grid-template-columns: 1fr 1fr; }
-  .footer-grid { grid-template-columns: 1.8fr 1fr 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; }
   .feat-grid   { grid-template-columns: 1fr 360px; }
   .desktop-nav { display: flex !important; }
   .desktop-cta { display: flex !important; }

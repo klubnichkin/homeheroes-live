@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { services } from '../data/services';
 import { brands } from '../data/brands';
 import { cities } from '../data/cities';
+import { symptoms } from '../data/symptoms';
 
 export const GET: APIRoute = () => {
   const base = 'https://tryhomeheroes.com';
@@ -15,11 +16,15 @@ export const GET: APIRoute = () => {
     entries.push({ loc: `${base}/${city.slug}/appliance-repair`, priority: '0.9', changefreq: 'monthly' });
     entries.push({ loc: `${base}/${city.slug}/services`, priority: '0.8', changefreq: 'monthly' });
     entries.push({ loc: `${base}/${city.slug}/brands`, priority: '0.8', changefreq: 'monthly' });
+    entries.push({ loc: `${base}/${city.slug}/common-appliance-problems`, priority: '0.85', changefreq: 'monthly' });
     for (const s of services) {
       entries.push({ loc: `${base}/${city.slug}/${s.slug}`, priority: '0.8', changefreq: 'monthly' });
     }
     for (const b of brands) {
       entries.push({ loc: `${base}/${city.slug}/${b.slug}`, priority: '0.7', changefreq: 'monthly' });
+    }
+    for (const s of symptoms) {
+      entries.push({ loc: `${base}/${city.slug}/${s.slug}`, priority: '0.8', changefreq: 'monthly' });
     }
   }
 
