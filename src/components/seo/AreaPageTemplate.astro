@@ -1,0 +1,331 @@
+---
+import type { Area } from '../../data/areas';
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import ContactCTA from '../ContactCTA.astro';
+
+interface Props {
+  area: Area;
+}
+
+const { area } = Astro.props;
+
+const base    = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/areas/${area.slug}`;
+const phone   = '(704) 512-0111';
+const phoneHref = 'tel:+17045120111';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": `${base}/#business`,
+      "name": "HomeHeroes Appliance Repair",
+      "telephone": "+17045120111",
+      "url": canonical,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Charlotte",
+        "addressRegion": "NC",
+        "addressCountry": "US"
+      },
+      "areaServed": { "@type": "Place", "name": area.name }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": area.faq.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+  ]
+};
+
+const services = [
+  { label: 'Refrigerator Repair', href: '/charlotte-nc/refrigerator-repair' },
+  { label: 'Washer Repair',       href: '/charlotte-nc/washer-repair'       },
+  { label: 'Dryer Repair',        href: '/charlotte-nc/dryer-repair'        },
+  { label: 'Dishwasher Repair',   href: '/charlotte-nc/dishwasher-repair'   },
+  { label: 'Oven Repair',         href: '/charlotte-nc/oven-repair'         },
+  { label: 'Freezer Repair',      href: '/charlotte-nc/freezer-repair'      },
+  { label: 'Ice Maker Repair',    href: '/charlotte-nc/ice-maker-repair'    },
+  { label: 'Microwave Repair',    href: '/charlotte-nc/microwave-repair'    },
+];
+
+const commonProblems = [
+  { label: 'Refrigerator Not Cooling',  href: '/charlotte-nc/refrigerator-not-cooling'  },
+  { label: 'Washer Not Spinning',       href: '/charlotte-nc/washer-not-spinning'       },
+  { label: 'Dryer Not Heating',         href: '/charlotte-nc/dryer-not-heating'         },
+  { label: 'Refrigerator Leaking',      href: '/charlotte-nc/refrigerator-leaking-water'},
+  { label: 'Washer Not Draining',       href: '/charlotte-nc/washer-not-draining'       },
+];
+
+const brands = [
+  { label: 'Samsung',    href: '/charlotte-nc/samsung-appliance-repair'    },
+  { label: 'LG',         href: '/charlotte-nc/lg-appliance-repair'         },
+  { label: 'Whirlpool',  href: '/charlotte-nc/whirlpool-appliance-repair'  },
+  { label: 'GE',         href: '/charlotte-nc/ge-appliance-repair'         },
+  { label: 'Maytag',     href: '/charlotte-nc/maytag-appliance-repair'     },
+  { label: 'Frigidaire', href: '/charlotte-nc/frigidaire-appliance-repair' },
+  { label: 'KitchenAid', href: '/charlotte-nc/kitchenaid-appliance-repair' },
+  { label: 'Bosch',      href: '/charlotte-nc/bosch-appliance-repair'      },
+  { label: 'Sub-Zero',   href: '/charlotte-nc/sub-zero-appliance-repair'   },
+  { label: 'Viking',     href: '/charlotte-nc/viking-appliance-repair'     },
+];
+---
+
+<SeoPageLayout
+  title={area.seoTitle}
+  description={area.metaDescription}
+  canonical={canonical}
+  schema={schema}
+>
+  <!-- ── 1. Hero ─────────────────────────────────────────── -->
+  <section style="background:#080f1e;padding:64px 24px 60px">
+    <div style="max-width:900px;margin:0 auto">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:0.72rem;color:#1e3a56">
+          <li><a href="/" style="color:#2a5a8a;text-decoration:none">Home</a></li>
+          <li style="color:#1e3a56">›</li>
+          <li><a href="/charlotte-nc/appliance-repair" style="color:#2a5a8a;text-decoration:none">Charlotte, NC</a></li>
+          <li style="color:#1e3a56">›</li>
+          <li><a href="/charlotte-nc/areas" style="color:#2a5a8a;text-decoration:none">Areas</a></li>
+          <li style="color:#1e3a56">›</li>
+          <li style="color:#9aaabe">{area.name}</li>
+        </ol>
+      </nav>
+
+      <div style="font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b01616;margin-bottom:14px">
+        {area.areaType}
+      </div>
+      <h1 style="font-size:clamp(26px,4.5vw,52px);font-weight:900;color:#fff;margin:0 0 20px;line-height:1.1;letter-spacing:-0.03em">
+        {area.h1}
+      </h1>
+      <p style="font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,0.7);line-height:1.7;margin:0 0 36px;max-width:720px">
+        {area.intro}
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px">
+        <a href={phoneHref}
+           style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          Call {phone}
+        </a>
+        <a href="#contact-form"
+           style="display:inline-flex;align-items:center;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:#fff;font-weight:600;font-size:16px;border-radius:10px;text-decoration:none">
+          Get Free Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2. Services ─────────────────────────────────────── -->
+  <section class="bg-white-section" style="padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">What We Fix</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 36px;letter-spacing:-0.02em">
+        Appliance Repair Services in {area.name}
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
+        {services.map(svc => (
+          <a href={svc.href}
+             style="display:flex;align-items:center;gap:12px;padding:16px 18px;border:1px solid rgba(30,50,80,0.1);border-radius:10px;text-decoration:none;background:#f8f9fc;transition:box-shadow 0.15s"
+             class="area-svc-card">
+            <svg width="16" height="16" fill="#b01616" viewBox="0 0 24 24" style="flex-shrink:0" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <span style="font-size:0.85rem;font-weight:700;color:#060c19">{svc.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. Local Context ─────────────────────────────────── -->
+  <section class="bg-pearl-section" style="padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+        <div>
+          <div class="sec-label" style="margin-bottom:14px">About the Area</div>
+          <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em">
+            Serving {area.name} Residents &amp; Businesses
+          </h2>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+            {area.localContext.map(fact => (
+              <li style="display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:#374151;line-height:1.65">
+                <svg width="16" height="16" fill="#b01616" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                {fact}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <div class="sec-label" style="margin-bottom:14px">Who We Serve</div>
+          <h3 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">
+            Customers We Help in {area.name}
+          </h3>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+            {area.customerTypes.map(ct => (
+              <li style="display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:#fff;border-radius:9px;border:1px solid rgba(30,50,80,0.08);font-size:14px;color:#374151;line-height:1.55">
+                <svg width="15" height="15" fill="#4ade80" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                {ct}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. Common Problems ───────────────────────────────── -->
+  <section class="bg-white-section" style="padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">Symptom Guides</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 10px;letter-spacing:-0.02em">
+        Common Appliance Problems in {area.name}
+      </h2>
+      <p style="font-size:15px;color:#4a5568;margin:0 0 32px;line-height:1.6">
+        Find your symptom, read the diagnosis guide, then call us for same-day repair.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px">
+        {commonProblems.map(prob => (
+          <a href={prob.href}
+             style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-left:4px solid #b01616;background:#fef2f2;border-radius:0 10px 10px 0;text-decoration:none"
+             class="area-prob-card">
+            <span style="font-size:0.85rem;font-weight:700;color:#1a2c44">{prob.label}</span>
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 5. Commercial Section ─────────────────────────────── -->
+  <section class="bg-navy-section" style="padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+        <div>
+          <div class="sec-label" style="margin-bottom:14px;color:#dc3030">For Businesses</div>
+          <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;margin:0 0 16px;letter-spacing:-0.02em">
+            Commercial &amp; Property Appliance Repair in {area.name}
+          </h2>
+          <p style="font-size:15px;color:rgba(255,255,255,0.72);line-height:1.7;margin:0 0 24px">
+            We can help local restaurants, cafes, property managers, apartment communities, and small businesses in {area.name} keep their appliances running. Fast response, professional service, and repair documentation for your maintenance records.
+          </p>
+          <a href={phoneHref}
+             style="display:inline-flex;align-items:center;gap:8px;padding:13px 22px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call for Business Repair
+          </a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          {[
+            ['Restaurants & Cafes',          'Fast refrigerator, ice maker, and dishwasher repair to keep your kitchen running.'],
+            ['Property Managers',            'Quick turnaround and detailed invoices for your maintenance records.'],
+            ['Apartment Communities',        'Coordinated repairs across multiple units with minimal tenant disruption.'],
+            ['Office & Break Room Kitchens', 'Refrigerator, microwave, and dishwasher service for commercial spaces.'],
+            ['Short-Term Rentals',           'Priority scheduling for hosts who cannot afford appliance downtime between guests.'],
+          ].map(([title, detail]) => (
+            <div style="padding:16px 18px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px">
+              <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px">{title}</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.55">{detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. Brands ─────────────────────────────────────────── -->
+  <section class="bg-white-section" style="padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">Brands We Service</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 36px;letter-spacing:-0.02em">
+        Appliance Brands We Repair in {area.name}
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px">
+        {brands.map(brand => (
+          <a href={brand.href}
+             style="display:flex;align-items:center;justify-content:center;padding:14px 10px;border:1px solid rgba(30,50,80,0.1);border-radius:9px;font-size:0.84rem;font-weight:700;color:#1a2c44;text-decoration:none;background:#f8f9fc;text-align:center;transition:background 0.1s,color 0.1s"
+             class="area-brand-link">
+            {brand.label}
+          </a>
+        ))}
+      </div>
+      <p style="font-size:13px;color:#6b7280;margin-top:16px">
+        Don't see your brand? <a href={phoneHref} style="color:#b01616;font-weight:600;text-decoration:none">Call us</a> — we repair virtually all major appliance brands.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 7. FAQ ──────────────────────────────────────────────  -->
+  <section class="bg-pearl-section" style="padding:72px 24px">
+    <div style="max-width:800px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">Common Questions</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 40px;letter-spacing:-0.02em">
+        Appliance Repair in {area.name} — FAQ
+      </h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        {area.faq.map((item, i) => (
+          <details class="faq-item">
+            <summary class="faq-q">
+              {item.q}
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="faq-chev" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="faq-a">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 8. Contact Form / CTA ─────────────────────────────── -->
+  <ContactCTA />
+
+</SeoPageLayout>
+
+<style>
+  .area-svc-card:hover {
+    box-shadow: 0 4px 16px rgba(176,22,22,0.1);
+    border-color: rgba(176,22,22,0.2);
+  }
+  .area-prob-card:hover { background: #fee2e2; }
+  .area-brand-link:hover { background: rgba(176,22,22,0.07); color: #b01616; }
+
+  /* FAQ accordion */
+  .faq-item {
+    background: #fff;
+    border: 1px solid rgba(30,50,80,0.09);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #060c19;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::marker { display: none; }
+  .faq-chev { flex-shrink: 0; transition: transform 0.2s; color: #b01616; }
+  details[open] .faq-chev { transform: rotate(180deg); }
+  details[open] .faq-q { border-bottom: 1px solid rgba(30,50,80,0.08); }
+  .faq-a {
+    padding: 16px 20px;
+    font-size: 14.5px;
+    color: #4a5568;
+    line-height: 1.7;
+  }
+
+  /* Responsive 2-col local context grid */
+  @media (max-width: 767px) {
+    .local-grid { grid-template-columns: 1fr !important; }
+    .comm-grid  { grid-template-columns: 1fr !important; }
+  }
+</style>

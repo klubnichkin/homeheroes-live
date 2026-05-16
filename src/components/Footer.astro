@@ -1,5 +1,6 @@
 ---
 import { phone, phoneHref, year } from '../data/siteData';
+import { areas } from '../data/areas';
 ---
 
 <footer class="bg-navy-section" style="border-top:2px solid #7a0e0e">
@@ -53,6 +54,7 @@ import { phone, phoneHref, year } from '../data/siteData';
             ['All Services',           '/charlotte-nc/services'],
             ['Brands We Repair',       '/charlotte-nc/brands'],
             ['Common Problems',        '/charlotte-nc/common-appliance-problems'],
+            ['Service Areas',          '/charlotte-nc/areas'],
             ['Charlotte, NC Guide',    '/charlotte-nc/appliance-repair'],
             ['Why HomeHeroes',         '#why-us'],
             ['Customer Reviews',       '#reviews'],
@@ -93,6 +95,24 @@ import { phone, phoneHref, year } from '../data/siteData';
     </div>
   </div>
 
+  <!-- Service Areas row -->
+  <div style="border-top:1px solid rgba(255,255,255,0.04);padding:28px 24px 0">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;flex-wrap:wrap">
+        <h4 style="font-size:0.63rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#e8edf5;margin:0;white-space:nowrap">Service Areas</h4>
+        <a href="/charlotte-nc/areas" style="font-size:0.68rem;font-weight:700;color:#b01616;text-decoration:none;letter-spacing:0.03em">View All →</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 10px;padding-bottom:24px">
+        {areas.map(area => (
+          <a
+            href={`/charlotte-nc/areas/${area.slug}`}
+            class="footer-area-link"
+          >{area.name}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+
   <div style="border-top:1px solid rgba(255,255,255,0.04)">
     <div style="max-width:1280px;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px">
       <div style="display:flex;align-items:center;gap:7px">
@@ -106,3 +126,19 @@ import { phone, phoneHref, year } from '../data/siteData';
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-area-link {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #1a3050;
+    text-decoration: none;
+    transition: color 0.12s;
+    white-space: nowrap;
+  }
+  .footer-area-link:hover {
+    color: #dc2626;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

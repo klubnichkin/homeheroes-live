@@ -758,8 +758,8 @@ export const services: ServicePage[] = [
     h1: 'Oven Repair in Charlotte, NC',
     intro:
       'An oven that will not reach temperature, has a broken bake element, or is stuck in self-clean mode can bring your kitchen to a halt. HomeHeroes provides same-day oven repair in Charlotte for gas and electric ovens, wall ovens, and double ovens. We bring the parts, run the diagnostics, and complete most repairs on the first visit.',
-    imagePath: '/images/services/oven-range-repair.webp',
-    imageAlt: 'HomeHeroes technician repairing an electric oven in Charlotte NC',
+    imagePath: '/images/services/oven-repair-technicians-charlotte.webp',
+    imageAlt: 'Oven repair technicians diagnosing luxury range appliance in Charlotte NC',
     commonProblems: [
       {
         title: 'Oven Not Reaching Set Temperature',

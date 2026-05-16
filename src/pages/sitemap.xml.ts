@@ -3,6 +3,7 @@ import { services } from '../data/services';
 import { brands } from '../data/brands';
 import { cities } from '../data/cities';
 import { symptoms } from '../data/symptoms';
+import { areas } from '../data/areas';
 
 export const GET: APIRoute = () => {
   const base = 'https://tryhomeheroes.com';
@@ -26,6 +27,12 @@ export const GET: APIRoute = () => {
     for (const s of symptoms) {
       entries.push({ loc: `${base}/${city.slug}/${s.slug}`, priority: '0.8', changefreq: 'monthly' });
     }
+  }
+
+  // Area hub + individual area pages (charlotte-nc only for now)
+  entries.push({ loc: `${base}/charlotte-nc/areas`, priority: '0.8', changefreq: 'monthly' });
+  for (const area of areas) {
+    entries.push({ loc: `${base}/charlotte-nc/areas/${area.slug}`, priority: '0.8', changefreq: 'monthly' });
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries

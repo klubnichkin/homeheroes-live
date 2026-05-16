@@ -1,0 +1,115 @@
+---
+import { areas } from '../../../data/areas';
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import SEOCTA from '../../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/areas`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "HomeHeroes Appliance Repair",
+  "telephone": "(704) 512-0111",
+  "url": canonical,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Charlotte",
+    "addressRegion": "NC",
+    "addressCountry": "US"
+  },
+  "areaServed": areas.map(a => ({ "@type": "City", "name": a.name }))
+};
+---
+
+<SeoPageLayout
+  title="Appliance Repair Service Areas Near Charlotte, NC | HomeHeroes"
+  description="HomeHeroes provides same-day appliance repair across Charlotte and 16 surrounding neighborhoods and suburbs. Find your area and book today."
+  canonical={canonical}
+  schema={schema}
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px">
+    <div style="max-width:900px;margin:0 auto;text-align:center">
+      <nav aria-label="Breadcrumb" style="margin-bottom:16px">
+        <ol style="display:flex;align-items:center;justify-content:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.3)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc/appliance-repair" style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.3)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)" aria-current="page">Service Areas</li>
+        </ol>
+      </nav>
+      <div class="sec-label" style="margin-bottom:16px">Charlotte Metro Coverage</div>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-0.02em">Appliance Repair Service Areas Near Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:17px;line-height:1.65;margin:0 0 32px;max-width:640px;margin-left:auto;margin-right:auto">HomeHeroes dispatches same-day technicians to every neighborhood listed below — from Uptown to Mooresville and everywhere in between. Select your area for local details, pricing, and availability.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          Call {phone}
+        </a>
+        <a href="#contact-form" style="display:inline-flex;align-items:center;padding:14px 24px;border:2px solid rgba(255,255,255,0.25);color:#fff;font-weight:600;font-size:16px;border-radius:10px;text-decoration:none">
+          Get Free Quote
+        </a>
+      </div>
+    </div>
+  </section>
+  <div class="rule"></div>
+
+  <!-- Area Grid -->
+  <section class="bg-white-section" style="padding:72px 24px">
+    <div style="max-width:1200px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;text-align:center;margin:0 0 12px;letter-spacing:-0.02em">All Service Areas</h2>
+      <p style="text-align:center;color:#4a5e74;font-size:16px;margin:0 0 48px;max-width:600px;margin-left:auto;margin-right:auto">Click your neighborhood or suburb for same-day scheduling, local pricing, and technician availability in your area.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+        {areas.map(area => (
+          <a
+            href={`/charlotte-nc/areas/${area.slug}`}
+            style="display:block;padding:24px 26px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:14px;text-decoration:none;transition:box-shadow 0.15s,border-color 0.15s"
+            class="area-card"
+          >
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <div style="font-size:17px;font-weight:800;color:#060c19">{area.name}</div>
+              <div style="font-size:11px;font-weight:700;color:#b01616;letter-spacing:0.04em;background:#fff0f0;padding:3px 8px;border-radius:20px">{area.areaType}</div>
+            </div>
+            <p style="font-size:13px;color:#4a5e74;line-height:1.55;margin:0 0 14px">{area.shortDesc}</p>
+            <div style="font-size:12px;font-weight:700;color:#b01616;letter-spacing:0.04em">VIEW DETAILS →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why HomeHeroes Across the Metro -->
+  <section class="bg-light-section" style="padding:72px 24px">
+    <div style="max-width:900px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why HomeHeroes Across the Charlotte Metro</h2>
+      <p style="color:#4a5e74;font-size:16px;line-height:1.7;margin:0 0 48px;max-width:700px;margin-left:auto;margin-right:auto">We don't just serve Charlotte proper — our technicians cover the entire metro, from the Lake Norman towns in the north to the fast-growing suburbs in the south. Same dispatch standards, same pricing, same guarantee — regardless of your zip code.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px;text-align:left">
+        {[
+          ['Same-Day Dispatch', 'Call before noon for same-day service across the full metro area.'],
+          ['Flat-Rate Pricing', 'No surprise charges. We quote upfront before any work begins.'],
+          ['Licensed & Insured', 'Every technician is licensed, background-checked, and fully insured.'],
+          ['All Brands Covered', 'From everyday Whirlpool to luxury Sub-Zero — we service them all.'],
+          ['90-Day Guarantee', 'All repairs are backed by our 90-day parts and labor warranty.'],
+          ['No Trip Fees', 'The diagnostic fee is waived when you approve the repair.'],
+        ].map(([title, desc]) => (
+          <div style="padding:20px;background:#fff;border-radius:12px;border:1px solid rgba(30,50,80,0.08)">
+            <div style="font-size:14px;font-weight:800;color:#060c19;margin-bottom:6px">{title}</div>
+            <div style="font-size:13px;color:#4a5e74;line-height:1.55">{desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} />
+</SeoPageLayout>
+
+<style>
+  .area-card:hover {
+    box-shadow: 0 4px 20px rgba(176,22,22,0.12);
+    border-color: rgba(176,22,22,0.25);
+  }
+</style>

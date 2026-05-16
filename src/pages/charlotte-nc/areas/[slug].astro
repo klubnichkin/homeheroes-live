@@ -1,0 +1,15 @@
+---
+import { areas, getArea } from '../../../data/areas';
+import { getCity } from '../../../data/cities';
+import AreaPageTemplate from '../../../components/seo/AreaPageTemplate.astro';
+
+export function getStaticPaths() {
+  return areas.map(area => ({
+    params: { slug: area.slug },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+---
+<AreaPageTemplate area={area} />

@@ -1,5 +1,6 @@
 ---
-import { phoneHref, areas } from '../data/siteData';
+import { phoneHref } from '../data/siteData';
+import { areas } from '../data/areas';
 ---
 
 <section id="areas" class="bg-navy-section" style="padding:80px 24px 96px;position:relative;overflow:hidden">
@@ -19,8 +20,7 @@ import { phoneHref, areas } from '../data/siteData';
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:10px">
           <a href="#contact-form" class="btn-red">Book Your Repair</a>
-          <a href={phoneHref} style="display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:0.88rem;color:#5a8ab0;padding:14px 26px;border-radius:10px;text-decoration:none;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s"
-             onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+          <a href={phoneHref} class="call-confirm-btn">
             Call to Confirm
           </a>
         </div>
@@ -28,12 +28,10 @@ import { phoneHref, areas } from '../data/siteData';
       <div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
           {areas.map(area => (
-            <div style="display:flex;align-items:center;gap:6px;padding:9px 11px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);transition:all 0.15s;cursor:default"
-                 onmouseover="this.style.borderColor='rgba(176,22,22,0.4)';this.style.background='rgba(176,22,22,0.04)'"
-                 onmouseout="this.style.borderColor='rgba(255,255,255,0.06)';this.style.background='rgba(255,255,255,0.02)'">
+            <a href={`/charlotte-nc/areas/${area.slug}`} class="area-link">
               <svg width="8" height="8" fill="#dc2626" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-              <span style="font-size:0.74rem;font-weight:700;color:#7a9ab8;letter-spacing:0.01em">{area}</span>
-            </div>
+              <span class="area-link-text">{area.name}</span>
+            </a>
           ))}
         </div>
         <p style="font-size:0.67rem;color:#1e3a56;margin-top:10px;text-align:center;font-weight:500;letter-spacing:0.03em">Not on the list? Call — we may still serve your area.</p>
@@ -41,3 +39,50 @@ import { phoneHref, areas } from '../data/siteData';
     </div>
   </div>
 </section>
+
+<style>
+  .area-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 11px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .area-link:hover {
+    border-color: rgba(220,38,38,0.5);
+    background: rgba(176,22,22,0.06);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(176,22,22,0.18);
+  }
+  .area-link-text {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #7a9ab8;
+    letter-spacing: 0.01em;
+    transition: color 0.15s;
+  }
+  .area-link:hover .area-link-text {
+    color: #dc2626;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .call-confirm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #5a8ab0;
+    padding: 14px 26px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.15s;
+  }
+  .call-confirm-btn:hover { background: rgba(255,255,255,0.05); }
+</style>
