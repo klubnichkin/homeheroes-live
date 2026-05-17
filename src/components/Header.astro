@@ -74,7 +74,7 @@ const chevronDown = `<svg width="11" height="11" fill="none" viewBox="0 0 24 24"
       <span style="width:6px;height:6px;border-radius:50%;background:#34d399;display:inline-block;flex-shrink:0;animation:pulse 2s infinite"></span>
       Technicians Available Now &mdash; Same-Day Across Charlotte &amp; Surrounding Areas
     </div>
-    <div id="bar-hrs" style="display:none;font-size:0.67rem;font-weight:500;color:#1e3050;letter-spacing:0.04em">
+    <div id="bar-hrs" style="font-size:0.67rem;font-weight:500;color:#1e3050;letter-spacing:0.04em">
       7 Days a Week · 8am–7pm · Emergency Line Available
     </div>
   </div>
@@ -99,7 +99,7 @@ const chevronDown = `<svg width="11" height="11" fill="none" viewBox="0 0 24 24"
       </a>
 
       <!-- Desktop nav -->
-      <nav class="desktop-nav" style="display:none;align-items:center;gap:28px" aria-label="Primary">
+      <nav class="desktop-nav" style="align-items:center;gap:28px" aria-label="Primary">
 
         <!-- Areas — plain link, no wrapper, no dropdown -->
         <a href="/charlotte-nc/areas" class="nav-link">Areas</a>
@@ -195,7 +195,7 @@ const chevronDown = `<svg width="11" height="11" fill="none" viewBox="0 0 24 24"
       </nav>
 
       <!-- Desktop CTA -->
-      <div class="desktop-cta" style="display:none;align-items:center;gap:16px">
+      <div class="desktop-cta" style="align-items:center;gap:16px">
         <a href={phoneHref} style="display:flex;align-items:center;gap:9px;text-decoration:none">
           <div style="width:33px;height:33px;border-radius:50%;background:rgba(176,22,22,0.12);border:1px solid rgba(176,22,22,0.28);display:flex;align-items:center;justify-content:center;flex-shrink:0">
             <svg width="14" height="14" fill="#dc2626" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
@@ -673,19 +673,6 @@ const chevronDown = `<svg width="11" height="11" fill="none" viewBox="0 0 24 24"
 </style>
 
 <script>
-  function setLayout() {
-    const lg = window.innerWidth >= 1024;
-    const md = window.innerWidth >= 768;
-    const nav = document.querySelector('.desktop-nav') as HTMLElement | null;
-    const cta = document.querySelector('.desktop-cta') as HTMLElement | null;
-    const hrs = document.getElementById('bar-hrs');
-    if (nav) nav.style.display = lg ? 'flex' : 'none';
-    if (cta) cta.style.display = lg ? 'flex' : 'none';
-    if (hrs) hrs.style.display = md ? 'block' : 'none';
-  }
-  setLayout();
-  window.addEventListener('resize', setLayout);
-
   const btn     = document.getElementById('mob-btn')!;
   const menu    = document.getElementById('mob-menu')!;
   const icOpen  = document.getElementById('ic-open')!;

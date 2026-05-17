@@ -159,6 +159,13 @@ body {
 /* ─── Pulse animation ─── */
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
+/* ─── Responsive nav visibility — CSS-only, no JS forced reflow ─── */
+.desktop-nav { display: none; }
+.desktop-cta { display: none; }
+#bar-hrs     { display: none; }
+@media (min-width: 768px)  { #bar-hrs     { display: block; } }
+@media (min-width: 1024px) { .desktop-nav { display: flex;  } .desktop-cta { display: flex; } }
+
 /* ─── Hero copy column padding ─── */
 .hero-copy-col {
   display: flex;
@@ -207,8 +214,8 @@ body {
   .areas-grid  { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; }
   .feat-grid   { grid-template-columns: 1fr 360px; }
-  .desktop-nav { display: flex !important; }
-  .desktop-cta { display: flex !important; }
+  .desktop-nav { display: flex; }
+  .desktop-cta { display: flex; }
   .jobs-grid   { grid-template-columns: 1fr 1fr; }
 }
 
