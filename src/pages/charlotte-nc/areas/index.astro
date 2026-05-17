@@ -66,6 +66,7 @@ const schema = {
         {areas.map(area => (
           <a
             href={`/charlotte-nc/areas/${area.slug}`}
+            aria-label={`Appliance repair in ${area.name} — view service details`}
             style="display:block;padding:24px 26px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:14px;text-decoration:none;transition:box-shadow 0.15s,border-color 0.15s"
             class="area-card"
           >
@@ -74,7 +75,7 @@ const schema = {
               <div style="font-size:11px;font-weight:700;color:#b01616;letter-spacing:0.04em;background:#fff0f0;padding:3px 8px;border-radius:20px">{area.areaType}</div>
             </div>
             <p style="font-size:13px;color:#4a5e74;line-height:1.55;margin:0 0 14px">{area.shortDesc}</p>
-            <div style="font-size:12px;font-weight:700;color:#b01616;letter-spacing:0.04em">VIEW DETAILS →</div>
+            <div style="font-size:12px;font-weight:700;color:#b01616;letter-spacing:0.04em">{area.name} Appliance Repair →</div>
           </a>
         ))}
       </div>
