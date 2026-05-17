@@ -1,0 +1,105 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "HomeHeroes Appliance Repair Blog",
+  "description": "Real repair case studies and homeowner appliance guides from HomeHeroes technicians in Charlotte, NC.",
+  "url": canonical,
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": "(704) 512-0111",
+    "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+  }
+};
+
+const sections = [
+  {
+    href: '/blog/recent-repairs',
+    icon: '🔧',
+    title: 'Recent Repair Cases',
+    desc: 'Real completed jobs from our technicians — full diagnosis, cost breakdown, and customer outcome.',
+    label: 'Browse Repair Cases →',
+    bgColor: 'rgba(176,22,22,0.05)',
+    borderColor: 'rgba(176,22,22,0.15)',
+    iconBg: 'rgba(176,22,22,0.1)',
+  },
+  {
+    href: '/blog/useful-info',
+    icon: '💡',
+    title: 'Useful Info for Homeowners',
+    desc: 'Maintenance guides, repair-vs-replace advice, and troubleshooting tips written by our techs.',
+    label: 'Read Homeowner Guides →',
+    bgColor: 'rgba(52,211,153,0.05)',
+    borderColor: 'rgba(52,211,153,0.15)',
+    iconBg: 'rgba(52,211,153,0.1)',
+  },
+];
+---
+
+<SeoPageLayout
+  title="Appliance Repair Blog | HomeHeroes Charlotte, NC"
+  description="Real repair case studies and homeowner appliance guides from HomeHeroes technicians in Charlotte, NC. Diagnosis logs, cost breakdowns, maintenance tips, and more."
+  canonical={canonical}
+  schema={schema}
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto;text-align:center">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;justify-content:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Blog</li>
+        </ol>
+      </nav>
+      <div style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626;margin-bottom:14px">HomeHeroes Blog</div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        From Our Technicians
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.65;margin:0 auto 0;max-width:560px">
+        Real repair stories and practical appliance guides from the HomeHeroes team in Charlotte, NC.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sections grid -->
+  <section style="padding:72px 24px 80px;background:#f8f9fc">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px">
+        {sections.map(s => (
+          <a href={s.href} style={`display:flex;flex-direction:column;padding:32px;background:${s.bgColor};border:1px solid ${s.borderColor};border-radius:16px;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s`}
+            onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 28px rgba(6,12,25,0.1)'"
+            onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style={`width:52px;height:52px;border-radius:12px;background:${s.iconBg};display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:18px;flex-shrink:0`} aria-hidden="true">{s.icon}</div>
+            <h2 style="font-size:1.2rem;font-weight:800;color:#060c19;line-height:1.25;margin:0 0 12px;letter-spacing:-0.01em">{s.title}</h2>
+            <p style="font-size:0.88rem;color:#4a5e74;line-height:1.65;margin:0 0 22px;flex:1">{s.desc}</p>
+            <span style="font-size:0.82rem;font-weight:700;color:#b01616">{s.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:56px 24px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:700px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:900;color:#fff;margin:0 0 12px;letter-spacing:-0.02em">Need a Repair Now?</h2>
+      <p style="color:rgba(255,255,255,0.5);font-size:16px;line-height:1.65;margin:0 auto 28px;max-width:480px">Same-day appointments, upfront pricing, 90-day guarantee.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">
+          Call {phone}
+        </a>
+        <a href="/#contact-form" style="display:inline-flex;align-items:center;padding:13px 24px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          Book Online
+        </a>
+      </div>
+    </div>
+  </section>
+</SeoPageLayout>

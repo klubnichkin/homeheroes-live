@@ -21,23 +21,43 @@ const canonical = `https://tryhomeheroes.com/${city.slug}/${service.slug}`;
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": service.name,
-  "serviceType": service.name,
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://tryhomeheroes.com/#business",
-    "name": "HomeHeroes Appliance Repair",
-    "telephone": city.phoneHref.replace('tel:', ''),
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": city.name,
-      "addressRegion": city.stateAbbr,
-      "addressCountry": "US"
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": service.name,
+      "serviceType": service.name,
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": "https://tryhomeheroes.com/#business",
+        "name": "HomeHeroes Appliance Repair",
+        "telephone": city.phoneHref.replace('tel:', ''),
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": city.name,
+          "addressRegion": city.stateAbbr,
+          "addressCountry": "US"
+        }
+      },
+      "areaServed": { "@type": "City", "name": city.name },
+      "url": canonical,
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": service.faq.map((f: { q: string; a: string }) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryhomeheroes.com/" },
+        { "@type": "ListItem", "position": 2, "name": city.displayName, "item": `https://tryhomeheroes.com/${city.slug}/appliance-repair` },
+        { "@type": "ListItem", "position": 3, "name": service.name, "item": canonical }
+      ]
     }
-  },
-  "areaServed": { "@type": "City", "name": city.name },
-  "url": canonical,
+  ]
 };
 
 const breadcrumbs = [

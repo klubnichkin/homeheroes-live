@@ -1,0 +1,94 @@
+---
+import SeoPageLayout from '../layouts/SeoPageLayout.astro';
+import { phone, phoneHref } from '../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/privacy`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy — HomeHeroes Appliance Repair",
+  "url": canonical,
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": "(704) 512-0111",
+    "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+  }
+};
+---
+
+<SeoPageLayout
+  title="Privacy Policy | HomeHeroes Appliance Repair"
+  description="HomeHeroes Appliance Repair privacy policy. Learn how we collect, use, and protect your personal information when you use our website or appliance repair services."
+  canonical={canonical}
+  schema={schema}
+>
+  <section style="background:#080f1e;padding:56px 24px 48px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:800px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Privacy Policy</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.15;margin:0 0 12px;letter-spacing:-0.03em">Privacy Policy</h1>
+      <p style="color:rgba(255,255,255,0.45);font-size:14px;margin:0">Last updated: May 2026</p>
+    </div>
+  </section>
+
+  <section style="padding:64px 24px 80px;background:#f8f9fc">
+    <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Information We Collect</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">When you contact HomeHeroes Appliance Repair — by phone, web form, or email — we collect only the information necessary to schedule and complete your appliance repair:</p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px">
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Your name, address, and contact information</li>
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Appliance details and a description of the issue</li>
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Preferred appointment times</li>
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Standard web analytics data (page views, traffic source) via anonymous identifiers</li>
+        </ul>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">How We Use Your Information</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">We use the information we collect solely to:</p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px">
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Schedule and confirm repair appointments</li>
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Contact you about your service call</li>
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Follow up after a completed repair</li>
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Improve our website and service quality</li>
+        </ul>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:14px 0 0">We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Cookies & Analytics</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0">This website uses standard web analytics tools (such as Google Analytics) to understand how visitors use the site. These tools use cookies and collect anonymous data about page visits, traffic sources, and browser types. No personally identifiable information is shared with these services. You can disable cookies in your browser settings at any time.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Data Security</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0">We take reasonable precautions to protect your information. Our website uses HTTPS encryption for all data transmitted via web forms. We retain customer information only as long as necessary to service your account and meet legal obligations.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Your Rights</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">You may request access to, correction of, or deletion of any personal information we hold about you. To make such a request, contact us directly:</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href={phoneHref} style="font-size:0.9rem;font-weight:600;color:#b01616;text-decoration:none">Call: {phone}</a>
+          <a href="/#contact-form" style="font-size:0.9rem;font-weight:600;color:#b01616;text-decoration:none">Contact form on homepage</a>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Changes to This Policy</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0">We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date. Continued use of our website or services after changes are posted constitutes acceptance of the updated policy.</p>
+      </div>
+
+    </div>
+  </section>
+</SeoPageLayout>

@@ -1,0 +1,91 @@
+---
+import SeoPageLayout from '../layouts/SeoPageLayout.astro';
+import { phone, phoneHref } from '../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/terms`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Terms of Service — HomeHeroes Appliance Repair",
+  "url": canonical,
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": "(704) 512-0111",
+    "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+  }
+};
+---
+
+<SeoPageLayout
+  title="Terms of Service | HomeHeroes Appliance Repair"
+  description="HomeHeroes Appliance Repair terms of service. Understand our service policies, warranty terms, scheduling, payment, and limitations of liability."
+  canonical={canonical}
+  schema={schema}
+>
+  <section style="background:#080f1e;padding:56px 24px 48px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:800px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Terms of Service</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.15;margin:0 0 12px;letter-spacing:-0.03em">Terms of Service</h1>
+      <p style="color:rgba(255,255,255,0.45);font-size:14px;margin:0">Last updated: May 2026</p>
+    </div>
+  </section>
+
+  <section style="padding:64px 24px 80px;background:#f8f9fc">
+    <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Services Provided</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0">HomeHeroes Appliance Repair provides in-home appliance repair services for residential customers in Charlotte, NC and surrounding areas. By scheduling a service call, you agree to these Terms of Service. We reserve the right to decline service for safety reasons or outside our service area.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Diagnostic Fee</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0">A diagnostic fee is charged for each service call. This fee covers the technician's travel and time to diagnose the issue. The diagnostic fee is waived when you approve and proceed with the recommended repair. If you decline the repair after diagnosis, the diagnostic fee remains due.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">90-Day Parts & Labor Warranty</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">All completed repairs carry a 90-day warranty covering both parts and labor. If the same issue recurs within 90 days of the original repair, we will return and correct the issue at no additional charge. This warranty applies only to the specific repair performed and does not cover:</p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px">
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">New or unrelated appliance failures</li>
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Damage caused by misuse, power surges, or installation errors</li>
+          <li style="font-size:0.9rem;color:#2a3c54;line-height:1.65">Cosmetic damage not related to the repair</li>
+        </ul>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Scheduling & Cancellations</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0">Appointment windows are provided as estimates. We make every effort to arrive within the scheduled window. Please notify us as early as possible if you need to reschedule or cancel. Repeated no-shows may result in requiring prepayment for future appointments.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Payment</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0">Payment is due upon completion of service. We accept cash, check, and major credit cards. All pricing is provided upfront before any repair work begins. No hidden fees are charged beyond the approved estimate.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Limitation of Liability</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0">HomeHeroes Appliance Repair's liability is limited to the cost of the repair performed. We are not responsible for pre-existing appliance conditions, incidental damages, or losses resulting from appliance failure before or after service.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#060c19;margin:0 0 14px">Contact</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.75;margin:0 0 12px">Questions about these terms? Reach us directly:</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href={phoneHref} style="font-size:0.9rem;font-weight:600;color:#b01616;text-decoration:none">Call: {phone}</a>
+          <a href="/#contact-form" style="font-size:0.9rem;font-weight:600;color:#b01616;text-decoration:none">Contact form on homepage</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</SeoPageLayout>

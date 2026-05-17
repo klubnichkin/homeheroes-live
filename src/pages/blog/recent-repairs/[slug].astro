@@ -21,9 +21,14 @@ const schema = {
   "datePublished": c.dateISO,
   "dateModified": c.dateISO,
   "author": {
-    "@type": "Organization",
-    "name": "HomeHeroes Appliance Repair",
-    "url": base
+    "@type": "Person",
+    "name": "HomeHeroes Technician",
+    "jobTitle": "Appliance Repair Technician",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "HomeHeroes Appliance Repair",
+      "url": base
+    }
   },
   "publisher": {
     "@type": "LocalBusiness",
@@ -47,6 +52,7 @@ const schema = {
   canonical={canonical}
   schema={schema}
   ogImage={c.techImage}
+  ogType="article"
 >
   <!-- Hero -->
   <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">

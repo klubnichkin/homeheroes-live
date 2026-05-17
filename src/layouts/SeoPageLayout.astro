@@ -9,6 +9,7 @@ interface Props {
   canonical: string;
   schema: object;
   ogImage?: string;
+  ogType?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   canonical,
   schema,
   ogImage = '/images/hero/hero-technician.webp',
+  ogType = 'website',
 } = Astro.props;
 
 const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://tryhomeheroes.com${ogImage}`;
@@ -39,7 +41,7 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://tryhomeh
   <link rel="canonical" href={canonical} />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonical} />
   <meta property="og:site_name" content="HomeHeroes Appliance Repair" />
   <meta property="og:locale" content="en_US" />
