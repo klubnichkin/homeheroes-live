@@ -1,0 +1,216 @@
+---
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/useful-info`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Homeowner Appliance Tips — HomeHeroes Charlotte",
+  "description": "Practical appliance maintenance guides and homeowner education from HomeHeroes technicians in Charlotte, NC.",
+  "url": canonical,
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": "(704) 512-0111",
+    "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+  }
+};
+
+const articles = [
+  {
+    title: 'How Often Should You Clean Refrigerator Coils?',
+    excerpt: 'Dirty condenser coils are one of the top causes of premature compressor failure. Here\'s how often to clean them, what to look for, and how to do it safely.',
+    category: 'Refrigerator',
+    readTime: '4 min read',
+    icon: '❄️',
+    relatedHref: '/charlotte-nc/refrigerator-repair',
+    relatedLabel: 'Refrigerator Repair →',
+    bgColor: 'rgba(59,130,246,0.06)',
+    borderColor: 'rgba(59,130,246,0.15)',
+    iconBg: 'rgba(59,130,246,0.1)',
+  },
+  {
+    title: 'Signs Your Dryer Vent Needs Cleaning',
+    excerpt: 'A clogged dryer vent doesn\'t just waste energy — it\'s a leading cause of house fires. Learn the warning signs and why annual cleaning is non-negotiable.',
+    category: 'Dryer',
+    readTime: '5 min read',
+    icon: '♨️',
+    relatedHref: '/charlotte-nc/dryer-not-heating',
+    relatedLabel: 'Dryer Not Heating →',
+    bgColor: 'rgba(245,158,11,0.06)',
+    borderColor: 'rgba(245,158,11,0.15)',
+    iconBg: 'rgba(245,158,11,0.1)',
+  },
+  {
+    title: 'Is It Worth Repairing a 10-Year-Old Refrigerator?',
+    excerpt: 'The repair-vs-replace decision depends on more than the repair cost. We break down how appliance age, brand quality, and repair type should factor into your decision.',
+    category: 'Buying Guide',
+    readTime: '6 min read',
+    icon: '🔧',
+    relatedHref: '/charlotte-nc/refrigerator-repair',
+    relatedLabel: 'Refrigerator Repair →',
+    bgColor: 'rgba(52,211,153,0.06)',
+    borderColor: 'rgba(52,211,153,0.15)',
+    iconBg: 'rgba(52,211,153,0.1)',
+  },
+  {
+    title: 'Why Your Washer Shakes Violently During Spin',
+    excerpt: 'Violent shaking isn\'t normal — and ignoring it can cause expensive drum bearing damage. Here\'s what causes it and when you can fix it yourself vs. calling a tech.',
+    category: 'Washer',
+    readTime: '4 min read',
+    icon: '🌀',
+    relatedHref: '/charlotte-nc/washer-shaking-violently',
+    relatedLabel: 'Washer Shaking Violently →',
+    bgColor: 'rgba(139,92,246,0.06)',
+    borderColor: 'rgba(139,92,246,0.15)',
+    iconBg: 'rgba(139,92,246,0.1)',
+  },
+  {
+    title: 'How To Prevent Ice Maker Failures',
+    excerpt: 'Ice maker repairs are some of the most avoidable calls we get. Most failures trace back to an overdue water filter or a skipped line flush. Here\'s the simple annual checklist.',
+    category: 'Refrigerator',
+    readTime: '3 min read',
+    icon: '🧊',
+    relatedHref: '/charlotte-nc/refrigerator-repair',
+    relatedLabel: 'Refrigerator Repair →',
+    bgColor: 'rgba(14,165,233,0.06)',
+    borderColor: 'rgba(14,165,233,0.15)',
+    iconBg: 'rgba(14,165,233,0.1)',
+  },
+  {
+    title: 'The 50% Rule: When to Repair vs. Replace Any Appliance',
+    excerpt: 'Repair professionals use a simple cost benchmark to guide the repair-or-replace decision. Here\'s how it works, and when to ignore it.',
+    category: 'Buying Guide',
+    readTime: '5 min read',
+    icon: '📊',
+    relatedHref: '/charlotte-nc/services',
+    relatedLabel: 'All Services →',
+    bgColor: 'rgba(176,22,22,0.05)',
+    borderColor: 'rgba(176,22,22,0.15)',
+    iconBg: 'rgba(176,22,22,0.08)',
+  },
+];
+
+const maintenanceTips = [
+  { appliance: 'Refrigerator', tip: 'Clean condenser coils every 12 months. Pull the unit forward and vacuum the coils at the back or underneath.', icon: '❄️' },
+  { appliance: 'Dryer', tip: 'Clean the lint trap after every load and have the vent duct professionally cleaned once a year.', icon: '♨️' },
+  { appliance: 'Washer', tip: 'Run a monthly hot wash with washer cleaner tablets. Leave the door cracked open between cycles to prevent mildew.', icon: '🌀' },
+  { appliance: 'Dishwasher', tip: 'Clean the filter monthly and descale the spray arms every 6 months with white vinegar.', icon: '🍽️' },
+  { appliance: 'Oven & Range', tip: 'Wipe burner drip pans after spills and inspect door gaskets annually for cracks that cause heat loss.', icon: '🔥' },
+];
+---
+
+<SeoPageLayout
+  title="Homeowner Appliance Tips & Guides | HomeHeroes Charlotte, NC"
+  description="Practical appliance maintenance guides from HomeHeroes technicians in Charlotte. Learn when to repair vs. replace, how to prevent failures, and what warning signs to watch for."
+  canonical={canonical}
+  schema={schema}
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto;text-align:center">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;justify-content:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog/useful-info" style="font-size:13px;color:rgba(255,255,255,0.75)">Useful Info</a></li>
+        </ol>
+      </nav>
+      <div style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px">Homeowner Education</div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        Useful Appliance Info<br />From Our Technicians
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.65;margin:0 auto 32px;max-width:580px">
+        Practical guides written by the same techs who fix these machines every day across Charlotte. No fluff — just what you actually need to know.
+      </p>
+    </div>
+  </section>
+
+  <!-- Articles grid -->
+  <section style="padding:64px 24px 72px;background:#f8f9fc">
+    <div style="max-width:1100px;margin:0 auto">
+      <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.02em">Guides & Articles</h2>
+      <p style="color:#4a5e74;font-size:15px;margin:0 0 40px">Maintenance tips, repair decisions, and troubleshooting guides from the HomeHeroes team.</p>
+      <div class="articles-grid">
+        {articles.map(a => (
+          <div class="article-card" style={`background:${a.bgColor};border-color:${a.borderColor}`}>
+            <div style={`width:44px;height:44px;border-radius:10px;background:${a.iconBg};display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;flex-shrink:0`} aria-hidden="true">{a.icon}</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+              <span style="font-size:0.68rem;font-weight:700;color:#6a7a8e;text-transform:uppercase;letter-spacing:0.08em">{a.category}</span>
+              <span style="font-size:0.68rem;color:#c0ccda">·</span>
+              <span style="font-size:0.68rem;color:#6a7a8e">{a.readTime}</span>
+            </div>
+            <h3 style="font-size:1.02rem;font-weight:800;color:#060c19;line-height:1.3;margin:0 0 10px;letter-spacing:-0.01em">{a.title}</h3>
+            <p style="font-size:0.84rem;color:#4a5e74;line-height:1.6;margin:0 0 18px;flex:1">{a.excerpt}</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+              <span style="font-size:0.78rem;font-weight:700;color:#b01616;cursor:default;border:1px solid rgba(176,22,22,0.25);padding:6px 13px;border-radius:7px;background:rgba(176,22,22,0.04)">Full Article Coming Soon</span>
+              <a href={a.relatedHref} style="font-size:0.78rem;font-weight:600;color:#4a6a8a;text-decoration:none;white-space:nowrap">{a.relatedLabel}</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick maintenance checklist -->
+  <section style="padding:64px 24px;background:#060c19">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:40px">
+        <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#34d399;margin-bottom:10px">Quick Reference</div>
+        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 12px;letter-spacing:-0.03em">Annual Maintenance Checklist</h2>
+        <p style="color:rgba(255,255,255,0.5);font-size:16px;line-height:1.65;max-width:560px;margin:0 auto">Five minutes a year per appliance can add years to their lifespan and prevent most common repair calls.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
+        {maintenanceTips.map(t => (
+          <div style="padding:18px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;display:flex;gap:14px">
+            <span style="font-size:1.3rem;flex-shrink:0;margin-top:1px" aria-hidden="true">{t.icon}</span>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#9aaabe;margin-bottom:5px">{t.appliance}</div>
+              <p style="font-size:0.84rem;color:rgba(255,255,255,0.5);line-height:1.55;margin:0">{t.tip}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:60px 24px;background:#f8f9fc;border-top:1px solid rgba(30,50,80,0.08)">
+    <div style="max-width:700px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:900;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Already Have a Problem?</h2>
+      <p style="color:#4a5e74;font-size:16px;line-height:1.65;margin:0 auto 28px;max-width:480px">Charlotte's most-trusted appliance repair team. Same-day service, upfront pricing, 90-day guarantee.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:18px">
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">
+          Call {phone}
+        </a>
+        <a href="/#contact-form" style="display:inline-flex;align-items:center;padding:13px 24px;border:2px solid rgba(6,12,25,0.15);color:#060c19;font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          Book Online
+        </a>
+      </div>
+      <a href="/blog/recent-repairs" style="font-size:0.84rem;font-weight:600;color:#b01616;text-decoration:none">See Recent Repair Cases →</a>
+    </div>
+  </section>
+</SeoPageLayout>
+
+<style>
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 20px;
+  }
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid;
+    border-radius: 14px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .article-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(6,12,25,0.09);
+  }
+</style>

@@ -1,0 +1,314 @@
+---
+import { repairCases, getRepairCase } from '../../../data/repairCases';
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+export function getStaticPaths() {
+  return repairCases.map(c => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const c = getRepairCase(slug!)!;
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/recent-repairs/${c.slug}`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": c.seoTitle,
+  "description": c.metaDesc,
+  "datePublished": c.dateISO,
+  "dateModified": c.dateISO,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": "(704) 512-0111",
+    "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "image": `${base}${c.techImage}`,
+  "about": {
+    "@type": "Service",
+    "name": `${c.brand} ${c.applianceType} Repair`,
+    "areaServed": { "@type": "City", "name": c.area }
+  }
+};
+---
+
+<SeoPageLayout
+  title={c.seoTitle}
+  description={c.metaDesc}
+  canonical={canonical}
+  schema={schema}
+  ogImage={c.techImage}
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Recent Repairs</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">{c.brand} {c.applianceType}</li>
+        </ol>
+      </nav>
+
+      <!-- Meta chips -->
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        <span style="font-size:11px;font-weight:700;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase">{c.brand}</span>
+        <span style="font-size:11px;font-weight:600;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);padding:4px 11px;border-radius:20px">{c.applianceType}</span>
+        <span style="font-size:11px;font-weight:600;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);padding:4px 11px;border-radius:20px">{c.area}, Charlotte NC</span>
+        <span style="font-size:11px;font-weight:600;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);padding:4px 11px;border-radius:20px">{c.date}</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">{c.heroTitle}</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 28px;max-width:700px">{c.heroSub}</p>
+
+      <!-- Quick stats -->
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        {[
+          ['Total Repair Cost', c.repairTotal],
+          ['Estimate Range', c.estimateRange],
+          ['Job Type', 'Same-Day Service'],
+          ['Outcome', 'Fully Resolved'],
+        ].map(([label, value]) => (
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 18px;min-width:130px">
+            <div style="font-size:0.62rem;font-weight:700;color:#1e3a56;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">{label}</div>
+            <div style="font-size:1rem;font-weight:800;color:#e8edf5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <div style="background:#f8f9fc;padding:56px 24px 80px">
+    <div style="max-width:860px;margin:0 auto;display:grid;gap:32px">
+
+      <!-- Tech image -->
+      <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(6,12,25,0.12)">
+        <img
+          src={c.techImage}
+          alt={`HomeHeroes technician repairing ${c.brand} ${c.applianceType} in ${c.area}, Charlotte NC`}
+          width="860" height="460"
+          loading="eager"
+          style="width:100%;height:320px;object-fit:cover;display:block"
+        />
+      </div>
+
+      <!-- Customer problem -->
+      <div class="case-section">
+        <h2 class="section-heading">
+          <span class="section-icon">📞</span>
+          What the Customer Reported
+        </h2>
+        <p class="section-body">{c.customerProblemSummary}</p>
+        <ul class="case-list">
+          {c.customerProblemBullets.map(b => <li>{b}</li>)}
+        </ul>
+      </div>
+
+      <!-- Diagnosis -->
+      <div class="case-section">
+        <h2 class="section-heading">
+          <span class="section-icon">🔍</span>
+          Technician Diagnosis
+        </h2>
+        <p class="section-body" style="margin-bottom:20px">Our technician worked through a systematic inspection to isolate the root cause:</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          {c.diagnosisSteps.map((s, i) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:10px">
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2);color:#b01616;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">{i + 1}</div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{s.step}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.55">{s.finding}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="margin-top:18px;padding:16px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#b01616;margin-bottom:5px">Root Cause</div>
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-weight:500">{c.rootCause}</p>
+        </div>
+      </div>
+
+      <!-- Estimate breakdown -->
+      <div class="case-section">
+        <h2 class="section-heading">
+          <span class="section-icon">💰</span>
+          Repair Cost Breakdown
+        </h2>
+        <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;overflow:hidden;margin-bottom:16px">
+          {c.estimateLines.map((line, i) => (
+            <div style={`display:flex;justify-content:space-between;align-items:center;padding:13px 20px;${i < c.estimateLines.length - 1 ? 'border-bottom:1px solid rgba(30,50,80,0.06)' : ''}`}>
+              <span style="font-size:0.85rem;color:#1a2c44;font-weight:500">{line.label}</span>
+              <span style="font-size:0.92rem;font-weight:800;color:#060c19;white-space:nowrap;margin-left:16px">{line.amount}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(6,12,25,0.03);border-top:2px solid rgba(30,50,80,0.1)">
+            <span style="font-size:0.88rem;font-weight:800;color:#060c19;text-transform:uppercase;letter-spacing:0.04em">Total Paid</span>
+            <span style="font-size:1.2rem;font-weight:900;color:#b01616">{c.repairTotal}</span>
+          </div>
+        </div>
+        <p style="font-size:0.84rem;color:#4a5e74;line-height:1.65;padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:10px;margin:0">{c.estimateTotalNote}</p>
+      </div>
+
+      <!-- Technician notes -->
+      <div class="case-section">
+        <h2 class="section-heading">
+          <span class="section-icon">📋</span>
+          Technician Notes
+        </h2>
+        <ul class="case-list">
+          {c.techNotes.map(n => <li>{n}</li>)}
+        </ul>
+      </div>
+
+      <!-- Result -->
+      <div class="case-section">
+        <h2 class="section-heading">
+          <span class="section-icon">✅</span>
+          Outcome
+        </h2>
+        <p class="section-body">{c.result}</p>
+      </div>
+
+      <!-- Maintenance tip -->
+      <div style="padding:20px 22px;background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.2);border-radius:12px">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="font-size:1.2rem;flex-shrink:0;margin-top:1px">💡</span>
+          <div>
+            <div style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#059669;margin-bottom:5px">Maintenance Tip</div>
+            <p style="font-size:0.86rem;color:#1a3a2a;line-height:1.6;margin:0">{c.maintenanceTip}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer review -->
+      <div class="case-section">
+        <h2 class="section-heading">
+          <span class="section-icon">⭐</span>
+          What the Customer Said
+        </h2>
+        <figure style="margin:0;padding:22px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;position:relative">
+          <div style="display:flex;gap:3px;margin-bottom:12px">
+            {[1,2,3,4,5].map(() => (
+              <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            ))}
+          </div>
+          <blockquote style="font-size:0.95rem;color:#1a2c44;line-height:1.7;margin:0 0 14px;font-style:italic">
+            "{c.review.text}"
+          </blockquote>
+          <figcaption style="display:flex;align-items:center;gap:10px">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#1a3050,#2a5a8a);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0">{c.review.author.charAt(0)}</div>
+            <div>
+              <div style="font-size:0.85rem;font-weight:700;color:#060c19">{c.review.author}</div>
+              <div style="font-size:0.73rem;color:#6a7a8e">{c.review.location}, Charlotte NC</div>
+            </div>
+            <div style="margin-left:auto">
+              <span style="font-size:0.68rem;font-weight:700;color:#059669;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.2);padding:3px 9px;border-radius:20px">Verified Customer</span>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Internal links -->
+      <div style="padding:22px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#9aaabe;margin-bottom:14px">Related Pages</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a href={c.relatedService.href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px;transition:background 0.12s" onmouseover="this.style.background='rgba(176,22,22,0.05)'" onmouseout="this.style.background='transparent'">→ {c.relatedService.label}</a>
+          <a href={c.relatedBrand.href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px;transition:background 0.12s" onmouseover="this.style.background='rgba(176,22,22,0.05)'" onmouseout="this.style.background='transparent'">→ {c.relatedBrand.label}</a>
+          <a href={c.relatedSymptom.href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px;transition:background 0.12s" onmouseover="this.style.background='rgba(176,22,22,0.05)'" onmouseout="this.style.background='transparent'">→ {c.relatedSymptom.label}</a>
+          <a href={`/charlotte-nc/areas/${c.areaSlug}`} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px;transition:background 0.12s" onmouseover="this.style.background='rgba(176,22,22,0.05)'" onmouseout="this.style.background='transparent'">→ Appliance Repair in {c.area}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section style="padding:64px 24px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:760px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 14px;letter-spacing:-0.03em">Same Appliance Problem?<br />We'll Fix It Today.</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 auto 32px;max-width:500px">Most Charlotte appointments are confirmed same-day. Diagnostic fee waived when you approve the repair.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px">
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          Call {phone}
+        </a>
+        <a href="/#contact-form" style="display:inline-flex;align-items:center;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          Book Online
+        </a>
+      </div>
+      <div style="padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;display:inline-block;max-width:480px">
+        <div style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#dc2626;margin-bottom:8px">Appliance Maintenance Program</div>
+        <p style="font-size:0.84rem;color:rgba(255,255,255,0.5);line-height:1.6;margin:0">
+          Catch problems like this one before they fail. Our annual inspection covers coil checks, drain line clearing, vent cleaning, and a full appliance health report — starting at $79.
+        </p>
+      </div>
+      <div style="margin-top:20px">
+        <a href="/blog/recent-repairs" style="font-size:0.82rem;font-weight:600;color:#4a6a8a;text-decoration:none">← Back to All Repair Cases</a>
+      </div>
+    </div>
+  </section>
+</SeoPageLayout>
+
+<style>
+  .case-section {
+    background: #fff;
+    border: 1px solid rgba(30,50,80,0.08);
+    border-radius: 14px;
+    padding: 26px 28px;
+  }
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #060c19;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+  .section-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .section-body {
+    font-size: 0.92rem;
+    color: #2a3c54;
+    line-height: 1.72;
+    margin: 0;
+  }
+  .case-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .case-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: #2a3c54;
+    line-height: 1.6;
+  }
+  .case-list li::before {
+    content: '›';
+    color: #dc2626;
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+</style>

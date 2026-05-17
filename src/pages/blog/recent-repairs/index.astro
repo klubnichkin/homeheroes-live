@@ -1,0 +1,197 @@
+---
+import { repairCases } from '../../../data/repairCases';
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/recent-repairs`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Recent Appliance Repair Cases — HomeHeroes Charlotte",
+  "description": "Real repair logs from HomeHeroes technicians across Charlotte and the surrounding metro. See what we fixed, how we diagnosed it, and what it cost.",
+  "url": canonical,
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "telephone": "(704) 512-0111",
+    "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+  }
+};
+
+const applianceIcons: Record<string, string> = {
+  'Refrigerator': '❄️',
+  'Washer': '🌀',
+  'Dryer': '♨️',
+  'Dishwasher': '🍽️',
+  'Oven': '🔥',
+  'Ice Maker': '🧊',
+};
+
+function getIcon(type: string) {
+  for (const [key, icon] of Object.entries(applianceIcons)) {
+    if (type.includes(key)) return icon;
+  }
+  return '🔧';
+}
+---
+
+<SeoPageLayout
+  title="Recent Appliance Repair Cases in Charlotte, NC | HomeHeroes"
+  description="Real repair stories from HomeHeroes technicians across Charlotte and the surrounding metro. See exactly what we diagnosed, how we fixed it, and what it cost."
+  canonical={canonical}
+  schema={schema}
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto;text-align:center">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;justify-content:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:13px;color:rgba(255,255,255,0.75)">Recent Repairs</a></li>
+        </ol>
+      </nav>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(176,22,22,0.12);border:1px solid rgba(176,22,22,0.25);border-radius:20px;padding:5px 14px;margin-bottom:18px">
+        <span style="width:7px;height:7px;border-radius:50%;background:#dc2626;display:inline-block;animation:pulse 2s infinite"></span>
+        <span style="font-size:0.72rem;font-weight:700;color:#dc2626;letter-spacing:0.1em;text-transform:uppercase">Live Repair Log</span>
+      </div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        Real Repairs.<br />Real Homes. Real Results.
+      </h1>
+      <p style="color:rgba(255,255,255,0.65);font-size:17px;line-height:1.65;margin:0 auto 32px;max-width:600px">
+        These are actual completed jobs from our technicians across Charlotte and the surrounding metro. Each log includes the diagnosis, the repair cost breakdown, and what our customer said.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          Call {phone}
+        </a>
+        <a href="#repairs-grid" style="display:inline-flex;align-items:center;padding:13px 24px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          Browse Repair Cases ↓
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <div style="background:#060c19;border-bottom:1px solid rgba(255,255,255,0.05)">
+    <div style="max-width:900px;margin:0 auto;padding:18px 24px;display:flex;flex-wrap:wrap;gap:0;justify-content:center">
+      {[
+        ['6', 'Recent Repairs Logged'],
+        ['Same Day', 'Every Job Below'],
+        ['$0', 'Hidden Fees'],
+        ['90-Day', 'Parts & Labor Guarantee'],
+      ].map(([num, label]) => (
+        <div style="padding:10px 28px;text-align:center;border-right:1px solid rgba(255,255,255,0.05)">
+          <div style="font-size:1.3rem;font-weight:900;color:#fff;line-height:1">{num}</div>
+          <div style="font-size:0.68rem;font-weight:600;color:#1e3a56;text-transform:uppercase;letter-spacing:0.08em;margin-top:3px">{label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Repair cases grid -->
+  <section id="repairs-grid" style="padding:64px 24px 80px;background:#f8f9fc">
+    <div style="max-width:1100px;margin:0 auto">
+      <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.02em">Recent Repair Cases</h2>
+      <p style="color:#4a5e74;font-size:15px;margin:0 0 40px">Sorted by most recent. Click any case to read the full diagnosis and cost breakdown.</p>
+      <div class="repairs-grid">
+        {repairCases.map(c => (
+          <a href={`/blog/recent-repairs/${c.slug}`} class="repair-card">
+            <div class="repair-card-img" aria-hidden="true">
+              <img src={c.techImage} alt={`${c.brand} ${c.applianceType} repair in ${c.area}`} width="400" height="220" loading="lazy" style="width:100%;height:100%;object-fit:cover" />
+              <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,12,25,0.1),rgba(6,12,25,0.55))"></div>
+              <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:6px;flex-wrap:wrap">
+                <span style="font-size:11px;font-weight:700;background:rgba(176,22,22,0.9);color:#fff;padding:3px 9px;border-radius:4px;letter-spacing:0.04em">{c.brand}</span>
+                <span style="font-size:11px;font-weight:600;background:rgba(6,12,25,0.75);color:rgba(255,255,255,0.9);padding:3px 9px;border-radius:4px">{c.area}</span>
+              </div>
+            </div>
+            <div class="repair-card-body">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                <span style="font-size:0.68rem;font-weight:700;color:#9aaabe;text-transform:uppercase;letter-spacing:0.08em">{c.applianceType}</span>
+                <span style="font-size:0.68rem;color:#c8d8ea">·</span>
+                <span style="font-size:0.68rem;color:#9aaabe">{c.date}</span>
+              </div>
+              <h3 style="font-size:1rem;font-weight:800;color:#e8edf5;line-height:1.3;margin:0 0 10px;letter-spacing:-0.01em">{c.heroTitle.split('—')[0].trim()}</h3>
+              <p style="font-size:0.82rem;color:#4a6a8a;line-height:1.6;margin:0 0 16px">{c.issueShort}</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                <div style="display:flex;align-items:baseline;gap:5px">
+                  <span style="font-size:0.65rem;font-weight:700;color:#1e3a56;text-transform:uppercase;letter-spacing:0.08em">Total Repair</span>
+                  <span style="font-size:1.05rem;font-weight:900;color:#34d399">{c.repairTotal}</span>
+                </div>
+                <span class="read-more-btn">Read Full Repair Story →</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Maintenance pitch -->
+  <section style="padding:64px 24px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:800px;margin:0 auto;text-align:center">
+      <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#dc2626;margin-bottom:12px">Prevent the Next Repair</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 16px;letter-spacing:-0.03em">Most of These Repairs Were Preventable</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0 auto 36px;max-width:580px">
+        Clogged drain lines, overdue filters, skipped vent cleanings — many of the repairs above were accelerated by routine maintenance that simply wasn't done. A 30-minute annual inspection catches these before they become $200–$400 repair calls.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;padding:13px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">
+          Schedule an Inspection
+        </a>
+        <a href="/blog/useful-info" style="display:inline-flex;align-items:center;padding:13px 26px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          Homeowner Tips →
+        </a>
+      </div>
+    </div>
+  </section>
+</SeoPageLayout>
+
+<style>
+  .repairs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .repair-card {
+    display: flex;
+    flex-direction: column;
+    background: #0d1829;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  }
+  .repair-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(6,12,25,0.35);
+    border-color: rgba(176,22,22,0.35);
+  }
+  .repair-card-img {
+    position: relative;
+    height: 190px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .repair-card-body {
+    padding: 20px 22px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .read-more-btn {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #dc2626;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .repair-card:hover .read-more-btn {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

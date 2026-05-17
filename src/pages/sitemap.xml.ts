@@ -4,6 +4,7 @@ import { brands } from '../data/brands';
 import { cities } from '../data/cities';
 import { symptoms } from '../data/symptoms';
 import { areas } from '../data/areas';
+import { repairCases } from '../data/repairCases';
 
 export const GET: APIRoute = () => {
   const base = 'https://tryhomeheroes.com';
@@ -34,6 +35,15 @@ export const GET: APIRoute = () => {
   for (const area of areas) {
     entries.push({ loc: `${base}/charlotte-nc/areas/${area.slug}`, priority: '0.8', changefreq: 'monthly' });
   }
+
+  // Blog — repair cases
+  entries.push({ loc: `${base}/blog/recent-repairs`, priority: '0.8', changefreq: 'weekly' });
+  for (const rc of repairCases) {
+    entries.push({ loc: `${base}/blog/recent-repairs/${rc.slug}`, priority: '0.75', changefreq: 'monthly' });
+  }
+
+  // Blog — useful info
+  entries.push({ loc: `${base}/blog/useful-info`, priority: '0.75', changefreq: 'weekly' });
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
     .map(
