@@ -58,12 +58,12 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://tryhomeh
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageAbsolute} />
 
-  <!-- LCP image preload -->
-  <link rel="preload" as="image" href={ogImageAbsolute} fetchpriority="high" />
-
-  <!-- Fonts — non-blocking async load to eliminate render-blocking request -->
+  <!-- Font preconnect first — establishes connection before any other resource hint -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- LCP image preload -->
+  <link rel="preload" as="image" href={ogImageAbsolute} fetchpriority="high" />
+  <!-- Fonts — non-blocking async load -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" /></noscript>

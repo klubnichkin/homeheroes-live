@@ -212,13 +212,13 @@ const chevronDown = `<svg width="11" height="11" fill="none" viewBox="0 0 24 24"
       <button id="mob-btn" aria-expanded="false" aria-controls="mob-menu" aria-label="Open menu"
               style="display:flex;padding:8px;border:none;background:none;cursor:pointer;color:#3a5a7a;border-radius:8px">
         <svg id="ic-open"  width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg id="ic-close" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        <svg id="ic-close" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
 
   <!-- Mobile menu -->
-  <div id="mob-menu" style="display:none;border-top:1px solid rgba(255,255,255,0.05);background:#040a14">
+  <div id="mob-menu" style="border-top:1px solid rgba(255,255,255,0.05);background:#040a14">
     <div style="padding:8px 16px 12px">
 
       <!-- Areas plain link -->
@@ -670,27 +670,27 @@ const chevronDown = `<svg width="11" height="11" fill="none" viewBox="0 0 24 24"
     color: #3a5a7a;
     text-decoration: none;
   }
+
+  /* ── Mobile menu & icon state — CSS-only, no JS layout reads ── */
+  #mob-menu  { display: none; }
+  #ic-close  { display: none; }
+  #mob-menu.is-open { display: block; }
+  #mob-btn[aria-expanded="true"] #ic-open  { display: none; }
+  #mob-btn[aria-expanded="true"] #ic-close { display: block; }
 </style>
 
 <script>
-  const btn     = document.getElementById('mob-btn')!;
-  const menu    = document.getElementById('mob-menu')!;
-  const icOpen  = document.getElementById('ic-open')!;
-  const icClose = document.getElementById('ic-close')!;
+  const btn  = document.getElementById('mob-btn')!;
+  const menu = document.getElementById('mob-menu')!;
 
   btn.addEventListener('click', () => {
-    const open = menu.style.display === 'block';
-    menu.style.display = open ? 'none' : 'block';
-    icOpen.style.display  = open ? 'block' : 'none';
-    icClose.style.display = open ? 'none' : 'block';
-    btn.setAttribute('aria-expanded', String(!open));
+    const open = menu.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(open));
   });
 
-  // Close mobile menu when any <a> (not a <summary>) is clicked
+  // Close mobile menu when any <a> inside is clicked
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menu.style.display = 'none';
-    icOpen.style.display  = 'block';
-    icClose.style.display = 'none';
+    menu.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
   }));
 
