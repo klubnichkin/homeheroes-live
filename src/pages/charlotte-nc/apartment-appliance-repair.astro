@@ -1,0 +1,206 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../components/seo/FAQSection.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/apartment-appliance-repair`;
+
+const faqs = [
+  {
+    q: 'Who is responsible for appliance repairs in a Charlotte apartment?',
+    a: "In most North Carolina leases, the landlord is responsible for maintaining appliances provided with the unit. If you brought the appliance in yourself, it's typically your responsibility. Always check your lease and notify your landlord in writing first.",
+  },
+  {
+    q: 'Can a tenant call their own appliance repair company?',
+    a: 'Yes — if your landlord fails to arrange a repair within a reasonable time (typically 72 hours for essential appliances like a refrigerator), you may have the right to arrange your own repair and deduct the cost from rent. Check NC tenant law and your lease terms first.',
+  },
+  {
+    q: 'Do you work directly with property managers?',
+    a: 'Absolutely. We regularly coordinate with property managers across Charlotte for multi-unit buildings. We can invoice the property management company directly and schedule around tenant availability.',
+  },
+  {
+    q: 'What apartment appliance brands do you service?',
+    a: 'We service all major brands commonly found in Charlotte apartments and rentals: GE, Whirlpool, Frigidaire, Samsung, LG, Maytag, Kenmore, Amana, and more.',
+  },
+  {
+    q: 'How fast can you come to an apartment repair call?',
+    a: 'We offer same-day service throughout Charlotte. Call before noon and we can typically dispatch a technician the same day. For rental property emergencies (refrigerator out, no heat in an oven), we prioritize accordingly.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: 'HomeHeroes Appliance Repair',
+      url: base,
+      telephone: '(704) 512-0111',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Charlotte',
+        addressRegion: 'NC',
+        postalCode: '28201',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'City', name: 'Charlotte' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Charlotte, NC', item: `${base}/charlotte-nc` },
+        { '@type': 'ListItem', position: 3, name: 'Apartment Appliance Repair', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<SeoPageLayout
+  title="Apartment Appliance Repair in Charlotte, NC | HomeHeroes"
+  description="Appliance repair for Charlotte renters and property managers. Same-day service, direct property manager billing, all major brands. Call (704) 512-0111."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" aria-label="Home" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc" aria-label="Charlotte NC appliance repair" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Apartment Appliance Repair</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 16px;letter-spacing:-0.03em">Apartment Appliance Repair in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:clamp(16px,2vw,18px);line-height:1.65;max-width:660px;margin:0 0 28px">Same-day repairs for renters and property managers. We work directly with apartment communities, HOAs, and individual tenants across Charlotte.</p>
+      <a href={phoneHref} aria-label="Call HomeHeroes for apartment appliance repair" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:#b01616;color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answer -->
+  <section style="background:#fff;padding:40px 24px 0">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0f4ff;border-left:4px solid #b01616;border-radius:10px;padding:24px 28px">
+        <p style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Quick Answer</p>
+        <p style="font-size:16px;color:#1a2a40;line-height:1.7;margin:0">
+          Renters in Charlotte can call HomeHeroes directly for same-day appliance repair. We coordinate with property managers, provide detailed invoices for lease disputes, and service every major appliance brand found in Charlotte apartments and rental communities.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tenant vs Landlord -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.02em">Who Should Call for the Repair?</h2>
+      <p style="font-size:15px;color:#4a5568;margin:0 0 28px">Responsibility depends on your lease and the appliance. Here's a quick guide.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        <div style="background:#f8f9fc;border-radius:12px;padding:28px;border-top:4px solid #1a7a3c">
+          <h3 style="font-size:17px;font-weight:800;color:#060c19;margin:0 0 14px">Landlord's Responsibility</h3>
+          <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:14px;color:#2a3c54;line-height:1.6">Appliances provided with the unit at move-in (refrigerator, stove, dishwasher)</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.6">Failures due to normal wear and tear</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.6">Appliances listed in the lease as landlord-maintained</li>
+          </ul>
+          <p style="font-size:13px;color:#718096;margin:14px 0 0">Always notify your landlord in writing and give them a reasonable opportunity to arrange the repair first.</p>
+        </div>
+        <div style="background:#f8f9fc;border-radius:12px;padding:28px;border-top:4px solid #b01616">
+          <h3 style="font-size:17px;font-weight:800;color:#060c19;margin:0 0 14px">Tenant's Responsibility</h3>
+          <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:14px;color:#2a3c54;line-height:1.6">Appliances you brought into the unit</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.6">Damage caused by misuse or neglect</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.6">Repairs under a specific dollar threshold stated in your lease</li>
+          </ul>
+          <p style="font-size:13px;color:#718096;margin:14px 0 0">If your landlord hasn't responded within 72 hours for essential appliances, you may be able to arrange and deduct — consult NC tenant law.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Failures -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">Common Apartment Appliance Failures We Fix</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        {[
+          { appliance: 'Refrigerator', issues: ['Not cooling or freezing', 'Leaking water on floor', 'Ice maker not working', 'Loud humming or clicking'] },
+          { appliance: 'Dishwasher', issues: ['Not cleaning dishes', 'Leaking under door', 'Not draining', 'Door latch broken'] },
+          { appliance: 'Washer', issues: ['Not spinning or draining', 'Vibrating violently', 'Error codes on display', 'Door/lid locked shut'] },
+          { appliance: 'Dryer', issues: ['Not heating', 'Takes 2+ cycles to dry', 'Squeaking or thumping', 'Drum not turning'] },
+          { appliance: 'Oven / Range', issues: ['Burner not igniting', 'Oven not heating to temp', 'Self-clean lock issue', 'Control panel errors'] },
+          { appliance: 'Microwave', issues: ['Not heating', 'Sparking inside', 'Turntable not spinning', 'Display blank'] },
+        ].map(item => (
+          <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:22px">
+            <h3 style="font-size:15px;font-weight:700;color:#060c19;margin:0 0 12px">{item.appliance}</h3>
+            <ul style="margin:0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:6px">
+              {item.issues.map(issue => (
+                <li style="font-size:13px;color:#4a5568;line-height:1.5">{issue}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Property Managers -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">For Property Managers</h2>
+      <p style="font-size:15px;color:#4a5568;line-height:1.75;margin:0 0 28px">HomeHeroes works with Charlotte property managers and apartment communities to streamline appliance repairs across multiple units. We offer:</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+        {[
+          { title: 'Priority Scheduling', body: 'Property manager calls are flagged for next-available dispatch. We understand vacant-unit turnovers are time-sensitive.' },
+          { title: 'Direct Invoicing', body: 'We can invoice your management company directly. Detailed invoices for every job, unit number and tenant name included.' },
+          { title: 'Multi-Unit Accounts', body: 'Managing 10+ units? Ask about our property management account for streamlined service requests and consolidated billing.' },
+          { title: 'Repair Documentation', body: 'Every repair is documented with the diagnosis, parts used, and technician notes — useful for lease disputes or maintenance logs.' },
+        ].map(item => (
+          <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:24px">
+            <h3 style="font-size:16px;font-weight:700;color:#060c19;margin:0 0 10px">{item.title}</h3>
+            <p style="font-size:14px;color:#4a5568;line-height:1.7;margin:0">{item.body}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:28px">
+        <a href={phoneHref} aria-label="Call HomeHeroes to set up a property manager account" style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:#060c19;color:#fff;font-weight:700;font-size:15px;border-radius:9px;text-decoration:none">
+          Set Up a Property Manager Account — {phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section style="background:#f8f9fc;padding:48px 24px">
+    <div style="max-width:860px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em">Rental Appliance Brands We Service</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+        {['GE', 'Whirlpool', 'Frigidaire', 'Samsung', 'LG', 'Maytag', 'Kenmore', 'Amana', 'Hotpoint', 'Electrolux', 'Bosch', 'KitchenAid'].map(brand => (
+          <span style="background:#fff;border:1px solid rgba(30,50,80,0.12);border-radius:8px;padding:8px 16px;font-size:14px;font-weight:600;color:#2a3c54">{brand}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Apartment Appliance Repair FAQs" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Appliance Down in Your Apartment? We'll Come to You." />
+
+</SeoPageLayout>

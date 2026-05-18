@@ -1,0 +1,206 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../components/seo/FAQSection.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/commercial-appliance-repair`;
+
+const faqs = [
+  {
+    q: 'Do you repair commercial appliances in Charlotte?',
+    a: 'Yes. HomeHeroes services commercial refrigerators, freezers, dishwashers, ovens, ranges, and laundry equipment for restaurants, hotels, offices, and small businesses across the Charlotte metro area.',
+  },
+  {
+    q: 'How fast can you respond to a commercial repair emergency?',
+    a: "We offer priority dispatch for commercial clients. For emergencies like a walk-in cooler failure or a commercial oven down during service hours, call us directly and we'll dispatch the next available technician.",
+  },
+  {
+    q: 'Do you offer service agreements for businesses?',
+    a: 'Yes. We offer preventive maintenance and service agreements for businesses with multiple commercial appliances. Contact us to discuss a plan tailored to your equipment and service frequency needs.',
+  },
+  {
+    q: 'What commercial appliance brands do you service?',
+    a: 'We service major commercial brands including True, Beverage-Air, Hobart, Vulcan, Manitowoc, Hoshizaki, Traulsen, and others. Call to confirm coverage for your specific equipment.',
+  },
+  {
+    q: 'Is commercial appliance repair more expensive than residential?',
+    a: 'Commercial equipment typically involves heavier-duty components and may require commercial-grade parts, which can cost more than residential equivalents. However, downtime in a commercial setting is far more costly — fast repair is always the better financial decision.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: 'HomeHeroes Appliance Repair',
+      url: base,
+      telephone: '(704) 512-0111',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Charlotte',
+        addressRegion: 'NC',
+        postalCode: '28201',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'City', name: 'Charlotte' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Charlotte, NC', item: `${base}/charlotte-nc` },
+        { '@type': 'ListItem', position: 3, name: 'Commercial Appliance Repair', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<SeoPageLayout
+  title="Commercial Appliance Repair Charlotte, NC | HomeHeroes"
+  description="Commercial appliance repair in Charlotte, NC for restaurants, hotels, and small businesses. Priority dispatch, service agreements, all major commercial brands."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" aria-label="Home" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc" aria-label="Charlotte NC appliance repair" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Commercial Appliance Repair</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 16px;letter-spacing:-0.03em">Commercial Appliance Repair in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:clamp(16px,2vw,18px);line-height:1.65;max-width:660px;margin:0 0 28px">Priority dispatch for restaurants, hotels, property managers, and small businesses. Every hour of downtime costs you money — we move fast.</p>
+      <a href={phoneHref} aria-label="Call HomeHeroes for commercial appliance repair" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:#b01616;color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Priority Dispatch — {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answer -->
+  <section style="background:#fff;padding:40px 24px 0">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0f4ff;border-left:4px solid #b01616;border-radius:10px;padding:24px 28px">
+        <p style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Quick Answer</p>
+        <p style="font-size:16px;color:#1a2a40;line-height:1.7;margin:0">
+          HomeHeroes provides commercial appliance repair in Charlotte for restaurants, hotels, and small businesses. We offer priority dispatch, service agreements, and direct business invoicing. A commercial appliance failure is never just an inconvenience — it's lost revenue.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Commercial is Different -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why Commercial Downtime Is Different</h2>
+      <p style="font-size:15px;color:#4a5568;line-height:1.75;margin:0 0 28px">A broken home refrigerator is an inconvenience. A broken commercial walk-in cooler is $5,000 in spoiled inventory, a health code violation, and a closed kitchen. Commercial repairs demand a different level of urgency.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+        {[
+          { icon: '⚡', title: 'Priority Dispatch', body: 'Commercial calls are routed to the next available technician — ahead of standard residential scheduling.' },
+          { icon: '📋', title: 'Business Invoicing', body: 'Detailed invoices with equipment ID, parts, and labor for your accounting records and insurance purposes.' },
+          { icon: '🔧', title: 'Service Agreements', body: "Preventive maintenance plans keep your equipment running and reduce emergency calls. Ask about our commercial PM program." },
+          { icon: '🏪', title: 'Multi-Location Support', body: 'Managing multiple Charlotte locations? One call dispatches to all sites. Consolidated billing available.' },
+        ].map(item => (
+          <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:24px">
+            <div style="font-size:28px;margin-bottom:12px">{item.icon}</div>
+            <h3 style="font-size:16px;font-weight:700;color:#060c19;margin:0 0 10px">{item.title}</h3>
+            <p style="font-size:14px;color:#4a5568;line-height:1.7;margin:0">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Appliances We Service -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">Commercial Appliances We Service</h2>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Equipment Type</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Common Issues</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Typical Clients</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Commercial Refrigerator / Freezer', 'Not holding temp, compressor failure, door gaskets', 'Restaurants, grocery, hotels'],
+              ['Walk-In Cooler / Freezer', 'Refrigerant leak, evaporator failure, door seal', 'Restaurants, food service'],
+              ['Commercial Dishwasher', 'Not cleaning, heating element, pump failure', 'Restaurants, catering, hotels'],
+              ['Commercial Oven / Range', 'Igniter, thermostat, burner valve, control board', 'Restaurants, commercial kitchens'],
+              ['Commercial Ice Machine', 'Not making ice, dirty/slow production, leak', 'Bars, restaurants, offices'],
+              ['Commercial Washer / Dryer', 'Bearing failure, drain pump, heating element', 'Hotels, laundromats, gyms'],
+              ['Reach-In Refrigerator', 'Condenser coils, fan motor, thermostat', 'Convenience stores, delis, bars'],
+            ].map(([type, issues, clients], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:13px 20px;font-weight:600;color:#060c19">{type}</td>
+                <td style="padding:13px 20px;color:#2a3c54">{issues}</td>
+                <td style="padding:13px 20px;color:#4a5568;font-size:13px">{clients}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section style="background:#fff;padding:48px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em">Commercial Brands We Service</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        {['True', 'Beverage-Air', 'Hobart', 'Vulcan', 'Manitowoc', 'Hoshizaki', 'Traulsen', 'Victory', 'Turbo Air', 'Delfield', 'Arctic Air', 'Scotsman', 'Continental', 'Imperial'].map(brand => (
+          <span style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.12);border-radius:8px;padding:8px 16px;font-size:14px;font-weight:600;color:#2a3c54">{brand}</span>
+        ))}
+      </div>
+      <p style="font-size:13px;color:#718096;margin:16px 0 0">Don't see your brand? Call us — we service most commercial equipment brands operating in the Charlotte area.</p>
+    </div>
+  </section>
+
+  <!-- Service Agreements -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:36px">
+        <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Commercial Service Agreements</h2>
+        <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0 0 16px">A service agreement with HomeHeroes means you're never starting from scratch when equipment fails. Our commercial plans include:</p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">Scheduled preventive maintenance visits (quarterly or biannual)</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">Priority same-day dispatch for emergencies</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">Discounted labor rates on all repair calls</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">Equipment inventory tracking for faster parts procurement</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">Monthly consolidated invoicing for multi-location accounts</li>
+        </ul>
+        <div style="margin-top:24px">
+          <a href={phoneHref} aria-label="Call HomeHeroes to discuss a commercial service agreement" style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:#b01616;color:#fff;font-weight:700;font-size:15px;border-radius:9px;text-decoration:none">
+            Discuss a Service Agreement — {phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Commercial Appliance Repair FAQs" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Commercial Equipment Down? Every Minute Counts." />
+
+</SeoPageLayout>

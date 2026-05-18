@@ -1,0 +1,261 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../components/seo/FAQSection.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/repair-vs-replace-refrigerator`;
+
+const faqs = [
+  {
+    q: 'Should I repair or replace my refrigerator?',
+    a: "Use the 50% rule: if the repair costs more than 50% of what a comparable new refrigerator costs, replacement is usually the smarter financial choice. Also consider the fridge's age — if it's over 12 years old and facing a major repair, replacement is almost always better.",
+  },
+  {
+    q: 'What is the average lifespan of a refrigerator?',
+    a: 'Most refrigerators last 13–17 years with normal use and basic maintenance. French-door and bottom-freezer models tend to be on the lower end; top-freezer models tend to last longer.',
+  },
+  {
+    q: 'Is it worth repairing a refrigerator compressor?',
+    a: "Compressor repairs typically cost $300–$600 and the sealed system labor is involved. For a refrigerator under 8 years old from a reliable brand, it can be worth it. For one that's 10+ years old, you're better off replacing — other sealed system components are likely near end of life too.",
+  },
+  {
+    q: 'What refrigerator failures are almost never worth repairing?',
+    a: 'Sealed system failures (compressor, evaporator coil, refrigerant leak) on older units are rarely worth repairing. Multiple simultaneous failures are another red flag. If the refrigerator is over 12–15 years old and the repair exceeds $300, we typically recommend replacement.',
+  },
+  {
+    q: 'Will a new refrigerator save money on my energy bill?',
+    a: 'Refrigerators made before 2000 can use 2–3x more energy than current ENERGY STAR models. If your fridge is 15+ years old, the annual energy savings from a new model ($50–$150/yr) should factor into your repair-vs-replace decision.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: 'HomeHeroes Appliance Repair',
+      url: base,
+      telephone: '(704) 512-0111',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Charlotte',
+        addressRegion: 'NC',
+        postalCode: '28201',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'City', name: 'Charlotte' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Charlotte, NC', item: `${base}/charlotte-nc` },
+        { '@type': 'ListItem', position: 3, name: 'Repair vs. Replace Refrigerator', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<SeoPageLayout
+  title="Repair vs. Replace Refrigerator in Charlotte, NC | HomeHeroes Guide"
+  description="Honest guide to deciding whether to repair or replace your refrigerator. The 50% rule, age benchmarks, specific failure scenarios, and energy savings math."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" aria-label="Home" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc" aria-label="Charlotte NC appliance repair" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Repair vs. Replace Refrigerator</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 16px;letter-spacing:-0.03em">Repair vs. Replace Your Refrigerator — An Honest Guide</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:clamp(16px,2vw,18px);line-height:1.65;max-width:660px;margin:0 0 28px">We're a repair company. But sometimes the honest answer is: buy a new one. This guide helps you make the right call for your situation.</p>
+      <a href={phoneHref} aria-label="Call HomeHeroes for an honest refrigerator diagnosis" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:#b01616;color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Get an Honest Diagnosis — {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answer -->
+  <section style="background:#fff;padding:40px 24px 0">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0f4ff;border-left:4px solid #b01616;border-radius:10px;padding:24px 28px">
+        <p style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Quick Answer</p>
+        <p style="font-size:16px;color:#1a2a40;line-height:1.7;margin:0">
+          <strong>Repair</strong> if the fridge is under 8 years old and the repair costs less than 50% of a comparable new model. <strong>Replace</strong> if it's over 12 years old, the repair involves the sealed system (compressor/refrigerant), or you're looking at $300+ on an aging unit. When in doubt, get a diagnostic — the $89 fee tells you exactly where you stand.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 50% Rule -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">The 50% Rule</h2>
+      <p style="font-size:15px;color:#4a5568;line-height:1.75;margin:0 0 20px">The most widely used benchmark for appliance repair decisions: <strong>if the repair costs more than 50% of what a comparable new appliance would cost, it's usually smarter to replace.</strong></p>
+      <div style="background:#f8f9fc;border-radius:12px;padding:28px;margin-bottom:28px">
+        <p style="font-size:15px;font-weight:700;color:#060c19;margin:0 0 12px">Example:</p>
+        <p style="font-size:15px;color:#2a3c54;line-height:1.7;margin:0">A comparable replacement refrigerator costs $1,200. The 50% threshold is $600. If the repair quote is $450 — repair. If the quote is $700 — replace. It's not a perfect rule, but it's a solid starting point that accounts for risk (an aging machine may have another failure soon).</p>
+      </div>
+      <p style="font-size:15px;color:#4a5568;line-height:1.75;margin:0">The 50% rule works best when combined with age. A 4-year-old fridge with a $500 repair on a $1,200 machine is worth fixing. A 13-year-old fridge with a $500 repair is borderline even below the 50% threshold — because how many more years will it last?</p>
+    </div>
+  </section>
+
+  <!-- Age Benchmarks -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">Age Benchmarks by Refrigerator Type</h2>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Refrigerator Type</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Average Lifespan</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Repair Confidently</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Consider Replacing</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Top-Freezer', '15–20 years', '0–10 years', '12+ years'],
+              ['Bottom-Freezer', '13–17 years', '0–8 years', '11+ years'],
+              ['French Door', '12–17 years', '0–7 years', '10+ years'],
+              ['Side-by-Side', '13–17 years', '0–8 years', '11+ years'],
+              ['Built-in / Counter-Depth', '15–20 years', '0–10 years', '14+ years'],
+            ].map(([type, lifespan, repair, replace], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:13px 20px;font-weight:600;color:#060c19">{type}</td>
+                <td style="padding:13px 20px;color:#2a3c54">{lifespan}</td>
+                <td style="padding:13px 20px;color:#1a7a3c;font-weight:600">{repair}</td>
+                <td style="padding:13px 20px;color:#b01616;font-weight:600">{replace}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specific Failures -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">Specific Failures: Repair or Replace?</h2>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        {[
+          {
+            failure: 'Ice maker not working',
+            verdict: 'Repair',
+            color: '#1a7a3c',
+            bg: '#f0fff4',
+            border: '#a3d9b1',
+            detail: 'Ice maker replacement is $150–$300 and makes sense on most fridges under 12 years old. Even older units — if the rest of the fridge is working well.',
+          },
+          {
+            failure: 'Not cooling (evaporator fan / thermostat)',
+            verdict: 'Usually Repair',
+            color: '#1a7a3c',
+            bg: '#f0fff4',
+            border: '#a3d9b1',
+            detail: 'Fan motor and thermostat repairs are $89–$200 and worth doing on any fridge under 12–13 years old. Quick diagnosis confirms whether it\'s this or the sealed system.',
+          },
+          {
+            failure: 'Compressor failure',
+            verdict: 'Depends on Age',
+            color: '#b07800',
+            bg: '#fffbf0',
+            border: '#f5d78e',
+            detail: 'Compressor replacement is $300–$600+. Worth it on a fridge under 8 years old from a quality brand. Borderline on a 9–11 year old unit. Not worth it on anything 12+ years old.',
+          },
+          {
+            failure: 'Refrigerant / sealed system leak',
+            verdict: 'Probably Replace',
+            color: '#b01616',
+            bg: '#fff5f5',
+            border: '#f5a3a3',
+            detail: 'Sealed system repairs are expensive ($400–$800+) and often temporary if the refrigerator is aging. Other sealed system components may fail soon after. Unless the fridge is under 7 years old and high-end, replacement is usually the right call.',
+          },
+          {
+            failure: 'Door gasket / seal worn',
+            verdict: 'Repair',
+            color: '#1a7a3c',
+            bg: '#f0fff4',
+            border: '#a3d9b1',
+            detail: 'Door gasket replacement is $80–$150 and almost always worth it — even on older fridges. A bad seal wastes energy and strains the compressor.',
+          },
+          {
+            failure: 'Control board failure',
+            verdict: 'Usually Repair',
+            color: '#1a7a3c',
+            bg: '#f0fff4',
+            border: '#a3d9b1',
+            detail: 'Control board replacement is $200–$350 and worth it on fridges under 10 years old. On a 12+ year old fridge, weigh carefully against replacement.',
+          },
+          {
+            failure: 'Multiple simultaneous failures',
+            verdict: 'Replace',
+            color: '#b01616',
+            bg: '#fff5f5',
+            border: '#f5a3a3',
+            detail: "When two or more major components fail at once, it's a sign the whole machine is at end of life. Fixing one thing and having another fail in 3 months is throwing good money after bad.",
+          },
+        ].map(item => (
+          <div style={`background:${item.bg};border:1px solid ${item.border};border-radius:12px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start`}>
+            <div style="min-width:100px">
+              <span style={`font-size:12px;font-weight:800;color:${item.color};text-transform:uppercase;letter-spacing:0.06em`}>{item.verdict}</span>
+            </div>
+            <div>
+              <h3 style="font-size:15px;font-weight:700;color:#060c19;margin:0 0 6px">{item.failure}</h3>
+              <p style="font-size:14px;color:#4a5568;line-height:1.65;margin:0">{item.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Energy Savings -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Energy Savings: New vs. Repaired</h2>
+      <p style="font-size:15px;color:#4a5568;line-height:1.75;margin:0 0 24px">For older refrigerators, energy costs are a real factor in the repair-vs-replace math. Refrigerators have improved significantly in efficiency over the past decade.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+        {[
+          { era: 'Pre-2000 refrigerator', kwh: '~1,000–1,400 kWh/yr', cost: '~$130–$180/yr' },
+          { era: '2000–2010 refrigerator', kwh: '~600–900 kWh/yr', cost: '~$78–$117/yr' },
+          { era: 'Current ENERGY STAR', kwh: '~400–500 kWh/yr', cost: '~$52–$65/yr' },
+        ].map(item => (
+          <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:24px;text-align:center">
+            <p style="font-size:13px;font-weight:700;color:#718096;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 8px">{item.era}</p>
+            <p style="font-size:22px;font-weight:800;color:#060c19;margin:0 0 4px">{item.kwh}</p>
+            <p style="font-size:14px;color:#b01616;font-weight:600;margin:0">{item.cost} at NC avg rate</p>
+          </div>
+        ))}
+      </div>
+      <p style="font-size:14px;color:#718096;margin:16px 0 0">If your fridge is 15+ years old, switching to a new ENERGY STAR model could save $65–$115/year. Over 10 years, that's $650–$1,150 in energy savings — a meaningful factor when weighing a major repair.</p>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Repair vs. Replace Refrigerator FAQs" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Not Sure? Get an Honest Diagnosis First." />
+
+</SeoPageLayout>

@@ -1,0 +1,216 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../components/seo/FAQSection.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/how-long-do-appliances-last`;
+
+const faqs = [
+  {
+    q: 'How long does a refrigerator last?',
+    a: 'Most refrigerators last 13–17 years. Top-freezer models tend to last toward the higher end; French-door and side-by-side models often fall at the lower end of this range due to more complex mechanics.',
+  },
+  {
+    q: 'How long do washers and dryers last?',
+    a: 'The average washer and dryer both last 10–13 years. Front-load washers may require more maintenance (drum bearings, door seals) that can shorten their lifespan without proper care.',
+  },
+  {
+    q: 'What appliance has the shortest lifespan?',
+    a: 'Dishwashers have the shortest average lifespan among major appliances — typically 9–12 years. Microwaves (countertop) average 7–10 years.',
+  },
+  {
+    q: 'Does brand affect how long an appliance lasts?',
+    a: 'Yes, significantly. Brands like Miele, Bosch, and LG consistently rank higher in longevity. Whirlpool and GE are reliable mid-tier performers. Some budget brands underperform the averages listed above.',
+  },
+  {
+    q: 'Can regular maintenance extend appliance life?',
+    a: 'Absolutely. Cleaning refrigerator condenser coils annually, cleaning dryer vents, running dishwasher cleaning cycles, and not overloading washers can meaningfully extend appliance lifespan — often by 2–5 years.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: 'HomeHeroes Appliance Repair',
+      url: base,
+      telephone: '(704) 512-0111',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Charlotte',
+        addressRegion: 'NC',
+        postalCode: '28201',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'City', name: 'Charlotte' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Charlotte, NC', item: `${base}/charlotte-nc` },
+        { '@type': 'ListItem', position: 3, name: 'How Long Do Appliances Last', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<SeoPageLayout
+  title="How Long Do Appliances Last? Average Lifespan Guide | HomeHeroes Charlotte"
+  description="Average appliance lifespans for refrigerators, washers, dryers, dishwashers, and ovens. Plus maintenance tips and signs your appliance is near end of life."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" aria-label="Home" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc" aria-label="Charlotte NC appliance repair" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">How Long Do Appliances Last</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 16px;letter-spacing:-0.03em">How Long Do Appliances Last? Average Lifespan Guide</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:clamp(16px,2vw,18px);line-height:1.65;max-width:660px;margin:0 0 28px">Planning a budget, deciding whether to repair, or just curious? Here are real average lifespans for every major home appliance — plus what extends or shortens them.</p>
+      <a href={phoneHref} aria-label="Call HomeHeroes for appliance repair in Charlotte" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:#b01616;color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answer -->
+  <section style="background:#fff;padding:40px 24px 0">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0f4ff;border-left:4px solid #b01616;border-radius:10px;padding:24px 28px">
+        <p style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Quick Answer</p>
+        <p style="font-size:16px;color:#1a2a40;line-height:1.7;margin:0">
+          Refrigerators average <strong>13–17 years</strong>, washers and dryers <strong>10–13 years</strong>, dishwashers <strong>9–12 years</strong>, and ovens/ranges <strong>13–15 years</strong>. These are medians — brand, maintenance habits, and usage patterns all shift the actual number for your specific appliance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifespan Table -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.02em">Average Appliance Lifespan Chart</h2>
+      <p style="font-size:15px;color:#4a5568;margin:0 0 28px">Data from the National Association of Home Builders and industry service records. Ranges reflect variation by type, brand, and usage.</p>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Appliance</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Average Lifespan</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Low End</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">High End</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Refrigerator (top-freezer)', '15–17 yrs', '12 yrs', '20 yrs', 'Most durable configuration'],
+              ['Refrigerator (French door)', '13–15 yrs', '10 yrs', '17 yrs', 'More complex ice/water system'],
+              ['Refrigerator (side-by-side)', '13–17 yrs', '11 yrs', '18 yrs', 'Variable by brand'],
+              ['Washing Machine', '10–13 yrs', '8 yrs', '15 yrs', 'Front-load needs more maintenance'],
+              ['Dryer (electric)', '10–13 yrs', '8 yrs', '15 yrs', 'Vent cleaning critical'],
+              ['Dryer (gas)', '11–13 yrs', '9 yrs', '16 yrs', 'Slightly more durable on average'],
+              ['Dishwasher', '9–12 yrs', '7 yrs', '14 yrs', 'Shortest lifespan of major appliances'],
+              ['Oven / Range (electric)', '13–15 yrs', '11 yrs', '17 yrs', 'Smooth-top needs careful use'],
+              ['Oven / Range (gas)', '13–17 yrs', '12 yrs', '20 yrs', 'Gas ranges often outlast electric'],
+              ['Microwave (countertop)', '7–10 yrs', '5 yrs', '12 yrs', 'Built-ins last slightly longer'],
+              ['Freezer (chest)', '15–20 yrs', '12 yrs', '25 yrs', 'Simplest appliance, most durable'],
+              ['Freezer (upright)', '12–16 yrs', '10 yrs', '18 yrs', 'Frost-free models shorter-lived'],
+            ].map(([appliance, avg, low, high, notes], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:13px 20px;font-weight:600;color:#060c19">{appliance}</td>
+                <td style="padding:13px 20px;font-weight:700;color:#b01616">{avg}</td>
+                <td style="padding:13px 20px;color:#4a5568">{low}</td>
+                <td style="padding:13px 20px;color:#4a5568">{high}</td>
+                <td style="padding:13px 20px;color:#718096;font-size:13px">{notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Factors that extend / shorten -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">What Extends — and Shortens — Appliance Life</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        <div style="background:#fff;border-radius:12px;padding:28px;border-top:4px solid #1a7a3c">
+          <h3 style="font-size:17px;font-weight:800;color:#1a7a3c;margin:0 0 16px">Extends Lifespan</h3>
+          <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Clean refrigerator condenser coils every 6–12 months</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Clean dryer lint trap after every load; vent duct annually</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Run dishwasher cleaning cycle monthly; check spray arms</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Don't overload washer or dryer (stresses motor and drum)</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Use appropriate detergent types and quantities</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Address small problems before they become large failures</li>
+          </ul>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:28px;border-top:4px solid #b01616">
+          <h3 style="font-size:17px;font-weight:800;color:#b01616;margin:0 0 16px">Shortens Lifespan</h3>
+          <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Ignoring small issues (leak, noise, error code) until they worsen</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Clogged dryer vents (fire risk + motor strain)</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Refrigerator door left open or seal damaged</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Using too much detergent (causes washer drum and seal issues)</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Hard water deposits in dishwasher and washing machine</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Extreme temperature in laundry room (very hot garages)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signs Near End of Life -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Signs an Appliance Is Near End of Life</h2>
+      <p style="font-size:15px;color:#4a5568;line-height:1.75;margin:0 0 28px">These aren't always definitive — sometimes a repair resolves them. But combined with age, they're meaningful signals.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        {[
+          { appliance: 'Refrigerator', signs: ['Running constantly but still warm', 'Frost buildup despite auto-defrost', 'Condensation on exterior panels', 'Motor/compressor extremely loud'] },
+          { appliance: 'Washer', signs: ['Drum bearing noise (grinding)', 'Vibrates excessively despite leveling', 'Recurring error codes after repair', 'Rust inside drum or tub'] },
+          { appliance: 'Dryer', signs: ['Takes 2+ cycles consistently', 'Exterior gets unusually hot', 'Burning smell (not lint)', 'No heat despite element replacement'] },
+          { appliance: 'Dishwasher', signs: ['Rust spots on interior', 'Door latch repeatedly failing', 'Water not draining repeatedly', 'Cracks in door gasket or tub'] },
+          { appliance: 'Oven / Range', signs: ['Burners not igniting consistently', 'Temperature wildly inaccurate', 'Control panel errors frequently', 'Physical damage to range surface'] },
+        ].map(item => (
+          <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:22px">
+            <h3 style="font-size:15px;font-weight:700;color:#060c19;margin:0 0 12px">{item.appliance}</h3>
+            <ul style="margin:0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:6px">
+              {item.signs.map(sign => (
+                <li style="font-size:13px;color:#4a5568;line-height:1.5">{sign}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Appliance Lifespan FAQs" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Appliance Acting Up? Find Out If It's Worth Fixing." />
+
+</SeoPageLayout>

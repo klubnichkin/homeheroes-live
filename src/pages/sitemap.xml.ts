@@ -44,8 +44,35 @@ export const GET: APIRoute = () => {
     entries.push({ loc: `${base}/blog/recent-repairs/${rc.slug}`, lastmod: rc.dateISO, priority: '0.75', changefreq: 'monthly' });
   }
 
+  // Charlotte-NC static content pages (commercial intent + decision/trust)
+  const charlotteStaticPages = [
+    'appliance-repair-cost',
+    'apartment-appliance-repair',
+    'commercial-appliance-repair',
+    'appliance-repair-warranty',
+    'repair-vs-replace-refrigerator',
+    'how-long-do-appliances-last',
+    'when-not-to-repair-an-appliance',
+    'common-appliance-repair-costs',
+  ];
+  for (const slug of charlotteStaticPages) {
+    entries.push({ loc: `${base}/charlotte-nc/${slug}`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'monthly' });
+  }
+
   // Blog — useful info
   entries.push({ loc: `${base}/blog/useful-info`, lastmod: '2026-05-17', priority: '0.75', changefreq: 'weekly' });
+
+  // Blog — useful info articles
+  const usefulInfoSlugs = [
+    'how-often-clean-refrigerator-coils',
+    'is-it-worth-repairing-10-year-old-refrigerator',
+    'signs-dryer-vent-needs-cleaning',
+    'why-washer-shakes-violently',
+    'how-to-prevent-ice-maker-failure',
+  ];
+  for (const slug of usefulInfoSlugs) {
+    entries.push({ loc: `${base}/blog/useful-info/${slug}`, lastmod: '2026-05-17', priority: '0.75', changefreq: 'monthly' });
+  }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
     .map(

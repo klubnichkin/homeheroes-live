@@ -1,0 +1,218 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../components/seo/FAQSection.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/when-not-to-repair-an-appliance`;
+
+const faqs = [
+  {
+    q: 'When should you just replace an appliance instead of repairing it?',
+    a: 'Replace when: (1) the repair costs more than 50% of a new unit, (2) the appliance is past its average lifespan, (3) the failure is in the sealed system on an old machine, (4) multiple components have failed simultaneously, or (5) replacement parts are discontinued.',
+  },
+  {
+    q: 'Is a sealed system failure ever worth repairing?',
+    a: "On a refrigerator under 7–8 years old from a quality brand, a sealed system repair can make sense. On anything older, you're spending $400–$800+ on an aging machine that may fail again in a year. We'll tell you honestly which situation you're in after a diagnostic.",
+  },
+  {
+    q: 'What does it mean when parts are discontinued?',
+    a: "When a manufacturer stops making or stocking parts for a model — often 10–15 years after production ends — repair becomes impossible or requires expensive custom sourcing. We check parts availability before quoting any repair.",
+  },
+  {
+    q: 'Should I repair an appliance that has a safety issue?',
+    a: 'Never use an appliance with a known safety defect — gas leak, electrical arcing, or carbon monoxide risk. Depending on the safety issue, it may be repairable, but you should stop using the appliance immediately and call for a diagnosis.',
+  },
+  {
+    q: 'Will HomeHeroes tell me to buy new instead of repair?',
+    a: "Yes. If our diagnosis shows a repair isn't in your best interest, we'll tell you. We'd rather give you honest advice and earn your trust than push an unwise repair. You only pay the $89 diagnostic fee if you choose not to proceed.",
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: 'HomeHeroes Appliance Repair',
+      url: base,
+      telephone: '(704) 512-0111',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Charlotte',
+        addressRegion: 'NC',
+        postalCode: '28201',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'City', name: 'Charlotte' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Charlotte, NC', item: `${base}/charlotte-nc` },
+        { '@type': 'ListItem', position: 3, name: 'When Not to Repair an Appliance', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<SeoPageLayout
+  title="When NOT to Repair an Appliance — Honest Guide | HomeHeroes Charlotte"
+  description="An honest guide from a repair company: specific scenarios where buying new beats repairing. Sealed system failures, multiple failures, safety issues, and more."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" aria-label="Home" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc" aria-label="Charlotte NC appliance repair" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">When Not to Repair an Appliance</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 16px;letter-spacing:-0.03em">When NOT to Repair an Appliance</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:clamp(16px,2vw,18px);line-height:1.65;max-width:660px;margin:0 0 12px">We're a repair company. We want your business. But sometimes we'll look you in the eye and tell you to buy a new appliance instead.</p>
+      <p style="color:rgba(255,255,255,0.55);font-size:15px;line-height:1.6;max-width:600px;margin:0 0 28px">Here's our honest guide to the specific scenarios where replacement beats repair — with no sales spin.</p>
+      <a href={phoneHref} aria-label="Call HomeHeroes for an honest appliance diagnosis" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:#b01616;color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Get an Honest Diagnosis — {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answer -->
+  <section style="background:#fff;padding:40px 24px 0">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0f4ff;border-left:4px solid #b01616;border-radius:10px;padding:24px 28px">
+        <p style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Quick Answer</p>
+        <p style="font-size:16px;color:#1a2a40;line-height:1.7;margin:0">
+          Don't repair an appliance when: the repair exceeds 50% of replacement cost, the machine is past its average lifespan and faces a sealed system failure, multiple components have failed simultaneously, parts are discontinued, or there is a safety defect. In these cases, replacement protects your money and your home.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Scenarios -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.02em">Specific Scenarios: Skip the Repair</h2>
+      <p style="font-size:15px;color:#4a5568;margin:0 0 32px">These aren't opinions — they're situations where the math or the risk genuinely favors a new machine.</p>
+
+      <div style="display:flex;flex-direction:column;gap:24px">
+
+        <div style="background:#fff5f5;border:1px solid #f5a3a3;border-radius:14px;padding:28px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <span style="background:#b01616;color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:0.06em">Skip Repair</span>
+            <h3 style="font-size:18px;font-weight:800;color:#060c19;margin:0">Sealed System Failure on an Old Machine</h3>
+          </div>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0 0 12px">A sealed system failure means the compressor, evaporator coil, or refrigerant circuit has failed. These repairs cost $400–$800+ and are only justified on refrigerators under 7–8 years old from a reputable brand.</p>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0"><strong>Why skip it on older units:</strong> The sealed system is the heart of the refrigerator. Repairing it on a 12-year-old machine means you've just invested $500+ in an appliance where every other component is also aging. The next failure could be just months away.</p>
+        </div>
+
+        <div style="background:#fff5f5;border:1px solid #f5a3a3;border-radius:14px;padding:28px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <span style="background:#b01616;color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:0.06em">Skip Repair</span>
+            <h3 style="font-size:18px;font-weight:800;color:#060c19;margin:0">Drum Bearing Failure + Old Washer</h3>
+          </div>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0 0 12px">Drum bearing replacement on a front-load washer is $200–$350 in parts and labor. It's a reasonable repair on a washer that's 4–7 years old. On a 10–12 year old front-load? The bearing was likely worn for a long time, and the shock absorbers, door seal, and pump are all at similar age.</p>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0"><strong>The pattern to watch:</strong> If the bearing is gone and the machine is already 10+ years old, you're likely 12–18 months away from another expensive repair.</p>
+        </div>
+
+        <div style="background:#fff5f5;border:1px solid #f5a3a3;border-radius:14px;padding:28px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <span style="background:#b01616;color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:0.06em">Skip Repair</span>
+            <h3 style="font-size:18px;font-weight:800;color:#060c19;margin:0">Multiple Simultaneous Failures</h3>
+          </div>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0 0 12px">When two or more major components fail at the same time — pump and control board, heating element and drum bearing, compressor and evaporator — it's almost always a sign that the machine has reached end of life. Components age together.</p>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0"><strong>The logic:</strong> Fixing one thing when two things are broken, and three more are on borrowed time, is throwing money at a losing proposition.</p>
+        </div>
+
+        <div style="background:#fff5f5;border:1px solid #f5a3a3;border-radius:14px;padding:28px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <span style="background:#b01616;color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:0.06em">Stop Using It</span>
+            <h3 style="font-size:18px;font-weight:800;color:#060c19;margin:0">Safety Failures</h3>
+          </div>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0 0 12px">Some failures are safety issues, not just inconveniences. Stop using any appliance immediately if you notice:</p>
+          <ul style="margin:0 0 12px;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:15px;color:#2a3c54;line-height:1.65">Gas smell near an oven or dryer</li>
+            <li style="font-size:15px;color:#2a3c54;line-height:1.65">Electrical arcing, sparking, or burning smell from any appliance</li>
+            <li style="font-size:15px;color:#2a3c54;line-height:1.65">A dryer vent fire or extremely hot exterior</li>
+            <li style="font-size:15px;color:#2a3c54;line-height:1.65">Any recalled appliance with a safety bulletin</li>
+          </ul>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0">Safety issues may be repairable — but the appliance must be inspected by a technician before it's used again, and in some cases the safer choice is disposal.</p>
+        </div>
+
+        <div style="background:#fff5f5;border:1px solid #f5a3a3;border-radius:14px;padding:28px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <span style="background:#b01616;color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:0.06em">Skip Repair</span>
+            <h3 style="font-size:18px;font-weight:800;color:#060c19;margin:0">Discontinued Parts</h3>
+          </div>
+          <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0">When the manufacturer has stopped producing the part needed — common for appliances 12–18+ years old — repair becomes impossible or requires expensive custom sourcing. We check parts availability before quoting. If the part doesn't exist, we tell you upfront.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Energy Cost Math -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">The Energy Cost Argument for Replacing Old Appliances</h2>
+      <p style="font-size:15px;color:#4a5568;line-height:1.75;margin:0 0 24px">Older appliances use significantly more electricity than current models. This adds to the true cost of holding onto an old machine.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+        {[
+          { label: 'Old Refrigerator (pre-2000)', extra: '+$80–130/yr', note: 'vs. current ENERGY STAR model' },
+          { label: 'Old Washer (pre-2005)', extra: '+$40–80/yr', note: 'Hot-water cycles and inefficient motor' },
+          { label: 'Old Dryer (pre-2005)', extra: '+$30–60/yr', note: 'Inefficient heating elements' },
+          { label: 'Old Dishwasher (pre-2010)', extra: '+$20–50/yr', note: 'Water and electricity per cycle' },
+        ].map(item => (
+          <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:22px;text-align:center">
+            <p style="font-size:13px;font-weight:700;color:#718096;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px">{item.label}</p>
+            <p style="font-size:24px;font-weight:900;color:#b01616;margin:0 0 6px">{item.extra}</p>
+            <p style="font-size:13px;color:#4a5568;margin:0">{item.note}</p>
+          </div>
+        ))}
+      </div>
+      <p style="font-size:14px;color:#718096;margin:20px 0 0">Over 10 years, an old refrigerator can cost $800–$1,300 more in energy than a modern replacement. Factor this into your repair-vs-replace decision.</p>
+    </div>
+  </section>
+
+  <!-- When it IS worth repairing -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0fff4;border:1px solid #a3d9b1;border-radius:14px;padding:32px">
+        <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#1a7a3c;margin:0 0 16px;letter-spacing:-0.02em">When a Repair IS the Right Call</h2>
+        <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0 0 16px">To be fair and balanced: most appliance repairs are absolutely worth it. The vast majority of the repairs we do every day in Charlotte fall into the "repair wins" category:</p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">Appliance is under 8 years old with a single, non-sealed-system failure</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">Repair cost is under 50% of a comparable new unit</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">The failure is a known, common part with OEM availability</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">The appliance is a high-end brand with expected longevity remaining</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65">The failure is in a non-critical subsystem (ice maker, door gasket, control panel)</li>
+        </ul>
+        <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:16px 0 0">Get the diagnostic. Know what you're dealing with. Then make the right call — whatever that is.</p>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="When Not to Repair — FAQs" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Get an Honest Assessment. No Pressure. No Upsell." />
+
+</SeoPageLayout>

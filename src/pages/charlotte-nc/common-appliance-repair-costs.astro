@@ -1,0 +1,294 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../components/seo/FAQSection.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/common-appliance-repair-costs`;
+
+const faqs = [
+  {
+    q: 'How much does it cost to replace a dryer heating element?',
+    a: 'Dryer heating element replacement in Charlotte typically costs $89–$150 for parts and labor. Electric dryers are at the lower end; gas dryer valve coil replacement is similar in cost.',
+  },
+  {
+    q: 'What does a refrigerator compressor replacement cost?',
+    a: 'Compressor replacement is one of the more expensive repairs: $300–$600 including parts and labor. This is typically only recommended on refrigerators under 8 years old.',
+  },
+  {
+    q: 'How much does dishwasher pump replacement cost?',
+    a: 'Dishwasher drain pump replacement costs $100–$200 for parts and labor depending on the brand and model. Control board issues run higher — typically $150–$280.',
+  },
+  {
+    q: 'Why do two identical appliances cost different amounts to repair?',
+    a: 'Brand, model year, and parts availability all affect cost. A Bosch dishwasher pump costs more than a GE equivalent. A 2019 model may have cheaper OEM parts than a 2015 model. Labor time also varies — some models require more disassembly to access the same component.',
+  },
+  {
+    q: 'Do you charge by the hour or by the job?',
+    a: "We quote by the job, not by the hour. You receive a flat quote covering parts and labor before we start. If the job takes longer than expected, that's our problem — your price doesn't change.",
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: 'HomeHeroes Appliance Repair',
+      url: base,
+      telephone: '(704) 512-0111',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Charlotte',
+        addressRegion: 'NC',
+        postalCode: '28201',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'City', name: 'Charlotte' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Charlotte, NC', item: `${base}/charlotte-nc` },
+        { '@type': 'ListItem', position: 3, name: 'Common Appliance Repair Costs', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<SeoPageLayout
+  title="Common Appliance Repair Costs in Charlotte, NC | HomeHeroes"
+  description="Detailed cost breakdown by repair type — not just appliance. What drives price variation, parts vs. labor breakdown, and diagnostic fee policy for Charlotte, NC."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" aria-label="Home" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc" aria-label="Charlotte NC appliance repair" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Common Appliance Repair Costs</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 16px;letter-spacing:-0.03em">Common Appliance Repair Costs in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:clamp(16px,2vw,18px);line-height:1.65;max-width:660px;margin:0 0 28px">Cost breakdowns by specific repair type — not vague ranges by appliance. Know what you're looking at before we arrive.</p>
+      <a href={phoneHref} aria-label="Call HomeHeroes for a repair cost estimate" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:#b01616;color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Get a Quote — {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answer -->
+  <section style="background:#fff;padding:40px 24px 0">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0f4ff;border-left:4px solid #b01616;border-radius:10px;padding:24px 28px">
+        <p style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Quick Answer</p>
+        <p style="font-size:16px;color:#1a2a40;line-height:1.7;margin:0">
+          Most common single-part repairs in Charlotte cost <strong>$89–$220</strong>. The diagnostic fee is $89 and waived when you proceed. Control boards, compressors, and drum bearings are at the higher end ($200–$600). All quotes are flat-rate — parts plus labor, approved before we start.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Refrigerator Repair Costs -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em">Refrigerator Repair Costs by Type</h2>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Repair Type</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Parts Cost</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Labor Est.</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Total Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Thermostat / temperature control', '$25–$75', '$60–$90', '$85–$165'],
+              ['Evaporator fan motor', '$30–$80', '$60–$90', '$90–$170'],
+              ['Condenser fan motor', '$25–$75', '$60–$90', '$85–$165'],
+              ['Ice maker replacement', '$80–$180', '$70–$120', '$150–$300'],
+              ['Water inlet valve', '$20–$60', '$60–$80', '$80–$140'],
+              ['Door gasket / seal', '$30–$80', '$60–$80', '$90–$160'],
+              ['Defrost heater', '$20–$60', '$70–$100', '$90–$160'],
+              ['Control board', '$120–$250', '$80–$100', '$200–$350'],
+              ['Compressor (sealed system)', '$200–$400', '$150–$200', '$350–$600+'],
+            ].map(([repair, parts, labor, total], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:12px 18px;color:#060c19;font-weight:500">{repair}</td>
+                <td style="padding:12px 18px;color:#4a5568">{parts}</td>
+                <td style="padding:12px 18px;color:#4a5568">{labor}</td>
+                <td style="padding:12px 18px;font-weight:700;color:#b01616">{total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Washer & Dryer Repair Costs -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em">Washer & Dryer Repair Costs by Type</h2>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Repair Type</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Appliance</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Parts Cost</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Total Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Heating element', 'Dryer', '$20–$60', '$89–$150'],
+              ['Drive belt', 'Dryer', '$10–$25', '$89–$130'],
+              ['Drum bearing', 'Dryer / Washer', '$30–$80', '$100–$200'],
+              ['Gas valve coils', 'Gas Dryer', '$30–$60', '$100–$160'],
+              ['Drain pump', 'Washer', '$30–$80', '$89–$170'],
+              ['Door latch / lid switch', 'Washer', '$15–$50', '$89–$140'],
+              ['Shock absorbers', 'Washer', '$20–$60', '$89–$160'],
+              ['Control board', 'Washer / Dryer', '$100–$250', '$180–$350'],
+              ['Drum bearing (front-load washer)', 'Washer', '$60–$120', '$200–$350'],
+              ['Water inlet valve', 'Washer', '$20–$60', '$89–$140'],
+            ].map(([repair, appliance, parts, total], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:12px 18px;color:#060c19;font-weight:500">{repair}</td>
+                <td style="padding:12px 18px;color:#4a5568">{appliance}</td>
+                <td style="padding:12px 18px;color:#4a5568">{parts}</td>
+                <td style="padding:12px 18px;font-weight:700;color:#b01616">{total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dishwasher & Oven -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em">Dishwasher & Oven Repair Costs by Type</h2>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Repair Type</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Appliance</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Parts Cost</th>
+              <th style="text-align:left;padding:13px 18px;font-weight:700">Total Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Drain pump', 'Dishwasher', '$30–$80', '$100–$180'],
+              ['Door latch', 'Dishwasher', '$15–$50', '$89–$130'],
+              ['Spray arm', 'Dishwasher', '$15–$40', '$89–$120'],
+              ['Control board', 'Dishwasher', '$100–$200', '$170–$280'],
+              ['Door gasket', 'Dishwasher', '$20–$60', '$89–$140'],
+              ['Bake element', 'Oven (electric)', '$20–$60', '$89–$150'],
+              ['Broil element', 'Oven (electric)', '$20–$60', '$89–$150'],
+              ['Igniter', 'Oven (gas)', '$20–$60', '$89–$160'],
+              ['Temperature sensor', 'Oven', '$15–$45', '$89–$140'],
+              ['Control board', 'Oven / Range', '$120–$280', '$200–$360'],
+              ['Gas valve', 'Gas Range', '$40–$120', '$110–$220'],
+            ].map(([repair, appliance, parts, total], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:12px 18px;color:#060c19;font-weight:500">{repair}</td>
+                <td style="padding:12px 18px;color:#4a5568">{appliance}</td>
+                <td style="padding:12px 18px;color:#4a5568">{parts}</td>
+                <td style="padding:12px 18px;font-weight:700;color:#b01616">{total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Drives Price Variation -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">What Drives Price Variation</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        {[
+          { title: 'Brand Tier', body: "OEM parts for premium brands (Bosch, Miele, Sub-Zero) cost 30–100% more than parts for mid-tier brands (GE, Whirlpool). We always use OEM parts when available." },
+          { title: 'Model Year', body: "Parts for recent models are typically in-stock and priced competitively. Parts for 10+ year old models may require special ordering and carry a premium." },
+          { title: 'Access Complexity', body: "Some repairs require full disassembly (front-load drum bearings, built-in dishwasher pumps) and take twice as long. This increases labor time and total cost." },
+          { title: 'Parts vs. Labor Mix', body: "Inexpensive parts + simple install = low total cost. Inexpensive parts + complex install = moderate cost. Expensive parts + any install = higher cost." },
+        ].map(item => (
+          <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:22px">
+            <h3 style="font-size:15px;font-weight:700;color:#060c19;margin:0 0 10px">{item.title}</h3>
+            <p style="font-size:14px;color:#4a5568;line-height:1.7;margin:0">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnostic Fee -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:36px">
+        <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Flat-Rate Quotes. No Hourly Surprises.</h2>
+        <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0 0 16px">Every HomeHeroes repair is quoted flat-rate — parts plus labor — before we start. Here's how it works:</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="font-size:22px;font-weight:900;color:#b01616;min-width:36px">$89</span>
+            <div>
+              <p style="font-size:15px;font-weight:700;color:#060c19;margin:0 0 4px">Diagnostic Fee</p>
+              <p style="font-size:14px;color:#4a5568;margin:0">Covers travel and diagnosis. <strong>Waived when you proceed with the repair.</strong> You only pay this if you decline the repair after we diagnose.</p>
+            </div>
+          </div>
+          <div style="height:1px;background:rgba(30,50,80,0.08)"></div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="font-size:22px;font-weight:900;color:#060c19;min-width:36px">$0</span>
+            <div>
+              <p style="font-size:15px;font-weight:700;color:#060c19;margin:0 0 4px">Surprise Add-Ons</p>
+              <p style="font-size:14px;color:#4a5568;margin:0">We quote the full job before we start. If the repair takes longer than estimated, you pay the quoted price — not more.</p>
+            </div>
+          </div>
+          <div style="height:1px;background:rgba(30,50,80,0.08)"></div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="font-size:22px;font-weight:900;color:#1a7a3c;min-width:36px">90</span>
+            <div>
+              <p style="font-size:15px;font-weight:700;color:#060c19;margin:0 0 4px">Day Warranty</p>
+              <p style="font-size:14px;color:#4a5568;margin:0">Every repair includes a 90-day parts and labor warranty. Same problem returns? We come back free.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:24px">
+          <a href={phoneHref} aria-label="Call HomeHeroes to schedule a repair" style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:#b01616;color:#fff;font-weight:700;font-size:15px;border-radius:9px;text-decoration:none">
+            Schedule a Repair — {phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Repair Cost FAQs" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Know What It Costs Before We Arrive." />
+
+</SeoPageLayout>

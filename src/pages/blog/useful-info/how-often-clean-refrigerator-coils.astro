@@ -1,0 +1,250 @@
+---
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../../components/seo/FAQSection.astro';
+import SEOCTA from '../../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/useful-info/how-often-clean-refrigerator-coils`;
+
+const faqs = [
+  {
+    q: 'How do I know if my refrigerator has bottom or rear coils?',
+    a: 'Check the back of the unit first. If you see a large metal grid or coil assembly, those are rear-mounted coils. If the back is flat and enclosed, look underneath along the front — there will be a snap-off grille at floor level. Most refrigerators made after 2000 have bottom-mounted coils behind that grille.',
+  },
+  {
+    q: 'Can dirty coils permanently damage a compressor?',
+    a: 'Yes. When coils are heavily restricted, the compressor runs hotter and longer than it was designed to. Over months of this, the compressor windings overheat and eventually fail. Compressor replacement typically costs $400–$700 parts and labor — far more than the few minutes it takes to clean coils each year.',
+  },
+  {
+    q: 'How do I know if my refrigerator is running harder than it should?',
+    a: 'Press your hand against the side panels near the bottom or the area behind a rear-mount grille. Mild warmth is normal. If it is hot to the touch, the coils are likely restricted. You can also listen — a compressor that runs almost continuously or cycles on and off every 10–15 minutes without cooling effectively is a sign of stress.',
+  },
+  {
+    q: 'Is it safe to clean coils myself, or should I call a technician?',
+    a: 'Cleaning the coils is a legitimate DIY task for most homeowners. The main requirement is unplugging the refrigerator first and using a vacuum with a brush attachment — not compressed air, which can damage fins. If the coils show signs of physical damage, oil deposits, or if the fridge still runs poorly after cleaning, call a technician.',
+  },
+  {
+    q: 'Does Charlotte\'s climate really make a difference for coil cleaning frequency?',
+    a: 'It does. Charlotte averages high humidity from April through October, and spring pollen counts are among the highest in the Southeast. Both pollen and humidity-borne dust accumulate on coil fins faster than they do in drier climates. Homes with pets compound the issue. If you have dogs or cats and live in the Charlotte area, cleaning every 6 months rather than 12 is a reasonable precaution.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How Often Should You Clean Refrigerator Coils?",
+      "description": "Learn how often to clean refrigerator condenser coils, how to do it safely, and why Charlotte's climate means you may need to clean more often than national averages.",
+      "url": canonical,
+      "datePublished": "2026-05-17",
+      "dateModified": "2026-05-17",
+      "author": {
+        "@type": "Person",
+        "name": "HomeHeroes Technician",
+        "jobTitle": "Appliance Repair Technician"
+      },
+      "publisher": {
+        "@type": "LocalBusiness",
+        "name": "HomeHeroes Appliance Repair",
+        "telephone": "(704) 512-0111",
+        "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#quick-answer"]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": base },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${base}/blog` },
+        { "@type": "ListItem", "position": 3, "name": "Useful Info", "item": `${base}/blog/useful-info` },
+        { "@type": "ListItem", "position": 4, "name": "How Often Should You Clean Refrigerator Coils?", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<SeoPageLayout
+  title="How Often Should You Clean Refrigerator Coils? | HomeHeroes Charlotte"
+  description="Clean refrigerator coils every 6–12 months — more often with pets or in Charlotte's pollen season. Step-by-step guide from HomeHeroes technicians."
+  canonical={canonical}
+  schema={schema}
+  ogType="article"
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Blog</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog/useful-info" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Useful Info</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Refrigerator Coil Cleaning</li>
+        </ol>
+      </nav>
+      <div style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px">Refrigerator Maintenance</div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        How Often Should You Clean<br />Refrigerator Coils?
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.65;margin:0;max-width:620px">
+        Dirty condenser coils are one of the most common causes of premature compressor failure — and one of the easiest problems to prevent. Here is what the schedule should look like and how to do it right.
+      </p>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section style="padding:64px 24px 72px;background:#f8f9fc">
+    <div style="max-width:860px;margin:0 auto">
+
+      <!-- Quick Answer -->
+      <div id="quick-answer" style="border-left:4px solid #34d399;background:#f0fdf4;border-radius:0 10px 10px 0;padding:22px 26px;margin-bottom:40px">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#16a34a;margin-bottom:8px">Quick Answer</div>
+        <p style="font-size:1rem;color:#14532d;line-height:1.65;margin:0">
+          Clean your refrigerator's condenser coils <strong>every 6 to 12 months</strong>. If you have pets that shed, or if the refrigerator is in a dusty area, clean every 6 months. Charlotte homeowners should lean toward the shorter interval from April through October due to heavy pollen accumulation. The job takes about 15 minutes and requires nothing more than a vacuum with a brush attachment.
+        </p>
+      </div>
+
+      <!-- Why coils matter -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why Condenser Coils Matter</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          Your refrigerator works by moving heat — pulling it out of the interior and dumping it into the room. The condenser coils are where that heat transfer happens. Refrigerant passes through the coils after absorbing heat from inside the cabinet, and as it flows through the coils, it releases that heat into the surrounding air.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          When the coils are coated in a thick layer of dust, pet hair, and debris, the heat cannot escape efficiently. The refrigerant stays warmer than it should, the compressor has to run longer to compensate, and the entire system operates under more strain than it was designed for.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0">
+          The consequences compound over time: higher electricity consumption, food that does not stay as cold as it should, and — in the worst cases — a compressor that fails years ahead of schedule. A new compressor on a mid-range refrigerator typically runs $400 to $700 installed. A coil cleaning costs nothing but time.
+        </p>
+      </div>
+
+      <!-- Signs coils need cleaning -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Signs the Coils Need Attention</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 16px">
+          You do not need to see the coils to know they are dirty. These symptoms show up first:
+        </p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Compressor runs almost continuously.</strong> The compressor should cycle on and off throughout the day. If it runs for 30 or more minutes at a stretch, the coils may be restricting heat release.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>The area near the coils is hot to the touch.</strong> Mild warmth is normal. Noticeably hot panels or a grille that is uncomfortable to hold your hand near indicates restricted airflow.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Energy bill creep.</strong> A refrigerator with severely dirty coils can use 25–35% more electricity than normal. If your energy bill has risen without an obvious explanation, the coils are worth checking.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Interior temperatures are inconsistent.</strong> Food in the back of the refrigerator stays cold but items near the front do not, or the freezer struggles to hold temperature.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>It has been over a year since you last cleaned.</strong> If you cannot remember the last time you looked at the coils, it has been too long.</li>
+        </ul>
+      </div>
+
+      <!-- Coil locations by fridge type -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Where to Find the Coils on Your Refrigerator</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 16px">
+          Coil location varies by refrigerator type. Check the right spot for your model before you start:
+        </p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:12px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Bottom-mount coils (most common, post-2000 models):</strong> Look for a snap-off or screw-on grille along the bottom front of the unit. Pull the grille free and the coils are immediately behind it, running the width of the refrigerator.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Rear-mount coils (older models, many compact refrigerators):</strong> Pull the refrigerator away from the wall and look at the back. You will see a large grid of black metal tubing — those are the coils.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Built-in and counter-depth models:</strong> These typically vent through the front grille at the base. Cleaning is the same — remove the grille and vacuum — but access can be tighter. Check your owner's manual for the specific location.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>French door and bottom-freezer models:</strong> Almost always bottom-mount. Remove the toe grille at floor level.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step-by-step cleaning guide -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Step-by-Step: How to Clean Refrigerator Coils</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 18px">
+          This job requires no special tools beyond a vacuum cleaner with a narrow brush attachment. A coil cleaning brush — available at hardware stores for under $10 — makes the job easier if the coils are heavily loaded.
+        </p>
+        <ol style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:14px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Unplug the refrigerator.</strong> This is not optional. You are working near the compressor and fan motor. Pull the plug from the wall before you do anything else.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Pull the unit out or remove the grille.</strong> For rear coils, carefully pull the refrigerator forward — have someone help you if it is heavy. For bottom-mount coils, snap or unscrew the toe grille. Most grilles simply pull straight forward.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Vacuum the coils.</strong> Use the brush attachment on your vacuum to gently pull dust away from the coils. Work in the direction of the coil fins — not across them — to avoid bending them. A refrigerator coil brush lets you get between fins more effectively.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Vacuum the fan and surrounding area.</strong> The condenser fan sits near the coils and collects dust on its blades. Clean the blade surfaces and the housing around the motor.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Vacuum the floor area underneath.</strong> The intake draws air from the floor level. Clearing that area helps the coils stay cleaner longer.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Replace the grille and plug in.</strong> Snap the grille back into place, push the unit back into position, and plug it back in. The refrigerator will begin cooling normally within 15–30 minutes.
+          </li>
+        </ol>
+        <div style="margin-top:18px;padding:14px 18px;background:#fef9c3;border-radius:8px;border:1px solid #fde68a">
+          <p style="font-size:0.88rem;color:#713f12;line-height:1.6;margin:0"><strong>Do not use compressed air.</strong> It pushes dust further into the fins and can deposit debris into the fan motor. A vacuum pulling debris away is the right approach.</p>
+        </div>
+      </div>
+
+      <!-- Charlotte-specific note -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Charlotte Homeowners: Clean More Often Than Average</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          National cleaning recommendations are built around a generic "average household" that does not account for regional climate. Charlotte's climate works against refrigerator coils in two specific ways.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          First, Charlotte's spring pollen season runs roughly February through May and regularly places the city among the highest pollen counts in the Southeast. Pollen is fine enough to be drawn through floor-level intake vents and deposits on coil surfaces faster than ordinary household dust.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0">
+          Second, Charlotte's humidity from late spring through early fall — routinely 70–85% relative humidity during afternoon hours — causes airborne dust particles to clump and stick to coil fins rather than shaking free during normal airflow. The result is faster buildup. If your home has pets on top of this, a 6-month cleaning schedule is not aggressive — it is appropriate.
+        </p>
+      </div>
+
+      <!-- Damage vs. cleaning -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Coil Damage vs. Just Needing a Cleaning</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          Cleaning the coils solves a dirt problem. If cleaning does not resolve the symptoms, you may have a component failure. Here is how to tell the difference:
+        </p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Cleaning should fix:</strong> Long compressor run times, warm exterior panels, higher energy bills, gradual temperature rise inside the cabinet.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Bent or crushed fins:</strong> Can reduce airflow. Straightening coil fins requires a fin comb tool. Minor bending is a DIY fix; severe crushing warrants a service call.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Oil staining on coils:</strong> A greasy or oily deposit around the coils often indicates a refrigerant leak. This is not a cleaning issue — it requires a licensed technician.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>No improvement after cleaning:</strong> If the compressor still runs continuously and the interior temperature is still too warm after cleaning the coils, the problem is elsewhere — likely the condenser fan motor, start relay, or compressor itself. See our <a href="/charlotte-nc/refrigerator-not-cooling" style="color:#b01616;font-weight:600;text-decoration:none">refrigerator not cooling</a> guide for next steps.</li>
+        </ul>
+      </div>
+
+      <!-- Internal links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:28px 32px;margin-bottom:28px">
+        <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 14px">Related Resources</h3>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px">
+          <li><a href="/charlotte-nc/refrigerator-repair" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Refrigerator Repair in Charlotte, NC</a></li>
+          <li><a href="/charlotte-nc/refrigerator-not-cooling" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Refrigerator Not Cooling — Diagnosis Guide</a></li>
+          <li><a href="/blog/useful-info/is-it-worth-repairing-10-year-old-refrigerator" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Is It Worth Repairing a 10-Year-Old Refrigerator?</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Refrigerator Coil Cleaning — Common Questions" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Fridge Running Warm? We Can Help Today." />
+
+</SeoPageLayout>

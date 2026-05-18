@@ -1,0 +1,231 @@
+---
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../../components/seo/FAQSection.astro';
+import SEOCTA from '../../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/useful-info/why-washer-shakes-violently`;
+
+const faqs = [
+  {
+    q: 'My washer only shakes on certain load types. Does that mean it\'s not a mechanical problem?',
+    a: 'Probably. If shaking only happens with heavy loads like towels or jeans, or with small loads that bunch to one side, unbalanced load distribution is almost certainly the cause. Try redistributing the clothes inside the drum and run the spin cycle again. If it shakes equally with any load type, the problem is more likely unlevel feet or worn suspension.',
+  },
+  {
+    q: 'How do I know if my washing machine is level?',
+    a: 'Place a bubble level on top of the machine, first side-to-side and then front-to-back. All four feet should be making firm contact with the floor. To check, grasp the front corners of the machine and try to rock it diagonally — a properly leveled machine should not rock at all. If it does, one or two feet are not touching the floor firmly.',
+  },
+  {
+    q: 'What are anti-vibration pads and do they actually work?',
+    a: 'Anti-vibration pads are dense rubber or composite mats that go under the washer feet. They dampen transmitted vibration and help prevent the machine from "walking" across the floor during spin cycles. They work well for normal vibration reduction, but they are not a substitute for proper leveling or a fix for worn suspension components. If the washer is shaking violently, pads alone will not resolve it.',
+  },
+  {
+    q: 'What are shipping bolts and how would I know if they\'re still installed?',
+    a: 'Shipping bolts (sometimes called transport bolts) are metal rods that lock the drum in place during shipping to prevent it from moving and damaging the internal suspension. They are installed through the back panel of the machine and must be removed before first use. Check the back of your washer for 3–5 large bolts or plastic plugs with bolts through them. If you see them, remove them — the bolt locations are usually color-coded and the owner\'s manual will show the exact positions.',
+  },
+  {
+    q: 'How much does washing machine suspension repair cost?',
+    a: 'Replacing shock absorbers or suspension rods on a front-loader typically runs $150–$280 installed, depending on the brand and how many components need replacement. Drum bearing replacement is more involved — typically $200–$380 installed — because it requires disassembling the drum assembly. Both repairs are usually worthwhile on a washer that is less than 10 years old.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Why Your Washing Machine Shakes Violently — And How to Fix It",
+      "description": "The 4 most common causes of a violently shaking washing machine, how to diagnose which one you have, and which fixes are DIY vs. requiring a technician.",
+      "url": canonical,
+      "datePublished": "2026-05-17",
+      "dateModified": "2026-05-17",
+      "author": {
+        "@type": "Person",
+        "name": "HomeHeroes Technician",
+        "jobTitle": "Appliance Repair Technician"
+      },
+      "publisher": {
+        "@type": "LocalBusiness",
+        "name": "HomeHeroes Appliance Repair",
+        "telephone": "(704) 512-0111",
+        "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#quick-answer"]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": base },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${base}/blog` },
+        { "@type": "ListItem", "position": 3, "name": "Useful Info", "item": `${base}/blog/useful-info` },
+        { "@type": "ListItem", "position": 4, "name": "Why Your Washer Shakes Violently", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<SeoPageLayout
+  title="Why Your Washing Machine Shakes Violently — And How to Fix It | HomeHeroes"
+  description="Violent washer shaking is caused by unbalanced loads, unlevel feet, worn suspension, or drum bearing failure. Here's how to diagnose and fix each one."
+  canonical={canonical}
+  schema={schema}
+  ogType="article"
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Blog</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog/useful-info" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Useful Info</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Washer Shaking</li>
+        </ol>
+      </nav>
+      <div style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px">Washer Repair</div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        Why Your Washing Machine<br />Shakes Violently
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.65;margin:0;max-width:620px">
+        Violent shaking during the spin cycle is not just annoying — if you ignore it, it can turn a minor fix into an expensive drum bearing replacement. Here is how to find the cause and decide what to do about it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section style="padding:64px 24px 72px;background:#f8f9fc">
+    <div style="max-width:860px;margin:0 auto">
+
+      <!-- Quick Answer -->
+      <div id="quick-answer" style="border-left:4px solid #34d399;background:#f0fdf4;border-radius:0 10px 10px 0;padding:22px 26px;margin-bottom:40px">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#16a34a;margin-bottom:8px">Quick Answer</div>
+        <p style="font-size:1rem;color:#14532d;line-height:1.65;margin:0">
+          The most common causes of violent washer shaking are, in order of likelihood: <strong>unbalanced load</strong>, <strong>unlevel machine feet</strong>, <strong>worn shock absorbers or suspension rods</strong>, and <strong>drum bearing failure</strong>. The first two are free DIY fixes. The third is an affordable repair. The fourth is the one to avoid by catching the problem early.
+        </p>
+      </div>
+
+      <!-- The 4 causes -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">The 4 Main Causes in Order of Likelihood</h2>
+
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="padding:20px;background:#f8f9fc;border-radius:10px;border-left:3px solid #34d399">
+            <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#166534;margin-bottom:8px">Cause 1 — Most Common</div>
+            <h3 style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 10px">Unbalanced Load</h3>
+            <p style="font-size:0.93rem;color:#2a3c54;line-height:1.7;margin:0">When clothes bunch together on one side of the drum during the spin cycle, the drum rotates with a heavy imbalance at high speed. This creates the thumping and shaking that can move the machine across the floor. It happens most commonly with heavy single items (a comforter, a bath mat) or with small loads that clump together. This is not a malfunction — it is load distribution.</p>
+          </div>
+
+          <div style="padding:20px;background:#f8f9fc;border-radius:10px;border-left:3px solid #60a5fa">
+            <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#1d4ed8;margin-bottom:8px">Cause 2 — Very Common</div>
+            <h3 style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 10px">Unlevel or Uneven Feet</h3>
+            <p style="font-size:0.93rem;color:#2a3c54;line-height:1.7;margin:0">All four feet must make firm, even contact with the floor. If even one foot is slightly off, the machine will rock during the spin cycle. This amplifies vibration dramatically and allows the machine to travel across the floor. Adjustable feet can loosen over time, and floors in older homes are often not level — particularly in the split-level houses common in Charlotte neighborhoods built in the 1970s and 1980s.</p>
+          </div>
+
+          <div style="padding:20px;background:#f8f9fc;border-radius:10px;border-left:3px solid #f59e0b">
+            <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#92400e;margin-bottom:8px">Cause 3 — Mechanical Wear</div>
+            <h3 style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 10px">Worn Shock Absorbers or Suspension Rods</h3>
+            <p style="font-size:0.93rem;color:#2a3c54;line-height:1.7;margin:0">The drum inside your washer is suspended on shock absorbers (front-loaders) or suspension rods (top-loaders). These components are designed to absorb the vibration of an unbalanced drum during spin. When they wear out, there is nothing dampening the drum movement, and every spin cycle produces violent shaking even with perfectly balanced loads. This is a normal wear part — typically it wears out after 7–12 years of regular use.</p>
+          </div>
+
+          <div style="padding:20px;background:#fef2f2;border-radius:10px;border-left:3px solid #dc2626">
+            <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#991b1b;margin-bottom:8px">Cause 4 — Most Serious</div>
+            <h3 style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 10px">Drum Bearing Failure</h3>
+            <p style="font-size:0.93rem;color:#2a3c54;line-height:1.7;margin:0">The drum bearing allows the drum to spin smoothly on its central shaft. When the bearing wears out, the drum wobbles on the shaft during rotation, creating grinding, rumbling, or banging sounds in addition to violent shaking. A failed bearing means metal-on-metal contact that will eventually damage the drum shaft itself — turning a $200–$380 bearing replacement into a much more expensive repair or full replacement. Catching this early matters.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagnosis steps -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">How to Diagnose Which One You Have</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 16px">
+          Work through these steps in order:
+        </p>
+        <ol style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:14px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Check the load.</strong> Redistribute the clothes inside the drum so they are spread evenly. If the shaking stops or significantly reduces, you had an unbalanced load. For future loads: mix large and small items, avoid washing single heavy items alone, and add a second item to balance a lone comforter.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Check the level.</strong> Place a bubble level on top of the machine. Adjust the feet by hand (they thread in and out) until the bubble is centered both side-to-side and front-to-back. Lock the feet down with the locking nuts if your model has them. Try a spin cycle. If vibration is significantly reduced, leveling was the issue.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Listen for a grinding or rumbling sound.</strong> Run the washer empty through a spin cycle. If you hear a grinding, rumbling, or roaring noise in addition to shaking, the drum bearing is likely the cause. This requires professional diagnosis.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Check whether shaking happens with all loads.</strong> If leveling and load balancing do not resolve the shaking, and the machine shakes equally regardless of load, worn suspension components are the likely cause. This is confirmed by a technician who can physically inspect the shock absorbers or suspension rods.
+          </li>
+        </ol>
+      </div>
+
+      <!-- Top-loader vs front-loader -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Top-Loaders vs. Front-Loaders</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          The diagnosis process is the same for both machine types, but the suspension design differs:
+        </p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Top-loaders</strong> use suspension rods — four rods that support the drum from the top corners of the cabinet. When these rods wear out, the drum drops and sways visibly during spin. You can sometimes see the drum moving excessively if you open the lid during a spin cycle.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Front-loaders</strong> use shock absorbers similar to those in a car. When they wear, the drum bounces violently on the front and rear bearing points. Front-loaders with worn shocks also tend to develop a characteristic behavior: they start the spin cycle, the machine shakes, then the machine slows down and tries to rebalance — a cycle that can repeat many times before completing.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Front-loaders are more sensitive to floor flatness.</strong> A front-loader pedestal that is not level will shake more dramatically than a top-loader in the same condition, because the drum spin axis is horizontal.</li>
+        </ul>
+      </div>
+
+      <!-- Shipping bolts -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">New Machine? Check for Shipping Bolts First</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          If the washing machine is new and shaking violently from the first use, check for shipping bolts before calling anyone. Shipping bolts lock the drum in a fixed position during transit. If not removed, they prevent the drum from floating on its suspension, causing severe shaking during every spin cycle.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0">
+          Shipping bolts are located on the back panel of the machine — typically 3 to 5 bolts, often with colored plastic sleeves. The owner's manual will show the exact locations. Remove all of them, keep them in the manual sleeve, and run a test cycle. This is the most common reason for a brand-new washer to shake violently.
+        </p>
+      </div>
+
+      <!-- Consequences of ignoring -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What Happens If You Ignore It</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          Running a washing machine that shakes violently causes progressive damage:
+        </p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Drum bearing damage.</strong> If the cause is worn shock absorbers, the uncontrolled drum movement accelerates wear on the drum bearing — turning a $200 suspension repair into a $350+ bearing repair.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Hose connections can loosen.</strong> A machine that walks across the floor or vibrates severely can loosen the inlet hose connections, eventually causing a slow leak or a sudden burst.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Floor and pedestal damage.</strong> Over time, a violently shaking machine can damage vinyl flooring, crack tile grout, and stress wooden subfloor panels. In older Charlotte homes with engineered hardwood in laundry areas, this is a particular concern.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>The machine can travel.</strong> A washer walking across the floor can pull drain hoses free of the standpipe, resulting in a laundry room flood.</li>
+        </ul>
+      </div>
+
+      <!-- Related links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:28px 32px;margin-bottom:28px">
+        <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 14px">Related Resources</h3>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px">
+          <li><a href="/charlotte-nc/washer-shaking-violently" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Washer Shaking Violently — Charlotte Service Page</a></li>
+          <li><a href="/charlotte-nc/washer-repair" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Washing Machine Repair in Charlotte, NC</a></li>
+          <li><a href="/blog/useful-info/signs-dryer-vent-needs-cleaning" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Signs Your Dryer Vent Needs Cleaning</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Washing Machine Shaking — Common Questions" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Washer Still Shaking? We'll Diagnose It Today." />
+
+</SeoPageLayout>

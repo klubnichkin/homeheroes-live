@@ -1,0 +1,250 @@
+---
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../../components/seo/FAQSection.astro';
+import SEOCTA from '../../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/useful-info/how-to-prevent-ice-maker-failure`;
+
+const faqs = [
+  {
+    q: 'How often should I replace the refrigerator water filter?',
+    a: 'Every 6 months, or every 200 gallons of water — whichever comes first. Most refrigerators track this with an indicator light. If yours does not, set a calendar reminder. Skipping a filter change allows sediment and mineral deposits to build up in the filter housing and water line, eventually reaching the ice maker fill valve and inlet tube.',
+  },
+  {
+    q: 'My ice smells or tastes off. Is the ice maker failing?',
+    a: 'Not necessarily. Off-tasting or smelling ice is almost always caused by an overdue water filter or by ice cubes sitting in the bin too long. Replace the water filter and discard the current ice supply — it takes 24 hours for a full bin of fresh ice to form. If the taste problem persists after that, the water line may need flushing or the ice maker module itself may need cleaning.',
+  },
+  {
+    q: 'What causes the fill tube to freeze?',
+    a: 'The fill tube carries water from the water valve into the ice maker mold. When the freezer temperature fluctuates — due to a door left open, a failing evaporator fan, or a defrost cycle issue — condensation can form inside the tube and freeze into a blockage. A partially blocked water inlet valve that allows only a trickle of water can also cause water to freeze in the tube before it reaches the mold.',
+  },
+  {
+    q: 'Does Charlotte tap water cause more ice maker problems than other cities?',
+    a: 'Charlotte uses Catawba River water treated by Charlotte Water. The water is safe and treated, but like most municipal water systems it contains dissolved minerals including calcium and magnesium. These minerals deposit inside the ice maker mold and water line over time. Charlotte\'s water is not unusually hard compared to national averages, but the minerals are present and will cause buildup if the ice maker is not maintained. Keeping the filter current is the most effective prevention.',
+  },
+  {
+    q: 'My ice maker stopped making ice but I can hear it trying. What\'s likely wrong?',
+    a: 'If you hear the ice maker cycling — the motor turning, the harvest arm moving — but no ice is being produced, the most common cause is a blocked or frozen fill tube, a failed water inlet valve, or low water pressure at the valve. Check that the water supply shut-off valve behind the refrigerator is fully open. If water pressure is adequate and the valve is open, the fill tube or inlet valve are the next components to inspect.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Prevent Ice Maker Failures — Annual Maintenance Checklist",
+      "description": "A 5-step annual ice maker maintenance checklist from HomeHeroes technicians. Covers water filter replacement, line flushing, fill tube care, and mineral buildup prevention.",
+      "url": canonical,
+      "datePublished": "2026-05-17",
+      "dateModified": "2026-05-17",
+      "author": {
+        "@type": "Person",
+        "name": "HomeHeroes Technician",
+        "jobTitle": "Appliance Repair Technician"
+      },
+      "publisher": {
+        "@type": "LocalBusiness",
+        "name": "HomeHeroes Appliance Repair",
+        "telephone": "(704) 512-0111",
+        "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#quick-answer"]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": base },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${base}/blog` },
+        { "@type": "ListItem", "position": 3, "name": "Useful Info", "item": `${base}/blog/useful-info` },
+        { "@type": "ListItem", "position": 4, "name": "How to Prevent Ice Maker Failures", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<SeoPageLayout
+  title="How to Prevent Ice Maker Failures — Annual Maintenance Checklist | HomeHeroes"
+  description="Replace the water filter every 6 months, flush the line annually, and inspect the fill tube. Annual ice maker maintenance checklist from HomeHeroes Charlotte technicians."
+  canonical={canonical}
+  schema={schema}
+  ogType="article"
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Blog</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog/useful-info" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Useful Info</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Ice Maker Maintenance</li>
+        </ol>
+      </nav>
+      <div style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px">Refrigerator Maintenance</div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        How to Prevent Ice Maker Failures<br />— Annual Maintenance Checklist
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.65;margin:0;max-width:620px">
+        Most ice maker service calls are preventable. They trace back to a water filter that was never replaced or a water line that was never flushed. Here is the simple annual routine that keeps ice makers running.
+      </p>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section style="padding:64px 24px 72px;background:#f8f9fc">
+    <div style="max-width:860px;margin:0 auto">
+
+      <!-- Quick Answer -->
+      <div id="quick-answer" style="border-left:4px solid #34d399;background:#f0fdf4;border-radius:0 10px 10px 0;padding:22px 26px;margin-bottom:40px">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#16a34a;margin-bottom:8px">Quick Answer</div>
+        <p style="font-size:1rem;color:#14532d;line-height:1.65;margin:0">
+          Three tasks prevent the majority of ice maker failures: <strong>replace the water filter every 6 months</strong>, <strong>flush the water line once a year</strong>, and <strong>inspect the fill tube for ice blockage annually</strong>. These take about 20 minutes total and cost less than $30 in supplies. Most ice maker repair calls we make in Charlotte could have been avoided with this routine.
+        </p>
+      </div>
+
+      <!-- Why ice makers fail more -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why Ice Makers Fail More Than Most Appliance Components</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          An ice maker is one of the hardest-working components in your kitchen. A typical household ice maker completes 8–12 ice-making cycles per day, each involving the water inlet valve opening, the fill tube delivering water to the mold, a freeze cycle, a heating element briefly warming the mold to release cubes, and a harvest arm sweeping the cubes into the bin. That is several thousand mechanical cycles per year.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          At the same time, water is flowing through the system continuously — and water carries minerals. Every fill cycle deposits a small amount of calcium, magnesium, and other dissolved solids inside the fill tube, the water inlet valve, and the ice maker mold. Over months, these deposits accumulate into scale that restricts water flow, causes partial fills, and eventually blocks the system entirely.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0">
+          The water inlet valve — the solenoid valve that opens to let water into the system — is the most commonly replaced component in ice maker repairs. It fails because sediment from an overdue filter loads the valve screen, or because mineral deposits cause the valve to stick in the open or closed position. Regular filter changes and line flushing prevent most of this.
+        </p>
+      </div>
+
+      <!-- Annual checklist -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">Annual Ice Maker Maintenance Checklist</h2>
+
+        <div style="display:flex;flex-direction:column;gap:18px">
+
+          <div style="padding:20px 22px;background:#f8f9fc;border-radius:10px;border:1px solid rgba(30,50,80,0.07)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+              <div style="width:28px;height:28px;border-radius:50%;background:#34d399;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <span style="font-size:0.75rem;font-weight:900;color:#fff">1</span>
+              </div>
+              <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0">Replace the Water Filter</h3>
+            </div>
+            <p style="font-size:0.92rem;color:#2a3c54;line-height:1.7;margin:0 0 10px">Replace the refrigerator water filter every 6 months, or at the 200-gallon mark if your refrigerator tracks usage. A clogged filter restricts water flow to the ice maker, causes slower fill cycles, and eventually allows unfiltered sediment to pass through into the water line and valve. Most refrigerator filters cost $20–$50; always use a filter that matches your refrigerator's model number.</p>
+            <p style="font-size:0.88rem;color:#4a5e74;line-height:1.6;margin:0"><strong>After replacing the filter:</strong> run 2–3 gallons of water through the dispenser before using ice. This flushes air from the line and any carbon fines from the new filter.</p>
+          </div>
+
+          <div style="padding:20px 22px;background:#f8f9fc;border-radius:10px;border:1px solid rgba(30,50,80,0.07)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+              <div style="width:28px;height:28px;border-radius:50%;background:#34d399;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <span style="font-size:0.75rem;font-weight:900;color:#fff">2</span>
+              </div>
+              <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0">Flush the Water Line</h3>
+            </div>
+            <p style="font-size:0.92rem;color:#2a3c54;line-height:1.7;margin:0 0 10px">Once a year, shut off the water supply to the refrigerator (the valve is typically behind the unit or under the sink), disconnect the water line at the back of the refrigerator, and run water through the line into a bucket until it runs clear. This clears sediment that has settled in the line over the past year. Reconnect the line, restore the supply, and check for leaks at the connection point.</p>
+            <p style="font-size:0.88rem;color:#4a5e74;line-height:1.6;margin:0"><strong>Note:</strong> If you have a copper supply line and it has never been replaced, inspect it for kinks, greenish oxidation, or mineral deposits at the compression fitting. An old copper line that is beginning to corrode at the fitting should be replaced with braided stainless steel — the fittings are cheap and the risk of a slow leak is significantly reduced.</p>
+          </div>
+
+          <div style="padding:20px 22px;background:#f8f9fc;border-radius:10px;border:1px solid rgba(30,50,80,0.07)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+              <div style="width:28px;height:28px;border-radius:50%;background:#34d399;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <span style="font-size:0.75rem;font-weight:900;color:#fff">3</span>
+              </div>
+              <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0">Inspect and Clear the Fill Tube</h3>
+            </div>
+            <p style="font-size:0.92rem;color:#2a3c54;line-height:1.7;margin:0 0 10px">The fill tube is the small plastic tube that delivers water from the valve into the ice maker mold. It is located at the back of the freezer compartment, usually visible as a white plastic tube pointing down into the ice maker assembly. Inspect it for ice buildup around the tip.</p>
+            <p style="font-size:0.88rem;color:#4a5e74;line-height:1.6;margin:0"><strong>If it is frozen:</strong> use a hair dryer on low heat to gently thaw the blockage. Do not use high heat near plastic components. Once clear, run a cycle and observe whether the tube refreezes quickly — if it does within a day or two, the water inlet valve may be weeping (allowing a slow trickle rather than a clean shut-off), which deposits water in the tube between cycles.</p>
+          </div>
+
+          <div style="padding:20px 22px;background:#f8f9fc;border-radius:10px;border:1px solid rgba(30,50,80,0.07)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+              <div style="width:28px;height:28px;border-radius:50%;background:#34d399;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <span style="font-size:0.75rem;font-weight:900;color:#fff">4</span>
+              </div>
+              <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0">Clean the Ice Maker Mold and Bin</h3>
+            </div>
+            <p style="font-size:0.92rem;color:#2a3c54;line-height:1.7;margin:0 0 10px">Turn off the ice maker, remove the ice bin, and wash it in warm soapy water. Rinse thoroughly — soap residue will affect the taste of ice. While the bin is out, wipe down the ice maker mold (the tray where ice forms) with a clean cloth dampened with a solution of equal parts white vinegar and water. This removes mineral scale deposits.</p>
+            <p style="font-size:0.88rem;color:#4a5e74;line-height:1.6;margin:0"><strong>Also:</strong> discard ice that has been sitting in the bin for more than a week or two. Older ice absorbs freezer odors and tastes stale, even when the ice maker is functioning properly.</p>
+          </div>
+
+          <div style="padding:20px 22px;background:#f8f9fc;border-radius:10px;border:1px solid rgba(30,50,80,0.07)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+              <div style="width:28px;height:28px;border-radius:50%;background:#34d399;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <span style="font-size:0.75rem;font-weight:900;color:#fff">5</span>
+              </div>
+              <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0">Check the Water Inlet Valve Screen</h3>
+            </div>
+            <p style="font-size:0.92rem;color:#2a3c54;line-height:1.7;margin:0 0 10px">The water inlet valve at the back of the refrigerator has a small mesh screen at its inlet port that catches sediment before it enters the valve. This screen can clog over time even when you are changing the filter regularly. Shut off the water supply, disconnect the supply line from the valve, and inspect the screen with a flashlight. A partially clogged screen will appear discolored or have visible deposits.</p>
+            <p style="font-size:0.88rem;color:#4a5e74;line-height:1.6;margin:0"><strong>Cleaning:</strong> the screen can be rinsed under running water and gently cleaned with a soft brush. If the screen is damaged or the valve itself is cracked or corroded, valve replacement is straightforward and inexpensive — typically $60–$120 including a service call.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Charlotte water note -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Charlotte Water Quality and Your Ice Maker</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          Charlotte Water sources from the Catawba River and treats water to meet all federal and state drinking water standards. The water is safe and generally low in chloramines compared to some other municipal systems. However, like virtually all municipal water supplies, it contains dissolved minerals — primarily calcium and magnesium — that affect ice makers over time.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          Charlotte's water hardness is typically in the moderate range (roughly 4–8 grains per gallon depending on source conditions and season). This is not unusually hard water, but it is sufficient to cause mineral buildup inside an ice maker mold and water line over a period of 12–18 months without maintenance.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0">
+          If you use a whole-house water softener, note that softened water — while mineral-reduced — is higher in sodium. Some homeowners with softeners run a dedicated unsoftened line to the refrigerator for this reason. Either approach is fine for ice maker health; what matters most is changing the filter on schedule and flushing the line annually.
+        </p>
+      </div>
+
+      <!-- When to call -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">When Maintenance Is Not Enough: Call a Technician</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          Maintenance prevents most ice maker failures, but some problems require professional repair:
+        </p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Ice maker not cycling at all</strong> after filter replacement and fill tube inspection. The ice maker module, the control board, or a thermostat inside the unit may have failed.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Fill tube refreezes within 24–48 hours</strong> after thawing. This indicates the water inlet valve is weeping — allowing a slow drip that freezes in the tube. The valve needs replacement.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Ice maker produces very small cubes</strong> even with a fresh filter. Low water pressure at the valve, a partially blocked inlet port, or a valve that is not opening fully are the likely causes — all require inspection.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Ice maker overflows</strong> — water leaking into the freezer or ice bin. A water inlet valve that does not close properly or a faulty water level sensor in the ice maker module is the usual cause.</li>
+        </ul>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:14px 0 0">
+          See our <a href="/charlotte-nc/refrigerator-repair" style="color:#b01616;font-weight:600;text-decoration:none">refrigerator repair page</a> for service in the Charlotte area, or visit the <a href="/charlotte-nc/refrigerator-not-cooling" style="color:#b01616;font-weight:600;text-decoration:none">refrigerator not cooling guide</a> if the ice maker failure is accompanied by broader cooling problems.
+        </p>
+      </div>
+
+      <!-- Related links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:28px 32px;margin-bottom:28px">
+        <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 14px">Related Resources</h3>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px">
+          <li><a href="/charlotte-nc/refrigerator-repair" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Refrigerator Repair in Charlotte, NC</a></li>
+          <li><a href="/charlotte-nc/refrigerator-not-cooling" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Refrigerator Not Cooling — Diagnosis Guide</a></li>
+          <li><a href="/blog/useful-info/how-often-clean-refrigerator-coils" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">How Often Should You Clean Refrigerator Coils?</a></li>
+          <li><a href="/blog/useful-info/is-it-worth-repairing-10-year-old-refrigerator" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Is It Worth Repairing a 10-Year-Old Refrigerator?</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Ice Maker Maintenance — Common Questions" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Ice Maker Stopped Working? We Can Fix It Today." />
+
+</SeoPageLayout>

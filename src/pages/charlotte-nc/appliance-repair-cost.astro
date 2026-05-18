@@ -1,0 +1,236 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../components/seo/FAQSection.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/appliance-repair-cost`;
+
+const faqs = [
+  {
+    q: 'How much does appliance repair cost in Charlotte, NC?',
+    a: 'Most appliance repairs in Charlotte range from $89 to $350 depending on the appliance type, the part needed, and labor time. Refrigerator compressor jobs are at the higher end; simple dishwasher or dryer repairs often fall in the $89–$175 range.',
+  },
+  {
+    q: 'Does HomeHeroes charge a diagnostic fee?',
+    a: 'Yes — our service call / diagnostic fee is $89. This fee is waived when you proceed with the repair. You only pay the $89 if we diagnose the problem and you choose not to repair.',
+  },
+  {
+    q: 'What is included in the repair quote?',
+    a: 'Every quote we provide before work begins includes parts, labor, and applicable taxes. There are no hidden fees. The price you approve is the price you pay.',
+  },
+  {
+    q: 'Is it cheaper to repair or replace my appliance?',
+    a: "A common benchmark is the 50% rule: if the repair costs more than 50% of a comparable new appliance, replacement often makes more financial sense. We'll give you an honest assessment either way.",
+  },
+  {
+    q: 'What factors affect the cost of appliance repair?',
+    a: 'The main factors are the type and age of the appliance, the specific part that failed (sealed system parts cost more), parts availability, and whether the repair is straightforward or requires extensive disassembly.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: 'HomeHeroes Appliance Repair',
+      url: base,
+      telephone: '(704) 512-0111',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Charlotte, NC',
+        addressLocality: 'Charlotte',
+        addressRegion: 'NC',
+        postalCode: '28201',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'City', name: 'Charlotte' },
+      priceRange: '$$',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Charlotte, NC', item: `${base}/charlotte-nc` },
+        { '@type': 'ListItem', position: 3, name: 'Appliance Repair Cost', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<SeoPageLayout
+  title="Appliance Repair Cost in Charlotte, NC — 2025 Price Guide | HomeHeroes"
+  description="Real appliance repair cost ranges for Charlotte, NC. See price estimates by appliance type, diagnostic fee policy, and repair vs. replace benchmarks."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" aria-label="Home" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc" aria-label="Charlotte NC appliance repair" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Appliance Repair Cost</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 16px;letter-spacing:-0.03em">Appliance Repair Cost in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:clamp(16px,2vw,18px);line-height:1.65;max-width:660px;margin:0 0 28px">Real price ranges from our Charlotte repair technicians — by appliance type, part, and complexity. Updated for 2025.</p>
+      <a href={phoneHref} aria-label="Call HomeHeroes for a repair quote" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:#b01616;color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Get a Free Quote — {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answer Box -->
+  <section style="background:#fff;padding:40px 24px 0">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0f4ff;border-left:4px solid #b01616;border-radius:10px;padding:24px 28px">
+        <p style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Quick Answer</p>
+        <p style="font-size:16px;color:#1a2a40;line-height:1.7;margin:0">
+          Most appliance repairs in Charlotte, NC cost <strong>$89–$350</strong>. The diagnostic fee is $89 and is waived when you proceed with the repair. Parts and labor are quoted upfront before any work begins — the price you approve is the price you pay.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Price Table -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.02em">2025 Appliance Repair Price Ranges</h2>
+      <p style="font-size:15px;color:#4a5568;margin:0 0 32px">Estimates reflect typical Charlotte-area repair jobs. Final quotes depend on brand, model, parts availability, and labor complexity.</p>
+
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Appliance</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Common Repair</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Typical Range</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Refrigerator', 'Thermostat / evaporator fan', '$89–$220', 'Sealed system jobs: $250–$600+'],
+              ['Refrigerator', 'Ice maker replacement', '$150–$300', 'Parts vary widely by brand'],
+              ['Washer', 'Drain pump / lid switch', '$89–$175', 'Front-load bearings: $200–$350'],
+              ['Dryer', 'Heating element / belt', '$89–$175', 'Gas valve coils add ~$30'],
+              ['Dishwasher', 'Pump / control board', '$89–$220', 'Door latch / spray arm: $89–$130'],
+              ['Oven / Range', 'Igniter / bake element', '$89–$200', 'Control board: $200–$350'],
+              ['Microwave', 'Magnetron / door switch', '$69–$175', 'Built-in units cost more for access'],
+              ['Freezer', 'Defrost heater / fan', '$89–$200', 'Compressor: $300–$500+'],
+            ].map(([appliance, repair, range, notes], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:13px 20px;font-weight:600;color:#060c19">{appliance}</td>
+                <td style="padding:13px 20px;color:#2a3c54">{repair}</td>
+                <td style="padding:13px 20px;font-weight:700;color:#b01616">{range}</td>
+                <td style="padding:13px 20px;color:#4a5568;font-size:13px">{notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px;color:#718096;margin:14px 0 0">* Diagnostic fee of $89 is waived when you proceed with any repair.</p>
+    </div>
+  </section>
+
+  <!-- What Affects Cost -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 32px;letter-spacing:-0.02em">What Affects the Cost of Appliance Repair?</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+        {[
+          { title: 'Parts Availability', body: 'OEM parts for recent models ship fast and cost less. Older or discontinued models may require aftermarket parts or longer lead times, which adds cost.' },
+          { title: 'Appliance Age', body: 'Repairs on appliances under 8 years old are almost always worth it. Older machines may have worn secondary components that increase total repair scope.' },
+          { title: 'Repair Complexity', body: 'Replacing a dryer belt takes 30 minutes. Diagnosing an intermittent control board issue on a French-door refrigerator takes longer — and costs more.' },
+          { title: 'Brand & Model', body: 'Premium brands (Sub-Zero, Miele, Wolf) carry higher parts costs. Common brands like GE, Whirlpool, and LG have competitive part pricing due to high availability.' },
+          { title: 'Type of Failure', body: "Sealed system failures (compressor, evaporator coil) are the most expensive to fix — often $300–$600+. Everything else is typically in the $89–$300 range." },
+          { title: 'Labor Time', body: 'Most repairs are completed in one visit. Jobs requiring parts ordering may need a second visit, which can add a second trip fee depending on scope.' },
+        ].map(item => (
+          <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:24px">
+            <h3 style="font-size:16px;font-weight:700;color:#060c19;margin:0 0 10px">{item.title}</h3>
+            <p style="font-size:14px;color:#4a5568;line-height:1.7;margin:0">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Repair vs Replace -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Repair vs. Replace Cost Benchmarks</h2>
+      <p style="font-size:15px;color:#4a5568;line-height:1.7;margin:0 0 28px">The <strong>50% rule</strong>: if the repair costs more than 50% of the price of a comparable new appliance, replacement is often the smarter financial choice. Use these benchmarks as a starting point.</p>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Appliance</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Replace-New Cost (Mid-Range)</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">50% Rule Threshold</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Verdict if Repair &lt; Threshold</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Refrigerator', '$900–$1,800', '$450–$900', 'Repair'],
+              ['Washer', '$600–$1,200', '$300–$600', 'Repair'],
+              ['Dryer', '$500–$1,000', '$250–$500', 'Repair'],
+              ['Dishwasher', '$500–$1,000', '$250–$500', 'Repair'],
+              ['Oven / Range', '$700–$1,500', '$350–$750', 'Repair'],
+            ].map(([appliance, newCost, threshold, verdict], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:13px 20px;font-weight:600;color:#060c19">{appliance}</td>
+                <td style="padding:13px 20px;color:#2a3c54">{newCost}</td>
+                <td style="padding:13px 20px;color:#2a3c54">{threshold}</td>
+                <td style="padding:13px 20px;font-weight:700;color:#1a7a3c">{verdict}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnostic Fee Policy -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:36px">
+        <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Our Diagnostic Fee Policy</h2>
+        <p style="font-size:15px;color:#2a3c54;line-height:1.75;margin:0 0 16px">HomeHeroes charges an <strong>$89 service call / diagnostic fee</strong> for every appointment. Here's exactly how it works:</p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65"><strong>If you proceed with the repair:</strong> The $89 diagnostic fee is waived. You pay only for parts and labor.</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65"><strong>If you decline the repair:</strong> You pay only the $89 diagnostic fee. No pressure, no hard sell.</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65"><strong>Before we begin:</strong> You receive a written quote for parts + labor. We don't start work until you approve the price.</li>
+          <li style="font-size:15px;color:#2a3c54;line-height:1.65"><strong>No hidden fees:</strong> The approved quote is the final bill. Tax is itemized separately.</li>
+        </ul>
+        <div style="margin-top:24px">
+          <a href={phoneHref} aria-label="Call HomeHeroes to schedule a diagnostic" style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:#b01616;color:#fff;font-weight:700;font-size:15px;border-radius:9px;text-decoration:none">
+            Schedule a Diagnostic — {phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Appliance Repair Cost FAQs" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Know What It'll Cost Before We Arrive." />
+
+</SeoPageLayout>

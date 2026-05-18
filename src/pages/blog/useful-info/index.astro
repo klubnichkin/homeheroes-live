@@ -26,6 +26,7 @@ const articles = [
     category: 'Refrigerator',
     readTime: '4 min read',
     icon: '❄️',
+    href: '/blog/useful-info/how-often-clean-refrigerator-coils',
     relatedHref: '/charlotte-nc/refrigerator-repair',
     relatedLabel: 'Refrigerator Repair →',
     bgColor: 'rgba(59,130,246,0.06)',
@@ -38,6 +39,7 @@ const articles = [
     category: 'Dryer',
     readTime: '5 min read',
     icon: '♨️',
+    href: '/blog/useful-info/signs-dryer-vent-needs-cleaning',
     relatedHref: '/charlotte-nc/dryer-not-heating',
     relatedLabel: 'Dryer Not Heating →',
     bgColor: 'rgba(245,158,11,0.06)',
@@ -50,6 +52,7 @@ const articles = [
     category: 'Buying Guide',
     readTime: '6 min read',
     icon: '🔧',
+    href: '/blog/useful-info/is-it-worth-repairing-10-year-old-refrigerator',
     relatedHref: '/charlotte-nc/refrigerator-repair',
     relatedLabel: 'Refrigerator Repair →',
     bgColor: 'rgba(52,211,153,0.06)',
@@ -62,6 +65,7 @@ const articles = [
     category: 'Washer',
     readTime: '4 min read',
     icon: '🌀',
+    href: '/blog/useful-info/why-washer-shakes-violently',
     relatedHref: '/charlotte-nc/washer-shaking-violently',
     relatedLabel: 'Washer Shaking Violently →',
     bgColor: 'rgba(139,92,246,0.06)',
@@ -74,6 +78,7 @@ const articles = [
     category: 'Refrigerator',
     readTime: '3 min read',
     icon: '🧊',
+    href: '/blog/useful-info/how-to-prevent-ice-maker-failure',
     relatedHref: '/charlotte-nc/refrigerator-repair',
     relatedLabel: 'Refrigerator Repair →',
     bgColor: 'rgba(14,165,233,0.06)',
@@ -86,8 +91,9 @@ const articles = [
     category: 'Buying Guide',
     readTime: '5 min read',
     icon: '📊',
-    relatedHref: '/charlotte-nc/services',
-    relatedLabel: 'All Services →',
+    href: '/charlotte-nc/when-not-to-repair-an-appliance',
+    relatedHref: '/charlotte-nc/repair-vs-replace-refrigerator',
+    relatedLabel: 'Repair vs. Replace Guide →',
     bgColor: 'rgba(176,22,22,0.05)',
     borderColor: 'rgba(176,22,22,0.15)',
     iconBg: 'rgba(176,22,22,0.08)',
@@ -146,7 +152,7 @@ const maintenanceTips = [
             <h3 style="font-size:1.02rem;font-weight:800;color:#060c19;line-height:1.3;margin:0 0 10px;letter-spacing:-0.01em">{a.title}</h3>
             <p style="font-size:0.84rem;color:#4a5e74;line-height:1.6;margin:0 0 18px;flex:1">{a.excerpt}</p>
             <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
-              <span style="font-size:0.78rem;font-weight:700;color:#b01616;cursor:default;border:1px solid rgba(176,22,22,0.25);padding:6px 13px;border-radius:7px;background:rgba(176,22,22,0.04)">Full Article Coming Soon</span>
+              <a href={a.href} aria-label={`Read full article: ${a.title}`} style="font-size:0.78rem;font-weight:700;color:#b01616;text-decoration:none;border:1px solid rgba(176,22,22,0.25);padding:6px 13px;border-radius:7px;background:rgba(176,22,22,0.04)">Read Full Article →</a>
               <a href={a.relatedHref} style="font-size:0.78rem;font-weight:600;color:#4a6a8a;text-decoration:none;white-space:nowrap">{a.relatedLabel}</a>
             </div>
           </div>

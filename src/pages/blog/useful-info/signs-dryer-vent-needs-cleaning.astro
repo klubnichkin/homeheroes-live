@@ -1,0 +1,248 @@
+---
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../../components/seo/FAQSection.astro';
+import SEOCTA from '../../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/useful-info/signs-dryer-vent-needs-cleaning`;
+
+const faqs = [
+  {
+    q: 'How often should a dryer vent be cleaned?',
+    a: 'At minimum, once per year for a household doing 4–6 loads of laundry per week. Heavy-use households — families doing 8 or more loads per week — should clean every 6 months. If your duct run is longer than 20 feet or includes multiple bends, the interval shortens further because lint accumulates faster in those conditions.',
+  },
+  {
+    q: 'Can I clean the dryer vent myself?',
+    a: 'For short, straight duct runs of 10 feet or less, a DIY cleaning kit (a rotary brush on flexible rods, available at hardware stores for $25–$40) is effective. For longer runs, multiple bends, or ducts that have not been cleaned in several years, professional cleaning with a rotary brush system and vacuum extraction is more thorough and safer.',
+  },
+  {
+    q: 'What happens if I ignore a clogged dryer vent?',
+    a: 'In the short term, your dryer works harder and clothes take longer to dry, which raises your energy bill and shortens the heating element\'s life. In the worst case, a blocked vent creates heat and lint buildup conditions that lead to dryer fires. The U.S. Fire Administration estimates dryers cause approximately 2,900 residential fires per year, with failure to clean the vent as the leading factor.',
+  },
+  {
+    q: 'How can birds or wasps get into a dryer vent?',
+    a: 'Dryer vent caps have a flap that opens when air flows through and closes when the dryer is off. In Charlotte\'s warm climate, birds — especially house sparrows and Carolina wrens — often use the protected space inside the duct or behind a poorly sealing flap as a nesting site from March through July. Wasps and hornets commonly build nests inside or immediately behind the vent cap from May through September. Both scenarios block airflow and create fire hazards.',
+  },
+  {
+    q: 'Is there a carbon monoxide risk from a blocked dryer vent?',
+    a: 'Only with gas dryers. Electric dryers exhaust moisture and heat — not combustion gases. A gas dryer vents both moisture and combustion byproducts including carbon monoxide. A severely blocked gas dryer vent can force CO back into the laundry room. This is rare because most gas dryers will shut down before producing dangerous CO levels, but if you have a gas dryer and suspect a blocked vent, do not run the dryer until the duct is cleared.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Signs Your Dryer Vent Needs Cleaning — Before It Causes a Fire",
+      "description": "8 warning signs your dryer vent is dangerously clogged. Includes DIY inspection steps, duct type guidance, and Charlotte-specific risks from birds and wasps in vent caps.",
+      "url": canonical,
+      "datePublished": "2026-05-17",
+      "dateModified": "2026-05-17",
+      "author": {
+        "@type": "Person",
+        "name": "HomeHeroes Technician",
+        "jobTitle": "Appliance Repair Technician"
+      },
+      "publisher": {
+        "@type": "LocalBusiness",
+        "name": "HomeHeroes Appliance Repair",
+        "telephone": "(704) 512-0111",
+        "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#quick-answer"]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": base },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${base}/blog` },
+        { "@type": "ListItem", "position": 3, "name": "Useful Info", "item": `${base}/blog/useful-info` },
+        { "@type": "ListItem", "position": 4, "name": "Signs Your Dryer Vent Needs Cleaning", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<SeoPageLayout
+  title="Signs Your Dryer Vent Needs Cleaning — Before It Causes a Fire | HomeHeroes"
+  description="8 warning signs your dryer vent is clogged. Dryer fires are the #1 appliance fire cause in the US. Learn what to look for and when to call a pro in Charlotte, NC."
+  canonical={canonical}
+  schema={schema}
+  ogType="article"
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Blog</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog/useful-info" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Useful Info</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Dryer Vent Cleaning</li>
+        </ol>
+      </nav>
+      <div style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px">Dryer Safety</div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        Signs Your Dryer Vent Needs<br />Cleaning — Before It Causes a Fire
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.65;margin:0;max-width:620px">
+        Dryer fires are the leading appliance fire cause in American homes. The good news: a clogged vent gives you clear warning signs before it becomes dangerous. Here is what to look for.
+      </p>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section style="padding:64px 24px 72px;background:#f8f9fc">
+    <div style="max-width:860px;margin:0 auto">
+
+      <!-- Quick Answer -->
+      <div id="quick-answer" style="border-left:4px solid #34d399;background:#f0fdf4;border-radius:0 10px 10px 0;padding:22px 26px;margin-bottom:40px">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#16a34a;margin-bottom:8px">Quick Answer</div>
+        <p style="font-size:1rem;color:#14532d;line-height:1.65;margin:0">
+          Clean your dryer vent <strong>at minimum once a year</strong>, every 6 months if your household does heavy laundry. The most common warning signs are clothes taking two cycles to dry, the dryer or laundry room becoming unusually hot, and visible lint at the exterior vent cap. If you have a gas dryer and a blocked vent, do not run the dryer until it is cleared.
+        </p>
+      </div>
+
+      <!-- The fire risk -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">The Fire Risk Is Real</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          According to the National Fire Protection Association (NFPA), dryers are responsible for approximately 2,900 home structure fires per year in the United States. The leading cause — cited in one-third of all dryer fires — is failure to clean the vent duct.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          Lint is highly combustible. Under normal operating conditions, it passes through the duct and exits at the exterior cap. When the duct is partially or fully blocked, lint accumulates inside. The exhaust air, which can reach 130–135°F, heats the lint mass. Given sufficient buildup, ignition can occur.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0">
+          This is not a theoretical risk. It is the reason the NFPA recommends annual vent cleaning in its home fire safety guidelines. Unlike most appliance failure scenarios, a blocked dryer vent does not just cost you money — it can cost you your home.
+        </p>
+      </div>
+
+      <!-- 8 warning signs -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">8 Warning Signs Your Dryer Vent Needs Cleaning</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 18px">
+          These signs appear in roughly ascending order of urgency. The first few are inconveniences. The last few are genuine safety warnings.
+        </p>
+        <ol style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:14px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Clothes take more than one cycle to dry.</strong> This is the earliest and most common sign. When a vent is partially blocked, hot moist air cannot exit efficiently. The dryer runs its normal cycle but the clothes come out still damp. Many homeowners run a second cycle rather than investigate — which accelerates the problem.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>The dryer exterior is hot to the touch during operation.</strong> The dryer casing itself should be warm, not hot. If you cannot comfortably hold your hand on the top panel or the door frame, restricted exhaust airflow is likely the cause.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>The laundry room feels humid during a cycle.</strong> Exhaust air that cannot fully exit the duct has to go somewhere. If it backs up into the room, you will feel humidity, see condensation on windows nearby, or notice a musty odor developing in the laundry room.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Clothes smell musty even after drying.</strong> When the dryer cannot fully evacuate moisture, clothes do not fully dry even when the cycle completes. The residual moisture creates the musty smell that homeowners often attribute to the washer.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>The exterior vent flap does not open during operation.</strong> Go outside when the dryer is running and check the vent cap. The flap should be pushed open by the airflow. If it barely moves or stays closed, the duct is severely restricted.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Visible lint at the exterior vent opening.</strong> A small amount of lint around the vent cap is normal. Heavy lint deposits on the cap, the surrounding wall, or the ground below are a clear indicator the vent has not been cleaned in too long.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>A burning smell during operation.</strong> This is urgent. A burning smell from the dryer during a cycle can indicate lint in the duct has begun heating to dangerous temperatures. Stop the dryer immediately, let it cool fully, and inspect or have the duct cleaned before using it again.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>It has been more than a year since the last cleaning.</strong> If you cannot remember the last time the vent was cleaned, it was too long ago regardless of symptoms. Many blocked vents do not produce obvious signs until they are severely restricted.
+          </li>
+        </ol>
+      </div>
+
+      <!-- DIY inspection -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">How to Inspect the Vent Yourself</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 16px">
+          A basic visual inspection takes 10 minutes and does not require any tools:
+        </p>
+        <ol style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">Pull the dryer a few inches away from the wall and look at where the duct connects to the back of the dryer. It should be a short, straight, rigid or semi-rigid metal duct — not crinkled foil flex duct (more on that below).</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">Disconnect the duct from the back of the dryer (it typically pulls off or has a clamp you can loosen by hand). Look inside with a flashlight. Heavy lint accumulation at the dryer connection point means the duct is likely worse further along.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">Go outside and check the exterior vent cap. The flap should open freely. Look for lint accumulation, bird nests, wasp nests, or any physical obstruction. Push the flap open by hand and look inside as far as you can with a flashlight.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">If either end looks heavily loaded, clean the entire duct run.</li>
+        </ol>
+      </div>
+
+      <!-- Duct types -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Duct Types: Why the Material Matters</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 16px">
+          Not all dryer duct is equally safe. Here is what you need to know:
+        </p>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:12px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Rigid smooth metal duct:</strong> The best option. Smooth interior walls mean lint slides through rather than accumulating on ridges. Easiest to clean and allows the longest duct runs.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Semi-rigid aluminum duct:</strong> Acceptable for short runs with minimal bends. The corrugated surface collects more lint than rigid duct, so it needs more frequent cleaning.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Flexible foil or plastic duct:</strong> Not acceptable for dryer exhaust and prohibited by most current building codes. The corrugated surface is a lint trap and the plastic variants can melt or ignite. If your dryer is connected to flexible foil or plastic duct, replace it with rigid or semi-rigid aluminum before your next use.
+          </li>
+        </ul>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:16px 0 0">
+          Regardless of duct type, the International Residential Code limits total dryer duct length to 25 feet with deductions for each 45- and 90-degree bend. A long duct run with multiple turns restricts airflow significantly and requires more frequent cleaning.
+        </p>
+      </div>
+
+      <!-- Charlotte-specific note -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Charlotte Homeowners: Check Your Vent Cap Each Spring</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          Charlotte's warm climate creates a specific hazard that homeowners in cooler regions rarely encounter: wildlife nesting in dryer vent caps. From late February through July, house sparrows and Carolina wrens commonly nest in the protected space behind dryer vent flaps. From May through September, paper wasps and yellow jackets build nests directly inside vent openings.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          A bird nest or wasp nest in a dryer vent cap is not a minor inconvenience — it is a complete blockage. The vent flap cannot open, exhaust air cannot exit, and the dryer operates in a closed loop, rapidly accumulating heat and lint-fire risk.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0">
+          Make it a habit to check the exterior vent cap every spring before peak nesting season. If you find a nest, remove it completely before using the dryer, and consider installing a vent cap with a pest guard — a fine screen that prevents nesting without restricting normal airflow.
+        </p>
+      </div>
+
+      <!-- DIY vs pro -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">DIY Cleaning vs. Professional Cleaning</h2>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>DIY is appropriate when:</strong> the duct run is short (under 15 feet), has no more than one or two bends, and you have cleaned it within the past year. A $25–$40 cleaning kit with rotary brush rods is effective in these conditions.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Call a professional when:</strong> the duct run is long (20+ feet), passes through walls or attic space, has multiple bends, has not been cleaned in over two years, or if you have discovered a bird or wasp nest. A professional cleaning uses a high-powered rotary brush system with vacuum extraction that reaches the entire duct length.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Always call a professional if:</strong> you have smelled burning during a dryer cycle. The duct should be inspected before any further use.</li>
+        </ul>
+      </div>
+
+      <!-- Internal links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:28px 32px;margin-bottom:28px">
+        <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 14px">Related Resources</h3>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px">
+          <li><a href="/charlotte-nc/dryer-not-heating" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Dryer Not Heating in Charlotte, NC</a></li>
+          <li><a href="/charlotte-nc/dryer-repair" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Dryer Repair — Charlotte Service Page</a></li>
+          <li><a href="/blog/useful-info/why-washer-shakes-violently" style="font-size:0.93rem;color:#b01616;font-weight:600;text-decoration:none">Why Your Washing Machine Shakes Violently</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Dryer Vent Cleaning — Common Questions" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Dryer Taking Two Cycles? Let's Fix That Today." />
+
+</SeoPageLayout>

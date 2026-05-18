@@ -1,0 +1,9 @@
+---
+import { getSymptom } from '../../data/symptoms';
+import { getCity } from '../../data/cities';
+import SymptomPageTemplate from '../../components/seo/SymptomPageTemplate.astro';
+
+const symptom = getSymptom('freezer-not-freezing')!;
+const city    = getCity('charlotte-nc')!;
+---
+<SymptomPageTemplate symptom={symptom} city={city} />

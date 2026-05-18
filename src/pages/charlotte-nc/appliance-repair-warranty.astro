@@ -1,0 +1,218 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../components/seo/FAQSection.astro';
+import SEOCTA from '../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/appliance-repair-warranty`;
+
+const faqs = [
+  {
+    q: 'How long is the HomeHeroes repair warranty?',
+    a: '90 days. Every repair we complete is covered by a 90-day warranty on both parts and labor. If the same problem returns within 90 days, we come back and fix it at no charge.',
+  },
+  {
+    q: 'What does the 90-day warranty cover?',
+    a: 'The warranty covers the specific failure we repaired: the part we replaced and the labor performed. If the replaced part fails again within 90 days, or if the repair itself causes a related issue, we return and fix it free.',
+  },
+  {
+    q: 'What is not covered by the warranty?',
+    a: 'The warranty does not cover new failures unrelated to the original repair (e.g., we fix your dryer heating element and a week later the drum bearing fails — that is a separate issue). It also does not cover damage from power surges, misuse, or failures in other components.',
+  },
+  {
+    q: 'How do I make a warranty claim?',
+    a: "Call us at (704) 512-0111 and reference your original service date. We'll verify the repair was within 90 days and schedule a return visit at no charge. Keep your original invoice for reference.",
+  },
+  {
+    q: 'Is your warranty better than a manufacturer warranty?',
+    a: "Manufacturer warranties cover defects in new appliances — not repairs performed by a third party. Our warranty specifically covers the work we do. For a repaired appliance, our 90-day warranty is the relevant protection — it's our commitment to standing behind our work.",
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: 'HomeHeroes Appliance Repair',
+      url: base,
+      telephone: '(704) 512-0111',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Charlotte',
+        addressRegion: 'NC',
+        postalCode: '28201',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'City', name: 'Charlotte' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Charlotte, NC', item: `${base}/charlotte-nc` },
+        { '@type': 'ListItem', position: 3, name: 'Appliance Repair Warranty', item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<SeoPageLayout
+  title="Our 90-Day Appliance Repair Warranty | HomeHeroes Charlotte, NC"
+  description="HomeHeroes backs every repair with a 90-day parts and labor warranty. Learn exactly what's covered, what's not, and how to file a warranty claim."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" aria-label="Home" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/charlotte-nc" aria-label="Charlotte NC appliance repair" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Charlotte, NC</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">90-Day Repair Warranty</li>
+        </ol>
+      </nav>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 16px;letter-spacing:-0.03em">Our 90-Day Appliance Repair Warranty</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:clamp(16px,2vw,18px);line-height:1.65;max-width:660px;margin:0 0 28px">Every HomeHeroes repair is backed by a 90-day parts and labor warranty. Here's exactly what that means — in plain language, no fine print surprises.</p>
+      <a href={phoneHref} aria-label="Call HomeHeroes to learn about our warranty" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:#b01616;color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answer -->
+  <section style="background:#fff;padding:40px 24px 0">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="background:#f0f4ff;border-left:4px solid #b01616;border-radius:10px;padding:24px 28px">
+        <p style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Quick Answer</p>
+        <p style="font-size:16px;color:#1a2a40;line-height:1.7;margin:0">
+          HomeHeroes provides a <strong>90-day parts and labor warranty</strong> on every repair. If the same issue recurs within 90 days, we return and fix it free of charge. The warranty covers the specific part replaced and the labor performed — not new, unrelated failures.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Warranty Terms -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">Warranty Terms — Plain Language</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+        <div style="background:#f0fff4;border:1px solid #a3d9b1;border-radius:12px;padding:28px">
+          <h3 style="font-size:16px;font-weight:800;color:#1a7a3c;margin:0 0 14px">What Is Covered</h3>
+          <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">The specific part(s) we replaced — if it fails again within 90 days, we replace it at no charge</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Labor performed during the original repair — if our workmanship caused a related issue, we fix it free</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Return trip costs — no service call fee for a warranty callback</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Any related damage directly caused by the original repair</li>
+          </ul>
+        </div>
+        <div style="background:#fff5f5;border:1px solid #f5a3a3;border-radius:12px;padding:28px">
+          <h3 style="font-size:16px;font-weight:800;color:#b01616;margin:0 0 14px">What Is Not Covered</h3>
+          <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">New failures unrelated to the original repair (a different component breaking)</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Damage from power surges, flooding, fire, or other external events</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Damage from misuse, overloading, or improper operation after the repair</li>
+            <li style="font-size:14px;color:#2a3c54;line-height:1.65">Repairs performed by a different technician or company after our service</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parts vs Labor -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Parts Warranty vs. Labor Warranty</h2>
+      <p style="font-size:15px;color:#4a5568;line-height:1.75;margin:0 0 28px">Both components of your repair are covered independently — and together.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:28px">
+          <h3 style="font-size:17px;font-weight:800;color:#060c19;margin:0 0 12px">Parts Warranty</h3>
+          <p style="font-size:14px;color:#2a3c54;line-height:1.7;margin:0 0 12px">Every replacement part we install carries our 90-day warranty. We use OEM (original equipment manufacturer) parts wherever possible. If a part we installed fails within 90 days under normal use, we supply and install a replacement at no charge.</p>
+          <p style="font-size:13px;color:#718096;margin:0">OEM parts also often carry the manufacturer's own warranty (varies by brand) — we'll tell you if applicable.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:28px">
+          <h3 style="font-size:17px;font-weight:800;color:#060c19;margin:0 0 12px">Labor Warranty</h3>
+          <p style="font-size:14px;color:#2a3c54;line-height:1.7;margin:0 0 12px">Our labor warranty means we stand behind how the repair was performed. If our workmanship caused the same problem to recur — wiring not properly secured, a connection that worked loose, improper reassembly — we return and fix it for free.</p>
+          <p style="font-size:13px;color:#718096;margin:0">No additional service call fee. No debate about whether it's our fault.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Claim -->
+  <section style="background:#fff;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">How to Make a Warranty Claim</h2>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        {[
+          { step: '01', title: 'Call Us', body: `Call ${phone} and let us know you're calling about a warranty callback. Have your original service date handy.` },
+          { step: '02', title: 'We Verify', body: 'We look up your service record to confirm the repair was within 90 days and that the issue is related to the original repair.' },
+          { step: '03', title: 'We Schedule', body: 'We schedule a return visit at your earliest convenience. There is no service call fee for a warranty return.' },
+          { step: '04', title: 'We Fix It', body: "Our technician returns, diagnoses the issue, and repairs it. If it's a parts failure, we replace the part. If it's a workmanship issue, we correct it. No charge." },
+        ].map(item => (
+          <div style="display:flex;gap:20px;align-items:flex-start;background:#f8f9fc;border-radius:12px;padding:24px">
+            <div style="font-size:28px;font-weight:900;color:#b01616;min-width:48px;line-height:1">{item.step}</div>
+            <div>
+              <h3 style="font-size:16px;font-weight:700;color:#060c19;margin:0 0 8px">{item.title}</h3>
+              <p style="font-size:14px;color:#4a5568;line-height:1.7;margin:0">{item.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- vs Manufacturer Warranty -->
+  <section style="background:#f8f9fc;padding:56px 24px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">How Our Warranty Compares to a Manufacturer Warranty</h2>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid rgba(30,50,80,0.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#060c19;color:#fff">
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Feature</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">HomeHeroes 90-Day Warranty</th>
+              <th style="text-align:left;padding:14px 20px;font-weight:700">Manufacturer Warranty</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['What it covers', 'Repair work we performed', 'Defects in new appliances'],
+              ['Duration', '90 days from repair date', '1 year (parts), varies by brand'],
+              ['Applies to used appliances', 'Yes', 'No — only original purchase'],
+              ['Return trip fee', 'None', 'Varies — often requires scheduling with manufacturer'],
+              ['Local service', 'Yes — same Charlotte technician', 'May be a different service provider'],
+              ['Claim process', 'One phone call', 'May require online registration + wait'],
+            ].map(([feature, ours, theirs], i) => (
+              <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                <td style="padding:13px 20px;font-weight:600;color:#060c19">{feature}</td>
+                <td style="padding:13px 20px;color:#1a7a3c;font-weight:600">{ours}</td>
+                <td style="padding:13px 20px;color:#4a5568">{theirs}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Warranty FAQs" />
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} heading="Every Repair Backed by Our 90-Day Warranty." />
+
+</SeoPageLayout>
