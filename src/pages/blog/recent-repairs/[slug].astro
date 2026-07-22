@@ -2,6 +2,7 @@
 import { repairCases, getRepairCase } from '../../../data/repairCases';
 import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
 import { phone, phoneHref } from '../../../data/siteData';
+import StickyMobileCTA from '../../../components/cro/StickyMobileCTA.astro';
 
 export function getStaticPaths() {
   return repairCases.map(c => ({ params: { slug: c.slug } }));
@@ -264,6 +265,9 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <!-- Sticky mobile CTA — repair logs get significant mobile traffic from emergency searchers -->
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Book Repair" />
 </SeoPageLayout>
 
 <style>

@@ -12,6 +12,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
     build: {
       cssMinify: true,
+      minify: 'esbuild',
+      // Keep small assets (SVGs, tiny images) inlined
+      assetsInlineLimit: 4096,
     },
   },
 });

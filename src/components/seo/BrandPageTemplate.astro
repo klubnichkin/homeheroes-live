@@ -6,6 +6,7 @@ import SEOHero from './SEOHero.astro';
 import FAQSection from './FAQSection.astro';
 import InternalLinks from './InternalLinks.astro';
 import SEOCTA from './SEOCTA.astro';
+import StickyMobileCTA from '../cro/StickyMobileCTA.astro';
 
 interface Props {
   brand: BrandPage;
@@ -17,6 +18,24 @@ interface Props {
 const { brand, city, relatedServiceLinks, relatedSymptomLinks } = Astro.props;
 
 const canonical = `https://tryhomeheroes.com/${city.slug}/${brand.slug}`;
+
+// City-specific supplemental FAQs so every city page gets correctly localised schema
+const cityBrandFaqs = [
+  {
+    q: `Does HomeHeroes repair ${brand.name} appliances in ${city.displayName}?`,
+    a: `Yes — HomeHeroes provides same-day ${brand.name} appliance repair in ${city.displayName}. Our technicians carry common ${brand.name} parts on the truck for same-day fixes. Call ${city.phone} to schedule.`,
+  },
+  {
+    q: `How much does ${brand.name} appliance repair cost in ${city.displayName}?`,
+    a: `${brand.name} appliance repair in ${city.displayName} typically ranges from $89–$350 for most repairs. ${brand.priceRange === 'Luxury' || brand.priceRange === 'Premium' ? `${brand.name} is a ${brand.priceRange.toLowerCase()} brand — parts tend to cost more than standard brands, typically adding $30–$100 to part costs. ` : ''}HomeHeroes charges an $89 diagnostic fee that is waived when you proceed with the repair. Call ${city.phone} for an upfront quote.`,
+  },
+  {
+    q: `Is it worth repairing a ${brand.name} appliance in ${city.displayName}?`,
+    a: `${brand.priceRange === 'Luxury' || brand.priceRange === 'Premium' ? `${brand.name} is a ${brand.priceRange.toLowerCase()} appliance brand — repair is almost always worth it because replacement costs significantly more. ` : ''}The 50% rule applies: if the repair cost exceeds 50% of a comparable new unit, replacement may make more sense. HomeHeroes will give you an honest assessment before any work begins.`,
+  },
+];
+
+const allBrandFaqsForSchema = [...cityBrandFaqs, ...brand.faq];
 
 const schema = {
   "@context": "https://schema.org",
@@ -37,7 +56,7 @@ const schema = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": brand.faq.map((f: { q: string; a: string }) => ({
+      "mainEntity": allBrandFaqsForSchema.map((f: { q: string; a: string }) => ({
         "@type": "Question",
         "name": f.q,
         "acceptedAnswer": { "@type": "Answer", "text": f.a }
@@ -179,9 +198,12 @@ const breadcrumbs = [
     </section>
   )}
 
-  <!-- 5. FAQ -->
-  <FAQSection faqs={brand.faq} heading={`${brand.name} Repair FAQs — ${city.name}`} />
+  <!-- 5. FAQ — city-supplemental questions first -->
+  <FAQSection faqs={allBrandFaqsForSchema} heading={`${brand.name} Repair FAQs — ${city.name}`} />
 
   <!-- 6. CTA -->
   <SEOCTA phone={city.phone} phoneHref={city.phoneHref} heading={`${brand.name} Appliance Down? We'll Be There Today.`} />
+
+  <!-- Sticky mobile bottom bar -->
+  <StickyMobileCTA phone={city.phone} phoneHref={city.phoneHref} />
 </SeoPageLayout>

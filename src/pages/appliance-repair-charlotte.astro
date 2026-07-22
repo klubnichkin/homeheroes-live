@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Services from '../components/Services.astro';
+import WhyUs from '../components/WhyUs.astro';
+import RealJobs from '../components/RealJobs.astro';
+import Process from '../components/Process.astro';
+import Reviews from '../components/Reviews.astro';
+import ServiceAreas from '../components/ServiceAreas.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import SymptomHighlights from '../components/SymptomHighlights.astro';
+import CitationProfiles from '../components/seo/CitationProfiles.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#8a0e0e" />
+
+  <!-- Primary SEO -->
+  <title>Appliance Repair Charlotte | HomeHeroes</title>
+  <meta name="description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
+  <link rel="canonical" href="https://tryhomeheroes.com/appliance-repair-charlotte" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tryhomeheroes.com/appliance-repair-charlotte" />
+  <meta property="og:site_name" content="HomeHeroes Appliance Repair" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Appliance Repair Charlotte | HomeHeroes" />
+  <meta property="og:description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
+  <meta property="og:image" content="https://tryhomeheroes.com/images/hero/hero-technician.webp" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="1000" />
+  <meta property="og:image:alt" content="HomeHeroes certified appliance repair technician in Charlotte, NC" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Appliance Repair Charlotte | HomeHeroes" />
+  <meta name="twitter:description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
+  <meta name="twitter:image" content="https://tryhomeheroes.com/images/hero/hero-technician.webp" />
+
+  <!-- Font preconnect first — establishes connection before any other resource hint -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- LCP image preload -->
+  <link rel="preload" as="image" href="/images/hero/hero-technician.webp" fetchpriority="high" />
+  <!-- Fonts — non-blocking async load -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" /></noscript>
+
+  <!-- LocalBusiness Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://tryhomeheroes.com/#business",
+      "name": "HomeHeroes Appliance Repair",
+      "description": "Same-day appliance repair in Charlotte, NC. Licensed, insured technicians serving refrigerators, washers, dryers, ovens, dishwashers and more across the greater Charlotte metro.",
+      "url": "https://tryhomeheroes.com",
+      "telephone": "+17045120111",
+      "priceRange": "$$",
+      "image": "https://tryhomeheroes.com/images/logo.webp",
+      "logo": "https://tryhomeheroes.com/images/logo.webp",
+      "foundingDate": "2014",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Charlotte",
+        "addressRegion": "NC",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.2271,
+        "longitude": -80.8431
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Charlotte", "sameAs": "https://en.wikipedia.org/wiki/Charlotte,_North_Carolina"},
+        {"@type": "City", "name": "Huntersville"},
+        {"@type": "City", "name": "Cornelius"},
+        {"@type": "City", "name": "Matthews"},
+        {"@type": "City", "name": "Mooresville"},
+        {"@type": "City", "name": "Concord"}
+      ],
+      "openingHours": ["Mo-Su 08:00-19:00"],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "200"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Appliance Repair Services",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Refrigerator Repair"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Washer Repair"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dryer Repair"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dishwasher Repair"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Oven & Range Repair"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Microwave Repair"}}
+        ]
+      }
+    }
+  </script>
+</head>
+<body>
+  <Header />
+  <main>
+    <Hero />
+    <TrustBar />
+    <Services />
+    <SymptomHighlights />
+    <WhyUs />
+    <RealJobs />
+    <Process />
+    <Reviews />
+    <ServiceAreas />
+    <CitationProfiles />
+    <ContactCTA />
+  </main>
+  <Footer />
+</body>
+</html>

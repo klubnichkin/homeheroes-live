@@ -1,17 +1,53 @@
 ---
 import '../styles/global.css';
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import TrustBar from '../components/TrustBar.astro';
-import Services from '../components/Services.astro';
-import WhyUs from '../components/WhyUs.astro';
-import RealJobs from '../components/RealJobs.astro';
-import Process from '../components/Process.astro';
-import Reviews from '../components/Reviews.astro';
-import ServiceAreas from '../components/ServiceAreas.astro';
 import ContactCTA from '../components/ContactCTA.astro';
-import SymptomHighlights from '../components/SymptomHighlights.astro';
 import Footer from '../components/Footer.astro';
+import CitationProfiles from '../components/seo/CitationProfiles.astro';
+import { phone, phoneHref } from '../data/siteData';
+
+const services = [
+  {
+    title: 'Appliance Repair',
+    desc: 'Refrigerators, washers, dryers, ovens, dishwashers, microwaves and more. Same-day service.',
+    href: '/appliance-repair-charlotte',
+    cta: 'View Service',
+    live: true,
+    icon: `<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 7h.01M8 12h8M8 16h5"/></svg>`,
+  },
+  {
+    title: 'Plumbing',
+    desc: 'Clogged drains, leaking pipes, water heaters, toilet repairs, and emergency plumbing.',
+    href: '/plumbing-charlotte',
+    cta: 'View Service',
+    live: true,
+    icon: `<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 2v6m0 0C10.5 10 8 12 8 15a4 4 0 008 0c0-3-2.5-5-4-7z"/></svg>`,
+  },
+  {
+    title: 'HVAC',
+    desc: 'AC tune-ups, heating repair, and seasonal maintenance across the Charlotte metro.',
+    href: '/services/hvac',
+    cta: 'View Service',
+    live: true,
+    icon: `<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3m-4.2-6.8-2.1 2.1M8.1 15.9l-2.1 2.1m0-12 2.1 2.1M15.9 15.9l2.1 2.1"/><circle cx="12" cy="12" r="3"/></svg>`,
+  },
+  {
+    title: 'Handyman',
+    desc: 'Drywall, doors, TV mounting, assembly, shelves, rental turnover repairs, and general home fixes.',
+    href: '/charlotte-nc/handyman',
+    cta: 'View Service',
+    live: true,
+    icon: `<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>`,
+  },
+  {
+    title: 'Electrical',
+    desc: 'Outlets, switches, panel inspections, and electrical troubleshooting by licensed pros.',
+    href: '/services/electrical',
+    cta: 'View Service',
+    live: true,
+    icon: `<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+  },
+];
 ---
 
 <!doctype html>
@@ -23,49 +59,57 @@ import Footer from '../components/Footer.astro';
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#8a0e0e" />
+  <meta name="theme-color" content="#060c19" />
 
   <!-- Primary SEO -->
-  <title>HomeHeroes Appliance Repair | Same-Day Appliance Repair in Charlotte, NC</title>
-  <meta name="description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
+  <title>HomeHeroes | One Stop Home Maintenance Services in Charlotte, NC</title>
+  <meta name="description" content="HomeHeroes is Charlotte's one-stop home maintenance company. Appliance repair, plumbing, HVAC, handyman, and electrical — licensed, insured, and same-day across the Charlotte metro." />
   <link rel="canonical" href="https://tryhomeheroes.com/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tryhomeheroes.com/" />
-  <meta property="og:site_name" content="HomeHeroes Appliance Repair" />
+  <meta property="og:site_name" content="HomeHeroes" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="HomeHeroes Appliance Repair | Same-Day Appliance Repair in Charlotte, NC" />
-  <meta property="og:description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
-  <meta property="og:image" content="https://tryhomeheroes.com/images/hero/hero-technician.webp" />
-  <meta property="og:image:width" content="1000" />
-  <meta property="og:image:height" content="1000" />
-  <meta property="og:image:alt" content="HomeHeroes certified appliance repair technician in Charlotte, NC" />
+  <meta property="og:title" content="HomeHeroes | One Stop Home Maintenance Services in Charlotte, NC" />
+  <meta property="og:description" content="HomeHeroes is Charlotte's one-stop home maintenance company. Appliance repair, plumbing, HVAC, handyman, and electrical." />
+  <meta property="og:image" content="https://tryhomeheroes.com/images/hero/hh-hero-charlotte@2x.jpg" />
+  <meta property="og:image:width" content="3200" />
+  <meta property="og:image:height" content="1966" />
+  <meta property="og:image:alt" content="HomeHeroes home maintenance team in front of the Charlotte, NC skyline" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="HomeHeroes Appliance Repair | Same-Day Appliance Repair in Charlotte, NC" />
-  <meta name="twitter:description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
-  <meta name="twitter:image" content="https://tryhomeheroes.com/images/hero/hero-technician.webp" />
+  <meta name="twitter:title" content="HomeHeroes | One Stop Home Maintenance Services in Charlotte, NC" />
+  <meta name="twitter:description" content="Appliance repair, plumbing, HVAC, handyman, and electrical. One trusted team in Charlotte." />
+  <meta name="twitter:image" content="https://tryhomeheroes.com/images/hero/hh-hero-charlotte@2x.jpg" />
 
-  <!-- Font preconnect first — establishes connection before any other resource hint -->
+  <!-- Font preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- LCP image preload -->
-  <link rel="preload" as="image" href="/images/hero/hero-technician.webp" fetchpriority="high" />
-  <!-- Fonts — non-blocking async load -->
+  <!-- Preload hero — srcset matches <img> exactly so browser fetches right breakpoint -->
+  <link rel="preload" as="image"
+        href="/images/hero/hh-hero-charlotte-1200.webp"
+        imagesrcset="
+          /images/hero/hh-hero-charlotte-480.webp   480w,
+          /images/hero/hh-hero-charlotte-768.webp   768w,
+          /images/hero/hh-hero-charlotte-1200.webp 1200w,
+          /images/hero/hh-hero-charlotte-1920.webp 1920w
+        "
+        imagesizes="(max-width:480px) 480px, (max-width:768px) 768px, (max-width:1200px) 1200px, 1920px"
+        type="image/webp"
+        fetchpriority="high" />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" /></noscript>
 
-  <!-- LocalBusiness Structured Data -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "HomeAndConstructionBusiness",
       "@id": "https://tryhomeheroes.com/#business",
-      "name": "HomeHeroes Appliance Repair",
-      "description": "Same-day appliance repair in Charlotte, NC. Licensed, insured technicians serving refrigerators, washers, dryers, ovens, dishwashers and more across the greater Charlotte metro.",
+      "name": "HomeHeroes",
+      "description": "One-stop home maintenance services in Charlotte, NC. Appliance repair, plumbing, HVAC, handyman, and electrical.",
       "url": "https://tryhomeheroes.com",
       "telephone": "+17045120111",
       "priceRange": "$$",
@@ -91,40 +135,319 @@ import Footer from '../components/Footer.astro';
         {"@type": "City", "name": "Mooresville"},
         {"@type": "City", "name": "Concord"}
       ],
-      "openingHours": ["Mo-Su 08:00-19:00"],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "200"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Appliance Repair Services",
-        "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Refrigerator Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Washer Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dryer Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dishwasher Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Oven & Range Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Microwave Repair"}}
-        ]
-      }
+      "openingHours": ["Mo-Su 08:00-19:00"]
     }
   </script>
+
+  <style>
+    /* ── Hero image section ── */
+    .hero-image-section {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Background image — <picture> + <img> for browser-native high-quality scaling */
+    .hero-bg-picture {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      line-height: 0;
+    }
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* 58% — landscape image: team in lower 40%, warm sky fills upper frame */
+      object-position: center 58%;
+      /* Let the browser use its highest-quality bicubic/Lanczos algorithm */
+      image-rendering: auto;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      /* Subpixel rendering on retina */
+      transform: translateZ(0);
+    }
+
+    /*
+      Layer 1 — Luminosity overlay (~35-45% effective)
+      New image has warm amber sky — keep upper layers light so golden tones survive.
+      Darken upper-left text zone for readability; stay gentle over skyline + team.
+      Bottom vignette anchors the composition.
+    */
+    .hero-ov-lum {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(4,8,18,0.60) 0%,    /* top — enough for eyebrow/h1 text */
+        rgba(4,8,18,0.38) 22%,   /* upper skyline — preserve golden tones */
+        rgba(4,8,18,0.22) 45%,   /* mid skyline + stadium */
+        rgba(4,8,18,0.14) 62%,   /* transition to team */
+        rgba(4,8,18,0.12) 72%,   /* team zone — minimal so uniforms read clearly */
+        rgba(4,8,18,0.30) 88%,   /* lower fade */
+        rgba(4,8,18,0.50) 100%   /* bottom anchor */
+      );
+      z-index: 1;
+    }
+
+    /*
+      Layer 2 — Warm left-side gradient for text legibility
+      New image is already warm so no amber boost needed.
+      Instead: pull left edge slightly darker so white text has clean backdrop.
+    */
+    .hero-ov-warm {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(4,8,18,0.32) 0%,    /* left text zone — extra contrast for h1 */
+        rgba(4,8,18,0.10) 35%,
+        transparent 60%,
+        transparent 100%
+      );
+      z-index: 2;
+    }
+
+    /*
+      Layer 3 — Subtle radial vignette
+      Focuses eye toward team + skyline centre; edges fall back gently.
+    */
+    .hero-ov-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 85% 70% at 55% 55%, transparent 40%, rgba(4,8,18,0.28) 100%);
+      z-index: 3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px 96px;
+    }
+
+    /* ── Service cards on homepage ── */
+    .home-svc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .home-svc-card {
+      background: #fff;
+      border: 1px solid rgba(30,50,80,0.1);
+      border-radius: 16px;
+      padding: 24px 22px;
+      transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+    }
+    .home-svc-card.live {
+      border-color: rgba(176,22,22,0.18);
+    }
+    .home-svc-card.live:hover {
+      box-shadow: 0 8px 32px rgba(6,12,25,0.1);
+      transform: translateY(-2px);
+      border-color: rgba(176,22,22,0.32);
+    }
+    .home-svc-card.soon {
+      opacity: 0.72;
+    }
+
+    /* ── Why section grid ── */
+    .why-grid-home {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .hero-image-section { min-height: 100svh; }
+      .hero-content { padding: 60px 20px 80px; }
+      .home-svc-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .why-grid-home { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px) {
+      .home-svc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <Header />
   <main>
-    <Hero />
-    <TrustBar />
-    <Services />
-    <SymptomHighlights />
-    <WhyUs />
-    <RealJobs />
-    <Process />
-    <Reviews />
-    <ServiceAreas />
+
+    <!-- ── CINEMATIC HERO ─────────────────────────── -->
+    <section class="hero-image-section" aria-label="Hero">
+      <!-- Background image — responsive WebP srcset, 4 breakpoints -->
+      <picture class="hero-bg-picture">
+        <source
+          type="image/webp"
+          srcset="
+            /images/hero/hh-hero-charlotte-480.webp   480w,
+            /images/hero/hh-hero-charlotte-768.webp   768w,
+            /images/hero/hh-hero-charlotte-1200.webp 1200w,
+            /images/hero/hh-hero-charlotte-1920.webp 1920w
+          "
+          sizes="(max-width:480px) 480px, (max-width:768px) 768px, (max-width:1200px) 1200px, 1920px"
+        />
+        <img
+          src="/images/hero/hh-hero-charlotte-1200.webp"
+          alt="HomeHeroes technician team standing in formation in front of the Charlotte, NC skyline"
+          class="hero-bg-img"
+          width="1920"
+          height="1180"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+      <!-- Layer 1: luminosity — opens up team zone, mutes skyline -->
+      <div class="hero-ov-lum" aria-hidden="true"></div>
+      <!-- Layer 2: warm cast on team area -->
+      <div class="hero-ov-warm" aria-hidden="true"></div>
+      <!-- Layer 3: side vignette + radial depth -->
+      <div class="hero-ov-vignette" aria-hidden="true"></div>
+
+      <!-- Text block — left-aligned, max ~50% width on desktop so right frame stays open -->
+      <div class="hero-content">
+        <!-- Eyebrow -->
+        <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:24px;padding:5px 14px 5px 8px;border-radius:100px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);backdrop-filter:blur(8px)">
+          <img src="/images/logo.webp" alt="" width="20" height="20" style="border-radius:4px;object-fit:cover" aria-hidden="true" />
+          <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.75)">Charlotte's One-Stop Home Maintenance Team</span>
+        </div>
+
+        <!-- H1 — left-aligned, constrained width to preserve visual space for team on right -->
+        <h1 style="font-size:clamp(2.6rem,6vw,4.4rem);font-weight:900;line-height:1.02;letter-spacing:-0.04em;color:#fff;margin:0 0 20px;max-width:620px">
+          One Call.<br />Every Home Problem Solved.
+        </h1>
+
+        <!-- Subheadline -->
+        <p style="font-size:clamp(0.97rem,1.8vw,1.1rem);line-height:1.75;color:rgba(255,255,255,0.72);font-weight:400;max-width:480px;margin:0 0 36px">
+          Appliance repair, plumbing, HVAC, handyman, and electrical — fast dispatch, trusted local teams, and one number to call across Charlotte.
+        </p>
+
+        <!-- CTA buttons -->
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px">
+          <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:15px 36px;box-shadow:0 4px 20px rgba(176,22,22,0.4)">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call {phone}
+          </a>
+          <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;font-size:0.95rem;font-weight:700;padding:15px 30px;border-radius:10px;text-decoration:none;color:#fff;background:rgba(255,255,255,0.10);border:1.5px solid rgba(255,255,255,0.22);backdrop-filter:blur(8px);transition:background 0.15s,border-color 0.15s" onmouseover="this.style.background='rgba(255,255,255,0.16)'" onmouseout="this.style.background='rgba(255,255,255,0.10)'">
+            Book Online — Free
+          </a>
+        </div>
+
+        <!-- Trust indicators -->
+        <div style="display:flex;flex-wrap:wrap;gap:10px 22px">
+          {['Same-Day Scheduling', 'Licensed & Insured', 'Local Charlotte Teams', 'Fast Dispatch Support'].map(t => (
+            <div style="display:flex;align-items:center;gap:7px">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="9" fill="#ffffff" opacity="0.13"/>
+                <path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span style="font-size:0.77rem;font-weight:600;color:rgba(255,255,255,0.72)">{t}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICES GRID ─────────────────────────── -->
+    <section id="services" class="bg-white-section" style="padding:80px 24px 88px">
+      <div style="max-width:1200px;margin:0 auto">
+
+        <div style="text-align:center;margin-bottom:52px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Our Services</div>
+          <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;letter-spacing:-0.04em;color:#060c19;margin:0 0 12px">
+            Every Home Service. One Team.
+          </h2>
+          <p style="font-size:0.95rem;color:#4a5e74;max-width:480px;margin:0 auto;line-height:1.7">
+            One call connects you to all the trades — no chasing multiple contractors.
+          </p>
+        </div>
+
+        <div class="home-svc-grid">
+          {services.map(svc => (
+            <div class={`home-svc-card ${svc.live ? 'live' : 'soon'}`}>
+              <!-- Icon + badge row -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                <div style={`width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;${svc.live ? 'background:rgba(176,22,22,0.08);color:#b01616' : 'background:#f0f2f5;color:#9aaabe'}`}>
+                  <Fragment set:html={svc.icon} />
+                </div>
+                {svc.live
+                  ? <span style="font-size:0.6rem;font-weight:800;color:#fff;background:#b01616;padding:3px 9px;border-radius:100px;letter-spacing:0.06em">AVAILABLE</span>
+                  : <span style="font-size:0.6rem;font-weight:800;color:#9aaabe;background:#eef1f6;padding:3px 9px;border-radius:100px;letter-spacing:0.06em">COMING SOON</span>
+                }
+              </div>
+
+              <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.01em">{svc.title}</h3>
+              <p style="font-size:0.82rem;color:#4a5e74;line-height:1.65;margin:0 0 18px;font-weight:400">{svc.desc}</p>
+
+              <div style="border-top:1px solid rgba(30,50,80,0.07);padding-top:14px">
+                {svc.live
+                  ? <a href={svc.href!} style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;font-weight:800;color:#b01616;text-decoration:none">
+                      {svc.cta}
+                      <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                  : <span style="font-size:0.82rem;font-weight:700;color:#9aaabe">{svc.cta}</span>
+                }
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── WHY HOMHEROES ─────────────────────────── -->
+    <section id="why-us" class="bg-pearl-section" style="padding:80px 24px 88px;border-top:1px solid rgba(30,50,80,0.08)">
+      <div style="max-width:1000px;margin:0 auto">
+
+        <div style="text-align:center;margin-bottom:52px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Why HomeHeroes</div>
+          <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;letter-spacing:-0.04em;color:#060c19;margin:0 0 12px">
+            One Point of Contact. Every Trade.
+          </h2>
+          <p style="font-size:0.95rem;color:#4a5e74;max-width:500px;margin:0 auto;line-height:1.7">
+            Most homeowners manage five different contractors. We've built one trusted team so you don't have to.
+          </p>
+        </div>
+
+        <div class="why-grid-home">
+          {[
+            { t: 'One Number for Every Trade',    d: 'Call once and reach appliance, plumbing, HVAC, handyman, and electrical — no more juggling five different contractors.' },
+            { t: 'Same-Day Dispatch',             d: 'Call by noon and a tech is at your door today. Fast dispatch across Charlotte and all surrounding areas.'              },
+            { t: 'Upfront Flat-Rate Pricing',     d: 'You see the exact price before any work begins. The quote we give is the bill you pay. No surprises.'                },
+            { t: 'Licensed & Insured',            d: 'NC licensed (#72041), fully insured, background-checked technicians on every call for every trade.'                  },
+            { t: '90-Day Warranty',               d: 'Every repair is backed by a 90-day parts-and-labor guarantee. We stand behind our work, period.'                    },
+            { t: 'Local Charlotte Team',          d: "We're not a franchise or call center. We're your Charlotte neighbors — same crew, same standards, since 2014."        },
+          ].map(({ t, d }) => (
+            <div style="display:flex;gap:14px;padding:22px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+              <div style="margin-top:3px;width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                <svg width="8" height="8" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.9rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:-0.01em">{t}</div>
+                <div style="font-size:0.81rem;color:#4a5e74;line-height:1.65;font-weight:400">{d}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── THIRD-PARTY CITATIONS ─────────────────── -->
+    <CitationProfiles />
+
+    <!-- ── CTA ───────────────────────────────────── -->
     <ContactCTA />
+
   </main>
   <Footer />
 </body>

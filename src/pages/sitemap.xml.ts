@@ -10,10 +10,15 @@ export const GET: APIRoute = () => {
   const base = 'https://tryhomeheroes.com';
 
   const entries: { loc: string; lastmod: string; priority: string; changefreq: string }[] = [
-    { loc: `${base}/`, lastmod: '2026-05-17', priority: '1.0', changefreq: 'weekly' },
-    { loc: `${base}/blog`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'weekly' },
-    { loc: `${base}/privacy`, lastmod: '2026-05-17', priority: '0.3', changefreq: 'yearly' },
-    { loc: `${base}/terms`, lastmod: '2026-05-17', priority: '0.3', changefreq: 'yearly' },
+    { loc: `${base}/`,                            lastmod: '2026-05-19', priority: '1.0', changefreq: 'weekly'  },
+    { loc: `${base}/appliance-repair-charlotte`,  lastmod: '2026-05-19', priority: '0.95', changefreq: 'monthly' },
+    { loc: `${base}/plumbing-charlotte`,          lastmod: '2026-05-19', priority: '0.95', changefreq: 'monthly' },
+    { loc: `${base}/charlotte-nc/handyman`,       lastmod: '2026-05-31', priority: '0.95', changefreq: 'monthly' },
+    { loc: `${base}/services/hvac`,               lastmod: '2026-06-01', priority: '0.95', changefreq: 'monthly' },
+    { loc: `${base}/services/electrical`,         lastmod: '2026-06-03', priority: '0.95', changefreq: 'monthly' },
+    { loc: `${base}/blog`,                        lastmod: '2026-05-17', priority: '0.8',  changefreq: 'weekly'  },
+    { loc: `${base}/privacy`,                     lastmod: '2026-05-17', priority: '0.3',  changefreq: 'yearly'  },
+    { loc: `${base}/terms`,                       lastmod: '2026-05-17', priority: '0.3',  changefreq: 'yearly'  },
   ];
 
   for (const city of cities) {
@@ -69,6 +74,11 @@ export const GET: APIRoute = () => {
     'signs-dryer-vent-needs-cleaning',
     'why-washer-shakes-violently',
     'how-to-prevent-ice-maker-failure',
+    'appliance-maintenance-charlotte-humidity',
+    'power-outage-appliance-protection',
+    'summer-refrigerator-tips',
+    'how-humidity-affects-appliances-nc',
+    'hvac-appliance-electrical-load',
   ];
   for (const slug of usefulInfoSlugs) {
     entries.push({ loc: `${base}/blog/useful-info/${slug}`, lastmod: '2026-05-17', priority: '0.75', changefreq: 'monthly' });

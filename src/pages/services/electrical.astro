@@ -1,0 +1,1150 @@
+---
+import '../../styles/global.css';
+import Header from '../../components/Header.astro';
+import ServiceAreas from '../../components/ServiceAreas.astro';
+import Footer from '../../components/Footer.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const problems = [
+  {
+    title: 'Breakers Keep Tripping',
+    detail: 'A breaker that trips repeatedly is telling you something — overloaded circuit, short circuit, or a ground fault. We find the root cause and fix it, not just reset the breaker.',
+    icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  },
+  {
+    title: 'Outlet Stopped Working',
+    detail: 'Dead outlets can be a tripped GFCI upstream, a loose wire connection, a failed receptacle, or a wiring fault. We trace it to the source and restore power safely.',
+    icon: 'M5.636 5.636a9 9 0 1012.728 0M12 3v9',
+  },
+  {
+    title: 'Flickering Lights',
+    detail: 'Lights that flicker or dim unexpectedly can indicate loose wiring, a failing fixture, an overloaded circuit, or voltage fluctuation from the utility. Some causes are fire hazards.',
+    icon: 'M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z',
+  },
+  {
+    title: 'Burning Smell from Outlet',
+    detail: 'A burning smell at an outlet or switch means arcing or overheating — a potential fire hazard. Stop using the outlet immediately, switch it off at the breaker, and call us.',
+    icon: 'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z',
+  },
+  {
+    title: 'Light Switch Not Working',
+    detail: 'A switch that doesn\'t respond, feels warm, sparks when toggled, or controls nothing is a wiring or device issue. Fast swap or wiring repair — most done same visit.',
+    icon: 'M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75',
+  },
+  {
+    title: 'Partial Power Loss',
+    detail: 'Half your home losing power while the other half works often points to a failed leg in the service panel — a utility or panel issue that needs prompt attention to avoid appliance damage.',
+    icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  },
+  {
+    title: 'Frequent Power Surges',
+    detail: 'Repeated surges damage appliances and electronics over time. Caused by wiring problems, faulty devices on the circuit, or utility fluctuations. We diagnose and protect your home.',
+    icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  },
+  {
+    title: 'Dead Outlet',
+    detail: 'An outlet with no power at all is usually a tripped GFCI somewhere else on the circuit, a tripped breaker, or a failed device. We restore it quickly — same-visit in most cases.',
+    icon: 'M5.636 5.636a9 9 0 1012.728 0M12 3v9',
+  },
+  {
+    title: 'Ceiling Fan Not Working',
+    detail: 'Fan won\'t spin, runs only on one speed, wobbles, or hums but doesn\'t move. Capacitor failure, wiring fault, bad switch, or loose mounting — diagnosed and fixed same day.',
+    icon: 'M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z',
+  },
+  {
+    title: 'Electrical Panel Issues',
+    detail: 'Warm panel, buzzing sounds, breakers that won\'t reset, or a panel over 20 years old are warning signs. We assess, repair, or recommend an upgrade based on what we actually find.',
+    icon: 'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 15V5.25m19.5 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 7.409a2.25 2.25 0 01-1.07-1.916V5.25',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How much does an electrician cost in Charlotte?',
+    a: 'Most residential electrical repairs in Charlotte range from $89–$550 depending on the scope. HomeHeroes charges a $79 service call fee applied toward your repair when you approve the work. Outlet replacements typically run $89–$175. GFCI installation runs $100–$200. Breaker replacement starts at $125. Panel work is quoted after a full assessment. We give you an upfront price before touching anything — no hourly surprises.',
+  },
+  {
+    q: 'Why does my breaker keep tripping?',
+    a: 'A breaker trips for a reason — it\'s protecting your home. The three most common causes are: (1) an overloaded circuit with too many devices drawing power, (2) a short circuit from a wiring fault or damaged appliance, or (3) a ground fault where current is flowing somewhere it shouldn\'t. Resetting it without finding the cause risks a fire. We diagnose the underlying problem before recommending a fix.',
+  },
+  {
+    q: 'Is a flickering light dangerous?',
+    a: 'It depends on the cause. A single bulb flickering is usually a loose bulb or a failing fixture — low risk. Multiple lights flickering on the same circuit, or flickering throughout the home, can indicate loose wiring connections or a neutral problem — which can cause arcing and is a fire hazard. If more than one light is affected, call us to assess.',
+  },
+  {
+    q: 'Can you replace outlets and switches?',
+    a: 'Yes. We replace standard outlets, GFCI outlets, AFCI outlets, USB outlets, dimmer switches, three-way switches, and smart switches. Most outlet and switch replacements are completed in a single visit. We also install new outlets in locations that don\'t have one — including outdoor outlets, garage outlets, and dedicated circuits for appliances.',
+  },
+  {
+    q: 'Do I need a panel upgrade?',
+    a: 'You may need one if: your panel is 20+ years old, it\'s a recalled brand (Federal Pacific, Zinsco), you\'re frequently tripping breakers with normal usage, you\'re adding an EV charger or major appliance, or you want to add circuits and the panel is full. We assess your current panel honestly and tell you if an upgrade is needed — or if a repair will solve the problem.',
+  },
+  {
+    q: 'How long do electrical repairs take?',
+    a: 'Most common repairs — outlet replacements, switch swaps, GFCI installation, breaker replacement, and fixture work — are completed in 1–3 hours on the first visit. Panel work typically takes half a day to a full day. We give you a time estimate when we quote the job so you can plan accordingly.',
+  },
+  {
+    q: 'Do you offer emergency electrical service?',
+    a: 'Yes. If you have a burning smell from an outlet, sparking wires, a partial power loss, or any electrical issue that feels unsafe — call (704) 512-0111 immediately. HomeHeroes provides emergency electrical service across Charlotte and the surrounding metro seven days a week. For active hazards: switch off the affected circuit or main breaker while you wait.',
+  },
+  {
+    q: 'Can you install ceiling fans and light fixtures?',
+    a: 'Yes. We install ceiling fans and light fixtures in rooms that already have an electrical box, and we can add a new box and wiring where there isn\'t one. Ceiling fan installation with existing wiring typically takes 1–2 hours. We handle all fan sizes, remote kits, and smart fan switches. Recessed lighting, pendant lights, chandeliers, and outdoor fixtures all handled.',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#060c19" />
+
+  <!-- Primary SEO -->
+  <title>Electrician Charlotte NC | Electrical Repair &amp; Installation | HomeHeroes</title>
+  <meta name="description" content="Reliable electricians in Charlotte NC. Electrical repairs, troubleshooting, panel upgrades, outlet replacement, lighting installation, and emergency electrical services. Call (704) 512-0111." />
+  <link rel="canonical" href="https://tryhomeheroes.com/services/electrical" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tryhomeheroes.com/services/electrical" />
+  <meta property="og:site_name" content="HomeHeroes Home Services" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Electrician Charlotte NC | Electrical Repair &amp; Installation | HomeHeroes" />
+  <meta property="og:description" content="Reliable electricians in Charlotte NC. Electrical repairs, panel upgrades, outlet replacement, lighting installation, emergency service. $79 service call applied toward repair." />
+  <meta property="og:image" content="https://tryhomeheroes.com/images/logo.webp" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="HomeHeroes electrical services in Charlotte, NC" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Electrician Charlotte NC | HomeHeroes" />
+  <meta name="twitter:description" content="Reliable electricians in Charlotte. Electrical repairs, panel upgrades, outlet replacement, lighting. Call (704) 512-0111." />
+  <meta name="twitter:image" content="https://tryhomeheroes.com/images/logo.webp" />
+
+  <!-- Font preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" /></noscript>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["LocalBusiness", "Electrician"],
+          "@id": "https://tryhomeheroes.com/#business",
+          "name": "HomeHeroes Home Services",
+          "url": "https://tryhomeheroes.com",
+          "telephone": "+17045120111",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Charlotte",
+            "addressRegion": "NC",
+            "addressCountry": "US"
+          },
+          "areaServed": {"@type": "City", "name": "Charlotte", "addressRegion": "NC"},
+          "openingHours": "Mo-Su 08:00-19:00",
+          "priceRange": "$$"
+        },
+        {
+          "@type": "Service",
+          "name": "Electrical Repair Services",
+          "serviceType": "Electrical Repair",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://tryhomeheroes.com/#business",
+            "name": "HomeHeroes Home Services",
+            "telephone": "+17045120111"
+          },
+          "areaServed": {"@type": "City", "name": "Charlotte", "addressRegion": "NC"},
+          "url": "https://tryhomeheroes.com/services/electrical",
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "79",
+              "maxPrice": "550",
+              "priceCurrency": "USD"
+            }
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Electrical Services",
+            "itemListElement": [
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electrical Repairs"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electrical Troubleshooting"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Outlet & Switch Replacement"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Light Fixture Installation"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ceiling Fan Installation"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Circuit Breaker Repair"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electrical Panel Upgrade"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Emergency Electrical Service"}}
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does an electrician cost in Charlotte?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Most residential electrical repairs in Charlotte range from $89–$550. HomeHeroes charges a $79 service call fee applied toward your repair. Outlet replacements typically run $89–$175. Breaker replacement starts at $125. We give you an upfront price before touching anything."}
+            },
+            {
+              "@type": "Question",
+              "name": "Why does my breaker keep tripping?",
+              "acceptedAnswer": {"@type": "Answer", "text": "A breaker trips for a reason. The three most common causes are: (1) an overloaded circuit, (2) a short circuit from a wiring fault or damaged appliance, or (3) a ground fault where current is flowing somewhere it shouldn't. Resetting without finding the cause risks a fire. We diagnose the underlying problem before recommending a fix."}
+            },
+            {
+              "@type": "Question",
+              "name": "Do you offer emergency electrical service?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. If you have a burning smell, sparking wires, partial power loss, or any issue that feels unsafe, call (704) 512-0111 immediately. HomeHeroes provides emergency electrical service across Charlotte and the surrounding metro seven days a week."}
+            },
+            {
+              "@type": "Question",
+              "name": "Can you install ceiling fans and light fixtures?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. We install ceiling fans and light fixtures in rooms that already have an electrical box, and we can add a new box and wiring where there isn't one. We handle all fan sizes, remote kits, smart fan switches, recessed lighting, pendants, chandeliers, and outdoor fixtures."}
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryhomeheroes.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Electrician Charlotte NC", "item": "https://tryhomeheroes.com/services/electrical"}
+          ]
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <Header />
+
+  <!-- Cross-service navigation strip -->
+  <div style="background:#080f1e;border-bottom:1px solid rgba(255,255,255,0.07);padding:10px 24px">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <a href="/" style="display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+        <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        All Services
+      </a>
+      <span style="color:rgba(255,255,255,0.2);font-size:11px">›</span>
+      <span style="font-size:0.72rem;font-weight:700;color:#dc2626">Electrical</span>
+      <span style="color:rgba(255,255,255,0.2);font-size:11px;margin-left:8px">·</span>
+      <a href="/appliance-repair-charlotte" style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;margin-left:8px;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Appliance Repair →</a>
+      <a href="/plumbing-charlotte" style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Plumbing →</a>
+      <a href="/services/hvac" style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">HVAC →</a>
+      <a href="/charlotte-nc/handyman" style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Handyman →</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section style="background:#080f1e;padding:60px 24px 0;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-80px;top:-80px;width:420px;height:420px;border-radius:50%;opacity:0.04;filter:blur(80px);background:#dc2626;pointer-events:none" aria-hidden="true"></div>
+      <div style="max-width:1280px;margin:0 auto">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" style="margin-bottom:28px">
+          <ol style="display:flex;align-items:center;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+            <li><a href="/" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none">Home</a></li>
+            <li style="color:rgba(255,255,255,0.25);font-size:13px">›</li>
+            <li><span style="color:rgba(255,255,255,0.75);font-size:13px">Electrician Charlotte NC</span></li>
+          </ol>
+        </nav>
+
+        <div class="hero-grid" style="align-items:center;gap:0">
+
+          <!-- LEFT: Copy -->
+          <div class="hero-copy-col" style="padding-bottom:56px">
+
+            <div style="display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;padding:5px 14px 5px 8px;border-radius:100px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)">
+              <span style="width:8px;height:8px;border-radius:50%;background:#dc2626;animation:pulse 1.8s ease-in-out infinite;flex-shrink:0"></span>
+              <span style="font-size:0.67rem;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.14em;text-transform:uppercase">Licensed Electricians Available Now</span>
+            </div>
+
+            <h1 style="font-size:clamp(2.5rem,4.5vw,4rem);font-weight:900;line-height:1.0;letter-spacing:-0.04em;color:#fff;margin:0 0 22px">
+              Electrical Services<br />
+              <em style="font-style:italic;color:#dc2626">in Charlotte, NC</em>
+            </h1>
+
+            <p style="font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,0.72);font-weight:400;max-width:480px;margin:0 0 14px">
+              Safe, reliable electrical repairs and installations performed by experienced professionals throughout Charlotte and surrounding areas.
+            </p>
+
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:32px">
+              {['$79 Service Call','Same-Day Service','Safety-First','Licensed & Insured','Charlotte Metro'].map(t => (
+                <span style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:5px 11px;border-radius:100px">{t}</span>
+              ))}
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:38px">
+              <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:16px 36px">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                Book Electrical Service
+              </a>
+              <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:0.95rem;color:#fff;padding:16px 32px;border-radius:10px;text-decoration:none;border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.07);transition:border-color 0.15s"
+                 onmouseover="this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)'">
+                <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Call Now
+              </a>
+            </div>
+
+            <!-- Mobile hero -->
+            <div class="hero-img-mobile" style="background:linear-gradient(135deg,#0a1830 0%,#112240 50%,#0d1e38 100%)">
+              <!-- Slot 1: Electrician troubleshooting electrical panel — add photo when available -->
+              <picture>
+                <source type="image/webp"
+                  srcset="/images/electrical/electrician-troubleshooting-panel-charlotte-nc.webp 960w,
+                          /images/electrical/electrician-troubleshooting-panel-charlotte-nc@2x.webp 1600w"
+                  sizes="(max-width:768px) 100vw, 50vw" />
+                <img src="/images/electrical/electrician-troubleshooting-panel-charlotte-nc.webp"
+                     alt="Licensed electrician troubleshooting electrical panel in Charlotte NC home"
+                     width="960" height="1200" fetchpriority="high" loading="eager"
+                     style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" />
+              </picture>
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,25,0.5) 0%,transparent 60%)"></div>
+              <div style="position:absolute;bottom:12px;left:12px;display:flex;gap:8px">
+                <div style="background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(10,20,40,0.2)">
+                  <div style="font-size:0.95rem;font-weight:900;color:#060c19;line-height:1">$79</div>
+                  <div style="font-size:0.55rem;font-weight:700;color:#6a7a8e;margin-top:2px;letter-spacing:0.04em">SERVICE CALL</div>
+                </div>
+                <div style="background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(10,20,40,0.2)">
+                  <div style="font-size:0.95rem;font-weight:900;color:#060c19;line-height:1">Same-Day</div>
+                  <div style="font-size:0.55rem;font-weight:700;color:#6a7a8e;margin-top:2px;letter-spacing:0.04em">AVAILABLE NOW</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Desktop photo -->
+          <div class="hero-photo" style="display:none;position:relative;align-self:stretch">
+            <div style="position:absolute;inset:20px 0 -20px 0">
+              <div style="height:100%;position:relative;border-radius:20px 0 0 20px;overflow:hidden;background:linear-gradient(135deg,#0a1830,#1a3252);box-shadow:-8px 8px 50px rgba(0,0,0,0.4)">
+                <!-- Slot 1: Electrician troubleshooting panel — add photo when available -->
+                <picture>
+                  <source type="image/webp"
+                    srcset="/images/electrical/electrician-troubleshooting-panel-charlotte-nc.webp 960w,
+                            /images/electrical/electrician-troubleshooting-panel-charlotte-nc@2x.webp 1600w"
+                    sizes="50vw" />
+                  <img src="/images/electrical/electrician-troubleshooting-panel-charlotte-nc.webp"
+                       alt="Licensed electrician troubleshooting electrical panel in Charlotte NC home"
+                       width="960" height="1200" fetchpriority="high" loading="eager"
+                       style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" />
+                </picture>
+                <div style="position:absolute;inset:0;border-radius:20px 0 0 20px;background:linear-gradient(to right,#080f1e 0%,rgba(8,15,30,0.12) 20%,transparent 40%)"></div>
+              </div>
+            </div>
+            <div style="position:absolute;top:44px;left:-20px;z-index:10;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(10,20,40,0.18)">
+              <div style="font-size:1.5rem;font-weight:900;color:#b01616;line-height:1">$79</div>
+              <div style="font-size:0.63rem;font-weight:700;color:#6a7a8e;margin-top:3px;letter-spacing:0.06em">SERVICE CALL FEE</div>
+            </div>
+            <div style="position:absolute;top:50%;right:-16px;transform:translateY(-50%);z-index:10;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(10,20,40,0.18)">
+              <div style="font-size:1.3rem;font-weight:900;color:#060c19;line-height:1">Same-Day</div>
+              <div style="font-size:0.63rem;font-weight:700;color:#6a7a8e;margin-top:3px;letter-spacing:0.06em">AVAILABLE NOW</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div style="border-top:1px solid rgba(255,255,255,0.07);margin-top:48px">
+        <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr)">
+            {[
+              { v:'$79',    l:'Service Call Fee',    s:'Applied toward your repair'    },
+              { v:'Same',   l:'Day Service',          s:'Call by noon, fixed today'     },
+              { v:'90 Day', l:'Warranty',             s:'Parts & labor guaranteed'      },
+            ].map(({ v, l, s }) => (
+              <div style="padding:22px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.06)">
+                <div style="font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1">{v}</div>
+                <div style="font-size:0.76rem;font-weight:700;color:rgba(255,255,255,0.65);margin-top:5px">{l}</div>
+                <div style="font-size:0.63rem;font-weight:500;color:rgba(255,255,255,0.3);margin-top:2px;letter-spacing:0.04em">{s}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TRUST BAR
+    ═══════════════════════════════════════════ -->
+    <div class="bg-navy-section" style="border-top:2px solid #8a0e0e;padding:40px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="trust-grid">
+          {[
+            { icon:'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z', label:'Licensed NC Electricians', sub:'Fully insured · Background checked' },
+            { icon:'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z', label:'Same-Day Response', sub:'Call by noon, fixed today' },
+            { icon:'M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z', label:'Upfront Pricing', sub:'$79 service call · No hidden fees' },
+            { icon:'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z', label:'4.9★ Rated Team', sub:'200+ verified reviews' },
+          ].map(({ icon, label, sub }) => (
+            <div style="display:flex;align-items:center;gap:14px;padding:20px 16px;border-right:1px solid rgba(255,255,255,0.04)">
+              <div style="width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(176,22,22,0.12);border:1px solid rgba(176,22,22,0.24)">
+                <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icon}/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.84rem;font-weight:800;color:#dde6f0;letter-spacing:-0.01em">{label}</div>
+                <div style="font-size:0.68rem;font-weight:500;color:#1e3252;margin-top:2px">{sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRO SPLIT — ELECTRICAL DIAGNOSTICS PHOTO
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Photo — Slot 5: Electrical diagnostics visit -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.14);background:#e8edf5;min-height:300px">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/electrical/electrical-diagnostics-visit-charlotte-nc.webp 960w,
+                        /images/electrical/electrical-diagnostics-visit-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/electrical/electrical-diagnostics-visit-charlotte-nc.webp"
+                   alt="Licensed electrician performing electrical diagnostics in Charlotte NC home"
+                   width="960" height="1200" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+            <div style="position:absolute;bottom:18px;left:18px;background:#fff;border-radius:12px;padding:10px 16px;box-shadow:0 6px 20px rgba(10,20,40,0.18)">
+              <div style="font-size:0.68rem;font-weight:700;color:#b01616;letter-spacing:0.1em;text-transform:uppercase">Licensed · Insured</div>
+              <div style="font-size:0.78rem;font-weight:800;color:#060c19;margin-top:2px">NC Electrical Professionals</div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Charlotte's Electrical Team</div>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              One Team.<br />Every Electrical Problem.
+            </h2>
+            <p style="font-size:0.96rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              HomeHeroes has been handling electrical work in Charlotte homes since 2014. We fix everything from a dead outlet to a panel upgrade — with licensed electricians, upfront pricing, and same-day availability across the Charlotte metro.
+            </p>
+            <p style="font-size:0.93rem;color:#4a5e74;line-height:1.76;margin:0 0 32px;font-weight:400">
+              No subcontractors. No shortcuts. Every technician is a full-time HomeHeroes team member — licensed, background-checked, and focused on doing the job safely the first time.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:36px">
+              {[
+                'Same-day service across Charlotte Metro',
+                '$79 service call credited toward your repair',
+                'Upfront flat-rate quote before any work begins',
+                '90-day warranty on all parts & labor',
+              ].map(item => (
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="8" height="8" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <span style="font-size:0.85rem;font-weight:600;color:#2d3748">{item}</span>
+                </div>
+              ))}
+            </div>
+            <a href="#contact-form" class="btn-red" style="font-size:0.95rem;padding:14px 32px">
+              Book a Same-Day Appointment →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SERVICE CATEGORIES
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:80px 24px 96px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:52px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">What We Do</div>
+          <h2 style="font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:900;letter-spacing:-0.04em;color:#060c19;margin:0;line-height:1.05">
+            Electrical Services<br />We Provide in Charlotte
+          </h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px">
+          {[
+            { title:'Electrical Repairs',            detail:'Wiring faults, failed devices, loose connections, and circuit problems — diagnosed accurately and repaired safely the same day.', icon:'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z' },
+            { title:'Troubleshooting & Diagnostics', detail:'No power in a room? Mystery tripping? Something feels off? We trace the source — systematically, safely, without guessing.', icon:'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z' },
+            { title:'Outlet & Switch Replacement',   detail:'Standard, GFCI, AFCI, USB, and smart outlets. Single-pole, 3-way, and dimmer switches. Most completed in a single visit.', icon:'M5.636 5.636a9 9 0 1012.728 0M12 3v9' },
+            { title:'Light Fixture Installation',    detail:'Ceiling lights, recessed lighting, pendants, chandeliers, sconces, and outdoor fixtures. Existing wiring or new circuit — both handled.', icon:'M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z' },
+            { title:'Ceiling Fan Installation',      detail:'New fan installation, replacement, remote kits, smart fan switches, and wobble correction. All ceiling types and fan sizes handled.', icon:'M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z' },
+            { title:'Circuit Breaker Repair',        detail:'Breakers that trip constantly, won\'t reset, feel warm, or fail to hold are replaced with correctly rated units — no over-fusing.', icon:'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 15V5.25m19.5 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 7.409a2.25 2.25 0 01-1.07-1.916V5.25' },
+            { title:'Electrical Panel Upgrades',     detail:'Old 100-amp panels, recalled brands, or full panels upgraded to 200-amp service to safely support modern home electrical loads.', icon:'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 15V5.25m19.5 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 7.409a2.25 2.25 0 01-1.07-1.916V5.25' },
+            { title:'GFCI Outlet Installation',      detail:'Kitchens, bathrooms, garages, and outdoor locations require GFCI protection. We install and test to code — all at once or room by room.', icon:'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z' },
+            { title:'Dedicated Circuit Installation', detail:'EV chargers, hot tubs, large appliances, and home offices often need their own dedicated circuit. We run the wire, install the breaker, and connect the outlet.', icon:'M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25' },
+            { title:'Emergency Electrical Service',  detail:'Burning smell, sparking outlet, partial power loss, or anything that feels unsafe — we prioritize emergency calls and dispatch same-day across Charlotte.', icon:'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z' },
+          ].map(p => (
+            <div class="card" style="padding:28px">
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <div style="width:40px;height:40px;border-radius:10px;background:#fef2f2;border:1px solid rgba(176,22,22,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+                  <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={p.icon}/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.01em">{p.title}</h3>
+                  <p style="font-size:0.82rem;color:#4a5568;line-height:1.65;margin:0">{p.detail}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="text-align:center;margin-top:36px">
+          <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:15px 40px">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call {phone} — Same Day
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         COMMON ELECTRICAL PROBLEMS
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:80px 24px 96px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:52px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">What We Fix</div>
+          <h2 style="font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:900;letter-spacing:-0.04em;color:#060c19;margin:0;line-height:1.05">
+            Common Electrical Problems<br />We Solve in Charlotte
+          </h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+          {problems.map(p => (
+            <div class="card" style="padding:28px">
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <div style="width:40px;height:40px;border-radius:10px;background:#fef2f2;border:1px solid rgba(176,22,22,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+                  <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={p.icon}/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.01em">{p.title}</h3>
+                  <p style="font-size:0.82rem;color:#4a5568;line-height:1.65;margin:0">{p.detail}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="text-align:center;margin-top:36px">
+          <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:15px 40px">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Diagnose My Electrical Problem
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         OUTLET & WIRING REPAIR SPLIT
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Outlet &amp; Wiring Repair</div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Dead Outlet?<br />We'll Trace It and Fix It.
+            </h2>
+            <p style="font-size:0.95rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              A non-working outlet is rarely just a bad outlet. We trace the circuit from the panel to find loose connections, tripped GFCI protection, or wiring faults — then repair the root cause, not just the symptom.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px">
+              {[
+                { t:'Dead Outlets',           d:'GFCI traced, wiring checked' },
+                { t:'Burning Smell',          d:'Arcing found and corrected' },
+                { t:'Loose Connections',      d:'Backstab wiring replaced properly' },
+                { t:'Two-Prong Outlets',      d:'Upgraded to grounded 3-prong' },
+              ].map(({ t, d }) => (
+                <div style="background:#f5f7fa;border:1px solid rgba(30,50,80,0.1);border-radius:10px;padding:14px 16px">
+                  <div style="font-size:0.82rem;font-weight:800;color:#060c19;margin-bottom:3px">{t}</div>
+                  <div style="font-size:0.72rem;color:#6a7a8e;font-weight:500">{d}</div>
+                </div>
+              ))}
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                Burning Smell? Call Now
+              </a>
+              <a href="#contact-form" style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:0.88rem;color:#060c19;padding:13px 24px;border-radius:10px;text-decoration:none;border:1.5px solid rgba(30,50,80,0.18);background:#fff;transition:border-color 0.15s"
+                 onmouseover="this.style.borderColor='rgba(30,50,80,0.38)'" onmouseout="this.style.borderColor='rgba(30,50,80,0.18)'">
+                Schedule Inspection
+              </a>
+            </div>
+          </div>
+
+          <!-- Photo — Slot 2: Outlet replacement -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.13);background:#e8edf5;min-height:280px">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/electrical/outlet-replacement-charlotte-nc.webp 960w,
+                        /images/electrical/outlet-replacement-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/electrical/outlet-replacement-charlotte-nc.webp"
+                   alt="Electrician replacing electrical outlet in Charlotte NC home"
+                   width="960" height="1200" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PRICING TRANSPARENCY
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:960px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Transparent Pricing</div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0 0 12px">
+            Upfront Pricing. No Surprises.
+          </h2>
+          <p style="font-size:0.95rem;color:#4a5e74;max-width:480px;margin:0 auto;line-height:1.65">
+            We quote before we touch anything. The price you see is the price you pay — including the $79 service call fee credited toward your repair.
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:32px">
+          {[
+            { service: 'Electrical Diagnostic',       range: '$79 service call',  note: 'Applied toward repair cost' },
+            { service: 'Outlet / Switch Replacement', range: '$89 – $175',        note: 'Standard, GFCI, USB, smart' },
+            { service: 'GFCI Outlet Installation',    range: '$100 – $200',       note: 'Kitchen, bath, garage, outdoor' },
+            { service: 'Circuit Breaker Replacement', range: '$125 – $300',       note: 'Single or double pole' },
+            { service: 'Ceiling Fan Installation',    range: '$125 – $250',       note: 'With existing wiring' },
+            { service: 'Emergency Response',          range: '$79 service call',  note: 'Applied toward repair' },
+          ].map(r => (
+            <div class="card" style="padding:20px 22px">
+              <div style="font-size:0.84rem;font-weight:800;color:#060c19;margin-bottom:6px">{r.service}</div>
+              <div style="font-size:1.1rem;font-weight:900;color:#b01616;letter-spacing:-0.02em;margin-bottom:4px">{r.range}</div>
+              <div style="font-size:0.72rem;color:#6a7a8e;font-weight:500">{r.note}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style="background:linear-gradient(135deg,rgba(176,22,22,0.07),rgba(176,22,22,0.03));border:1px solid rgba(176,22,22,0.15);border-radius:14px;padding:22px 26px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+          <div style="flex:1;min-width:200px">
+            <div style="font-size:0.84rem;font-weight:800;color:#b01616;margin-bottom:4px">$79 Service Call — Credited Toward Repair</div>
+            <p style="font-size:0.82rem;color:#3d506a;margin:0;line-height:1.6">We charge $79 to diagnose your electrical issue. If you approve the repair, that $79 is applied directly to your total — you only pay the repair price, not the fee on top.</p>
+          </div>
+          <a href={phoneHref} class="btn-red" style="flex-shrink:0;padding:12px 24px;font-size:0.88rem">
+            Call for a Quote
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CEILING FAN & LIGHTING SPLIT
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Photo — Slot 3: Ceiling fan installation -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.14);background:#e8edf5;min-height:280px">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/electrical/ceiling-fan-installation-charlotte-nc.webp 960w,
+                        /images/electrical/ceiling-fan-installation-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/electrical/ceiling-fan-installation-charlotte-nc.webp"
+                   alt="Electrician installing ceiling fan in Charlotte NC home"
+                   width="960" height="1200" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+            <div style="position:absolute;top:18px;right:18px;background:#fff;border-radius:12px;padding:10px 16px;box-shadow:0 6px 20px rgba(10,20,40,0.18)">
+              <div style="font-size:0.68rem;font-weight:700;color:#6a7a8e;letter-spacing:0.08em;text-transform:uppercase">Installs from</div>
+              <div style="font-size:1.4rem;font-weight:900;color:#b01616;line-height:1">$125</div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Ceiling Fans &amp; Lighting</div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Installed Clean,<br />Wired Right.
+            </h2>
+            <p style="font-size:0.95rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              Whether you're replacing an old fan, adding recessed lights, or upgrading to a statement chandelier, HomeHeroes handles the electrical side completely. We mount, wire, and test — and clean up completely when we're done.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+              {[
+                { label:'Ceiling fan installation',       note:'New install or replacement — all sizes, remote kits, and smart switches' },
+                { label:'Recessed lighting',              note:'New cans added with clean drywall cuts, no mess left behind' },
+                { label:'Pendant & chandelier install',   note:'Properly rated boxes, correct wire gauge, tested to load' },
+                { label:'Outdoor fixture installation',   note:'Weatherproof boxes, GFCI protection where required' },
+                { label:'Under-cabinet lighting',         note:'Hardwired LED strips and puck lights for kitchens' },
+              ].map(({ label, note }) => (
+                <div style="background:#f5f7fa;border-radius:10px;padding:12px 16px">
+                  <div style="font-size:0.83rem;font-weight:800;color:#060c19;margin-bottom:3px">{label}</div>
+                  <div style="font-size:0.72rem;color:#6a7a8e;font-weight:500;line-height:1.5">{note}</div>
+                </div>
+              ))}
+            </div>
+            <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+              Schedule Fan or Lighting Install
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHY HOMEHEROES ELECTRICAL
+    ═══════════════════════════════════════════ -->
+    <section class="bg-navy-section" style="padding:80px 24px 96px;position:relative;overflow:hidden">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,#8a0e0e 30%,#dc2626 50%,#8a0e0e 70%,transparent)"></div>
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:26px 26px;pointer-events:none" aria-hidden="true"></div>
+
+      <div style="max-width:1280px;margin:0 auto;position:relative">
+        <div class="why-grid">
+
+          <!-- LEFT: Stats -->
+          <div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+              {[['10+','Years in Charlotte'],['4.9★','Google Rating'],['Same-Day','Always Available'],['$79','Service Call Fee']].map(([v,l]) => (
+                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:20px;text-align:center">
+                  <div style="font-size:1.4rem;font-weight:900;color:#e8edf5;letter-spacing:-0.03em;line-height:1">{v}</div>
+                  <div style="font-size:0.65rem;font-weight:700;color:#1e3252;margin-top:4px;letter-spacing:0.05em">{l}</div>
+                </div>
+              ))}
+            </div>
+            <div style="border-radius:13px;padding:20px;background:linear-gradient(135deg,#b01616,#6e0c0c);border:1px solid rgba(255,255,255,0.07);text-align:center">
+              <div style="font-size:0.84rem;font-weight:800;color:#fff;margin-bottom:4px">Electrical Emergency? Call Now.</div>
+              <div style="font-size:0.68rem;color:rgba(255,200,200,0.6);margin-bottom:12px">Burning smell or sparking? Don't wait.</div>
+              <a href={phoneHref} style="display:block;font-weight:800;font-size:0.93rem;color:#8a0e0e;padding:12px;border-radius:9px;text-decoration:none;background:#fff">
+                Call {phone}
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT: Features -->
+          <div>
+            <div class="sec-label" style="color:#dc3030;margin-bottom:18px">Why HomeHeroes Electrical</div>
+            <h2 style="font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:#e8edf5;margin:0 0 10px;letter-spacing:-0.04em;line-height:1.05">
+              Charlotte's Most<br />Trusted Electricians.
+            </h2>
+            <p style="font-size:0.95rem;color:#1e3a56;margin:0 0 36px;line-height:1.7;font-weight:400">One honest repair at a time since 2014.</p>
+
+            <div style="display:flex;flex-direction:column;gap:2px">
+              {[
+                { t:'Local Charlotte Service',             d:'We live and work here. No national call centers — just local electricians who know Charlotte homes and local code.' },
+                { t:'Fast Response Times',                 d:'Same-day service across the Charlotte metro. Call by noon and we\'ll have a technician at your door today.' },
+                { t:'Safety-First Approach',               d:'We never cut corners on electrical work. Every repair is done to code, tested under load, and documented.' },
+                { t:'Transparent Pricing',                 d:'You get a firm quote before we touch anything. The $79 service call disappears when you approve the work.' },
+                { t:'Experienced Technicians',             d:'Our electricians are licensed, background-checked, and carry tools and parts for the most common Charlotte electrical issues.' },
+                { t:'Part of the HomeHeroes Team',         d:'One company for electrical, plumbing, HVAC, appliances, and handyman. One number, no runaround.' },
+              ].map(({ t, d }) => (
+                <div style="display:flex;gap:12px;padding:14px;border-radius:10px;transition:background 0.15s;cursor:default"
+                     onmouseover="this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.background='transparent'">
+                  <div style="margin-top:1px;width:19px;height:19px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="8" height="8" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:0.84rem;font-weight:800;color:#e8edf5;margin-bottom:3px;letter-spacing:-0.01em">{t}</div>
+                    <div style="font-size:0.79rem;color:#1e3a56;line-height:1.62;font-weight:400">{d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PROCESS
+    ═══════════════════════════════════════════ -->
+    <div class="bg-white-section" style="border-top:1px solid rgba(30,50,80,0.08);border-bottom:1px solid rgba(30,50,80,0.08);padding:64px 24px 72px">
+      <div style="max-width:1100px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:52px">
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:12px">
+            <div style="height:1px;width:48px;background:rgba(30,50,80,0.12)"></div>
+            <span style="font-size:0.66rem;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#b01616">How It Works</span>
+            <div style="height:1px;width:48px;background:rgba(30,50,80,0.12)"></div>
+          </div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">Your Electrical Repair in 5 Steps</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:28px">
+          {[
+            { n:'1', t:'Schedule Service',              d:'Call or book online. We confirm your same-day Charlotte appointment in minutes.' },
+            { n:'2', t:'Electrical Inspection',         d:'Your HomeHeroes electrician arrives on time and performs a thorough safety inspection.' },
+            { n:'3', t:'Diagnosis & Safety Assessment', d:'We identify the problem, check for related safety issues, and give you an upfront quote before starting.' },
+            { n:'4', t:'Repair or Installation',        d:'Work completed to code, cleanly, with the right materials — no shortcuts.' },
+            { n:'5', t:'Testing & Completion',          d:'Every repair is load-tested before we leave. Backed by our 90-day parts-and-labor warranty.' },
+          ].map(({ n, t, d }) => (
+            <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px">
+              <div style="width:58px;height:58px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:18px;background:linear-gradient(180deg,#d42222,#8e1010);box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 5px 16px rgba(176,22,22,0.35)">
+                {n}
+              </div>
+              <h3 style="font-size:0.93rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.01em">{t}</h3>
+              <p style="font-size:0.81rem;color:#4a5e74;line-height:1.68;margin:0;font-weight:400">{d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         PANEL & EMERGENCY SPLIT — NAVY
+    ═══════════════════════════════════════════ -->
+    <section class="bg-navy-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Photo — Slot 1: Panel troubleshooting -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,0.35);background:#0a1830;min-height:280px">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/electrical/electrician-troubleshooting-panel-charlotte-nc.webp 960w,
+                        /images/electrical/electrician-troubleshooting-panel-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/electrical/electrician-troubleshooting-panel-charlotte-nc.webp"
+                   alt="Licensed electrician troubleshooting residential electrical panel in Charlotte NC"
+                   width="960" height="1200" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+            <div style="position:absolute;top:18px;left:18px;background:linear-gradient(135deg,#c92020,#8a0e0e);border-radius:10px;padding:8px 14px">
+              <div style="font-size:0.68rem;font-weight:800;color:rgba(255,200,200,0.85);letter-spacing:0.1em;text-transform:uppercase">Emergency Available</div>
+              <div style="font-size:0.82rem;font-weight:900;color:#fff;margin-top:2px">Same-Day Dispatch</div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:16px;font-size:0.66rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626">
+              <span style="width:24px;height:1px;background:#dc2626;display:block"></span>
+              Panel Upgrades &amp; Emergency
+            </div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#e8edf5;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Panel Issues &amp;<br />Electrical Emergencies
+            </h2>
+            <p style="font-size:0.95rem;color:#1e3a56;line-height:1.78;margin:0 0 20px;font-weight:400">
+              An aging or undersized panel is the most common root cause of repeated breaker trips, partial power loss, and slow EV charging. HomeHeroes assesses your panel honestly — and dispatches same-day for any active electrical hazard.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+              {[
+                { t:'100A → 200A panel upgrade',          d:'Required for EV chargers, hot tubs, or heavy modern electrical loads' },
+                { t:'Recalled panel replacement',         d:'Federal Pacific, Zinsco, and Pushmatic panels replaced safely' },
+                { t:'Full panel inspection',              d:'Age, capacity, breaker condition, and wiring assessed upfront' },
+                { t:'Emergency electrical response',      d:'Burning smell, sparking, or partial loss — we dispatch within hours, 7 days a week' },
+              ].map(({ t, d }) => (
+                <div style="display:flex;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)">
+                  <div style="margin-top:1px;width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="7" height="7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:0.83rem;font-weight:800;color:#e8edf5;margin-bottom:3px">{t}</div>
+                    <div style="font-size:0.75rem;color:#1e3a56;line-height:1.55;font-weight:400">{d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:14px 30px">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+              Call for Emergency Electrical
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         LIGHT FIXTURE SPLIT
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Light Fixture Installation</div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              New Fixtures,<br />Done Right the First Time.
+            </h2>
+            <p style="font-size:0.95rem;color:#4a5e74;line-height:1.78;margin:0 0 18px;font-weight:400">
+              Fixture installation looks simple but the wiring matters. Incorrect boxes, undersized wire, or poor connections create fire risk over time. HomeHeroes mounts, wires, and tests every fixture correctly — and cleans up completely when we leave.
+            </p>
+            <p style="font-size:0.93rem;color:#4a5e74;line-height:1.76;margin:0 0 28px;font-weight:400">
+              We also add new circuits where there isn't one — recessed lighting in rooms that only have a switched outlet, outdoor lighting run from the panel, or under-cabinet lighting hardwired into the kitchen.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px">
+              {[
+                'Recessed lighting',
+                'Pendant lights',
+                'Chandeliers',
+                'Sconces & vanity lights',
+                'Outdoor fixtures',
+                'Under-cabinet LED',
+              ].map(item => (
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="width:16px;height:16px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="7" height="7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <span style="font-size:0.81rem;font-weight:600;color:#2d3748">{item}</span>
+                </div>
+              ))}
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+                Book Fixture Installation
+              </a>
+              <div style="display:inline-flex;align-items:center;gap:8px;padding:13px 20px;background:#fff;border:1px solid rgba(30,50,80,0.12);border-radius:10px">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span style="font-size:0.81rem;font-weight:700;color:#060c19">From $89</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo — Slot 4: Light fixture installation -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.13);background:#e8edf5;min-height:280px">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/electrical/light-fixture-installation-charlotte-nc.webp 960w,
+                        /images/electrical/light-fixture-installation-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/electrical/light-fixture-installation-charlotte-nc.webp"
+                   alt="Electrician installing new light fixture in Charlotte NC home"
+                   width="960" height="1200" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FAQ
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:780px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Common Questions</div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">
+            Electrical FAQs — Charlotte, NC
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          {faqs.map((faq) => (
+            <details style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:12px;overflow:hidden">
+              <summary style="padding:18px 22px;font-size:0.92rem;font-weight:700;color:#060c19;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                {faq.q}
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:#b01616" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+              </summary>
+              <div style="padding:0 22px 18px;font-size:0.85rem;color:#4a5e74;line-height:1.72;border-top:1px solid rgba(30,50,80,0.07);padding-top:14px;margin-top:0">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SERVICE AREAS
+    ═══════════════════════════════════════════ -->
+    <ServiceAreas />
+
+    <!-- ═══════════════════════════════════════════
+         OTHER SERVICES CROSS-LINK
+    ═══════════════════════════════════════════ -->
+    <section class="bg-light-section" style="padding:56px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;margin-bottom:32px">
+          <div>
+            <div class="sec-label" style="margin-bottom:10px">More From HomeHeroes</div>
+            <h2 style="font-size:clamp(1.3rem,2vw,1.8rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">We Handle More Than Electrical</h2>
+          </div>
+          <a href="/" style="font-size:0.82rem;font-weight:800;color:#b01616;text-decoration:none;display:inline-flex;align-items:center;gap:5px">
+            See All Services →
+          </a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+          {[
+            { label:'Appliance Repair', desc:'Refrigerators, washers, dryers, ovens and more.',     href:'/appliance-repair-charlotte',  live:true },
+            { label:'Plumbing',         desc:'Drains, leaks, water heaters, emergency plumbing.',    href:'/plumbing-charlotte',           live:true },
+            { label:'HVAC',             desc:'AC repair, heating service, same-day diagnostics.',    href:'/services/hvac',                live:true },
+            { label:'Handyman',         desc:'Doors, fixtures, drywall, and home repairs.',          href:'/charlotte-nc/handyman',        live:true },
+          ].map(s => (
+            <a href={s.href} style="display:block;padding:18px 20px;background:#fff;border:1.5px solid rgba(176,22,22,0.2);border-radius:12px;text-decoration:none;transition:box-shadow 0.2s,transform 0.2s"
+               onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(10,20,40,0.1)'"
+               onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:0.86rem;font-weight:800;color:#060c19">{s.label}</span>
+                <span style="font-size:0.58rem;font-weight:800;color:#fff;background:#b01616;padding:2px 7px;border-radius:100px">AVAILABLE</span>
+              </div>
+              <p style="font-size:0.76rem;color:#4a5e74;margin:0;line-height:1.5">{s.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FINAL CTA
+    ═══════════════════════════════════════════ -->
+    <section id="contact" style="position:relative;overflow:hidden;padding:80px 24px 96px;background:linear-gradient(135deg,#c92020 0%,#8a0e0e 55%,#520808 100%)">
+      <div style="position:absolute;inset:0;opacity:0.045;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Cpath d=%22M0 0h50v50H0z%22 fill=%22none%22/%3E%3Cpath d=%22M0 0L50 0M0 50L50 50M0 0L0 50M50 0L50 50%22 stroke=%22white%22 stroke-width=%221%22/%3E%3C/svg%3E')" aria-hidden="true"></div>
+      <div style="max-width:940px;margin:0 auto;position:relative;text-align:center">
+        <img src="/images/logo.webp" alt="HomeHeroes" width="70" height="70" loading="lazy"
+             style="border-radius:16px;object-fit:cover;margin:0 auto 22px;display:block;box-shadow:0 6px 24px rgba(6,12,25,0.38),0 0 0 2px rgba(255,255,255,0.18)" />
+        <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.04;margin:0 0 18px">
+          Electrical Problem?<br />We'll Be There Today.
+        </h2>
+        <p style="font-size:1.05rem;color:rgba(255,220,220,0.82);line-height:1.74;margin:0 auto 44px;max-width:460px;font-weight:400">
+          Same-day service across Charlotte. $79 service call applied toward your repair. Call now or book online.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+          <a href="#contact-form" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#8a0e0e;padding:15px 34px;border-radius:10px;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(6,12,25,0.26);transition:transform 0.15s"
+             onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            Book Online — Free
+          </a>
+          <a href={phoneHref} style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#fff;padding:15px 34px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);transition:transform 0.15s"
+             onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <svg width="17" height="17" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call {phone}
+          </a>
+        </div>
+        <p style="font-size:0.7rem;color:rgba(255,200,200,0.4);margin-top:22px;letter-spacing:0.08em;font-weight:600">7 DAYS A WEEK · 8AM–7PM · EMERGENCY LINE AVAILABLE</p>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="bg-light-section" style="padding:64px 24px 80px">
+      <div style="max-width:620px;margin:0 auto">
+        <div class="card" style="overflow:hidden">
+          <div style="padding:24px 32px;border-bottom:1px solid rgba(30,50,80,0.08);display:flex;align-items:center;gap:14px;background:#fafbfd">
+            <img src="/images/logo.webp" alt="HomeHeroes" width="46" height="46" loading="lazy" style="border-radius:11px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(10,20,40,0.1)" />
+            <div>
+              <h3 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">Request Electrical Service</h3>
+              <p style="font-size:0.76rem;color:#6a7a8e;margin:3px 0 0;font-weight:400">We'll call you back within 5 minutes.</p>
+            </div>
+          </div>
+
+          <form id="electrical-form" style="padding:24px 32px;display:flex;flex-direction:column;gap:16px" name="electrical-request" method="POST" action="https://api.web3forms.com/submit">
+            <input type="hidden" name="access_key" value="98673c2a-0528-45c5-a5d0-2561df9d62fb" />
+            <input type="hidden" name="subject" value="New HomeHeroes Electrical Service Request" />
+
+            <div class="form-row">
+              <div>
+                <label for="elec-name" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">FIRST NAME</label>
+                <input type="text" id="elec-name" name="first_name" autocomplete="given-name" required placeholder="John"
+                       style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                       onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                       onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+              </div>
+              <div>
+                <label for="elec-phone" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PHONE NUMBER</label>
+                <input type="tel" id="elec-phone" name="phone" autocomplete="tel" required placeholder="(704) 555-0100"
+                       style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                       onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                       onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+              </div>
+            </div>
+
+            <div>
+              <label for="elec-issue-type" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">ELECTRICAL ISSUE</label>
+              <select id="elec-issue-type" name="issue_type" required
+                      style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;appearance:none;box-sizing:border-box;font-family:inherit"
+                      onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+                <option value="" disabled selected>Select issue type…</option>
+                <option>Breaker Keeps Tripping</option>
+                <option>Outlet Not Working</option>
+                <option>Flickering Lights</option>
+                <option>Burning Smell from Outlet</option>
+                <option>Light Switch Not Working</option>
+                <option>Partial Power Loss</option>
+                <option>Ceiling Fan Installation</option>
+                <option>Light Fixture Installation</option>
+                <option>GFCI Outlet Installation</option>
+                <option>Panel Upgrade or Inspection</option>
+                <option>Emergency Electrical Issue</option>
+                <option>Other Electrical Issue</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="elec-desc" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">DESCRIBE THE ISSUE</label>
+              <textarea id="elec-desc" name="message" rows="3" placeholder="Briefly describe the problem…"
+                        style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;resize:none;box-sizing:border-box;font-family:inherit"
+                        onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                        onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'"></textarea>
+            </div>
+
+            <button id="elec-submit" type="submit" class="btn-red" style="width:100%;padding:14px;font-size:0.97rem;border-radius:10px">
+              Request Same-Day Electrical Service →
+            </button>
+            <p style="font-size:0.69rem;color:#9aaabe;text-align:center;margin:0;font-weight:400">We respect your privacy. Your info is never sold or shared.</p>
+          </form>
+
+          <div id="elec-success" style="display:none;padding:40px 32px;text-align:center">
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#d42222,#8e1010);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            </div>
+            <p style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 6px;letter-spacing:-0.01em">Request received.</p>
+            <p style="font-size:0.88rem;color:#4a5e74;margin:0;font-weight:400">We'll call you shortly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+
+  <script>
+    const form = document.getElementById('electrical-form') as HTMLFormElement | null;
+    const success = document.getElementById('elec-success');
+    const btn = document.getElementById('elec-submit') as HTMLButtonElement | null;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!btn) return;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        const data = await res.json();
+        if (data.success) {
+          form.style.display = 'none';
+          if (success) success.style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Request Same-Day Electrical Service →';
+          alert('Something went wrong. Please call us directly.');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Request Same-Day Electrical Service →';
+        alert('Something went wrong. Please call us directly.');
+      }
+    });
+  </script>
+</body>
+</html>

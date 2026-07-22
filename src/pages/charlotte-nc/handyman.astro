@@ -1,0 +1,1161 @@
+---
+import '../../styles/global.css';
+import Header from '../../components/Header.astro';
+import ServiceAreas from '../../components/ServiceAreas.astro';
+import CitationProfiles from '../../components/seo/CitationProfiles.astro';
+import Footer from '../../components/Footer.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const tasks = [
+  {
+    title: 'Drywall Repair',
+    detail: 'Nail pops, holes from door handles, screw patches, small sections — matched, textured, and painted so you can\'t tell it was ever damaged.',
+    icon: 'M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25',
+  },
+  {
+    title: 'Door Repair & Adjustment',
+    detail: 'Sticking doors, hinges that sag, latches that won\'t catch, weatherstripping replacement, and door frame repairs — interior or exterior.',
+    icon: 'M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21',
+  },
+  {
+    title: 'TV Mounting',
+    detail: 'Flat-screen mounted on drywall or brick, hidden cable management, tilting and full-motion brackets. All TV sizes and wall types handled.',
+    icon: 'M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z',
+  },
+  {
+    title: 'Furniture Assembly',
+    detail: 'IKEA, Wayfair, Amazon flatpacks — beds, desks, shelving units, wardrobes. Assembled correctly the first time so drawers actually close.',
+    icon: 'M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z',
+  },
+  {
+    title: 'Cabinet Repair & Adjustment',
+    detail: 'Hinges realigned, drawer slides replaced, doors that won\'t close, damaged cabinet boxes repaired. Kitchen and bathroom cabinets.',
+    icon: 'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 15V5.25m19.5 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 7.409a2.25 2.25 0 01-1.07-1.916V5.25',
+  },
+  {
+    title: 'Shelf & Storage Installation',
+    detail: 'Floating shelves, closet organization systems, pantry shelving, garage storage, and wall-mounted racks — anchored properly for lasting support.',
+    icon: 'M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776',
+  },
+  {
+    title: 'Trim & Baseboard Repair',
+    detail: 'Loose baseboards, damaged crown molding, quarter-round replacement, caulking gaps — clean finish work that makes rooms look complete.',
+    icon: 'M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3',
+  },
+  {
+    title: 'Rental Turnover Repairs',
+    detail: 'Punch lists between tenants, minor damage fixes, touch-up painting, hardware replacement, and move-out condition repairs for landlords and PMs.',
+    icon: 'M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819',
+  },
+  {
+    title: 'Small Carpentry',
+    detail: 'Handrail repairs, stair tread replacement, fence gate adjustments, small wood repairs, and custom blocking or backing for mounted items.',
+    icon: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z',
+  },
+  {
+    title: 'General Home Repairs',
+    detail: 'Caulking, weatherstripping, bathroom accessory installation, curtain rods, mirrors, mailbox replacement, locksets, and the dozen other small fixes on your list.',
+    icon: 'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Do you offer same-day handyman service in Charlotte?',
+    a: 'Yes. HomeHeroes provides same-day handyman service across Charlotte and the surrounding metro including Huntersville, Mooresville, Concord, Matthews, and Cornelius. Call (704) 512-0111 and we\'ll confirm your appointment within minutes.',
+  },
+  {
+    q: 'What types of handyman jobs do you handle?',
+    a: 'We handle most small-to-medium home repair and installation tasks: drywall repair, door adjustments, TV mounting, furniture assembly, shelf installation, cabinet repair, trim and baseboard work, weatherstripping, bathroom accessories, and general punch-list repairs. If you\'re unsure whether your job fits, call us — we\'re happy to assess over the phone.',
+  },
+  {
+    q: 'Do you work with landlords and property managers?',
+    a: 'Absolutely. HomeHeroes is a preferred partner for property managers and landlords across the Charlotte metro. We handle rental turnover punch lists, tenant damage repairs, move-in/move-out condition work, and recurring maintenance tasks. We can coordinate multi-unit and multi-location scheduling.',
+  },
+  {
+    q: 'Can I book multiple small repairs in one visit?',
+    a: 'Yes — and we encourage it. Batching repairs into one visit is more efficient and cost-effective for you. Tell us everything on your list when you call or book online, and we\'ll block the right amount of time for your tech.',
+  },
+  {
+    q: 'Do you provide estimates before work starts?',
+    a: 'Yes. HomeHeroes provides upfront quotes before any work begins. We charge a $79 service call fee that is applied toward your repair total when you approve the work — no surprise charges, no hourly billing ambiguity.',
+  },
+  {
+    q: 'What handyman jobs do you not handle?',
+    a: 'We don\'t take on major structural work, load-bearing wall modifications, full electrical panel work, full plumbing system installations, roofing, or projects requiring specialized permits we can\'t coordinate. We\'ll be upfront if a job is outside our scope and point you to the right specialist.',
+  },
+];
+
+const notDone = [
+  { t: 'Major structural or load-bearing work',     d: 'Wall removals, foundation work, or anything structural' },
+  { t: 'Full electrical panel or rewiring jobs',    d: 'We refer these to our licensed electrical partners' },
+  { t: 'Full plumbing system installations',        d: 'Pipe reroutes or new system installs go to our plumbing team' },
+  { t: 'Roofing & major exterior reconstruction',   d: 'Requires specialized trade licensing' },
+  { t: 'Large remodeling or permit-required builds', d: 'Kitchen/bath gut-remodels, additions, etc.' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#060c19" />
+
+  <!-- Primary SEO -->
+  <title>Handyman Services Charlotte, NC | HomeHeroes</title>
+  <meta name="description" content="Professional handyman services in Charlotte, NC. Drywall repair, TV mounting, furniture assembly, door repair, shelf installation, and rental turnover repairs. Same-day service. Call (704) 512-0111." />
+  <link rel="canonical" href="https://tryhomeheroes.com/charlotte-nc/handyman" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tryhomeheroes.com/charlotte-nc/handyman" />
+  <meta property="og:site_name" content="HomeHeroes Home Services" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Handyman Services Charlotte, NC | HomeHeroes" />
+  <meta property="og:description" content="Same-day handyman in Charlotte, NC. Drywall, TV mounting, door repair, furniture assembly, rental turnover repairs, and more. $79 service call applied toward your job." />
+  <meta property="og:image" content="https://tryhomeheroes.com/images/handyman/handyman-drywall-repair-painting-charlotte-nc.webp" />
+  <meta property="og:image:width" content="960" />
+  <meta property="og:image:height" content="747" />
+  <meta property="og:image:alt" content="Handyman performing drywall repair and interior painting preparation" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Handyman Services Charlotte, NC | HomeHeroes" />
+  <meta name="twitter:description" content="Same-day handyman in Charlotte. Drywall, TV mounting, door repair, assembly, rental repairs. Call (704) 512-0111." />
+  <meta name="twitter:image" content="https://tryhomeheroes.com/images/handyman/handyman-drywall-repair-painting-charlotte-nc.webp" />
+
+  <!-- Font preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" /></noscript>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "name": "Handyman Services",
+          "serviceType": "Handyman",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://tryhomeheroes.com/#business",
+            "name": "HomeHeroes Home Services",
+            "telephone": "+17045120111"
+          },
+          "areaServed": {"@type": "City", "name": "Charlotte", "addressRegion": "NC"},
+          "url": "https://tryhomeheroes.com/charlotte-nc/handyman",
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "79",
+              "maxPrice": "450",
+              "priceCurrency": "USD"
+            }
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Handyman Services",
+            "itemListElement": [
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Drywall Repair"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Door Repair"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "TV Mounting"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Furniture Assembly"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Shelf Installation"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rental Turnover Repairs"}}
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do you offer same-day handyman service in Charlotte?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. HomeHeroes provides same-day handyman service across Charlotte and surrounding areas including Huntersville, Mooresville, Concord, Matthews, and Cornelius. Call (704) 512-0111 to confirm your slot."}
+            },
+            {
+              "@type": "Question",
+              "name": "What types of handyman jobs do you handle?",
+              "acceptedAnswer": {"@type": "Answer", "text": "We handle drywall repair, door adjustments, TV mounting, furniture assembly, shelf installation, cabinet repair, trim and baseboard work, weatherstripping, bathroom accessories, and general punch-list repairs."}
+            },
+            {
+              "@type": "Question",
+              "name": "Do you work with landlords and property managers?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. HomeHeroes handles rental turnover punch lists, tenant damage repairs, move-in/move-out condition work, and recurring maintenance tasks for property managers and landlords across the Charlotte metro."}
+            },
+            {
+              "@type": "Question",
+              "name": "Can I book multiple small repairs in one visit?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. Batching repairs into one visit is more efficient and cost-effective. Tell us everything on your list when you book and we'll block the right amount of time."}
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryhomeheroes.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Charlotte, NC", "item": "https://tryhomeheroes.com/charlotte-nc/appliance-repair"},
+            {"@type": "ListItem", "position": 3, "name": "Handyman Services", "item": "https://tryhomeheroes.com/charlotte-nc/handyman"}
+          ]
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <Header />
+
+  <!-- Cross-service navigation strip -->
+  <div style="background:#080f1e;border-bottom:1px solid rgba(255,255,255,0.07);padding:10px 24px">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <a href="/" style="display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+        <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        All Services
+      </a>
+      <span style="color:rgba(255,255,255,0.2);font-size:11px">›</span>
+      <span style="font-size:0.72rem;font-weight:700;color:#dc2626">Handyman</span>
+      <span style="color:rgba(255,255,255,0.2);font-size:11px;margin-left:8px">·</span>
+      <a href="/plumbing-charlotte" style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;margin-left:8px;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+        Plumbing →
+      </a>
+      <a href="/appliance-repair-charlotte" style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+        Appliance Repair →
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section style="background:#080f1e;padding:60px 24px 0;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-80px;top:-80px;width:420px;height:420px;border-radius:50%;opacity:0.04;filter:blur(80px);background:#dc2626;pointer-events:none" aria-hidden="true"></div>
+      <div style="max-width:1280px;margin:0 auto">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" style="margin-bottom:28px">
+          <ol style="display:flex;align-items:center;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+            <li><a href="/" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none">Home</a></li>
+            <li style="color:rgba(255,255,255,0.25);font-size:13px">›</li>
+            <li><a href="/charlotte-nc/appliance-repair" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none">Charlotte, NC</a></li>
+            <li style="color:rgba(255,255,255,0.25);font-size:13px">›</li>
+            <li><span style="color:rgba(255,255,255,0.75);font-size:13px">Handyman Services</span></li>
+          </ol>
+        </nav>
+
+        <div class="hero-grid" style="align-items:center;gap:0">
+
+          <!-- LEFT: Copy -->
+          <div class="hero-copy-col" style="padding-bottom:56px">
+
+            <div style="display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;padding:5px 14px 5px 8px;border-radius:100px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)">
+              <span style="width:8px;height:8px;border-radius:50%;background:#dc2626;animation:pulse 1.8s ease-in-out infinite;flex-shrink:0"></span>
+              <span style="font-size:0.67rem;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.14em;text-transform:uppercase">Same-Day Handyman Available</span>
+            </div>
+
+            <h1 style="font-size:clamp(2.5rem,4.5vw,4rem);font-weight:900;line-height:1.0;letter-spacing:-0.04em;color:#fff;margin:0 0 22px">
+              Handyman Services<br />
+              <em style="font-style:italic;color:#dc2626">in Charlotte, NC</em>
+            </h1>
+
+            <p style="font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,0.72);font-weight:400;max-width:480px;margin:0 0 14px">
+              Drywall repairs, door fixes, TV mounting, furniture assembly, rental turnover — handled same-day by one trusted team. One call. Every small home repair solved.
+            </p>
+
+            <!-- Trust pills -->
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:32px">
+              {['$79 Service Call','Same-Day Service','Upfront Quote','Batch Multiple Jobs','Charlotte Metro'].map(t => (
+                <span style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:5px 11px;border-radius:100px">{t}</span>
+              ))}
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:38px">
+              <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:16px 36px">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                Call {phone}
+              </a>
+              <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:0.95rem;color:#fff;padding:16px 32px;border-radius:10px;text-decoration:none;border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.07);transition:border-color 0.15s"
+                 onmouseover="this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)'">
+                <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Book Online — Free
+              </a>
+            </div>
+
+            <!-- Mobile hero image -->
+            <div class="hero-img-mobile handyman-hero-mobile">
+              <img src="/images/handyman/handyman-bathroom-tile-installation-charlotte-nc.webp"
+                   alt="Handyman installing bathroom tile during home renovation project in Charlotte NC"
+                   width="603" height="800" fetchpriority="high" loading="eager"
+                   style="width:100%;height:100%;object-fit:cover;display:block" />
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,25,0.5) 0%,transparent 60%)"></div>
+              <div style="position:absolute;bottom:12px;left:12px;display:flex;gap:8px">
+                <div style="background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(10,20,40,0.2)">
+                  <div style="font-size:0.95rem;font-weight:900;color:#060c19;line-height:1">$79</div>
+                  <div style="font-size:0.55rem;font-weight:700;color:#6a7a8e;margin-top:2px;letter-spacing:0.04em">SERVICE CALL</div>
+                </div>
+                <div style="background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(10,20,40,0.2)">
+                  <div style="font-size:0.95rem;font-weight:900;color:#060c19;line-height:1">Same-Day</div>
+                  <div style="font-size:0.55rem;font-weight:700;color:#6a7a8e;margin-top:2px;letter-spacing:0.04em">AVAILABLE NOW</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Desktop photo placeholder -->
+          <div class="hero-photo" style="display:none;position:relative;align-self:stretch">
+            <div style="position:absolute;inset:20px 0 -20px 0">
+              <div style="height:100%;position:relative">
+                <picture>
+                  <source type="image/webp"
+                    srcset="/images/handyman/handyman-bathroom-tile-installation-charlotte-nc.webp 603w,
+                            /images/handyman/handyman-bathroom-tile-installation-charlotte-nc@2x.webp 1055w"
+                    sizes="500px" />
+                  <img src="/images/handyman/handyman-bathroom-tile-installation-charlotte-nc@2x.webp"
+                       alt="Handyman installing bathroom tile during home renovation project in Charlotte NC"
+                       width="1055" height="1400" loading="eager"
+                       style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:20px 0 0 20px;box-shadow:-8px 8px 50px rgba(0,0,0,0.4)" />
+                </picture>
+                <div style="position:absolute;inset:0;border-radius:20px 0 0 20px;background:linear-gradient(to right,#080f1e 0%,rgba(8,15,30,0.12) 20%,transparent 40%)"></div>
+              </div>
+            </div>
+            <div style="position:absolute;top:44px;left:-20px;z-index:10;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(10,20,40,0.18)">
+              <div style="font-size:1.5rem;font-weight:900;color:#b01616;line-height:1">$79</div>
+              <div style="font-size:0.63rem;font-weight:700;color:#6a7a8e;margin-top:3px;letter-spacing:0.06em">SERVICE CALL FEE</div>
+            </div>
+            <div style="position:absolute;top:50%;right:-16px;transform:translateY(-50%);z-index:10;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(10,20,40,0.18)">
+              <div style="font-size:1.3rem;font-weight:900;color:#060c19;line-height:1">Same-Day</div>
+              <div style="font-size:0.63rem;font-weight:700;color:#6a7a8e;margin-top:3px;letter-spacing:0.06em">AVAILABLE NOW</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div style="border-top:1px solid rgba(255,255,255,0.07);margin-top:48px">
+        <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr)">
+            {[
+              { v:'$79',    l:'Service Call Fee',    s:'Applied toward your job'          },
+              { v:'Same',   l:'Day Service',          s:'Book today, fixed today'          },
+              { v:'90 Day', l:'Warranty',             s:'Parts & labor guaranteed'         },
+            ].map(({ v, l, s }) => (
+              <div style="padding:22px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.06)">
+                <div style="font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1">{v}</div>
+                <div style="font-size:0.76rem;font-weight:700;color:rgba(255,255,255,0.65);margin-top:5px">{l}</div>
+                <div style="font-size:0.63rem;font-weight:500;color:rgba(255,255,255,0.3);margin-top:2px;letter-spacing:0.04em">{s}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TRUST BAR
+    ═══════════════════════════════════════════ -->
+    <div class="bg-navy-section" style="border-top:2px solid #8a0e0e;padding:40px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="trust-grid">
+          {[
+            { icon:'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z', label:'Vetted & Background Checked', sub:'Full-time HomeHeroes team members' },
+            { icon:'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z', label:'Same-Day Response', sub:'Book by noon, fixed today' },
+            { icon:'M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z', label:'Upfront Flat Pricing', sub:'$79 service call · No hidden fees' },
+            { icon:'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z', label:'4.9★ Rated Team', sub:'200+ verified reviews' },
+          ].map(({ icon, label, sub }) => (
+            <div style="display:flex;align-items:center;gap:14px;padding:20px 16px;border-right:1px solid rgba(255,255,255,0.04)">
+              <div style="width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(176,22,22,0.12);border:1px solid rgba(176,22,22,0.24)">
+                <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icon}/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.84rem;font-weight:800;color:#dde6f0;letter-spacing:-0.01em">{label}</div>
+                <div style="font-size:0.68rem;font-weight:500;color:#1e3252;margin-top:2px">{sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRO SPLIT — DRYWALL / TEAM AT WORK
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.14)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/handyman/handyman-drywall-repair-painting-charlotte-nc.webp 960w,
+                        /images/handyman/handyman-drywall-repair-painting-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/handyman/handyman-drywall-repair-painting-charlotte-nc.webp"
+                   alt="Handyman performing drywall repair and interior painting preparation"
+                   width="960" height="747" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+            <div style="position:absolute;bottom:18px;left:18px;background:#fff;border-radius:12px;padding:10px 16px;box-shadow:0 6px 20px rgba(10,20,40,0.18)">
+              <div style="font-size:0.68rem;font-weight:700;color:#b01616;letter-spacing:0.1em;text-transform:uppercase">Vetted · Background Checked</div>
+              <div style="font-size:0.78rem;font-weight:800;color:#060c19;margin-top:2px">Full-Time HomeHeroes Team</div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Charlotte's Handyman Team</div>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              One Call.<br />Every Home Repair Handled.
+            </h2>
+            <p style="font-size:0.96rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              HomeHeroes has been handling home repairs across Charlotte since 2014. From a single drywall patch to a full rental turnover punch list, our full-time handyman team arrives same-day with the tools and skills to get it done right — no subcontractors, no surprises.
+            </p>
+            <p style="font-size:0.93rem;color:#4a5e74;line-height:1.76;margin:0 0 32px;font-weight:400">
+              We quote upfront before touching anything. You approve the work, then we do it — backed by a 90-day parts-and-labor warranty.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:36px">
+              {[
+                'Same-day handyman service across Charlotte Metro',
+                '$79 service call credited toward your repair total',
+                'Batch multiple jobs in one visit — one service call',
+                'Full-time staff, not subcontractors',
+                '90-day warranty on all work',
+              ].map(item => (
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="8" height="8" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <span style="font-size:0.85rem;font-weight:600;color:#2d3748">{item}</span>
+                </div>
+              ))}
+            </div>
+            <a href="#contact-form" class="btn-red" style="font-size:0.95rem;padding:14px 32px">
+              Book Same-Day Handyman →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SERVICES GRID
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:80px 24px 96px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:52px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">What We Handle</div>
+          <h2 style="font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:900;letter-spacing:-0.04em;color:#060c19;margin:0;line-height:1.05">
+            Common Handyman Tasks<br />We Tackle in Charlotte
+          </h2>
+          <p style="font-size:0.95rem;color:#4a5e74;max-width:520px;margin:20px auto 0;line-height:1.7">
+            From a single sticky door to a full rental turnover punch list — one call gets it handled. No job too small.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+          {tasks.map(t => (
+            <div class="card" style="padding:28px">
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <div style="width:40px;height:40px;border-radius:10px;background:#fef2f2;border:1px solid rgba(176,22,22,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+                  <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={t.icon}/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.01em">{t.title}</h3>
+                  <p style="font-size:0.82rem;color:#4a5568;line-height:1.65;margin:0 0 12px">{t.detail}</p>
+                  <a href="#contact-form" class="hy-book-link">
+                    Book Service →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="text-align:center;margin-top:36px">
+          <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:15px 40px">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call {phone} — Same Day
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         INSTALLATIONS & ASSEMBLY SPLIT
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Installations &amp; Assembly</div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Mounted, Assembled &<br />Installed Properly.
+            </h2>
+            <p style="font-size:0.95rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              From wall cabinets that need to be level and anchored into studs, to TV mounts, shelving systems, and hardware installs — we do it right so it stays put. No stripped anchors, no crooked hangs.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px">
+              {[
+                { t:'Wall Cabinet Installation', d:'Leveled, anchored into studs, aligned' },
+                { t:'TV Mounting',               d:'All sizes, drywall or masonry' },
+                { t:'Floating Shelves',          d:'Anchored for real weight capacity' },
+                { t:'Curtain Rods',              d:'Blackout, decorative, full-width' },
+                { t:'Mirrors & Artwork',         d:'Large pieces hung level and secure' },
+                { t:'Furniture Assembly',        d:'Flatpacks, IKEA, any brand' },
+              ].map(({ t, d }) => (
+                <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:10px;padding:12px 14px">
+                  <div style="font-size:0.81rem;font-weight:800;color:#060c19;margin-bottom:2px">{t}</div>
+                  <div style="font-size:0.70rem;color:#6a7a8e;font-weight:500;line-height:1.4">{d}</div>
+                </div>
+              ))}
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href="#contact-form" class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+                Book Installation Service
+              </a>
+              <a href={phoneHref} style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:0.88rem;color:#060c19;padding:13px 24px;border-radius:10px;text-decoration:none;border:1.5px solid rgba(30,50,80,0.18);background:#fff;transition:border-color 0.15s"
+                 onmouseover="this.style.borderColor='rgba(30,50,80,0.38)'" onmouseout="this.style.borderColor='rgba(30,50,80,0.18)'">
+                <svg width="15" height="15" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                Call {phone}
+              </a>
+            </div>
+          </div>
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.12)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/handyman/handyman-cabinet-installation-charlotte-nc.webp 960w,
+                        /images/handyman/handyman-cabinet-installation-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/handyman/handyman-cabinet-installation-charlotte-nc.webp"
+                   alt="Handyman installing wall cabinets inside residential home"
+                   width="960" height="960" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PROPERTY MANAGERS & LANDLORDS
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Landlords & Property Managers</div>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Rental Turnover &<br />Property Maintenance
+            </h2>
+            <p style="font-size:0.96rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              Managing rental properties means repairs need to happen fast between tenants. HomeHeroes works with Charlotte-area landlords and property management companies to clear punch lists, fix tenant damage, and get units rent-ready on your schedule.
+            </p>
+            <p style="font-size:0.93rem;color:#4a5e74;line-height:1.76;margin:0 0 32px;font-weight:400">
+              We handle multi-unit and multi-location scheduling, move-in/move-out condition repairs, and recurring maintenance tasks — all with the same upfront pricing and same-day availability we offer homeowners.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px">
+              {[
+                { t:'Tenant Turnover Punch Lists',  d:'Full walk-through repair list cleared in one visit' },
+                { t:'Move-Out Damage Repairs',      d:'Drywall, doors, fixtures, paint touch-ups' },
+                { t:'Move-In Ready Prep',           d:'Ensure unit is clean, functional, and code-compliant' },
+                { t:'Recurring Maintenance',        d:'Scheduled service for multi-unit portfolios' },
+                { t:'Same-Day Availability',        d:'Priority scheduling for property managers' },
+                { t:'Itemized Invoices',            d:'Clear per-job documentation for your records' },
+              ].map(({ t, d }) => (
+                <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:10px;padding:14px 16px">
+                  <div style="font-size:0.82rem;font-weight:800;color:#060c19;margin-bottom:3px">{t}</div>
+                  <div style="font-size:0.72rem;color:#6a7a8e;font-weight:500;line-height:1.5">{d}</div>
+                </div>
+              ))}
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                Call for Property Manager Pricing
+              </a>
+              <a href="#contact-form" style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:0.88rem;color:#060c19;padding:13px 24px;border-radius:10px;text-decoration:none;border:1.5px solid rgba(30,50,80,0.18);background:#fff;transition:border-color 0.15s"
+                 onmouseover="this.style.borderColor='rgba(30,50,80,0.38)'" onmouseout="this.style.borderColor='rgba(30,50,80,0.18)'">
+                Submit a Punch List
+              </a>
+            </div>
+          </div>
+
+          <!-- Visual: service category blocks -->
+          <div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              {[
+                { icon:'M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819', title:'Move-In Ready', sub:'Unit prepped for new tenant' },
+                { icon:'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z', title:'Punch Lists', sub:'Cleared fast between tenants' },
+                { icon:'M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25', title:'Damage Repair', sub:'Walls, doors, fixtures, trim' },
+                { icon:'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z', title:'Itemized Reports', sub:'Documentation for your records' },
+                { icon:'M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5', title:'Scheduled Service', sub:'Recurring multi-unit maintenance' },
+                { icon:'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z', title:'Same-Day Available', sub:'Priority for property managers' },
+              ].map(({ icon, title, sub }) => (
+                <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:18px 16px;text-align:center">
+                  <div style="width:38px;height:38px;border-radius:10px;background:#fef2f2;border:1px solid rgba(176,22,22,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 10px">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icon}/></svg>
+                  </div>
+                  <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{title}</div>
+                  <div style="font-size:0.69rem;color:#6a7a8e;font-weight:500;line-height:1.4">{sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PRICING
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:960px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Transparent Pricing</div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0 0 12px">
+            Upfront Pricing. No Surprises.
+          </h2>
+          <p style="font-size:0.95rem;color:#4a5e74;max-width:480px;margin:0 auto;line-height:1.65">
+            We quote before we touch anything. The $79 service call is applied toward your job when you approve — you only pay the job price, not the fee on top.
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:32px">
+          {[
+            { service: 'Drywall Patch (small)',    range: '$95 – $220',  note: 'Match, texture, paint-ready' },
+            { service: 'Door Repair / Adjustment', range: '$89 – $195',  note: 'Interior or exterior' },
+            { service: 'TV Mounting',              range: '$89 – $175',  note: 'All sizes & wall types' },
+            { service: 'Furniture Assembly',       range: '$79 – $250',  note: 'Per piece, most flatpacks' },
+            { service: 'Shelf Installation',       range: '$79 – $180',  note: 'Floating or bracket-mounted' },
+            { service: 'Service Call Fee',         range: '$79',         note: 'Applied toward your repair' },
+          ].map(r => (
+            <div class="card" style="padding:20px 22px">
+              <div style="font-size:0.84rem;font-weight:800;color:#060c19;margin-bottom:6px">{r.service}</div>
+              <div style="font-size:1.1rem;font-weight:900;color:#b01616;letter-spacing:-0.02em;margin-bottom:4px">{r.range}</div>
+              <div style="font-size:0.72rem;color:#6a7a8e;font-weight:500">{r.note}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style="background:linear-gradient(135deg,rgba(176,22,22,0.07),rgba(176,22,22,0.03));border:1px solid rgba(176,22,22,0.15);border-radius:14px;padding:22px 26px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+          <div style="flex:1;min-width:200px">
+            <div style="font-size:0.84rem;font-weight:800;color:#b01616;margin-bottom:4px">Batch Multiple Jobs — Save on Service Calls</div>
+            <p style="font-size:0.82rem;color:#3d506a;margin:0;line-height:1.6">Have a list? We handle everything in one visit. One $79 service call covers diagnosis for multiple tasks — you pay one fee, not one per repair. Most efficient way to clear your punch list.</p>
+          </div>
+          <a href="#contact-form" class="btn-red" style="flex-shrink:0;padding:12px 24px;font-size:0.88rem">
+            Book Multiple Repairs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         DOORS, WINDOWS & HARDWARE SPLIT
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.14)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/handyman/handyman-sliding-door-repair-charlotte-nc.webp 960w,
+                        /images/handyman/handyman-sliding-door-repair-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/handyman/handyman-sliding-door-repair-charlotte-nc.webp"
+                   alt="Handyman repairing residential sliding glass door"
+                   width="960" height="714" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+            <div style="position:absolute;top:18px;right:18px;background:#fff;border-radius:12px;padding:10px 16px;box-shadow:0 6px 20px rgba(10,20,40,0.18)">
+              <div style="font-size:0.68rem;font-weight:700;color:#6a7a8e;letter-spacing:0.08em;text-transform:uppercase">Repairs from</div>
+              <div style="font-size:1.4rem;font-weight:900;color:#b01616;line-height:1">$89</div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Doors, Windows & Hardware</div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Sticking, Dragging, or<br />Just Won't Close Right?
+            </h2>
+            <p style="font-size:0.95rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              Doors that stick, slam, scrape the floor, or won't latch are one of the most common — and most annoying — household problems. HomeHeroes fixes interior and exterior doors, sliding doors, screen doors, and everything in between.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:32px">
+              {[
+                { t:'Sticky or sticking doors',         d:'Hinges adjusted, frames planed, strike plates repositioned' },
+                { t:'Doors that won\'t latch',          d:'Latch and strike plate alignment corrected, hardware replaced if needed' },
+                { t:'Sagging hinges',                   d:'Re-set, shimmed, or upgraded to heavy-duty hardware' },
+                { t:'Sliding glass door repair',        d:'Track cleaning, roller replacement, frame adjustment' },
+                { t:'Screen door repair',               d:'Torn screens re-screened, frames repaired, closers adjusted' },
+                { t:'Weatherstripping replacement',     d:'Interior and exterior, all door types' },
+              ].map(({ t, d }) => (
+                <div style="display:flex;gap:12px;padding:12px 14px;background:#f5f7fa;border-radius:10px">
+                  <div style="margin-top:2px;width:16px;height:16px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="7" height="7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:0.82rem;font-weight:800;color:#060c19;margin-bottom:1px">{t}</div>
+                    <div style="font-size:0.73rem;color:#6a7a8e;font-weight:400;line-height:1.45">{d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+              Book Door Repair Today
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT WE DO NOT DO
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:64px 24px">
+      <div style="max-width:860px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:40px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Honest Boundaries</div>
+          <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0 0 12px">
+            What We Don't Handle
+          </h2>
+          <p style="font-size:0.93rem;color:#4a5e74;max-width:480px;margin:0 auto;line-height:1.7">
+            We believe in telling you upfront what's outside our scope — so you can get the right specialist for the right job, without wasted time.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+          {notDone.map(({ t, d }) => (
+            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:12px">
+              <div style="width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:rgba(30,50,80,0.08);border:1px solid rgba(30,50,80,0.14)">
+                <svg width="9" height="9" fill="none" viewBox="0 0 24 24" stroke="#6a7a8e" stroke-width="3" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.86rem;font-weight:800;color:#060c19;margin-bottom:2px">{t}</div>
+                <div style="font-size:0.76rem;color:#6a7a8e;font-weight:400;line-height:1.5">{d}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(176,22,22,0.06),rgba(176,22,22,0.02));border:1px solid rgba(176,22,22,0.14);border-radius:12px;padding:18px 22px;text-align:center">
+          <p style="font-size:0.86rem;color:#3d506a;margin:0;line-height:1.65;font-weight:400">
+            Not sure if your job fits? <a href={phoneHref} style="color:#b01616;font-weight:700;text-decoration:none">Call us</a> — we'll tell you honestly in under 2 minutes whether we can help, or refer you to the right trade specialist.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHY HOMHEROES HANDYMAN
+    ═══════════════════════════════════════════ -->
+    <section class="bg-navy-section" style="padding:80px 24px 96px;position:relative;overflow:hidden">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,#8a0e0e 30%,#dc2626 50%,#8a0e0e 70%,transparent)"></div>
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:26px 26px;pointer-events:none" aria-hidden="true"></div>
+
+      <div style="max-width:1280px;margin:0 auto;position:relative">
+        <div class="why-grid">
+
+          <!-- LEFT: Stats -->
+          <div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+              {[['10+','Years in Charlotte'],['4.9★','Google Rating'],['Same-Day','Always Available'],['$79','Service Call Fee']].map(([v,l]) => (
+                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:20px;text-align:center">
+                  <div style="font-size:1.4rem;font-weight:900;color:#e8edf5;letter-spacing:-0.03em;line-height:1">{v}</div>
+                  <div style="font-size:0.65rem;font-weight:700;color:#1e3252;margin-top:4px;letter-spacing:0.05em">{l}</div>
+                </div>
+              ))}
+            </div>
+            <div style="border-radius:13px;padding:20px;background:linear-gradient(135deg,#b01616,#6e0c0c);border:1px solid rgba(255,255,255,0.07);text-align:center">
+              <div style="font-size:0.84rem;font-weight:800;color:#fff;margin-bottom:4px">Have a List? Batch It All.</div>
+              <div style="font-size:0.68rem;color:rgba(255,200,200,0.6);margin-bottom:12px">One visit. Multiple repairs. One service call fee.</div>
+              <a href={phoneHref} style="display:block;font-weight:800;font-size:0.93rem;color:#8a0e0e;padding:12px;border-radius:9px;text-decoration:none;background:#fff">
+                Call {phone}
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT: Features -->
+          <div>
+            <div class="sec-label" style="color:#dc3030;margin-bottom:18px">Why HomeHeroes Handyman</div>
+            <h2 style="font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:#e8edf5;margin:0 0 10px;letter-spacing:-0.04em;line-height:1.05">
+              One Team.<br />Every Home Fix.
+            </h2>
+            <p style="font-size:0.95rem;color:#1e3a56;margin:0 0 36px;line-height:1.7;font-weight:400">Ten years in Charlotte homes. One honest repair at a time.</p>
+
+            <div style="display:flex;flex-direction:column;gap:2px">
+              {[
+                { t:'Same-Day Handyman Appointments',     d:'Call us and a technician is on the way today. No waiting days for basic home repairs.' },
+                { t:'$79 Service Call Credited to Job',   d:'No wasted diagnostic money. The $79 fee disappears into your job total when you approve the work.' },
+                { t:'Batch Multiple Repairs in One Visit', d:'Book everything on your list at once — one trip, one service call fee, everything fixed.' },
+                { t:'Background-Checked Technicians',     d:'Every HomeHeroes team member is a full-time employee — vetted, uniformed, and trained.' },
+                { t:'Upfront Flat-Rate Quotes',           d:'We assess and quote before starting. The price you hear is the price you pay.' },
+                { t:'Part of the HomeHeroes Team',        d:'Same company you trust for appliances and plumbing. One number, every home need.' },
+              ].map(({ t, d }) => (
+                <div style="display:flex;gap:12px;padding:14px;border-radius:10px;transition:background 0.15s;cursor:default"
+                     onmouseover="this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.background='transparent'">
+                  <div style="margin-top:1px;width:19px;height:19px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="8" height="8" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:0.84rem;font-weight:800;color:#e8edf5;margin-bottom:3px;letter-spacing:-0.01em">{t}</div>
+                    <div style="font-size:0.79rem;color:#1e3a56;line-height:1.62;font-weight:400">{d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PROCESS
+    ═══════════════════════════════════════════ -->
+    <div class="bg-white-section" style="border-top:1px solid rgba(30,50,80,0.08);border-bottom:1px solid rgba(30,50,80,0.08);padding:64px 24px 72px">
+      <div style="max-width:960px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:52px">
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:12px">
+            <div style="height:1px;width:48px;background:rgba(30,50,80,0.12)"></div>
+            <span style="font-size:0.66rem;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#b01616">How It Works</span>
+            <div style="height:1px;width:48px;background:rgba(30,50,80,0.12)"></div>
+          </div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">Fixed in 3 Simple Steps</h2>
+        </div>
+        <div class="steps-grid">
+          {[
+            { n:'1', t:'Call or Book Online',       d:'Tell us your repair list. We confirm your same-day Charlotte appointment within minutes — batch multiple jobs at once.' },
+            { n:'2', t:'Technician Arrives On Time', d:'Your HomeHeroes handyman shows up equipped and ready. No waiting around — we quote the work before touching anything.' },
+            { n:'3', t:'Done Right & Guaranteed',   d:'Every repair completed to spec and backed by our 90-day parts-and-labor warranty. Clean up included.' },
+          ].map(({ n, t, d }) => (
+            <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px">
+              <div style="width:58px;height:58px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:18px;background:linear-gradient(180deg,#d42222,#8e1010);box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 5px 16px rgba(176,22,22,0.35)">
+                {n}
+              </div>
+              <h3 style="font-size:0.93rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.01em">{t}</h3>
+              <p style="font-size:0.81rem;color:#4a5e74;line-height:1.68;margin:0;font-weight:400">{d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         CARPENTRY & CUSTOM PROJECTS SPLIT
+    ═══════════════════════════════════════════ -->
+    <section class="bg-navy-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Copy -->
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:16px;font-size:0.66rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626">
+              <span style="width:24px;height:1px;background:#dc2626;display:block"></span>
+              Carpentry &amp; Custom Projects
+            </div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#e8edf5;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Built Right, Built<br />to Last.
+            </h2>
+            <p style="font-size:0.95rem;color:#1e3a56;line-height:1.78;margin:0 0 20px;font-weight:400">
+              From framing a closet to building custom shelving, our carpenters bring precision tools and real trade experience. No shortcuts, no guesswork — just solid work that looks professional and stands up to daily use.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+              {[
+                { t:'Custom framing & structural blocking',  d:'Walls, closets, alcoves — framed square and built to code' },
+                { t:'Built-in shelving & storage',          d:'Custom-fit shelves, closet systems, and storage solutions' },
+                { t:'Trim, crown & baseboard carpentry',    d:'Mitered corners, scribed edges, clean paint-ready joints' },
+                { t:'Deck & fence repairs',                 d:'Broken boards replaced, posts re-set, rails secured' },
+                { t:'Small custom woodworking',             d:'Accent walls, niche framing, floating panels, and more' },
+              ].map(({ t, d }) => (
+                <div style="display:flex;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)">
+                  <div style="margin-top:1px;width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="7" height="7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:0.83rem;font-weight:800;color:#e8edf5;margin-bottom:2px">{t}</div>
+                    <div style="font-size:0.75rem;color:#1e3a56;line-height:1.5;font-weight:400">{d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <a href="#contact-form" class="btn-red" style="font-size:0.93rem;padding:14px 30px">
+              Book Carpentry Work
+            </a>
+          </div>
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,0.35)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/handyman/handyman-carpentry-framing-charlotte-nc.webp 960w,
+                        /images/handyman/handyman-carpentry-framing-charlotte-nc@2x.webp 1600w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/handyman/handyman-carpentry-framing-charlotte-nc.webp"
+                   alt="Handyman building custom wood framing structure"
+                   width="960" height="960" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FAQ
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:780px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Common Questions</div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">
+            Handyman FAQs — Charlotte, NC
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          {faqs.map((faq) => (
+            <details style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:12px;overflow:hidden">
+              <summary style="padding:18px 22px;font-size:0.92rem;font-weight:700;color:#060c19;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                {faq.q}
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:#b01616" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+              </summary>
+              <div style="padding:0 22px 18px;font-size:0.85rem;color:#4a5e74;line-height:1.72;border-top:1px solid rgba(30,50,80,0.07);padding-top:14px;margin-top:0">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SERVICE AREAS
+    ═══════════════════════════════════════════ -->
+    <ServiceAreas />
+
+    <!-- ═══════════════════════════════════════════
+         OTHER SERVICES CROSS-LINK
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:56px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;margin-bottom:32px">
+          <div>
+            <div class="sec-label" style="margin-bottom:10px">More From HomeHeroes</div>
+            <h2 style="font-size:clamp(1.3rem,2vw,1.8rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">We Handle More Than Handyman</h2>
+          </div>
+          <a href="/" style="font-size:0.82rem;font-weight:800;color:#b01616;text-decoration:none;display:inline-flex;align-items:center;gap:5px">
+            See All Services →
+          </a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+          {[
+            { label:'Appliance Repair', desc:'Refrigerators, washers, dryers, ovens and more.',           href:'/appliance-repair-charlotte', live:true },
+            { label:'Plumbing',         desc:'Drains, leaks, water heaters, emergency plumbing.',          href:'/plumbing-charlotte',          live:true },
+            { label:'HVAC',             desc:'AC repair, heating service, same-day diagnostics.',            href:'/services/hvac',               live:true  },
+            { label:'Electrical',       desc:'Outlets, switches, panels, troubleshooting.',                href:'/services/electrical',         live:true },
+          ].map(s => (
+            <a href={s.href} style={`display:block;padding:18px 20px;background:#fff;border:1.5px solid ${s.live ? 'rgba(176,22,22,0.2)' : 'rgba(30,50,80,0.1)'};border-radius:12px;text-decoration:none;transition:box-shadow 0.2s,transform 0.2s`}
+               onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(10,20,40,0.1)'"
+               onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:0.86rem;font-weight:800;color:#060c19">{s.label}</span>
+                {s.live && <span style="font-size:0.58rem;font-weight:800;color:#fff;background:#b01616;padding:2px 7px;border-radius:100px">AVAILABLE</span>}
+              </div>
+              <p style="font-size:0.76rem;color:#4a5e74;margin:0;line-height:1.5">{s.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THIRD-PARTY CITATIONS ─────────────────── -->
+    <CitationProfiles />
+
+    <!-- ═══════════════════════════════════════════
+         FINAL CTA + FORM
+    ═══════════════════════════════════════════ -->
+    <section id="contact" style="position:relative;overflow:hidden;padding:80px 24px 96px;background:linear-gradient(135deg,#c92020 0%,#8a0e0e 55%,#520808 100%)">
+      <div style="position:absolute;inset:0;opacity:0.045;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Cpath d=%22M0 0h50v50H0z%22 fill=%22none%22/%3E%3Cpath d=%22M0 0L50 0M0 50L50 50M0 0L0 50M50 0L50 50%22 stroke=%22white%22 stroke-width=%221%22/%3E%3C/svg%3E')" aria-hidden="true"></div>
+      <div style="max-width:940px;margin:0 auto;position:relative;text-align:center">
+        <img src="/images/logo.webp" alt="HomeHeroes" width="70" height="70" loading="lazy"
+             style="border-radius:16px;object-fit:cover;margin:0 auto 22px;display:block;box-shadow:0 6px 24px rgba(6,12,25,0.38),0 0 0 2px rgba(255,255,255,0.18)" />
+        <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.04;margin:0 0 18px">
+          Home Repair List?<br />We'll Handle It Today.
+        </h2>
+        <p style="font-size:1.05rem;color:rgba(255,220,220,0.82);line-height:1.74;margin:0 auto 44px;max-width:460px;font-weight:400">
+          Same-day handyman service across Charlotte. Batch your repairs — one visit, one service call. Call now or book online.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+          <a href="#contact-form" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#8a0e0e;padding:15px 34px;border-radius:10px;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(6,12,25,0.26);transition:transform 0.15s"
+             onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            Book Handyman Service
+          </a>
+          <a href={phoneHref} style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#fff;padding:15px 34px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);transition:transform 0.15s"
+             onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <svg width="17" height="17" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call {phone}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact form -->
+    <section id="contact-form" class="bg-white-section" style="padding:64px 24px 80px">
+      <div style="max-width:680px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:36px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:12px">Book a Handyman</div>
+          <h2 style="font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0 0 10px">Request Same-Day Service</h2>
+          <p style="font-size:0.88rem;color:#4a5e74;margin:0">We'll call you back within minutes to confirm your appointment.</p>
+        </div>
+
+        <div style="background:#fff;border:1.5px solid rgba(30,50,80,0.1);border-radius:18px;overflow:hidden;box-shadow:0 12px 40px rgba(10,20,40,0.08)">
+          <div style="padding:20px 32px;background:linear-gradient(135deg,#060c19,#0a1628);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div>
+              <div style="font-size:0.93rem;font-weight:800;color:#fff">HomeHeroes Handyman</div>
+              <div style="font-size:0.72rem;color:#4a7a9e;margin-top:2px;font-weight:500">Charlotte, NC · Same-day available</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:7px">
+              <span style="width:8px;height:8px;border-radius:50%;background:#34d399;animation:pulse 2s infinite;flex-shrink:0"></span>
+              <span style="font-size:0.72rem;font-weight:700;color:#34d399">Taking Appointments Now</span>
+            </div>
+          </div>
+
+          <form id="handyman-form" style="padding:24px 32px;display:flex;flex-direction:column;gap:16px" name="handyman-request" method="POST" action="https://api.web3forms.com/submit">
+            <input type="hidden" name="access_key" value="98673c2a-0528-45c5-a5d0-2561df9d62fb" />
+            <input type="hidden" name="subject" value="New HomeHeroes Handyman Service Request" />
+
+            <div class="form-row">
+              <div>
+                <label for="hy-name" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">FIRST NAME</label>
+                <input type="text" id="hy-name" name="first_name" autocomplete="given-name" required placeholder="John"
+                       style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                       onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                       onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+              </div>
+              <div>
+                <label for="hy-phone" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PHONE NUMBER</label>
+                <input type="tel" id="hy-phone" name="phone" autocomplete="tel" required placeholder="(704) 555-0100"
+                       style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                       onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                       onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+              </div>
+            </div>
+
+            <div>
+              <label for="hy-job-type" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">JOB TYPE</label>
+              <select id="hy-job-type" name="job_type" required
+                      style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;appearance:none;box-sizing:border-box;font-family:inherit"
+                      onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+                <option value="" disabled selected>Select job type…</option>
+                <option>Drywall Repair</option>
+                <option>Door Repair / Adjustment</option>
+                <option>TV Mounting</option>
+                <option>Furniture Assembly</option>
+                <option>Shelf / Storage Installation</option>
+                <option>Cabinet Repair</option>
+                <option>Trim & Baseboard Repair</option>
+                <option>Rental Turnover / Punch List</option>
+                <option>Small Carpentry</option>
+                <option>Multiple Repairs (List)</option>
+                <option>Other Handyman Job</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="hy-desc" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">DESCRIBE THE JOB</label>
+              <textarea id="hy-desc" name="message" rows="3" placeholder="Describe what needs to be done — list multiple items if needed…"
+                        style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;resize:none;box-sizing:border-box;font-family:inherit"
+                        onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                        onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'"></textarea>
+            </div>
+
+            <button id="hy-submit" type="submit" class="btn-red" style="width:100%;padding:14px;font-size:0.97rem;border-radius:10px">
+              Book Handyman Service →
+            </button>
+            <p style="font-size:0.69rem;color:#9aaabe;text-align:center;margin:0;font-weight:400">We respect your privacy. Your info is never sold or shared.</p>
+          </form>
+
+          <div id="hy-success" style="display:none;padding:40px 32px;text-align:center">
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#d42222,#8e1010);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            </div>
+            <p style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 6px;letter-spacing:-0.01em">Request received.</p>
+            <p style="font-size:0.88rem;color:#4a5e74;margin:0;font-weight:400">We'll call you shortly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    /* Book Service link — CSS hover replaces JS style.gap writes (layout reflow fix) */
+    .hy-book-link {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #b01616;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.15s;
+    }
+    .hy-book-link:hover { gap: 8px; }
+  </style>
+
+  <script>
+    const form = document.getElementById('handyman-form') as HTMLFormElement | null;
+    const success = document.getElementById('hy-success');
+    const btn = document.getElementById('hy-submit') as HTMLButtonElement | null;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!btn) return;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        const data = await res.json();
+        if (data.success) {
+          form.style.display = 'none';
+          if (success) success.style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Book Handyman Service →';
+          alert('Something went wrong. Please call us directly.');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Book Handyman Service →';
+        alert('Something went wrong. Please call us directly.');
+      }
+    });
+  </script>
+</body>
+</html>

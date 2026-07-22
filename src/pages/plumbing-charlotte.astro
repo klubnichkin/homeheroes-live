@@ -1,0 +1,1033 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import ServiceAreas from '../components/ServiceAreas.astro';
+import CitationProfiles from '../components/seo/CitationProfiles.astro';
+import Footer from '../components/Footer.astro';
+import { phone, phoneHref } from '../data/siteData';
+
+const problems = [
+  {
+    title: 'Clogged Drains',
+    detail: 'Kitchen, bathroom, and floor drains cleared fast. We use professional-grade augers and hydro-jetting — not just drain cleaner that temporarily masks the problem.',
+    icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  },
+  {
+    title: 'Leaking Pipes',
+    detail: 'Pinhole leaks, burst pipes, supply line failures — located and repaired before water damage spreads. We work on copper, PVC, and PEX systems.',
+    icon: 'M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z',
+  },
+  {
+    title: 'Toilet Issues',
+    detail: 'Running toilets, clogs, weak flush, rocking base, or complete replacement. Most toilet repairs are completed in under an hour on the first visit.',
+    icon: 'M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z',
+  },
+  {
+    title: 'Water Heater Problems',
+    detail: 'No hot water, inconsistent temperature, strange sounds, or visible leaks. We service tank and tankless water heaters — repair or replace, your choice.',
+    icon: 'M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z',
+  },
+  {
+    title: 'Low Water Pressure',
+    detail: 'Weak flow across faucets or just one fixture? We diagnose pressure regulators, clogged aerators, corroded pipes, and shutoff valve issues.',
+    icon: 'M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3',
+  },
+  {
+    title: 'Emergency Plumbing',
+    detail: 'Active leak? Water where it shouldn\'t be? Call immediately. We prioritize emergency calls and dispatch same-day — shutoff assistance available over the phone.',
+    icon: 'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How much does plumbing repair cost in Charlotte?',
+    a: 'Most plumbing repairs in Charlotte range from $79–$450 depending on the issue. HomeHeroes charges a $79 service call fee that is applied toward your repair when you approve the work. Drain clearing typically runs $89–$175. Pipe leak repairs range from $150–$400. Water heater repairs start at $125. We quote upfront before starting — no surprises.',
+  },
+  {
+    q: 'Do you offer same-day plumbing service in Charlotte?',
+    a: 'Yes. HomeHeroes provides same-day plumbing service across Charlotte and surrounding areas including Huntersville, Mooresville, Concord, Matthews, and Cornelius. Call (704) 512-0111 and we\'ll confirm your appointment slot within minutes.',
+  },
+  {
+    q: 'What plumbing issues do you handle?',
+    a: 'We handle clogged drains, leaking pipes, running toilets, water heater repairs and replacements, low water pressure, sump pump issues, and emergency plumbing. We work on copper, PVC, and PEX systems in both residential and light commercial properties.',
+  },
+  {
+    q: 'Is HomeHeroes licensed and insured for plumbing work?',
+    a: 'Yes. HomeHeroes is fully licensed in North Carolina and carries complete liability insurance coverage. Our plumbing technicians are background-checked, uniformed, and trained to NC code standards.',
+  },
+  {
+    q: 'What should I do if I have an active plumbing leak right now?',
+    a: 'Locate your main water shutoff valve (usually near the water meter or where the main line enters your home) and shut it off immediately to stop the flow. Then call HomeHeroes at (704) 512-0111 — we can walk you through the shutoff process over the phone and dispatch an emergency technician same-day.',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#8a0e0e" />
+
+  <!-- Primary SEO -->
+  <title>Plumbing Services Charlotte | HomeHeroes</title>
+  <meta name="description" content="Same-day plumbing services in Charlotte, NC. Clogged drains, leaking pipes, water heaters, toilet repairs, and emergency plumbing. $79 service call applied toward repair. Call (704) 512-0111." />
+  <link rel="canonical" href="https://tryhomeheroes.com/plumbing-charlotte" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tryhomeheroes.com/plumbing-charlotte" />
+  <meta property="og:site_name" content="HomeHeroes Home Services" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Plumbing Services Charlotte | HomeHeroes" />
+  <meta property="og:description" content="Same-day plumbing in Charlotte, NC. Drains, leaks, water heaters, toilets, emergency plumbing. $79 service call credited toward repair." />
+  <meta property="og:image" content="https://tryhomeheroes.com/images/plumbing/charlotte-commercial-plumbing.webp" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="1062" />
+  <meta property="og:image:alt" content="HomeHeroes plumbing technician in Charlotte, NC" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Plumbing Services Charlotte | HomeHeroes" />
+  <meta name="twitter:description" content="Same-day plumbing in Charlotte. Drains, leaks, water heaters, emergency service. Call (704) 512-0111." />
+  <meta name="twitter:image" content="https://tryhomeheroes.com/images/plumbing/charlotte-commercial-plumbing.webp" />
+
+  <!-- Font preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="/images/plumbing/charlotte-commercial-plumbing-hero.webp" fetchpriority="high" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" /></noscript>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "name": "Plumbing Services",
+          "serviceType": "Plumbing",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://tryhomeheroes.com/#business",
+            "name": "HomeHeroes Home Services",
+            "telephone": "+17045120111"
+          },
+          "areaServed": {"@type": "City", "name": "Charlotte", "addressRegion": "NC"},
+          "url": "https://tryhomeheroes.com/plumbing-charlotte",
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "79",
+              "maxPrice": "450",
+              "priceCurrency": "USD"
+            }
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Plumbing Services",
+            "itemListElement": [
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Clogged Drain Clearing"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pipe Leak Repair"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Toilet Repair"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Water Heater Repair"}},
+              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Emergency Plumbing"}}
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does plumbing repair cost in Charlotte?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Most plumbing repairs in Charlotte range from $79–$450. HomeHeroes charges a $79 service call fee applied toward your repair. Drain clearing typically runs $89–$175. Pipe leak repairs range from $150–$400. Water heater repairs start at $125. We quote upfront before starting."}
+            },
+            {
+              "@type": "Question",
+              "name": "Do you offer same-day plumbing service in Charlotte?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Yes. HomeHeroes provides same-day plumbing service across Charlotte and surrounding areas including Huntersville, Mooresville, Concord, Matthews, and Cornelius. Call (704) 512-0111 to confirm your slot."}
+            },
+            {
+              "@type": "Question",
+              "name": "What should I do if I have an active plumbing leak right now?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Locate your main water shutoff valve and shut it off immediately to stop the flow. Then call HomeHeroes at (704) 512-0111. We can walk you through the shutoff process over the phone and dispatch an emergency technician same-day."}
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryhomeheroes.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Plumbing Charlotte", "item": "https://tryhomeheroes.com/plumbing-charlotte"}
+          ]
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <Header />
+
+  <!-- Cross-service navigation strip -->
+  <div style="background:#080f1e;border-bottom:1px solid rgba(255,255,255,0.07);padding:10px 24px">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <a href="/" style="display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+        <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        All Services
+      </a>
+      <span style="color:rgba(255,255,255,0.2);font-size:11px">›</span>
+      <span style="font-size:0.72rem;font-weight:700;color:#dc2626">Plumbing</span>
+      <span style="color:rgba(255,255,255,0.2);font-size:11px;margin-left:8px">·</span>
+      <a href="/appliance-repair-charlotte" style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;margin-left:8px;transition:color 0.15s" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+        Appliance Repair →
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section style="background:#080f1e;padding:60px 24px 0;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-80px;top:-80px;width:420px;height:420px;border-radius:50%;opacity:0.04;filter:blur(80px);background:#dc2626;pointer-events:none" aria-hidden="true"></div>
+      <div style="max-width:1280px;margin:0 auto">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" style="margin-bottom:28px">
+          <ol style="display:flex;align-items:center;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+            <li><a href="/" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none">Home</a></li>
+            <li style="color:rgba(255,255,255,0.25);font-size:13px">›</li>
+            <li><span style="color:rgba(255,255,255,0.75);font-size:13px">Plumbing Charlotte</span></li>
+          </ol>
+        </nav>
+
+        <div class="hero-grid" style="align-items:center;gap:0">
+
+          <!-- LEFT: Copy -->
+          <div class="hero-copy-col" style="padding-bottom:56px">
+
+            <div style="display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;padding:5px 14px 5px 8px;border-radius:100px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)">
+              <span style="width:8px;height:8px;border-radius:50%;background:#dc2626;animation:pulse 1.8s ease-in-out infinite;flex-shrink:0"></span>
+              <span style="font-size:0.67rem;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.14em;text-transform:uppercase">Same-Day Plumbers Available Now</span>
+            </div>
+
+            <h1 style="font-size:clamp(2.5rem,4.5vw,4rem);font-weight:900;line-height:1.0;letter-spacing:-0.04em;color:#fff;margin:0 0 22px">
+              Plumbing Services<br />
+              <em style="font-style:italic;color:#dc2626">in Charlotte, NC</em>
+            </h1>
+
+            <p style="font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,0.72);font-weight:400;max-width:480px;margin:0 0 14px">
+              Clogged drains, leaking pipes, water heater failures, toilet problems — fixed same-day. Flat-rate pricing with a $79 service call credited toward your repair.
+            </p>
+
+            <!-- Trust pills -->
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:32px">
+              {['$79 Service Call','Same-Day Service','Upfront Quote','Licensed & Insured','Charlotte Metro'].map(t => (
+                <span style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:5px 11px;border-radius:100px">{t}</span>
+              ))}
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:38px">
+              <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:16px 36px">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                Call {phone}
+              </a>
+              <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:0.95rem;color:#fff;padding:16px 32px;border-radius:10px;text-decoration:none;border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.07);transition:border-color 0.15s"
+                 onmouseover="this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)'">
+                <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Book Online — Free
+              </a>
+            </div>
+
+            <!-- Mobile hero image -->
+            <div class="hero-img-mobile">
+              <img src="/images/plumbing/charlotte-commercial-plumbing-hero.webp" alt="HomeHeroes plumbing technician in Charlotte, NC"
+                   width="960" height="1120" fetchpriority="high" loading="eager"
+                   style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" />
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,25,0.5) 0%,transparent 60%)"></div>
+              <div style="position:absolute;bottom:12px;left:12px;display:flex;gap:8px">
+                <div style="background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(10,20,40,0.2)">
+                  <div style="font-size:0.95rem;font-weight:900;color:#060c19;line-height:1">$79</div>
+                  <div style="font-size:0.55rem;font-weight:700;color:#6a7a8e;margin-top:2px;letter-spacing:0.04em">SERVICE CALL</div>
+                </div>
+                <div style="background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(10,20,40,0.2)">
+                  <div style="font-size:0.95rem;font-weight:900;color:#060c19;line-height:1">Same-Day</div>
+                  <div style="font-size:0.55rem;font-weight:700;color:#6a7a8e;margin-top:2px;letter-spacing:0.04em">AVAILABLE NOW</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Desktop photo -->
+          <div class="hero-photo" style="display:none;position:relative;align-self:stretch">
+            <div style="position:absolute;inset:20px 0 -20px 0">
+              <div style="height:100%;position:relative">
+                <img src="/images/plumbing/charlotte-commercial-plumbing-hero.webp" alt="HomeHeroes plumbing technician in Charlotte, NC"
+                     width="960" height="1120" loading="eager"
+                     style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:20px 0 0 20px;box-shadow:-8px 8px 50px rgba(0,0,0,0.4)" />
+                <div style="position:absolute;inset:0;border-radius:20px 0 0 20px;background:linear-gradient(to right,#080f1e 0%,rgba(8,15,30,0.12) 20%,transparent 40%)"></div>
+              </div>
+            </div>
+            <div style="position:absolute;top:44px;left:-20px;z-index:10;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(10,20,40,0.18)">
+              <div style="font-size:1.5rem;font-weight:900;color:#b01616;line-height:1">$79</div>
+              <div style="font-size:0.63rem;font-weight:700;color:#6a7a8e;margin-top:3px;letter-spacing:0.06em">SERVICE CALL FEE</div>
+            </div>
+            <div style="position:absolute;top:50%;right:-16px;transform:translateY(-50%);z-index:10;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(10,20,40,0.18)">
+              <div style="font-size:1.3rem;font-weight:900;color:#060c19;line-height:1">Same-Day</div>
+              <div style="font-size:0.63rem;font-weight:700;color:#6a7a8e;margin-top:3px;letter-spacing:0.06em">AVAILABLE NOW</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div style="border-top:1px solid rgba(255,255,255,0.07);margin-top:48px">
+        <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr)">
+            {[
+              { v:'$79',    l:'Service Call Fee',    s:'Applied toward your repair'    },
+              { v:'Same',   l:'Day Service',          s:'Call by noon, fixed today'     },
+              { v:'90 Day', l:'Warranty',             s:'Parts & labor guaranteed'      },
+            ].map(({ v, l, s }) => (
+              <div style="padding:22px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.06)">
+                <div style="font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1">{v}</div>
+                <div style="font-size:0.76rem;font-weight:700;color:rgba(255,255,255,0.65);margin-top:5px">{l}</div>
+                <div style="font-size:0.63rem;font-weight:500;color:rgba(255,255,255,0.3);margin-top:2px;letter-spacing:0.04em">{s}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TRUST BAR
+    ═══════════════════════════════════════════ -->
+    <div class="bg-navy-section" style="border-top:2px solid #8a0e0e;padding:40px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="trust-grid">
+          {[
+            { icon:'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z', label:'NC Licensed Plumbers', sub:'Fully insured · Background checked' },
+            { icon:'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z', label:'Same-Day Response', sub:'Call by noon, fixed today' },
+            { icon:'M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z', label:'Upfront Pricing', sub:'$79 service call · No hidden fees' },
+            { icon:'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z', label:'4.9★ Rated Team', sub:'200+ verified reviews' },
+          ].map(({ icon, label, sub }) => (
+            <div style="display:flex;align-items:center;gap:14px;padding:20px 16px;border-right:1px solid rgba(255,255,255,0.04)">
+              <div style="width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(176,22,22,0.12);border:1px solid rgba(176,22,22,0.24)">
+                <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icon}/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.84rem;font-weight:800;color:#dde6f0;letter-spacing:-0.01em">{label}</div>
+                <div style="font-size:0.68rem;font-weight:500;color:#1e3252;margin-top:2px">{sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRO SPLIT — COMMERCIAL PLUMBING PHOTO
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.14)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/plumbing/charlotte-commercial-plumbing.webp 800w,
+                        /images/plumbing/charlotte-commercial-plumbing@2x.webp 1400w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/plumbing/charlotte-commercial-plumbing.webp"
+                   alt="HomeHeroes plumber working on a Charlotte commercial plumbing job"
+                   width="800" height="1062" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+            <!-- Floating badge -->
+            <div style="position:absolute;bottom:18px;left:18px;background:#fff;border-radius:12px;padding:10px 16px;box-shadow:0 6px 20px rgba(10,20,40,0.18)">
+              <div style="font-size:0.68rem;font-weight:700;color:#b01616;letter-spacing:0.1em;text-transform:uppercase">Licensed · Insured</div>
+              <div style="font-size:0.78rem;font-weight:800;color:#060c19;margin-top:2px">NC Plumbing Professionals</div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Charlotte's Home Plumbers</div>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              One Team.<br />Every Plumbing Problem.
+            </h2>
+            <p style="font-size:0.96rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              HomeHeroes has been fixing plumbing in Charlotte homes since 2014. We handle everything from a clogged kitchen drain to a burst pipe — with licensed technicians, upfront pricing, and same-day availability across the Charlotte metro.
+            </p>
+            <p style="font-size:0.93rem;color:#4a5e74;line-height:1.76;margin:0 0 32px;font-weight:400">
+              No subcontractors. No surprise fees. The technician who shows up at your door is a full-time HomeHeroes team member — background-checked, uniformed, and carrying parts for the most common repairs.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:36px">
+              {[
+                'Same-day service across Charlotte Metro',
+                '$79 service call credited toward your repair',
+                'Upfront flat-rate quote before any work begins',
+                '90-day warranty on all parts & labor',
+              ].map(item => (
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="8" height="8" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <span style="font-size:0.85rem;font-weight:600;color:#2d3748">{item}</span>
+                </div>
+              ))}
+            </div>
+            <a href="#contact-form" class="btn-red" style="font-size:0.95rem;padding:14px 32px">
+              Book a Same-Day Appointment →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         COMMON PROBLEMS
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:80px 24px 96px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:52px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">What We Fix</div>
+          <h2 style="font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:900;letter-spacing:-0.04em;color:#060c19;margin:0;line-height:1.05">
+            Common Plumbing Problems<br />We Solve in Charlotte
+          </h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+          {problems.map(p => (
+            <div class="card" style="padding:28px">
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <div style="width:40px;height:40px;border-radius:10px;background:#fef2f2;border:1px solid rgba(176,22,22,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+                  <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={p.icon}/></svg>
+                </div>
+                <div>
+                  <h3 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.01em">{p.title}</h3>
+                  <p style="font-size:0.82rem;color:#4a5568;line-height:1.65;margin:0">{p.detail}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="text-align:center;margin-top:36px">
+          <a href={phoneHref} class="btn-red" style="font-size:1rem;padding:15px 40px">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call {phone} — Same Day
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PIPE LEAK REPAIR SPLIT SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Pipe &amp; Leak Repair</div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Leaking Pipes Fixed<br />Before Water Damage Spreads
+            </h2>
+            <p style="font-size:0.95rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              A pinhole leak or supply line failure can saturate walls and flooring in hours. HomeHeroes dispatches a licensed plumber same-day to locate the source and repair it — whether it's copper, PVC, or PEX piping.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px">
+              {[
+                { t:'Pinhole Leaks', d:'Detected and patched fast' },
+                { t:'Burst Pipes',   d:'Emergency same-day response' },
+                { t:'Supply Lines',  d:'Fridge, dishwasher, toilet' },
+                { t:'PEX / PVC / Copper', d:'All residential pipe types' },
+              ].map(({ t, d }) => (
+                <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:10px;padding:14px 16px">
+                  <div style="font-size:0.82rem;font-weight:800;color:#060c19;margin-bottom:3px">{t}</div>
+                  <div style="font-size:0.72rem;color:#6a7a8e;font-weight:500">{d}</div>
+                </div>
+              ))}
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                Emergency Leak — Call Now
+              </a>
+              <a href="#contact-form" style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:0.88rem;color:#060c19;padding:13px 24px;border-radius:10px;text-decoration:none;border:1.5px solid rgba(30,50,80,0.18);background:#fff;transition:border-color 0.15s"
+                 onmouseover="this.style.borderColor='rgba(30,50,80,0.38)'" onmouseout="this.style.borderColor='rgba(30,50,80,0.18)'">
+                Schedule Inspection
+              </a>
+            </div>
+          </div>
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.13)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/plumbing/charlotte-pipe-leak-repair.webp 800w,
+                        /images/plumbing/charlotte-pipe-leak-repair@2x.webp 1400w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/plumbing/charlotte-pipe-leak-repair.webp"
+                   alt="Plumber repairing a pipe leak in a Charlotte home"
+                   width="800" height="1693" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PRICING TRANSPARENCY
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:960px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Transparent Pricing</div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0 0 12px">
+            Upfront Pricing. No Surprises.
+          </h2>
+          <p style="font-size:0.95rem;color:#4a5e74;max-width:480px;margin:0 auto;line-height:1.65">
+            We quote before we touch anything. The price you see is the price you pay — including the $79 service call fee credited toward your repair.
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:32px">
+          {[
+            { service: 'Clogged Drain Clearing',   range: '$89 – $175',  note: 'Most cleared same visit' },
+            { service: 'Pipe Leak Repair',          range: '$150 – $400', note: 'Copper, PVC, PEX systems' },
+            { service: 'Toilet Repair / Replace',   range: '$95 – $350',  note: 'Running, clogged, rocking' },
+            { service: 'Water Heater Repair',       range: '$125 – $380', note: 'Tank & tankless units' },
+            { service: 'Faucet / Fixture Repair',   range: '$89 – $220',  note: 'Kitchen, bath, outdoor' },
+            { service: 'Emergency Response',        range: '$79 service call', note: 'Applied toward repair' },
+          ].map(r => (
+            <div class="card" style="padding:20px 22px">
+              <div style="font-size:0.84rem;font-weight:800;color:#060c19;margin-bottom:6px">{r.service}</div>
+              <div style="font-size:1.1rem;font-weight:900;color:#b01616;letter-spacing:-0.02em;margin-bottom:4px">{r.range}</div>
+              <div style="font-size:0.72rem;color:#6a7a8e;font-weight:500">{r.note}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style="background:linear-gradient(135deg,rgba(176,22,22,0.07),rgba(176,22,22,0.03));border:1px solid rgba(176,22,22,0.15);border-radius:14px;padding:22px 26px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+          <div style="flex:1;min-width:200px">
+            <div style="font-size:0.84rem;font-weight:800;color:#b01616;margin-bottom:4px">$79 Service Call — Credited Toward Repair</div>
+            <p style="font-size:0.82rem;color:#3d506a;margin:0;line-height:1.6">We charge $79 to diagnose your plumbing issue. If you approve the repair, that $79 is applied directly to your total — you only pay the repair price, not the fee on top.</p>
+          </div>
+          <a href={phoneHref} class="btn-red" style="flex-shrink:0;padding:12px 24px;font-size:0.88rem">
+            Call for a Quote
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WATER HEATER SERVICES SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.14)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/plumbing/charlotte-water-heater-repair.webp 800w,
+                        /images/plumbing/charlotte-water-heater-repair@2x.webp 1400w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/plumbing/charlotte-water-heater-repair.webp"
+                   alt="HomeHeroes technician repairing a water heater in Charlotte, NC"
+                   width="800" height="1062" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+            <!-- Floating price badge -->
+            <div style="position:absolute;top:18px;right:18px;background:#fff;border-radius:12px;padding:10px 16px;box-shadow:0 6px 20px rgba(10,20,40,0.18)">
+              <div style="font-size:0.68rem;font-weight:700;color:#6a7a8e;letter-spacing:0.08em;text-transform:uppercase">Repairs from</div>
+              <div style="font-size:1.4rem;font-weight:900;color:#b01616;line-height:1">$125</div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Water Heater Services</div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              No Hot Water?<br />We'll Fix It Today.
+            </h2>
+            <p style="font-size:0.95rem;color:#4a5e74;line-height:1.78;margin:0 0 20px;font-weight:400">
+              Whether you have a traditional tank unit or a tankless system, HomeHeroes diagnoses and repairs water heater problems the same day. Cold showers are never a two-day problem with us.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+              {[
+                { label:'No hot water at all',         note:'Heating element or thermostat failure — repaired same visit in most cases' },
+                { label:'Inconsistent temperature',    note:'Thermostat calibration or dip tube issue — diagnosed and corrected' },
+                { label:'Rumbling / popping sounds',   note:'Sediment buildup — flush and descale service available' },
+                { label:'Visible tank leak',           note:'Pressure relief valve, drain valve, or tank replacement' },
+                { label:'Tankless water heaters',      note:'Error codes, flow sensor issues, scale buildup — all models serviced' },
+              ].map(({ label, note }) => (
+                <div style="background:#f5f7fa;border-radius:10px;padding:12px 16px">
+                  <div style="font-size:0.83rem;font-weight:800;color:#060c19;margin-bottom:3px">{label}</div>
+                  <div style="font-size:0.72rem;color:#6a7a8e;font-weight:500;line-height:1.5">{note}</div>
+                </div>
+              ))}
+            </div>
+            <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+              Call for Same-Day Water Heater Repair
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHY HOMHEROES PLUMBING
+    ═══════════════════════════════════════════ -->
+    <section class="bg-navy-section" style="padding:80px 24px 96px;position:relative;overflow:hidden">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,#8a0e0e 30%,#dc2626 50%,#8a0e0e 70%,transparent)"></div>
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:26px 26px;pointer-events:none" aria-hidden="true"></div>
+
+      <div style="max-width:1280px;margin:0 auto;position:relative">
+        <div class="why-grid">
+
+          <!-- LEFT: Stats -->
+          <div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+              {[['10+','Years in Charlotte'],['4.9★','Google Rating'],['Same-Day','Always Available'],['$79','Service Call Fee']].map(([v,l]) => (
+                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:20px;text-align:center">
+                  <div style="font-size:1.4rem;font-weight:900;color:#e8edf5;letter-spacing:-0.03em;line-height:1">{v}</div>
+                  <div style="font-size:0.65rem;font-weight:700;color:#1e3252;margin-top:4px;letter-spacing:0.05em">{l}</div>
+                </div>
+              ))}
+            </div>
+            <div style="border-radius:13px;padding:20px;background:linear-gradient(135deg,#b01616,#6e0c0c);border:1px solid rgba(255,255,255,0.07);text-align:center">
+              <div style="font-size:0.84rem;font-weight:800;color:#fff;margin-bottom:4px">Emergency? Call Immediately.</div>
+              <div style="font-size:0.68rem;color:rgba(255,200,200,0.6);margin-bottom:12px">Active leak? We dispatch within the hour.</div>
+              <a href={phoneHref} style="display:block;font-weight:800;font-size:0.93rem;color:#8a0e0e;padding:12px;border-radius:9px;text-decoration:none;background:#fff">
+                Call {phone}
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT: Features -->
+          <div>
+            <div class="sec-label" style="color:#dc3030;margin-bottom:18px">Why HomeHeroes Plumbing</div>
+            <h2 style="font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:#e8edf5;margin:0 0 10px;letter-spacing:-0.04em;line-height:1.05">
+              Charlotte's Most<br />Reliable Plumbers.
+            </h2>
+            <p style="font-size:0.95rem;color:#1e3a56;margin:0 0 36px;line-height:1.7;font-weight:400">One honest repair at a time since 2014.</p>
+
+            <div style="display:flex;flex-direction:column;gap:2px">
+              {[
+                { t:'Same-Day Plumbing Appointments',  d:'Call us — a plumber is dispatched to your Charlotte home today. No waiting days for service.' },
+                { t:'$79 Service Call Credited to Repair', d:'No wasted money on diagnostics. The $79 fee disappears when you approve the work.' },
+                { t:'Upfront Flat-Rate Quotes',        d:'We diagnose the problem and give you a firm price before we touch anything. No hourly billing.' },
+                { t:'Licensed NC Plumbers',            d:'Background-checked, licensed in North Carolina, and fully insured on every service call.' },
+                { t:'All Pipe Types & Systems',        d:'Copper, PVC, PEX — we work on all residential plumbing systems and most light commercial.' },
+                { t:'Part of the HomeHeroes Team',     d:'The same company you trust for appliances handles your plumbing. One number, five services.' },
+              ].map(({ t, d }) => (
+                <div style="display:flex;gap:12px;padding:14px;border-radius:10px;transition:background 0.15s;cursor:default"
+                     onmouseover="this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.background='transparent'">
+                  <div style="margin-top:1px;width:19px;height:19px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="8" height="8" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:0.84rem;font-weight:800;color:#e8edf5;margin-bottom:3px;letter-spacing:-0.01em">{t}</div>
+                    <div style="font-size:0.79rem;color:#1e3a56;line-height:1.62;font-weight:400">{d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PROCESS
+    ═══════════════════════════════════════════ -->
+    <div class="bg-white-section" style="border-top:1px solid rgba(30,50,80,0.08);border-bottom:1px solid rgba(30,50,80,0.08);padding:64px 24px 72px">
+      <div style="max-width:960px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:52px">
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:12px">
+            <div style="height:1px;width:48px;background:rgba(30,50,80,0.12)"></div>
+            <span style="font-size:0.66rem;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#b01616">How It Works</span>
+            <div style="height:1px;width:48px;background:rgba(30,50,80,0.12)"></div>
+          </div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">Fixed in 3 Simple Steps</h2>
+        </div>
+        <div class="steps-grid">
+          {[
+            { n:'1', t:'Call or Book Online',   d:'Tell us your plumbing problem. We confirm your same-day Charlotte appointment in minutes.' },
+            { n:'2', t:'Licensed Plumber Arrives', d:'Your HomeHeroes plumber arrives on time with the right tools and most common parts already on the van.' },
+            { n:'3', t:'Fixed & Guaranteed',    d:'Repaired right the first time. Every plumbing repair backed by our 90-day parts-and-labor warranty.' },
+          ].map(({ n, t, d }) => (
+            <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px">
+              <div style="width:58px;height:58px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:18px;background:linear-gradient(180deg,#d42222,#8e1010);box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 5px 16px rgba(176,22,22,0.35)">
+                {n}
+              </div>
+              <h3 style="font-size:0.93rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.01em">{t}</h3>
+              <p style="font-size:0.81rem;color:#4a5e74;line-height:1.68;margin:0;font-weight:400">{d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         DRAIN CLEANING SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Copy -->
+          <div>
+            <div class="sec-label" style="margin-bottom:16px">Drain Cleaning</div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#060c19;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Slow Drains?<br />Cleared the Right Way.
+            </h2>
+            <p style="font-size:0.95rem;color:#4a5e74;line-height:1.78;margin:0 0 18px;font-weight:400">
+              Drain cleaner masks the problem — it doesn't fix it. HomeHeroes uses professional-grade augers and hydro-jetting to fully clear clogs from kitchen sinks, bathroom drains, floor drains, and main lines.
+            </p>
+            <p style="font-size:0.93rem;color:#4a5e74;line-height:1.76;margin:0 0 28px;font-weight:400">
+              Most drain calls are completed in a single visit. If we find a deeper issue — root infiltration, collapsed pipe — we'll show you what we found and quote a fix before proceeding.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px">
+              {[
+                'Kitchen sink drains',
+                'Bathroom drain & tub',
+                'Floor drains',
+                'Main sewer line',
+                'Hydro-jetting service',
+                'Video inspection available',
+              ].map(item => (
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="width:16px;height:16px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="7" height="7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <span style="font-size:0.81rem;font-weight:600;color:#2d3748">{item}</span>
+                </div>
+              ))}
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:13px 28px">
+                Clear My Drain Today
+              </a>
+              <div style="display:inline-flex;align-items:center;gap:8px;padding:13px 20px;background:#fff;border:1px solid rgba(30,50,80,0.12);border-radius:10px">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span style="font-size:0.81rem;font-weight:700;color:#060c19">From $89</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(10,20,40,0.13)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/plumbing/charlotte-drain-cleaning-service.webp 800w,
+                        /images/plumbing/charlotte-drain-cleaning-service@2x.webp 1400w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/plumbing/charlotte-drain-cleaning-service.webp"
+                   alt="HomeHeroes plumber clearing a clogged drain in Charlotte"
+                   width="800" height="1062" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SEWER LINE SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="bg-navy-section" style="padding:72px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div class="photo-split" style="align-items:center">
+
+          <!-- Photo -->
+          <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,0.35)">
+            <picture>
+              <source type="image/webp"
+                srcset="/images/plumbing/charlotte-sewer-line-repair.webp 800w,
+                        /images/plumbing/charlotte-sewer-line-repair@2x.webp 1400w"
+                sizes="(max-width:768px) 92vw, 42vw" />
+              <img src="/images/plumbing/charlotte-sewer-line-repair.webp"
+                   alt="HomeHeroes crew performing sewer line repair in Charlotte, NC"
+                   width="800" height="1062" loading="lazy"
+                   style="width:100%;height:auto;display:block" />
+            </picture>
+            <!-- Emergency badge -->
+            <div style="position:absolute;top:18px;left:18px;background:linear-gradient(135deg,#c92020,#8a0e0e);border-radius:10px;padding:8px 14px">
+              <div style="font-size:0.68rem;font-weight:800;color:rgba(255,200,200,0.85);letter-spacing:0.1em;text-transform:uppercase">Emergency Available</div>
+              <div style="font-size:0.82rem;font-weight:900;color:#fff;margin-top:2px">Same-Day Dispatch</div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:16px;font-size:0.66rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626">
+              <span style="width:24px;height:1px;background:#dc2626;display:block"></span>
+              Sewer &amp; Emergency Plumbing
+            </div>
+            <h2 style="font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:900;color:#e8edf5;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+              Sewer Line Problems<br />&amp; Plumbing Emergencies
+            </h2>
+            <p style="font-size:0.95rem;color:#1e3a56;line-height:1.78;margin:0 0 20px;font-weight:400">
+              Backed-up sewer lines, sewage odors, or multiple drains clogging at once signal a main line problem. HomeHeroes handles sewer line clearing, repair, and relining — and dispatches same-day for active plumbing emergencies.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+              {[
+                { t:'Main sewer line clearing',       d:'Auger and hydro-jet service for full blockage removal' },
+                { t:'Root infiltration removal',      d:'Tree roots cleared without unnecessary excavation' },
+                { t:'Sewer camera inspection',        d:'Video inspection to locate the exact problem before digging' },
+                { t:'Emergency plumbing response',    d:'Active leak or sewage backup — we dispatch within the hour' },
+              ].map(({ t, d }) => (
+                <div style="display:flex;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)">
+                  <div style="margin-top:1px;width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#d42222,#8e1010)">
+                    <svg width="7" height="7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:0.83rem;font-weight:800;color:#e8edf5;margin-bottom:3px">{t}</div>
+                    <div style="font-size:0.75rem;color:#1e3a56;line-height:1.55;font-weight:400">{d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <a href={phoneHref} class="btn-red" style="font-size:0.93rem;padding:14px 30px">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+              Call for Emergency Plumbing
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FAQ
+    ═══════════════════════════════════════════ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:780px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="sec-label" style="justify-content:center;margin-bottom:14px">Common Questions</div>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">
+            Plumbing FAQs — Charlotte, NC
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          {faqs.map((faq, i) => (
+            <details style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:12px;overflow:hidden">
+              <summary style="padding:18px 22px;font-size:0.92rem;font-weight:700;color:#060c19;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                {faq.q}
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:#b01616" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+              </summary>
+              <div style="padding:0 22px 18px;font-size:0.85rem;color:#4a5e74;line-height:1.72;border-top:1px solid rgba(30,50,80,0.07);padding-top:14px;margin-top:0">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SERVICE AREAS
+    ═══════════════════════════════════════════ -->
+    <ServiceAreas />
+
+    <!-- ═══════════════════════════════════════════
+         OTHER SERVICES CROSS-LINK
+    ═══════════════════════════════════════════ -->
+    <section class="bg-light-section" style="padding:56px 24px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;margin-bottom:32px">
+          <div>
+            <div class="sec-label" style="margin-bottom:10px">More From HomeHeroes</div>
+            <h2 style="font-size:clamp(1.3rem,2vw,1.8rem);font-weight:900;color:#060c19;letter-spacing:-0.03em;margin:0">We Handle More Than Plumbing</h2>
+          </div>
+          <a href="/" style="font-size:0.82rem;font-weight:800;color:#b01616;text-decoration:none;display:inline-flex;align-items:center;gap:5px">
+            See All Services →
+          </a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+          {[
+            { label:'Appliance Repair', desc:'Refrigerators, washers, dryers, ovens and more.', href:'/appliance-repair-charlotte', live:true },
+            { label:'HVAC',             desc:'AC repair, heating service, same-day diagnostics.',   href:'/services/hvac',           live:true  },
+            { label:'Handyman',         desc:'Doors, fixtures, drywall, and home repairs.',          href:'/charlotte-nc/handyman',    live:true  },
+            { label:'Electrical',       desc:'Outlets, switches, panels, troubleshooting.',          href:'/services/electrical', live:true },
+          ].map(s => (
+            <a href={s.href} style={`display:block;padding:18px 20px;background:#fff;border:1.5px solid ${s.live ? 'rgba(176,22,22,0.2)' : 'rgba(30,50,80,0.1)'};border-radius:12px;text-decoration:none;transition:box-shadow 0.2s,transform 0.2s`}
+               onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(10,20,40,0.1)'"
+               onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:0.86rem;font-weight:800;color:#060c19">{s.label}</span>
+                {s.live && <span style="font-size:0.58rem;font-weight:800;color:#fff;background:#b01616;padding:2px 7px;border-radius:100px">AVAILABLE</span>}
+              </div>
+              <p style="font-size:0.76rem;color:#4a5e74;margin:0;line-height:1.5">{s.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THIRD-PARTY CITATIONS ─────────────────── -->
+    <CitationProfiles />
+
+    <!-- ═══════════════════════════════════════════
+         FINAL CTA + FORM
+    ═══════════════════════════════════════════ -->
+    <section id="contact" style="position:relative;overflow:hidden;padding:80px 24px 96px;background:linear-gradient(135deg,#c92020 0%,#8a0e0e 55%,#520808 100%)">
+      <div style="position:absolute;inset:0;opacity:0.045;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Cpath d=%22M0 0h50v50H0z%22 fill=%22none%22/%3E%3Cpath d=%22M0 0L50 0M0 50L50 50M0 0L0 50M50 0L50 50%22 stroke=%22white%22 stroke-width=%221%22/%3E%3C/svg%3E')" aria-hidden="true"></div>
+      <div style="max-width:940px;margin:0 auto;position:relative;text-align:center">
+        <img src="/images/logo.webp" alt="HomeHeroes" width="70" height="70" loading="lazy"
+             style="border-radius:16px;object-fit:cover;margin:0 auto 22px;display:block;box-shadow:0 6px 24px rgba(6,12,25,0.38),0 0 0 2px rgba(255,255,255,0.18)" />
+        <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.04;margin:0 0 18px">
+          Plumbing Problem?<br />We'll Be There Today.
+        </h2>
+        <p style="font-size:1.05rem;color:rgba(255,220,220,0.82);line-height:1.74;margin:0 auto 44px;max-width:460px;font-weight:400">
+          Same-day service across Charlotte. $79 service call applied toward your repair. Call now or book online.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+          <a href="#contact-form" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#8a0e0e;padding:15px 34px;border-radius:10px;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(6,12,25,0.26);transition:transform 0.15s"
+             onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            Book Online — Free
+          </a>
+          <a href={phoneHref} style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#fff;padding:15px 34px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);transition:transform 0.15s"
+             onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <svg width="17" height="17" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call {phone}
+          </a>
+        </div>
+        <p style="font-size:0.7rem;color:rgba(255,200,200,0.4);margin-top:22px;letter-spacing:0.08em;font-weight:600">7 DAYS A WEEK · 8AM–7PM · EMERGENCY LINE AVAILABLE</p>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="bg-light-section" style="padding:64px 24px 80px">
+      <div style="max-width:620px;margin:0 auto">
+        <div class="card" style="overflow:hidden">
+          <div style="padding:24px 32px;border-bottom:1px solid rgba(30,50,80,0.08);display:flex;align-items:center;gap:14px;background:#fafbfd">
+            <img src="/images/logo.webp" alt="HomeHeroes" width="46" height="46" loading="lazy" style="border-radius:11px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(10,20,40,0.1)" />
+            <div>
+              <h3 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">Request Plumbing Service</h3>
+              <p style="font-size:0.76rem;color:#6a7a8e;margin:3px 0 0;font-weight:400">We'll call you back within 5 minutes.</p>
+            </div>
+          </div>
+
+          <form id="plumbing-form" style="padding:24px 32px;display:flex;flex-direction:column;gap:16px" name="plumbing-request" method="POST" action="https://api.web3forms.com/submit">
+            <input type="hidden" name="access_key" value="98673c2a-0528-45c5-a5d0-2561df9d62fb" />
+            <input type="hidden" name="subject" value="New HomeHeroes Plumbing Service Request" />
+
+            <div class="form-row">
+              <div>
+                <label for="plumb-name" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">FIRST NAME</label>
+                <input type="text" id="plumb-name" name="first_name" autocomplete="given-name" required placeholder="John"
+                       style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                       onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                       onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+              </div>
+              <div>
+                <label for="plumb-phone" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PHONE NUMBER</label>
+                <input type="tel" id="plumb-phone" name="phone" autocomplete="tel" required placeholder="(704) 555-0100"
+                       style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;box-sizing:border-box;font-family:inherit"
+                       onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                       onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+              </div>
+            </div>
+
+            <div>
+              <label for="plumb-issue-type" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PLUMBING ISSUE</label>
+              <select id="plumb-issue-type" name="issue_type" required
+                      style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;appearance:none;box-sizing:border-box;font-family:inherit"
+                      onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+                <option value="" disabled selected>Select issue type…</option>
+                <option>Clogged Drain</option>
+                <option>Leaking Pipe</option>
+                <option>Toilet Problem</option>
+                <option>Water Heater</option>
+                <option>Low Water Pressure</option>
+                <option>Emergency / Active Leak</option>
+                <option>Other Plumbing Issue</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="plumb-desc" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">DESCRIBE THE ISSUE</label>
+              <textarea id="plumb-desc" name="message" rows="3" placeholder="Briefly describe the problem…"
+                        style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;resize:none;box-sizing:border-box;font-family:inherit"
+                        onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                        onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'"></textarea>
+            </div>
+
+            <button id="plumb-submit" type="submit" class="btn-red" style="width:100%;padding:14px;font-size:0.97rem;border-radius:10px">
+              Request Same-Day Plumbing →
+            </button>
+            <p style="font-size:0.69rem;color:#9aaabe;text-align:center;margin:0;font-weight:400">We respect your privacy. Your info is never sold or shared.</p>
+          </form>
+
+          <div id="plumb-success" style="display:none;padding:40px 32px;text-align:center">
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#d42222,#8e1010);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            </div>
+            <p style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 6px;letter-spacing:-0.01em">Request received.</p>
+            <p style="font-size:0.88rem;color:#4a5e74;margin:0;font-weight:400">We'll call you shortly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+
+  <script>
+    const form = document.getElementById('plumbing-form') as HTMLFormElement | null;
+    const success = document.getElementById('plumb-success');
+    const btn = document.getElementById('plumb-submit') as HTMLButtonElement | null;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!btn) return;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        const data = await res.json();
+        if (data.success) {
+          form.style.display = 'none';
+          if (success) success.style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Request Same-Day Plumbing →';
+          alert('Something went wrong. Please call us directly.');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Request Same-Day Plumbing →';
+        alert('Something went wrong. Please call us directly.');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+---
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../../components/seo/FAQSection.astro';
+import SEOCTA from '../../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/useful-info/summer-refrigerator-tips`;
+
+const faqs = [
+  {
+    q: 'Why does my refrigerator struggle more in summer?',
+    a: 'Refrigerators work by transferring heat from the interior to the surrounding room air. In summer, that room air is 15–25°F warmer than in winter, which means the refrigerator has to work harder to maintain the same interior temperature differential. Combined with more frequent door openings (more drinks, more activity), the compressor runs significantly more in summer months.',
+  },
+  {
+    q: 'What temperature should my refrigerator be set to in summer?',
+    a: 'The FDA recommends 40°F or below for the refrigerator compartment and 0°F for the freezer — year-round. In summer, you may need to lower your setting by one step from your usual spring/fall setting to compensate for the higher ambient kitchen temperature. Use a refrigerator thermometer to verify the actual interior temperature rather than relying on the dial number.',
+  },
+  {
+    q: 'How much clearance does my refrigerator need on the sides and top?',
+    a: 'Most refrigerators require at least 1 inch of clearance on each side and 1–2 inches at the top for proper airflow to the condenser coils. In summer, consider whether kitchen remodeling or seasonal items have reduced clearance. Insufficient clearance can raise the ambient temperature around the coils by 10°F or more, noticeably reducing efficiency and increasing compressor wear.',
+  },
+  {
+    q: 'Should I move my refrigerator away from the stove or dishwasher in summer?',
+    a: 'If possible, yes. Refrigerators placed next to ovens or dishwashers work harder because the heat from those appliances raises the local ambient temperature around the refrigerator. If your layout doesn\'t allow separation, ensure there\'s adequate thermal separation (a cabinet panel) and clean the condenser coils more frequently during heavy cooking seasons.',
+  },
+  {
+    q: 'My refrigerator is making a clicking noise this summer — is that normal?',
+    a: 'A clicking sound when the compressor tries to start — especially in summer — often indicates a failing start relay. The start relay helps the compressor motor start; when it\'s worn, the compressor attempts to start, clicks, and shuts back off. This pattern is more noticeable in summer because the compressor is starting more frequently. If you hear click-pause-click repeatedly, call for service — a failed start relay will prevent the refrigerator from cooling at all.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Summer Refrigerator Tips: How to Keep Your Fridge Running Well in Charlotte's Heat",
+      "description": "Summer heat makes refrigerators work harder. Learn how to optimize your refrigerator settings, improve airflow, and prevent common summer failures in Charlotte, NC.",
+      "url": canonical,
+      "datePublished": "2026-05-18",
+      "dateModified": "2026-05-18",
+      "author": {
+        "@type": "Person",
+        "name": "HomeHeroes Technician",
+        "jobTitle": "Appliance Repair Technician"
+      },
+      "publisher": {
+        "@type": "LocalBusiness",
+        "name": "HomeHeroes Appliance Repair",
+        "telephone": "(704) 512-0111",
+        "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": base },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${base}/blog` },
+        { "@type": "ListItem", "position": 3, "name": "Useful Info", "item": `${base}/blog/useful-info` },
+        { "@type": "ListItem", "position": 4, "name": "Summer Refrigerator Tips", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<SeoPageLayout
+  title="Summer Refrigerator Tips for Charlotte, NC | HomeHeroes"
+  description="Summer heat forces refrigerators to work harder. Learn 8 ways to keep your refrigerator running efficiently in Charlotte's heat and humidity, and how to spot problems early."
+  canonical={canonical}
+  schema={schema}
+  ogType="article"
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Blog</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog/useful-info" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Useful Info</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Summer Refrigerator Tips</li>
+        </ol>
+      </nav>
+      <div style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px">Summer Maintenance</div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        Summer Refrigerator Tips:<br />Keep It Running in Charlotte's Heat
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.65;margin:0;max-width:620px">
+        More refrigerators fail in summer than in any other season. The combination of high ambient temperatures, more frequent door openings, and heavy use puts real strain on compressors and seals. Eight ways to stay ahead of it.
+      </p>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap">
+        <time datetime="2026-05-18" style="font-size:12px;color:rgba(255,255,255,0.45)">Published May 18, 2026</time>
+        <span style="color:rgba(255,255,255,0.2);font-size:12px" aria-hidden="true">•</span>
+        <span style="font-size:12px;color:rgba(255,255,255,0.45)">HomeHeroes Technician</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section style="padding:64px 24px 72px;background:#f8f9fc">
+    <div style="max-width:860px;margin:0 auto">
+
+      <!-- Quick Answer -->
+      <div id="quick-answer" style="border-left:4px solid #34d399;background:#f0fdf4;border-radius:0 10px 10px 0;padding:22px 26px;margin-bottom:40px">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#16a34a;margin-bottom:8px">Key Takeaway</div>
+        <p style="font-size:1rem;color:#14532d;line-height:1.65;margin:0">
+          Summer heat forces refrigerators to work 20–30% harder than in cooler months. Clean the condenser coils before summer begins, verify door gaskets are sealing tightly, ensure adequate clearance for airflow, and watch for the early warning signs of compressor strain — continuous running and clicking at startup.
+        </p>
+      </div>
+
+      <!-- Why summer is hard on refrigerators -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why Summer Is Hard on Refrigerators</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          A refrigerator doesn't create cold — it moves heat. The compressor circulates refrigerant that absorbs heat from inside the cabinet and releases it through the condenser coils into the room. The efficiency of that heat release depends directly on the temperature of the surrounding air.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0 0 14px">
+          In January, your Charlotte kitchen might be 68°F. In July, that same kitchen can reach 80–85°F during the day. That 15–17°F rise in ambient temperature means the refrigerant has a harder time releasing heat — the condenser coils become less efficient, and the compressor must run longer to maintain interior temperatures.
+        </p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.75;margin:0">
+          Add in Charlotte's 70–75% summer humidity (which means more moisture entering the cabinet with each door opening), more frequent door openings during summer entertaining, and potentially dirty condenser coils from spring pollen, and you have a recipe for compressor overwork.
+        </p>
+      </div>
+
+      <!-- 8 tips -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">8 Ways to Keep Your Refrigerator Running Well This Summer</h2>
+
+        <div style="display:flex;flex-direction:column;gap:20px">
+          {[
+            {
+              num: '1',
+              title: 'Clean the condenser coils before June',
+              body: 'Dirty coils are the most common cause of compressor overwork. Vacuum the coils at the bottom front grille or rear of the unit before summer heat peaks. This single task has the highest impact on summer performance.'
+            },
+            {
+              num: '2',
+              title: 'Test the door gaskets',
+              body: 'Close the door on a dollar bill. It should pull out with resistance. If it slides freely, the gasket has lost its seal and warm humid air enters the cabinet continuously. Replace failing gaskets before summer begins.'
+            },
+            {
+              num: '3',
+              title: 'Check clearance around the unit',
+              body: 'Ensure at least 1 inch of clearance on each side and 2 inches at the top. Items pushed against the sides or overhead cabinets built flush to the top restrict airflow around the condenser and raise operating temperatures.'
+            },
+            {
+              num: '4',
+              title: 'Set the temperature correctly',
+              body: 'Refrigerator: 37–38°F. Freezer: 0°F. Use a thermometer to verify — dial numbers don\'t correspond directly to temperatures. If you\'ve been running warmer settings in winter, adjust downward one step before summer.'
+            },
+            {
+              num: '5',
+              title: 'Minimize door opening time',
+              body: 'Decide what you want before opening the door. Each opening lets in a rush of humid 80°F air that the refrigerator must cool down. Over a day of summer cooking and entertaining, this adds up to significant extra compressor run time.'
+            },
+            {
+              num: '6',
+              title: 'Don\'t put hot or warm food in the refrigerator',
+              body: 'Let hot dishes cool to room temperature (maximum 2 hours for food safety) before refrigerating. Adding large quantities of warm food raises interior temperature rapidly and forces a long compressor recovery cycle in an already-stressed system.'
+            },
+            {
+              num: '7',
+              title: 'Inspect the drain pan and drain line',
+              body: 'The defrost drain line carries meltwater to a drain pan near the compressor. In summer humidity, this system handles more moisture. Inspect the drain line for algae blockage and the drain pan for overflow. A clogged drain line leads to water pooling inside the refrigerator.'
+            },
+            {
+              num: '8',
+              title: 'Listen for early warning signs',
+              body: 'A refrigerator that runs almost continuously, makes a clicking sound at startup, or takes longer than usual to re-cool after door openings is showing early signs of strain. These symptoms in summer often precede a compressor failure. Schedule a diagnostic before the failure happens.'
+            },
+          ].map(tip => (
+            <div style="display:flex;gap:16px;align-items:flex-start">
+              <div style="flex-shrink:0;width:32px;height:32px;background:#b01616;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px">{tip.num}</div>
+              <div>
+                <div style="font-size:0.95rem;font-weight:700;color:#060c19;margin-bottom:6px">{tip.title}</div>
+                <div style="font-size:0.9rem;color:#2a3c54;line-height:1.7">{tip.body}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Warning signs -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Warning Signs to Watch for in Summer</h2>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:12px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Compressor runs almost continuously</strong> and the exterior near the coils feels hot rather than just warm — coils need cleaning or the compressor is laboring</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Clicking sounds at startup</strong> — the start relay may be failing; the compressor will eventually stop starting</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Water pooling inside the refrigerator</strong> under the produce drawers — defrost drain is blocked</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Ice maker producing less ice or cloudy ice</strong> — freezer may be struggling to maintain 0°F in summer heat</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Food spoiling faster than expected</strong> — interior temperature has drifted above 40°F; verify with a thermometer</li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 18px;letter-spacing:-0.02em">Refrigerator Problems in Charlotte? Call HomeHeroes</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+          {[
+            { href: '/charlotte-nc/refrigerator-repair', label: 'Refrigerator Repair' },
+            { href: '/charlotte-nc/refrigerator-not-cooling', label: 'Not Cooling' },
+            { href: '/charlotte-nc/refrigerator-compressor-noise', label: 'Compressor Noise' },
+            { href: '/charlotte-nc/refrigerator-door-not-sealing', label: 'Door Not Sealing' },
+          ].map(l => (
+            <a href={l.href} aria-label={l.label} style="display:block;padding:14px 16px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:10px;text-decoration:none;font-size:14px;font-weight:600;color:#060c19">
+              {l.label} →
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:24px;margin-bottom:28px">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#9aaabe;margin-bottom:14px">More From HomeHeroes</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a href="/charlotte-nc/appliance-repair-cost" style="font-size:13px;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">→ Refrigerator Repair Cost</a>
+          <a href="/blog/useful-info/how-often-clean-refrigerator-coils" style="font-size:13px;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">→ Refrigerator Coil Cleaning</a>
+          <a href="/blog/useful-info/appliance-maintenance-charlotte-humidity" style="font-size:13px;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">→ Charlotte Humidity & Appliances</a>
+          <a href="/charlotte-nc/refrigerator-not-cooling" style="font-size:13px;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">→ Refrigerator Not Cooling Guide</a>
+        </div>
+      </div>
+
+      <FAQSection faqs={faqs} />
+    </div>
+  </section>
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} />
+</SeoPageLayout>

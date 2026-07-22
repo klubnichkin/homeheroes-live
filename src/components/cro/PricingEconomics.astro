@@ -1,0 +1,64 @@
+---
+/**
+ * PricingEconomics — price anchoring widget for service pages.
+ * Shows repair range vs replacement cost to anchor the repair value.
+ */
+interface Props {
+  applianceName: string;     // e.g. "refrigerator", "washer"
+  repairLow: number;         // e.g. 89
+  repairHigh: number;        // e.g. 350
+  replaceLow: number;        // e.g. 700
+  replaceHigh: number;       // e.g. 2000
+  phone: string;
+  phoneHref: string;
+}
+
+const { applianceName, repairLow, repairHigh, replaceLow, replaceHigh, phone, phoneHref } = Astro.props;
+
+const savingsLow  = replaceLow  - repairHigh;
+const savingsHigh = replaceHigh - repairLow;
+---
+
+<section aria-label={`${applianceName} repair cost comparison`} style="background:#f8f9fb;border:1px solid #e8eaed;border-radius:16px;padding:28px 24px;margin:32px 0">
+  <h3 style="margin:0 0 20px;font-size:17px;font-weight:700;color:#1a1a1a">Repair vs. Replace — The Economics</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+    <!-- Repair box -->
+    <div style="background:#fff;border:2px solid #b01616;border-radius:12px;padding:16px 18px;position:relative">
+      <div style="position:absolute;top:-10px;left:16px;background:#b01616;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:0.04em">RECOMMENDED</div>
+      <div style="font-size:12px;font-weight:600;color:#b01616;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px">Repair</div>
+      <div style="font-size:26px;font-weight:800;color:#1a1a1a;line-height:1">${repairLow}–${repairHigh}</div>
+      <div style="font-size:12px;color:#666;margin-top:4px">Typical repair cost</div>
+      <ul style="margin:12px 0 0;padding:0 0 0 16px;font-size:13px;color:#444;line-height:1.7">
+        <li>Fixed today, same visit</li>
+        <li>90-day warranty included</li>
+        <li>$89 diagnostic fee credited</li>
+      </ul>
+    </div>
+
+    <!-- Replace box -->
+    <div style="background:#fff;border:1.5px solid #e8eaed;border-radius:12px;padding:16px 18px">
+      <div style="font-size:12px;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px">Replace</div>
+      <div style="font-size:26px;font-weight:800;color:#888;line-height:1">${replaceLow}–${replaceHigh}</div>
+      <div style="font-size:12px;color:#999;margin-top:4px">New {applianceName} cost</div>
+      <ul style="margin:12px 0 0;padding:0 0 0 16px;font-size:13px;color:#888;line-height:1.7">
+        <li>Delivery + installation fees</li>
+        <li>Disposal of old unit</li>
+        <li>Learning a new appliance</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Savings callout -->
+  <div style="margin-top:14px;background:linear-gradient(135deg,rgba(176,22,22,0.07),rgba(176,22,22,0.03));border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <div style="flex:1;min-width:160px">
+      <span style="font-size:14px;font-weight:700;color:#b01616">You save ${savingsLow}–${savingsHigh}</span>
+      <span style="font-size:13px;color:#555"> by repairing instead of replacing.</span>
+    </div>
+    <a href={phoneHref} style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:13px;border-radius:8px;text-decoration:none;white-space:nowrap" aria-label={`Call HomeHeroes at ${phone}`}>
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      Book Repair — {phone}
+    </a>
+  </div>
+</section>

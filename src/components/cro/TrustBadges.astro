@@ -1,0 +1,44 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+  compact?: boolean;
+}
+
+const { variant = 'dark', compact = false } = Astro.props;
+
+const bg        = variant === 'dark'  ? 'rgba(255,255,255,0.07)' : 'rgba(176,22,22,0.06)';
+const textColor = variant === 'dark'  ? 'rgba(255,255,255,0.82)' : '#1a1a1a';
+const iconColor = variant === 'dark'  ? '#dc2626' : '#b01616';
+const borderClr = variant === 'dark'  ? 'rgba(255,255,255,0.12)' : 'rgba(176,22,22,0.15)';
+const pad       = compact ? '6px 12px' : '8px 16px';
+const fontSize  = compact ? '12px' : '13px';
+---
+
+<div aria-label="Trust signals" style={`display:flex;flex-wrap:wrap;gap:8px;align-items:center`}>
+
+  <!-- Stars / rating -->
+  <div style={`display:inline-flex;align-items:center;gap:6px;padding:${pad};background:${bg};border:1px solid ${borderClr};border-radius:100px`}>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <span style={`font-size:${fontSize};font-weight:700;color:${textColor}`}>4.9</span>
+    <span style={`font-size:${fontSize};color:${variant === 'dark' ? 'rgba(255,255,255,0.5)' : '#666'}`}>· 500+ reviews</span>
+  </div>
+
+  <!-- Same-day -->
+  <div style={`display:inline-flex;align-items:center;gap:6px;padding:${pad};background:${bg};border:1px solid ${borderClr};border-radius:100px`}>
+    <svg width="14" height="14" fill={iconColor} viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L11 13V7h1.5v5.25l4.5 2.67-1.27 2.08z"/></svg>
+    <span style={`font-size:${fontSize};font-weight:600;color:${textColor}`}>Same-Day Service</span>
+  </div>
+
+  <!-- Licensed & Insured -->
+  <div style={`display:inline-flex;align-items:center;gap:6px;padding:${pad};background:${bg};border:1px solid ${borderClr};border-radius:100px`}>
+    <svg width="14" height="14" fill={iconColor} viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+    <span style={`font-size:${fontSize};font-weight:600;color:${textColor}`}>Licensed &amp; Insured</span>
+  </div>
+
+  <!-- Warranty -->
+  <div style={`display:inline-flex;align-items:center;gap:6px;padding:${pad};background:${bg};border:1px solid ${borderClr};border-radius:100px`}>
+    <svg width="14" height="14" fill={iconColor} viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke={iconColor} stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span style={`font-size:${fontSize};font-weight:600;color:${textColor}`}>90-Day Warranty</span>
+  </div>
+
+</div>

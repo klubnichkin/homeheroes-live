@@ -9,6 +9,8 @@ import SEOHero from './SEOHero.astro';
 import FAQSection from './FAQSection.astro';
 import InternalLinks from './InternalLinks.astro';
 import SEOCTA from './SEOCTA.astro';
+import InlineCTA from '../cro/InlineCTA.astro';
+import StickyMobileCTA from '../cro/StickyMobileCTA.astro';
 
 interface Props {
   symptom: SymptomPage;
@@ -42,6 +44,31 @@ const schema = {
         "name": f.q,
         "acceptedAnswer": { "@type": "Answer", "text": f.a }
       }))
+    },
+    {
+      // HowTo schema for the Safe Homeowner Checks section
+      // Uses visible numbered safeTips as steps — matches rendered content exactly
+      "@type": "HowTo",
+      "name": `How to Check Your ${symptom.appliance} for ${symptom.symptomShort} in ${city.displayName}`,
+      "description": `Safe homeowner checks to diagnose ${symptom.symptomShort.toLowerCase()} on your ${symptom.appliance.toLowerCase()} before calling a technician.`,
+      "totalTime": "PT15M",
+      "tool": [{ "@type": "HowToTool", "name": "Flashlight" }, { "@type": "HowToTool", "name": "Notebook" }],
+      "step": symptom.safeTips.map((tip, i) => ({
+        "@type": "HowToStep",
+        "position": i + 1,
+        "name": tip.title,
+        "text": tip.detail,
+        "url": `${canonical}#safe-checks`
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryhomeheroes.com/" },
+        { "@type": "ListItem", "position": 2, "name": city.displayName, "item": `https://tryhomeheroes.com/${city.slug}/appliance-repair` },
+        { "@type": "ListItem", "position": 3, "name": `${symptom.appliance} Repair`, "item": `https://tryhomeheroes.com/${city.slug}/${symptom.relatedServiceSlug}` },
+        { "@type": "ListItem", "position": 4, "name": symptom.symptomShort, "item": canonical }
+      ]
     }
   ]
 };
@@ -137,8 +164,15 @@ const relatedSymptomLinks = symptom.relatedSymptomSlugs
     </div>
   </section>
 
+  <!-- 3b. Inline CTA — after diagnosis table, visitor knows the problem, nudge to call -->
+  <section class="bg-pearl-section" style="padding:0 24px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <InlineCTA phone={city.phone} phoneHref={city.phoneHref} variant="diagnosis" />
+    </div>
+  </section>
+
   <!-- 4. Safe Homeowner Tips -->
-  <section class="bg-white-section" style="padding:72px 24px">
+  <section id="safe-checks" class="bg-white-section" style="padding:72px 24px">
     <div style="max-width:1100px;margin:0 auto">
       <div class="sec-label" style="margin-bottom:14px">Before You Call</div>
       <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">
@@ -264,9 +298,29 @@ const relatedSymptomLinks = symptom.relatedSymptomSlugs
     </section>
   )}
 
+  <!-- 7b. Cost Reference -->
+  {city.slug === 'charlotte-nc' && (
+    <section class="bg-light-section" style="padding:40px 24px">
+      <div style="max-width:900px;margin:0 auto">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:20px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+          <div>
+            <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#b01616;margin-bottom:5px">Pricing Guide</div>
+            <p style="font-size:14px;color:#2a3c54;line-height:1.6;margin:0">Wondering what {symptom.appliance.toLowerCase()} repair typically costs in Charlotte? See our full pricing breakdown with diagnostic fee policy and repair vs. replace benchmarks.</p>
+          </div>
+          <a href="/charlotte-nc/appliance-repair-cost" aria-label="View appliance repair cost guide for Charlotte NC" style="display:inline-flex;align-items:center;gap:6px;padding:11px 20px;background:#b01616;color:#fff;font-weight:700;font-size:13px;border-radius:9px;text-decoration:none;white-space:nowrap;flex-shrink:0">
+            Repair Cost Guide →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- 8. FAQ -->
   <FAQSection faqs={symptom.faq} heading={`${symptom.symptomShort} — Frequently Asked Questions`} />
 
   <!-- 9. CTA -->
   <SEOCTA phone={city.phone} phoneHref={city.phoneHref} />
+
+  <!-- Sticky mobile bottom bar — fixed, no CLS, hides when form visible -->
+  <StickyMobileCTA phone={city.phone} phoneHref={city.phoneHref} />
 </SeoPageLayout>

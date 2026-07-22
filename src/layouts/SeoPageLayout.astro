@@ -61,8 +61,6 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://tryhomeh
   <!-- Font preconnect first — establishes connection before any other resource hint -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- LCP image preload -->
-  <link rel="preload" as="image" href={ogImageAbsolute} fetchpriority="high" />
   <!-- Fonts — non-blocking async load -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
@@ -70,6 +68,15 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://tryhomeh
 
   <!-- JSON-LD Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16950496940"></script>
+  <script is:inline>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-16950496940');
+  </script>
 </head>
 <body>
   <Header />

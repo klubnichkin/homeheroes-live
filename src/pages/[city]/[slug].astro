@@ -2,10 +2,11 @@
 import { services, getService } from '../../data/services';
 import { brands, getBrand } from '../../data/brands';
 import { cities, getCity } from '../../data/cities';
-import { symptoms } from '../../data/symptoms';
+import { symptoms, getSymptom } from '../../data/symptoms';
 import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
 import ServicePageTemplate from '../../components/seo/ServicePageTemplate.astro';
 import BrandPageTemplate from '../../components/seo/BrandPageTemplate.astro';
+import SymptomPageTemplate from '../../components/seo/SymptomPageTemplate.astro';
 import InternalLinks from '../../components/seo/InternalLinks.astro';
 import SEOCTA from '../../components/seo/SEOCTA.astro';
 
@@ -13,9 +14,10 @@ export function getStaticPaths() {
   const allPaths: {
     params: { city: string; slug: string };
     props:
-      | { type: 'service'; city: (typeof cities)[0]; service: (typeof services)[0]; brand: null; hubSlug: null }
-      | { type: 'brand'; city: (typeof cities)[0]; service: null; brand: (typeof brands)[0]; hubSlug: null }
-      | { type: 'hub'; city: (typeof cities)[0]; service: null; brand: null; hubSlug: string };
+      | { type: 'service'; city: (typeof cities)[0]; service: (typeof services)[0]; brand: null; symptom: null; hubSlug: null }
+      | { type: 'brand'; city: (typeof cities)[0]; service: null; brand: (typeof brands)[0]; symptom: null; hubSlug: null }
+      | { type: 'symptom'; city: (typeof cities)[0]; service: null; brand: null; symptom: (typeof symptoms)[0]; hubSlug: null }
+      | { type: 'hub'; city: (typeof cities)[0]; service: null; brand: null; symptom: null; hubSlug: string };
   }[] = [];
 
   for (const city of cities) {
@@ -23,21 +25,28 @@ export function getStaticPaths() {
     for (const service of services) {
       allPaths.push({
         params: { city: city.slug, slug: service.slug },
-        props: { type: 'service', city, service, brand: null, hubSlug: null },
+        props: { type: 'service', city, service, brand: null, symptom: null, hubSlug: null },
       });
     }
     // Brand pages
     for (const brand of brands) {
       allPaths.push({
         params: { city: city.slug, slug: brand.slug },
-        props: { type: 'brand', city, service: null, brand, hubSlug: null },
+        props: { type: 'brand', city, service: null, brand, symptom: null, hubSlug: null },
+      });
+    }
+    // Symptom pages (all cities — charlotte-nc static files take priority for that city)
+    for (const symptom of symptoms) {
+      allPaths.push({
+        params: { city: city.slug, slug: symptom.slug },
+        props: { type: 'symptom', city, service: null, brand: null, symptom, hubSlug: null },
       });
     }
     // Hub pages
     for (const hubSlug of ['appliance-repair', 'services', 'brands', 'common-appliance-problems'] as const) {
       allPaths.push({
         params: { city: city.slug, slug: hubSlug },
-        props: { type: 'hub', city, service: null, brand: null, hubSlug },
+        props: { type: 'hub', city, service: null, brand: null, symptom: null, hubSlug },
       });
     }
   }
@@ -45,7 +54,7 @@ export function getStaticPaths() {
   return allPaths;
 }
 
-const { type, city, service, brand, hubSlug } = Astro.props;
+const { type, city, service, brand, symptom, hubSlug } = Astro.props;
 const { slug } = Astro.params;
 
 const baseUrl = 'https://tryhomeheroes.com';
@@ -163,6 +172,10 @@ const symptomsByAppliance = symptoms.reduce((acc, s) => {
   return acc;
 }, {} as Record<string, typeof symptoms>);
 ---
+
+{type === 'symptom' && symptom && (
+  <SymptomPageTemplate symptom={symptom} city={city} />
+)}
 
 {type === 'service' && service && (
   <ServicePageTemplate

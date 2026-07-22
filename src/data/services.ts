@@ -22,7 +22,6 @@ export interface ServicePage {
   h1: string;
   intro: string;
   imagePath: string;
-  imageAlt: string;
   commonProblems: Problem[];
   ageTimeline: AgeRange[];
   repairVsReplace: {
@@ -45,7 +44,6 @@ export const services: ServicePage[] = [
     intro:
       'Your refrigerator runs 24 hours a day, 365 days a year — so when it stops working, you need fast, reliable repair. HomeHeroes technicians are dispatched same-day across Charlotte with the most common parts already on the truck. We diagnose and fix cooling failures, ice maker malfunctions, water dispenser leaks, and compressor issues on all major brands.',
     imagePath: '/images/hero/hero-technician.webp',
-    imageAlt: 'HomeHeroes technician repairing a refrigerator in Charlotte NC',
     commonProblems: [
       {
         title: 'Refrigerator Not Cooling',
@@ -163,7 +161,6 @@ export const services: ServicePage[] = [
     intro:
       'A failed freezer means hundreds of dollars of food at risk within hours. HomeHeroes provides same-day freezer repair in Charlotte for chest freezers, upright freezers, and built-in freezer columns. Our technicians diagnose and fix temperature failures, frost buildup, and compressor issues before your food thaws.',
     imagePath: '/images/hero/hero-technician.webp',
-    imageAlt: 'HomeHeroes technician repairing an upright freezer in Charlotte NC',
     commonProblems: [
       {
         title: 'Freezer Not Freezing',
@@ -281,7 +278,6 @@ export const services: ServicePage[] = [
     intro:
       'A broken washing machine throws your entire household routine off track. HomeHeroes offers same-day washer repair across Charlotte for both top-load and front-load machines. Whether you are dealing with standing water in the drum, a machine that will not spin, error codes you cannot decode, or a leak soaking your laundry room floor — we fix it fast.',
     imagePath: '/images/services/washer-dryer-repair.webp',
-    imageAlt: 'HomeHeroes technician servicing a front-load washer in Charlotte NC',
     commonProblems: [
       {
         title: 'Washer Not Draining',
@@ -399,7 +395,6 @@ export const services: ServicePage[] = [
     intro:
       'A dryer that takes two cycles to dry a load is costing you time, energy, and money. HomeHeroes technicians service gas and electric dryers across Charlotte, same-day. We fix everything from blown thermal fuses and burned heating elements to seized drums and motor failures — and we always check your vent for dangerous lint buildup while we are there.',
     imagePath: '/images/services/washer-dryer-repair.webp',
-    imageAlt: 'HomeHeroes technician servicing a gas dryer in Charlotte NC',
     commonProblems: [
       {
         title: 'Dryer Not Producing Heat',
@@ -517,7 +512,6 @@ export const services: ServicePage[] = [
     intro:
       'When your dishwasher leaves dishes dirty, pools water in the bottom, or starts leaking onto your kitchen floor, you need a technician who can fix it today. HomeHeroes provides same-day dishwasher repair across Charlotte, servicing all major brands including Bosch, Whirlpool, GE, KitchenAid, and Miele. We fix drain issues, cleaning failures, door latches, and error codes.',
     imagePath: '/images/services/dishwasher-repair.webp',
-    imageAlt: 'HomeHeroes technician repairing a built-in dishwasher in Charlotte NC',
     commonProblems: [
       {
         title: 'Dishes Not Getting Clean',
@@ -635,7 +629,6 @@ export const services: ServicePage[] = [
     intro:
       'A stove with broken burners or a clicking igniter that will not light disrupts every meal. HomeHeroes provides same-day stove repair in Charlotte for gas and electric models. We fix igniter failures, surface burner problems, broken control knobs, and gas-related issues — all with licensed, insured technicians who arrive ready to work.',
     imagePath: '/images/services/oven-range-repair.webp',
-    imageAlt: 'HomeHeroes technician repairing a gas stove range in Charlotte NC',
     commonProblems: [
       {
         title: "Burner Won't Light or Ignite",
@@ -759,7 +752,6 @@ export const services: ServicePage[] = [
     intro:
       'An oven that will not reach temperature, has a broken bake element, or is stuck in self-clean mode can bring your kitchen to a halt. HomeHeroes provides same-day oven repair in Charlotte for gas and electric ovens, wall ovens, and double ovens. We bring the parts, run the diagnostics, and complete most repairs on the first visit.',
     imagePath: '/images/services/oven-repair-technicians-charlotte.webp',
-    imageAlt: 'Oven repair technicians diagnosing luxury range appliance in Charlotte NC',
     commonProblems: [
       {
         title: 'Oven Not Reaching Set Temperature',
@@ -883,7 +875,6 @@ export const services: ServicePage[] = [
     intro:
       'A microwave that runs but will not heat, sparks inside, or will not start at all needs professional attention — not a YouTube workaround. HomeHeroes technicians service built-in over-the-range microwaves and countertop units in Charlotte. We diagnose magnetron failures, door switch faults, and control board issues safely, because microwave high-voltage components are genuinely dangerous to handle without training.',
     imagePath: '/images/services/microwave-repair.webp',
-    imageAlt: 'HomeHeroes technician repairing an over-the-range microwave in Charlotte NC',
     commonProblems: [
       {
         title: 'Microwave Runs But Will Not Heat',
@@ -1001,7 +992,6 @@ export const services: ServicePage[] = [
     intro:
       'A range hood that is not exhausting smoke and grease is more than an inconvenience — it is a ventilation problem that affects air quality throughout your home. HomeHeroes repairs ducted and recirculating range hoods in Charlotte, fixing fan motor failures, control board issues, lighting, and speed control problems for all major hood brands.',
     imagePath: '/images/services/emergency-repair-tech.webp',
-    imageAlt: 'HomeHeroes technician repairing a range hood exhaust fan in Charlotte NC',
     commonProblems: [
       {
         title: 'Exhaust Fan Not Working or Very Weak',
@@ -1118,7 +1108,6 @@ export const services: ServicePage[] = [
     intro:
       'Whether your refrigerator ice maker has stopped producing ice entirely or your standalone unit is making hollow, bad-tasting cubes, HomeHeroes has the parts and expertise to fix it. We service refrigerator-integrated ice makers (including Samsung French door units with known ice maker problems), undercounter ice makers, and freestanding units across Charlotte.',
     imagePath: '/images/hero/hero-technician.webp',
-    imageAlt: 'HomeHeroes technician repairing a refrigerator ice maker in Charlotte NC',
     commonProblems: [
       {
         title: 'Ice Maker Not Producing Ice',
@@ -1236,7 +1225,6 @@ export const services: ServicePage[] = [
     intro:
       'A wine cooler that runs too warm or swings wildly in temperature can damage your entire collection. HomeHeroes repairs both compressor-based and thermoelectric wine coolers across Charlotte. We service undercounter built-in units, freestanding coolers, and high-end integrated wine storage from Sub-Zero, Liebherr, and other premium brands.',
     imagePath: '/images/hero/hero-technician.webp',
-    imageAlt: 'HomeHeroes technician repairing a wine cooler in Charlotte NC',
     commonProblems: [
       {
         title: 'Wine Cooler Not Cooling or Running Too Warm',
@@ -1353,7 +1341,6 @@ export const services: ServicePage[] = [
     intro:
       'An electric cooktop that will not heat, has a cracked glass surface, or has a burner stuck on high is both a cooking disruption and a safety hazard. HomeHeroes repairs smooth-top glass-ceramic cooktops and traditional coil cooktops across Charlotte — fixing infinite switch failures, replacing elements, and sourcing OEM glass tops for all major brands.',
     imagePath: '/images/services/oven-range-repair.webp',
-    imageAlt: 'HomeHeroes technician repairing an electric glass cooktop in Charlotte NC',
     commonProblems: [
       {
         title: 'Burner Element Will Not Heat Up',

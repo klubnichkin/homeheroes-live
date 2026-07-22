@@ -1,0 +1,232 @@
+---
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../../components/seo/FAQSection.astro';
+import SEOCTA from '../../../components/seo/SEOCTA.astro';
+import { phone, phoneHref } from '../../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/useful-info/power-outage-appliance-protection`;
+
+const faqs = [
+  {
+    q: 'How long will a refrigerator keep food safe during a power outage?',
+    a: 'A full refrigerator will keep food safe for approximately 4 hours with the door kept closed. A full freezer will maintain safe temperatures for 24–48 hours. A half-full freezer holds for about 24 hours. The key is keeping the doors closed as much as possible — each opening lets cold air escape and warm air in.',
+  },
+  {
+    q: 'Can a power surge damage a refrigerator compressor?',
+    a: 'Yes. When power returns after an outage, a voltage surge can damage the compressor start relay, the main control board, or the compressor windings themselves. The most vulnerable moment is the first few seconds when power is restored. A whole-home surge protector significantly reduces this risk. If your refrigerator fails to start after a power outage, the start relay is the first thing a technician will check.',
+  },
+  {
+    q: 'Should I unplug appliances during a power outage?',
+    a: 'Unplugging major appliances during an outage protects them from the voltage surge when power is restored. At minimum, unplug sensitive electronics (TV, computers) and appliances with control boards (washer, dryer, smart refrigerators). Unplugging is especially recommended if you know a storm caused the outage — lightning strikes on the grid can create significant voltage spikes.',
+  },
+  {
+    q: 'My refrigerator makes a noise after power comes back — is that normal?',
+    a: 'Yes — it\'s normal for the refrigerator to run more loudly and continuously for 1–2 hours after power is restored while it pulls the interior temperature back down to operating range. You may also hear clicking as the compressor start relay engages. What\'s not normal: a loud grinding or buzzing that doesn\'t settle down after 2–3 hours, or a refrigerator that runs continuously for hours without cooling.',
+  },
+  {
+    q: 'Does my homeowner\'s insurance cover appliances damaged by power surges?',
+    a: 'Many homeowner\'s insurance policies cover appliance damage caused by lightning strikes or utility-caused power surges. However, standard policies often exclude gradual electrical damage or surges caused by utility restoration. Check your policy for "sudden and accidental" electrical damage coverage. A whole-home surge protector costs $200–$400 installed and is a better long-term strategy than relying on insurance claims.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Power Outage Appliance Protection: What to Do Before, During, and After",
+      "description": "Learn how to protect refrigerators, washers, dryers, and other major appliances during and after power outages in Charlotte, NC. Surge protection, food safety, and what to check when power returns.",
+      "url": canonical,
+      "datePublished": "2026-05-18",
+      "dateModified": "2026-05-18",
+      "author": {
+        "@type": "Person",
+        "name": "HomeHeroes Technician",
+        "jobTitle": "Appliance Repair Technician"
+      },
+      "publisher": {
+        "@type": "LocalBusiness",
+        "name": "HomeHeroes Appliance Repair",
+        "telephone": "(704) 512-0111",
+        "address": { "@type": "PostalAddress", "addressLocality": "Charlotte", "addressRegion": "NC" }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": base },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${base}/blog` },
+        { "@type": "ListItem", "position": 3, "name": "Useful Info", "item": `${base}/blog/useful-info` },
+        { "@type": "ListItem", "position": 4, "name": "Power Outage Appliance Protection", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<SeoPageLayout
+  title="Power Outage Appliance Protection in Charlotte, NC | HomeHeroes"
+  description="Protect your refrigerator, washer, and other major appliances before, during, and after a power outage. Learn what to unplug, how long food stays safe, and what to check when power returns."
+  canonical={canonical}
+  schema={schema}
+  ogType="article"
+>
+  <!-- Hero -->
+  <section style="background:#080f1e;padding:60px 24px 56px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Home</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Blog</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li><a href="/blog/useful-info" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none">Useful Info</a></li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.25)" aria-hidden="true">›</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.75)">Power Outage Protection</li>
+        </ol>
+      </nav>
+      <div style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px">Appliance Protection</div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">
+        Power Outage Appliance Protection:<br />Before, During &amp; After
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.65;margin:0;max-width:620px">
+        Charlotte experiences frequent summer storms that knock out power — sometimes for hours. The moment power returns is when appliances are most vulnerable. Here is how to protect them at every stage.
+      </p>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap">
+        <time datetime="2026-05-18" style="font-size:12px;color:rgba(255,255,255,0.45)">Published May 18, 2026</time>
+        <span style="color:rgba(255,255,255,0.2);font-size:12px" aria-hidden="true">•</span>
+        <span style="font-size:12px;color:rgba(255,255,255,0.45)">HomeHeroes Technician</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section style="padding:64px 24px 72px;background:#f8f9fc">
+    <div style="max-width:860px;margin:0 auto">
+
+      <!-- Quick Answer -->
+      <div id="quick-answer" style="border-left:4px solid #34d399;background:#f0fdf4;border-radius:0 10px 10px 0;padding:22px 26px;margin-bottom:40px">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#16a34a;margin-bottom:8px">Key Takeaway</div>
+        <p style="font-size:1rem;color:#14532d;line-height:1.65;margin:0">
+          The biggest risk to appliances during a power outage isn't the outage itself — it's the voltage surge when power is restored. Unplug sensitive appliances during extended outages, keep refrigerator doors closed, and install a whole-home surge protector for long-term protection.
+        </p>
+      </div>
+
+      <!-- Before the outage -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Before an Outage: Preventive Protection</h2>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:14px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Install a whole-home surge protector.</strong> A whole-home surge protector installs at the electrical panel and clamps voltage spikes before they reach any outlet in the house. Cost: $200–$400 installed by an electrician. This is the most effective single protection measure for all appliances.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Use surge-protected power strips for major appliances.</strong> For appliances not on whole-home protection, a quality surge protector strip ($25–$60) at the outlet provides a second line of defense. Look for strips rated at 1,000+ joules.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Keep your freezer reasonably full.</strong> A full freezer retains temperature much longer than a half-empty one. If you typically have empty space, keep water-filled containers or ice packs in the freezer — they act as thermal mass that extends safe temperatures during an outage.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Know where the refrigerator and freezer temp settings are.</strong> After a long outage, you may want to set the refrigerator to its coldest setting temporarily while it re-cools. Know where the controls are before you need them.
+          </li>
+        </ul>
+      </div>
+
+      <!-- During the outage -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">During the Outage</h2>
+
+        <h3 style="font-size:1rem;font-weight:700;color:#060c19;margin:0 0 10px">Refrigerator &amp; Freezer</h3>
+        <ul style="margin:0 0 20px;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Keep doors closed.</strong> Every opening lets cold air out and warm air in. A refrigerator with the door kept closed stays at safe temperatures for approximately 4 hours. A full freezer holds for 24–48 hours.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Do not add warm items.</strong> If the outage is extended, don't put room-temperature items into the refrigerator — they accelerate temperature rise inside the cabinet.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Use a refrigerator thermometer.</strong> If the outage extends beyond 4 hours, a thermometer tells you whether the interior has risen above 40°F (the food safety threshold) when you do open the door.</li>
+        </ul>
+
+        <h3 style="font-size:1rem;font-weight:700;color:#060c19;margin:0 0 10px">Other Appliances</h3>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Unplug washers, dryers, and dishwashers.</strong> These appliances have control boards that are vulnerable to power surges. During an extended outage — especially one caused by a storm — unplug them to protect the electronics.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Unplug smart appliances.</strong> Smart refrigerators, computerized ranges, and connected washers are particularly vulnerable to voltage surges because they have active electronics even when not in a cycle.</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65"><strong>Do not start laundry if a storm is in progress.</strong> A power interruption mid-cycle leaves wet clothes sitting in the drum and can cause the washer to error out in a state that requires a technician to reset in some models.</li>
+        </ul>
+      </div>
+
+      <!-- After the outage -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">When Power Returns: What to Check</h2>
+
+        <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:10px;padding:16px 20px;margin-bottom:20px">
+          <p style="font-size:0.9rem;color:#713f12;line-height:1.6;margin:0"><strong>Wait 5 minutes before plugging appliances back in.</strong> After power is restored, voltage can fluctuate for a few minutes as the grid stabilizes. Waiting briefly reduces surge exposure.</p>
+        </div>
+
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:14px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Refrigerator:</strong> The compressor will start and run more continuously than normal while it re-cools the interior — this is expected and normal. Check that it's actively cooling within 30–60 minutes. If it runs for 2+ hours without the interior getting cold, the start relay or compressor may have been damaged by the surge.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Washing machine:</strong> If it was in the middle of a cycle during the outage, check whether it resumes or shows an error code. Many modern washers will resume mid-cycle; others require a reset. If the display is blank or behaves erratically, the control board may have been damaged.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Dishwasher:</strong> Run a short cycle to confirm it fills, heats, and drains normally. If it doesn't start or displays an error, reset by holding the Start button for 3–5 seconds on most models.
+          </li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">
+            <strong>Food safety check:</strong> If the outage lasted more than 4 hours, check refrigerator food with a thermometer. Discard anything that was above 40°F for more than 2 hours. When in doubt, throw it out.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Signs of surge damage -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Signs Your Appliance Was Damaged by a Power Surge</h2>
+        <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:12px">
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">Display is blank, flickering, or showing garbled characters after power returns</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">Appliance doesn't turn on at all even after plugging back in and checking the breaker</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">Refrigerator runs but doesn't cool — compressor start relay or board may be damaged</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">Burning smell from the appliance after power returns</li>
+          <li style="font-size:0.93rem;color:#2a3c54;line-height:1.65">Error codes that weren't present before the outage and won't clear</li>
+        </ul>
+        <p style="font-size:0.9rem;color:#2a3c54;line-height:1.65;margin:16px 0 0">
+          If your appliance shows any of these signs after a power outage, call HomeHeroes at <a href={phoneHref} style="color:#b01616;font-weight:600">{phone}</a>. Surge damage to start relays and control boards is one of the most common post-storm repair calls we handle.
+        </p>
+      </div>
+
+      <!-- Internal links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:32px;margin-bottom:28px">
+        <h2 style="font-size:1.3rem;font-weight:800;color:#060c19;margin:0 0 18px;letter-spacing:-0.02em">Related Charlotte Appliance Services</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+          {[
+            { href: '/charlotte-nc/refrigerator-repair', label: 'Refrigerator Repair' },
+            { href: '/charlotte-nc/washer-repair', label: 'Washer Repair' },
+            { href: '/charlotte-nc/dryer-repair', label: 'Dryer Repair' },
+            { href: '/charlotte-nc/appliance-repair', label: 'All Appliance Repair' },
+          ].map(l => (
+            <a href={l.href} aria-label={l.label} style="display:block;padding:14px 16px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:10px;text-decoration:none;font-size:14px;font-weight:600;color:#060c19">
+              {l.label} →
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:24px;margin-bottom:28px">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#9aaabe;margin-bottom:14px">More From HomeHeroes</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a href="/charlotte-nc/appliance-repair-cost" style="font-size:13px;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">→ Repair Cost Guide</a>
+          <a href="/blog/useful-info/hvac-appliance-electrical-load" style="font-size:13px;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">→ HVAC & Appliance Electrical Load</a>
+          <a href="/blog/useful-info/summer-refrigerator-tips" style="font-size:13px;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">→ Summer Refrigerator Tips</a>
+        </div>
+      </div>
+
+      <FAQSection faqs={faqs} />
+    </div>
+  </section>
+
+  <SEOCTA phone={phone} phoneHref={phoneHref} />
+</SeoPageLayout>

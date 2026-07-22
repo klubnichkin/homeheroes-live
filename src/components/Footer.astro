@@ -35,11 +35,12 @@ import { areas } from '../data/areas';
         <h4 style="font-size:0.63rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#e8edf5;margin:0 0 16px">Services</h4>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px">
           {[
+            ['Appliance Repair',      '/appliance-repair-charlotte'],
+            ['Plumbing',              '/plumbing-charlotte'],
+            ['Handyman',              '/charlotte-nc/handyman'],
+            ['HVAC Repair',           '/services/hvac'],
+            ['Electrical',            '/services/electrical'],
             ['Refrigerator Repair',   '/charlotte-nc/refrigerator-repair'],
-            ['Washer & Dryer Repair', '/charlotte-nc/washer-repair'],
-            ['Dishwasher Repair',     '/charlotte-nc/dishwasher-repair'],
-            ['Oven & Range Repair',   '/charlotte-nc/oven-repair'],
-            ['Microwave Repair',      '/charlotte-nc/microwave-repair'],
             ['Emergency Service',     '/charlotte-nc/appliance-repair'],
           ].map(([label, href]) => (
             <li><a href={href} style="font-size:0.79rem;color:#1a3050;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#7a9ab8'" onmouseout="this.style.color='#1a3050'">{label}</a></li>

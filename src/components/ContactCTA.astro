@@ -9,10 +9,10 @@ import { phone, phoneHref } from '../data/siteData';
     <img src="/images/logo.webp" alt="HomeHeroes" width="70" height="70" loading="lazy"
          style="border-radius:16px;object-fit:cover;margin:0 auto 22px;display:block;box-shadow:0 6px 24px rgba(6,12,25,0.38),0 0 0 2px rgba(255,255,255,0.18)" />
     <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.04;margin:0 0 18px">
-      Appliance Down?<br />We'll Be There Today.
+      Need Home Service?<br />We'll Be There Today.
     </h2>
     <p style="font-size:1.05rem;color:rgba(255,220,220,0.82);line-height:1.74;margin:0 auto 44px;max-width:460px;font-weight:400">
-      Don't go another day without it. Book online or call now — most Charlotte appointments confirmed within minutes.
+      One call connects you to every trade. Book online or call now — most Charlotte appointments confirmed within minutes.
     </p>
     <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
       <a href="#contact-form" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:1rem;color:#8a0e0e;padding:15px 34px;border-radius:10px;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(6,12,25,0.26);transition:transform 0.15s"
@@ -64,26 +64,29 @@ import { phone, phoneHref } from '../data/siteData';
         </div>
 
         <div>
-          <label for="appliance" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">APPLIANCE TYPE</label>
-          <select id="appliance" name="appliance_type" required
+          <label for="service-type" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">SERVICE NEEDED</label>
+          <select id="service-type" name="service_type" required
                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;appearance:none;box-sizing:border-box;font-family:inherit"
                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
-            <option value="" disabled selected>Select appliance…</option>
-            <option>Refrigerator</option><option>Washer</option><option>Dryer</option>
-            <option>Dishwasher</option><option>Oven / Range</option><option>Microwave</option><option>Other</option>
+            <option value="" disabled selected>Select a service…</option>
+            <option value="Appliance Repair">Appliance Repair</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="HVAC">HVAC</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Handyman">Handyman</option>
           </select>
         </div>
 
         <div>
           <label for="issue" style="display:block;font-size:0.72rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">DESCRIBE THE ISSUE</label>
-          <textarea id="issue" name="message" rows="3" placeholder="Briefly describe the issue…"
+          <textarea id="issue" name="message" rows="3" placeholder="Briefly describe the issue or service needed…"
                     style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;transition:all 0.15s;resize:none;box-sizing:border-box;font-family:inherit"
                     onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
                     onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'"></textarea>
         </div>
 
         <button id="quote-submit" type="submit" class="btn-red" style="width:100%;padding:14px;font-size:0.97rem;border-radius:10px">
-          Get My Free Quote →
+          Request Service — Free Quote →
         </button>
         <p style="font-size:0.69rem;color:#9aaabe;text-align:center;margin:0;font-weight:400">We respect your privacy. Your info is never sold or shared.</p>
       </form>

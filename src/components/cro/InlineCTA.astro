@@ -1,0 +1,59 @@
+---
+/**
+ * InlineCTA — mid-content conversion nudge
+ * Use after diagnosis sections, cost sections, or repair-vs-replace tables.
+ *
+ * variant:
+ *   'diagnosis' — "Not sure what's wrong? Let us diagnose it."
+ *   'cost'      — "Worried about cost? Get a firm quote first."
+ *   'repair'    — "Ready to fix it? Book a same-day visit."
+ *   'general'   — neutral prompt
+ */
+interface Props {
+  phone: string;
+  phoneHref: string;
+  variant?: 'diagnosis' | 'cost' | 'repair' | 'general';
+  customHeading?: string;
+  customSub?: string;
+}
+
+const { phone, phoneHref, variant = 'general', customHeading, customSub } = Astro.props;
+
+const copy: Record<string, { heading: string; sub: string }> = {
+  diagnosis: {
+    heading: "Not sure what's wrong? Skip the guessing.",
+    sub: 'Our technicians diagnose for a flat $89 fee — credited toward the repair.',
+  },
+  cost: {
+    heading: 'Get a firm price before you commit.',
+    sub: 'Transparent flat-rate quotes. No surprises, no hourly billing.',
+  },
+  repair: {
+    heading: 'Ready to fix it? We have same-day slots open.',
+    sub: 'Most repairs completed in one visit. 90-day parts & labor warranty included.',
+  },
+  general: {
+    heading: 'Need a hand? We can be there today.',
+    sub: 'Same-day appointments. Licensed technicians. 90-day warranty.',
+  },
+};
+
+const heading = customHeading ?? copy[variant].heading;
+const sub     = customSub     ?? copy[variant].sub;
+---
+
+<aside aria-label="Contact prompt" style="margin:32px 0;border-left:4px solid #b01616;background:linear-gradient(135deg,rgba(176,22,22,0.06),rgba(176,22,22,0.02));border-radius:0 12px 12px 0;padding:20px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+  <div style="flex:1;min-width:200px">
+    <p style="margin:0 0 4px;font-size:16px;font-weight:700;color:#1a1a1a;line-height:1.3">{heading}</p>
+    <p style="margin:0;font-size:14px;color:#555;line-height:1.5">{sub}</p>
+  </div>
+  <div style="display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap">
+    <a href={phoneHref} style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;white-space:nowrap" aria-label={`Call HomeHeroes at ${phone}`}>
+      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      Call {phone}
+    </a>
+    <a href="#contact-form" style="display:inline-flex;align-items:center;padding:10px 18px;border:1.5px solid #b01616;color:#b01616;font-weight:600;font-size:14px;border-radius:8px;text-decoration:none;white-space:nowrap">
+      Book Online
+    </a>
+  </div>
+</aside>

@@ -6,6 +6,9 @@ import SEOHero from './SEOHero.astro';
 import FAQSection from './FAQSection.astro';
 import InternalLinks from './InternalLinks.astro';
 import SEOCTA from './SEOCTA.astro';
+import CitationProfiles from './CitationProfiles.astro';
+import InlineCTA from '../cro/InlineCTA.astro';
+import StickyMobileCTA from '../cro/StickyMobileCTA.astro';
 
 interface Props {
   service: ServicePage;
@@ -13,11 +16,33 @@ interface Props {
   relatedServiceLinks: { title: string; href: string; description?: string }[];
   relatedBrandLinks: { title: string; href: string; description?: string }[];
   relatedSymptomLinks: { title: string; href: string; description?: string }[];
+  showCitationProfiles?: boolean;
 }
 
-const { service, city, relatedServiceLinks, relatedBrandLinks, relatedSymptomLinks } = Astro.props;
+const { service, city, relatedServiceLinks, relatedBrandLinks, relatedSymptomLinks, showCitationProfiles = false } = Astro.props;
 
 const canonical = `https://tryhomeheroes.com/${city.slug}/${service.slug}`;
+
+// City-specific supplemental FAQs injected at template level
+// so every city (Huntersville, Mooresville, etc.) gets correctly localised schema questions
+const citySupplementalFaqs = [
+  {
+    q: `How much does ${service.name.replace(' Repair', '').toLowerCase()} repair cost in ${city.displayName}?`,
+    a: `${service.name} in ${city.displayName} typically costs $89–$350 depending on the specific failure and parts required. HomeHeroes charges an $89 diagnostic fee that is waived when you proceed with the repair. Call ${city.phone} for a same-day estimate.`,
+  },
+  {
+    q: `Does HomeHeroes offer same-day ${service.name.replace(' Repair', '').toLowerCase()} repair in ${city.displayName}?`,
+    a: `Yes — HomeHeroes provides same-day ${service.name.replace(' Repair', '').toLowerCase()} repair in ${city.displayName}. Most appointments are confirmed same-day. Call ${city.phone} to check today's availability.`,
+  },
+  {
+    q: `What ${service.name.replace(' Repair', '').toLowerCase()} brands do you service in ${city.displayName}?`,
+    a: `HomeHeroes technicians in ${city.displayName} service all major ${service.name.replace(' Repair', '').toLowerCase()} brands including Samsung, LG, Whirlpool, GE, Maytag, Frigidaire, KitchenAid, Bosch, Sub-Zero, and Viking. Call ${city.phone} to confirm parts availability for your model.`,
+  },
+];
+
+// Merge city-specific questions with the static data FAQs
+// Deduplicate by filtering out static FAQs that have the same core topic
+const allFaqsForSchema = [...citySupplementalFaqs, ...service.faq];
 
 const schema = {
   "@context": "https://schema.org",
@@ -43,7 +68,7 @@ const schema = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": service.faq.map((f: { q: string; a: string }) => ({
+      "mainEntity": allFaqsForSchema.map((f: { q: string; a: string }) => ({
         "@type": "Question",
         "name": f.q,
         "acceptedAnswer": { "@type": "Answer", "text": f.a }
@@ -80,8 +105,6 @@ const breadcrumbs = [
     cityName={city.displayName}
     phone={city.phone}
     phoneHref={city.phoneHref}
-    imagePath={service.imagePath}
-    imageAlt={service.imageAlt}
     breadcrumbs={breadcrumbs}
   />
 
@@ -187,6 +210,13 @@ const breadcrumbs = [
     </div>
   </section>
 
+  <!-- 4b. Inline CTA — after visitor reads repair vs replace, nudge to convert -->
+  <section class="bg-white-section" style="padding:0 24px 0">
+    <div style="max-width:1200px;margin:0 auto">
+      <InlineCTA phone={city.phone} phoneHref={city.phoneHref} variant="repair" />
+    </div>
+  </section>
+
   <!-- 5. Common Symptom Guides -->
   {relatedSymptomLinks.length > 0 && (
     <section class="bg-white-section" style="padding:64px 24px">
@@ -217,9 +247,32 @@ const breadcrumbs = [
     </section>
   )}
 
-  <!-- 7. FAQ -->
-  <FAQSection faqs={service.faq} heading={`${service.name} FAQs — ${city.name}`} />
+  <!-- 6b. Cost Reference (Charlotte only — page exists for that city) -->
+  {city.slug === 'charlotte-nc' && (
+    <section class="bg-light-section" style="padding:40px 24px">
+      <div style="max-width:1200px;margin:0 auto">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:20px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+          <div>
+            <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#b01616;margin-bottom:5px">Pricing Reference</div>
+            <p style="font-size:14px;color:#2a3c54;line-height:1.6;margin:0">See typical {service.name.replace(' Repair', '').toLowerCase()} repair cost ranges, our diagnostic fee policy, and repair vs. replace benchmarks for Charlotte homeowners.</p>
+          </div>
+          <a href="/charlotte-nc/appliance-repair-cost" aria-label="View full appliance repair cost guide for Charlotte NC" style="display:inline-flex;align-items:center;gap:6px;padding:11px 20px;background:#b01616;color:#fff;font-weight:700;font-size:13px;border-radius:9px;text-decoration:none;white-space:nowrap;flex-shrink:0">
+            Full Pricing Guide →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
 
-  <!-- 8. CTA -->
+  <!-- 7. FAQ — city-supplemental questions first, then service-specific FAQs -->
+  <FAQSection faqs={allFaqsForSchema} heading={`${service.name} FAQs — ${city.name}`} />
+
+  <!-- 8. Third-party citations — opt-in only; defaults to false to avoid repeating on every generated page -->
+  {showCitationProfiles && <CitationProfiles />}
+
+  <!-- 9. CTA -->
   <SEOCTA phone={city.phone} phoneHref={city.phoneHref} />
+
+  <!-- Sticky mobile bottom bar — fixed, no CLS, hides when form visible -->
+  <StickyMobileCTA phone={city.phone} phoneHref={city.phoneHref} />
 </SeoPageLayout>

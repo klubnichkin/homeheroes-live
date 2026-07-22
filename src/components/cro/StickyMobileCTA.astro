@@ -1,0 +1,67 @@
+---
+interface Props {
+  phone: string;
+  phoneHref: string;
+  label?: string;
+}
+
+const { phone, phoneHref, label = 'Book Service' } = Astro.props;
+---
+
+<!-- Sticky bottom CTA — mobile only, fixed, no CLS -->
+<div id="sticky-mobile-cta" aria-label="Quick contact bar" style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#080f1e;border-top:2px solid #b01616;padding:10px 16px 10px;display:none;align-items:center;gap:10px;box-shadow:0 -4px 24px rgba(0,0,0,0.45)">
+  <!-- Trust micro-line -->
+  <div style="flex:1;min-width:0">
+    <div style="font-size:10px;color:rgba(255,255,255,0.5);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Same-Day · Licensed · 90-Day Warranty</div>
+  </div>
+  <!-- Book button -->
+  <a href="#contact-form" style="flex-shrink:0;display:inline-flex;align-items:center;padding:9px 14px;border:1.5px solid rgba(255,255,255,0.3);color:#fff;font-weight:600;font-size:13px;border-radius:8px;text-decoration:none;white-space:nowrap;background:transparent" aria-label="Book service appointment">
+    {label}
+  </a>
+  <!-- Call button — primary -->
+  <a href={phoneHref} style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:13px;border-radius:8px;text-decoration:none;white-space:nowrap" aria-label={`Call HomeHeroes at ${phone}`}>
+    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    Call Now
+  </a>
+</div>
+
+<!-- Spacer so page content isn't hidden behind sticky bar on mobile — hidden on desktop via CSS -->
+<div id="sticky-cta-spacer" style="display:none;height:60px"></div>
+
+<script>
+  (function () {
+    const bar = document.getElementById('sticky-mobile-cta');
+    const spacer = document.getElementById('sticky-cta-spacer');
+    if (!bar || !spacer) return;
+
+    // Use matchMedia instead of window.innerWidth — avoids forced layout flush.
+    // matchMedia returns a pre-computed match state; no layout recalculation needed.
+    // The 'change' event fires only when the breakpoint actually crosses, not on
+    // every pixel of resize — eliminating the read→write thrash of the old resize handler.
+    const mql = window.matchMedia('(max-width: 767px)');
+
+    function applyBreakpoint(e) {
+      bar.style.display = e.matches ? 'flex' : 'none';
+      spacer.style.display = e.matches ? 'block' : 'none';
+    }
+
+    applyBreakpoint(mql);                    // no layout read — uses cached match state
+    mql.addEventListener('change', applyBreakpoint); // fires only on breakpoint cross
+
+    // Hide bar when contact form scrolls into view — IntersectionObserver is correct here
+    // (notification-based, never reads layout synchronously)
+    const form = document.getElementById('contact-form');
+    if (form && 'IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            bar.style.opacity = e.isIntersecting ? '0' : '1';
+            bar.style.pointerEvents = e.isIntersecting ? 'none' : 'auto';
+          });
+        },
+        { threshold: 0.2 }
+      );
+      obs.observe(form);
+    }
+  })();
+</script>
