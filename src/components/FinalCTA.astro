@@ -161,32 +161,15 @@ import { phone, phoneHref } from '../data/siteData';
 </section>
 
 <script>
-  import { trackEvent, getPageInfo } from '../utils/analytics';
-
   const form = document.getElementById('final-cta-form') as HTMLFormElement | null;
   const success = document.getElementById('final-cta-success');
   const btn = document.getElementById('final-cta-submit') as HTMLButtonElement | null;
-  const applianceSelect = document.getElementById('appliance') as HTMLSelectElement | null;
-
-  let formStarted = false;
-  form?.addEventListener('focusin', () => {
-    if (formStarted) return;
-    formStarted = true;
-    trackEvent('form_start', { form_name: 'final_cta_form', ...getPageInfo() });
-  });
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!btn) return;
     btn.disabled = true;
     btn.textContent = 'Sending…';
-
-    const applianceType = applianceSelect?.value || '';
-    trackEvent('booking_start', {
-      booking_source: 'final_cta_form',
-      appliance_type: applianceType,
-      ...getPageInfo(),
-    });
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -198,20 +181,8 @@ import { phone, phoneHref } from '../data/siteData';
         form.style.display = 'none';
         if (success) success.style.display = 'block';
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'request_service_submit' });
-        trackEvent('generate_lead', {
-          form_name: 'final_cta_form',
-          lead_type: 'service_request',
-          appliance_type: applianceType,
-          service_area: 'Charlotte NC',
-          ...getPageInfo(),
-        });
-        trackEvent('booking_complete', {
-          booking_source: 'final_cta_form',
-          appliance_type: applianceType,
-          service_area: 'Charlotte NC',
-          ...getPageInfo(),
-        });
+        window.dataLayer.push({ event: 'generate_lead', method: 'request_service_form' });
+        console.log('[GTM] generate_lead pushed');
       } else {
         btn.disabled = false;
         btn.textContent = 'Request My Free Quote →';

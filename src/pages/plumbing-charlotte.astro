@@ -1011,33 +1011,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <Footer />
 
   <script>
-    import '../scripts/analytics-init';
-    import { trackEvent, getPageInfo } from '../utils/analytics';
-
     const form = document.getElementById('plumbing-form') as HTMLFormElement | null;
     const success = document.getElementById('plumb-success');
     const btn = document.getElementById('plumb-submit') as HTMLButtonElement | null;
-    const issueSelect = document.getElementById('plumb-issue-type') as HTMLSelectElement | null;
-
-    let formStarted = false;
-    form?.addEventListener('focusin', () => {
-      if (formStarted) return;
-      formStarted = true;
-      trackEvent('form_start', { form_name: 'plumbing_form', ...getPageInfo() });
-    });
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!btn) return;
       btn.disabled = true;
       btn.textContent = 'Sending…';
-
-      const issueType = issueSelect?.value || '';
-      trackEvent('booking_start', {
-        booking_source: 'plumbing_form',
-        appliance_type: issueType,
-        ...getPageInfo(),
-      });
 
       try {
         const res = await fetch('https://api.web3forms.com/submit', {
@@ -1049,20 +1031,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           form.style.display = 'none';
           if (success) success.style.display = 'block';
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'request_service_submit' });
-          trackEvent('generate_lead', {
-            form_name: 'plumbing_form',
-            lead_type: 'service_request',
-            appliance_type: issueType,
-            service_area: 'Charlotte NC',
-            ...getPageInfo(),
-          });
-          trackEvent('booking_complete', {
-            booking_source: 'plumbing_form',
-            appliance_type: issueType,
-            service_area: 'Charlotte NC',
-            ...getPageInfo(),
-          });
+          window.dataLayer.push({ event: 'generate_lead', method: 'request_service_form' });
+          console.log('[GTM] generate_lead pushed');
         } else {
           btn.disabled = false;
           btn.textContent = 'Request Same-Day Plumbing →';
