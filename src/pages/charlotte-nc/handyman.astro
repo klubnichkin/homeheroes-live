@@ -1176,6 +1176,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (data.success) {
           form.style.display = 'none';
           if (success) success.style.display = 'block';
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'request_service_submit' });
           trackEvent('generate_lead', {
             form_name: 'handyman_form',
             lead_type: 'service_request',
