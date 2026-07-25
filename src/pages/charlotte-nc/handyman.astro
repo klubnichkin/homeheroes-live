@@ -99,6 +99,14 @@ const notDone = [
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- Google Tag Manager -->
+  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4VZBNQ9');</script>
+  <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -211,18 +219,12 @@ const notDone = [
       ]
     }
   </script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16950496940"></script>
-  <script is:inline>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'AW-16950496940');
-gtag('config', 'G-SSP6BQLL7V');
-  </script>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4VZBNQ9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <Header />
 
   <!-- Cross-service navigation strip -->
@@ -1137,15 +1139,34 @@ gtag('config', 'G-SSP6BQLL7V');
   </style>
 
   <script>
+    import '../../scripts/analytics-init';
+    import { trackEvent, getPageInfo } from '../../utils/analytics';
+
     const form = document.getElementById('handyman-form') as HTMLFormElement | null;
     const success = document.getElementById('hy-success');
     const btn = document.getElementById('hy-submit') as HTMLButtonElement | null;
+    const jobSelect = document.getElementById('hy-job-type') as HTMLSelectElement | null;
+
+    let formStarted = false;
+    form?.addEventListener('focusin', () => {
+      if (formStarted) return;
+      formStarted = true;
+      trackEvent('form_start', { form_name: 'handyman_form', ...getPageInfo() });
+    });
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!btn) return;
       btn.disabled = true;
       btn.textContent = 'Sending…';
+
+      const jobType = jobSelect?.value || '';
+      trackEvent('booking_start', {
+        booking_source: 'handyman_form',
+        appliance_type: jobType,
+        ...getPageInfo(),
+      });
+
       try {
         const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
@@ -1155,6 +1176,19 @@ gtag('config', 'G-SSP6BQLL7V');
         if (data.success) {
           form.style.display = 'none';
           if (success) success.style.display = 'block';
+          trackEvent('generate_lead', {
+            form_name: 'handyman_form',
+            lead_type: 'service_request',
+            appliance_type: jobType,
+            service_area: 'Charlotte NC',
+            ...getPageInfo(),
+          });
+          trackEvent('booking_complete', {
+            booking_source: 'handyman_form',
+            appliance_type: jobType,
+            service_area: 'Charlotte NC',
+            ...getPageInfo(),
+          });
         } else {
           btn.disabled = false;
           btn.textContent = 'Book Handyman Service →';
