@@ -23,6 +23,18 @@ const { service, city, relatedServiceLinks, relatedBrandLinks, relatedSymptomLin
 
 const canonical = `https://tryhomeheroes.com/${city.slug}/${service.slug}`;
 
+// Image position per source image — single source of truth for path → crop mapping
+const imagePosMap: Record<string, string> = {
+  '/images/hero/hero-technician.webp':         '18% 45%',
+  '/images/services/washer-dryer-repair.webp': '8% 50%',
+  '/images/services/dishwasher-repair.webp':   '50% 72%',
+  '/images/services/oven-range-repair.webp':   '50% 60%',
+  '/images/services/microwave-repair.webp':    '50% 28%',
+  '/images/services/emergency-repair-tech.webp': '50% 18%',
+};
+const imagePos = imagePosMap[service.imagePath] ?? '50% 50%';
+const imageAlt = `${service.name} technician in ${city.displayName}, NC — HomeHeroes`;
+
 // City-specific supplemental FAQs injected at template level
 // so every city (Huntersville, Mooresville, etc.) gets correctly localised schema questions
 const citySupplementalFaqs = [
@@ -97,6 +109,7 @@ const breadcrumbs = [
   canonical={canonical}
   schema={schema}
   ogImage={service.imagePath}
+  heroImage={service.imagePath}
 >
   <!-- 1. Hero -->
   <SEOHero
@@ -106,6 +119,9 @@ const breadcrumbs = [
     phone={city.phone}
     phoneHref={city.phoneHref}
     breadcrumbs={breadcrumbs}
+    image={service.imagePath}
+    imageAlt={imageAlt}
+    imagePos={imagePos}
   />
 
   <!-- 2. Common Problems -->
