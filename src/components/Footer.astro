@@ -1,6 +1,6 @@
 ---
 import { phone, phoneHref, year } from '../data/siteData';
-import { areas } from '../data/areas';
+import { allLocationLinks } from '../data/locations';
 ---
 
 <footer data-track-location="footer" class="bg-navy-section" style="border-top:2px solid #7a0e0e">
@@ -41,7 +41,7 @@ import { areas } from '../data/areas';
             ['HVAC Repair',           '/services/hvac'],
             ['Electrical',            '/services/electrical'],
             ['Refrigerator Repair',   '/charlotte-nc/refrigerator-repair'],
-            ['Emergency Service',     '/charlotte-nc/appliance-repair'],
+            ['Emergency Service',     '/appliance-repair-charlotte#contact-form'],
           ].map(([label, href]) => (
             <li><a href={href} style="font-size:0.79rem;color:#1a3050;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#7a9ab8'" onmouseout="this.style.color='#1a3050'">{label}</a></li>
           ))}
@@ -52,11 +52,12 @@ import { areas } from '../data/areas';
         <h4 style="font-size:0.63rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#e8edf5;margin:0 0 16px">Quick Links</h4>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px">
           {[
-            ['All Services',           '/charlotte-nc/services'],
+            ['All Appliance Services', '/appliance-repair-charlotte#all-services'],
             ['Brands We Repair',       '/charlotte-nc/brands'],
             ['Common Problems',        '/charlotte-nc/common-appliance-problems'],
             ['Service Areas',          '/charlotte-nc/areas'],
-            ['Charlotte, NC Guide',    '/charlotte-nc/appliance-repair'],
+            ['Repair Costs',           '/charlotte-nc/appliance-repair-cost'],
+            ['About HomeHeroes',       '/about'],
             ['Why HomeHeroes',         '#why-us'],
             ['Customer Reviews',       '#reviews'],
             ['Get a Quote',            '#contact-form'],
@@ -104,9 +105,9 @@ import { areas } from '../data/areas';
         <a href="/charlotte-nc/areas" aria-label="View all appliance repair service areas near Charlotte" style="font-size:0.68rem;font-weight:700;color:#b01616;text-decoration:none;letter-spacing:0.03em">View All Areas →</a>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:6px 10px;padding-bottom:24px">
-        {areas.map(area => (
+        {allLocationLinks.map(area => (
           <a
-            href={`/charlotte-nc/areas/${area.slug}`}
+            href={area.href}
             class="footer-area-link"
           >{area.name}</a>
         ))}
@@ -123,6 +124,8 @@ import { areas } from '../data/areas';
       <div style="display:flex;gap:18px">
         <a href="/privacy" style="font-size:0.68rem;color:#0e2038;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#2a5a8a'" onmouseout="this.style.color='#0e2038'">Privacy Policy</a>
         <a href="/terms"   style="font-size:0.68rem;color:#0e2038;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#2a5a8a'" onmouseout="this.style.color='#0e2038'">Terms of Service</a>
+        <a href="/charlotte-nc/appliance-repair-warranty" style="font-size:0.68rem;color:#0e2038;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#2a5a8a'" onmouseout="this.style.color='#0e2038'">Warranty</a>
+        <a href="/editorial-policy" style="font-size:0.68rem;color:#0e2038;text-decoration:none;transition:color 0.12s;font-weight:400" onmouseover="this.style.color='#2a5a8a'" onmouseout="this.style.color='#0e2038'">Editorial Policy</a>
       </div>
     </div>
   </div>

@@ -66,7 +66,7 @@ const schema = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryhomeheroes.com/" },
-        { "@type": "ListItem", "position": 2, "name": city.displayName, "item": `https://tryhomeheroes.com/${city.slug}/appliance-repair` },
+        { "@type": "ListItem", "position": 2, "name": city.displayName, "item": `https://tryhomeheroes.com${city.hubPath}` },
         { "@type": "ListItem", "position": 3, "name": `${brand.name} Repair`, "item": canonical }
       ]
     }
@@ -82,7 +82,7 @@ const priceColors: Record<string, string> = {
 const priceColor = priceColors[brand.priceRange] || '#6b7280';
 
 const breadcrumbs = [
-  { label: city.displayName, href: `/${city.slug}/appliance-repair` },
+  { label: city.displayName, href: city.hubPath },
   { label: `${brand.name} Repair`, href: '#' },
 ];
 ---

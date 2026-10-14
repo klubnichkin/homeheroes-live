@@ -1,6 +1,6 @@
 ---
 import { phoneHref } from '../data/siteData';
-import { areas } from '../data/areas';
+import { allLocationLinks } from '../data/locations';
 ---
 
 <section id="areas" class="bg-navy-section" style="padding:80px 24px 96px;position:relative;overflow:hidden">
@@ -27,8 +27,8 @@ import { areas } from '../data/areas';
       </div>
       <div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
-          {areas.map(area => (
-            <a href={`/charlotte-nc/areas/${area.slug}`} class="area-link">
+          {allLocationLinks.map(area => (
+            <a href={area.href} class="area-link">
               <svg width="8" height="8" fill="#dc2626" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
               <span class="area-link-text">{area.name}</span>
             </a>

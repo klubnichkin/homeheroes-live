@@ -1,0 +1,41 @@
+---
+// Short, quotable answer placed near the top of a page.
+// Search features and AI assistants tend to lift exactly this kind of self-contained paragraph.
+interface Props {
+  heading?: string;
+  text: string;
+}
+const { heading = 'Quick answer', text } = Astro.props;
+---
+
+<section class="bg-white-section" style="padding:40px 24px 0">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="quick-answer">
+      <div class="qa-label">{heading}</div>
+      <p class="qa-text">{text}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quick-answer {
+    border-left: 4px solid #b01616;
+    background: #f8f9fc;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+  }
+  .qa-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b01616;
+    margin-bottom: 8px;
+  }
+  .qa-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1a2c44;
+    margin: 0;
+  }
+</style>

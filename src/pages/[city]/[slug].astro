@@ -1,262 +1,211 @@
 ---
-import { services, getService } from '../../data/services';
+import { services, getService, serviceMeta } from '../../data/services';
 import { brands, getBrand } from '../../data/brands';
-import { cities, getCity } from '../../data/cities';
-import { symptoms, getSymptom } from '../../data/symptoms';
+import { cities } from '../../data/cities';
+import { symptoms } from '../../data/symptoms';
+import { brandAppliances } from '../../data/brandAppliances';
+import { premiumPages } from '../../data/premium';
+import { businessGraph } from '../../data/business';
+import { breadcrumbSchema, abs } from '../../lib/seo';
 import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
 import ServicePageTemplate from '../../components/seo/ServicePageTemplate.astro';
 import BrandPageTemplate from '../../components/seo/BrandPageTemplate.astro';
 import SymptomPageTemplate from '../../components/seo/SymptomPageTemplate.astro';
+import CityHubTemplate from '../../components/seo/CityHubTemplate.astro';
+import BrandAppliancePageTemplate from '../../components/seo/BrandAppliancePageTemplate.astro';
+import PremiumPageTemplate from '../../components/seo/PremiumPageTemplate.astro';
 import InternalLinks from '../../components/seo/InternalLinks.astro';
 import SEOCTA from '../../components/seo/SEOCTA.astro';
 
+type City = (typeof cities)[number];
+
 export function getStaticPaths() {
-  const allPaths: {
-    params: { city: string; slug: string };
-    props:
-      | { type: 'service'; city: (typeof cities)[0]; service: (typeof services)[0]; brand: null; symptom: null; hubSlug: null }
-      | { type: 'brand'; city: (typeof cities)[0]; service: null; brand: (typeof brands)[0]; symptom: null; hubSlug: null }
-      | { type: 'symptom'; city: (typeof cities)[0]; service: null; brand: null; symptom: (typeof symptoms)[0]; hubSlug: null }
-      | { type: 'hub'; city: (typeof cities)[0]; service: null; brand: null; symptom: null; hubSlug: string };
-  }[] = [];
+  const paths: { params: { city: string; slug: string }; props: Record<string, unknown> }[] = [];
+  const charlotte = cities.find(c => c.slug === 'charlotte-nc')!;
 
   for (const city of cities) {
-    // Service pages
+    // Service pages exist for every city; suburb versions carry their own local content.
     for (const service of services) {
-      allPaths.push({
-        params: { city: city.slug, slug: service.slug },
-        props: { type: 'service', city, service, brand: null, symptom: null, hubSlug: null },
-      });
+      paths.push({ params: { city: city.slug, slug: service.slug }, props: { type: 'service', city, service } });
     }
-    // Brand pages
-    for (const brand of brands) {
-      allPaths.push({
-        params: { city: city.slug, slug: brand.slug },
-        props: { type: 'brand', city, service: null, brand, symptom: null, hubSlug: null },
-      });
-    }
-    // Symptom pages (all cities — charlotte-nc static files take priority for that city)
-    for (const symptom of symptoms) {
-      allPaths.push({
-        params: { city: city.slug, slug: symptom.slug },
-        props: { type: 'symptom', city, service: null, brand: null, symptom, hubSlug: null },
-      });
-    }
-    // Hub pages
-    for (const hubSlug of ['appliance-repair', 'services', 'brands', 'common-appliance-problems'] as const) {
-      allPaths.push({
-        params: { city: city.slug, slug: hubSlug },
-        props: { type: 'hub', city, service: null, brand: null, symptom: null, hubSlug },
-      });
+    // Suburb hub. Charlotte's hub is /appliance-repair-charlotte.
+    if (city.slug !== 'charlotte-nc') {
+      paths.push({ params: { city: city.slug, slug: 'appliance-repair' }, props: { type: 'cityHub', city } });
     }
   }
 
-  return allPaths;
+  // Brand, symptom and brand+appliance pages are not location-specific, so they live under Charlotte only.
+  for (const brand of brands) {
+    paths.push({ params: { city: charlotte.slug, slug: brand.slug }, props: { type: 'brand', city: charlotte, brand } });
+  }
+  // Hand-written pages in src/pages/charlotte-nc/ take priority; only generate symptoms that have none.
+  const staticPages = new Set(
+    Object.keys(import.meta.glob('../charlotte-nc/*.astro')).map(f => f.split('/').pop()!.replace('.astro', '')),
+  );
+  for (const symptom of symptoms) {
+    if (staticPages.has(symptom.slug)) continue;
+    paths.push({ params: { city: charlotte.slug, slug: symptom.slug }, props: { type: 'symptom', city: charlotte, symptom } });
+  }
+  for (const page of brandAppliances) {
+    paths.push({ params: { city: charlotte.slug, slug: page.slug }, props: { type: 'brandAppliance', page } });
+  }
+  for (const hubSlug of ['brands', 'common-appliance-problems']) {
+    paths.push({ params: { city: charlotte.slug, slug: hubSlug }, props: { type: 'hub', city: charlotte, hubSlug } });
+  }
+
+  for (const page of premiumPages) {
+    paths.push({ params: { city: page.citySlug, slug: page.slug }, props: { type: 'premium', page } });
+  }
+
+  return paths;
 }
 
-const { type, city, service, brand, symptom, hubSlug } = Astro.props;
-const { slug } = Astro.params;
+const props = Astro.props as any;
+const { type } = props;
+const city: City | undefined = props.city;
+const service = props.service;
+const brand = props.brand;
+const symptom = props.symptom;
+const hubSlug: string | undefined = props.hubSlug;
 
-const baseUrl = 'https://tryhomeheroes.com';
-const canonical = `${baseUrl}/${city.slug}/${slug}`;
-
-// Build related links
+// ── Links for service pages ─────────────────────────────────────────────
 const relatedServiceLinks = service
-  ? service.relatedServices.map(rs => {
+  ? service.relatedServices.map((rs: string) => {
       const s = getService(rs)!;
-      return { title: s.name, href: `/${city.slug}/${s.slug}`, description: `Same-day service in ${city.displayName}` };
+      return { title: s.name, href: `/${city!.slug}/${s.slug}`, description: `Same-day service in ${city!.displayName}` };
     })
   : [];
 
 const relatedBrandLinks = service
-  ? service.relatedBrands.map(rb => {
+  ? service.relatedBrands.map((rb: string) => {
       const b = getBrand(rb)!;
-      return { title: `${b.name} Repair`, href: `/${city.slug}/${b.slug}`, description: b.priceRange };
+      return { title: `${b.name} Repair`, href: `/charlotte-nc/${b.slug}`, description: b.priceRange };
     })
   : [];
 
-const brandServiceLinks = brand
-  ? brand.relatedServices.map(rs => {
-      const s = getService(rs)!;
-      return { title: s.name, href: `/${city.slug}/${s.slug}`, description: `Same-day service in ${city.displayName}` };
-    })
-  : [];
-
-// Symptom links for service and brand pages
 const serviceSymptomLinks = service
   ? symptoms
       .filter(s => s.relatedServiceSlug === service.slug)
-      .map(s => ({ title: s.symptomShort, href: `/${city.slug}/${s.slug}`, description: `${s.appliance} symptom guide` }))
+      .map(s => ({ title: s.symptomShort, href: `/charlotte-nc/${s.slug}`, description: `${s.appliance} symptom guide` }))
   : [];
 
+const brandApplianceLinks = service
+  ? brandAppliances
+      .filter(b => b.serviceSlug === service.slug)
+      .map(b => ({ title: `${b.brand} ${b.appliance} Repair`, href: `/charlotte-nc/${b.slug}` }))
+  : [];
+
+// ── Links for brand pages ───────────────────────────────────────────────
+const brandServiceLinks = brand
+  ? brand.relatedServices.map((rs: string) => {
+      const s = getService(rs)!;
+      return { title: s.name, href: `/charlotte-nc/${s.slug}`, description: `Same-day service in Charlotte` };
+    })
+  : [];
 const brandSymptomLinks = brand
   ? symptoms
       .filter(s => s.relatedBrandSlugs.includes(brand.slug))
-      .map(s => ({ title: s.symptomShort, href: `/${city.slug}/${s.slug}`, description: s.appliance }))
+      .map(s => ({ title: s.symptomShort, href: `/charlotte-nc/${s.slug}`, description: s.appliance }))
   : [];
 
-// All service/brand links for hub pages
-const allServiceLinks = services.map(s => ({
-  title: s.name,
-  href: `/${city.slug}/${s.slug}`,
-  description: `Fast same-day service in ${city.displayName}`,
-}));
+// ── Charlotte hubs (brands, common problems) ────────────────────────────
+const allServiceLinks = services.map(s => ({ title: s.name, href: `/charlotte-nc/${s.slug}`, description: `Same-day service in Charlotte` }));
+const allBrandLinks = brands.map(b => ({ title: `${b.name} Repair`, href: `/charlotte-nc/${b.slug}`, description: b.priceRange }));
+const allBrandApplianceLinks = brandAppliances.map(b => ({ title: `${b.brand} ${b.appliance} Repair`, href: `/charlotte-nc/${b.slug}` }));
+const symptomsByAppliance = symptoms.reduce((acc, s) => {
+  (acc[s.appliance] ??= []).push(s);
+  return acc;
+}, {} as Record<string, typeof symptoms>);
 
-const allBrandLinks = brands.map(b => ({
-  title: `${b.name} Repair`,
-  href: `/${city.slug}/${b.slug}`,
-  description: b.priceRange,
-}));
-
-// Hub page meta
 let hubTitle = '';
 let hubDescription = '';
 let hubH1 = '';
 let hubIntro = '';
-let hubSchema: object = {};
-
-if (slug === 'appliance-repair') {
-  hubTitle = `Appliance Repair in ${city.displayName} | HomeHeroes`;
-  hubDescription = `Complete appliance repair service in ${city.displayName}. Same-day service for all major appliances. Licensed & insured technicians. Call ${city.phone}.`;
-  hubH1 = `Appliance Repair in ${city.displayName}`;
-  hubIntro = `HomeHeroes is ${city.displayName}'s trusted same-day appliance repair service. We fix refrigerators, washers, dryers, ovens, dishwashers, and more — with licensed, insured technicians who arrive stocked and ready to repair on the first visit.`;
-  hubSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "HomeHeroes Appliance Repair",
-    "telephone": city.phoneHref.replace('tel:', ''),
-    "url": canonical,
-    "address": { "@type": "PostalAddress", "addressLocality": city.name, "addressRegion": city.stateAbbr, "addressCountry": "US" }
-  };
-} else if (slug === 'services') {
-  hubTitle = `Appliance Repair Services in ${city.displayName} | HomeHeroes`;
-  hubDescription = `All appliance repair services available in ${city.displayName}. Refrigerators, washers, dryers, ovens and more. Call ${city.phone}.`;
-  hubH1 = `Our Appliance Repair Services in ${city.displayName}`;
-  hubIntro = `HomeHeroes provides same-day repair for all major home appliances in ${city.displayName}. Browse our complete service list below and call us for same-day scheduling.`;
-  hubSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "HomeHeroes Appliance Repair",
-    "url": canonical
-  };
-} else if (slug === 'brands') {
-  hubTitle = `Appliance Brands We Repair in ${city.displayName} | HomeHeroes`;
-  hubDescription = `HomeHeroes repairs all major appliance brands in ${city.displayName}: Samsung, LG, Whirlpool, GE, Bosch, Sub-Zero and more. Call ${city.phone}.`;
-  hubH1 = `Appliance Brands We Service in ${city.displayName}`;
-  hubIntro = `From everyday brands like Whirlpool and GE to luxury brands like Sub-Zero and Miele, HomeHeroes technicians in ${city.displayName} are trained on all major appliance brands. Select your brand below.`;
-  hubSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "HomeHeroes Appliance Repair",
-    "url": canonical
-  };
-} else if (slug === 'common-appliance-problems') {
-  hubTitle = `Common Appliance Problems in ${city.displayName} | HomeHeroes`;
-  hubDescription = `Diagnose your appliance problem in ${city.displayName}. Refrigerator not cooling, washer not draining, dryer not heating — find your symptom and get same-day repair. Call ${city.phone}.`;
-  hubH1 = `Common Appliance Problems in ${city.displayName}`;
-  hubIntro = `Find your exact symptom below. Each guide covers the most likely causes, safe homeowner checks, and when to call a technician. HomeHeroes offers same-day repair for all of these issues across ${city.displayName}.`;
-  hubSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "HomeHeroes Appliance Repair",
-    "telephone": city.phoneHref.replace('tel:', ''),
-    "url": canonical,
-    "address": { "@type": "PostalAddress", "addressLocality": city.name, "addressRegion": city.stateAbbr, "addressCountry": "US" }
-  };
+if (hubSlug === 'brands') {
+  hubTitle = 'Appliance Brands We Repair in Charlotte, NC | HomeHeroes';
+  hubDescription = 'HomeHeroes repairs all major appliance brands in Charlotte, NC: Samsung, LG, Whirlpool, GE, Bosch, Sub-Zero, Wolf and more. Call (704) 512-0111.';
+  hubH1 = 'Appliance Brands We Service in Charlotte, NC';
+  hubIntro = 'From everyday brands like Whirlpool and GE to luxury brands like Sub-Zero and Miele, HomeHeroes technicians in Charlotte are trained on all major appliance brands. Select your brand, or go straight to your brand and appliance below.';
+} else if (hubSlug === 'common-appliance-problems') {
+  hubTitle = 'Common Appliance Problems in Charlotte, NC | HomeHeroes';
+  hubDescription = 'Diagnose your appliance problem: refrigerator not cooling, washer not draining, dryer not heating and more. Causes, safe checks and same-day repair in Charlotte.';
+  hubH1 = 'Common Appliance Problems in Charlotte, NC';
+  hubIntro = 'Find your exact symptom below. Each guide covers the most likely causes, safe homeowner checks, and when to call a technician. HomeHeroes offers same-day repair for all of these issues across Charlotte.';
 }
-
-// Group symptoms by appliance for hub page
-const symptomsByAppliance = symptoms.reduce((acc, s) => {
-  if (!acc[s.appliance]) acc[s.appliance] = [];
-  acc[s.appliance].push(s);
-  return acc;
-}, {} as Record<string, typeof symptoms>);
+const hubSchema = hubSlug
+  ? {
+      '@context': 'https://schema.org',
+      '@graph': [
+        ...businessGraph(),
+        { '@type': 'CollectionPage', name: hubH1, url: abs(`/charlotte-nc/${hubSlug}`) },
+        breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Appliance Repair Charlotte', path: '/appliance-repair-charlotte' },
+          { name: hubH1, path: `/charlotte-nc/${hubSlug}` },
+        ]),
+      ],
+    }
+  : {};
 ---
 
-{type === 'symptom' && symptom && (
-  <SymptomPageTemplate symptom={symptom} city={city} />
-)}
-
-{type === 'service' && service && (
+{type === 'service' && (
   <ServicePageTemplate
     service={service}
-    city={city}
+    city={city!}
     relatedServiceLinks={relatedServiceLinks}
     relatedBrandLinks={relatedBrandLinks}
     relatedSymptomLinks={serviceSymptomLinks}
+    brandApplianceLinks={city!.slug === 'charlotte-nc' ? brandApplianceLinks : []}
   />
 )}
 
-{type === 'brand' && brand && (
-  <BrandPageTemplate
-    brand={brand}
-    city={city}
-    relatedServiceLinks={brandServiceLinks}
-    relatedSymptomLinks={brandSymptomLinks}
-  />
+{type === 'cityHub' && <CityHubTemplate city={city!} />}
+
+{type === 'symptom' && <SymptomPageTemplate symptom={symptom} city={city!} />}
+
+{type === 'brand' && (
+  <BrandPageTemplate brand={brand} city={city!} relatedServiceLinks={brandServiceLinks} relatedSymptomLinks={brandSymptomLinks} />
 )}
+
+{type === 'brandAppliance' && <BrandAppliancePageTemplate page={props.page} />}
+
+{type === 'premium' && <PremiumPageTemplate page={props.page} />}
 
 {type === 'hub' && (
-  <SeoPageLayout
-    title={hubTitle}
-    description={hubDescription}
-    canonical={canonical}
-    schema={hubSchema}
-  >
-    <!-- Hub Hero -->
+  <SeoPageLayout title={hubTitle} description={hubDescription} canonical={abs(`/charlotte-nc/${hubSlug}`)} schema={hubSchema}>
     <section style="background:#080f1e;padding:60px 24px 56px">
       <div style="max-width:900px;margin:0 auto;text-align:center">
-        <div class="sec-label" style="margin-bottom:16px">{city.displayName}</div>
+        <div class="sec-label" style="margin-bottom:16px">Charlotte, NC</div>
         <h1 style="color:#fff;font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-0.02em">{hubH1}</h1>
-        <p style="color:rgba(255,255,255,0.72);font-size:17px;line-height:1.65;margin:0 0 32px;max-width:640px;margin-left:auto;margin-right:auto">{hubIntro}</p>
+        <p style="color:rgba(255,255,255,0.72);font-size:17px;line-height:1.65;margin:0 auto 32px;max-width:640px">{hubIntro}</p>
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-          <a href={city.phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            Call {city.phone}
-          </a>
-          <a href="#contact-form" style="display:inline-flex;align-items:center;padding:14px 24px;border:2px solid rgba(255,255,255,0.25);color:#fff;font-weight:600;font-size:16px;border-radius:10px;text-decoration:none">
-            Get Free Quote
-          </a>
+          <a href={city!.phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">Call {city!.phone}</a>
+          <a href="#contact-form" style="display:inline-flex;align-items:center;padding:14px 24px;border:2px solid rgba(255,255,255,0.25);color:#fff;font-weight:600;font-size:16px;border-radius:10px;text-decoration:none">Get Free Quote</a>
         </div>
       </div>
     </section>
     <div class="rule"></div>
 
-    <!-- Hub Content -->
-    {slug === 'appliance-repair' && (
+    {hubSlug === 'brands' && (
       <>
         <section class="bg-white-section" style="padding:72px 24px">
-          <InternalLinks heading={`Our Appliance Repair Services in ${city.name}`} links={allServiceLinks} />
+          <InternalLinks heading="All Appliance Brands We Repair in Charlotte" links={allBrandLinks} />
         </section>
         <section class="bg-light-section" style="padding:72px 24px">
-          <InternalLinks heading={`Brands We Service in ${city.name}`} links={allBrandLinks} />
+          <InternalLinks heading="Repair by Brand and Appliance" links={allBrandApplianceLinks} />
         </section>
       </>
     )}
 
-    {slug === 'services' && (
-      <section class="bg-white-section" style="padding:72px 24px">
-        <InternalLinks heading={`All Appliance Repair Services in ${city.name}`} links={allServiceLinks} />
-      </section>
-    )}
-
-    {slug === 'brands' && (
-      <section class="bg-white-section" style="padding:72px 24px">
-        <InternalLinks heading={`All Appliance Brands We Repair in ${city.name}`} links={allBrandLinks} />
-      </section>
-    )}
-
-    {slug === 'common-appliance-problems' && (
+    {hubSlug === 'common-appliance-problems' && (
       <section class="bg-white-section" style="padding:72px 24px">
         <div style="max-width:1100px;margin:0 auto">
           {Object.entries(symptomsByAppliance).map(([appliance, applianceSymptoms]) => (
             <div style="margin-bottom:56px">
-              <h2 style="font-size:clamp(18px,2.5vw,26px);font-weight:800;color:#060c19;margin:0 0 24px;padding-bottom:14px;border-bottom:2px solid #b01616;letter-spacing:-0.02em">
-                {appliance} Problems
-              </h2>
+              <h2 style="font-size:clamp(18px,2.5vw,26px);font-weight:800;color:#060c19;margin:0 0 24px;padding-bottom:14px;border-bottom:2px solid #b01616;letter-spacing:-0.02em">{appliance} Problems</h2>
               <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
                 {applianceSymptoms.map(s => (
-                  <a href={`/${city.slug}/${s.slug}`} aria-label={`Diagnose ${s.symptomShort} in ${city.name}`} style="display:block;padding:20px 22px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;text-decoration:none;transition:box-shadow 0.15s" class="prob-card">
+                  <a href={`/charlotte-nc/${s.slug}`} aria-label={`Diagnose ${s.symptomShort} in Charlotte`} style="display:block;padding:20px 22px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;text-decoration:none" class="prob-card">
                     <div style="font-size:15px;font-weight:700;color:#060c19;margin-bottom:6px">{s.symptomShort}</div>
                     <div style="font-size:13px;color:#4a5e74;line-height:1.5">{s.intro.slice(0, 90)}…</div>
                     <div style="margin-top:12px;font-size:12px;font-weight:700;color:#b01616;letter-spacing:0.04em">Diagnose This Problem →</div>
@@ -266,12 +215,12 @@ const symptomsByAppliance = symptoms.reduce((acc, s) => {
             </div>
           ))}
           <div style="margin-top:24px">
-            <InternalLinks heading={`Our Appliance Repair Services in ${city.name}`} links={allServiceLinks} />
+            <InternalLinks heading="Our Appliance Repair Services in Charlotte" links={allServiceLinks} />
           </div>
         </div>
       </section>
     )}
 
-    <SEOCTA phone={city.phone} phoneHref={city.phoneHref} />
+    <SEOCTA phone={city!.phone} phoneHref={city!.phoneHref} />
   </SeoPageLayout>
 )}

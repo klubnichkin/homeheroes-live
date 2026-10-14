@@ -12,7 +12,134 @@ import ServiceAreas from '../components/ServiceAreas.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import SymptomHighlights from '../components/SymptomHighlights.astro';
 import CitationProfiles from '../components/seo/CitationProfiles.astro';
+import QuickAnswer from '../components/seo/QuickAnswer.astro';
+import LocalJobStats from '../components/seo/LocalJobStats.astro';
+import Analytics from '../components/seo/Analytics.astro';
 import Footer from '../components/Footer.astro';
+import { services } from '../data/services';
+import { brands } from '../data/brands';
+import { brandAppliances } from '../data/brandAppliances';
+import { premiumPages } from '../data/premium';
+import { business, businessGraph, priceRanges, sealedSystemRange, servicePromise } from '../data/business';
+import { breadcrumbSchema, faqSchema, abs } from '../lib/seo';
+import { neighborhoodLinks, cityLinks } from '../data/locations';
+
+const canonical = abs('/appliance-repair-charlotte');
+const title = 'Appliance Repair Charlotte, NC | Same-Day Service | HomeHeroes';
+const description = `Same-day appliance repair in Charlotte, NC for refrigerators, washers, dryers, dishwashers and ovens. $${business.diagnosticFee} diagnostic waived with repair. Call ${business.phone}.`;
+
+const quickAnswer = `HomeHeroes repairs refrigerators, freezers, washers, dryers, dishwashers, ovens, ranges, cooktops, microwaves, ice makers and wine coolers across Charlotte and the surrounding towns. ${servicePromise} Call ${business.phone}.`;
+
+const serviceBlurbs: Record<string, string> = {
+  'refrigerator-repair': 'Not cooling, leaking, ice maker and dispenser problems',
+  'freezer-repair': 'Not freezing, frost build-up, noisy fans',
+  'washer-repair': 'Won\'t drain, won\'t spin, leaks and error codes',
+  'dryer-repair': 'No heat, long dry times, noise, broken belts',
+  'dishwasher-repair': 'Not draining, not cleaning, leaks and latches',
+  'stove-repair': 'Burners that won\'t light, click or heat',
+  'oven-repair': 'Not heating, wrong temperature, igniters and elements',
+  'microwave-repair': 'Not heating, sparking, turntable and door switches',
+  'range-hood-repair': 'Fans, lights, switches and controls',
+  'ice-maker-repair': 'No ice, slow ice, leaks and frozen fill tubes',
+  'wine-cooler-repair': 'Warm temperatures, fans and controls',
+  'electric-cooktop-repair': 'Elements, switches and cracked glass tops',
+};
+
+const faqs = [
+  {
+    q: 'How much does appliance repair cost in Charlotte?',
+    a: `The diagnostic visit is $${business.diagnosticFee} and is waived when you approve the repair. Most repairs in Charlotte fall between $89 and $300 including parts and labor — for example washers $89–$250, dryers $89–$200 and dishwashers $89–$280. Sealed-system refrigerator work runs ${sealedSystemRange}. We quote every repair before work starts.`,
+  },
+  {
+    q: 'Do you offer same-day appliance repair in Charlotte?',
+    a: `Yes. We schedule same-day appointments ${business.hours.label}. Calls placed in the morning are usually seen the same afternoon anywhere in Charlotte.`,
+  },
+  {
+    q: 'What appliances do you repair?',
+    a: 'Refrigerators, freezers, ice makers, wine coolers, washers, dryers, dishwashers, ovens, ranges, stoves, cooktops, range hoods and microwaves — gas and electric, freestanding and built-in.',
+  },
+  {
+    q: 'Which brands do you service?',
+    a: `All major brands, including ${brands.map(b => b.name).join(', ')}, plus Kenmore, Amana, Electrolux and others. Premium built-in brands such as Sub-Zero, Wolf, Thermador, Viking and Miele are a regular part of our work.`,
+  },
+  {
+    q: 'What areas around Charlotte do you cover?',
+    a: `Every Charlotte neighborhood — including ${neighborhoodLinks.slice(0, 8).map(n => n.name).join(', ')} — and the surrounding towns of ${cityLinks.map(c => c.name).join(', ')}.`,
+  },
+  {
+    q: 'Should I repair or replace my appliance?',
+    a: 'A good rule of thumb: repair when the cost is well under half the price of a comparable new appliance and the unit is not near the end of its expected life. Fans, pumps, elements, igniters, latches and boards are usually worth fixing; a failed sealed system on an older budget refrigerator usually is not. We give you an honest recommendation before any work.',
+  },
+  {
+    q: 'Is the repair guaranteed?',
+    a: `Yes. Repairs are covered by our ${business.warrantyDays}-day warranty on parts and labor.`,
+  },
+  {
+    q: 'Do you work with landlords and property managers?',
+    a: 'Yes. We repair appliances in rentals, apartments and condos across Charlotte and provide clear repair records for owners and managers.',
+  },
+  {
+    q: 'What should I have ready when I call?',
+    a: 'The brand and model number (usually on a label inside the door or on the back), what the appliance is doing, and any error code on the display. Photos help, too. That lets us bring the right parts and fix most problems on the first visit.',
+  },
+];
+
+const guides = [
+  { title: 'Appliance repair cost in Charlotte', href: '/charlotte-nc/appliance-repair-cost' },
+  { title: 'Common appliance repair costs', href: '/charlotte-nc/common-appliance-repair-costs' },
+  { title: 'How long appliances last', href: '/charlotte-nc/how-long-do-appliances-last' },
+  { title: 'When not to repair an appliance', href: '/charlotte-nc/when-not-to-repair-an-appliance' },
+  { title: 'Repair vs. replace a refrigerator', href: '/charlotte-nc/repair-vs-replace-refrigerator' },
+  { title: 'Our repair warranty', href: '/charlotte-nc/appliance-repair-warranty' },
+  { title: 'Apartment & rental appliance repair', href: '/charlotte-nc/apartment-appliance-repair' },
+  { title: 'Commercial appliance repair', href: '/charlotte-nc/commercial-appliance-repair' },
+  { title: 'Common appliance problems', href: '/charlotte-nc/common-appliance-problems' },
+];
+
+const premiumLinks = [
+  ...brandAppliances.filter(b => b.tier === 'premium').map(b => ({ name: `${b.brand} ${b.appliance} Repair`, href: `/charlotte-nc/${b.slug}` })),
+  ...premiumPages.map(p => ({ name: `${p.brand.name} — ${p.location.name}`, href: p.path })),
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph({ withRating: true }),
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      about: { '@id': abs('/#business') },
+      primaryImageOfPage: business.image,
+    },
+    {
+      '@type': 'Service',
+      '@id': `${canonical}#service`,
+      name: 'Appliance Repair in Charlotte, NC',
+      serviceType: 'Appliance repair',
+      url: canonical,
+      provider: { '@id': abs('/#business') },
+      areaServed: [
+        { '@type': 'City', name: 'Charlotte', sameAs: 'https://en.wikipedia.org/wiki/Charlotte,_North_Carolina' },
+        ...cityLinks.map(c => ({ '@type': 'City', name: c.name })),
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Appliance Repair Services',
+        itemListElement: services.map(s => ({
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: s.name, url: abs(`/charlotte-nc/${s.slug}`) },
+        })),
+      },
+    },
+    faqSchema(faqs),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Appliance Repair Charlotte', path: '/appliance-repair-charlotte' },
+    ]),
+  ],
+};
 ---
 
 <!doctype html>
@@ -35,26 +162,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="theme-color" content="#8a0e0e" />
 
   <!-- Primary SEO -->
-  <title>Appliance Repair Charlotte | HomeHeroes</title>
-  <meta name="description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
-  <link rel="canonical" href="https://tryhomeheroes.com/appliance-repair-charlotte" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tryhomeheroes.com/appliance-repair-charlotte" />
+  <meta property="og:url" content={canonical} />
   <meta property="og:site_name" content="HomeHeroes Appliance Repair" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="Appliance Repair Charlotte | HomeHeroes" />
-  <meta property="og:description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
   <meta property="og:image" content="https://tryhomeheroes.com/images/hero/hero-technician.webp" />
   <meta property="og:image:width" content="1000" />
   <meta property="og:image:height" content="1000" />
-  <meta property="og:image:alt" content="HomeHeroes certified appliance repair technician in Charlotte, NC" />
+  <meta property="og:image:alt" content="HomeHeroes appliance repair technician in Charlotte, NC" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Appliance Repair Charlotte | HomeHeroes" />
-  <meta name="twitter:description" content="Same-day appliance repair in Charlotte, NC. Fast service for refrigerators, washers, dryers, ovens, dishwashers and more. Licensed, insured, and trusted local technicians." />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="https://tryhomeheroes.com/images/hero/hero-technician.webp" />
 
   <!-- Font preconnect first — establishes connection before any other resource hint -->
@@ -67,59 +195,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" /></noscript>
 
-  <!-- LocalBusiness Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://tryhomeheroes.com/#business",
-      "name": "HomeHeroes Appliance Repair",
-      "description": "Same-day appliance repair in Charlotte, NC. Licensed, insured technicians serving refrigerators, washers, dryers, ovens, dishwashers and more across the greater Charlotte metro.",
-      "url": "https://tryhomeheroes.com",
-      "telephone": "+17045120111",
-      "priceRange": "$$",
-      "image": "https://tryhomeheroes.com/images/logo.webp",
-      "logo": "https://tryhomeheroes.com/images/logo.webp",
-      "foundingDate": "2014",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Charlotte",
-        "addressRegion": "NC",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 35.2271,
-        "longitude": -80.8431
-      },
-      "areaServed": [
-        {"@type": "City", "name": "Charlotte", "sameAs": "https://en.wikipedia.org/wiki/Charlotte,_North_Carolina"},
-        {"@type": "City", "name": "Huntersville"},
-        {"@type": "City", "name": "Cornelius"},
-        {"@type": "City", "name": "Matthews"},
-        {"@type": "City", "name": "Mooresville"},
-        {"@type": "City", "name": "Concord"}
-      ],
-      "openingHours": ["Mo-Su 08:00-19:00"],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "200"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Appliance Repair Services",
-        "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Refrigerator Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Washer Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dryer Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dishwasher Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Oven & Range Repair"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Microwave Repair"}}
-        ]
-      }
-    }
-  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -130,16 +206,170 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main>
     <Hero />
     <TrustBar />
+
+    <QuickAnswer text={quickAnswer} />
+
     <Services />
+
+    <!-- All appliances -->
+    <section id="all-services" class="bg-light-section" style="padding:72px 24px">
+      <div style="max-width:1200px;margin:0 auto">
+        <div class="sec-label" style="margin-bottom:14px">Every Appliance</div>
+        <h2 class="hub-h2">Appliances We Repair in Charlotte</h2>
+        <p class="hub-lead">Pick your appliance for common problems, typical costs and same-day booking.</p>
+        <div class="hub-grid">
+          {services.map(s => (
+            <a href={`/charlotte-nc/${s.slug}`} class="hub-card">
+              <span class="hub-card-title">{s.name}</span>
+              <span class="hub-card-sub">{serviceBlurbs[s.slug]}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <SymptomHighlights />
+
+    <!-- Brands -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:1200px;margin:0 auto">
+        <div class="sec-label" style="margin-bottom:14px">By Brand</div>
+        <h2 class="hub-h2">Appliance Repair by Brand</h2>
+        <p class="hub-lead">Error codes, common failures and repair costs for the brands Charlotte homes actually have.</p>
+        <div class="brand-row">
+          {brands.map(b => <a href={`/charlotte-nc/${b.slug}`} class="brand-chip">{b.name}</a>)}
+        </div>
+        <h3 class="hub-h3">Brand and appliance guides</h3>
+        <div class="hub-grid hub-grid-tight">
+          {brandAppliances.map(b => (
+            <a href={`/charlotte-nc/${b.slug}`} class="hub-link">{b.brand} {b.appliance} Repair →</a>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <WhyUs />
+
+    <!-- Costs -->
+    <section class="bg-light-section" style="padding:72px 24px">
+      <div style="max-width:1000px;margin:0 auto">
+        <div class="sec-label" style="margin-bottom:14px">Pricing</div>
+        <h2 class="hub-h2">What Appliance Repair Costs in Charlotte</h2>
+        <p class="hub-lead">
+          Every visit starts with a ${business.diagnosticFee} diagnostic, which is waived when you approve the repair. These are typical totals including parts and labor; we quote your exact repair before any work begins.
+        </p>
+        <div class="cost-wrap">
+          <table class="cost-table">
+            <thead><tr><th>Appliance</th><th>Typical repair</th><th>Most common repairs</th></tr></thead>
+            <tbody>
+              {priceRanges.map(r => <tr><td>{r.appliance}</td><td class="cost-v">{r.range}</td><td>{r.commonRepairs}</td></tr>)}
+              <tr><td>Refrigerator sealed system</td><td class="cost-v">{sealedSystemRange}</td><td>Compressor, refrigerant leak repair</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin:16px 0 0;font-size:14px"><a href="/charlotte-nc/appliance-repair-cost" style="color:#b01616;font-weight:700">Full Charlotte appliance repair cost guide →</a></p>
+      </div>
+    </section>
+
+    <LocalJobStats sliceKey="city:charlotte-nc" subject="appliance" placeName="Charlotte" />
+
     <RealJobs />
+
+    <!-- Local factors -->
+    <section class="bg-white-section" style="padding:72px 24px">
+      <div style="max-width:900px;margin:0 auto">
+        <div class="sec-label" style="margin-bottom:14px">Local Knowledge</div>
+        <h2 class="hub-h2">Why Appliances Fail in Charlotte Homes</h2>
+        <p class="hub-p">
+          Charlotte's climate is hard on appliances in specific ways. Summers are long, hot and humid, and that is when refrigerators fail: a condenser coated in dust, pet hair and the yellow pine pollen that blankets the city every spring has to work harder all July. Refrigerators and freezers parked in garages — common across Ballantyne, Highland Creek, Steele Creek and the suburbs — fight 95-degree heat in summer, and in winter a cold garage can stop a standard refrigerator from cooling its freezer at all.
+        </p>
+        <p class="hub-p">
+          Storms matter too. Summer thunderstorms and the occasional winter ice storm knock out power, and the surge when it comes back is a common cause of failed control boards on washers, ranges and refrigerators. If an appliance acts strangely after an outage, unplug it for a few minutes before calling; if that does not clear it, the board may need testing.
+        </p>
+        <p class="hub-p">
+          The housing stock shapes repairs as much as the weather. Dilworth, Elizabeth and Plaza Midwood bungalows have compact kitchens, retrofitted laundry and wiring that predates modern appliances. Mid-century ranches in Cotswold keep their washers and dryers in basements and carports with long vent runs. Subdivisions built in the 1990s and 2000s are now on their second or third set of appliances, and Uptown and South End towers rely on stacked and ventless laundry, induction cooktops and panel-ready dishwashers that need careful removal. Around Lake Norman, second homes and rentals put appliances through long idle stretches followed by heavy use.
+        </p>
+        <p class="hub-p">
+          Our technicians work across all of it every week, which is why we ask for the model number and a description when you call: it tells us which parts to bring so most repairs are finished on the first visit.
+        </p>
+      </div>
+    </section>
+
     <Process />
     <Reviews />
     <ServiceAreas />
+
+    <!-- Premium -->
+    <section class="bg-light-section" style="padding:72px 24px">
+      <div style="max-width:1200px;margin:0 auto">
+        <div class="sec-label" style="margin-bottom:14px">Premium Appliances</div>
+        <h2 class="hub-h2">Sub-Zero, Wolf, Thermador, Viking &amp; Miele Repair</h2>
+        <p class="hub-lead">Built-in refrigeration and pro-style cooking need model-specific parts and careful work around custom cabinetry.</p>
+        <div class="hub-grid hub-grid-tight">
+          {premiumLinks.map(l => <a href={l.href} class="hub-link">{l.name} →</a>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Guides -->
+    <section class="bg-white-section" style="padding:64px 24px">
+      <div style="max-width:1200px;margin:0 auto">
+        <div class="sec-label" style="margin-bottom:14px">Guides</div>
+        <h2 class="hub-h2">Before You Book: Guides for Charlotte Homeowners</h2>
+        <div class="hub-grid hub-grid-tight" style="margin-top:20px">
+          {guides.map(g => <a href={g.href} class="hub-link">{g.title} →</a>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:860px;margin:0 auto">
+        <div class="sec-label" style="margin-bottom:14px;text-align:center">FAQ</div>
+        <h2 class="hub-h2" style="text-align:center">Appliance Repair in Charlotte — Questions We Hear Most</h2>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:32px">
+          {faqs.map(f => (
+            <details class="hub-faq">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <CitationProfiles />
     <ContactCTA />
   </main>
   <Footer />
+  <Analytics />
 </body>
 </html>
+
+<style>
+  .hub-h2 { font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 900; letter-spacing: -0.035em; color: #060c19; margin: 0 0 12px; line-height: 1.1; }
+  .hub-h3 { font-size: 1.05rem; font-weight: 800; color: #060c19; margin: 40px 0 16px; }
+  .hub-lead { font-size: 1rem; color: #4a5e74; line-height: 1.7; margin: 0 0 32px; max-width: 720px; }
+  .hub-p { font-size: 1.02rem; color: #2a3c54; line-height: 1.85; margin: 0 0 18px; }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .hub-grid-tight { gap: 8px 18px; }
+  .hub-card { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; background: #fff; border: 1px solid rgba(30,50,80,0.09); border-radius: 14px; text-decoration: none; transition: box-shadow 0.15s, border-color 0.15s; }
+  .hub-card:hover { box-shadow: 0 6px 22px rgba(176,22,22,0.1); border-color: rgba(176,22,22,0.25); }
+  .hub-card-title { font-size: 1rem; font-weight: 800; color: #060c19; }
+  .hub-card-sub { font-size: 0.85rem; color: #4a5e74; line-height: 1.5; }
+  .hub-link { font-size: 0.92rem; font-weight: 700; color: #1a2c44; text-decoration: none; padding: 8px 0; border-bottom: 1px solid rgba(30,50,80,0.07); }
+  .hub-link:hover { color: #b01616; }
+  .brand-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .brand-chip { padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(30,50,80,0.12); background: #f8f9fc; font-weight: 800; font-size: 0.9rem; color: #060c19; text-decoration: none; }
+  .brand-chip:hover { border-color: rgba(176,22,22,0.4); color: #b01616; }
+  .cost-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid rgba(30,50,80,0.1); background: #fff; }
+  .cost-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .cost-table th { text-align: left; padding: 14px 18px; background: #060c19; color: #fff; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .cost-table td { padding: 14px 18px; border-top: 1px solid rgba(30,50,80,0.08); color: #2a3c54; vertical-align: top; }
+  .cost-v { font-weight: 800; color: #060c19; white-space: nowrap; }
+  .hub-faq { background: #fff; border: 1px solid rgba(30,50,80,0.09); border-radius: 12px; overflow: hidden; }
+  .hub-faq summary { padding: 18px 22px; font-weight: 800; color: #060c19; cursor: pointer; list-style: none; }
+  .hub-faq summary::-webkit-details-marker { display: none; }
+  .hub-faq[open] summary { border-bottom: 1px solid rgba(30,50,80,0.08); }
+  .hub-faq p { margin: 0; padding: 16px 22px 20px; font-size: 0.97rem; color: #4a5568; line-height: 1.75; }
+</style>

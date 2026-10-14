@@ -1,0 +1,53 @@
+---
+import type { ApplianceGroup } from '../../data/cities';
+
+interface Props {
+  placeName: string;
+  notes: Record<ApplianceGroup, string>;
+  /** Show only these groups (service pages show the one that matches the appliance). */
+  groups?: ApplianceGroup[];
+  heading?: string;
+  linkBase?: string; // e.g. "/charlotte-nc" — group cards link to the matching service page
+}
+
+const { placeName, notes, groups = ['cold', 'laundry', 'cooking', 'dish'], heading, linkBase = '/charlotte-nc' } = Astro.props;
+
+const meta: Record<ApplianceGroup, { title: string; href: string; label: string }> = {
+  cold: { title: 'Refrigerators, freezers & ice makers', href: `${linkBase}/refrigerator-repair`, label: 'Refrigerator repair' },
+  laundry: { title: 'Washers & dryers', href: `${linkBase}/washer-repair`, label: 'Washer repair' },
+  cooking: { title: 'Ovens, ranges & cooktops', href: `${linkBase}/oven-repair`, label: 'Oven repair' },
+  dish: { title: 'Dishwashers', href: `${linkBase}/dishwasher-repair`, label: 'Dishwasher repair' },
+};
+const single = groups.length === 1;
+---
+
+<section class="bg-light-section" style="padding:64px 24px">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="sec-label" style="margin-bottom:14px">Local Know-How</div>
+    <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 28px;letter-spacing:-0.02em">
+      {heading ?? `What We See in ${placeName} Homes`}
+    </h2>
+    <div class={single ? 'notes-single' : 'notes-grid'}>
+      {groups.map(g => (
+        <div class="card" style="padding:26px">
+          {!single && <h3 style="font-size:16px;font-weight:800;color:#060c19;margin:0 0 10px">{meta[g].title}</h3>}
+          <p style="font-size:15px;color:#374151;line-height:1.75;margin:0">{notes[g]}</p>
+          {!single && (
+            <a href={meta[g].href} style="display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:#b01616;text-decoration:none">
+              {meta[g].label} →
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .notes-single { max-width: 860px; }
+</style>

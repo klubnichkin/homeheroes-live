@@ -1,0 +1,62 @@
+---
+import SeoPageLayout from '../layouts/SeoPageLayout.astro';
+import SEOCTA from '../components/seo/SEOCTA.astro';
+import { business, businessGraph } from '../data/business';
+import { breadcrumbSchema, abs } from '../lib/seo';
+
+const canonical = abs('/editorial-policy');
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph(),
+    { '@type': 'WebPage', '@id': `${canonical}#page`, url: canonical, name: 'Editorial Policy', publisher: { '@id': abs('/#org') } },
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Editorial Policy', path: '/editorial-policy' },
+    ]),
+  ],
+};
+---
+
+<SeoPageLayout
+  title="Editorial Policy | HomeHeroes Appliance Repair"
+  description="How HomeHeroes prepares, checks and updates its appliance repair guides, prices and local information for Charlotte homeowners."
+  canonical={canonical}
+  schema={schema}
+>
+  <section style="background:#080f1e;padding:64px 24px 56px">
+    <div style="max-width:820px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:16px">Standards</div>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,46px);font-weight:900;margin:0;letter-spacing:-0.03em">Editorial Policy</h1>
+    </div>
+  </section>
+
+  <section class="bg-white-section" style="padding:56px 24px 72px">
+    <div style="max-width:820px;margin:0 auto" class="ep">
+      <h2>Who writes our content</h2>
+      <p>Guides, symptom pages and local pages on this site are prepared by the {business.name} team. They draw on the repairs our technicians carry out in Charlotte homes and on manufacturer service information for the appliances we work on.</p>
+
+      <h2>Accuracy</h2>
+      <p>Error codes, part names and repair steps are checked against manufacturer documentation where it is available. Codes and behavior vary by model and production year, so our guides say so when that matters and recommend confirming the model number before acting on a code.</p>
+
+      <h2>Prices</h2>
+      <p>Price ranges on this site are typical totals for Charlotte-area repairs including parts and labor. Every customer receives a quote for their specific repair before work begins. The ${business.diagnosticFee} diagnostic visit is waived when the repair is approved.</p>
+
+      <h2>Safety</h2>
+      <p>We only describe checks a homeowner can do safely: cleaning filters, checking hoses and vents, resetting power. We do not publish instructions for working on gas lines, sealed refrigeration systems or high-voltage components such as microwave capacitors. Those jobs need a technician.</p>
+
+      <h2>Local information</h2>
+      <p>Neighborhood and town pages describe the housing, utilities and appliance patterns we see in each area. When we publish figures from our own job records, they are aggregated, exclude any personal customer information and are only shown when there are enough jobs for the figure to be meaningful.</p>
+
+      <h2>Updates and corrections</h2>
+      <p>Pages show when they were last updated in our sitemap and are reviewed when prices, products or manufacturer guidance change. If you spot an error, call {business.phone}{business.email ? <> or email <a href={`mailto:${business.email}`}>{business.email}</a></> : ''} and we will correct it.</p>    </div>
+  </section>
+
+  <SEOCTA phone={business.phone} phoneHref={business.phoneHref} />
+</SeoPageLayout>
+
+<style>
+  .ep h2 { font-size: clamp(19px, 2.4vw, 25px); font-weight: 800; color: #060c19; margin: 34px 0 10px; letter-spacing: -0.015em; }
+  .ep h2:first-child { margin-top: 0; }
+  .ep p { font-size: 16px; color: #374151; line-height: 1.8; margin: 0; }
+</style>

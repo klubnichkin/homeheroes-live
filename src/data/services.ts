@@ -1,3 +1,5 @@
+import type { ApplianceGroup } from './cities';
+
 export interface Problem {
   title: string;
   detail: string;
@@ -37,12 +39,12 @@ export const services: ServicePage[] = [
   {
     slug: 'refrigerator-repair',
     name: 'Refrigerator Repair',
-    seoTitle: 'Refrigerator Repair Charlotte, NC | Same-Day Service | HomeHeroes',
+    seoTitle: 'Refrigerator Repair {cityState} | Same-Day Service | HomeHeroes',
     metaDescription:
-      'Same-day refrigerator repair in Charlotte, NC. Expert techs fix cooling issues, ice makers, water dispensers & compressors. Licensed & insured. Call (704) 512-0111.',
-    h1: 'Refrigerator Repair in Charlotte, NC',
+      'Same-day refrigerator repair in {cityState}. Expert techs fix cooling issues, ice makers, water dispensers & compressors. Licensed & insured. Call (704) 512-0111.',
+    h1: 'Refrigerator Repair in {cityState}',
     intro:
-      'Your refrigerator runs 24 hours a day, 365 days a year — so when it stops working, you need fast, reliable repair. HomeHeroes technicians are dispatched same-day across Charlotte with the most common parts already on the truck. We diagnose and fix cooling failures, ice maker malfunctions, water dispenser leaks, and compressor issues on all major brands.',
+      'Your refrigerator runs 24 hours a day, 365 days a year — so when it stops working, you need fast, reliable repair. HomeHeroes technicians are dispatched same-day across {city} with the most common parts already on the truck. We diagnose and fix cooling failures, ice maker malfunctions, water dispenser leaks, and compressor issues on all major brands.',
     imagePath: '/images/hero/hero-technician.webp',
     commonProblems: [
       {
@@ -121,8 +123,8 @@ export const services: ServicePage[] = [
     },
     faq: [
       {
-        q: 'How much does refrigerator repair cost in Charlotte?',
-        a: 'Most refrigerator repairs in Charlotte range from $150 to $400 depending on the part and labor involved. A simple thermostat or fan motor replacement is on the lower end; compressor or sealed system work is higher. We provide a firm quote before any work begins.',
+        q: 'How much does refrigerator repair cost in {city}?',
+        a: 'Most refrigerator repairs in {city} range from $150 to $400 depending on the part and labor involved. A simple thermostat or fan motor replacement is on the lower end; compressor or sealed system work is higher. We provide a firm quote before any work begins.',
       },
       {
         q: 'How long does a refrigerator last?',
@@ -154,12 +156,12 @@ export const services: ServicePage[] = [
   {
     slug: 'freezer-repair',
     name: 'Freezer Repair',
-    seoTitle: 'Freezer Repair Charlotte, NC | Chest & Upright Freezer | HomeHeroes',
+    seoTitle: 'Freezer Repair {cityState} | Chest & Upright Freezer | HomeHeroes',
     metaDescription:
-      'Expert freezer repair in Charlotte, NC. We fix chest freezers, upright freezers, and built-in freezer units. Same-day service. Call (704) 512-0111.',
-    h1: 'Freezer Repair in Charlotte, NC',
+      'Expert freezer repair in {cityState}. We fix chest freezers, upright freezers, and built-in freezer units. Same-day service. Call (704) 512-0111.',
+    h1: 'Freezer Repair in {cityState}',
     intro:
-      'A failed freezer means hundreds of dollars of food at risk within hours. HomeHeroes provides same-day freezer repair in Charlotte for chest freezers, upright freezers, and built-in freezer columns. Our technicians diagnose and fix temperature failures, frost buildup, and compressor issues before your food thaws.',
+      'A failed freezer means hundreds of dollars of food at risk within hours. HomeHeroes provides same-day freezer repair in {city} for chest freezers, upright freezers, and built-in freezer columns. Our technicians diagnose and fix temperature failures, frost buildup, and compressor issues before your food thaws.',
     imagePath: '/images/hero/hero-technician.webp',
     commonProblems: [
       {
@@ -254,8 +256,8 @@ export const services: ServicePage[] = [
         a: 'Usually yes, especially if the failure is recent. A start relay failure, for example, causes sudden complete shutdown and is a $30–$60 part. The sooner you call, the better — prolonged non-operation with refrigerant issues can lead to more damage.',
       },
       {
-        q: 'How much does freezer repair cost in Charlotte?',
-        a: 'Most freezer repairs in Charlotte range from $100 to $350. Simple fixes like a start relay or door gasket are on the low end. Defrost system repairs typically run $120–$200. Compressor work is higher and we will assess whether it makes economic sense for your unit.',
+        q: 'How much does freezer repair cost in {city}?',
+        a: 'Most freezer repairs in {city} range from $100 to $350. Simple fixes like a start relay or door gasket are on the low end. Defrost system repairs typically run $120–$200. Compressor work is higher and we will assess whether it makes economic sense for your unit.',
       },
     ],
     relatedServices: ['refrigerator-repair', 'ice-maker-repair', 'wine-cooler-repair'],
@@ -271,12 +273,12 @@ export const services: ServicePage[] = [
   {
     slug: 'washer-repair',
     name: 'Washer Repair',
-    seoTitle: 'Washer Repair Charlotte, NC | Top Load & Front Load | HomeHeroes',
+    seoTitle: 'Washer Repair {cityState} | Top Load & Front Load | HomeHeroes',
     metaDescription:
-      'Same-day washing machine repair in Charlotte, NC. Top load and front load experts. Fix leaks, spin issues, error codes & more. Call (704) 512-0111.',
-    h1: 'Washer Repair in Charlotte, NC',
+      'Same-day washing machine repair in {cityState}. Top load and front load experts. Fix leaks, spin issues, error codes & more. Call (704) 512-0111.',
+    h1: 'Washer Repair in {cityState}',
     intro:
-      'A broken washing machine throws your entire household routine off track. HomeHeroes offers same-day washer repair across Charlotte for both top-load and front-load machines. Whether you are dealing with standing water in the drum, a machine that will not spin, error codes you cannot decode, or a leak soaking your laundry room floor — we fix it fast.',
+      'A broken washing machine throws your entire household routine off track. HomeHeroes offers same-day washer repair across {city} for both top-load and front-load machines. Whether you are dealing with standing water in the drum, a machine that will not spin, error codes you cannot decode, or a leak soaking your laundry room floor — we fix it fast.',
     imagePath: '/images/services/washer-dryer-repair.webp',
     commonProblems: [
       {
@@ -371,8 +373,8 @@ export const services: ServicePage[] = [
         a: 'Violent shaking is most often worn shock absorbers (front-loaders) or suspension springs (top-loaders). It can also be an unbalanced load or the machine being unlevel. We inspect all four causes and correct the problem.',
       },
       {
-        q: 'How much does washer repair cost in Charlotte?',
-        a: 'Most washer repairs in Charlotte run $100 to $300. Drain pump replacement, belt replacement, and door boot seal repairs are in the middle of that range. Drum bearing replacement is typically on the higher end. We quote before starting.',
+        q: 'How much does washer repair cost in {city}?',
+        a: 'Most washer repairs in {city} run $100 to $300. Drain pump replacement, belt replacement, and door boot seal repairs are in the middle of that range. Drum bearing replacement is typically on the higher end. We quote before starting.',
       },
     ],
     relatedServices: ['dryer-repair', 'dishwasher-repair', 'refrigerator-repair'],
@@ -388,12 +390,12 @@ export const services: ServicePage[] = [
   {
     slug: 'dryer-repair',
     name: 'Dryer Repair',
-    seoTitle: 'Dryer Repair Charlotte, NC | Gas & Electric Dryers | HomeHeroes',
+    seoTitle: 'Dryer Repair {cityState} | Gas & Electric Dryers | HomeHeroes',
     metaDescription:
-      'Fast dryer repair in Charlotte, NC. Gas and electric dryer experts. Fix no heat, slow drying, squealing drums & more. Licensed & insured. Call (704) 512-0111.',
-    h1: 'Dryer Repair in Charlotte, NC',
+      'Fast dryer repair in {cityState}. Gas and electric dryer experts. Fix no heat, slow drying, squealing drums & more. Licensed & insured. Call (704) 512-0111.',
+    h1: 'Dryer Repair in {cityState}',
     intro:
-      'A dryer that takes two cycles to dry a load is costing you time, energy, and money. HomeHeroes technicians service gas and electric dryers across Charlotte, same-day. We fix everything from blown thermal fuses and burned heating elements to seized drums and motor failures — and we always check your vent for dangerous lint buildup while we are there.',
+      'A dryer that takes two cycles to dry a load is costing you time, energy, and money. HomeHeroes technicians service gas and electric dryers across {city}, same-day. We fix everything from blown thermal fuses and burned heating elements to seized drums and motor failures — and we always check your vent for dangerous lint buildup while we are there.',
     imagePath: '/images/services/washer-dryer-repair.webp',
     commonProblems: [
       {
@@ -488,8 +490,8 @@ export const services: ServicePage[] = [
         a: 'At minimum once every 12 months, or more frequently if you do many loads per week. A clogged vent is the single leading cause of dryer fires and also the top reason thermal fuses blow. We offer vent cleaning with every repair.',
       },
       {
-        q: 'How much does dryer repair cost in Charlotte?',
-        a: 'Dryer repairs in Charlotte typically run $80 to $250. Thermal fuse replacement is on the lower end; heating element replacement typically runs $120–$180 including labor. Drum bearing and motor work is on the higher end.',
+        q: 'How much does dryer repair cost in {city}?',
+        a: 'Dryer repairs in {city} typically run $80 to $250. Thermal fuse replacement is on the lower end; heating element replacement typically runs $120–$180 including labor. Drum bearing and motor work is on the higher end.',
       },
     ],
     relatedServices: ['washer-repair', 'range-hood-repair', 'oven-repair'],
@@ -505,12 +507,12 @@ export const services: ServicePage[] = [
   {
     slug: 'dishwasher-repair',
     name: 'Dishwasher Repair',
-    seoTitle: 'Dishwasher Repair Charlotte, NC | Same-Day Service | HomeHeroes',
+    seoTitle: 'Dishwasher Repair {cityState} | Same-Day Service | HomeHeroes',
     metaDescription:
-      'Expert dishwasher repair in Charlotte, NC. Fix leaks, draining issues, cleaning problems & error codes. Same-day available. Call (704) 512-0111.',
-    h1: 'Dishwasher Repair in Charlotte, NC',
+      'Expert dishwasher repair in {cityState}. Fix leaks, draining issues, cleaning problems & error codes. Same-day available. Call (704) 512-0111.',
+    h1: 'Dishwasher Repair in {cityState}',
     intro:
-      'When your dishwasher leaves dishes dirty, pools water in the bottom, or starts leaking onto your kitchen floor, you need a technician who can fix it today. HomeHeroes provides same-day dishwasher repair across Charlotte, servicing all major brands including Bosch, Whirlpool, GE, KitchenAid, and Miele. We fix drain issues, cleaning failures, door latches, and error codes.',
+      'When your dishwasher leaves dishes dirty, pools water in the bottom, or starts leaking onto your kitchen floor, you need a technician who can fix it today. HomeHeroes provides same-day dishwasher repair across {city}, servicing all major brands including Bosch, Whirlpool, GE, KitchenAid, and Miele. We fix drain issues, cleaning failures, door latches, and error codes.',
     imagePath: '/images/services/dishwasher-repair.webp',
     commonProblems: [
       {
@@ -605,8 +607,8 @@ export const services: ServicePage[] = [
         a: "If your dishwasher is under 7 years old and the repair cost is under $200, repair almost always makes financial sense. If it's over 10 years old and needs a control board or pump motor, replacing may be more economical — we'll give you an honest comparison.",
       },
       {
-        q: 'How much does dishwasher repair cost in Charlotte?',
-        a: 'Most dishwasher repairs in Charlotte run $100 to $280. Door latch replacement and spray arm repair are on the lower end. Drain pump replacement typically runs $150–$220 including labor.',
+        q: 'How much does dishwasher repair cost in {city}?',
+        a: 'Most dishwasher repairs in {city} run $100 to $280. Door latch replacement and spray arm repair are on the lower end. Drain pump replacement typically runs $150–$220 including labor.',
       },
     ],
     relatedServices: ['refrigerator-repair', 'washer-repair', 'oven-repair'],
@@ -622,12 +624,12 @@ export const services: ServicePage[] = [
   {
     slug: 'stove-repair',
     name: 'Stove Repair',
-    seoTitle: 'Stove Repair Charlotte, NC | Gas & Electric Stoves | HomeHeroes',
+    seoTitle: 'Stove Repair {cityState} | Gas & Electric Stoves | HomeHeroes',
     metaDescription:
-      'Stove repair in Charlotte, NC. Gas and electric stoves fixed same-day. Burners, igniters, control knobs & surfaces. Licensed technicians. Call (704) 512-0111.',
-    h1: 'Stove Repair in Charlotte, NC',
+      'Stove repair in {cityState}. Gas and electric stoves fixed same-day. Burners, igniters, control knobs & surfaces. Licensed technicians. Call (704) 512-0111.',
+    h1: 'Stove Repair in {cityState}',
     intro:
-      'A stove with broken burners or a clicking igniter that will not light disrupts every meal. HomeHeroes provides same-day stove repair in Charlotte for gas and electric models. We fix igniter failures, surface burner problems, broken control knobs, and gas-related issues — all with licensed, insured technicians who arrive ready to work.',
+      'A stove with broken burners or a clicking igniter that will not light disrupts every meal. HomeHeroes provides same-day stove repair in {city} for gas and electric models. We fix igniter failures, surface burner problems, broken control knobs, and gas-related issues — all with licensed, insured technicians who arrive ready to work.',
     imagePath: '/images/services/oven-range-repair.webp',
     commonProblems: [
       {
@@ -722,8 +724,8 @@ export const services: ServicePage[] = [
         a: 'The repair cost is typically similar for most common failures. Gas igniter and module work runs $80–$200; electric infinite switch or element replacement is in the same range. More complex gas valve work is higher.',
       },
       {
-        q: 'How much does stove repair cost in Charlotte?',
-        a: 'Most stove repairs in Charlotte run $100 to $350 depending on the failure. Single burner igniter or infinite switch repair is on the lower end. Glass cooktop surface replacement and gas valve work are on the higher end.',
+        q: 'How much does stove repair cost in {city}?',
+        a: 'Most stove repairs in {city} run $100 to $350 depending on the failure. Single burner igniter or infinite switch repair is on the lower end. Glass cooktop surface replacement and gas valve work are on the higher end.',
       },
     ],
     relatedServices: [
@@ -745,12 +747,12 @@ export const services: ServicePage[] = [
   {
     slug: 'oven-repair',
     name: 'Oven Repair',
-    seoTitle: 'Oven Repair Charlotte, NC | Gas & Electric Ovens | HomeHeroes',
+    seoTitle: 'Oven Repair {cityState} | Gas & Electric Ovens | HomeHeroes',
     metaDescription:
-      'Same-day oven repair in Charlotte, NC. Fix oven not heating, temperature issues, broken elements, door problems & error codes. Call (704) 512-0111.',
-    h1: 'Oven Repair in Charlotte, NC',
+      'Same-day oven repair in {cityState}. Fix oven not heating, temperature issues, broken elements, door problems & error codes. Call (704) 512-0111.',
+    h1: 'Oven Repair in {cityState}',
     intro:
-      'An oven that will not reach temperature, has a broken bake element, or is stuck in self-clean mode can bring your kitchen to a halt. HomeHeroes provides same-day oven repair in Charlotte for gas and electric ovens, wall ovens, and double ovens. We bring the parts, run the diagnostics, and complete most repairs on the first visit.',
+      'An oven that will not reach temperature, has a broken bake element, or is stuck in self-clean mode can bring your kitchen to a halt. HomeHeroes provides same-day oven repair in {city} for gas and electric ovens, wall ovens, and double ovens. We bring the parts, run the diagnostics, and complete most repairs on the first visit.',
     imagePath: '/images/services/oven-range-repair.webp',
     commonProblems: [
       {
@@ -845,8 +847,8 @@ export const services: ServicePage[] = [
         a: 'Electric ovens typically last 15–20 years; gas ovens similarly. The most failure-prone components are the bake element and control board — both of which are repairable well into the life of the unit.',
       },
       {
-        q: 'How much does oven repair cost in Charlotte?',
-        a: 'Oven repairs in Charlotte typically run $120 to $400. Bake or broil element replacement is on the lower end at $120–$180. Control board replacement is $200–$350. Temperature sensor replacement is usually $100–$150.',
+        q: 'How much does oven repair cost in {city}?',
+        a: 'Oven repairs in {city} typically run $120 to $400. Bake or broil element replacement is on the lower end at $120–$180. Control board replacement is $200–$350. Temperature sensor replacement is usually $100–$150.',
       },
     ],
     relatedServices: [
@@ -868,12 +870,12 @@ export const services: ServicePage[] = [
   {
     slug: 'microwave-repair',
     name: 'Microwave Repair',
-    seoTitle: 'Microwave Repair Charlotte, NC | Built-In & Countertop | HomeHeroes',
+    seoTitle: 'Microwave Repair {cityState} | Built-In & Countertop | HomeHeroes',
     metaDescription:
-      'Microwave repair in Charlotte, NC. Fix not heating, sparking, turntable issues & door switches. Built-in and countertop microwaves. Call (704) 512-0111.',
-    h1: 'Microwave Repair in Charlotte, NC',
+      'Microwave repair in {cityState}. Fix not heating, sparking, turntable issues & door switches. Built-in and countertop microwaves. Call (704) 512-0111.',
+    h1: 'Microwave Repair in {cityState}',
     intro:
-      'A microwave that runs but will not heat, sparks inside, or will not start at all needs professional attention — not a YouTube workaround. HomeHeroes technicians service built-in over-the-range microwaves and countertop units in Charlotte. We diagnose magnetron failures, door switch faults, and control board issues safely, because microwave high-voltage components are genuinely dangerous to handle without training.',
+      'A microwave that runs but will not heat, sparks inside, or will not start at all needs professional attention — not a YouTube workaround. HomeHeroes technicians service built-in over-the-range microwaves and countertop units in {city}. We diagnose magnetron failures, door switch faults, and control board issues safely, because microwave high-voltage components are genuinely dangerous to handle without training.',
     imagePath: '/images/services/microwave-repair.webp',
     commonProblems: [
       {
@@ -968,7 +970,7 @@ export const services: ServicePage[] = [
         a: 'The magnetron is the vacuum tube that generates the microwave radiation that heats your food. It is the most expensive component in the appliance. The part alone runs $100–$200 for common models, plus labor. Built-in unit repairs are more labor-intensive.',
       },
       {
-        q: 'How much does built-in microwave repair cost in Charlotte?',
+        q: 'How much does built-in microwave repair cost in {city}?',
         a: 'Built-in over-the-range microwave repairs typically run $80 to $250 depending on the failure. Door switch replacement is on the lower end. Magnetron or control board replacement is higher and we will give you a quote before proceeding.',
       },
     ],
@@ -985,12 +987,12 @@ export const services: ServicePage[] = [
   {
     slug: 'range-hood-repair',
     name: 'Range Hood Repair',
-    seoTitle: 'Range Hood Repair Charlotte, NC | Vent Hood & Exhaust Fan | HomeHeroes',
+    seoTitle: 'Range Hood Repair {cityState} | Vent Hood & Exhaust Fan | HomeHeroes',
     metaDescription:
-      'Range hood and vent hood repair in Charlotte, NC. Fix fans, lights, motors & controls. Ducted and recirculating hoods. Call (704) 512-0111.',
-    h1: 'Range Hood Repair in Charlotte, NC',
+      'Range hood and vent hood repair in {cityState}. Fix fans, lights, motors & controls. Ducted and recirculating hoods. Call (704) 512-0111.',
+    h1: 'Range Hood Repair in {cityState}',
     intro:
-      'A range hood that is not exhausting smoke and grease is more than an inconvenience — it is a ventilation problem that affects air quality throughout your home. HomeHeroes repairs ducted and recirculating range hoods in Charlotte, fixing fan motor failures, control board issues, lighting, and speed control problems for all major hood brands.',
+      'A range hood that is not exhausting smoke and grease is more than an inconvenience — it is a ventilation problem that affects air quality throughout your home. HomeHeroes repairs ducted and recirculating range hoods in {city}, fixing fan motor failures, control board issues, lighting, and speed control problems for all major hood brands.',
     imagePath: '/images/services/emergency-repair-tech.webp',
     commonProblems: [
       {
@@ -1085,8 +1087,8 @@ export const services: ServicePage[] = [
         a: 'Monthly cleaning is recommended for frequent cooks; every 2–3 months for lighter use. Grease-saturated filters are the primary cause of motor strain and eventual burnout. Stainless mesh filters are dishwasher-safe; baffle filters should be soaked in hot water with degreaser.',
       },
       {
-        q: 'How much does range hood repair cost in Charlotte?',
-        a: 'Range hood repairs typically run $80 to $200 in Charlotte. Simple button switch or light circuit repairs are on the lower end. Fan motor replacement, including labor, usually runs $120–$180.',
+        q: 'How much does range hood repair cost in {city}?',
+        a: 'Range hood repairs typically run $80 to $200 in {city}. Simple button switch or light circuit repairs are on the lower end. Fan motor replacement, including labor, usually runs $120–$180.',
       },
     ],
     relatedServices: ['stove-repair', 'oven-repair', 'electric-cooktop-repair', 'microwave-repair'],
@@ -1101,12 +1103,12 @@ export const services: ServicePage[] = [
   {
     slug: 'ice-maker-repair',
     name: 'Ice Maker Repair',
-    seoTitle: 'Ice Maker Repair Charlotte, NC | Refrigerator & Standalone | HomeHeroes',
+    seoTitle: 'Ice Maker Repair {cityState} | Refrigerator & Standalone | HomeHeroes',
     metaDescription:
-      'Ice maker repair in Charlotte, NC. Fix no ice, small cubes, bad-tasting ice & leaks. Refrigerator ice makers and standalone units. Call (704) 512-0111.',
-    h1: 'Ice Maker Repair in Charlotte, NC',
+      'Ice maker repair in {cityState}. Fix no ice, small cubes, bad-tasting ice & leaks. Refrigerator ice makers and standalone units. Call (704) 512-0111.',
+    h1: 'Ice Maker Repair in {cityState}',
     intro:
-      'Whether your refrigerator ice maker has stopped producing ice entirely or your standalone unit is making hollow, bad-tasting cubes, HomeHeroes has the parts and expertise to fix it. We service refrigerator-integrated ice makers (including Samsung French door units with known ice maker problems), undercounter ice makers, and freestanding units across Charlotte.',
+      'Whether your refrigerator ice maker has stopped producing ice entirely or your standalone unit is making hollow, bad-tasting cubes, HomeHeroes has the parts and expertise to fix it. We service refrigerator-integrated ice makers (including Samsung French door units with known ice maker problems), undercounter ice makers, and freestanding units across {city}.',
     imagePath: '/images/hero/hero-technician.webp',
     commonProblems: [
       {
@@ -1201,8 +1203,8 @@ export const services: ServicePage[] = [
         a: 'Most manufacturers recommend replacing refrigerator water filters every 6 months regardless of water quality. In Charlotte, with moderately hard water, sticking to this schedule prevents mineral buildup that can slow water flow and affect ice quality.',
       },
       {
-        q: 'How much does ice maker repair cost in Charlotte?',
-        a: 'Ice maker repairs typically run $100 to $250 in Charlotte. Water inlet valve replacement is usually $100–$150 including parts and labor. Full ice maker module replacement runs $120–$200. Samsung French door defrost kit repairs are typically $150–$200.',
+        q: 'How much does ice maker repair cost in {city}?',
+        a: 'Ice maker repairs typically run $100 to $250 in {city}. Water inlet valve replacement is usually $100–$150 including parts and labor. Full ice maker module replacement runs $120–$200. Samsung French door defrost kit repairs are typically $150–$200.',
       },
     ],
     relatedServices: ['refrigerator-repair', 'freezer-repair', 'wine-cooler-repair'],
@@ -1218,12 +1220,12 @@ export const services: ServicePage[] = [
   {
     slug: 'wine-cooler-repair',
     name: 'Wine Cooler Repair',
-    seoTitle: 'Wine Cooler Repair Charlotte, NC | Compressor & Thermoelectric | HomeHeroes',
+    seoTitle: 'Wine Cooler Repair {cityState} | Compressor & Thermoelectric | HomeHeroes',
     metaDescription:
-      'Wine cooler repair in Charlotte, NC. Fix temperature issues, compressor problems & fan failures on all brands. Compressor and thermoelectric units. Call (704) 512-0111.',
-    h1: 'Wine Cooler Repair in Charlotte, NC',
+      'Wine cooler repair in {cityState}. Fix temperature issues, compressor problems & fan failures on all brands. Compressor and thermoelectric units. Call (704) 512-0111.',
+    h1: 'Wine Cooler Repair in {cityState}',
     intro:
-      'A wine cooler that runs too warm or swings wildly in temperature can damage your entire collection. HomeHeroes repairs both compressor-based and thermoelectric wine coolers across Charlotte. We service undercounter built-in units, freestanding coolers, and high-end integrated wine storage from Sub-Zero, Liebherr, and other premium brands.',
+      'A wine cooler that runs too warm or swings wildly in temperature can damage your entire collection. HomeHeroes repairs both compressor-based and thermoelectric wine coolers across {city}. We service undercounter built-in units, freestanding coolers, and high-end integrated wine storage from Sub-Zero, Liebherr, and other premium brands.',
     imagePath: '/images/hero/hero-technician.webp',
     commonProblems: [
       {
@@ -1318,8 +1320,8 @@ export const services: ServicePage[] = [
         a: 'Red wines are best stored at 55–65°F; white wines at 45–55°F. Dual-zone coolers maintain separate ranges. Any sustained temperature above 68°F or repeated fluctuations will degrade wine quality over time.',
       },
       {
-        q: 'How much does wine cooler repair cost in Charlotte?',
-        a: 'Wine cooler repairs in Charlotte typically run $120 to $300. Fan motor and thermostat repairs are on the lower end. Compressor relay replacement is mid-range. Compressor replacement is at the high end and we will assess whether it makes economic sense.',
+        q: 'How much does wine cooler repair cost in {city}?',
+        a: 'Wine cooler repairs in {city} typically run $120 to $300. Fan motor and thermostat repairs are on the lower end. Compressor relay replacement is mid-range. Compressor replacement is at the high end and we will assess whether it makes economic sense.',
       },
     ],
     relatedServices: ['refrigerator-repair', 'freezer-repair', 'ice-maker-repair'],
@@ -1334,12 +1336,12 @@ export const services: ServicePage[] = [
   {
     slug: 'electric-cooktop-repair',
     name: 'Electric Cooktop Repair',
-    seoTitle: 'Electric Cooktop Repair Charlotte, NC | Smooth Top & Coil | HomeHeroes',
+    seoTitle: 'Electric Cooktop Repair {cityState} | Smooth Top & Coil | HomeHeroes',
     metaDescription:
-      'Electric cooktop repair in Charlotte, NC. Fix burners that won\'t heat, cracked glass, control board failures & more. Coil and smooth-top experts. Call (704) 512-0111.',
-    h1: 'Electric Cooktop Repair in Charlotte, NC',
+      'Electric cooktop repair in {cityState}. Fix burners that won\'t heat, cracked glass, control board failures & more. Coil and smooth-top experts. Call (704) 512-0111.',
+    h1: 'Electric Cooktop Repair in {cityState}',
     intro:
-      'An electric cooktop that will not heat, has a cracked glass surface, or has a burner stuck on high is both a cooking disruption and a safety hazard. HomeHeroes repairs smooth-top glass-ceramic cooktops and traditional coil cooktops across Charlotte — fixing infinite switch failures, replacing elements, and sourcing OEM glass tops for all major brands.',
+      'An electric cooktop that will not heat, has a cracked glass surface, or has a burner stuck on high is both a cooking disruption and a safety hazard. HomeHeroes repairs smooth-top glass-ceramic cooktops and traditional coil cooktops across {city} — fixing infinite switch failures, replacing elements, and sourcing OEM glass tops for all major brands.',
     imagePath: '/images/services/oven-range-repair.webp',
     commonProblems: [
       {
@@ -1434,8 +1436,8 @@ export const services: ServicePage[] = [
         a: "No. A cracked cooking surface can shatter under heat, potentially causing burns and electrical hazards. Stop using the cooktop and call us. Continuing to use a cracked surface also risks damage to the underlying heating elements.",
       },
       {
-        q: 'How much does electric cooktop repair cost in Charlotte?',
-        a: 'Electric cooktop repairs in Charlotte typically run $100 to $300. Infinite switch replacement is $100–$150. Coil element replacement is $80–$120. Glass top surface replacement varies by brand and size — typically $150–$300 for the glass plus labor.',
+        q: 'How much does electric cooktop repair cost in {city}?',
+        a: 'Electric cooktop repairs in {city} typically run $100 to $300. Infinite switch replacement is $100–$150. Coil element replacement is $80–$120. Glass top surface replacement varies by brand and size — typically $150–$300 for the glass plus labor.',
       },
     ],
     relatedServices: ['stove-repair', 'oven-repair', 'range-hood-repair', 'microwave-repair'],
@@ -1452,3 +1454,20 @@ export const services: ServicePage[] = [
 export function getService(slug: string): ServicePage | undefined {
   return services.find(s => s.slug === slug);
 }
+
+
+/** Appliance noun and group for each service — drives grammar ("Repair or Replace Your Refrigerator?") and local notes. */
+export const serviceMeta: Record<string, { appliance: string; group: ApplianceGroup }> = {
+  'refrigerator-repair': { appliance: 'Refrigerator', group: 'cold' },
+  'freezer-repair': { appliance: 'Freezer', group: 'cold' },
+  'ice-maker-repair': { appliance: 'Ice Maker', group: 'cold' },
+  'wine-cooler-repair': { appliance: 'Wine Cooler', group: 'cold' },
+  'washer-repair': { appliance: 'Washer', group: 'laundry' },
+  'dryer-repair': { appliance: 'Dryer', group: 'laundry' },
+  'dishwasher-repair': { appliance: 'Dishwasher', group: 'dish' },
+  'stove-repair': { appliance: 'Stove', group: 'cooking' },
+  'oven-repair': { appliance: 'Oven', group: 'cooking' },
+  'microwave-repair': { appliance: 'Microwave', group: 'cooking' },
+  'range-hood-repair': { appliance: 'Range Hood', group: 'cooking' },
+  'electric-cooktop-repair': { appliance: 'Electric Cooktop', group: 'cooking' },
+};

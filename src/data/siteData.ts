@@ -1,5 +1,7 @@
-export const phone     = '(704) 512-0111';
-export const phoneHref = 'tel:+17045120111';
+import { business } from './business';
+
+export const phone     = business.phone;
+export const phoneHref = business.phoneHref;
 export const year      = new Date().getFullYear();
 
 export interface Service { title: string; desc: string; from: string; photo: string; pos: string; pageHref: string; detailLabel: string; }
@@ -9,7 +11,7 @@ export const services: Service[] = [
   { title: 'Dishwasher Repair',     from: 'From $79', photo: '/images/services/dishwasher-repair.webp',     pos: '50% 72%', pageHref: '/charlotte-nc/dishwasher-repair',    detailLabel: 'Dishwasher Repair Info',         desc: "Leaking, leaving dishes dirty, or won't start. Fast same-day diagnosis with a repair guaranteed to last."                      },
   { title: 'Oven & Range Repair',   from: 'From $89', photo: '/images/services/oven-range-repair.webp',     pos: '50% 60%', pageHref: '/charlotte-nc/oven-repair',          detailLabel: 'Oven & Range Repair Services',   desc: "Burners, igniters, temperature sensors, control boards. Gas or electric — if it cooks, we fix it."                              },
   { title: 'Microwave Repair',      from: 'From $69', photo: '/images/services/microwave-repair.webp',      pos: '50% 28%', pageHref: '/charlotte-nc/microwave-repair',     detailLabel: 'Microwave Repair Details',       desc: 'Not heating, turntable stuck, or dead display. Built-in or countertop. Most jobs done in under 60 minutes.'                     },
-  { title: 'Emergency Service',     from: 'Priority', photo: '/images/services/emergency-repair-tech.webp', pos: '50% 18%', pageHref: '/charlotte-nc/appliance-repair',     detailLabel: 'Emergency Appliance Repair',     desc: "Appliance emergency? Priority dispatch across the Charlotte metro. Day or night, weekday or weekend — we'll be there."          },
+  { title: 'Emergency Service',     from: 'Priority', photo: '/images/services/emergency-repair-tech.webp', pos: '50% 18%', pageHref: '#contact-form',                   detailLabel: 'Emergency Appliance Repair',     desc: "Appliance emergency? Priority dispatch across the Charlotte metro. Day or night, weekday or weekend — we'll be there."          },
 ];
 
 export interface Review { name: string; location: string; text: string; initial: string; }

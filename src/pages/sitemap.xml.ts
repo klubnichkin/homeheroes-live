@@ -5,93 +5,66 @@ import { cities } from '../data/cities';
 import { symptoms } from '../data/symptoms';
 import { areas } from '../data/areas';
 import { repairCases } from '../data/repairCases';
+import { brandAppliances } from '../data/brandAppliances';
+import { premiumPages } from '../data/premium';
+import { SITE_URL } from '../data/business';
+import { articles } from '../data/articles';
+
+// Only indexable, canonical URLs belong here — no redirects, no noindex pages.
+// lastmod comes from the content's own updatedAt/date wherever the data has one.
+
+const CONTENT_UPDATED = '2026-10-14'; // pages whose template or copy changed in the October 2026 rebuild
+const LEGACY = '2026-05-17';          // hand-written pages untouched since May 2026
+
+const slugOf = (file: string) => file.split('/').pop()!.replace('.astro', '');
+const charlotteStatic = Object.keys(import.meta.glob('./charlotte-nc/*.astro')).map(slugOf);
+const usefulInfo = Object.keys(import.meta.glob('./blog/useful-info/*.astro')).map(slugOf).filter(s => s !== 'index');
+const ownPages = Object.keys(import.meta.glob('./*.astro')).map(slugOf);
 
 export const GET: APIRoute = () => {
-  const base = 'https://tryhomeheroes.com';
+  const entries = new Map<string, string>();
+  const add = (path: string, lastmod: string) => entries.set(`${SITE_URL}${path}`, lastmod);
 
-  const entries: { loc: string; lastmod: string; priority: string; changefreq: string }[] = [
-    { loc: `${base}/`,                            lastmod: '2026-05-19', priority: '1.0', changefreq: 'weekly'  },
-    { loc: `${base}/appliance-repair-charlotte`,  lastmod: '2026-05-19', priority: '0.95', changefreq: 'monthly' },
-    { loc: `${base}/plumbing-charlotte`,          lastmod: '2026-05-19', priority: '0.95', changefreq: 'monthly' },
-    { loc: `${base}/charlotte-nc/handyman`,       lastmod: '2026-05-31', priority: '0.95', changefreq: 'monthly' },
-    { loc: `${base}/services/hvac`,               lastmod: '2026-06-01', priority: '0.95', changefreq: 'monthly' },
-    { loc: `${base}/services/electrical`,         lastmod: '2026-06-03', priority: '0.95', changefreq: 'monthly' },
-    { loc: `${base}/blog`,                        lastmod: '2026-05-17', priority: '0.8',  changefreq: 'weekly'  },
-    { loc: `${base}/privacy`,                     lastmod: '2026-05-17', priority: '0.3',  changefreq: 'yearly'  },
-    { loc: `${base}/terms`,                       lastmod: '2026-05-17', priority: '0.3',  changefreq: 'yearly'  },
-  ];
+  add('/', LEGACY);
+  add('/appliance-repair-charlotte', CONTENT_UPDATED);
+  add('/plumbing-charlotte', LEGACY);
+  add('/services/hvac', '2026-06-01');
+  add('/services/electrical', '2026-06-03');
+  for (const p of ['about', 'editorial-policy', 'privacy', 'terms']) if (ownPages.includes(p)) add(`/${p}`, p === 'privacy' || p === 'terms' ? LEGACY : CONTENT_UPDATED);
 
+  // Charlotte: hand-written pages (handyman, cost guides, symptom guides…)
+  for (const slug of charlotteStatic) add(`/charlotte-nc/${slug}`, LEGACY);
+
+  // Service pages for every city, plus suburb hubs
   for (const city of cities) {
-    entries.push({ loc: `${base}/${city.slug}/appliance-repair`, lastmod: '2026-05-17', priority: '0.9', changefreq: 'monthly' });
-    entries.push({ loc: `${base}/${city.slug}/services`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'monthly' });
-    entries.push({ loc: `${base}/${city.slug}/brands`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'monthly' });
-    entries.push({ loc: `${base}/${city.slug}/common-appliance-problems`, lastmod: '2026-05-17', priority: '0.85', changefreq: 'monthly' });
-    for (const s of services) {
-      entries.push({ loc: `${base}/${city.slug}/${s.slug}`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'monthly' });
-    }
-    for (const b of brands) {
-      entries.push({ loc: `${base}/${city.slug}/${b.slug}`, lastmod: '2026-05-17', priority: '0.7', changefreq: 'monthly' });
-    }
-    for (const s of symptoms) {
-      entries.push({ loc: `${base}/${city.slug}/${s.slug}`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'monthly' });
-    }
+    if (city.slug !== 'charlotte-nc') add(city.hubPath, city.updatedAt);
+    for (const s of services) add(`/${city.slug}/${s.slug}`, city.updatedAt);
   }
 
-  // Area hub + individual area pages (charlotte-nc only for now)
-  entries.push({ loc: `${base}/charlotte-nc/areas`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'monthly' });
-  for (const area of areas) {
-    entries.push({ loc: `${base}/charlotte-nc/areas/${area.slug}`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'monthly' });
-  }
+  // Charlotte-only data pages
+  for (const b of brands) add(`/charlotte-nc/${b.slug}`, CONTENT_UPDATED);
+  for (const s of symptoms) if (!charlotteStatic.includes(s.slug)) add(`/charlotte-nc/${s.slug}`, CONTENT_UPDATED);
+  for (const b of brandAppliances) add(`/charlotte-nc/${b.slug}`, b.updatedAt);
+  add('/charlotte-nc/brands', CONTENT_UPDATED);
+  add('/charlotte-nc/common-appliance-problems', CONTENT_UPDATED);
+  for (const p of premiumPages) add(p.path, CONTENT_UPDATED);
 
-  // Blog — repair cases
-  entries.push({ loc: `${base}/blog/recent-repairs`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'weekly' });
-  for (const rc of repairCases) {
-    entries.push({ loc: `${base}/blog/recent-repairs/${rc.slug}`, lastmod: rc.dateISO, priority: '0.75', changefreq: 'monthly' });
-  }
+  // Neighborhoods
+  add('/charlotte-nc/areas', CONTENT_UPDATED);
+  for (const a of areas) add(`/charlotte-nc/areas/${a.slug}`, a.updatedAt);
 
-  // Charlotte-NC static content pages (commercial intent + decision/trust)
-  const charlotteStaticPages = [
-    'appliance-repair-cost',
-    'apartment-appliance-repair',
-    'commercial-appliance-repair',
-    'appliance-repair-warranty',
-    'repair-vs-replace-refrigerator',
-    'how-long-do-appliances-last',
-    'when-not-to-repair-an-appliance',
-    'common-appliance-repair-costs',
-  ];
-  for (const slug of charlotteStaticPages) {
-    entries.push({ loc: `${base}/charlotte-nc/${slug}`, lastmod: '2026-05-17', priority: '0.8', changefreq: 'monthly' });
-  }
+  // Blog
+  add('/blog', CONTENT_UPDATED);
+  add('/blog/recent-repairs', CONTENT_UPDATED);
+  for (const rc of repairCases) add(`/blog/recent-repairs/${rc.slug}`, rc.dateISO);
+  add('/blog/useful-info', CONTENT_UPDATED);
+  for (const slug of usefulInfo) if (slug !== '[slug]') add(`/blog/useful-info/${slug}`, LEGACY);
+  for (const a of articles) add(`/blog/useful-info/${a.slug}`, a.updatedAt);
 
-  // Blog — useful info
-  entries.push({ loc: `${base}/blog/useful-info`, lastmod: '2026-05-17', priority: '0.75', changefreq: 'weekly' });
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${[...entries].map(([loc, lastmod]) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`).join('\n')}
+</urlset>`;
 
-  // Blog — useful info articles
-  const usefulInfoSlugs = [
-    'how-often-clean-refrigerator-coils',
-    'is-it-worth-repairing-10-year-old-refrigerator',
-    'signs-dryer-vent-needs-cleaning',
-    'why-washer-shakes-violently',
-    'how-to-prevent-ice-maker-failure',
-    'appliance-maintenance-charlotte-humidity',
-    'power-outage-appliance-protection',
-    'summer-refrigerator-tips',
-    'how-humidity-affects-appliances-nc',
-    'hvac-appliance-electrical-load',
-  ];
-  for (const slug of usefulInfoSlugs) {
-    entries.push({ loc: `${base}/blog/useful-info/${slug}`, lastmod: '2026-05-17', priority: '0.75', changefreq: 'monthly' });
-  }
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
-    .map(
-      e =>
-        `  <url>\n    <loc>${e.loc}</loc>\n    <lastmod>${e.lastmod}</lastmod>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`
-    )
-    .join('\n')}\n</urlset>`;
-
-  return new Response(xml, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
-  });
+  return new Response(xml, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 };
