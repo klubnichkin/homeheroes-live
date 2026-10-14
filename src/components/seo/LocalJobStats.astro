@@ -1,0 +1,96 @@
+---
+// Real job data from the CRM export (scripts/build-job-stats.mjs → src/data/jobStats.json).
+// Renders nothing until a slice has at least MIN_JOBS jobs, so the site never shows invented numbers.
+import stats from '../../data/jobStats.json';
+import { pickOne, humanList } from '../../lib/seo';
+
+interface Props {
+  sliceKey: string;     // e.g. "city:huntersville-nc|service:refrigerator-repair"
+  subject: string;      // e.g. "refrigerator" — used as "{n} refrigerator jobs"
+  placeName: string;    // e.g. "Huntersville"
+}
+
+interface Slice {
+  jobs: number;
+  since: string;            // "August 2025"
+  topZips: [string, number][];
+  topBrands: [string, number][];
+  topSymptoms: [string, number][];
+  topParts: [string, number][];
+  median: number | null;
+  p25: number | null;
+  p75: number | null;
+}
+
+const MIN_JOBS = 5;
+const { sliceKey, subject, placeName } = Astro.props;
+const slice = (stats as { slices?: Record<string, Slice> }).slices?.[sliceKey];
+const show = Boolean(slice && slice.jobs >= MIN_JOBS);
+
+const money = (n: number | null) => (n == null ? '' : `$${Math.round(n).toLocaleString('en-US')}`);
+const names = (rows: [string, number][], n = 3) => rows.slice(0, n).map(([k]) => k);
+
+let paragraphs: string[] = [];
+if (show && slice) {
+  const zips = names(slice.topZips);
+  const brands = names(slice.topBrands, 4);
+  const symptoms = names(slice.topSymptoms, 2);
+  const parts = names(slice.topParts, 3);
+
+  const opener = pickOne(
+    [
+      `Since ${slice.since} we have logged ${slice.jobs} ${subject} jobs in ${placeName}.`,
+      `Our records show ${slice.jobs} ${subject} calls in ${placeName} since ${slice.since}.`,
+      `${placeName} has sent us ${slice.jobs} ${subject} jobs since ${slice.since}.`,
+    ],
+    sliceKey,
+  );
+  const zipLine = zips.length ? ` Most were in ${humanList(zips)}.` : '';
+  const symptomLine = symptoms.length
+    ? pickOne(
+        [
+          ` The complaint we heard most was "${symptoms[0]}"${symptoms[1] ? `, followed by "${symptoms[1]}"` : ''}.`,
+          ` The most common reason people called was "${symptoms[0]}"${symptoms[1] ? `; "${symptoms[1]}" came next` : ''}.`,
+        ],
+        `${sliceKey}:s`,
+      )
+    : '';
+  paragraphs.push(opener + zipLine + symptomLine);
+
+  const partsLine = parts.length ? `Parts we replaced most often: ${humanList(parts)}.` : '';
+  const brandLine = brands.length ? ` Brands on these tickets included ${humanList(brands)}.` : '';
+  if (partsLine || brandLine) paragraphs.push((partsLine + brandLine).trim());
+
+  if (slice.median != null && slice.p25 != null && slice.p75 != null) {
+    paragraphs.push(
+      `Half of these repairs came in between ${money(slice.p25)} and ${money(slice.p75)}, with a median of ${money(slice.median)} including parts and labor.`,
+    );
+  }
+}
+---
+
+{show && slice && (
+  <section class="bg-pearl-section" style="padding:64px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">From Our Job Records</div>
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">
+        {subject.charAt(0).toUpperCase() + subject.slice(1)} Repair Calls in {placeName}: The Last 12 Months
+      </h2>
+      <div style="max-width:860px">
+        {paragraphs.map(p => <p style="font-size:15.5px;color:#374151;line-height:1.8;margin:0 0 14px">{p}</p>)}
+      </div>
+      <div class="jobs-stats">
+        <div class="js-tile"><div class="js-num">{slice.jobs}</div><div class="js-lbl">jobs since {slice.since}</div></div>
+        {slice.median != null && <div class="js-tile"><div class="js-num">{money(slice.median)}</div><div class="js-lbl">median repair</div></div>}
+        {slice.topZips[0] && <div class="js-tile"><div class="js-num">{slice.topZips[0][0]}</div><div class="js-lbl">busiest ZIP</div></div>}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .jobs-stats { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
+  .js-tile { background: #fff; border: 1px solid rgba(30,50,80,0.09); border-radius: 12px; padding: 16px 20px; min-width: 150px; }
+  .js-num { font-size: 26px; font-weight: 900; color: #060c19; letter-spacing: -0.02em; }
+  .js-lbl { font-size: 12px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+</style>

@@ -1,57 +1,59 @@
 ---
-import type { Area } from '../../data/areas';
+import type { AreaWithProfile } from '../../data/areas';
+import { areas } from '../../data/areas';
+import { services } from '../../data/services';
+import { brands as brandList } from '../../data/brands';
+import { premiumPages } from '../../data/premium';
+import { business, businessGraph, servicePromise } from '../../data/business';
+import { breadcrumbSchema, faqSchema, abs } from '../../lib/seo';
 import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
 import ContactCTA from '../ContactCTA.astro';
+import QuickAnswer from './QuickAnswer.astro';
+import LocalApplianceNotes from './LocalApplianceNotes.astro';
+import LocalJobStats from './LocalJobStats.astro';
+import CoverageDetails from './CoverageDetails.astro';
+import NearbyLinks from './NearbyLinks.astro';
 
 interface Props {
-  area: Area;
+  area: AreaWithProfile;
 }
 
 const { area } = Astro.props;
 
-const base    = 'https://tryhomeheroes.com';
-const canonical = `${base}/charlotte-nc/areas/${area.slug}`;
-const phone   = '(704) 512-0111';
-const phoneHref = 'tel:+17045120111';
+const canonical = abs(`/charlotte-nc/areas/${area.slug}`);
+const phone = business.phone;
+const phoneHref = business.phoneHref;
+
+const quickAnswer = `HomeHeroes provides same-day appliance repair in ${area.name}, Charlotte (${area.zips.join(', ')}). ${servicePromise}`;
 
 const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph(),
     {
-      "@type": "LocalBusiness",
-      "@id": `${base}/#business`,
-      "name": "HomeHeroes Appliance Repair",
-      "telephone": "+17045120111",
-      "url": canonical,
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Charlotte",
-        "addressRegion": "NC",
-        "addressCountry": "US"
+      '@type': 'Service',
+      '@id': `${canonical}#service`,
+      name: `Appliance Repair in ${area.name}, Charlotte NC`,
+      serviceType: 'Appliance repair',
+      url: canonical,
+      provider: { '@id': abs('/#business') },
+      areaServed: {
+        '@type': 'Place',
+        name: `${area.name}, Charlotte, NC`,
+        address: { '@type': 'PostalAddress', addressLocality: 'Charlotte', addressRegion: 'NC', postalCode: area.zips[0], addressCountry: 'US' },
       },
-      "areaServed": { "@type": "Place", "name": area.name }
     },
-    {
-      "@type": "FAQPage",
-      "mainEntity": area.faq.map(f => ({
-        "@type": "Question",
-        "name": f.q,
-        "acceptedAnswer": { "@type": "Answer", "text": f.a }
-      }))
-    }
-  ]
+    faqSchema(area.faq),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Appliance Repair Charlotte', path: '/appliance-repair-charlotte' },
+      { name: 'Service Areas', path: '/charlotte-nc/areas' },
+      { name: area.name, path: `/charlotte-nc/areas/${area.slug}` },
+    ]),
+  ],
 };
 
-const services = [
-  { label: 'Refrigerator Repair', href: '/charlotte-nc/refrigerator-repair' },
-  { label: 'Washer Repair',       href: '/charlotte-nc/washer-repair'       },
-  { label: 'Dryer Repair',        href: '/charlotte-nc/dryer-repair'        },
-  { label: 'Dishwasher Repair',   href: '/charlotte-nc/dishwasher-repair'   },
-  { label: 'Oven Repair',         href: '/charlotte-nc/oven-repair'         },
-  { label: 'Freezer Repair',      href: '/charlotte-nc/freezer-repair'      },
-  { label: 'Ice Maker Repair',    href: '/charlotte-nc/ice-maker-repair'    },
-  { label: 'Microwave Repair',    href: '/charlotte-nc/microwave-repair'    },
-];
+const serviceCards = services.map(s => ({ label: s.name, href: `/charlotte-nc/${s.slug}` }));
 
 const commonProblems = [
   { label: 'Refrigerator Not Cooling',  href: '/charlotte-nc/refrigerator-not-cooling'  },
@@ -59,20 +61,19 @@ const commonProblems = [
   { label: 'Dryer Not Heating',         href: '/charlotte-nc/dryer-not-heating'         },
   { label: 'Refrigerator Leaking',      href: '/charlotte-nc/refrigerator-leaking-water'},
   { label: 'Washer Not Draining',       href: '/charlotte-nc/washer-not-draining'       },
+  { label: 'Dishwasher Not Draining',   href: '/charlotte-nc/dishwasher-not-draining'   },
 ];
 
-const brands = [
-  { label: 'Samsung',    href: '/charlotte-nc/samsung-appliance-repair'    },
-  { label: 'LG',         href: '/charlotte-nc/lg-appliance-repair'         },
-  { label: 'Whirlpool',  href: '/charlotte-nc/whirlpool-appliance-repair'  },
-  { label: 'GE',         href: '/charlotte-nc/ge-appliance-repair'         },
-  { label: 'Maytag',     href: '/charlotte-nc/maytag-appliance-repair'     },
-  { label: 'Frigidaire', href: '/charlotte-nc/frigidaire-appliance-repair' },
-  { label: 'KitchenAid', href: '/charlotte-nc/kitchenaid-appliance-repair' },
-  { label: 'Bosch',      href: '/charlotte-nc/bosch-appliance-repair'      },
-  { label: 'Sub-Zero',   href: '/charlotte-nc/sub-zero-appliance-repair'   },
-  { label: 'Viking',     href: '/charlotte-nc/viking-appliance-repair'     },
-];
+const brands = brandList.map(b => ({ label: b.name, href: `/charlotte-nc/${b.slug}` }));
+
+const premiumLinks = premiumPages
+  .filter(p => p.location.areaSlug === area.slug)
+  .map(p => ({ name: `${p.brand.name} repair in ${area.name}`, href: p.path }));
+
+const nearbyLinks = (area.nearby ?? [])
+  .map(slug => areas.find(a => a.slug === slug))
+  .filter(Boolean)
+  .map(a => ({ name: `Appliance repair in ${a!.name}`, href: `/charlotte-nc/areas/${a!.slug}` }));
 ---
 
 <SeoPageLayout
@@ -89,7 +90,7 @@ const brands = [
         <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:0.72rem;color:#1e3a56">
           <li><a href="/" style="color:#2a5a8a;text-decoration:none">Home</a></li>
           <li style="color:#1e3a56">›</li>
-          <li><a href="/charlotte-nc/appliance-repair" style="color:#2a5a8a;text-decoration:none">Charlotte, NC</a></li>
+          <li><a href="/appliance-repair-charlotte" style="color:#2a5a8a;text-decoration:none">Charlotte, NC</a></li>
           <li style="color:#1e3a56">›</li>
           <li><a href="/charlotte-nc/areas" style="color:#2a5a8a;text-decoration:none">Areas</a></li>
           <li style="color:#1e3a56">›</li>
@@ -120,6 +121,9 @@ const brands = [
     </div>
   </section>
 
+  <QuickAnswer text={quickAnswer} />
+
+
   <!-- ── 2. Services ─────────────────────────────────────── -->
   <section class="bg-white-section" style="padding:72px 24px">
     <div style="max-width:1100px;margin:0 auto">
@@ -128,7 +132,7 @@ const brands = [
         Appliance Repair Services in {area.name}
       </h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
-        {services.map(svc => (
+        {serviceCards.map(svc => (
           <a href={svc.href}
              style="display:flex;align-items:center;gap:12px;padding:16px 18px;border:1px solid rgba(30,50,80,0.1);border-radius:10px;text-decoration:none;background:#f8f9fc;transition:box-shadow 0.15s"
              class="area-svc-card">
@@ -139,6 +143,14 @@ const brands = [
       </div>
     </div>
   </section>
+
+  <LocalApplianceNotes placeName={area.name} notes={area.applianceNotes} />
+
+  <LocalJobStats sliceKey={`area:${area.slug}`} subject="appliance" placeName={area.name} />
+
+  <CoverageDetails placeName={area.name} zips={area.zips} landmarks={area.landmarks} />
+
+  {premiumLinks.length > 0 && <NearbyLinks heading={`Premium Appliance Repair in ${area.name}`} links={premiumLinks} />}
 
   <!-- ── 3. Local Context ─────────────────────────────────── -->
   <section class="bg-pearl-section" style="padding:72px 24px">
@@ -277,6 +289,8 @@ const brands = [
       </div>
     </div>
   </section>
+
+  <NearbyLinks heading="Nearby Neighborhoods" links={nearbyLinks} />
 
   <!-- ── 8. Contact Form / CTA ─────────────────────────────── -->
   <ContactCTA />

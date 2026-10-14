@@ -1,0 +1,49 @@
+---
+// ZIP codes, communities and landmarks for a location — concrete, checkable local detail.
+interface Props {
+  placeName: string;
+  zips: string[];
+  neighborhoods?: string[];
+  landmarks?: string[];
+  housing?: string;
+  utilities?: string;
+}
+const { placeName, zips, neighborhoods = [], landmarks = [], housing, utilities } = Astro.props;
+---
+
+<section class="bg-white-section" style="padding:64px 24px">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="sec-label" style="margin-bottom:14px">Coverage</div>
+    <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#060c19;margin:0 0 22px;letter-spacing:-0.02em">
+      Where We Work in {placeName}
+    </h2>
+    {housing && <p class="cov-p">{housing}</p>}
+    {utilities && <p class="cov-p">{utilities}</p>}
+    <div class="cov-grid">
+      <div>
+        <h3 class="cov-h">ZIP codes</h3>
+        <ul class="chips">{zips.map(z => <li class="chip">{z}</li>)}</ul>
+      </div>
+      {neighborhoods.length > 0 && (
+        <div>
+          <h3 class="cov-h">Communities</h3>
+          <ul class="chips">{neighborhoods.map(n => <li class="chip">{n}</li>)}</ul>
+        </div>
+      )}
+      {landmarks.length > 0 && (
+        <div>
+          <h3 class="cov-h">Near</h3>
+          <ul class="chips">{landmarks.map(l => <li class="chip">{l}</li>)}</ul>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cov-p { font-size: 15px; color: #374151; line-height: 1.75; margin: 0 0 14px; max-width: 860px; }
+  .cov-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; margin-top: 22px; }
+  .cov-h { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin: 0 0 10px; }
+  .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 13px; font-weight: 600; color: #1a2c44; background: #f1f4f8; border: 1px solid rgba(30,50,80,0.08); border-radius: 999px; padding: 6px 12px; }
+</style>

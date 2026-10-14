@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '../components/seo/Analytics.astro';
 
 interface Props {
   title: string;
@@ -11,6 +12,7 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   heroImage?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -21,6 +23,7 @@ const {
   ogImage = '/images/hero/hero-technician.webp',
   ogType = 'website',
   heroImage,
+  noindex = false,
 } = Astro.props;
 
 const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://tryhomeheroes.com${ogImage}`;
@@ -49,6 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
 
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
@@ -90,5 +94,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <Header />
   <slot />
   <Footer />
+  <Analytics />
 </body>
 </html>

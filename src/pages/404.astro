@@ -1,0 +1,40 @@
+---
+import SeoPageLayout from '../layouts/SeoPageLayout.astro';
+import InternalLinks from '../components/seo/InternalLinks.astro';
+import { business } from '../data/business';
+
+const links = [
+  { title: 'Appliance Repair Charlotte', href: '/appliance-repair-charlotte' },
+  { title: 'Refrigerator Repair', href: '/charlotte-nc/refrigerator-repair' },
+  { title: 'Washer Repair', href: '/charlotte-nc/washer-repair' },
+  { title: 'Dryer Repair', href: '/charlotte-nc/dryer-repair' },
+  { title: 'Dishwasher Repair', href: '/charlotte-nc/dishwasher-repair' },
+  { title: 'Oven Repair', href: '/charlotte-nc/oven-repair' },
+  { title: 'Service Areas', href: '/charlotte-nc/areas' },
+  { title: 'Common Appliance Problems', href: '/charlotte-nc/common-appliance-problems' },
+];
+---
+
+<SeoPageLayout
+  title="Page Not Found | HomeHeroes"
+  description="The page you were looking for could not be found. Call HomeHeroes for same-day appliance repair in Charlotte, NC."
+  canonical="https://tryhomeheroes.com/404"
+  schema={{ '@context': 'https://schema.org', '@type': 'WebPage', name: 'Page Not Found' }}
+  noindex
+>
+  <section style="background:#080f1e;padding:80px 24px 72px">
+    <div style="max-width:760px;margin:0 auto;text-align:center">
+      <div class="sec-label" style="margin-bottom:16px">404</div>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,46px);font-weight:900;margin:0 0 18px;letter-spacing:-0.03em">We couldn't find that page</h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:17px;line-height:1.7;margin:0 0 30px">
+        It may have moved. If an appliance needs fixing, call us — same-day appointments are available {business.hours.label}.
+      </p>
+      <a href={business.phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">
+        Call {business.phone}
+      </a>
+    </div>
+  </section>
+  <section class="bg-white-section" style="padding:64px 24px">
+    <InternalLinks heading="Popular pages" links={links} />
+  </section>
+</SeoPageLayout>

@@ -1,0 +1,37 @@
+---
+interface Props {
+  heading: string;
+  links: { name: string; href: string }[];
+}
+const { heading, links } = Astro.props;
+---
+
+{links.length > 0 && (
+  <section class="bg-white-section" style="padding:48px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <h2 style="font-size:clamp(18px,2.4vw,24px);font-weight:800;color:#060c19;margin:0 0 18px;letter-spacing:-0.01em">{heading}</h2>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px">
+        {links.map(l => (
+          <li>
+            <a href={l.href} class="nearby-link">{l.name} →</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .nearby-link {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid rgba(30,50,80,0.12);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #060c19;
+    text-decoration: none;
+    background: #f8f9fc;
+  }
+  .nearby-link:hover { border-color: rgba(176,22,22,0.4); color: #b01616; }
+</style>

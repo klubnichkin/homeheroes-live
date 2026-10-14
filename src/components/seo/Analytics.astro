@@ -1,0 +1,47 @@
+---
+// Lightweight GTM dataLayer events:
+//  - click_to_call: every tel: link click (delegated, so it covers links added later)
+//  - ai_referral: first visit in a session arriving from an AI assistant (ChatGPT, Perplexity, Gemini, Copilot, Claude)
+// The detected AI source is kept for the session and attached to click_to_call so calls can be attributed.
+---
+
+<script is:inline>
+  (function () {
+    var w = window;
+    w.dataLayer = w.dataLayer || [];
+    var KEY = 'hh_ai_source';
+    var source = null;
+    try { source = sessionStorage.getItem(KEY); } catch (e) {}
+
+    if (!source) {
+      var ref = (document.referrer || '').toLowerCase();
+      var utm = (new URLSearchParams(location.search).get('utm_source') || '').toLowerCase();
+      var hosts = [
+        ['chatgpt', /chatgpt\.com|chat\.openai\.com/],
+        ['perplexity', /perplexity\.ai/],
+        ['gemini', /gemini\.google\.com/],
+        ['copilot', /copilot\.microsoft\.com/],
+        ['claude', /claude\.ai/],
+      ];
+      for (var i = 0; i < hosts.length; i++) {
+        if (hosts[i][1].test(ref) || utm.indexOf(hosts[i][0]) !== -1) { source = hosts[i][0]; break; }
+      }
+      if (source) {
+        try { sessionStorage.setItem(KEY, source); } catch (e) {}
+        w.dataLayer.push({ event: 'ai_referral', ai_source: source, landing_page: location.pathname });
+      }
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+      if (!a) return;
+      var zone = a.closest('[data-track-location]');
+      w.dataLayer.push({
+        event: 'click_to_call',
+        page_path: location.pathname,
+        click_location: zone ? zone.getAttribute('data-track-location') : 'body',
+        ai_source: source || undefined,
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,128 @@
+---
+import SeoPageLayout from '../layouts/SeoPageLayout.astro';
+import InternalLinks from '../components/seo/InternalLinks.astro';
+import NearbyLinks from '../components/seo/NearbyLinks.astro';
+import SEOCTA from '../components/seo/SEOCTA.astro';
+import CitationProfiles from '../components/seo/CitationProfiles.astro';
+import { business, businessGraph, sameAs } from '../data/business';
+import { breadcrumbSchema, abs } from '../lib/seo';
+import { allLocationLinks } from '../data/locations';
+
+// Every fact on this page comes from src/data/business.ts. Blocks for the owner,
+// licenses and memberships appear automatically once those fields are filled in.
+
+const canonical = abs('/about');
+const years = new Date().getFullYear() - business.foundingYear;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph(),
+    { '@type': 'AboutPage', '@id': `${canonical}#page`, url: canonical, name: 'About HomeHeroes', about: { '@id': abs('/#org') } },
+    ...(business.owner
+      ? [{ '@type': 'Person', '@id': abs('/#founder'), name: business.owner.name, jobTitle: business.owner.title, worksFor: { '@id': abs('/#org') } }]
+      : []),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'About', path: '/about' },
+    ]),
+  ],
+};
+
+const services = [
+  { title: 'Appliance Repair', href: '/appliance-repair-charlotte' },
+  { title: 'Plumbing', href: '/plumbing-charlotte' },
+  { title: 'HVAC', href: '/services/hvac' },
+  { title: 'Handyman', href: '/charlotte-nc/handyman' },
+  { title: 'Electrical', href: '/services/electrical' },
+];
+
+const howWeWork = [
+  ['Diagnose first', `Every visit starts with a diagnosis. The $${business.diagnosticFee} diagnostic fee is waived when you approve the repair.`],
+  ['Quote before work', 'You get the price before we touch anything, and the final bill matches the quote.'],
+  ['Fix it on the first visit', 'We ask for the model number when you book so the technician arrives with the parts most likely to be needed.'],
+  ['Stand behind it', `Repairs are covered by a ${business.warrantyDays}-day warranty on parts and labor.`],
+];
+---
+
+<SeoPageLayout
+  title="About HomeHeroes | Charlotte Home & Appliance Repair"
+  description={`HomeHeroes is a Charlotte home maintenance company serving the metro since ${business.foundingYear}: appliance repair, plumbing, HVAC, handyman and electrical work.`}
+  canonical={canonical}
+  schema={schema}
+>
+  <section style="background:#080f1e;padding:72px 24px 64px">
+    <div style="max-width:880px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:16px">About Us</div>
+      <h1 style="color:#fff;font-size:clamp(30px,4.5vw,52px);font-weight:900;margin:0 0 22px;line-height:1.1;letter-spacing:-0.03em">About HomeHeroes</h1>
+      <p class="ab-lead">
+        HomeHeroes is a Charlotte home maintenance company. We started in {business.foundingYear} and have spent {years} years fixing the appliances, plumbing and systems that Charlotte households depend on every day — from Uptown condos to Lake Norman homes.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white-section" style="padding:64px 24px">
+    <div style="max-width:880px;margin:0 auto">
+      <h2 class="ab-h2">What we do</h2>
+      <p class="ab-p">
+        Appliance repair is the core of our work: refrigerators, freezers, washers, dryers, dishwashers, ovens, ranges, cooktops, microwaves, ice makers and wine coolers, across every major brand from Whirlpool and GE to Sub-Zero and Wolf. The same team also handles plumbing, HVAC, handyman and electrical calls, so one phone number covers most problems in a home.
+      </p>
+      <p class="ab-p">
+        We work across Charlotte and the surrounding towns, {business.hours.label}, with same-day appointments for most calls placed in the morning.{business.repairsCompleted ? ` Our technicians have completed more than ${business.repairsCompleted.replace('+', '')} repairs.` : ''}
+      </p>
+
+      <h2 class="ab-h2">How we work</h2>
+      <div class="ab-grid">
+        {howWeWork.map(([t, d]) => (
+          <div class="card" style="padding:22px">
+            <div style="font-size:15px;font-weight:800;color:#060c19;margin-bottom:6px">{t}</div>
+            <div style="font-size:14.5px;color:#4a5568;line-height:1.65">{d}</div>
+          </div>
+        ))}
+      </div>
+
+      {business.owner && (
+        <>
+          <h2 class="ab-h2">Who runs HomeHeroes</h2>
+          <p class="ab-p"><strong>{business.owner.name}</strong>, {business.owner.title}. {business.owner.bio}</p>
+        </>
+      )}
+
+      {(business.licenses.length > 0 || business.certifications.length > 0 || business.memberships.length > 0) && (
+        <>
+          <h2 class="ab-h2">Licenses, certifications and memberships</h2>
+          <ul class="ab-list">
+            {business.licenses.map(l => <li>{l.name} — #{l.number} ({l.issuer}){l.url && <> · <a href={l.url}>verify</a></>}</li>)}
+            {business.certifications.map(c => <li>{c}</li>)}
+            {business.memberships.map(m => <li><a href={m.url}>{m.name}</a></li>)}
+          </ul>
+        </>
+      )}
+
+      {sameAs().length > 0 && (
+        <>
+          <h2 class="ab-h2">Find us elsewhere</h2>
+          <p class="ab-p">Independent reviews and profiles: {sameAs().map((u, i) => <>{i > 0 && ', '}<a href={u} rel="noopener">{new URL(u).hostname.replace('www.', '')}</a></>)}.</p>
+        </>
+      )}
+    </div>
+  </section>
+
+  <section class="bg-light-section" style="padding:56px 24px">
+    <InternalLinks heading="Our services" links={services} />
+  </section>
+
+  <NearbyLinks heading="Where we work" links={allLocationLinks} />
+
+  <CitationProfiles />
+  <SEOCTA phone={business.phone} phoneHref={business.phoneHref} />
+</SeoPageLayout>
+
+<style>
+  .ab-lead { color: rgba(255,255,255,0.75); font-size: clamp(16px, 1.9vw, 18.5px); line-height: 1.75; margin: 0; }
+  .ab-h2 { font-size: clamp(20px, 2.6vw, 28px); font-weight: 800; color: #060c19; margin: 40px 0 14px; letter-spacing: -0.02em; }
+  .ab-h2:first-child { margin-top: 0; }
+  .ab-p { font-size: 16px; color: #374151; line-height: 1.8; margin: 0 0 14px; }
+  .ab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .ab-list { margin: 0; padding-left: 20px; font-size: 15.5px; color: #374151; line-height: 1.8; }
+</style>

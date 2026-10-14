@@ -3,14 +3,58 @@
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
       ]
+    }
+  ],
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/charlotte-nc/appliance-repair",
+      "destination": "/appliance-repair-charlotte",
+      "permanent": true
+    },
+    {
+      "source": "/charlotte-nc/services",
+      "destination": "/appliance-repair-charlotte",
+      "permanent": true
+    },
+    {
+      "source": "/:city(huntersville-nc|mooresville-nc|concord-nc|matthews-nc|cornelius-nc)/:slug(refrigerator-not-cooling|refrigerator-leaking-water|refrigerator-making-noise|refrigerator-ice-buildup|washer-not-spinning|washer-not-draining|washer-leaking|washer-shaking-violently|dryer-not-heating|dryer-squeaking|dryer-taking-too-long-to-dry|dishwasher-not-cleaning-dishes|dishwasher-not-draining|dishwasher-leaving-white-residue|dishwasher-door-wont-latch|oven-not-heating-properly|gas-oven-not-lighting|oven-door-wont-close|burner-not-working|dryer-not-spinning|dryer-making-loud-noise|refrigerator-compressor-noise|refrigerator-door-not-sealing|freezer-not-freezing|freezer-frost-buildup|freezer-making-noise|freezer-leaking-water|washer-vibrating-during-spin|washer-not-filling-with-water|washer-stuck-on-sensing|washer-error-codes|washer-leaking-from-bottom|microwave-not-heating|microwave-sparking-inside|microwave-turntable-not-spinning|microwave-making-buzzing-noise|microwave-shuts-off-after-few-seconds)",
+      "destination": "/charlotte-nc/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/:city(huntersville-nc|mooresville-nc|concord-nc|matthews-nc|cornelius-nc)/:slug(samsung-appliance-repair|lg-appliance-repair|whirlpool-appliance-repair|ge-appliance-repair|maytag-appliance-repair|frigidaire-appliance-repair|kitchenaid-appliance-repair|bosch-appliance-repair|sub-zero-appliance-repair|viking-appliance-repair|thermador-appliance-repair|wolf-appliance-repair|miele-appliance-repair)",
+      "destination": "/charlotte-nc/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/:city(huntersville-nc|mooresville-nc|concord-nc|matthews-nc|cornelius-nc)/:hub(services|brands|common-appliance-problems)",
+      "destination": "/:city/appliance-repair",
+      "permanent": true
+    },
+    {
+      "source": "/charlotte-nc/areas/:town(huntersville|matthews|concord|cornelius|davidson|mooresville|pineville)-appliance-repair",
+      "destination": "/:town-nc/appliance-repair",
+      "permanent": true
     }
   ]
 }

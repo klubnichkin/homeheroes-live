@@ -1,5 +1,8 @@
 ---
 import { areas } from '../../../data/areas';
+import { suburbs } from '../../../data/cities';
+import { businessGraph } from '../../../data/business';
+import { breadcrumbSchema, abs } from '../../../lib/seo';
 import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
 import SEOCTA from '../../../components/seo/SEOCTA.astro';
 import { phone, phoneHref } from '../../../data/siteData';
@@ -8,24 +11,31 @@ const base = 'https://tryhomeheroes.com';
 const canonical = `${base}/charlotte-nc/areas`;
 
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "HomeHeroes Appliance Repair",
-  "telephone": "(704) 512-0111",
-  "url": canonical,
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Charlotte",
-    "addressRegion": "NC",
-    "addressCountry": "US"
-  },
-  "areaServed": areas.map(a => ({ "@type": "City", "name": a.name }))
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph(),
+    {
+      '@type': 'CollectionPage',
+      name: 'Appliance Repair Service Areas Near Charlotte, NC',
+      url: canonical,
+      about: { '@id': abs('/#business') },
+      hasPart: [
+        ...areas.map(a => ({ '@type': 'WebPage', name: `Appliance repair in ${a.name}`, url: abs(`/charlotte-nc/areas/${a.slug}`) })),
+        ...suburbs.map(c => ({ '@type': 'WebPage', name: `Appliance repair in ${c.name}`, url: abs(c.hubPath) })),
+      ],
+    },
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Appliance Repair Charlotte', path: '/appliance-repair-charlotte' },
+      { name: 'Service Areas', path: '/charlotte-nc/areas' },
+    ]),
+  ],
 };
 ---
 
 <SeoPageLayout
   title="Appliance Repair Service Areas Near Charlotte, NC | HomeHeroes"
-  description="HomeHeroes provides same-day appliance repair across Charlotte and 16 surrounding neighborhoods and suburbs. Find your area and book today."
+  description={`HomeHeroes provides same-day appliance repair across ${areas.length} Charlotte neighborhoods and ${suburbs.length} surrounding towns. Find your area and book today.`}
   canonical={canonical}
   schema={schema}
 >
@@ -36,7 +46,7 @@ const schema = {
         <ol style="display:flex;align-items:center;justify-content:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
           <li><a href="/" style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none">Home</a></li>
           <li style="font-size:13px;color:rgba(255,255,255,0.3)" aria-hidden="true">›</li>
-          <li><a href="/charlotte-nc/appliance-repair" style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none">Charlotte, NC</a></li>
+          <li><a href="/appliance-repair-charlotte" style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none">Charlotte, NC</a></li>
           <li style="font-size:13px;color:rgba(255,255,255,0.3)" aria-hidden="true">›</li>
           <li style="font-size:13px;color:rgba(255,255,255,0.75)" aria-current="page">Service Areas</li>
         </ol>
@@ -60,7 +70,7 @@ const schema = {
   <!-- Area Grid -->
   <section class="bg-white-section" style="padding:72px 24px">
     <div style="max-width:1200px;margin:0 auto">
-      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;text-align:center;margin:0 0 12px;letter-spacing:-0.02em">All Service Areas</h2>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;text-align:center;margin:0 0 12px;letter-spacing:-0.02em">Charlotte Neighborhoods</h2>
       <p style="text-align:center;color:#4a5e74;font-size:16px;margin:0 0 48px;max-width:600px;margin-left:auto;margin-right:auto">Click your neighborhood or suburb for same-day scheduling, local pricing, and technician availability in your area.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
         {areas.map(area => (
@@ -76,6 +86,21 @@ const schema = {
             </div>
             <p style="font-size:13px;color:#4a5e74;line-height:1.55;margin:0 0 14px">{area.shortDesc}</p>
             <div style="font-size:12px;font-weight:700;color:#b01616;letter-spacing:0.04em">{area.name} Appliance Repair →</div>
+          </a>
+        ))}
+      </div>
+
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;text-align:center;margin:72px 0 12px;letter-spacing:-0.02em">Surrounding Towns</h2>
+      <p style="text-align:center;color:#4a5e74;font-size:16px;margin:0 auto 48px;max-width:600px">Lake Norman, Cabarrus, Union-side and Gaston County communities we reach the same day.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+        {suburbs.map(c => (
+          <a href={c.hubPath} aria-label={`Appliance repair in ${c.name}, NC`} style="display:block;padding:24px 26px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:14px;text-decoration:none" class="area-card">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <div style="font-size:17px;font-weight:800;color:#060c19">{c.name}</div>
+              <div style="font-size:11px;font-weight:700;color:#b01616;letter-spacing:0.04em;background:#fff0f0;padding:3px 8px;border-radius:20px">{c.county}</div>
+            </div>
+            <p style="font-size:13px;color:#4a5e74;line-height:1.55;margin:0 0 14px">{c.shortDesc}</p>
+            <div style="font-size:12px;font-weight:700;color:#b01616;letter-spacing:0.04em">{c.name} Appliance Repair →</div>
           </a>
         ))}
       </div>

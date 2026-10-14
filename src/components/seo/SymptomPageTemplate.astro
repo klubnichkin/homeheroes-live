@@ -65,7 +65,7 @@ const schema = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryhomeheroes.com/" },
-        { "@type": "ListItem", "position": 2, "name": city.displayName, "item": `https://tryhomeheroes.com/${city.slug}/appliance-repair` },
+        { "@type": "ListItem", "position": 2, "name": city.displayName, "item": `https://tryhomeheroes.com${city.hubPath}` },
         { "@type": "ListItem", "position": 3, "name": `${symptom.appliance} Repair`, "item": `https://tryhomeheroes.com/${city.slug}/${symptom.relatedServiceSlug}` },
         { "@type": "ListItem", "position": 4, "name": symptom.symptomShort, "item": canonical }
       ]
@@ -74,7 +74,7 @@ const schema = {
 };
 
 const breadcrumbs = [
-  { label: city.displayName, href: `/${city.slug}/appliance-repair` },
+  { label: city.displayName, href: city.hubPath },
   { label: `${symptom.appliance} Repair`, href: `/${city.slug}/${symptom.relatedServiceSlug}` },
   { label: symptom.symptomShort, href: '#' },
 ];

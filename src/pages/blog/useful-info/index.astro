@@ -1,6 +1,7 @@
 ---
 import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
 import { phone, phoneHref } from '../../../data/siteData';
+import { articles as dataArticles } from '../../../data/articles';
 
 const base = 'https://tryhomeheroes.com';
 const canonical = `${base}/blog/useful-info`;
@@ -105,7 +106,7 @@ const articles = [
     readTime: '5 min read',
     icon: '💧',
     href: '/blog/useful-info/appliance-maintenance-charlotte-humidity',
-    relatedHref: '/charlotte-nc/appliance-repair',
+    relatedHref: '/appliance-repair-charlotte',
     relatedLabel: 'Charlotte Appliance Repair →',
     bgColor: 'rgba(6,182,212,0.06)',
     borderColor: 'rgba(6,182,212,0.15)',
@@ -118,7 +119,7 @@ const articles = [
     readTime: '6 min read',
     icon: '⚡',
     href: '/blog/useful-info/power-outage-appliance-protection',
-    relatedHref: '/charlotte-nc/appliance-repair',
+    relatedHref: '/appliance-repair-charlotte',
     relatedLabel: 'Charlotte Appliance Repair →',
     bgColor: 'rgba(234,179,8,0.06)',
     borderColor: 'rgba(234,179,8,0.15)',
@@ -144,7 +145,7 @@ const articles = [
     readTime: '5 min read',
     icon: '🌧️',
     href: '/blog/useful-info/how-humidity-affects-appliances-nc',
-    relatedHref: '/charlotte-nc/appliance-repair',
+    relatedHref: '/appliance-repair-charlotte',
     relatedLabel: 'Charlotte Appliance Repair →',
     bgColor: 'rgba(6,182,212,0.06)',
     borderColor: 'rgba(6,182,212,0.15)',
@@ -157,13 +158,31 @@ const articles = [
     readTime: '5 min read',
     icon: '🔌',
     href: '/blog/useful-info/hvac-appliance-electrical-load',
-    relatedHref: '/charlotte-nc/appliance-repair',
+    relatedHref: '/appliance-repair-charlotte',
     relatedLabel: 'Charlotte Appliance Repair →',
     bgColor: 'rgba(139,92,246,0.06)',
     borderColor: 'rgba(139,92,246,0.15)',
     iconBg: 'rgba(139,92,246,0.1)',
   },
 ];
+
+// Newer data-driven articles (src/data/articles.ts) are listed first.
+articles.unshift(
+  ...dataArticles.map(a => ({
+    title: a.title,
+    excerpt: a.description,
+    category: a.category,
+    readTime: `${a.readMinutes} min read`,
+    icon: a.icon,
+    href: `/blog/useful-info/${a.slug}`,
+    relatedHref: a.relatedService.href,
+    relatedLabel: a.relatedService.label,
+    bgColor: 'rgba(59,130,246,0.06)',
+    borderColor: 'rgba(59,130,246,0.15)',
+    iconBg: 'rgba(59,130,246,0.1)',
+  })),
+);
+
 
 const maintenanceTips = [
   { appliance: 'Refrigerator', tip: 'Clean condenser coils every 12 months. Pull the unit forward and vacuum the coils at the back or underneath.', icon: '❄️' },

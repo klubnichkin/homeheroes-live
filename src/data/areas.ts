@@ -3,6 +3,17 @@ export interface AreaFAQ {
   a: string;
 }
 
+import type { ApplianceGroup } from './cities';
+
+export interface AreaProfile {
+  zips: string[];
+  landmarks: string[];
+  applianceNotes: Record<ApplianceGroup, string>;
+  nearby: string[];      // other area slugs
+  premium?: boolean;     // neighborhood gets premium-brand pages
+  updatedAt: string;
+}
+
 export interface Area {
   slug: string;
   name: string;
@@ -17,7 +28,7 @@ export interface Area {
   faq: AreaFAQ[];
 }
 
-export const areas: Area[] = [
+const baseAreas: Area[] = [
   {
     slug: 'ballantyne-appliance-repair',
     name: 'Ballantyne',
@@ -169,7 +180,7 @@ export const areas: Area[] = [
       'NoDa sits just northeast of Uptown and is anchored by the North Davidson Street commercial corridor.',
       'The neighborhood is home to independent restaurants, breweries, art galleries, and music venues — all of which rely on commercial-grade appliances.',
       'A growing number of condo buildings and apartment communities have joined NoDa\'s historic housing stock as the neighborhood expands.',
-      'The area is well-served by the Gold Line streetcar and is a hub for Charlotte\'s creative and food industry community.',
+      'The LYNX Blue Line light rail stops at 36th Street, and the neighborhood is a hub for Charlotte\'s creative and food industry community.',
       'We serve both longtime residents in renovated historic homes and newer residents in recently built multi-unit developments.',
     ],
     customerTypes: [
@@ -257,244 +268,6 @@ export const areas: Area[] = [
   },
 
   {
-    slug: 'huntersville-appliance-repair',
-    name: 'Huntersville',
-    shortDesc: 'Fast-growing north Charlotte suburb with large family communities and Lake Norman access.',
-    areaType: 'North Mecklenburg suburb',
-    seoTitle: 'Appliance Repair in Huntersville, NC | HomeHeroes Charlotte',
-    metaDescription:
-      'Appliance repair in Huntersville, NC. Same-day service for refrigerators, washers, dryers, and more. Serving Birkdale, Vermillion, and all Huntersville neighborhoods. Call (704) 512-0111.',
-    h1: 'Appliance Repair in Huntersville, NC',
-    intro:
-      'Huntersville is one of the fastest-growing communities in the Charlotte metro — a sprawling north Mecklenburg suburb that has become a destination for families seeking more space, newer homes, and proximity to Lake Norman without sacrificing access to the city. The area\'s growth has brought thousands of newer homes filled with mid-range to premium appliances, and as those appliances age, the demand for reliable repair service continues to increase. HomeHeroes dispatches same-day to Huntersville and the surrounding north Charlotte communities.',
-    localContext: [
-      'Huntersville is anchored by Birkdale Village, a walkable town center with retail, dining, and entertainment.',
-      'Large planned communities including Vermillion, Skybrook, and Birkdale are home to families with newer-construction appliances.',
-      'Lake Norman access drives waterfront and near-lake residential development, including larger homes with premium kitchen setups.',
-      'Huntersville\'s proximity to Cornelius and Davidson extends our north Charlotte service coverage across the entire Lake Norman corridor.',
-      'We serve both established subdivisions and the area\'s rapidly growing new-construction communities.',
-    ],
-    customerTypes: [
-      'Homeowners in Birkdale, Vermillion, Skybrook, and other planned communities',
-      'Families in newer construction homes with standard and premium appliances',
-      'Waterfront and near-lake homeowners with high-end kitchen equipment',
-      'Property managers overseeing rental homes in Huntersville\'s growing inventory',
-      'Restaurants and businesses in and around Birkdale Village',
-    ],
-    faq: [
-      { q: 'Do you offer same-day appliance repair in Huntersville?', a: 'Yes. We dispatch same-day to Huntersville and the surrounding north Charlotte area. Call before noon for best availability.' },
-      { q: 'Do you repair refrigerators in Huntersville?', a: 'Yes. Refrigerator repair is our most common call in Huntersville. We carry parts for all major brands and fix most issues on the first visit.' },
-      { q: 'Do you service newer homes and appliances in Huntersville?', a: 'Absolutely. Huntersville\'s large supply of newer construction homes means we often work with appliances that are a few years old — straightforward, parts-in-stock repairs in most cases.' },
-      { q: 'Can you work with property managers in Huntersville?', a: 'Yes. We work with property managers and landlords across Huntersville, providing fast service and detailed repair invoices.' },
-      { q: 'What appliance brands do you repair in Huntersville?', a: 'All major brands: Samsung, LG, Whirlpool, GE, Maytag, Frigidaire, KitchenAid, Bosch, and more — plus luxury brands for premium-equipped homes.' },
-    ],
-  },
-
-  {
-    slug: 'matthews-appliance-repair',
-    name: 'Matthews',
-    shortDesc: 'Established southeast Charlotte suburb with a charming historic town center.',
-    areaType: 'Southeast Charlotte suburb',
-    seoTitle: 'Appliance Repair in Matthews, NC | HomeHeroes Charlotte',
-    metaDescription:
-      'Appliance repair in Matthews, NC. Same-day service for refrigerators, washers, dryers, dishwashers, and ovens. Serving all Matthews neighborhoods. Call (704) 512-0111.',
-    h1: 'Appliance Repair in Matthews, NC',
-    intro:
-      'Matthews is one of the Charlotte metro\'s most established and family-friendly communities — a southeast suburb with a genuine small-town feel, a walkable historic downtown, and a large residential base that spans both longtime homeowners and newer families. The area\'s mix of older homes and newer developments means appliance needs vary widely: some properties have appliances approaching the end of their lifespan, while newer subdivisions are filled with current-generation equipment under warranty or just past it. HomeHeroes serves all of Matthews with same-day scheduling and honest repair advice.',
-    localContext: [
-      'Matthews has its own incorporated downtown district along Trade Street, with local restaurants, shops, and community events.',
-      'The town includes a mix of older established neighborhoods and newer planned communities on its expanding eastern edge.',
-      'Matthews is adjacent to Mint Hill and Stallings, extending our southeast Charlotte coverage across a broad residential corridor.',
-      'The area attracts long-term residents who value community stability alongside newer families moving out from Charlotte proper.',
-      'We serve Matthews across all neighborhood types — from older single-family homes near downtown to newer subdivisions along the town\'s growth edges.',
-    ],
-    customerTypes: [
-      'Homeowners in established neighborhoods near downtown Matthews',
-      'Families in newer subdivisions and planned communities',
-      'Renters and tenants in Matthews single-family and multi-family properties',
-      'Property managers overseeing rental homes across the Matthews area',
-      'Local restaurants and businesses in the historic downtown district',
-    ],
-    faq: [
-      { q: 'Do you offer same-day appliance repair in Matthews?', a: 'Yes. We dispatch same-day to Matthews from our Charlotte base. Morning calls typically get same-afternoon service.' },
-      { q: 'Do you repair washers and dryers in Matthews?', a: 'Yes. Washer and dryer repair is among our most common calls in Matthews. We fix most issues on the first visit and carry common parts on the truck.' },
-      { q: 'Can you work with property managers in Matthews?', a: 'Absolutely. We work with landlords and property managers across Matthews, providing fast turnaround and proper documentation for maintenance records.' },
-      { q: 'Do you service apartments and condos in Matthews?', a: 'Yes. We service all residential property types in Matthews — single-family homes, townhomes, condos, and apartments.' },
-      { q: 'What appliance brands do you repair in Matthews?', a: 'All major brands: Samsung, LG, Whirlpool, GE, Maytag, Frigidaire, KitchenAid, Bosch, and others.' },
-    ],
-  },
-
-  {
-    slug: 'concord-appliance-repair',
-    name: 'Concord',
-    shortDesc: 'Growing Cabarrus County suburb northeast of Charlotte with strong residential demand.',
-    areaType: 'Charlotte metro suburb',
-    seoTitle: 'Appliance Repair in Concord, NC | HomeHeroes Charlotte',
-    metaDescription:
-      'Appliance repair in Concord, NC. Same-day service for refrigerators, washers, dryers, ovens, and more. Serving all Concord neighborhoods. Call (704) 512-0111.',
-    h1: 'Appliance Repair in Concord, NC',
-    intro:
-      'Concord is the county seat of Cabarrus County and one of the Charlotte metro\'s most active growth corridors — a city that has evolved from a textile and manufacturing center into a broad suburban community with diverse residential neighborhoods, major retail destinations, and a strong employment base. As Concord\'s population grows and housing stock ages, the demand for reliable local appliance repair has never been higher. HomeHeroes extends its Charlotte-area same-day service into Concord for both residential and commercial customers.',
-    localContext: [
-      'Concord is home to Concord Mills, one of the region\'s largest shopping destinations, which anchors a major commercial and residential growth corridor.',
-      'The city\'s residential landscape ranges from established older neighborhoods near downtown Concord to large new-construction subdivisions on the city\'s expanding edges.',
-      'The area is well-known as "Race City USA" — NASCAR teams and related businesses are based in and around Concord.',
-      'Concord is directly adjacent to Kannapolis and northeast of Charlotte, making it an important node in the metro\'s northeast residential belt.',
-      'We serve Concord\'s full range of housing types, from historic homes near the downtown square to large family homes in newer planned communities.',
-    ],
-    customerTypes: [
-      'Homeowners across Concord\'s established and newer residential neighborhoods',
-      'Families in new-construction subdivisions northeast of Charlotte',
-      'Renters and tenants across Concord\'s single-family and multi-family rental stock',
-      'Property managers overseeing rental properties in the Concord area',
-      'Restaurants and businesses in downtown Concord and along Concord\'s commercial corridors',
-    ],
-    faq: [
-      { q: 'Do you offer same-day appliance repair in Concord?', a: 'Yes. We dispatch same-day to Concord from our Charlotte base. Morning calls receive priority for same-day scheduling.' },
-      { q: 'Do you repair refrigerators in Concord?', a: 'Yes. Refrigerator repair is one of our most common calls in Concord. We carry parts for all major brands and complete most repairs in a single visit.' },
-      { q: 'Do you service older homes and appliances in Concord?', a: 'Absolutely. We work with all appliance ages — from older units in Concord\'s established neighborhoods to newer equipment in recently built homes.' },
-      { q: 'Can you work with property managers in Concord?', a: 'Yes. We regularly work with property managers and landlords across the Concord area, providing fast turnaround and detailed repair documentation.' },
-      { q: 'What appliance brands do you repair in Concord?', a: 'All major brands: Samsung, LG, Whirlpool, GE, Maytag, Frigidaire, KitchenAid, Bosch, and more.' },
-    ],
-  },
-
-  {
-    slug: 'pineville-appliance-repair',
-    name: 'Pineville',
-    shortDesc: 'South Charlotte suburb near the SC border with strong retail and growing residential base.',
-    areaType: 'South Charlotte suburb',
-    seoTitle: 'Appliance Repair in Pineville, NC | HomeHeroes Charlotte',
-    metaDescription:
-      'Appliance repair in Pineville, NC. Same-day service for all major appliances. Serving residential and commercial customers near Carolina Place Mall and beyond. Call (704) 512-0111.',
-    h1: 'Appliance Repair in Pineville, NC',
-    intro:
-      'Pineville sits at the southern edge of Charlotte\'s Mecklenburg County footprint — a community shaped by its position along the major retail and residential corridor connecting Charlotte to the South Carolina border. The area blends established single-family neighborhoods with apartment communities, commercial strips, and the Carolina Place Mall retail zone. HomeHeroes serves Pineville\'s residential and commercial customers with the same same-day professionalism the entire Charlotte metro has come to expect.',
-    localContext: [
-      'Pineville is anchored by the Carolina Place Mall corridor on US-521, one of Charlotte\'s primary south-end retail destinations.',
-      'The area includes a mix of established single-family neighborhoods, apartment complexes, and newer townhome developments.',
-      'Pineville borders the South Carolina state line, extending our effective service range to communities just across the border.',
-      'Its position along key highway corridors makes Pineville easily accessible for same-day dispatch from our Charlotte base.',
-      'We serve homeowners, renters, and business operators across the full Pineville service area.',
-    ],
-    customerTypes: [
-      'Homeowners in established Pineville residential neighborhoods',
-      'Apartment and townhome residents',
-      'Property managers overseeing rental properties in the Pineville area',
-      'Restaurant and retail operators along the US-521 corridor',
-      'Short-term rental operators in south Charlotte communities',
-    ],
-    faq: [
-      { q: 'Do you offer same-day appliance repair in Pineville?', a: 'Yes. We dispatch same-day to Pineville. Its location on the south Charlotte corridor makes scheduling efficient.' },
-      { q: 'Do you repair washing machines in Pineville?', a: 'Yes. Washer repair is a common call in Pineville. We carry parts for all major brands and complete most repairs on the first visit.' },
-      { q: 'Can you service apartments in Pineville?', a: 'Absolutely. We service all residential property types — single-family homes, apartments, townhomes, and condos throughout Pineville.' },
-      { q: 'Do you work with property managers in Pineville?', a: 'Yes. We work with property managers and landlords across the Pineville area, providing prompt service and professional documentation.' },
-      { q: 'What appliance brands do you repair in Pineville?', a: 'All major brands: Samsung, LG, Whirlpool, GE, Frigidaire, Maytag, KitchenAid, Bosch, and more.' },
-    ],
-  },
-
-  {
-    slug: 'cornelius-appliance-repair',
-    name: 'Cornelius',
-    shortDesc: 'Lake Norman community with upscale lakefront homes and a growing restaurant scene.',
-    areaType: 'Lake Norman suburb',
-    seoTitle: 'Appliance Repair in Cornelius, NC | HomeHeroes Charlotte',
-    metaDescription:
-      'Appliance repair in Cornelius, NC. Same-day service for homes, lakefront properties, and businesses on Lake Norman. Call (704) 512-0111.',
-    h1: 'Appliance Repair in Cornelius, NC',
-    intro:
-      'Cornelius is one of Lake Norman\'s most active and upscale communities — a growing town that blends waterfront living with a vibrant bar-and-restaurant district, growing residential neighborhoods, and easy highway access to Charlotte. Lake Norman homeowners invest heavily in premium kitchen appliances, and the local restaurant scene along Catawba Avenue creates meaningful commercial repair demand alongside residential service. HomeHeroes provides same-day coverage throughout Cornelius and the surrounding Lake Norman corridor.',
-    localContext: [
-      'Cornelius is part of the Lake Norman shoreline community alongside Huntersville and Davidson, all of which we serve.',
-      'Catawba Avenue hosts one of the lake area\'s most active dining and nightlife corridors, including waterfront restaurants.',
-      'Lakefront and near-lake residential communities often feature premium kitchen equipment including built-in refrigerators, wine coolers, and high-end ranges.',
-      'The area has seen significant new residential development, bringing newer appliances that require trained technicians familiar with current models.',
-      'We serve the full spectrum — modest residential homes to lakefront estates with luxury appliance packages.',
-    ],
-    customerTypes: [
-      'Homeowners in lakefront and near-lake residential communities',
-      'Owners of luxury estates with premium appliance brands',
-      'Restaurants and bars along Catawba Avenue and the lake corridor',
-      'Property managers overseeing Cornelius rental homes and communities',
-      'Short-term rental operators running lake vacation properties',
-    ],
-    faq: [
-      { q: 'Do you offer same-day appliance repair in Cornelius?', a: 'Yes. We serve Cornelius the same day as part of our Lake Norman service zone. Call before noon for same-day scheduling.' },
-      { q: 'Do you repair high-end appliances in lakefront Cornelius homes?', a: 'Yes. We\'re experienced with luxury brands including Sub-Zero, Wolf, Viking, Thermador, and Miele — common in Cornelius lakefront homes.' },
-      { q: 'Can you service restaurant and bar kitchen equipment in Cornelius?', a: 'We assist Cornelius restaurants and bars with commercial-grade refrigerators, ice makers, and dishwashers. Call to confirm your specific equipment.' },
-      { q: 'Do you work with property managers in Cornelius?', a: 'Yes. We work with property managers across Cornelius and the Lake Norman area, including short-term rental operators.' },
-      { q: 'What appliance brands do you service in Cornelius?', a: 'All brands — including luxury lines like Sub-Zero, Wolf, and Viking common in lake area homes, as well as Samsung, LG, Whirlpool, GE, Bosch, and more.' },
-    ],
-  },
-
-  {
-    slug: 'davidson-appliance-repair',
-    name: 'Davidson',
-    shortDesc: 'Historic college town on Lake Norman with charming downtown and residential character.',
-    areaType: 'College town / Lake Norman suburb',
-    seoTitle: 'Appliance Repair in Davidson, NC | HomeHeroes Charlotte',
-    metaDescription:
-      'Appliance repair in Davidson, NC. Same-day service for homes near Davidson College and Lake Norman. Licensed technicians. Call (704) 512-0111.',
-    h1: 'Appliance Repair in Davidson, NC',
-    intro:
-      'Davidson is a genuinely charming small town built around Davidson College — a nationally recognized liberal arts institution that gives the community an intellectual character and a walkable historic downtown that distinguishes it from other Lake Norman suburbs. Residents here tend to be highly educated, community-minded, and invested in their homes. When an appliance breaks in Davidson, they want a professional technician who shows up on time, gives a straight answer, and fixes it right. That\'s exactly how HomeHeroes operates.',
-    localContext: [
-      'Davidson College anchors the town\'s academic and cultural identity, and the surrounding residential community reflects that character.',
-      'The historic downtown along South Main Street features local restaurants, coffee shops, and boutique retail.',
-      'Davidson residents include college faculty and staff, longtime community families, and newer residents attracted to the town\'s quality of life.',
-      'Lake Norman access brings waterfront properties and upscale residential communities into the Davidson service area.',
-      'Davidson is adjacent to Cornelius and Huntersville, making it part of a continuous Lake Norman service corridor for HomeHeroes.',
-    ],
-    customerTypes: [
-      'Davidson College faculty and staff in residential properties',
-      'Long-term community families in established Davidson neighborhoods',
-      'Lakefront homeowners with premium appliances',
-      'Residents of newer Davidson-area developments',
-      'Local restaurants and cafes in downtown Davidson',
-    ],
-    faq: [
-      { q: 'Do you offer same-day appliance repair in Davidson?', a: 'Yes. We dispatch same-day to Davidson as part of our Lake Norman service zone. Call in the morning for best same-day availability.' },
-      { q: 'Do you repair refrigerators in Davidson?', a: 'Yes. Refrigerator repair is our most common call in Davidson. We carry parts for all major brands and complete most repairs on the first visit.' },
-      { q: 'Can you work with Davidson College-area landlords and property managers?', a: 'Absolutely. We work with landlords and property managers throughout Davidson, including those managing rental properties near the college.' },
-      { q: 'Do you service older appliances in Davidson\'s historic homes?', a: 'Yes. We\'re experienced diagnosing and repairing older appliances. We give honest repair-versus-replace guidance based on the actual condition of the unit.' },
-      { q: 'What appliance brands do you repair in Davidson?', a: 'All major brands: Samsung, LG, Whirlpool, GE, Maytag, Frigidaire, KitchenAid, Bosch, Sub-Zero, and more.' },
-    ],
-  },
-
-  {
-    slug: 'mooresville-appliance-repair',
-    name: 'Mooresville',
-    shortDesc: '"Race City USA" — fast-growing Lake Norman suburb with diverse residential neighborhoods.',
-    areaType: 'Lake Norman suburb',
-    seoTitle: 'Appliance Repair in Mooresville, NC | HomeHeroes Charlotte',
-    metaDescription:
-      'Appliance repair in Mooresville, NC. Same-day service for homes across Iredell County and Lake Norman. Refrigerators, washers, dryers, and more. Call (704) 512-0111.',
-    h1: 'Appliance Repair in Mooresville, NC',
-    intro:
-      'Mooresville — widely known as "Race City USA" for its concentration of NASCAR teams and motorsports industry — is one of the Charlotte metro\'s most rapidly expanding communities. Stretching along the western shore of Lake Norman, Mooresville\'s residential landscape includes everything from lakefront estates and upscale new construction to more modest established neighborhoods. HomeHeroes brings Charlotte-quality same-day appliance repair service to Mooresville and the surrounding Iredell County communities.',
-    localContext: [
-      'Mooresville is home to numerous NASCAR racing teams and motorsports-related businesses, creating a significant professional and commercial community.',
-      'Lake Norman waterfront communities in Mooresville include upscale estates with premium appliance packages.',
-      'The area has seen consistent residential growth with large new-construction subdivisions and planned communities.',
-      'Mooresville\'s position on I-77 north of Charlotte makes it a natural extension of the Lake Norman service corridor.',
-      'We serve the full range of Mooresville residential types — from starter homes to lakefront luxury properties.',
-    ],
-    customerTypes: [
-      'Homeowners in lakefront and near-lake Mooresville communities',
-      'Families in new-construction subdivisions across Iredell County',
-      'Racing industry professionals and employees in the Mooresville area',
-      'Property managers overseeing rental homes in and around Mooresville',
-      'Restaurants and commercial kitchens in Mooresville\'s growing business corridors',
-    ],
-    faq: [
-      { q: 'Do you offer same-day appliance repair in Mooresville?', a: 'Yes. We dispatch same-day to Mooresville. Its location along I-77 makes scheduling efficient from our Charlotte base.' },
-      { q: 'Do you repair high-end appliances in Mooresville lakefront homes?', a: 'Yes. We service luxury brands including Sub-Zero, Wolf, Thermador, Viking, and Miele common in Mooresville\'s lakefront and new-construction communities.' },
-      { q: 'Can you service Mooresville businesses and commercial kitchens?', a: 'We can assist Mooresville businesses with commercial-grade refrigerators, ice makers, and dishwashers. Call to confirm your specific equipment.' },
-      { q: 'Do you work with property managers in Mooresville?', a: 'Yes. We work with property managers and landlords throughout Mooresville and Iredell County.' },
-      { q: 'What appliance brands do you repair in Mooresville?', a: 'All brands: Samsung, LG, Whirlpool, GE, Maytag, Frigidaire, KitchenAid, Bosch, Sub-Zero, Viking, Wolf, Thermador, and more.' },
-    ],
-  },
-
-  {
     slug: 'university-city-appliance-repair',
     name: 'University City',
     shortDesc: 'Growing northeast Charlotte hub anchored by UNC Charlotte and major employers.',
@@ -563,6 +336,353 @@ export const areas: Area[] = [
   },
 ];
 
-export function getArea(slug: string): Area | undefined {
+const newAreas: Area[] = [
+  {
+    slug: 'southpark-appliance-repair',
+    name: 'SouthPark',
+    shortDesc: 'Upscale central-south Charlotte district around SouthPark Mall with custom homes and condo towers.',
+    areaType: 'South Charlotte district',
+    seoTitle: 'Appliance Repair in SouthPark, Charlotte NC | HomeHeroes',
+    metaDescription:
+      'Same-day appliance repair in SouthPark, Charlotte NC — custom homes, condos and premium brands like Sub-Zero, Wolf and Thermador. Call (704) 512-0111.',
+    h1: 'Appliance Repair in SouthPark, Charlotte NC',
+    intro:
+      'SouthPark has grown from a shopping destination into one of Charlotte\'s densest upscale districts. Around SouthPark Mall and Phillips Place, mid-century houses are steadily being replaced by new custom homes, and residential towers and luxury apartments now line Morrison Boulevard and Fairview Road. Kitchens here are some of the best-equipped in the city, which means built-in refrigeration, pro-style ranges and European dishwashers that need technicians who know them. HomeHeroes provides same-day appliance repair throughout SouthPark, from condo towers to the side streets off Sharon Road.',
+    localContext: [
+      'SouthPark Mall, Phillips Place and Symphony Park anchor the district\'s shopping and outdoor events.',
+      'Older 1950s and 1960s homes are frequently torn down and replaced with large custom builds.',
+      'Residential towers and luxury apartments near the mall mean building access rules, loading docks and service elevators.',
+      'Premium brands such as Sub-Zero, Wolf, Thermador, Miele and Bosch are standard in renovated and new SouthPark kitchens.',
+      'SouthPark borders Myers Park, Cotswold and the Sharon Road corridor, all within our daily routes.',
+    ],
+    customerTypes: [
+      'Owners of new custom homes with premium appliance packages',
+      'Residents of SouthPark condo towers and luxury apartments',
+      'Building managers and concierge teams coordinating unit access',
+      'Remodelers and designers needing appliance service during renovations',
+      'Restaurants and offices around SouthPark Mall and Phillips Place',
+    ],
+    faq: [
+      { q: 'Do you offer same-day appliance repair in SouthPark?', a: 'Yes. SouthPark is central to our daily routes, and most calls received in the morning are seen the same day.' },
+      { q: 'Can you work in SouthPark condo towers?', a: 'Yes. Tell us the building and management contact when you book, and we will coordinate access, service elevator time and any paperwork the building requires.' },
+      { q: 'Do you repair Sub-Zero, Wolf and Thermador in SouthPark?', a: 'Yes. Built-in refrigeration and pro-style ranges are common here, and we confirm part availability for your model before the visit whenever possible.' },
+      { q: 'Do you service panel-ready and integrated appliances?', a: 'Yes. We remove and reinstall panel-ready dishwashers and integrated refrigeration carefully so custom cabinet panels are not damaged.' },
+      { q: 'What does an appliance repair visit cost in SouthPark?', a: 'The diagnostic visit is $89 and is waived when you approve the repair. We quote every repair before starting work.' },
+    ],
+  },
+  {
+    slug: 'elizabeth-appliance-repair',
+    name: 'Elizabeth',
+    shortDesc: 'Historic streetcar neighborhood east of Uptown with bungalows, apartments and the Gold Line.',
+    areaType: 'Historic Charlotte neighborhood',
+    seoTitle: 'Appliance Repair in Elizabeth, Charlotte NC | HomeHeroes',
+    metaDescription:
+      'Appliance repair in Elizabeth, Charlotte NC. Same-day service for historic homes, apartments and condos near Independence Park. Call (704) 512-0111.',
+    h1: 'Appliance Repair in Elizabeth, Charlotte NC',
+    intro:
+      'Elizabeth is one of Charlotte\'s earliest streetcar suburbs, laid out just east of Uptown in the early 1900s. Today its tree-lined streets mix restored bungalows and foursquares with older apartment buildings and new townhomes, and the CityLYNX Gold Line runs along Elizabeth Avenue and Hawthorne Lane. Older houses mean compact kitchens, retrofitted laundry and wiring that was not built for modern appliances, so a repair here starts with checking how the appliance is installed. HomeHeroes serves Elizabeth the same day for homeowners, renters and the neighborhood\'s small businesses.',
+    localContext: [
+      'Independence Park, one of Charlotte\'s oldest public parks, sits at the heart of the neighborhood.',
+      'Novant Health Presbyterian Medical Center and CPCC\'s Central Campus are neighbors, which brings many renters and medical staff.',
+      'The CityLYNX Gold Line streetcar runs along Elizabeth Avenue and Hawthorne Lane.',
+      'Housing ranges from early-1900s bungalows to mid-century apartments and new infill townhomes.',
+      'Elizabeth borders Plaza Midwood, Myers Park and Uptown, all within our daily routes.',
+    ],
+    customerTypes: [
+      'Owners of restored historic homes',
+      'Renters in older apartment buildings and converted houses',
+      'Medical staff and students living near Presbyterian hospital and CPCC',
+      'Landlords and property managers with older rental properties',
+      'Cafes and restaurants along Elizabeth Avenue and 7th Street',
+    ],
+    faq: [
+      { q: 'Do you offer same-day appliance repair in Elizabeth?', a: 'Yes. Elizabeth is minutes from Uptown and on our daily routes, so same-day service is routine.' },
+      { q: 'Can you repair appliances in older Elizabeth homes?', a: 'Yes. We work in compact historic kitchens and retrofitted laundry spaces, and we check the outlet, circuit and water supply as part of the diagnosis.' },
+      { q: 'Do you work with landlords in Elizabeth?', a: 'Yes. We repair appliances in rental homes and apartment buildings and send the owner a clear record of the repair.' },
+      { q: 'My breaker trips when the dryer runs. Is that the dryer?', a: 'Sometimes. A shorted heating element can trip a breaker, but so can an undersized or worn circuit in an older house. We test the dryer first and tell you if the problem is electrical.' },
+      { q: 'What does an appliance repair visit cost in Elizabeth?', a: 'The diagnostic visit is $89 and is waived when you approve the repair.' },
+    ],
+  },
+  {
+    slug: 'cotswold-appliance-repair',
+    name: 'Cotswold',
+    shortDesc: 'Established east Charlotte neighborhood of mid-century ranches around Cotswold Village.',
+    areaType: 'East Charlotte neighborhood',
+    seoTitle: 'Appliance Repair in Cotswold, Charlotte NC | HomeHeroes',
+    metaDescription:
+      'Appliance repair in Cotswold, Charlotte NC. Same-day service for mid-century homes and remodeled kitchens near Cotswold Village. Call (704) 512-0111.',
+    h1: 'Appliance Repair in Cotswold, Charlotte NC',
+    intro:
+      'Cotswold is a settled east Charlotte neighborhood built largely in the 1950s and 1960s around Randolph Road and Sharon Amity Road, with Cotswold Village shopping center at its center. Its brick ranch homes have been remodeled kitchen by kitchen over the decades, so one street can have a 1990s side-by-side refrigerator next door to a brand-new induction range. HomeHeroes provides same-day appliance repair across Cotswold and neighboring Eastover, SouthPark and Oakhurst.',
+    localContext: [
+      'Cotswold Village shopping center at Randolph Road and Sharon Amity Road is the neighborhood\'s hub.',
+      'Most homes are mid-century brick ranches, many expanded or remodeled since.',
+      'Families with children and long-time residents live side by side.',
+      'Laundry is often in a basement, carport room or converted garage space.',
+      'Cotswold is next to SouthPark, Eastover and Oakhurst.',
+    ],
+    customerTypes: [
+      'Owners of remodeled mid-century homes',
+      'Long-time residents with older, well-kept appliances',
+      'Young families buying into the neighborhood',
+      'Landlords with single-family rentals',
+      'Shops and restaurants around Cotswold Village',
+    ],
+    faq: [
+      { q: 'Do you offer same-day appliance repair in Cotswold?', a: 'Yes. Cotswold is central to our east and south Charlotte routes, and same-day visits are routine.' },
+      { q: 'Is my older refrigerator worth repairing?', a: 'Often it is. Fans, defrost parts, gaskets and water valves are affordable repairs on older units. We tell you plainly when a compressor or sealed-system failure makes replacement the better choice.' },
+      { q: 'Can you service a washer and dryer in a basement?', a: 'Yes. We service laundry in basements, carports and converted garages, and we check the dryer vent route while we are there.' },
+      { q: 'Do you repair induction ranges?', a: 'Yes. Induction ranges are increasingly common in remodeled Cotswold kitchens, and we diagnose power boards, coils and touch controls.' },
+      { q: 'What does a repair visit cost in Cotswold?', a: 'The diagnostic visit is $89 and is waived when you approve the repair.' },
+    ],
+  },
+  {
+    slug: 'highland-creek-appliance-repair',
+    name: 'Highland Creek',
+    shortDesc: 'Large northeast Charlotte master-planned community with golf, pools and 1990s–2000s homes.',
+    areaType: 'Northeast Charlotte community',
+    seoTitle: 'Appliance Repair in Highland Creek, Charlotte NC | HomeHeroes',
+    metaDescription:
+      'Appliance repair in Highland Creek, Charlotte NC (28269). Same-day service for refrigerators, washers, dryers and more. Call (704) 512-0111.',
+    h1: 'Appliance Repair in Highland Creek, Charlotte NC',
+    intro:
+      'Highland Creek is one of Charlotte\'s largest master-planned communities, built out from the 1990s through the 2000s around the Highland Creek Golf Club in northeast Charlotte. Thousands of homes went up in the same years with similar builder appliances, and those appliances have now been replaced at least once or are reaching the end of their life. That makes Highland Creek a neighborhood where repair-or-replace advice matters. HomeHeroes reaches Highland Creek from University City and I-485 with same-day service.',
+    localContext: [
+      'Highland Creek is built around the Highland Creek Golf Club, with multiple amenity centers and pools.',
+      'Most homes were built between the 1990s and the 2000s, many by the same builders.',
+      'The community sits near I-485 and University City in northeast Charlotte.',
+      'Many households are families with busy laundry rooms and second refrigerators in the garage.',
+      'Highland Creek borders Huntersville and Concord, which we also serve.',
+    ],
+    customerTypes: [
+      'Families in single-family homes throughout Highland Creek',
+      'Owners of original-build homes with aging appliances',
+      'Landlords with rental homes in the community',
+      'Residents with garage refrigerators and freezers',
+      'Businesses near Prosperity Village and Mallard Creek',
+    ],
+    faq: [
+      { q: 'Do you offer same-day appliance repair in Highland Creek?', a: 'Yes. We serve Highland Creek from our northeast Charlotte routes, and same-day visits are available most days.' },
+      { q: 'Our appliances are original to the house. Should we repair them?', a: 'It depends on the appliance and the failure. Many 15- to 20-year-old washers, dryers and ranges are worth a simple repair; older refrigerators with sealed-system failures usually are not. We quote first and tell you honestly.' },
+      { q: 'Why is my garage refrigerator not keeping the freezer cold in winter?', a: 'In a cold garage the refrigerator\'s thermostat rarely calls for cooling, so the freezer warms up. It is usually a placement issue rather than a failure, and we can confirm that during the visit.' },
+      { q: 'Do you work with landlords in Highland Creek?', a: 'Yes. We repair appliances in rental homes and send owners a clear repair record.' },
+      { q: 'What does a repair visit cost in Highland Creek?', a: 'The diagnostic visit is $89 and is waived when you approve the repair.' },
+    ],
+  },
+  {
+    slug: 'eastover-appliance-repair',
+    name: 'Eastover',
+    shortDesc: 'Historic estate neighborhood next to Myers Park with large kitchens and premium appliances.',
+    areaType: 'Historic Charlotte neighborhood',
+    seoTitle: 'Appliance Repair in Eastover, Charlotte NC | HomeHeroes',
+    metaDescription:
+      'Appliance repair in Eastover, Charlotte NC — Sub-Zero, Wolf, Thermador, Viking and Miele service for estate kitchens. Same-day visits. Call (704) 512-0111.',
+    h1: 'Appliance Repair in Eastover, Charlotte NC',
+    intro:
+      'Eastover is one of Charlotte\'s most established neighborhoods, developed from the late 1920s next to Myers Park and home to the Mint Museum Randolph. Its large lots hold estate homes whose kitchens have been rebuilt around built-in refrigeration, wine storage, pro-style ranges and multiple dishwashers. Repairs here call for model-specific knowledge and careful work around custom cabinetry. HomeHeroes provides same-day appliance repair in Eastover and confirms part availability for premium models before the visit whenever possible.',
+    localContext: [
+      'Eastover developed from the late 1920s and sits beside Myers Park and Cotswold.',
+      'The Mint Museum Randolph, Charlotte\'s original art museum, is in the neighborhood.',
+      'Large lots and estate homes often include catering kitchens, butler\'s pantries and outdoor kitchens.',
+      'Sub-Zero, Wolf, Thermador, Viking and Miele are common in Eastover kitchens.',
+      'Many homes have household managers or staff who coordinate service visits.',
+    ],
+    customerTypes: [
+      'Owners of estate homes with premium kitchens',
+      'Household managers and staff coordinating repairs',
+      'Families in renovated historic homes',
+      'Interior designers and remodelers working on Eastover kitchens',
+      'Owners of outdoor kitchens and wine rooms',
+    ],
+    faq: [
+      { q: 'Do you offer same-day appliance repair in Eastover?', a: 'Yes. Eastover is minutes from our central routes, and same-day visits are available most days.' },
+      { q: 'Do you repair Sub-Zero and Wolf appliances in Eastover?', a: 'Yes. Built-in refrigeration and pro-style cooking are the most common premium repairs we do in Eastover, and we check part availability for your model before the visit whenever possible.' },
+      { q: 'Can you coordinate with our household manager?', a: 'Yes. We can schedule, report findings and send estimates to whoever manages the home.' },
+      { q: 'Do you service wine storage and outdoor refrigeration?', a: 'Yes. We repair wine columns, undercounter wine and beverage units and outdoor-rated refrigeration.' },
+      { q: 'What does a repair visit cost in Eastover?', a: 'The diagnostic visit is $89 and is waived when you approve the repair. Premium-brand parts are quoted before any work begins.' },
+    ],
+  },
+];
+
+const areaProfiles: Record<string, AreaProfile> = {
+  'ballantyne-appliance-repair': {
+    zips: ['28277'],
+    landmarks: ['Ballantyne Corporate Park', 'Ballantyne Country Club', 'Johnston Road', 'Piper Glen'],
+    applianceNotes: {
+      cold: 'Ballantyne\'s 1990s and 2000s homes were often built with premium refrigeration, and some of those original Sub-Zero and built-in units are now 20 years old. Whether to repair one is a real decision; newer homes have French-door models with ice and water in the door.',
+      laundry: 'Upstairs laundry rooms are standard in Ballantyne two-story homes. Front-load washers with musty door seals and clogged pump filters are frequent, and a leaking supply hose here can damage the ceiling below.',
+      cooking: 'Gas cooktops with separate wall ovens are common, and many kitchens have been upgraded to Wolf or Thermador. Oven igniters, convection fans and spark modules are typical repairs.',
+      dish: 'Bosch and KitchenAid dishwashers are popular in Ballantyne remodels. Drain errors, leak-protection shutoffs and door latches are the usual calls.',
+    },
+    nearby: ['southpark-appliance-repair', 'steele-creek-appliance-repair'],
+    premium: true,
+    updatedAt: '2026-10-14',
+  },
+  'south-end-appliance-repair': {
+    zips: ['28203'],
+    landmarks: ['LYNX Blue Line', 'Rail Trail', 'Atherton Mill', 'South Boulevard'],
+    applianceNotes: {
+      cold: 'South End apartments and condos use counter-depth and apartment-size refrigerators that sit in tight cabinet openings. Poor airflow around them is a common reason they run warm.',
+      laundry: 'Stacked and compact washer-dryer pairs in closets are the norm, often with long vent runs to the building exterior. Many dryer complaints here are vent restrictions.',
+      cooking: 'Electric and induction ranges dominate new South End buildings. Touch controls and over-the-range microwaves are frequent repairs.',
+      dish: 'Compact kitchens mean the dishwasher shares plumbing with a disposal and sink in a small space. Drain clogs and leaking door seals are common.',
+    },
+    nearby: ['dilworth-appliance-repair', 'uptown-charlotte-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'uptown-charlotte-appliance-repair': {
+    zips: ['28202'],
+    landmarks: ['Bank of America Stadium', 'Spectrum Center', 'First Ward Park', 'Romare Bearden Park'],
+    applianceNotes: {
+      cold: 'High-rise condos often have integrated or counter-depth refrigerators built into custom cabinetry. Repairs mean working within building rules, booking the service elevator and protecting finished floors.',
+      laundry: 'Uptown units have stacked or ventless washer-dryers in closets. Ventless heat-pump and condenser dryers have their own maintenance needs, including lint traps and condenser filters that owners rarely clean.',
+      cooking: 'Induction cooktops and wall ovens are common in Uptown towers where gas is limited. We diagnose induction power boards and touch controls.',
+      dish: 'Panel-ready dishwashers in condo kitchens are common. We remove and reinstall them carefully so the panels and countertops are not damaged.',
+    },
+    nearby: ['south-end-appliance-repair', 'noda-appliance-repair', 'elizabeth-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'myers-park-appliance-repair': {
+    zips: ['28207', '28209'],
+    landmarks: ['Queens University of Charlotte', 'Freedom Park', 'Queens Road West', 'Selwyn Avenue'],
+    applianceNotes: {
+      cold: 'Renovated Myers Park kitchens often pair column or built-in refrigeration with separate wine storage. Historic homes also keep older secondary refrigerators in pantries and basements that still deserve a repair.',
+      laundry: 'Laundry in Myers Park homes ranges from basement rooms in original houses to second-floor laundries added in renovations. Long vent runs through old walls need checking whenever a dryer underperforms.',
+      cooking: 'Pro-style ranges from Wolf, Viking and Thermador are common. Burner ignition, oven calibration and convection fans are typical repairs.',
+      dish: 'Many Myers Park kitchens have two dishwashers, often Miele or Bosch, sometimes panel-ready. Drain faults and leak-protection shutoffs are common.',
+    },
+    nearby: ['eastover-appliance-repair', 'dilworth-appliance-repair', 'southpark-appliance-repair'],
+    premium: true,
+    updatedAt: '2026-10-14',
+  },
+  'noda-appliance-repair': {
+    zips: ['28205', '28206'],
+    landmarks: ['North Davidson Street', '36th Street station', 'Charlotte Art League'],
+    applianceNotes: {
+      cold: 'Renovated mill houses in NoDa often have refrigerators squeezed into old kitchen footprints. Restricted airflow and older outlets are common contributing factors.',
+      laundry: 'Many NoDa homes put laundry in a back porch or closet addition. Vent routes through crawlspaces and crushed foil ducts are frequent finds.',
+      cooking: 'Gas has been added to many renovated NoDa kitchens, while apartments are electric. Igniters and burner switches are routine repairs.',
+      dish: 'Retrofitted dishwashers in older homes sometimes have improvised drain connections, which we check when a unit will not drain.',
+    },
+    nearby: ['plaza-midwood-appliance-repair', 'uptown-charlotte-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'plaza-midwood-appliance-repair': {
+    zips: ['28205'],
+    landmarks: ['Central Avenue', 'The Plaza', 'Commonwealth Park'],
+    applianceNotes: {
+      cold: 'Craftsman bungalows in Plaza Midwood usually have a single full-size refrigerator in a compact kitchen. Defrost problems and noisy fans are common, and most are affordable repairs.',
+      laundry: 'Laundry is often in a converted porch or hall closet. Older circuits and long or crushed dryer vents are common contributing factors.',
+      cooking: 'Plaza Midwood kitchens mix older electric ranges with newly added gas lines. Oven igniters and surface element switches are routine.',
+      dish: 'Dishwashers retrofitted into older cabinets can leak where they meet the floor. We check leveling and the door seal as well as the pump.',
+    },
+    nearby: ['noda-appliance-repair', 'elizabeth-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'dilworth-appliance-repair': {
+    zips: ['28203'],
+    landmarks: ['East Boulevard', 'Latta Park', 'Freedom Park'],
+    applianceNotes: {
+      cold: 'Historic Dilworth homes often combine a renovated kitchen with a second refrigerator in a basement or back porch. Both get the same careful diagnosis.',
+      laundry: 'Basement and back-porch laundry is common in Dilworth\'s older houses. Vent runs and water supply valves are often original and worth checking.',
+      cooking: 'Gas ranges are popular in renovated Dilworth kitchens. Weak igniters and burners that click without lighting are typical calls.',
+      dish: 'Dishwashers installed during renovations are often Bosch or KitchenAid. Drain errors and door latch problems are the most common repairs.',
+    },
+    nearby: ['south-end-appliance-repair', 'myers-park-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'university-city-appliance-repair': {
+    zips: ['28262', '28213'],
+    landmarks: ['UNC Charlotte', 'University Research Park', 'W.T. Harris Boulevard', 'Blue Line extension'],
+    applianceNotes: {
+      cold: 'Apartment-grade top-freezer refrigerators fill University City rentals, and defrost failures are the most common call. Single-family homes nearby have mid-range French-door models.',
+      laundry: 'Student housing laundry runs constantly. Top-load washers with lid-switch failures and dryers with worn belts and rollers are frequent.',
+      cooking: 'Electric ranges and over-the-range microwaves dominate apartments, and burner switches, elements and microwave door switches are routine repairs.',
+      dish: 'Rental dishwashers here are basic models that suffer from unscraped dishes; filters, drain pumps and door latches are typical.',
+    },
+    nearby: ['highland-creek-appliance-repair', 'noda-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'steele-creek-appliance-repair': {
+    zips: ['28273', '28278'],
+    landmarks: ['Charlotte Premium Outlets', 'Rivergate', 'Steele Creek Road', 'Lake Wylie'],
+    applianceNotes: {
+      cold: 'Steele Creek\'s newer homes have Samsung and LG French-door refrigerators, where ice maker freeze-ups and fan errors are common. Garage refrigerators are everywhere here and struggle in summer heat.',
+      laundry: 'Second-floor laundry rooms in new Steele Creek homes make leaks urgent. Drain pump filters and supply hoses are the first things we check.',
+      cooking: 'Builder slide-in ranges with touch controls are standard. Control boards and oven igniters are typical repairs.',
+      dish: 'Builder-grade dishwashers that are just out of warranty often need pumps or latches. We tell you whether a repair is worth it for the model.',
+    },
+    nearby: ['ballantyne-appliance-repair', 'south-end-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'southpark-appliance-repair': {
+    zips: ['28209', '28210', '28211'],
+    landmarks: ['SouthPark Mall', 'Phillips Place', 'Symphony Park', 'Morrison Boulevard'],
+    applianceNotes: {
+      cold: 'New SouthPark custom homes often have column refrigerators, freezers and wine storage built into cabinetry. Condo towers use integrated and counter-depth units that need careful access.',
+      laundry: 'Condo laundry closets with stacked units and long vent runs sit alongside full laundry rooms in new houses. Vent restrictions and drain pump faults are common.',
+      cooking: 'Pro-style gas ranges and induction cooktops share the district. Spark modules, igniters and induction power boards are typical repairs.',
+      dish: 'Miele, Bosch and panel-ready dishwashers are common. Leak-protection shutoffs and drain faults top the list.',
+    },
+    nearby: ['myers-park-appliance-repair', 'cotswold-appliance-repair', 'ballantyne-appliance-repair'],
+    premium: true,
+    updatedAt: '2026-10-14',
+  },
+  'elizabeth-appliance-repair': {
+    zips: ['28204'],
+    landmarks: ['Independence Park', 'Novant Health Presbyterian Medical Center', 'CityLYNX Gold Line', 'Elizabeth Avenue'],
+    applianceNotes: {
+      cold: 'Elizabeth\'s older kitchens and apartments use full-size and apartment-size refrigerators in tight spaces. Defrost failures and worn door gaskets are the usual repairs.',
+      laundry: 'Laundry in older Elizabeth homes is often retrofitted into closets or porches, with vents through crawlspaces. Breaker trips and long dry times are common complaints.',
+      cooking: 'Electric ranges are the norm in apartments, while restored homes often have gas. Surface element switches and oven igniters are frequent repairs.',
+      dish: 'Older apartments may have portable or retrofitted dishwashers. Drain hoses and inlet valves are common failure points.',
+    },
+    nearby: ['plaza-midwood-appliance-repair', 'myers-park-appliance-repair', 'uptown-charlotte-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'cotswold-appliance-repair': {
+    zips: ['28211'],
+    landmarks: ['Cotswold Village', 'Randolph Road', 'Sharon Amity Road'],
+    applianceNotes: {
+      cold: 'Remodeled Cotswold kitchens range from 1990s side-by-sides to new French-door models. Many homes keep an older second refrigerator in the garage or basement.',
+      laundry: 'Basement and carport laundry rooms are common in Cotswold ranches, often with long or aging vent ducts.',
+      cooking: 'Electric smooth-tops and induction ranges are common in remodels; gas appears where lines were added. Element switches and induction boards are typical repairs.',
+      dish: 'Dishwashers replaced during remodels are usually mid-range Bosch, KitchenAid or Whirlpool. Drain pumps and latches are common repairs.',
+    },
+    nearby: ['southpark-appliance-repair', 'eastover-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'highland-creek-appliance-repair': {
+    zips: ['28269'],
+    landmarks: ['Highland Creek Golf Club', 'I-485', 'Prosperity Village'],
+    applianceNotes: {
+      cold: 'Original-build refrigerators in Highland Creek have mostly been replaced once, often with French-door models. Garage refrigerators and freezers are common and suffer in summer heat and winter cold.',
+      laundry: 'Family laundry rooms here run daily. Top-load washers with worn actuators and front-loaders with door-seal mold are frequent calls.',
+      cooking: 'Electric ranges from the original builds are aging out, and replacements are often slide-in models with touch controls. Elements, igniters and control boards are typical repairs.',
+      dish: 'Dishwashers from the 2000s are at the age where pumps and controls fail. We give a straight repair-or-replace answer.',
+    },
+    nearby: ['university-city-appliance-repair'],
+    updatedAt: '2026-10-14',
+  },
+  'eastover-appliance-repair': {
+    zips: ['28207'],
+    landmarks: ['Mint Museum Randolph', 'Randolph Road', 'Providence Road'],
+    applianceNotes: {
+      cold: 'Eastover kitchens commonly have 42- or 48-inch built-in refrigerators, separate freezer and refrigerator columns and wine storage. Condenser cleaning, fans and sealed-system work on these units require model-specific parts.',
+      laundry: 'Large homes often have more than one laundry area, sometimes with premium front-loaders from Miele or Electrolux. Drain faults and door locks are typical.',
+      cooking: 'Pro-style ranges and rangetops with separate wall ovens are standard. Ignition, oven calibration and convection fan repairs are common.',
+      dish: 'Many Eastover homes have two dishwashers, often Miele or Bosch, sometimes panel-ready. Drain faults and leak-protection shutoffs are the usual calls.',
+    },
+    nearby: ['myers-park-appliance-repair', 'cotswold-appliance-repair', 'southpark-appliance-repair'],
+    premium: true,
+    updatedAt: '2026-10-14',
+  },
+};
+
+export type AreaWithProfile = Area & AreaProfile;
+
+export const areas: AreaWithProfile[] = [...baseAreas, ...newAreas].map(a => ({ ...a, ...areaProfiles[a.slug] }));
+
+export function getArea(slug: string): AreaWithProfile | undefined {
   return areas.find(a => a.slug === slug);
 }

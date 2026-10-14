@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://tryhomeheroes.com',
+  trailingSlash: 'never',
   compressHTML: true,
   build: {
     inlineStylesheets: 'always',

@@ -1,0 +1,102 @@
+---
+import SeoPageLayout from '../../../layouts/SeoPageLayout.astro';
+import FAQSection from '../../../components/seo/FAQSection.astro';
+import NearbyLinks from '../../../components/seo/NearbyLinks.astro';
+import SEOCTA from '../../../components/seo/SEOCTA.astro';
+import { articles, type Article } from '../../../data/articles';
+import { business, businessGraph } from '../../../data/business';
+import { breadcrumbSchema, faqSchema, abs } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return articles.map(article => ({ params: { slug: article.slug }, props: { article } }));
+}
+
+const { article } = Astro.props as { article: Article };
+const path = `/blog/useful-info/${article.slug}`;
+const canonical = abs(path);
+const fmt = (d: string) => new Date(`${d}T12:00:00`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph(),
+    {
+      '@type': 'BlogPosting',
+      '@id': `${canonical}#article`,
+      headline: article.title,
+      description: article.description,
+      url: canonical,
+      mainEntityOfPage: canonical,
+      datePublished: article.publishedAt,
+      dateModified: article.updatedAt,
+      author: { '@id': abs('/#org') },
+      publisher: { '@id': abs('/#org') },
+      image: business.image,
+    },
+    faqSchema(article.faq),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Blog', path: '/blog' },
+      { name: 'Useful Info', path: '/blog/useful-info' },
+      { name: article.title, path },
+    ]),
+  ],
+};
+---
+
+<SeoPageLayout title={article.seoTitle} description={article.description} canonical={canonical} schema={schema} ogType="article">
+  <section style="background:#080f1e;padding:64px 24px 56px">
+    <div style="max-width:820px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;font-size:13px">
+          <li><a href="/" style="color:rgba(255,255,255,0.5);text-decoration:none">Home</a></li>
+          <li style="color:rgba(255,255,255,0.3)">›</li>
+          <li><a href="/blog/useful-info" style="color:rgba(255,255,255,0.5);text-decoration:none">Useful Info</a></li>
+        </ol>
+      </nav>
+      <div class="sec-label" style="margin-bottom:14px">{article.category} · {article.readMinutes} min read</div>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,46px);font-weight:900;margin:0 0 16px;line-height:1.12;letter-spacing:-0.03em">{article.title}</h1>
+      <p style="color:rgba(255,255,255,0.55);font-size:14px;margin:0">
+        By the {business.name} team · Updated <time datetime={article.updatedAt}>{fmt(article.updatedAt)}</time>
+      </p>
+    </div>
+  </section>
+
+  <article class="bg-white-section" style="padding:48px 24px 64px">
+    <div style="max-width:760px;margin:0 auto" class="art">
+      <div class="art-answer">
+        <div class="art-answer-label">Short answer</div>
+        <p>{article.answer}</p>
+      </div>
+      {article.sections.map(sec => (
+        <section>
+          <h2>{sec.h2}</h2>
+          {sec.paragraphs.map(p => <p>{p}</p>)}
+          {sec.bullets && <ul>{sec.bullets.map(b => <li>{b}</li>)}</ul>}
+        </section>
+      ))}
+      <div class="art-cta">
+        <p>Still not working? Same-day appointments {business.hours.label}. ${business.diagnosticFee} diagnostic, waived when you approve the repair.</p>
+        <a href={article.relatedService.href}>{article.relatedService.label}</a>
+      </div>
+    </div>
+  </article>
+
+  <FAQSection faqs={article.faq} heading="Questions Homeowners Ask" />
+
+  <NearbyLinks heading="Related guides" links={article.related.map(r => ({ name: r.title, href: r.href }))} />
+
+  <SEOCTA phone={business.phone} phoneHref={business.phoneHref} />
+</SeoPageLayout>
+
+<style>
+  .art h2 { font-size: clamp(20px, 2.5vw, 27px); font-weight: 800; color: #060c19; margin: 38px 0 12px; letter-spacing: -0.02em; }
+  .art p { font-size: 16.5px; color: #2f3e52; line-height: 1.85; margin: 0 0 14px; }
+  .art ul { margin: 6px 0 14px; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; color: #2f3e52; line-height: 1.7; }
+  .art-answer { border-left: 4px solid #b01616; background: #f8f9fc; border-radius: 0 12px 12px 0; padding: 20px 24px; }
+  .art-answer p { margin: 0; }
+  .art-answer-label { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #b01616; margin-bottom: 8px; }
+  .art-cta { margin-top: 36px; padding: 22px 24px; border-radius: 14px; background: #060c19; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+  .art-cta p { color: rgba(255,255,255,0.8); margin: 0; font-size: 15px; }
+  .art-cta a { display: inline-block; padding: 12px 20px; border-radius: 10px; background: #b01616; color: #fff; font-weight: 800; text-decoration: none; white-space: nowrap; }
+</style>

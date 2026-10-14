@@ -9,7 +9,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check:seo": "node scripts/check-seo.mjs",
+    "check:dupes": "node scripts/check-duplicates.mjs",
+    "verify": "astro build && node scripts/check-seo.mjs && node scripts/check-duplicates.mjs",
+    "stats": "node scripts/build-job-stats.mjs",
+    "watch:competitors": "node scripts/competitor-watch.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",

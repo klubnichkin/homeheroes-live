@@ -1,0 +1,142 @@
+{
+  "cities": {
+    "charlotte": "charlotte-nc",
+    "huntersville": "huntersville-nc",
+    "cornelius": "cornelius-nc",
+    "davidson": "davidson-nc",
+    "mooresville": "mooresville-nc",
+    "matthews": "matthews-nc",
+    "mint hill": "mint-hill-nc",
+    "pineville": "pineville-nc",
+    "concord": "concord-nc",
+    "kannapolis": "kannapolis-nc",
+    "belmont": "belmont-nc",
+    "gastonia": "gastonia-nc"
+  },
+  "neighborhoods": {
+    "ballantyne": "ballantyne-appliance-repair",
+    "south end": "south-end-appliance-repair",
+    "uptown": "uptown-charlotte-appliance-repair",
+    "myers park": "myers-park-appliance-repair",
+    "noda": "noda-appliance-repair",
+    "north davidson": "noda-appliance-repair",
+    "plaza midwood": "plaza-midwood-appliance-repair",
+    "dilworth": "dilworth-appliance-repair",
+    "university city": "university-city-appliance-repair",
+    "steele creek": "steele-creek-appliance-repair",
+    "southpark": "southpark-appliance-repair",
+    "south park": "southpark-appliance-repair",
+    "elizabeth": "elizabeth-appliance-repair",
+    "cotswold": "cotswold-appliance-repair",
+    "highland creek": "highland-creek-appliance-repair",
+    "eastover": "eastover-appliance-repair"
+  },
+  "appliances": {
+    "refrigerator": {
+      "service": "refrigerator-repair",
+      "subject": "refrigerator"
+    },
+    "fridge": {
+      "service": "refrigerator-repair",
+      "subject": "refrigerator"
+    },
+    "freezer": {
+      "service": "freezer-repair",
+      "subject": "freezer"
+    },
+    "washer": {
+      "service": "washer-repair",
+      "subject": "washer"
+    },
+    "washing machine": {
+      "service": "washer-repair",
+      "subject": "washer"
+    },
+    "dryer": {
+      "service": "dryer-repair",
+      "subject": "dryer"
+    },
+    "dishwasher": {
+      "service": "dishwasher-repair",
+      "subject": "dishwasher"
+    },
+    "oven": {
+      "service": "oven-repair",
+      "subject": "oven"
+    },
+    "wall oven": {
+      "service": "oven-repair",
+      "subject": "oven"
+    },
+    "range": {
+      "service": "stove-repair",
+      "subject": "range and stove"
+    },
+    "stove": {
+      "service": "stove-repair",
+      "subject": "range and stove"
+    },
+    "cooktop": {
+      "service": "electric-cooktop-repair",
+      "subject": "cooktop"
+    },
+    "microwave": {
+      "service": "microwave-repair",
+      "subject": "microwave"
+    },
+    "range hood": {
+      "service": "range-hood-repair",
+      "subject": "range hood"
+    },
+    "ice maker": {
+      "service": "ice-maker-repair",
+      "subject": "ice maker"
+    },
+    "wine cooler": {
+      "service": "wine-cooler-repair",
+      "subject": "wine cooler"
+    },
+    "dish washer": {
+      "service": "dishwasher-repair",
+      "subject": "dishwasher"
+    }
+  },
+  "groups": {
+    "refrigerator-repair": "cold",
+    "freezer-repair": "cold",
+    "ice-maker-repair": "cold",
+    "wine-cooler-repair": "cold",
+    "washer-repair": "laundry",
+    "dryer-repair": "laundry",
+    "dishwasher-repair": "dish",
+    "oven-repair": "cooking",
+    "stove-repair": "cooking",
+    "electric-cooktop-repair": "cooking",
+    "microwave-repair": "cooking",
+    "range-hood-repair": "cooking"
+  },
+  "brands": {
+    "samsung": "Samsung",
+    "lg": "LG",
+    "whirlpool": "Whirlpool",
+    "ge": "GE",
+    "general electric": "GE",
+    "ge profile": "GE",
+    "ge cafe": "GE",
+    "cafe": "GE",
+    "monogram": "GE",
+    "maytag": "Maytag",
+    "frigidaire": "Frigidaire",
+    "kitchenaid": "KitchenAid",
+    "bosch": "Bosch",
+    "sub-zero": "Sub-Zero",
+    "subzero": "Sub-Zero",
+    "wolf": "Wolf",
+    "viking": "Viking",
+    "thermador": "Thermador",
+    "miele": "Miele",
+    "kenmore": "Kenmore",
+    "amana": "Amana",
+    "electrolux": "Electrolux"
+  }
+}

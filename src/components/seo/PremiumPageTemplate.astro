@@ -1,0 +1,157 @@
+---
+import type { PremiumPage } from '../../data/premium';
+import { premiumPages } from '../../data/premium';
+import { business, businessGraph, servicePromise } from '../../data/business';
+import { getCity } from '../../data/cities';
+import { breadcrumbSchema, faqSchema, abs } from '../../lib/seo';
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import QuickAnswer from './QuickAnswer.astro';
+import LocalJobStats from './LocalJobStats.astro';
+import FAQSection from './FAQSection.astro';
+import NearbyLinks from './NearbyLinks.astro';
+import SEOCTA from './SEOCTA.astro';
+import StickyMobileCTA from '../cro/StickyMobileCTA.astro';
+
+interface Props {
+  page: PremiumPage;
+}
+const { page } = Astro.props;
+const { brand, location } = page;
+
+const canonical = abs(page.path);
+const city = getCity(location.citySlug)!;
+const placeLabel = location.citySlug === 'charlotte-nc' ? `${location.name}, Charlotte` : `${location.name}, NC`;
+const title = `${brand.name} Repair ${location.name} | ${location.citySlug === 'charlotte-nc' ? 'Charlotte' : 'NC'} | HomeHeroes`;
+const description = `${brand.name} repair in ${placeLabel}: ${brand.products}. Same-day visits, $${business.diagnosticFee} diagnostic waived with repair. Call ${business.phone}.`;
+const h1 = `${brand.name} Repair in ${placeLabel}`;
+
+const quickAnswer = `HomeHeroes repairs ${brand.name} ${brand.products} in ${location.name} (${location.zips.join(', ')}). ${servicePromise}`;
+
+const faqs = [
+  ...location.faq,
+  {
+    q: `How much does ${brand.name} repair cost in ${location.name}?`,
+    a: `The diagnostic visit is $${business.diagnosticFee} and is waived when you approve the repair. ${brand.name} parts are model-specific, so we quote the full repair before any work begins.`,
+  },
+];
+
+const otherLocations = premiumPages
+  .filter(p => p.brand.key === brand.key && p.location.key !== location.key)
+  .map(p => ({ name: `${brand.name} repair in ${p.location.name}`, href: p.path }));
+const otherBrand = premiumPages.find(p => p.brand.key !== brand.key && p.location.key === location.key);
+
+const locationHub = location.areaSlug ? `/charlotte-nc/areas/${location.areaSlug}` : city.hubPath;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph(),
+    {
+      '@type': 'Service',
+      '@id': `${canonical}#service`,
+      name: `${brand.name} Repair in ${placeLabel}`,
+      serviceType: 'Appliance repair',
+      brand: { '@type': 'Brand', name: brand.name },
+      url: canonical,
+      provider: { '@id': abs('/#business') },
+      areaServed: { '@type': 'Place', name: placeLabel, address: { '@type': 'PostalAddress', postalCode: location.zips[0], addressRegion: 'NC', addressCountry: 'US' } },
+    },
+    faqSchema(faqs),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Appliance Repair Charlotte', path: '/appliance-repair-charlotte' },
+      { name: `${brand.name} Repair`, path: `/charlotte-nc/${brand.brandSlug}` },
+      { name: location.name, path: page.path },
+    ]),
+  ],
+};
+---
+
+<SeoPageLayout title={title} description={description} canonical={canonical} schema={schema}>
+  <section data-track-location="hero" style="background:#080f1e;padding:64px 24px 60px">
+    <div style="max-width:960px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px">
+          <li><a href="/" style="color:rgba(255,255,255,0.5);text-decoration:none">Home</a></li>
+          <li style="color:rgba(255,255,255,0.3)">›</li>
+          <li><a href={`/charlotte-nc/${brand.brandSlug}`} style="color:rgba(255,255,255,0.5);text-decoration:none">{brand.name} Repair</a></li>
+          <li style="color:rgba(255,255,255,0.3)">›</li>
+          <li style="color:rgba(255,255,255,0.8)">{location.name}</li>
+        </ol>
+      </nav>
+      <div style="font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626;margin-bottom:14px">Premium Appliance Service</div>
+      <h1 style="font-size:clamp(28px,4.5vw,50px);font-weight:900;color:#fff;margin:0 0 20px;line-height:1.1;letter-spacing:-0.03em">{h1}</h1>
+      <p style="font-size:clamp(15px,1.8vw,17.5px);color:rgba(255,255,255,0.75);line-height:1.75;margin:0 0 16px;max-width:780px">{location.homes} {brand.name} {brand.products} are part of many of these homes, and we service them on site.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:22px">
+        <a href={business.phoneHref} style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:16px;border-radius:10px;text-decoration:none">Call {business.phone}</a>
+        <a href="#contact-form" style="display:inline-flex;align-items:center;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:#fff;font-weight:600;font-size:16px;border-radius:10px;text-decoration:none">Book Online</a>
+      </div>
+    </div>
+  </section>
+
+  <QuickAnswer text={quickAnswer} />
+
+  <section class="bg-white-section" style="padding:64px 24px">
+    <div style="max-width:900px;margin:0 auto">
+      <div class="sec-label" style="margin-bottom:14px">{location.name} Kitchens</div>
+      <h2 class="pr-h2">{brand.name} in {location.name} Homes</h2>
+      <p class="pr-p">{location.brandNotes[brand.key]}</p>
+      <p class="pr-p">{location.kitchens}</p>
+      <h3 class="pr-h3">How we work in {location.name}</h3>
+      <p class="pr-p">{location.access}</p>
+      <p class="pr-p">{location.climate}</p>
+    </div>
+  </section>
+
+  <section class="bg-pearl-section" style="padding:64px 24px">
+    <div style="max-width:1100px;margin:0 auto" class="pr-two-col">
+      <div>
+        <div class="sec-label" style="margin-bottom:14px">What We Service</div>
+        <h2 class="pr-h2">{brand.name} Products We Repair</h2>
+        <ul class="pr-list">{brand.models.map(m => <li>{m}</li>)}</ul>
+        <p style="margin:18px 0 0"><a href={`/charlotte-nc/${brand.brandAppliancePage}`} style="font-weight:700;color:#b01616;text-decoration:none">Full {brand.name} repair guide, codes and costs →</a></p>
+      </div>
+      <div>
+        <div class="sec-label" style="margin-bottom:14px">Typical Repairs</div>
+        <h2 class="pr-h2">Most Common {brand.name} Service</h2>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          {brand.commonWork.map(w => (
+            <div class="card" style="padding:18px 20px">
+              <div style="font-size:15px;font-weight:800;color:#060c19;margin-bottom:4px">{w.title}</div>
+              <div style="font-size:14px;color:#4a5568;line-height:1.6">{w.detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <LocalJobStats
+    sliceKey={location.areaSlug ? `brand:${brand.key}|area:${location.areaSlug}` : `brand:${brand.key}|city:${location.citySlug}`}
+    subject={brand.name}
+    placeName={location.name}
+  />
+
+  <FAQSection faqs={faqs} heading={`${brand.name} Repair in ${location.name} — FAQ`} />
+
+  <NearbyLinks
+    heading="Related"
+    links={[
+      { name: `Appliance repair in ${location.name}`, href: locationHub },
+      ...(otherBrand ? [{ name: `${otherBrand.brand.name} repair in ${location.name}`, href: otherBrand.path }] : []),
+      ...otherLocations,
+    ]}
+  />
+
+  <SEOCTA phone={business.phone} phoneHref={business.phoneHref} />
+  <StickyMobileCTA phone={business.phone} phoneHref={business.phoneHref} />
+</SeoPageLayout>
+
+<style>
+  .pr-h2 { font-size: clamp(20px, 2.6vw, 30px); font-weight: 800; color: #060c19; margin: 0 0 18px; letter-spacing: -0.02em; }
+  .pr-h3 { font-size: 18px; font-weight: 800; color: #060c19; margin: 26px 0 10px; }
+  .pr-p { font-size: 16px; color: #374151; line-height: 1.8; margin: 0 0 14px; }
+  .pr-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: #374151; }
+  .pr-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
+  @media (max-width: 767px) { .pr-two-col { grid-template-columns: 1fr; gap: 32px; } }
+</style>

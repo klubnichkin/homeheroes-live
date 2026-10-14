@@ -1,8 +1,18 @@
 ---
 import type { ServicePage } from '../../data/services';
+import { serviceMeta } from '../../data/services';
 import type { City } from '../../data/cities';
+import { getCity } from '../../data/cities';
+import { areas } from '../../data/areas';
+import { business, businessGraph, servicePromise } from '../../data/business';
+import { fill, pickStable, pickOne, humanList, breadcrumbSchema, faqSchema, abs } from '../../lib/seo';
 import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
 import SEOHero from './SEOHero.astro';
+import QuickAnswer from './QuickAnswer.astro';
+import LocalApplianceNotes from './LocalApplianceNotes.astro';
+import LocalJobStats from './LocalJobStats.astro';
+import CoverageDetails from './CoverageDetails.astro';
+import NearbyLinks from './NearbyLinks.astro';
 import FAQSection from './FAQSection.astro';
 import InternalLinks from './InternalLinks.astro';
 import SEOCTA from './SEOCTA.astro';
@@ -10,111 +20,157 @@ import CitationProfiles from './CitationProfiles.astro';
 import InlineCTA from '../cro/InlineCTA.astro';
 import StickyMobileCTA from '../cro/StickyMobileCTA.astro';
 
+interface LinkItem { title: string; href: string; description?: string }
+
 interface Props {
   service: ServicePage;
   city: City;
-  relatedServiceLinks: { title: string; href: string; description?: string }[];
-  relatedBrandLinks: { title: string; href: string; description?: string }[];
-  relatedSymptomLinks: { title: string; href: string; description?: string }[];
+  relatedServiceLinks: LinkItem[];
+  relatedBrandLinks: LinkItem[];
+  relatedSymptomLinks: LinkItem[];
+  brandApplianceLinks?: LinkItem[];
   showCitationProfiles?: boolean;
 }
 
-const { service, city, relatedServiceLinks, relatedBrandLinks, relatedSymptomLinks, showCitationProfiles = false } = Astro.props;
+const {
+  service,
+  city,
+  relatedServiceLinks,
+  relatedBrandLinks,
+  relatedSymptomLinks,
+  brandApplianceLinks = [],
+  showCitationProfiles = false,
+} = Astro.props;
 
-const canonical = `https://tryhomeheroes.com/${city.slug}/${service.slug}`;
+const isCharlotte = city.slug === 'charlotte-nc';
+const meta = serviceMeta[service.slug] ?? { appliance: service.name.replace(/ Repair$/, ''), group: 'cold' as const };
+const noun = meta.appliance;
+const nounLower = noun.toLowerCase();
+const canonical = abs(`/${city.slug}/${service.slug}`);
+const seed = `${city.slug}/${service.slug}`;
 
-// Image position per source image — single source of truth for path → crop mapping
+// Typical ranges published on /charlotte-nc/appliance-repair-cost.
+const rangeByService: Record<string, string> = {
+  'refrigerator-repair': '$89–$300',
+  'washer-repair': '$89–$250',
+  'dryer-repair': '$89–$200',
+  'dishwasher-repair': '$89–$280',
+  'oven-repair': '$89–$300',
+  'stove-repair': '$89–$300',
+  'microwave-repair': '$80–$250',
+};
+const range = rangeByService[service.slug];
+
+const title = isCharlotte ? fill(service.seoTitle, city) : `${service.name} ${city.name}, NC | Same-Day | HomeHeroes`;
+const description = fill(service.metaDescription, city);
+const h1 = fill(service.h1, city);
+
+const suburbIntroAddon = isCharlotte
+  ? ''
+  : ' ' + pickOne(
+      [
+        `In ${city.name} we work across ${humanList(city.neighborhoods.slice(0, 3))} and every ZIP code in town (${city.zips.join(', ')}).`,
+        `Our ${city.name} visits cover ${humanList(city.neighborhoods.slice(0, 3))} and the rest of ${city.zips.join(' and ')}.`,
+        `We reach every part of ${city.name}, from ${city.neighborhoods[0]} to ${city.neighborhoods[city.neighborhoods.length - 1]}.`,
+      ],
+      seed,
+    );
+const intro = fill(service.intro, city) + suburbIntroAddon;
+
+const quickAnswer =
+  `${service.name} in ${city.displayName}: ${servicePromise}` +
+  (range ? ` Most ${nounLower} repairs cost ${range} including the visit.` : '') +
+  ` Call ${business.phone} to book.`;
+
+// Charlotte gets the full guide; suburb pages keep a stable subset so the shared text stays small.
+const firstSentence = (t: string) => (t.match(/^.*?[.!?](\s|$)/)?.[0] ?? t).trim();
+const problems = isCharlotte
+  ? service.commonProblems
+  : pickStable(service.commonProblems, 4, seed).map(p => ({ ...p, detail: firstSentence(p.detail) }));
+const { repairWhen, replaceWhen } = service.repairVsReplace;
+
+const supplementalFaqs = [
+  {
+    q: `How much does ${nounLower} repair cost in ${city.displayName}?`,
+    a: `${service.name} in ${city.displayName} typically costs ${range ?? '$89–$350'} depending on the failure and parts required. HomeHeroes charges an $${business.diagnosticFee} diagnostic fee that is waived when you proceed with the repair. Call ${business.phone} for a same-day estimate.`,
+  },
+  {
+    q: `Do you offer same-day ${nounLower} repair in ${city.displayName}?`,
+    a: `Yes — HomeHeroes provides same-day ${nounLower} repair in ${city.displayName}, ${business.hours.label}. Call ${business.phone} to check today's availability.`,
+  },
+];
+const serviceFaqs = (isCharlotte ? service.faq : []).map(f => ({
+  q: fill(f.q, city),
+  a: fill(f.a, city),
+}));
+const cityFaqs = isCharlotte ? [] : pickStable(city.faq, 3, `${seed}:c`);
+const faqs = [...supplementalFaqs, ...cityFaqs, ...serviceFaqs];
+
+const symptomLinks = isCharlotte ? relatedSymptomLinks : pickStable(relatedSymptomLinks, 3, `${seed}:s`);
+const brandLinks = isCharlotte ? relatedBrandLinks : pickStable(relatedBrandLinks, 4, `${seed}:b`).map(({ title, href }) => ({ title, href }));
+
+const sameServiceNearby = city.nearby
+  .map(slug => getCity(slug))
+  .filter((c): c is City => Boolean(c))
+  .map(c => ({ name: `${service.name} in ${c.name}`, href: `/${c.slug}/${service.slug}` }));
+
+const neighborhoodServiceLinks = isCharlotte
+  ? areas.map(a => ({ name: a.name, href: `/charlotte-nc/areas/${a.slug}` }))
+  : [];
+
+const breadcrumbs = [
+  { label: isCharlotte ? 'Appliance Repair Charlotte' : `${city.name}, NC`, href: city.hubPath },
+  { label: service.name, href: '#' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph(),
+    {
+      '@type': 'Service',
+      '@id': `${canonical}#service`,
+      name: `${service.name} in ${city.displayName}`,
+      serviceType: service.name,
+      url: canonical,
+      provider: { '@id': abs('/#business') },
+      areaServed: {
+        '@type': 'City',
+        name: city.name,
+        containedInPlace: { '@type': 'AdministrativeArea', name: `${city.county}, ${city.stateAbbr}` },
+      },
+      offers: {
+        '@type': 'Offer',
+        description: `$${business.diagnosticFee} diagnostic visit, waived when the repair is approved`,
+        price: String(business.diagnosticFee),
+        priceCurrency: 'USD',
+      },
+    },
+    faqSchema(faqs),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: isCharlotte ? 'Appliance Repair Charlotte' : `Appliance Repair ${city.name}`, path: city.hubPath },
+      { name: service.name, path: `/${city.slug}/${service.slug}` },
+    ]),
+  ],
+};
+
 const imagePosMap: Record<string, string> = {
-  '/images/hero/hero-technician.webp':         '18% 45%',
+  '/images/hero/hero-technician.webp': '18% 45%',
   '/images/services/washer-dryer-repair.webp': '8% 50%',
-  '/images/services/dishwasher-repair.webp':   '50% 72%',
-  '/images/services/oven-range-repair.webp':   '50% 60%',
-  '/images/services/microwave-repair.webp':    '50% 28%',
+  '/images/services/dishwasher-repair.webp': '50% 72%',
+  '/images/services/oven-range-repair.webp': '50% 60%',
+  '/images/services/microwave-repair.webp': '50% 28%',
   '/images/services/emergency-repair-tech.webp': '50% 18%',
 };
 const imagePos = imagePosMap[service.imagePath] ?? '50% 50%';
-const imageAlt = `${service.name} technician in ${city.displayName}, NC — HomeHeroes`;
-
-// City-specific supplemental FAQs injected at template level
-// so every city (Huntersville, Mooresville, etc.) gets correctly localised schema questions
-const citySupplementalFaqs = [
-  {
-    q: `How much does ${service.name.replace(' Repair', '').toLowerCase()} repair cost in ${city.displayName}?`,
-    a: `${service.name} in ${city.displayName} typically costs $89–$350 depending on the specific failure and parts required. HomeHeroes charges an $89 diagnostic fee that is waived when you proceed with the repair. Call ${city.phone} for a same-day estimate.`,
-  },
-  {
-    q: `Does HomeHeroes offer same-day ${service.name.replace(' Repair', '').toLowerCase()} repair in ${city.displayName}?`,
-    a: `Yes — HomeHeroes provides same-day ${service.name.replace(' Repair', '').toLowerCase()} repair in ${city.displayName}. Most appointments are confirmed same-day. Call ${city.phone} to check today's availability.`,
-  },
-  {
-    q: `What ${service.name.replace(' Repair', '').toLowerCase()} brands do you service in ${city.displayName}?`,
-    a: `HomeHeroes technicians in ${city.displayName} service all major ${service.name.replace(' Repair', '').toLowerCase()} brands including Samsung, LG, Whirlpool, GE, Maytag, Frigidaire, KitchenAid, Bosch, Sub-Zero, and Viking. Call ${city.phone} to confirm parts availability for your model.`,
-  },
-];
-
-// Merge city-specific questions with the static data FAQs
-// Deduplicate by filtering out static FAQs that have the same core topic
-const allFaqsForSchema = [...citySupplementalFaqs, ...service.faq];
-
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      "name": service.name,
-      "serviceType": service.name,
-      "provider": {
-        "@type": "LocalBusiness",
-        "@id": "https://tryhomeheroes.com/#business",
-        "name": "HomeHeroes Appliance Repair",
-        "telephone": city.phoneHref.replace('tel:', ''),
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": city.name,
-          "addressRegion": city.stateAbbr,
-          "addressCountry": "US"
-        }
-      },
-      "areaServed": { "@type": "City", "name": city.name },
-      "url": canonical,
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": allFaqsForSchema.map((f: { q: string; a: string }) => ({
-        "@type": "Question",
-        "name": f.q,
-        "acceptedAnswer": { "@type": "Answer", "text": f.a }
-      }))
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryhomeheroes.com/" },
-        { "@type": "ListItem", "position": 2, "name": city.displayName, "item": `https://tryhomeheroes.com/${city.slug}/appliance-repair` },
-        { "@type": "ListItem", "position": 3, "name": service.name, "item": canonical }
-      ]
-    }
-  ]
-};
-
-const breadcrumbs = [
-  { label: city.displayName, href: `/${city.slug}/appliance-repair` },
-  { label: service.name, href: '#' },
-];
+const imageAlt = `${service.name} technician in ${city.displayName} — HomeHeroes`;
 ---
 
-<SeoPageLayout
-  title={service.seoTitle}
-  description={service.metaDescription}
-  canonical={canonical}
-  schema={schema}
-  ogImage={service.imagePath}
-  heroImage={service.imagePath}
->
-  <!-- 1. Hero -->
+<SeoPageLayout title={title} description={description} canonical={canonical} schema={schema} ogImage={service.imagePath} heroImage={service.imagePath}>
   <SEOHero
-    h1={service.h1}
-    intro={service.intro}
+    h1={h1}
+    intro={intro}
     cityName={city.displayName}
     phone={city.phone}
     phoneHref={city.phoneHref}
@@ -124,17 +180,26 @@ const breadcrumbs = [
     imagePos={imagePos}
   />
 
-  <!-- 2. Common Problems -->
+  <QuickAnswer text={quickAnswer} />
+
+  <LocalApplianceNotes
+    placeName={city.name}
+    notes={city.applianceNotes}
+    groups={[meta.group]}
+    heading={isCharlotte ? `${noun} Repair Across Charlotte` : `${noun} Repair in ${city.name}: What to Know`}
+  />
+
+  <!-- Common problems -->
   <section class="bg-white-section" style="padding:72px 24px">
     <div style="max-width:1200px;margin:0 auto">
       <div style="text-align:center;margin-bottom:48px">
         <div class="sec-label" style="margin-bottom:14px">Common Problems</div>
         <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">
-          Common {service.name} Issues We See in {city.name}
+          Common {noun} Problems We Fix in {city.name}
         </h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
-        {service.commonProblems.map(problem => (
+        {problems.map(problem => (
           <div class="card" style="padding:28px">
             <div style="display:flex;align-items:flex-start;gap:14px">
               <div style="width:36px;height:36px;border-radius:8px;background:#fef2f2;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
@@ -142,7 +207,7 @@ const breadcrumbs = [
               </div>
               <div>
                 <h3 style="font-size:16px;font-weight:700;color:#060c19;margin:0 0 8px">{problem.title}</h3>
-                <p style="font-size:14px;color:#4a5568;line-height:1.65;margin:0">{problem.detail}</p>
+                <p style="font-size:14px;color:#4a5568;line-height:1.65;margin:0">{fill(problem.detail, city)}</p>
               </div>
             </div>
           </div>
@@ -151,73 +216,65 @@ const breadcrumbs = [
     </div>
   </section>
 
-  <!-- 3. Age Timeline -->
-  <section class="bg-pearl-section" style="padding:72px 24px">
-    <div style="max-width:1200px;margin:0 auto">
-      <div style="text-align:center;margin-bottom:48px">
-        <div class="sec-label" style="margin-bottom:14px">Age & Repair Guide</div>
-        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">
-          How {service.name} Failures Change With Age
-        </h2>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
-        {service.ageTimeline.map((tier, i) => (
-          <div class="card" style="padding:28px;border-top:4px solid #b01616">
-            <div style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">{tier.range}</div>
-            <div style="font-size:18px;font-weight:800;color:#060c19;margin-bottom:16px">{tier.label}</div>
-            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-              {tier.issues.map(issue => (
-                <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.5">
-                  <svg width="16" height="16" fill="#b01616" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                  {issue}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <LocalJobStats sliceKey={`city:${city.slug}|service:${service.slug}`} subject={nounLower} placeName={city.name} />
 
-  <!-- 4. Repair vs Replace -->
+  {isCharlotte && (
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:1200px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="sec-label" style="margin-bottom:14px">Age & Repair Guide</div>
+          <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0;letter-spacing:-0.02em">
+            How {noun} Failures Change With Age
+          </h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+          {service.ageTimeline.map(tier => (
+            <div class="card" style="padding:28px;border-top:4px solid #b01616">
+              <div style="font-size:13px;font-weight:700;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">{tier.range}</div>
+              <div style="font-size:18px;font-weight:800;color:#060c19;margin-bottom:16px">{tier.label}</div>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+                {tier.issues.map(issue => (
+                  <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.5">
+                    <svg width="16" height="16" fill="#b01616" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    {issue}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {isCharlotte ? (
   <section class="bg-navy-section" style="padding:72px 24px">
     <div style="max-width:1200px;margin:0 auto">
       <div style="text-align:center;margin-bottom:48px">
         <div class="sec-label" style="margin-bottom:14px">Decision Guide</div>
         <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;margin:0;letter-spacing:-0.02em">
-          Should You Repair or Replace Your {service.name}?
+          Should You Repair or Replace Your {noun}?
         </h2>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div class="rvr-grid">
         <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-            <div style="width:32px;height:32px;background:#16a34a;border-radius:8px;display:flex;align-items:center;justify-content:center">
-              <svg width="18" height="18" fill="#fff" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            </div>
-            <h3 style="color:#fff;font-size:18px;font-weight:700;margin:0">Repair When…</h3>
-          </div>
+          <h3 style="color:#fff;font-size:18px;font-weight:700;margin:0 0 20px">Repair when…</h3>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
-            {service.repairVsReplace.repairWhen.map(point => (
+            {repairWhen.map(point => (
               <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,0.8);line-height:1.55">
                 <svg width="16" height="16" fill="#4ade80" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                {point}
+                {fill(point, city)}
               </li>
             ))}
           </ul>
         </div>
-
         <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-            <div style="width:32px;height:32px;background:#dc2626;border-radius:8px;display:flex;align-items:center;justify-content:center">
-              <svg width="18" height="18" fill="#fff" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-            </div>
-            <h3 style="color:#fff;font-size:18px;font-weight:700;margin:0">Replace When…</h3>
-          </div>
+          <h3 style="color:#fff;font-size:18px;font-weight:700;margin:0 0 20px">Replace when…</h3>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
-            {service.repairVsReplace.replaceWhen.map(point => (
+            {replaceWhen.map(point => (
               <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,0.8);line-height:1.55">
                 <svg width="16" height="16" fill="#f87171" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                {point}
+                {fill(point, city)}
               </li>
             ))}
           </ul>
@@ -225,70 +282,84 @@ const breadcrumbs = [
       </div>
     </div>
   </section>
+  ) : (
+    <section class="bg-white-section" style="padding:8px 24px 40px">
+      <div style="max-width:1200px;margin:0 auto">
+        <p style="font-size:15px;color:#374151;line-height:1.7;margin:0">
+          Wondering whether your {nounLower} is worth fixing? Our <a href={`/charlotte-nc/${service.slug}`} style="color:#b01616;font-weight:700">complete {nounLower} repair guide</a> covers failures by age and when replacement makes more sense, and the <a href="/charlotte-nc/appliance-repair-cost" style="color:#b01616;font-weight:700">Charlotte-area cost guide</a> lists typical prices.
+        </p>
+      </div>
+    </section>
+  )}
 
-  <!-- 4b. Inline CTA — after visitor reads repair vs replace, nudge to convert -->
-  <section class="bg-white-section" style="padding:0 24px 0">
+  <section class="bg-white-section" style="padding:0 24px">
     <div style="max-width:1200px;margin:0 auto">
       <InlineCTA phone={city.phone} phoneHref={city.phoneHref} variant="repair" />
     </div>
   </section>
 
-  <!-- 5. Common Symptom Guides -->
-  {relatedSymptomLinks.length > 0 && (
+  {brandApplianceLinks.length > 0 && (
     <section class="bg-white-section" style="padding:64px 24px">
-      <InternalLinks
-        heading={`Common ${service.name.replace(' Repair', '')} Problems — Symptom Guides`}
-        links={relatedSymptomLinks}
-      />
+      <InternalLinks heading={`${noun} Repair by Brand`} links={brandApplianceLinks} />
     </section>
   )}
 
-  <!-- 6. Related Services -->
+  {symptomLinks.length > 0 && (
+    <section class="bg-white-section" style="padding:64px 24px">
+      <InternalLinks heading={`Common ${noun} Problems — Symptom Guides`} links={symptomLinks} />
+    </section>
+  )}
+
+  {isCharlotte ? (
+    <NearbyLinks heading={`${service.name} in Charlotte Neighborhoods`} links={neighborhoodServiceLinks} />
+  ) : (
+    <CoverageDetails
+      placeName={city.name}
+      zips={city.zips}
+      neighborhoods={city.neighborhoods}
+      landmarks={city.landmarks}
+      housing={city.housing}
+      utilities={city.utilities}
+    />
+  )}
+
   {relatedServiceLinks.length > 0 && (
     <section class="bg-white-section" style="padding:64px 24px">
-      <InternalLinks
-        heading={`Related Services in ${city.name}`}
-        links={relatedServiceLinks}
-      />
+      <InternalLinks heading={`Related Services in ${city.name}`} links={relatedServiceLinks} />
     </section>
   )}
 
-  <!-- 6. Related Brands -->
-  {relatedBrandLinks.length > 0 && (
+  {brandLinks.length > 0 && (
     <section class="bg-light-section" style="padding:64px 24px">
-      <InternalLinks
-        heading={`Brands We Service in ${city.name}`}
-        links={relatedBrandLinks}
-      />
+      <InternalLinks heading={`Brands We Service in ${city.name}`} links={brandLinks} />
     </section>
   )}
 
-  <!-- 6b. Cost Reference (Charlotte only — page exists for that city) -->
-  {city.slug === 'charlotte-nc' && (
-    <section class="bg-light-section" style="padding:40px 24px">
-      <div style="max-width:1200px;margin:0 auto">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:20px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
-          <div>
-            <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#b01616;margin-bottom:5px">Pricing Reference</div>
-            <p style="font-size:14px;color:#2a3c54;line-height:1.6;margin:0">See typical {service.name.replace(' Repair', '').toLowerCase()} repair cost ranges, our diagnostic fee policy, and repair vs. replace benchmarks for Charlotte homeowners.</p>
-          </div>
-          <a href="/charlotte-nc/appliance-repair-cost" aria-label="View full appliance repair cost guide for Charlotte NC" style="display:inline-flex;align-items:center;gap:6px;padding:11px 20px;background:#b01616;color:#fff;font-weight:700;font-size:13px;border-radius:9px;text-decoration:none;white-space:nowrap;flex-shrink:0">
-            Full Pricing Guide →
-          </a>
+  <section class="bg-light-section" style="padding:40px 24px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:20px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div>
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#b01616;margin-bottom:5px">Pricing Reference</div>
+          <p style="font-size:14px;color:#2a3c54;line-height:1.6;margin:0">See typical {nounLower} repair cost ranges, our diagnostic fee policy, and repair vs. replace benchmarks for the Charlotte area.</p>
         </div>
+        <a href="/charlotte-nc/appliance-repair-cost" style="display:inline-flex;align-items:center;gap:6px;padding:11px 20px;background:#b01616;color:#fff;font-weight:700;font-size:13px;border-radius:9px;text-decoration:none;white-space:nowrap;flex-shrink:0">
+          Full Pricing Guide →
+        </a>
       </div>
-    </section>
-  )}
+    </div>
+  </section>
 
-  <!-- 7. FAQ — city-supplemental questions first, then service-specific FAQs -->
-  <FAQSection faqs={allFaqsForSchema} heading={`${service.name} FAQs — ${city.name}`} />
+  <FAQSection faqs={faqs} heading={`${service.name} FAQs — ${city.name}`} />
 
-  <!-- 8. Third-party citations — opt-in only; defaults to false to avoid repeating on every generated page -->
+  <NearbyLinks heading={`${service.name} Near ${city.name}`} links={sameServiceNearby} />
+
   {showCitationProfiles && <CitationProfiles />}
 
-  <!-- 9. CTA -->
   <SEOCTA phone={city.phone} phoneHref={city.phoneHref} />
-
-  <!-- Sticky mobile bottom bar — fixed, no CLS, hides when form visible -->
   <StickyMobileCTA phone={city.phone} phoneHref={city.phoneHref} />
 </SeoPageLayout>
+
+<style>
+  .rvr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 767px) { .rvr-grid { grid-template-columns: 1fr; } }
+</style>

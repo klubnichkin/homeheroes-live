@@ -4,8 +4,24 @@
     {
       "name": "homeheroes-dev",
       "runtimeExecutable": "/Users/getapple/homeheroes/node_modules/.bin/astro",
-      "runtimeArgs": ["dev", "--root", "/Users/getapple/homeheroes"],
+      "runtimeArgs": [
+        "dev",
+        "--root",
+        "/Users/getapple/homeheroes"
+      ],
       "port": 4321
+    },
+    {
+      "name": "homeheroes-preview",
+      "runtimeExecutable": "/Users/getapple/homeheroes/node_modules/.bin/astro",
+      "runtimeArgs": [
+        "preview",
+        "--root",
+        "/Users/getapple/homeheroes",
+        "--port",
+        "4330"
+      ],
+      "port": 4330
     }
   ]
 }
