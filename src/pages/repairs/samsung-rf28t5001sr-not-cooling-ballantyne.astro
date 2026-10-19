@@ -70,7 +70,7 @@ const schema = {
       </div>
 
       <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">Samsung RF28T5001SR Not Cooling in Ballantyne, NC</h1>
-      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Fresh food section warming up. Unit still running. Evaporator fan motor failed. Diagnosed and repaired same day.</p>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Refrigerator not cooling properly. Temperatures inconsistent. Evaporator fan motor confirmed failed. Diagnosed and repaired same day.</p>
 
       <div style="display:flex;flex-wrap:wrap;gap:10px">
         {[
@@ -94,8 +94,8 @@ const schema = {
 
       <!-- Opening paragraphs -->
       <div>
-        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">A homeowner in Ballantyne called us after their Samsung RF28T5001SR had stopped cooling the fresh food section. The unit was running. The freezer seemed fine. Lights were on, the compressor was audible, and nothing about the refrigerator gave any obvious sign of failure. But food was warming up, and the fresh food compartment had climbed well above safe temperatures.</p>
-        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">When we opened the unit and pulled the rear interior panel, the picture cleared up fast. Localized frost had built up around the evaporator cover and the rear airflow area. Cold air from the evaporator coil was not moving freely into the refrigerator compartment. The evaporator fan motor had stopped working.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">A homeowner in Ballantyne called us after their Samsung RF28T5001SR stopped cooling properly. The refrigerator was still running, the lights were on, and the unit did not look completely dead. But temperatures were becoming inconsistent and the refrigerator was no longer maintaining normal cooling performance.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">During inspection, we found localized frost around the evaporator area and confirmed that the evaporator fan motor was not operating correctly. The repair was completed the same day using Samsung evaporator fan motor DA31-00334C.</p>
       </div>
 
       <!-- BEFORE PHOTO -->
@@ -109,7 +109,7 @@ const schema = {
           fetchpriority="high"
           style="width:100%;height:auto;display:block"
         />
-        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Before: localized frost buildup around the rear airflow area of the Samsung RF28T5001SR. Cold air from the evaporator coil was no longer circulating freely into the fresh food section.</figcaption>
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Before: localized frost was visible around the rear evaporator and airflow area during diagnosis. This restricted airflow and was contributing to the cooling problem on this unit.</figcaption>
       </figure>
 
       <!-- REPAIR SNAPSHOT -->
@@ -120,15 +120,15 @@ const schema = {
             ['Appliance',                'Samsung French-door refrigerator'],
             ['Model',                    'RF28T5001SR'],
             ['Location',                 'Ballantyne, Charlotte, NC'],
-            ['Problem',                  'Fresh food section not cooling; unit still running'],
-            ['Root Cause',               'Evaporator fan motor failure with localized frost buildup'],
-            ['Repair',                   'Clear affected area, replace evaporator fan motor'],
+            ['Problem',                  'Refrigerator not cooling properly; inconsistent temperatures'],
+            ['Root Cause',               'Failed evaporator fan motor with localized frost buildup restricting airflow'],
+            ['Repair',                   'Defrost affected evaporator area and replace evaporator fan motor'],
             ['Part Used',                'Samsung DA31-00334C evaporator fan motor (OEM)'],
             ['OEM Part Price',           '$145.37'],
             ['Service Call / Diagnosis', '$89.00'],
             ['Labor',                    '$155.00'],
             ['Customer Total',           '$389.37'],
-            ['Result',                   'Cooling and airflow fully restored'],
+            ['Result',                   'Airflow and normal cooling restored'],
           ].map(([label, value], i) => (
             <div style={`display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:11px 22px;border-bottom:1px solid rgba(30,50,80,0.05);background:${i % 2 === 1 ? 'rgba(248,249,252,0.6)' : 'transparent'}`}>
               <span style="font-size:0.79rem;font-weight:700;color:#6a7a8e">{label}</span>
@@ -144,8 +144,8 @@ const schema = {
           <span style="font-size:1.25rem" aria-hidden="true">👀</span>
           What the Customer Was Seeing
         </h2>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The refrigerator was running. The freezer appeared fine. But the fresh food section was warm, and food was not staying cold. That combination confuses a lot of people because the unit sounds normal and there are no obvious error codes or warning signs.</p>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Hearing the compressor run tells us the refrigerator is trying to cool, but it does not prove that the sealed system is operating correctly. And even with a healthy sealed system, cold air still has to move from the evaporator coil into the refrigerator compartment. That is the evaporator fan's job. When the fan stops, the fresh food section loses cooling even though the freezer may continue working normally.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The refrigerator was still running. Temperatures were becoming inconsistent and cooling performance had dropped. Nothing about the unit made it look completely dead. That is one of the more confusing patterns in refrigerator failures: the appliance appears to be working while something inside is not.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Hearing the compressor run only tells us that the unit is attempting to cool. It does not prove that the sealed system is healthy, and it does not tell us whether cold air is moving correctly through the evaporator area. That requires diagnosis, not just listening.</p>
         <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Not cooling is a symptom, not a diagnosis. A refrigerator can stop cooling for several different reasons:</p>
         <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
           {[
@@ -162,7 +162,7 @@ const schema = {
             </li>
           ))}
         </ul>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:16px 0 0">In this case, the problem was the fan. That is why diagnosis matters before any part gets replaced.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:16px 0 0">On this unit, the confirmed failure was the evaporator fan motor. That is why diagnosis matters before any part gets replaced. On another RF28T5001SR with the same symptom, the cause could be different.</p>
       </div>
 
       <!-- PULL QUOTE -->
@@ -176,9 +176,9 @@ const schema = {
           <span style="font-size:1.25rem" aria-hidden="true">🔍</span>
           What We Found
         </h2>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">When we removed the rear interior panel of the RF28T5001SR, we found localized frost concentrated around the upper rear airflow area. The evaporator cover and the section behind it, where cold air transitions from the coil into the refrigerator compartment, had frost buildup in exactly the wrong places.</p>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">This was not a catastrophic freeze-over. It was moderate, targeted buildup in a specific area. That distinction matters because even limited frost in the right spot can cut off cold-air circulation to an entire section of the refrigerator.</p>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The fan motor was not operating correctly, and the localized frost buildup was further restricting airflow. Both were contributing to the cooling problem. Frost around an evaporator or airflow area can come from a range of issues, including defrost system failures, thermistor problems, drain restrictions, or airflow problems. In this case the fan motor was the confirmed failure, and clearing the affected area was part of the repair.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">During inspection, we found localized frost visible around the rear evaporator and upper airflow area. This was not a catastrophic freeze-over. It was targeted buildup in a specific location. That matters because even moderate frost in the right spot can restrict the airflow that the evaporator fan is responsible for moving.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The evaporator fan on the RF28T5001SR is located in the freezer evaporator area, where it circulates cold air from the evaporator through the cooling system. When that motor is not running, airflow across the evaporator area is reduced or lost, and temperature problems follow.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The failed fan and localized frost buildup were both contributing to the airflow problem on this unit. Frost around an evaporator area can also come from defrost system failures, thermistor problems, drain restrictions, or other cooling-control issues. In this case, the fan motor was the confirmed failure. Clearing the frost and replacing the motor were both part of the repair.</p>
       </div>
 
       <!-- HOW WE DIAGNOSED IT -->
@@ -187,12 +187,13 @@ const schema = {
           <span style="font-size:1.25rem" aria-hidden="true">📋</span>
           How We Diagnosed It
         </h2>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The first step was confirming the complaint. The fresh food section was warm and not recovering. The freezer was maintaining temperature. That specific pattern, a warm refrigerator compartment with a functioning freezer, points toward an airflow issue rather than a sealed system failure.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The first step was confirming the complaint. The customer reported poor and inconsistent cooling. We accessed the evaporator area, inspected the frost pattern, and checked fan operation directly.</p>
         <div style="margin:16px 0;padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
           <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">The symptom tells us where to start. It does not tell us which part to replace.</p>
         </div>
         <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">We pulled the rear panel and looked at the frost pattern. Localized frost around the evaporator area confirmed that airflow was compromised. We then tested the evaporator fan motor directly. It had failed.</p>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">With the motor confirmed failed, the airflow failure explained the symptoms. A sealed-system repair was not indicated in this case. The cooling pattern, warm fresh-food section with a still-functioning freezer, was consistent with an airflow problem, and the fan test confirmed it.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">With the motor confirmed failed, the airflow problem explained the symptoms. Once the fan failure was confirmed and the cooling pattern matched that diagnosis, a sealed-system repair was not indicated in this case.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">A running compressor alone does not rule out a sealed-system problem. The fan failure had to be confirmed independently, and it was.</p>
       </div>
 
       <!-- THE REPAIR -->
@@ -207,7 +208,7 @@ const schema = {
             ['1', 'Clear the affected area', 'The frost buildup around the evaporator cover was defrosted and cleared. This is necessary before accessing the fan motor and ensures a clean installation environment.'],
             ['2', 'Remove the failed motor', 'The defective evaporator fan motor was disconnected and removed from the evaporator assembly.'],
             ['3', 'Install OEM replacement', 'A genuine Samsung evaporator fan motor, part DA31-00334C, was installed in place of the failed unit.'],
-            ['4', 'Restore and verify', 'The rear panel was reassembled, the refrigerator was powered back up, and airflow was confirmed. Temperatures in the fresh food section began dropping toward normal within the hour.'],
+            ['4', 'Restore and verify', 'The evaporator area was reassembled, the refrigerator was powered back up, and fan operation was confirmed. Temperatures were monitored as the refrigerator returned toward normal cooling.'],
           ].map(([num, step, detail]) => (
             <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
               <div style="width:26px;height:26px;border-radius:50%;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2);color:#b01616;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">{num}</div>
@@ -227,8 +228,9 @@ const schema = {
           <span style="font-size:1.25rem" aria-hidden="true">🔩</span>
           Part Used in This Repair
         </h2>
-        <h3 style="font-size:0.98rem;font-weight:700;color:#060c19;margin:0 0 10px">Samsung Refrigerator Evaporator Fan Motor DA31-00334C</h3>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 20px">DA31-00334C is an evaporator fan motor used in the RF28T5001SR cooling system. Its job is to move cold air across the evaporator area and support proper airflow through the refrigerator's cooling system. When airflow is lost, temperature problems can develop even while the refrigerator still appears to be running normally.</p>
+        <h3 style="font-size:0.98rem;font-weight:700;color:#060c19;margin:0 0 10px">Samsung Evaporator Fan Motor DA31-00334C</h3>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">DA31-00334C is an evaporator fan motor used in the RF28T5001SR cooling system. On this model, repair documentation places the fan in the freezer evaporator area, where it circulates cold air from the evaporator through the freezer compartment.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 20px">When the motor fails, airflow across the evaporator area is reduced or lost. Temperature problems can develop even while the refrigerator still appears to be running normally.</p>
 
         <figure style="margin:0 0 16px;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
           <img
@@ -317,7 +319,7 @@ const schema = {
           </div>
         </div>
         <p style="font-size:0.86rem;color:#4a5e74;line-height:1.65;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0 0 10px">For a Samsung French-door refrigerator in otherwise good condition, $389.37 is a straightforward value decision. The confirmed failure was a mechanical component in the cooling system. The repair was fully resolved in a single visit.</p>
-        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This was the total for this specific repair. The same "not cooling" symptom can lead to a different price if the underlying failure is different.</p>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This was the total for this specific repair. Another RF28T5001SR with a "not cooling" complaint can require a completely different repair depending on the actual failure.</p>
       </div>
 
       <!-- COULD THE SAME SYMPTOM MEAN SOMETHING ELSE -->
@@ -342,7 +344,7 @@ const schema = {
             </li>
           ))}
         </ul>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The point of proper diagnosis is to figure out which of those applies to this specific refrigerator on this visit. Replacing parts based on symptoms alone is how customers spend money on the wrong repairs.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The point of proper diagnosis is to figure out which of those applies to this specific refrigerator on this visit. Replacing parts based on the symptom alone is how customers end up paying for the wrong repair.</p>
         <p style="font-size:0.83rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">Repair notes on this page are based on this specific RF28T5001SR service call. The same symptom on another refrigerator can have a different cause and should be diagnosed before parts are replaced.</p>
       </div>
 
@@ -352,8 +354,8 @@ const schema = {
           <span style="font-size:1.25rem" aria-hidden="true">✅</span>
           Was It Worth Repairing?
         </h2>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A comparable Samsung French-door refrigerator runs $1,400 to $2,000 or more at retail. This repair totaled $389.37. The diagnosis pointed to a single failed component in the cooling system. There were no structural or cosmetic issues with the unit, and nothing about this job pointed toward a sealed-system repair.</p>
-        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">Replacing a refrigerator because the evaporator fan motor failed is not a good outcome for the customer. The repair made sense, it was straightforward, and it was fully resolved in one visit.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">This repair totaled $389.37. For an otherwise serviceable Samsung French-door refrigerator, that can be a sensible repair compared with replacing the entire unit, which can cost substantially more.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">During this service call, the confirmed failure was the evaporator fan motor. Once that problem was corrected and normal cooling operation returned, there was no indication that a major sealed-system repair was required. The repair was completed in a single visit.</p>
       </div>
 
       <!-- RELATED LINKS -->
