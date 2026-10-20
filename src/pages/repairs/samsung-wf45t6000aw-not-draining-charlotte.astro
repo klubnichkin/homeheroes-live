@@ -1,0 +1,482 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/samsung-wf45t6000aw-not-draining-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Samsung WF45T6000AW Not Draining in Charlotte, NC | Drain Pump Repair",
+  "description": "See how Home Heroes repaired a Samsung WF45T6000AW washer that would not drain in Charlotte, including the diagnosis, drain pump replacement, part cost and total repair price.",
+  "datePublished": "2026-10-20",
+  "dateModified": "2026-10-20",
+  "image": `${base}/images/repairs/samsung-wf45t6000aw-not-draining-water.jpg`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "Samsung WF45T6000AW not draining, drain pump DC97-20621A DC97-20621C, Samsung washer repair Charlotte NC, 5C 5E error"
+};
+---
+
+<SeoPageLayout
+  title="Samsung WF45T6000AW Not Draining in Charlotte, NC | Home Heroes"
+  description="See how Home Heroes repaired a Samsung WF45T6000AW washer that would not drain in Charlotte, including the diagnosis, drain pump replacement, part cost and total repair price."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/samsung-wf45t6000aw-not-draining-water.jpg"
+  ogType="article"
+  heroImage="/images/repairs/samsung-wf45t6000aw-not-draining-water.jpg"
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">Samsung WF45T6000AW</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">Samsung</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Front-Load Washer</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">October 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">Samsung WF45T6000AW Not Draining in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Cycle finished. Water still in the drum. Clothes soaking wet. Drain pump confirmed failed. Diagnosed and repaired same day.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$353.18'],
+          ['Outcome', 'Drain Restored'],
+          ['Service', 'Same-Day'],
+          ['Part', 'DC97-20621C'],
+        ].map(([label, value]) => (
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 18px;min-width:120px">
+            <div style="font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">{label}</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#e8edf5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div style="background:#f8f9fc;padding:52px 24px 80px">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+
+      <!-- Opening paragraphs -->
+      <div>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">A Charlotte homeowner called Home Heroes after their Samsung WF45T6000AW front-load washer stopped draining. The cycle would run, but at the end water was still sitting in the bottom of the drum. The clothes were soaked. The machine could not complete a normal final spin.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">By the time we arrived, towels were already on the floor in front of the washer. The machine could still fill and tumble. Water just was not leaving the tub.</p>
+      </div>
+
+      <!-- WATER IN DRUM PHOTO (problem photo) -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/samsung-wf45t6000aw-not-draining-water.jpg"
+          alt="Samsung WF45T6000AW front load washer with standing water and wet laundry in Charlotte NC"
+          width="900"
+          height="1200"
+          loading="eager"
+          fetchpriority="high"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Water sitting in the drum after the cycle, with the wet load still inside. The towels on the floor were there to catch what came out when the drain system was accessed.</figcaption>
+      </figure>
+
+      <!-- REPAIR SNAPSHOT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;overflow:hidden">
+        <div style="background:#060c19;color:#fff;font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:12px 22px">Repair Snapshot</div>
+        <div>
+          {[
+            ['Appliance',                'Samsung front-load washer'],
+            ['Model',                    'WF45T6000AW'],
+            ['Location',                 'Charlotte, NC'],
+            ['Customer Complaint',       'Water left in drum after cycle; clothes soaking wet'],
+            ['Diagnosis',                'Failed drain pump assembly'],
+            ['Repair',                   'Drain trapped water, access drainage system, replace pump assembly, test'],
+            ['Part',                     'Compatible replacement for Samsung DC97-20621A / DC97-20621C'],
+            ['Part Cost',                '$99.18'],
+            ['Service Call / Diagnosis', '$89.00'],
+            ['Labor',                    '$165.00'],
+            ['Customer Total',           '$353.18'],
+            ['Result',                   'Drain and spin operation restored'],
+          ].map(([label, value], i) => (
+            <div style={`display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:11px 22px;border-bottom:1px solid rgba(30,50,80,0.05);background:${i % 2 === 1 ? 'rgba(248,249,252,0.6)' : 'transparent'}`}>
+              <span style="font-size:0.79rem;font-weight:700;color:#6a7a8e">{label}</span>
+              <span style="font-size:0.82rem;color:#1a2c44;font-weight:500">{value}</span>
+            </div>
+          ))}
+        </div>
+        <div style="padding:12px 22px;background:#f0f2f7;border-top:1px solid rgba(30,50,80,0.07)">
+          <p style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;margin:0">Repair notes on this page describe this specific Samsung WF45T6000AW service call. The same symptom on another washer may have a different cause, part requirement and repair price.</p>
+        </div>
+      </div>
+
+      <!-- WHAT THE CUSTOMER WAS SEEING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">👀</span>
+          What the Customer Was Seeing
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The washer was finishing its cycle with water still sitting in the bottom of the drum. The clothes came out dripping. On some attempts the machine appeared to not be spinning at all.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">That last part is worth explaining. A front-load washer like the WF45T6000AW is designed to hold off on high-speed spin until the water has drained. If the water never leaves, the machine often will not attempt the final spin. So a washer that looks like it is not spinning may actually have a drainage problem, not a spin or motor problem.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The WF45T6000AW may also show a 5C or 5E error code in this situation. Those codes point to a drainage system issue, but they do not tell you which part of that system failed. That takes diagnosis.</p>
+      </div>
+
+      <!-- PULL QUOTE -->
+      <blockquote style="margin:0;padding:22px 26px 22px 30px;background:rgba(176,22,22,0.04);border:1px solid rgba(176,22,22,0.15);border-left:4px solid #dc2626;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;font-weight:600;color:#1a2c44;line-height:1.5">
+        "No drain can look like no spin."
+      </blockquote>
+
+      <!-- THE TOWELS WERE A CLUE -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🧺</span>
+          The Towels Were a Clue
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">When water is trapped inside a front-load washer and access to the drain system is needed, that water has to go somewhere. The towels on the floor were there to catch what came out during that process. They were not evidence of a leak.</p>
+        <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-wf45t6000aw-not-draining-water.jpg"
+            alt="Samsung WF45T6000AW washer not draining, wet laundry and towels on floor, Charlotte NC"
+            width="860"
+            height="1147"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Towels on the floor and a soaked load in the drum. This is how a Samsung drain failure typically presents at the point of service. The machine itself was not leaking.</figcaption>
+        </figure>
+      </div>
+
+      <!-- NOT DRAINING DOESN'T MEAN REPLACE THE PUMP -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔍</span>
+          Not Draining Does Not Mean the Pump Needs Replacing
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Samsung front-loaders can fail to drain for several different reasons. The pump is one of them. It is not always the first thing to check.</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            'Clogged pump filter (probably the most common fix)',
+            'A coin, sock, or small item jammed in the impeller',
+            'A kinked or improperly routed drain hose',
+            'A blockage in the household standpipe or utility drain',
+            'An electrical issue with the pump circuit',
+            'Actual drain pump failure',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">The error code tells us which system is unhappy. It does not tell us which part to replace.</p>
+        </div>
+      </div>
+
+      <!-- WHAT WE FOUND -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📋</span>
+          What We Found on This WF45T6000AW
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">After the trapped water was controlled, we checked the drainage system. The simpler causes were ruled out first. The filter was not the problem. The drain hose was routed correctly. There was no obstruction at the standpipe.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The drain pump was not moving water. It was confirmed failed on this unit.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">On the WF45T6000AW platform, the drain pump assembly carries Samsung part number DC97-20621A, which was superseded by DC97-20621C. The replacement used in this repair references both numbers and is a compatible fit for this machine.</p>
+      </div>
+
+      <!-- PART USED -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔩</span>
+          Part Used in This Repair
+        </h2>
+        <h3 style="font-size:0.98rem;font-weight:700;color:#060c19;margin:0 0 10px">Drain Pump Assembly (DC97-20621A / DC97-20621C)</h3>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The drain pump assembly is what moves water out of the tub during the drain stages of a wash cycle. On the WF45T6000AW, it sits at the lower front of the machine and connects to the tub drain hose, the pump filter housing, and the external drain hose.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 20px">When the pump fails, water stays in the drum. The machine cannot proceed to final spin. Error codes 5C or 5E may appear.</p>
+
+        <figure style="margin:0 0 16px;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-dc97-20621a-pump-listing.jpg"
+            alt="Compatible Samsung drain pump assembly DC97-20621A DC97-20621C listing showing $99.18"
+            width="860"
+            height="860"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Compatible replacement drain pump shown for identification and price context. Retail pricing can change. This part references Samsung DC97-20621A / DC97-20621C.</figcaption>
+        </figure>
+
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 6px">Part cost on this repair: <strong>$99.18</strong></p>
+        <p style="margin:0 0 20px"><a href="https://www.repairclinic.com/PartDetail/Drain-Pump/DC97-20621C/4681894" rel="noopener noreferrer" target="_blank" style="font-size:0.8rem;color:#4a6a8a;text-decoration:underline">View part reference (DC97-20621C)</a></p>
+
+        <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-dc97-20621a-pump-removed.jpg"
+            alt="Removed Samsung drain pump assembly from WF45T6000AW washer repair in Charlotte NC"
+            width="860"
+            height="860"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Removed drain pump assembly from this service call. The motor section showed visible signs of failure.</figcaption>
+        </figure>
+      </div>
+
+      <!-- THE REPAIR -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔧</span>
+          The Repair
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">Once the diagnosis was confirmed, the repair followed a practical sequence.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['1', 'Drain the trapped water', 'Water still in the tub was controlled and removed before accessing the drain system. This is where the towels come in.'],
+            ['2', 'Access the drain system', 'The front panel was removed to reach the drain pump assembly at the lower front of the machine.'],
+            ['3', 'Remove the failed pump assembly', 'The drain hose connections and electrical connector were disconnected. The failed pump assembly was removed.'],
+            ['4', 'Install the replacement', 'The compatible replacement pump assembly referencing DC97-20621A / DC97-20621C was installed in its place.'],
+            ['5', 'Reconnect and reassemble', 'Hose connections and the electrical connector were reattached. The front panel was reinstalled.'],
+            ['6', 'Run drain and spin verification', 'A drain and spin cycle was run to confirm normal water evacuation and spin completion.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2);color:#b01616;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">{num}</div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{step}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:16px 0 0">The washer drained normally and completed the drain and spin cycle before we left.</p>
+      </div>
+
+      <!-- BEFORE / DURING / AFTER -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📸</span>
+          Before and After
+        </h2>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <!-- Three photos stacked or in grid -->
+          <div class="repair-photo-grid">
+            <figure style="margin:0">
+              <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+                <img
+                  src="/images/repairs/samsung-wf45t6000aw-not-draining-before.jpg"
+                  alt="Samsung WF45T6000AW washer not draining, before repair in Charlotte NC"
+                  width="420"
+                  height="560"
+                  loading="lazy"
+                  style="width:100%;height:220px;object-fit:cover;object-position:50% 30%;display:block"
+                />
+              </div>
+              <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>Before</strong> — The washer at arrival. Machine running, but cycle not completing normally.</figcaption>
+            </figure>
+            <figure style="margin:0">
+              <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+                <img
+                  src="/images/repairs/samsung-wf45t6000aw-not-draining-water.jpg"
+                  alt="Samsung WF45T6000AW front load washer with standing water and wet laundry in Charlotte NC"
+                  width="420"
+                  height="560"
+                  loading="lazy"
+                  style="width:100%;height:220px;object-fit:cover;object-position:50% 30%;display:block"
+                />
+              </div>
+              <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>Symptom</strong> — Water still sitting in the drum, wet load inside, towels on the floor.</figcaption>
+            </figure>
+            <figure style="margin:0">
+              <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+                <img
+                  src="/images/repairs/samsung-wf45t6000aw-not-draining-after.jpg"
+                  alt="Samsung WF45T6000AW washer after drain pump replacement in Charlotte NC"
+                  width="420"
+                  height="560"
+                  loading="lazy"
+                  style="width:100%;height:220px;object-fit:cover;object-position:50% 30%;display:block"
+                />
+              </div>
+              <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>After</strong> — Drum empty, machine reassembled, drain and spin verified.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- COST BREAKDOWN -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💰</span>
+          Cost Breakdown
+        </h2>
+        <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;overflow:hidden;margin-bottom:16px">
+          {[
+            ['Service call / diagnosis', '$89.00'],
+            ['Compatible drain pump assembly (DC97-20621A/C ref.)', '$99.18'],
+            ['Labor', '$165.00'],
+          ].map(([label, amount]) => (
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(30,50,80,0.06);background:#fff">
+              <span style="font-size:0.85rem;color:#1a2c44;font-weight:500">{label}</span>
+              <span style="font-size:0.92rem;font-weight:800;color:#060c19;white-space:nowrap;margin-left:16px">{amount}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(6,12,25,0.03)">
+            <span style="font-size:0.88rem;font-weight:800;color:#060c19;text-transform:uppercase;letter-spacing:0.04em">Customer Total</span>
+            <span style="font-size:1.25rem;font-weight:900;color:#b01616">$353.18</span>
+          </div>
+        </div>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This was the total for this specific repair. Another WF45T6000AW with the same "not draining" complaint can require a completely different repair depending on the actual failure.</p>
+      </div>
+
+      <!-- COULD THIS BE CHEAPER -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💡</span>
+          Could This Same Problem Be Cheaper to Fix?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Yes. If the cause turns out to be a clogged filter, a coin or sock jammed in the impeller, or a hose installation issue, the repair can be considerably simpler and less expensive.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">On this unit, those causes were ruled out before the pump was replaced. That matters because we do not replace parts based on the symptom alone.</p>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">Diagnosis comes before parts.</p>
+        </div>
+      </div>
+
+      <!-- 5C / 5E SECTION -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">⚠️</span>
+          Samsung 5C or 5E Error Code
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">If your WF45T6000AW is showing a 5C or 5E error, it means the washing machine detected a drainage problem. What it does not tell you is which part of the drainage system failed.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">5C / 5E can be triggered by:</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+          {[
+            'A clogged pump filter (check this first)',
+            'A hose obstruction or incorrect drain height',
+            'A jammed pump impeller',
+            'An electrical issue with the pump circuit',
+            'An actual pump motor failure',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">A 5C or 5E code does not automatically mean you need a new pump.</p>
+      </div>
+
+      <!-- ONE SYMPTOM, MULTIPLE FAILURES -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">❓</span>
+          One Symptom, Several Possible Failures
+        </h2>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['Water sitting in the drum', 'Could be filter, hose, obstruction, or pump failure. Check the simple causes before assuming the worst.'],
+            ['Washer appears to not spin', 'May be secondary to a drain problem. If the water never left, the spin may have never started.'],
+            ['Clothes soaking wet after cycle', 'Often means the final spin did not complete, which can follow from a drainage failure.'],
+            ['5C / 5E error on the display', 'Points to the drainage system. Diagnosis is needed to find which part of it failed.'],
+          ].map(([symptom, explanation]) => (
+            <div style="padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:4px">{symptom}</div>
+              <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{explanation}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- WAS IT WORTH REPAIRING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">✅</span>
+          Was This Washer Worth Repairing?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">At $353.18, repairing an otherwise serviceable front-load washer can make good financial sense compared with replacing it. Replacing a comparable Samsung front-loader can cost substantially more.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The answer is not always repair. It would be a different conversation if the machine also had severe bearing noise, a damaged drum, repeated expensive failures, or significant control board issues. That was not the situation here.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">On this service call, the confirmed failure was the drain pump. The washer had no other diagnosed problems. Once the pump was replaced and drain and spin were verified, the repair was done.</p>
+      </div>
+
+      <!-- RELATED LINKS -->
+      <div style="padding:22px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#9aaabe;margin-bottom:14px">Related Pages</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {[
+            ['Washer Repair Charlotte', '/charlotte-nc/washer-repair'],
+            ['Samsung Washer Repair', '/charlotte-nc/samsung-washer-repair'],
+            ['Samsung Appliance Repair', '/charlotte-nc/samsung-appliance-repair'],
+            ['Washer Not Draining', '/charlotte-nc/washer-not-draining'],
+            ['All Repair Cases', '/blog/recent-repairs'],
+          ].map(([label, href]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">
+              → {label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <section style="padding:64px 24px 72px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 14px;letter-spacing:-0.03em">Samsung Washer Not Draining in Charlotte?</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 auto 32px;max-width:560px">If your Samsung front-load washer finishes with water still sitting in the drum, do not keep restarting the cycle. It may be something simple. It may be a failed drain pump like this one. The important part is figuring out which one you actually have. Home Heroes repairs Samsung washers throughout Charlotte and the surrounding area.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;padding:14px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:0 4px 18px rgba(176,22,22,0.35)">
+          Schedule Washer Diagnosis
+        </a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C7.82 21 2 15.18 2 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call {phone}
+        </a>
+      </div>
+      <a href="/blog/recent-repairs" style="font-size:0.82rem;font-weight:600;color:#4a6a8a;text-decoration:none">← View All Repair Cases</a>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Repair" />
+
+</SeoPageLayout>
+
+<style>
+  @media (min-width: 640px) {
+    .repair-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  }
+  @media (max-width: 639px) {
+    .repair-photo-grid { display: flex; flex-direction: column; gap: 16px; }
+  }
+</style>
