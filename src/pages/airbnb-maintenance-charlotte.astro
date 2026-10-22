@@ -23,182 +23,30 @@ const schema = {
       "addressCountry": "US"
     }
   },
-  "areaServed": {
-    "@type": "City",
-    "name": "Charlotte",
-    "addressRegion": "NC"
-  },
-  "serviceType": "Airbnb Maintenance, Short-Term Rental Maintenance, Turnover Punch List, Handyman",
+  "areaServed": { "@type": "City", "name": "Charlotte", "addressRegion": "NC" },
+  "serviceType": "Airbnb Maintenance, Short-Term Rental Maintenance, Turnover Punch List",
   "url": canonical
 };
 
-const beforeAfters = [
-  {
-    service: 'TV Mounting',
-    location: 'Uptown Charlotte',
-    problem: 'TV still in the box. Guests arriving in two days.',
-    result: 'TV installed, level and secure. Room reset for guests.',
-    before: '/images/airbnb/tv-mounting-airbnb-before.png',
-    after: '/images/airbnb/tv-mounting-airbnb-after.png',
-    beforeAlt: 'Unboxed 55-inch TV leaning against wall in Uptown Charlotte Airbnb before mounting',
-    afterAlt: 'Mounted Samsung TV on living room wall in Charlotte short-term rental after installation',
-  },
-  {
-    service: 'Drywall Repair',
-    location: 'NoDa',
-    problem: 'Guest damage. Large hole in the bedroom wall before the next turnover.',
-    result: 'Wall patched, textured, and blended. No visible trace.',
-    before: '/images/airbnb/drywall-repair-airbnb-before.png',
-    after: '/images/airbnb/drywall-repair-airbnb-after.png',
-    beforeAlt: 'Large hole in drywall from guest damage in NoDa Airbnb rental before repair',
-    afterAlt: 'Repaired and painted drywall in NoDa rental property after patch and texture',
-  },
-  {
-    service: 'Door Hardware',
-    location: 'South End',
-    problem: 'Knob punched through door. Handle damaged and door unusable.',
-    result: 'New lever hardware installed. Door functional and presentable.',
-    before: '/images/airbnb/door-handle-airbnb-before.png',
-    after: '/images/airbnb/door-handle-airbnb-after.png',
-    beforeAlt: 'Door handle hole punched through interior door in South End rental before repair',
-    afterAlt: 'New matte black lever door handle installed on white door in Charlotte rental property',
-  },
-  {
-    service: 'Bathroom Caulking',
-    location: 'Plaza Midwood',
-    problem: 'Failing caulk and mold at the tub edge. Guest-facing condition issue.',
-    result: 'Old caulk removed, new bead applied. Clean and sealed.',
-    before: '/images/airbnb/bathroom-caulk-airbnb-before.png',
-    after: '/images/airbnb/bathroom-caulk-airbnb-after.png',
-    beforeAlt: 'Moldy and failing caulk along bathtub edge in Plaza Midwood Airbnb before refresh',
-    afterAlt: 'Clean white caulk line along bathtub edge in Charlotte rental bathroom after replacement',
-  },
-  {
-    service: 'Light Fixture',
-    location: 'Dilworth',
-    problem: 'No fixture installed. Open wiring in ceiling. Property not guest-ready.',
-    result: 'New ceiling fixture installed and working.',
-    before: '/images/airbnb/light-fixture-airbnb-before.png',
-    after: '/images/airbnb/light-fixture-airbnb-after.png',
-    beforeAlt: 'Open ceiling wiring with no light fixture installed in Dilworth short-term rental',
-    afterAlt: 'Installed modern drum ceiling light fixture in Dilworth Charlotte rental property',
-  },
-  {
-    service: 'Furniture Assembly',
-    location: 'Ballantyne',
-    problem: 'New bedroom furniture delivered flat-packed. No setup.',
-    result: 'Bed, nightstands assembled and room staged for guests.',
-    before: '/images/airbnb/furniture-assembly-airbnb-before.png',
-    after: '/images/airbnb/furniture-assembly-airbnb-after.png',
-    beforeAlt: 'Flat-pack furniture boxes stacked in empty bedroom in Ballantyne rental before assembly',
-    afterAlt: 'Assembled king bed and nightstands in staged Ballantyne Charlotte rental bedroom',
-  },
-  {
-    service: 'Faucet Replacement',
-    location: 'Steele Creek',
-    problem: 'Old chrome faucet worn and dripping. Bathroom needed updating.',
-    result: 'New black faucet installed. Bathroom back to guest-ready condition.',
-    before: '/images/airbnb/faucet-replacement-airbnb-before.png',
-    after: '/images/airbnb/faucet-replacement-airbnb-after.png',
-    beforeAlt: 'Old worn chrome bathroom faucet at Steele Creek rental property before replacement',
-    afterAlt: 'New matte black widespread bathroom faucet installed in Steele Creek Charlotte rental',
-  },
-];
-
-const services = [
-  'Drywall Repair',
-  'Wall Patching',
-  'TV Mounting',
-  'Furniture Assembly',
-  'Door Hardware',
-  'Cabinet Hardware & Hinges',
-  'Bathroom Caulking',
-  'Faucet Replacement',
-  'Light Fixture Replacement',
-  'Wall Anchors',
-  'Paint Touch-Ups',
-  'Curtain & Blind Hardware',
-  'Smoke / CO Detectors',
-  'Minor Handyman Repairs',
-  'Turnover Fixes',
-  'Property Setup Tasks',
-];
-
-const steps = [
-  {
-    n: '1',
-    title: 'Build Your List',
-    body: 'Write down everything that needs attention at the property. One item or fifteen.',
-  },
-  {
-    n: '2',
-    title: 'Send Photos',
-    body: 'Photos help us understand scope before scheduling. Attach what you have.',
-  },
-  {
-    n: '3',
-    title: 'We Organize the Work',
-    body: 'We determine which tasks can be grouped and whether any trade beyond handyman is needed.',
-  },
-  {
-    n: '4',
-    title: 'Repair and Reset',
-    body: 'Work is completed with the goal of getting the property back into guest-ready condition.',
-  },
-  {
-    n: '5',
-    title: 'Keep One Contact',
-    body: 'Next turnover, send the next list. Same team. No re-explaining from scratch.',
-  },
-];
-
-const faqs = [
-  {
-    q: 'What is an Airbnb maintenance punch list?',
-    a: "A punch list is a written list of repair and maintenance tasks for a property. For short-term rental owners, it typically includes everything that needs attention between guests: damaged walls, loose hardware, furniture that needs assembly, fixtures that need replacing, or caulking that is failing. Instead of making separate calls for each item, you send the whole list to Home Heroes and we help organize the work.",
-  },
-  {
-    q: 'Can I send multiple repairs in one punch list?',
-    a: 'Yes. That is the point. You do not need to figure out which contractor handles which task before reaching out. Send everything on your list together, and we will sort through what can be handled in the same visit.',
-  },
-  {
-    q: 'Can Home Heroes handle an Airbnb turnover punch list?',
-    a: 'Yes. Turnover punch lists are a common request. Guest checks out, the cleaner or owner finds issues, and the list gets sent to us. Not every task can always be completed in one visit, but compatible small repairs can often be grouped together to reduce the number of appointments.',
-  },
-  {
-    q: 'Do you work with property managers in Charlotte?',
-    a: 'Yes. We work with property managers handling single-unit rentals and those managing multiple properties. If you need a consistent point of contact for recurring punch lists across your portfolio, that is something we can support.',
-  },
-  {
-    q: 'Can I send photos with my punch list?',
-    a: 'Yes, and we encourage it. Photos help us understand the scope before scheduling, which means fewer surprises on the day of the visit. Use the form on this page or send them directly when you contact us.',
-  },
-  {
-    q: 'Can several handyman jobs be completed in one visit?',
-    a: 'Often yes, depending on the scope of each task. Patching drywall, remounting a TV, swapping door hardware, and assembling furniture can all fit in the same visit. When the scope is larger, we let you know upfront.',
-  },
-  {
-    q: 'Do you provide Airbnb handyman services in Charlotte?',
-    a: 'Yes. Home Heroes provides handyman services for short-term rental properties throughout Charlotte and the surrounding metro. See our full Charlotte handyman service for a detailed list of what we handle.',
-  },
-  {
-    q: 'Can you help with drywall, TV mounting and furniture assembly in the same visit?',
-    a: 'Frequently yes. These are all handyman-scope tasks that can be grouped together. Include all of them in your punch list and we will confirm what fits in a single visit based on the scope of each item.',
-  },
-  {
-    q: 'Do you offer recurring maintenance for multiple rental properties?',
-    a: 'Yes. If you manage several units and want a consistent contact for recurring punch lists and turnover maintenance, reach out and we can discuss what a regular maintenance relationship looks like.',
-  },
-  {
-    q: 'Can you coordinate larger electrical or plumbing work?',
-    a: 'Home Heroes handles general handyman and maintenance tasks. For licensed electrical or plumbing work, we will let you know when a task falls outside our scope so you can bring in the right trade, rather than discovering that on the day of service.',
-  },
+const repairs = [
+  { id: 'drywall-repair',      n: 1,  label: 'Drywall Repair' },
+  { id: 'tv-mounting',         n: 2,  label: 'TV Mounting' },
+  { id: 'door-repair',         n: 3,  label: 'Door & Handle Repair' },
+  { id: 'bathroom-caulking',   n: 4,  label: 'Bathroom Caulking' },
+  { id: 'light-fixture',       n: 5,  label: 'Light Fixture Replacement' },
+  { id: 'furniture-assembly',  n: 6,  label: 'Furniture Assembly' },
+  { id: 'faucet-replacement',  n: 7,  label: 'Faucet Replacement' },
+  { id: 'cabinet-repair',      n: 8,  label: 'Cabinet Hinge & Hardware' },
+  { id: 'wall-touchups',       n: 9,  label: 'Wall Touch-Ups' },
+  { id: 'hvac-filter',         n: 10, label: 'HVAC Filter Replacement' },
+  { id: 'smoke-co',            n: 11, label: 'Smoke & CO Detector' },
+  { id: 'wall-anchor',         n: 12, label: 'Wall Anchor & Hardware' },
 ];
 ---
 
 <SeoPageLayout
   title="Airbnb Maintenance & Punch List Service in Charlotte, NC | Home Heroes"
-  description="Home Heroes helps Airbnb hosts and property managers in Charlotte with maintenance, turnover repairs and punch lists including drywall, TV mounting, fixtures, furniture, faucets and handyman work."
+  description="Common short-term rental repairs in Charlotte: what they involve, typical price ranges, difficulty and how to group them into one punch list. Drywall, TV mounting, faucets, fixtures, furniture and more."
   canonical={canonical}
   schema={schema}
   ogImage="/images/airbnb/tv-mounting-airbnb-after.png"
@@ -206,304 +54,1134 @@ const faqs = [
 
 <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Send Punch List" />
 
+<style>
+  .repair-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 0;
+    max-width: 1080px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  .repair-toc {
+    position: sticky;
+    top: 24px;
+    padding: 24px 0 24px 24px;
+  }
+  .repair-content {
+    padding: 0 24px 0 32px;
+    min-width: 0;
+  }
+  .repair-section {
+    padding: 48px 0;
+    border-bottom: 1px solid rgba(30,50,80,0.09);
+  }
+  .repair-section:last-child {
+    border-bottom: none;
+  }
+  .fact-bar {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 8px;
+    margin: 18px 0 24px;
+  }
+  .fact-cell {
+    background: #f8f9fc;
+    border-radius: 9px;
+    padding: 12px 14px;
+    border: 1.5px solid rgba(30,50,80,0.08);
+  }
+  .before-after-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 20px 0 24px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .before-after-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .single-image {
+    margin: 20px 0 24px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .single-image img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+  .airbnb-callout {
+    background: linear-gradient(135deg, #fff8f8, #fff);
+    border-left: 4px solid #dc2626;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 20px 0;
+  }
+  .complexity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .complexity-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: #4a5e74;
+    line-height: 1.5;
+  }
+  .btn-punch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #080f1e;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .btn-punch:hover { background: #dc2626; }
+  .toc-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #2a3a52;
+    transition: background 0.1s, color 0.1s;
+    line-height: 1.3;
+  }
+  .toc-link:hover { background: rgba(220,38,38,0.07); color: #dc2626; }
+  .toc-link.active { background: rgba(220,38,38,0.1); color: #dc2626; }
+  .toc-num {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #9aaabe;
+    width: 18px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  @media (max-width: 760px) {
+    .repair-layout {
+      grid-template-columns: 1fr;
+    }
+    .repair-toc {
+      position: static;
+      padding: 0 16px 16px;
+    }
+    .repair-content {
+      padding: 0 16px;
+    }
+    .fact-bar {
+      grid-template-columns: repeat(2,1fr);
+    }
+    .before-after-grid img {
+      height: 160px;
+    }
+  }
+  @media (max-width: 480px) {
+    .before-after-grid {
+      grid-template-columns: 1fr;
+    }
+    .before-after-grid img {
+      height: 200px;
+    }
+  }
+</style>
+
 <!-- ================================================================
-  HERO
+  SHORT HERO
 ================================================================ -->
-<section style="background:linear-gradient(150deg,#080f1e 0%,#0e1a32 55%,#131e3a 100%);padding:80px 24px 88px;position:relative;overflow:hidden">
-  <div style="position:absolute;inset:0;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22%3E%3Cpath d=%22M0 0h60v60H0z%22 fill=%22none%22/%3E%3Cpath d=%22M0 0L60 0M0 60L60 60M0 0L0 60M60 0L60 60%22 stroke=%22white%22 stroke-width=%221%22/%3E%3C/svg%3E')" aria-hidden="true"></div>
-  <div style="max-width:760px;margin:0 auto;position:relative;text-align:center">
-    <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.14em;color:#dc2626;text-transform:uppercase;margin:0 0 18px">
-      For Airbnb Hosts, STR Owners &amp; Property Managers
-    </p>
-    <h1 style="font-size:clamp(2rem,5.5vw,3.5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
-      Airbnb Maintenance &amp; Punch List Service<br />
-      <span style="color:#dc2626">in Charlotte, NC</span>
+<section style="background:linear-gradient(150deg,#080f1e,#0e1a32);padding:44px 24px 40px;border-bottom:1px solid rgba(255,255,255,0.06)">
+  <div style="max-width:1080px;margin:0 auto">
+    <p style="font-size:0.7rem;font-weight:800;letter-spacing:0.14em;color:#dc2626;text-transform:uppercase;margin:0 0 10px">Airbnb / STR Maintenance in Charlotte, NC</p>
+    <h1 style="font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:#fff;letter-spacing:-0.035em;line-height:1.1;margin:0 0 12px;max-width:680px">
+      Airbnb Maintenance &amp; Punch List Service<br />in Charlotte, NC
     </h1>
-    <p style="font-size:1.2rem;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.04em;margin:0 0 24px">
-      One property. One punch list. One team.
+    <p style="font-size:0.95rem;color:rgba(200,215,240,0.72);line-height:1.6;margin:0 0 22px;max-width:580px">
+      Common short-term rental repairs, what they involve, typical price ranges, and how to group them into one punch list instead of five contractor calls.
     </p>
-    <p style="font-size:1.05rem;color:rgba(200,215,240,0.82);line-height:1.7;margin:0 auto 16px;max-width:600px">
-      Guest damaged the drywall?
-      TV still needs mounting?
-      Door handle is loose?
-      Bathroom caulk is failing?
-      New furniture needs assembly?
-    </p>
-    <p style="font-size:1.15rem;font-weight:700;color:#fff;margin:0 auto 36px;max-width:560px">
-      Send us the whole list.
-    </p>
-    <p style="font-size:0.9rem;color:rgba(200,215,240,0.65);margin:0 auto 36px;max-width:540px;line-height:1.6">
-      Home Heroes helps Charlotte short-term rental owners organize small repairs, turnover maintenance and mixed handyman work without calling five different contractors.
-    </p>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
       <a href="#punch-list-form"
-         style="display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:#fff;font-weight:800;font-size:1rem;padding:15px 32px;border-radius:10px;text-decoration:none;box-shadow:0 6px 24px rgba(220,38,38,0.36)">
-        <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+         style="display:inline-flex;align-items:center;gap:7px;background:#dc2626;color:#fff;font-weight:800;font-size:0.9rem;padding:12px 24px;border-radius:9px;text-decoration:none">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
         Send Us Your Punch List
       </a>
-      <a href={phoneHref}
-         style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:1rem;padding:15px 28px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.07)">
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-        Schedule Airbnb Maintenance
+      <a href="#repair-guide"
+         style="display:inline-flex;align-items:center;gap:7px;color:rgba(200,215,240,0.75);font-weight:600;font-size:0.9rem;padding:12px 20px;border-radius:9px;text-decoration:none;border:1.5px solid rgba(255,255,255,0.16)">
+        View Repairs
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </a>
     </div>
-    <p style="font-size:0.74rem;color:rgba(255,255,255,0.35);margin:16px 0 0;font-weight:500">
-      Send photos, property location and the list of what needs attention.
-    </p>
   </div>
 </section>
 
 <!-- ================================================================
-  SECTION 1: THE PROBLEM IS THE LIST
+  REPAIR GUIDE — two-column layout: sticky TOC + content
 ================================================================ -->
-<section style="background:#f8f9fc;padding:72px 24px">
-  <div style="max-width:760px;margin:0 auto">
-    <h2 style="font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;line-height:1.1;margin:0 0 24px">
-      The Problem Usually Isn't One Repair. It's the List.
-    </h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:0 0 32px">
-      {['A loose door handle. Easy.','A drywall hole. Easy.','A faucet replacement. Easy.','A TV mount. Easy.'].map(item => (
-        <div style="background:#fff;border-radius:12px;padding:18px 20px;border:1.5px solid rgba(30,50,80,0.1);display:flex;align-items:center;gap:12px">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          <span style="font-size:0.9rem;font-weight:600;color:#1a2a40">{item}</span>
-        </div>
-      ))}
-    </div>
-    <p style="font-size:1.05rem;color:#2a3a52;line-height:1.72;margin:0 0 20px">
-      The frustrating part is when they all need attention at the same property before the next guest arrives. That is where the punch-list model matters.
-    </p>
-    <blockquote style="border-left:4px solid #dc2626;padding:16px 24px;margin:0 0 24px;background:#fff;border-radius:0 10px 10px 0">
-      <p style="font-size:1.1rem;font-weight:700;color:#080f1e;margin:0;font-style:italic;line-height:1.5">
-        "The repair is rarely the hard part. Coordinating five different contractors is."
-      </p>
-    </blockquote>
-    <p style="font-size:1.05rem;color:#2a3a52;line-height:1.72;margin:0">
-      Home Heroes is set up to help combine compatible small jobs into one organized visit where possible. Not every combination works, but the goal is fewer appointments, less back-and-forth, and a property that is back online faster.
-    </p>
-  </div>
-</section>
+<div id="repair-guide" style="background:#fff;padding:32px 0 80px">
 
-<!-- ================================================================
-  SECTION 2: SEND US THE WHOLE PUNCH LIST
-================================================================ -->
-<section style="background:linear-gradient(135deg,#080f1e 0%,#101c38 100%);padding:72px 24px">
-  <div style="max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
-    <div>
-      <h2 style="font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin:0 0 20px">
-        Send Us the Whole Punch List
-      </h2>
-      <p style="font-size:1rem;color:rgba(200,215,240,0.8);line-height:1.7;margin:0 0 24px">
-        You do not need to figure out which small task belongs to which contractor before contacting us. Send the complete list.
-      </p>
-      <blockquote style="border-left:3px solid #dc2626;padding:12px 20px;margin:0 0 28px;background:rgba(255,255,255,0.05);border-radius:0 8px 8px 0">
-        <p style="font-size:1rem;font-weight:700;color:#fff;margin:0;font-style:italic">
-          "One message is easier than eight contractor calls."
-        </p>
-      </blockquote>
-      <a href="#punch-list-form"
-         style="display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:#fff;font-weight:800;font-size:0.95rem;padding:13px 26px;border-radius:9px;text-decoration:none">
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-        Send Us Your Punch List
-      </a>
-    </div>
-    <div style="background:rgba(255,255,255,0.06);border-radius:14px;padding:28px;border:1px solid rgba(255,255,255,0.1)">
-      <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 16px">Example Punch List</p>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
-        {[
-          'Patch drywall damage in guest bedroom',
-          'Remount bedroom TV (fell off bracket)',
-          'Replace loose bathroom faucet',
-          'Fix cabinet hinge in kitchen',
-          'Assemble new nightstand',
-          'Recaulk shower edge',
-          'Replace damaged door handle',
-          'Install smoke detector',
-        ].map(item => (
-          <li style="display:flex;align-items:flex-start;gap:10px">
-            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            <span style="font-size:0.875rem;color:rgba(220,235,255,0.85);line-height:1.5">{item}</span>
-          </li>
+  <!-- Mobile TOC (collapsible) -->
+  <div style="display:none;padding:0 16px 16px" class="mobile-toc-wrap">
+    <details style="background:#f8f9fc;border-radius:10px;border:1.5px solid rgba(30,50,80,0.09);overflow:hidden">
+      <summary style="padding:12px 16px;font-size:0.85rem;font-weight:700;color:#080f1e;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center">
+        Jump to a repair
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color:#dc2626"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div style="padding:8px 12px 12px;display:flex;flex-direction:column;gap:2px">
+        {repairs.map(r => (
+          <a href={`#${r.id}`} class="toc-link">
+            <span class="toc-num">{r.n}</span>
+            {r.label}
+          </a>
         ))}
-      </ul>
-    </div>
+      </div>
+    </details>
   </div>
-</section>
 
-<!-- ================================================================
-  SECTION 3: SERVICE GRID
-================================================================ -->
-<section style="background:#f8f9fc;padding:72px 24px">
-  <div style="max-width:900px;margin:0 auto">
-    <h2 style="font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 10px;text-align:center">
-      What Can Go on an Airbnb Maintenance Punch List?
-    </h2>
-    <p style="text-align:center;color:#4a5e74;font-size:0.95rem;margin:0 0 40px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6">
-      A rental maintenance punch list can include any combination of these handyman-scope tasks.
-    </p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
-      {services.map(s => (
-        <div style="background:#fff;border-radius:10px;padding:14px 16px;border:1.5px solid rgba(30,50,80,0.09);display:flex;align-items:center;gap:10px">
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          <span style="font-size:0.85rem;font-weight:600;color:#1a2a40;line-height:1.3">{s}</span>
-        </div>
-      ))}
-    </div>
-    <p style="text-align:center;font-size:0.88rem;color:#6a7a8e;margin:28px 0 0;line-height:1.6">
-      For a full breakdown of handyman services available in Charlotte, see the
-      <a href="/charlotte-nc/handyman" style="color:#dc2626;font-weight:700;text-decoration:none">Charlotte handyman service page</a>.
-    </p>
-  </div>
-</section>
+  <div class="repair-layout">
 
-<!-- ================================================================
-  SECTION 4: BEFORE / AFTER GALLERY
-================================================================ -->
-<section style="background:#fff;padding:72px 24px">
-  <div style="max-width:1040px;margin:0 auto">
-    <h2 style="font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 10px;text-align:center">
-      Different Properties. Different Problems. One Punch List Mindset.
-    </h2>
-    <p style="text-align:center;color:#4a5e74;font-size:0.95rem;margin:0 0 44px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">
-      These are separate rental properties, separate visits, separate jobs. All part of the same kind of work.
-    </p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
-      {beforeAfters.map(card => (
-        <div style="background:#f8f9fc;border-radius:14px;overflow:hidden;border:1.5px solid rgba(30,50,80,0.08)">
-          <div style="display:grid;grid-template-columns:1fr 1fr">
-            <div style="position:relative">
-              <img src={card.before} alt={card.beforeAlt} loading="lazy" width="200" height="150"
-                   style="width:100%;height:150px;object-fit:cover;display:block" />
-              <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.78);color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.1em;padding:3px 8px;border-radius:4px;text-transform:uppercase">Before</span>
-            </div>
-            <div style="position:relative">
-              <img src={card.after} alt={card.afterAlt} loading="lazy" width="200" height="150"
-                   style="width:100%;height:150px;object-fit:cover;display:block" />
-              <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.1em;padding:3px 8px;border-radius:4px;text-transform:uppercase">After</span>
-            </div>
+    <!-- DESKTOP STICKY TOC -->
+    <aside class="repair-toc desktop-toc">
+      <div style="background:#f8f9fc;border-radius:12px;border:1.5px solid rgba(30,50,80,0.09);overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid rgba(30,50,80,0.08);background:#080f1e">
+          <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 2px">Airbnb Maintenance</p>
+          <p style="font-size:0.82rem;font-weight:700;color:#fff;margin:0">Repair Guide</p>
+        </div>
+        <div style="padding:8px 8px 10px">
+          <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;padding:4px 10px 8px;margin:0">Jump to a repair:</p>
+          <nav style="display:flex;flex-direction:column;gap:1px">
+            {repairs.map(r => (
+              <a href={`#${r.id}`} class="toc-link">
+                <span class="toc-num">{r.n}</span>
+                {r.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+        <div style="padding:12px 14px;border-top:1px solid rgba(30,50,80,0.08);background:#fafbfd">
+          <a href="#punch-list-form"
+             style="display:flex;align-items:center;justify-content:center;gap:6px;background:#dc2626;color:#fff;font-weight:800;font-size:0.8rem;padding:10px 14px;border-radius:7px;text-decoration:none;text-align:center">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            Send Your Punch List
+          </a>
+        </div>
+      </div>
+      <div style="margin-top:16px;background:#fff8f8;border-radius:10px;border:1.5px solid rgba(220,38,38,0.15);padding:14px">
+        <p style="font-size:0.72rem;font-weight:700;color:#080f1e;margin:0 0 5px">Price Note</p>
+        <p style="font-size:0.72rem;color:#6a7a8e;margin:0;line-height:1.55">Prices below are general planning ranges for common small jobs in Charlotte. Actual pricing depends on materials, access, condition, finish requirements and scope.</p>
+      </div>
+    </aside>
+
+    <!-- REPAIR SECTIONS -->
+    <main class="repair-content">
+
+      <!-- Price disclaimer (mobile visible) -->
+      <div style="background:#fff8f8;border-radius:10px;border:1.5px solid rgba(220,38,38,0.15);padding:14px 16px;margin:0 0 8px" class="price-note-mobile">
+        <p style="font-size:0.78rem;color:#6a7a8e;margin:0;line-height:1.55"><strong style="color:#080f1e">Price note:</strong> Prices below are general planning ranges for common small jobs in Charlotte. Actual pricing depends on materials, access, condition, finish requirements and scope.</p>
+      </div>
+
+      <!-- ======================================================
+        SECTION 1: DRYWALL REPAIR
+      ====================================================== -->
+      <section id="drywall-repair" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Drywall Repair</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Common short-term rental repair</p>
+
+        <div class="before-after-grid">
+          <div style="position:relative">
+            <img src="/images/airbnb/drywall-repair-airbnb-before.png" alt="Large hole in drywall from guest damage in Charlotte rental before repair" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
           </div>
-          <div style="padding:16px 18px">
-            <div style="display:flex;align-items:center;gap:8px;margin:0 0 6px">
-              <span style="font-size:0.78rem;font-weight:800;color:#dc2626;letter-spacing:0.06em;text-transform:uppercase">{card.service}</span>
-              <span style="font-size:0.72rem;color:#8a9ab0;font-weight:500">{card.location}</span>
-            </div>
-            <p style="font-size:0.82rem;color:#4a5e74;margin:0 0 4px;line-height:1.5">{card.problem}</p>
-            <p style="font-size:0.82rem;font-weight:600;color:#1a2a40;margin:0;line-height:1.5">{card.result}</p>
+          <div style="position:relative">
+            <img src="/images/airbnb/drywall-repair-airbnb-after.png" alt="Repaired and painted drywall in Charlotte rental after patch and texture" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">After</span>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$150 - $450</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">1–3 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Guest damage</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">What it usually looks like:</strong> A hole from a door handle punching through, a removed TV mount leaving craters in the wall, broken drywall from a moved piece of furniture, or general guest damage found during turnover inspection.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Remove loose material, stabilize the damaged area, apply patch and compound, sand, and prepare the surface for paint so the repair disappears into the surrounding wall.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px"><strong style="color:#080f1e">Usually includes:</strong> Removing loose material, squaring the damaged area, patching, taping, joint compound, sanding, and basic finish preparation. Note that compound requires drying time, and a return visit for paint may be needed depending on finish requirements.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost or complexity:</p>
+          <ul class="complexity-list">
+            {['Large or irregular damage area','Texture matching on existing wall','Ceiling repairs (access, compound drip, viewing angle)','Water damage or mold present','Damaged framing behind the drywall','Paint matching when existing color is unknown'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px;letter-spacing:0.02em">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">Wall damage is immediately visible to guests and photographs badly in listing photos. A drywall repair should disappear into the wall before the next guest arrives.</p>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <button class="btn-punch" onclick="addToPunchList('Drywall repair')">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            Add Drywall Repair to My Punch List
+          </button>
+          <a href="/charlotte-nc/handyman" style="font-size:0.82rem;color:#dc2626;font-weight:600;text-decoration:none">Handyman services in Charlotte</a>
+        </div>
+      </section>
+
+      <!-- ======================================================
+        SECTION 2: TV MOUNTING
+      ====================================================== -->
+      <section id="tv-mounting" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">TV Mounting</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Installation, remounting &amp; leveling</p>
+
+        <div class="before-after-grid">
+          <div style="position:relative">
+            <img src="/images/airbnb/tv-mounting-airbnb-before.png" alt="Unboxed TV leaning against wall in Uptown Charlotte rental before mounting" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
+          </div>
+          <div style="position:relative">
+            <img src="/images/airbnb/tv-mounting-airbnb-after.png" alt="Mounted TV on living room wall in Charlotte short-term rental" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">After</span>
+          </div>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$125 - $300</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy–Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">1–2 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">New setup / turnover</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common requests:</strong> New TV needs installing before listing goes live, existing mount fell or shifted after guest use, TV needs repositioning after furniture was rearranged, or an old mount needs replacing with a full-motion bracket.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Secure the TV safely to the wall, position it at the correct viewing height, level it, and make the room look put-together for guests.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px"><strong style="color:#080f1e">Usually includes:</strong> Stud and mounting-point check, bracket installation, leveling, TV placement, and basic cable organization.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost or complexity:</p>
+          <ul class="complexity-list">
+            {['Large TV (85"+) requiring two installers','Masonry or brick wall','In-wall cable management','Replacing an existing damaged mount','Unusual wall structure or hollow-core situations','TV over a fireplace (angle, heat considerations)'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">A TV is one of the first things a guest looks for and one of the first complaints when it is missing, crooked, or poorly mounted. It directly affects reviews.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('TV mounting')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add TV Mounting to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 3: DOOR & HANDLE REPAIR
+      ====================================================== -->
+      <section id="door-repair" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Door &amp; Handle Repair</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Hardware replacement &amp; door adjustment</p>
+
+        <div class="before-after-grid">
+          <div style="position:relative">
+            <img src="/images/airbnb/door-handle-airbnb-before.png" alt="Door handle punched through interior door panel in South End Charlotte rental" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
+          </div>
+          <div style="position:relative">
+            <img src="/images/airbnb/door-handle-airbnb-after.png" alt="New matte black lever door handle installed on white door in Charlotte rental" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">After</span>
+          </div>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$100 - $275</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy–Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">30 min–2 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Guest damage</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common problems:</strong> Loose or broken lever handle, latch that fails to catch, door that rubs or will not close properly, damaged trim around the latch, or a handle punched through the door panel from impact.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Restore safe, smooth operation. A bedroom or bathroom door that cannot be closed or latched is an immediate functional complaint.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px"><strong style="color:#080f1e">Usually includes:</strong> Hardware removal, new handle or lever installation, latch adjustment, and strike plate alignment. Door panel damage is handled as a separate carpentry repair if needed.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost:</p>
+          <ul class="complexity-list">
+            {['Door frame or jamb is also damaged','Full lockset replacement needed','Exterior door or security hardware','Significant hinge or alignment problem','Drywall around latch side needs repair'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">A bedroom or bathroom door that does not close properly is one of the most common causes of negative guest reviews and is almost always noticed immediately.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Door and handle repair')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Door Repair to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 4: BATHROOM CAULKING
+      ====================================================== -->
+      <section id="bathroom-caulking" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Bathroom Caulking</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Tub, shower &amp; wet-area recaulking</p>
+
+        <div class="before-after-grid">
+          <div style="position:relative">
+            <img src="/images/airbnb/bathroom-caulk-airbnb-before.png" alt="Moldy failing caulk along bathtub edge in Plaza Midwood Charlotte rental before refresh" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
+          </div>
+          <div style="position:relative">
+            <img src="/images/airbnb/bathroom-caulk-airbnb-after.png" alt="Clean white caulk line along bathtub edge after replacement in Charlotte rental" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">After</span>
+          </div>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$125 - $300</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy–Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">1–2 hrs + cure</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Turnover condition</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common problems:</strong> Cracking, peeling, or discolored caulk around the tub or shower edge. Failed silicone that no longer provides a clean seal. Often discovered during turnover inspection.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Remove all failed material, clean the substrate thoroughly, and apply a clean new bead that seals the joint and looks fresh. Curing time means this is best scheduled before the next guest arrival window.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px"><strong style="color:#080f1e">Usually includes:</strong> Removing old caulk with appropriate tools, surface preparation and cleaning, applying new caulk, and tooling a clean line. Old silicone can be significantly harder to remove than latex-based caulk.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost:</p>
+          <ul class="complexity-list">
+            {['Mold or moisture damage in the substrate','Large shower enclosure with multiple joints','Old silicone that is heavily bonded','Tile or grout repairs also needed','Color-matched caulk for tile surround'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">Old, discolored caulk makes an otherwise clean bathroom look neglected. It is one of the most cost-effective turnover improvements relative to how clearly it reads in photos and in person.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Bathroom caulking')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Bathroom Caulking to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 5: LIGHT FIXTURE
+      ====================================================== -->
+      <section id="light-fixture" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Light Fixture Replacement</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Standard fixture swap and installation</p>
+
+        <div class="before-after-grid">
+          <div style="position:relative">
+            <img src="/images/airbnb/light-fixture-airbnb-before.png" alt="Open ceiling wiring with no light fixture installed in Dilworth Charlotte rental" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
+          </div>
+          <div style="position:relative">
+            <img src="/images/airbnb/light-fixture-airbnb-after.png" alt="New drum ceiling light fixture installed in Dilworth Charlotte rental" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">After</span>
+          </div>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$125 - $300</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">1–2 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Setup / upgrade</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common requests:</strong> Replace a non-working or outdated fixture, install a fixture in a room where one was not previously placed, or swap out a fixture before a new listing goes live.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Restore functional lighting and improve the room for guests and listing photography. This covers simple fixture replacement where existing wiring and box conditions are suitable.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px"><strong style="color:#080f1e">Important:</strong> Standard fixture replacement is handyman-scope work. When the ceiling box is damaged, wiring needs repair, or a new circuit is required, that falls outside handyman scope and requires a licensed electrician.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost or moves to licensed scope:</p>
+          <ul class="complexity-list">
+            {['Ceiling box is damaged or undersized for the new fixture','Wiring needs repair or extension','New circuit required (licensed electrician needed)','High ceiling with difficult access','Very heavy or large chandelier (requires brace)'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">Lighting quality directly affects both listing photography and the guest experience during the stay. A missing or broken fixture makes an otherwise finished room look unfinished.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Light fixture replacement')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Light Fixture Work to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 6: FURNITURE ASSEMBLY
+      ====================================================== -->
+      <section id="furniture-assembly" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">6</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Furniture Assembly</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Flat-pack furniture for rental setup</p>
+
+        <div class="before-after-grid">
+          <div style="position:relative">
+            <img src="/images/airbnb/furniture-assembly-airbnb-before.png" alt="Flat-pack furniture boxes stacked in empty Ballantyne rental bedroom before assembly" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
+          </div>
+          <div style="position:relative">
+            <img src="/images/airbnb/furniture-assembly-airbnb-after.png" alt="Assembled king bed and nightstands in Ballantyne Charlotte rental bedroom" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">After</span>
+          </div>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$100 - $350</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy–Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">1–4 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">New setup / replacement</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common requests:</strong> New property setup, replacement of a broken bed frame or nightstand, adding guest bedroom furniture before listing launch, or assembling newly delivered items before the next booking window.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Assemble furniture correctly and securely so it is stable, safe for guests, and looks like it belongs in the room. A broken nightstand or wobbly bed frame takes a room offline.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px"><strong style="color:#080f1e">Usually includes:</strong> Unboxing, assembly per instructions, leveling, and placement. Wall anchoring for tip-prone pieces where appropriate.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost:</p>
+          <ul class="complexity-list">
+            {['Multiple items in the same visit','Complex furniture with many parts','Missing hardware (requires sourcing)','Large furniture requiring two people','Wall anchoring for safety compliance'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">A broken or missing piece of bedroom furniture can put a room listing on hold. Assembly is a natural punch-list item that often pairs well with TV mounting and other setup tasks in the same visit.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Furniture assembly')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Furniture Assembly to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 7: FAUCET REPLACEMENT
+      ====================================================== -->
+      <section id="faucet-replacement" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">7</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Faucet Replacement</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Bathroom and kitchen fixture swap</p>
+
+        <div class="before-after-grid">
+          <div style="position:relative">
+            <img src="/images/airbnb/faucet-replacement-airbnb-before.png" alt="Old worn chrome bathroom faucet at Steele Creek Charlotte rental before replacement" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
+          </div>
+          <div style="position:relative">
+            <img src="/images/airbnb/faucet-replacement-airbnb-after.png" alt="New matte black widespread bathroom faucet installed in Steele Creek Charlotte rental" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">After</span>
+          </div>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$150 - $350</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">1–2 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Leaking / upgrade</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common problems:</strong> Leaking fixture, loose faucet that rocks at the base, damaged or worn finish, broken handle, or outdated fixture being replaced before a new listing.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Remove the old fixture, install the replacement, test for leaks, and restore normal use. This covers straightforward fixture swaps where shutoff valves are functional and supply lines are accessible.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px"><strong style="color:#080f1e">Important:</strong> When shutoff valves fail during the job, significant corrosion is found, or supply lines need rerouting, this moves beyond standard handyman scope into plumbing. That situation will be flagged before proceeding.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost:</p>
+          <ul class="complexity-list">
+            {['Shutoff valves that are stuck, corroded, or failing','Difficult under-sink access','Drain assembly also needs replacement','Supply lines that need replacement','Plumbing modification required (licensed scope)'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">A leaking or loose faucet is a quick guest complaint and visible water waste. A clean new fixture also visually updates a bathroom significantly for relatively low cost.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Faucet replacement')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Faucet Replacement to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 8: CABINET REPAIR
+      ====================================================== -->
+      <section id="cabinet-repair" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">8</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Cabinet Hinge &amp; Hardware Repair</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Kitchen and bathroom cabinet adjustment</p>
+
+        <div class="before-after-grid">
+          <div style="position:relative">
+            <img src="/images/airbnb/cabinet-hinge-airbnb-before.png" alt="Sagging cabinet door with loose hinge in University City Charlotte rental before repair" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
+          </div>
+          <div style="position:relative">
+            <img src="/images/airbnb/cabinet-hinge-airbnb-after.png" alt="Properly aligned white cabinet door after hinge repair in Charlotte rental" loading="lazy" width="400" height="220" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">After</span>
+          </div>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$90 - $225</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">30 min–1.5 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Kitchen / bath turnover</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common problems:</strong> Hinge screws stripped out of the cabinet box, door sagging out of alignment, cabinet door that does not close properly, or broken pull hardware.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Restore proper alignment and operation. A sagging or loose cabinet door is a visible sign of deferred maintenance and something guests will open and notice.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost:</p>
+          <ul class="complexity-list">
+            {['Cabinet box material is damaged or stripped beyond a simple anchor fix','Hinge type is non-standard and requires ordering','Multiple doors needing adjustment','Pull hardware replacement across many doors'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">Small cabinet defects are a reliable indicator of how well a property is maintained. Guests and cleaners notice them. Cabinet repairs pair well with other kitchen or bathroom punch-list items.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Cabinet hinge and hardware repair')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Cabinet Repair to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 9: WALL TOUCH-UPS
+      ====================================================== -->
+      <section id="wall-touchups" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">9</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Wall Touch-Ups</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Scuffs, nail holes, and minor surface marks</p>
+
+        <div class="single-image">
+          <div style="position:relative">
+            <img src="/images/airbnb/wall-touchup-airbnb-before.png" alt="Wall cracks and scuffs on Charlotte rental wall before touch-up and paint repair" loading="lazy" width="800" height="260" style="width:100%;max-height:240px;object-fit:cover;display:block" />
+            <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.75);color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.1em;padding:3px 7px;border-radius:4px;text-transform:uppercase">Before</span>
+          </div>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$100 - $300</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy–Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">1–3 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Between-guest upkeep</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common problems:</strong> Scuff marks from luggage, nail holes and anchor craters left by artwork, small dents from furniture impact, and surface marks that accumulate in rental interiors over time.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Fill holes, address surface damage, and touch up paint so the wall reads as clean on inspection and in listing photos. Paint match is the variable that most affects whether a touch-up blends invisibly or stands out.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost:</p>
+          <ul class="complexity-list">
+            {['Paint match is unavailable (color unknown, out of stock, or aged)','Large area of wall needs full repainting','Texture repair required alongside paint','Multiple rooms with scattered marks'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">Small wall marks show clearly in the bright interiors typical of short-term rentals and are especially visible in listing photography. These are the small items that build up between major refresh cycles.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Wall touch-ups')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Wall Touch-Ups to My Punch List
+        </button>
+      </section>
+
+      <!-- ================================================================
+        MID-PAGE PUNCH LIST CTA
+      ================================================================ -->
+      <div style="background:linear-gradient(135deg,#080f1e,#101c38);border-radius:14px;padding:32px;margin:16px 0;text-align:center">
+        <p style="font-size:1rem;font-weight:700;color:rgba(200,215,240,0.6);margin:0 0 6px">Got more than one?</p>
+        <h3 style="font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-0.025em;margin:0 0 16px">Send us the whole punch list.</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 20px;font-size:0.875rem;font-weight:600;color:rgba(200,215,240,0.65)">
+          <span>Drywall</span><span style="color:#dc2626">+</span>
+          <span>TV mounting</span><span style="color:#dc2626">+</span>
+          <span>Faucet</span><span style="color:#dc2626">+</span>
+          <span>Door handle</span>
+        </div>
+        <p style="font-size:0.85rem;color:rgba(200,215,240,0.55);margin:0 0 20px">One property. One list. One conversation.</p>
+        <a href="#punch-list-form"
+           style="display:inline-flex;align-items:center;gap:7px;background:#dc2626;color:#fff;font-weight:800;font-size:0.9rem;padding:12px 24px;border-radius:9px;text-decoration:none">
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          Send Us Your Punch List
+        </a>
+      </div>
+
+      <!-- ======================================================
+        SECTION 10: HVAC FILTER
+      ====================================================== -->
+      <section id="hvac-filter" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">10</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">HVAC Filter Replacement</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Return-air filter change and basic airflow maintenance</p>
+
+        <div style="background:#f8f9fc;border-radius:12px;padding:20px 24px;margin:14px 0 20px;display:flex;align-items:center;gap:18px;border:1.5px solid rgba(30,50,80,0.08)">
+          <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="1.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+          <p style="font-size:0.9rem;color:#2a3a52;line-height:1.6;margin:0">Filter replacement is a straightforward maintenance task best bundled into a larger punch-list visit rather than booked as a standalone service. When it is included with other work, the marginal time is usually 15 to 30 minutes.</p>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Bundle item</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">15–30 min</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Recurring maintenance</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Goal:</strong> Replace a dirty or overdue return-air filter to maintain proper airflow and reduce unnecessary HVAC strain. This is a maintenance task, not an HVAC diagnostic or repair.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px">Filters in rental properties often get less consistent attention than owner-occupied homes. Including a filter change in a recurring punch list is a simple way to stay on top of a task that is easy to forget between guests.</p>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">Recurring filter changes are part of the basic property upkeep that helps avoid larger HVAC service calls. They are easy to add to a punch list when a tech is already on site for other work.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('HVAC filter replacement')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add HVAC Filter to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 11: SMOKE & CO DETECTORS
+      ====================================================== -->
+      <section id="smoke-co" class="repair-section">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">11</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Smoke &amp; CO Detector Installation</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Missing, expired or damaged safety devices</p>
+
+        <div style="background:#f8f9fc;border-radius:12px;padding:20px 24px;margin:14px 0 20px;display:flex;align-items:center;gap:18px;border:1.5px solid rgba(30,50,80,0.08)">
+          <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="1.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+          <p style="font-size:0.9rem;color:#2a3a52;line-height:1.6;margin:0">Smoke and CO detector installation covers mounting hardware, battery or wired units where wiring is already present, and placement review. It does not cover licensed electrical wiring for new hardwired circuits.</p>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$75 - $200</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">15–60 min</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">New setup / expired unit</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common requests:</strong> Detector missing from a room before a new listing, expired device that needs replacement, mounting bracket that failed, or battery issue combined with a mount that needs repositioning.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Important:</strong> Home Heroes can install and mount battery-operated and plug-in devices and replace existing hardwired units where the wiring is already present and functional. Code compliance requirements for placement vary. We do not make legal compliance guarantees.</p>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">Safety devices should be part of every property setup and regular maintenance review. They are also a documented requirement on most hosting platforms.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Smoke and CO detector installation')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Detector Installation to My Punch List
+        </button>
+      </section>
+
+      <!-- ======================================================
+        SECTION 12: WALL ANCHOR & HARDWARE
+      ====================================================== -->
+      <section id="wall-anchor" class="repair-section" style="border-bottom:none">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 6px">
+          <span style="width:28px;height:28px;border-radius:7px;background:#dc2626;color:#fff;font-size:0.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">12</span>
+          <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.025em;margin:0;line-height:1.1">Wall Anchor &amp; Hardware Repair</h2>
+        </div>
+        <p style="font-size:0.82rem;color:#8a9ab0;margin:0 0 4px;font-weight:500">Towel bars, curtain rods, pulled anchors</p>
+
+        <div style="background:#f8f9fc;border-radius:12px;padding:20px 24px;margin:14px 0 20px;display:flex;align-items:center;gap:18px;border:1.5px solid rgba(30,50,80,0.08)">
+          <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="1.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
+          <p style="font-size:0.9rem;color:#2a3a52;line-height:1.6;margin:0">These are exactly the small items that accumulate into a turnover punch list. A pulled towel bar, a failed curtain rod bracket, or loose wall decor mounting are quick individual fixes that add up quickly if left unaddressed.</p>
+        </div>
+
+        <div class="fact-bar">
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Cost</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">$100 - $250</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Difficulty</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Easy–Moderate</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Typical Time</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">30 min–2 hrs</p>
+          </div>
+          <div class="fact-cell">
+            <p style="font-size:0.64rem;font-weight:800;letter-spacing:0.08em;color:#9aaabe;text-transform:uppercase;margin:0 0 3px">Best For</p>
+            <p style="font-size:0.88rem;font-weight:800;color:#080f1e;margin:0">Turnover punch lists</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 14px"><strong style="color:#080f1e">Common problems:</strong> Anchor pulled out of the wall, towel bar or curtain rod that has come loose, wall decor mounting point that failed, or stripped hardware that needs a proper backing before reinstallation.</p>
+        <p style="font-size:0.92rem;color:#2a3a52;line-height:1.7;margin:0 0 16px"><strong style="color:#080f1e">Goal:</strong> Repair the wall mounting area and reinstall hardware correctly so it holds. Depending on the damage, this may include a small drywall repair before reattaching the hardware.</p>
+
+        <div style="margin:0 0 16px">
+          <p style="font-size:0.82rem;font-weight:700;color:#080f1e;margin:0 0 8px">What increases cost:</p>
+          <ul class="complexity-list">
+            {['Drywall around the anchor is badly damaged and needs a proper patch first','Backing required for a heavy object','Multiple mounting points across several rooms','Paint repair needed after hardware is reinstalled'].map(i => (
+              <li>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="airbnb-callout">
+          <p style="font-size:0.82rem;font-weight:800;color:#dc2626;margin:0 0 4px">Airbnb Relevance</p>
+          <p style="font-size:0.875rem;color:#2a3a52;margin:0;line-height:1.6">A missing towel bar or failed curtain rod is a small thing that guests notice immediately. These are classic punch-list items that pair well with other bathroom or bedroom repairs in the same visit.</p>
+        </div>
+
+        <button class="btn-punch" onclick="addToPunchList('Wall anchor and hardware repair')">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Add Wall Hardware Repair to My Punch List
+        </button>
+      </section>
+
+    </main><!-- end repair-content -->
+  </div><!-- end repair-layout -->
+</div><!-- end repair-guide -->
 
 <!-- ================================================================
   PUNCH LIST FORM
 ================================================================ -->
-<section id="punch-list-form" style="background:#f8f9fc;padding:72px 24px">
+<section id="punch-list-form" style="background:#f8f9fc;padding:64px 24px 80px">
   <div style="max-width:660px;margin:0 auto">
     <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 32px rgba(8,15,30,0.1);border:1.5px solid rgba(30,50,80,0.08)">
-      <div style="padding:28px 32px 24px;border-bottom:1px solid rgba(30,50,80,0.08);background:linear-gradient(135deg,#080f1e,#101c38)">
-        <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 8px">Airbnb Maintenance Charlotte</p>
-        <h2 style="font-size:1.5rem;font-weight:900;color:#fff;letter-spacing:-0.02em;margin:0 0 8px;line-height:1.2">
-          Send Us Your Punch List
-        </h2>
-        <p style="font-size:0.88rem;color:rgba(200,215,240,0.75);margin:0;line-height:1.5">
-          List everything that needs attention. Add photos if you have them. We'll help organize the work and determine what can be handled together.
-        </p>
+      <div style="padding:28px 32px 22px;border-bottom:1px solid rgba(30,50,80,0.08);background:linear-gradient(135deg,#080f1e,#101c38)">
+        <p style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 6px">Charlotte, NC</p>
+        <h2 style="font-size:1.5rem;font-weight:900;color:#fff;letter-spacing:-0.02em;margin:0 0 8px">Send Us Your Airbnb Punch List</h2>
+        <p style="font-size:0.875rem;color:rgba(200,215,240,0.72);margin:0;line-height:1.55">List everything that needs attention at the property. Add photos if you have them. We'll review the scope and help determine which tasks can be grouped together.</p>
       </div>
 
-      <form id="punch-list-submit" style="padding:28px 32px;display:flex;flex-direction:column;gap:16px"
+      <form id="punch-list-submit" style="padding:28px 32px;display:flex;flex-direction:column;gap:14px"
             name="airbnb-punch-list" method="POST" action="https://api.web3forms.com/submit">
         <input type="hidden" name="access_key" value="98673c2a-0528-45c5-a5d0-2561df9d62fb" />
         <input type="hidden" name="subject" value="New HomeHeroes Airbnb Punch List Request" />
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
           <div>
-            <label for="pl-name" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">YOUR NAME</label>
-            <input type="text" id="pl-name" name="name" autocomplete="name" required placeholder="First and last name"
-                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+            <label for="pl-name" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:4px;letter-spacing:0.07em">NAME</label>
+            <input type="text" id="pl-name" name="name" autocomplete="name" required placeholder="First and last"
+                   style="width:100%;padding:10px 13px;border-radius:8px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
                    onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
           </div>
           <div>
-            <label for="pl-phone" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PHONE</label>
+            <label for="pl-phone" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:4px;letter-spacing:0.07em">PHONE</label>
             <input type="tel" id="pl-phone" name="phone" autocomplete="tel" required placeholder="(704) 555-0100"
-                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+                   style="width:100%;padding:10px 13px;border-radius:8px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <label for="pl-email" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:4px;letter-spacing:0.07em">EMAIL</label>
+            <input type="email" id="pl-email" name="email" autocomplete="email" placeholder="you@example.com"
+                   style="width:100%;padding:10px 13px;border-radius:8px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+          </div>
+          <div>
+            <label for="pl-location" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:4px;letter-spacing:0.07em">PROPERTY AREA</label>
+            <input type="text" id="pl-location" name="property_location" placeholder="e.g. NoDa, Uptown"
+                   style="width:100%;padding:10px 13px;border-radius:8px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
                    onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
           </div>
         </div>
 
         <div>
-          <label for="pl-email" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">EMAIL</label>
-          <input type="email" id="pl-email" name="email" autocomplete="email" placeholder="you@example.com"
-                 style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
-                 onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-          <div>
-            <label for="pl-location" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PROPERTY AREA</label>
-            <input type="text" id="pl-location" name="property_location" placeholder="e.g. NoDa, Uptown, Ballantyne"
-                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
-                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
-          </div>
-          <div>
-            <label for="pl-timing" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PREFERRED TIMING</label>
-            <input type="text" id="pl-timing" name="preferred_timing" placeholder="e.g. Before next weekend"
-                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
-                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
-          </div>
-        </div>
-
-        <div>
-          <label for="pl-tasks" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">YOUR PUNCH LIST</label>
-          <textarea id="pl-tasks" name="punch_list" rows="5" required
-                    placeholder="Drywall hole in bedroom, mount living room TV, replace bathroom faucet, fix cabinet hinge..."
-                    style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;resize:vertical;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+          <label for="pl-tasks" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:4px;letter-spacing:0.07em">YOUR PUNCH LIST</label>
+          <textarea id="pl-tasks" name="punch_list" rows="6" required
+                    placeholder="Patch bedroom drywall, remount living-room TV, replace bathroom faucet, fix loose cabinet door…"
+                    style="width:100%;padding:10px 13px;border-radius:8px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;resize:vertical;box-sizing:border-box;font-family:inherit"
                     onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'"></textarea>
-          <p style="font-size:0.72rem;color:#8a9ab0;margin:5px 0 0">List every item. No need to categorize by contractor type.</p>
+          <p style="font-size:0.71rem;color:#8a9ab0;margin:4px 0 0">List every item. No need to decide which contractor handles what.</p>
         </div>
 
-        <div>
-          <label for="pl-properties" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">NUMBER OF PROPERTIES (OPTIONAL)</label>
-          <input type="text" id="pl-properties" name="num_properties" placeholder="e.g. 1, 3, 8+"
-                 style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
-                 onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <label for="pl-timing" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:4px;letter-spacing:0.07em">PREFERRED TIMING</label>
+            <input type="text" id="pl-timing" name="preferred_timing" placeholder="e.g. Before next weekend"
+                   style="width:100%;padding:10px 13px;border-radius:8px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+          </div>
+          <div>
+            <label for="pl-props" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:4px;letter-spacing:0.07em">NO. OF PROPERTIES</label>
+            <input type="text" id="pl-props" name="num_properties" placeholder="Optional"
+                   style="width:100%;padding:10px 13px;border-radius:8px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+          </div>
         </div>
 
-        <button id="pl-submit-btn" type="submit"
-                style="width:100%;padding:14px;font-size:1rem;font-weight:800;color:#fff;background:#dc2626;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.15s">
-          <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        <button id="pl-btn" type="submit"
+                style="width:100%;padding:13px;font-size:0.97rem;font-weight:800;color:#fff;background:#dc2626;border:none;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
           Send My Punch List
         </button>
-        <p style="font-size:0.68rem;color:#9aaabe;text-align:center;margin:0">Your info is never sold or shared.</p>
+        <p style="font-size:0.67rem;color:#9aaabe;text-align:center;margin:0">Your info is never sold or shared.</p>
       </form>
 
       <div id="pl-success" style="display:none;padding:48px 32px;text-align:center">
-        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#d42222,#8e1010);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#d42222,#8e1010);display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
           <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
         </div>
-        <p style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 8px">Punch list received.</p>
-        <p style="font-size:0.9rem;color:#4a5e74;margin:0;line-height:1.5">We'll review it and follow up to confirm next steps.</p>
+        <p style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 6px">Punch list received.</p>
+        <p style="font-size:0.88rem;color:#4a5e74;margin:0;line-height:1.5">We'll review it and follow up to confirm next steps.</p>
       </div>
     </div>
   </div>
 </section>
 
 <script>
+  /* Form submission */
   const plForm = document.getElementById('punch-list-submit') as HTMLFormElement | null;
   const plSuccess = document.getElementById('pl-success');
-  const plBtn = document.getElementById('pl-submit-btn') as HTMLButtonElement | null;
+  const plBtn = document.getElementById('pl-btn') as HTMLButtonElement | null;
 
   plForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!plBtn) return;
     plBtn.disabled = true;
     plBtn.textContent = 'Sending…';
-
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: new FormData(plForm),
-      });
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(plForm) });
       const data = await res.json();
       if (data.success) {
         plForm.style.display = 'none';
@@ -513,7 +1191,7 @@ const faqs = [
       } else {
         plBtn.disabled = false;
         plBtn.textContent = 'Send My Punch List';
-        alert('Something went wrong. Please call us directly at {phone}.');
+        alert('Something went wrong. Please call us directly.');
       }
     } catch {
       plBtn.disabled = false;
@@ -521,298 +1199,36 @@ const faqs = [
       alert('Something went wrong. Please call us directly.');
     }
   });
+
+  /* "Add to punch list" buttons: append repair name to textarea and scroll to form */
+  function addToPunchList(item: string) {
+    const ta = document.getElementById('pl-tasks') as HTMLTextAreaElement | null;
+    if (ta) {
+      ta.value = ta.value ? ta.value + '\n' + item : item;
+      ta.focus();
+    }
+    const form = document.getElementById('punch-list-form');
+    form?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  (window as any).addToPunchList = addToPunchList;
+
+  /* Mobile TOC show/hide via CSS */
+  function applyResponsiveToc() {
+    const mobile = document.querySelector('.mobile-toc-wrap') as HTMLElement | null;
+    const desktop = document.querySelector('.desktop-toc') as HTMLElement | null;
+    const priceNoteMobile = document.querySelector('.price-note-mobile') as HTMLElement | null;
+    if (window.innerWidth <= 760) {
+      if (mobile) mobile.style.display = 'block';
+      if (desktop) desktop.style.display = 'none';
+      if (priceNoteMobile) priceNoteMobile.style.display = 'block';
+    } else {
+      if (mobile) mobile.style.display = 'none';
+      if (desktop) desktop.style.display = 'block';
+      if (priceNoteMobile) priceNoteMobile.style.display = 'none';
+    }
+  }
+  applyResponsiveToc();
+  window.addEventListener('resize', applyResponsiveToc);
 </script>
-
-<!-- ================================================================
-  SECTION 5: TURNOVER WORKFLOW
-================================================================ -->
-<section style="background:#fff;padding:72px 24px">
-  <div style="max-width:800px;margin:0 auto">
-    <h2 style="font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 16px">
-      Turnover Punch Lists for Airbnb &amp; Short-Term Rentals
-    </h2>
-    <p style="font-size:1rem;color:#4a5e74;line-height:1.7;margin:0 0 36px">
-      After a guest checkout, the cleaner or owner often finds issues that need repair before the next booking. That is the moment a turnover punch list gets created.
-    </p>
-    <div style="display:flex;flex-direction:column;gap:0;margin:0 0 32px;position:relative">
-      {[
-        'Guest checks out',
-        'Owner or cleaner finds issues',
-        'Punch list is created',
-        'Photos are sent',
-        'Repairs are organized',
-        'Property is reset',
-        'Next guest arrives',
-      ].map((step, i) => (
-        <div style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid rgba(30,50,80,0.07)">
-          <div style={`width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.78rem;font-weight:800;${i === 6 ? 'background:#dc2626;color:#fff' : 'background:#f0f1f4;color:#4a5e74'}`}>{i + 1}</div>
-          <span style={`font-size:0.95rem;font-weight:${i === 6 ? '700' : '500'};color:${i === 6 ? '#080f1e' : '#2a3a52'}`}>{step}</span>
-        </div>
-      ))}
-    </div>
-    <blockquote style="border-left:4px solid #dc2626;padding:16px 24px;margin:0 0 24px;background:#f8f9fc;border-radius:0 10px 10px 0">
-      <p style="font-size:1.05rem;font-weight:700;color:#080f1e;margin:0;font-style:italic">"Turnover maintenance is about time, not just tools."</p>
-    </blockquote>
-    <p style="font-size:0.95rem;color:#4a5e74;line-height:1.7;margin:0">
-      Not every task can always be completed in one visit. When compatible tasks can be grouped, the goal is to reduce the number of appointments between checkout and the next guest arrival.
-    </p>
-  </div>
-</section>
-
-<!-- ================================================================
-  SECTION 6 + 7: FOR PROPERTY MANAGERS / FOR OWNERS (TWO-COLUMN)
-================================================================ -->
-<section style="background:#f8f9fc;padding:72px 24px">
-  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px">
-    <div style="background:#fff;border-radius:16px;padding:36px;border:1.5px solid rgba(30,50,80,0.08)">
-      <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 12px">Property Managers</p>
-      <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.02em;line-height:1.2;margin:0 0 16px">
-        Less Vendor Management. More Property Management.
-      </h2>
-      <p style="font-size:0.92rem;color:#4a5e74;line-height:1.7;margin:0 0 20px">
-        Managing multiple units means scattered maintenance requests, cleaners reporting issues, and owners asking for updates. Coordinating different vendors for every small repair takes time that should go toward managing the portfolio.
-      </p>
-      <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:8px">
-        {[
-          'Recurring punch-list service',
-          'Mixed-task visits',
-          'One point of contact',
-          'Photo documentation available',
-          'Multi-property coordination',
-        ].map(item => (
-          <li style="display:flex;align-items:center;gap:10px">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            <span style="font-size:0.875rem;color:#1a2a40;font-weight:500">{item}</span>
-          </li>
-        ))}
-      </ul>
-      <a href="#punch-list-form"
-         style="display:inline-flex;align-items:center;gap:7px;background:#dc2626;color:#fff;font-weight:800;font-size:0.9rem;padding:12px 22px;border-radius:9px;text-decoration:none">
-        Send a Property Punch List
-      </a>
-    </div>
-
-    <div style="background:#fff;border-radius:16px;padding:36px;border:1.5px solid rgba(30,50,80,0.08)">
-      <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 12px">Airbnb Owners</p>
-      <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.02em;line-height:1.2;margin:0 0 16px">
-        For Owners Who Don't Want to Manage Five Contractors
-      </h2>
-      <p style="font-size:0.92rem;color:#4a5e74;line-height:1.7;margin:0 0 20px">
-        An owner may need a handyman, a fixture installer and a furniture assembler in the same week. The goal of the punch-list model is to reduce that coordination wherever practical.
-      </p>
-      <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:8px">
-        {[
-          'Guest damage repairs',
-          'Turnover fixes',
-          'New furniture setup',
-          'Small property improvements',
-          'Post-cleaning repair lists',
-        ].map(item => (
-          <li style="display:flex;align-items:center;gap:10px">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            <span style="font-size:0.875rem;color:#1a2a40;font-weight:500">{item}</span>
-          </li>
-        ))}
-      </ul>
-      <a href="#punch-list-form"
-         style="display:inline-flex;align-items:center;gap:7px;background:#080f1e;color:#fff;font-weight:800;font-size:0.9rem;padding:12px 22px;border-radius:9px;text-decoration:none">
-        Send Us What Needs Fixing
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-  SECTION 8: THE PUNCH LIST EXPERIENCE (5 STEPS)
-================================================================ -->
-<section style="background:linear-gradient(135deg,#080f1e 0%,#101c38 100%);padding:72px 24px">
-  <div style="max-width:900px;margin:0 auto">
-    <h2 style="font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#fff;letter-spacing:-0.03em;margin:0 0 10px;text-align:center">
-      The Home Heroes Punch List Experience
-    </h2>
-    <p style="text-align:center;color:rgba(200,215,240,0.7);font-size:0.95rem;margin:0 0 44px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6">
-      Simple, repeatable, and designed to reduce the work on your end.
-    </p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px">
-      {steps.map(step => (
-        <div style="background:rgba(255,255,255,0.07);border-radius:14px;padding:28px;border:1px solid rgba(255,255,255,0.1)">
-          <div style="width:36px;height:36px;border-radius:10px;background:#dc2626;display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:900;color:#fff;margin:0 0 16px">{step.n}</div>
-          <h3 style="font-size:1rem;font-weight:800;color:#fff;margin:0 0 8px;letter-spacing:-0.01em">{step.title}</h3>
-          <p style="font-size:0.87rem;color:rgba(200,215,240,0.75);margin:0;line-height:1.6">{step.body}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-  SECTION 9: WHY A PUNCH LIST
-================================================================ -->
-<section style="background:#fff;padding:72px 24px">
-  <div style="max-width:800px;margin:0 auto">
-    <h2 style="font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 24px">
-      Why Owners Use a Punch List Instead of Making Separate Repair Calls
-    </h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:0 0 28px">
-      {[
-        ['Fewer messages', 'One contact thread instead of separate conversations with each contractor.'],
-        ['Fewer appointments', 'Compatible tasks grouped into fewer visits where possible.'],
-        ['Easier scheduling', 'Coordinate one time slot instead of multiple separate windows.'],
-        ['Lower coordination burden', 'Less time spent figuring out who handles what.'],
-        ['Turnover planning', 'One organized workflow from checkout issue to property reset.'],
-        ['Property documentation', 'A record of what was repaired and when for each property.'],
-      ].map(([title, desc]) => (
-        <div style="background:#f8f9fc;border-radius:12px;padding:18px 20px;border:1.5px solid rgba(30,50,80,0.07)">
-          <p style="font-size:0.85rem;font-weight:800;color:#080f1e;margin:0 0 6px">{title}</p>
-          <p style="font-size:0.82rem;color:#4a5e74;margin:0;line-height:1.55">{desc}</p>
-        </div>
-      ))}
-    </div>
-    <p style="font-size:0.9rem;color:#6a7a8e;line-height:1.6;margin:0;border-top:1px solid rgba(30,50,80,0.08);padding-top:20px">
-      Grouping work can reduce coordination and may make scheduling more efficient. Results depend on the specific tasks and scope.
-    </p>
-  </div>
-</section>
-
-<!-- ================================================================
-  SECTION 10: EXAMPLE PUNCH LISTS
-================================================================ -->
-<section style="background:#f8f9fc;padding:72px 24px">
-  <div style="max-width:900px;margin:0 auto">
-    <h2 style="font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 10px;text-align:center">
-      Common Airbnb Punch List Examples
-    </h2>
-    <p style="text-align:center;color:#4a5e74;font-size:0.9rem;margin:0 0 36px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6">
-      These are example punch lists to illustrate the format, not records of specific completed jobs.
-    </p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px">
-      {[
-        {
-          label: 'Example 1',
-          title: 'Guest Bedroom Reset',
-          items: ['Patch wall anchors','Remount bedroom TV','Tighten door handle','Assemble nightstand'],
-        },
-        {
-          label: 'Example 2',
-          title: 'Bathroom Turnover',
-          items: ['Recaulk tub edge','Replace faucet','Install towel hardware','Repair small wall damage'],
-        },
-        {
-          label: 'Example 3',
-          title: 'New Property Setup',
-          items: ['Assemble furniture','Mount TVs','Install curtain hardware','Install smoke detectors','Hang mirrors and wall decor'],
-        },
-      ].map(ex => (
-        <div style="background:#fff;border-radius:14px;padding:28px;border:1.5px solid rgba(30,50,80,0.08)">
-          <p style="font-size:0.68rem;font-weight:800;letter-spacing:0.1em;color:#dc2626;text-transform:uppercase;margin:0 0 6px">{ex.label}</p>
-          <h3 style="font-size:1rem;font-weight:800;color:#080f1e;margin:0 0 16px">{ex.title}</h3>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
-            {ex.items.map(item => (
-              <li style="display:flex;align-items:flex-start;gap:9px">
-                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                <span style="font-size:0.875rem;color:#2a3a52;line-height:1.45">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-  SECTION 11: LOCAL + SECTION 12: MULTIPLE PROPERTIES
-================================================================ -->
-<section style="background:#fff;padding:72px 24px">
-  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
-    <div>
-      <h2 style="font-size:1.5rem;font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 16px;line-height:1.2">
-        Airbnb Maintenance in Charlotte, NC
-      </h2>
-      <p style="font-size:0.95rem;color:#4a5e74;line-height:1.7;margin:0 0 16px">
-        Home Heroes works with rental owners and property managers throughout Charlotte and the surrounding service areas. Whether the property is in Uptown, NoDa, South End, Dilworth, Ballantyne or the surrounding suburbs, the punch-list process is the same.
-      </p>
-      <p style="font-size:0.88rem;color:#4a5e74;line-height:1.65;margin:0 0 20px">
-        For general handyman service coverage, see
-        <a href="/charlotte-nc/handyman" style="color:#dc2626;font-weight:700;text-decoration:none">Charlotte handyman services</a>.
-        For repair case examples, see
-        <a href="/repairs/drywall-repair-short-term-rental-charlotte" style="color:#dc2626;font-weight:700;text-decoration:none">the drywall repair case</a>.
-      </p>
-    </div>
-    <div style="background:#f8f9fc;border-radius:14px;padding:32px;border:1.5px solid rgba(30,50,80,0.08)">
-      <h2 style="font-size:1.3rem;font-weight:900;color:#080f1e;letter-spacing:-0.02em;margin:0 0 14px;line-height:1.2">
-        Managing Multiple Rentals?
-      </h2>
-      <p style="font-size:0.9rem;color:#4a5e74;line-height:1.65;margin:0 0 18px">
-        For operators with several units, consistency is the real value. Rather than finding someone new every time a small problem appears, you send recurring punch lists to the same contact.
-      </p>
-      <ul style="list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:7px">
-        {['Turnover punch lists','Monthly maintenance','Guest damage','Property resets','New-unit setup','Small improvement projects'].map(item => (
-          <li style="display:flex;align-items:center;gap:9px">
-            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            <span style="font-size:0.85rem;color:#1a2a40;font-weight:500">{item}</span>
-          </li>
-        ))}
-      </ul>
-      <a href="#punch-list-form"
-         style="display:inline-flex;align-items:center;gap:7px;background:#dc2626;color:#fff;font-weight:800;font-size:0.875rem;padding:11px 20px;border-radius:8px;text-decoration:none">
-        Talk to Us About Multiple Properties
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-  FAQ
-================================================================ -->
-<section style="background:#f8f9fc;padding:72px 24px">
-  <div style="max-width:760px;margin:0 auto">
-    <h2 style="font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 36px;text-align:center">
-      Frequently Asked Questions
-    </h2>
-    <div style="display:flex;flex-direction:column;gap:2px">
-      {faqs.map((faq, i) => (
-        <details style="background:#fff;border-radius:10px;overflow:hidden;border:1.5px solid rgba(30,50,80,0.08)" open={i === 0}>
-          <summary style="padding:18px 22px;font-size:0.95rem;font-weight:700;color:#080f1e;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4">
-            {faq.q}
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:#dc2626"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div style="padding:0 22px 18px">
-            <p style="font-size:0.9rem;color:#4a5e74;line-height:1.7;margin:0">{faq.a}</p>
-          </div>
-        </details>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-  FINAL CTA
-================================================================ -->
-<section style="background:linear-gradient(135deg,#080f1e 0%,#101c38 100%);padding:80px 24px 88px">
-  <div style="max-width:660px;margin:0 auto;text-align:center">
-    <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.06;margin:0 0 18px">
-      Got a Punch List?<br /><span style="color:#dc2626">Send It.</span>
-    </h2>
-    <p style="font-size:1rem;color:rgba(200,215,240,0.78);line-height:1.7;margin:0 auto 36px;max-width:480px">
-      Whether it is three small repairs or a full turnover list, send us the property details, photos and everything that needs attention. We'll help organize the work and determine the next step.
-    </p>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:0 0 14px">
-      <a href="#punch-list-form"
-         style="display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:#fff;font-weight:800;font-size:1rem;padding:15px 32px;border-radius:10px;text-decoration:none;box-shadow:0 6px 24px rgba(220,38,38,0.3)">
-        <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-        Send Us Your Punch List
-      </a>
-      <a href={phoneHref}
-         style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:1rem;padding:15px 28px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.07)">
-        Schedule Airbnb Maintenance
-      </a>
-    </div>
-    <a href="#punch-list-form"
-       style="display:inline-block;font-size:0.88rem;color:rgba(200,215,240,0.55);font-weight:500;text-decoration:underline;text-underline-offset:3px">
-      Managing Multiple Properties? Talk to Us
-    </a>
-  </div>
-</section>
 
 </SeoPageLayout>
