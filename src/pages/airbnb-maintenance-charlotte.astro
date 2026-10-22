@@ -1,0 +1,818 @@
+---
+import SeoPageLayout from '../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../components/cro/StickyMobileCTA.astro';
+import { phone, phoneHref } from '../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/airbnb-maintenance-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Airbnb Maintenance & Punch List Service in Charlotte, NC",
+  "description": "Home Heroes helps Airbnb hosts and property managers in Charlotte with maintenance, turnover repairs and punch lists including drywall, TV mounting, fixtures, furniture, faucets and handyman work.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Home Heroes",
+    "url": base,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Charlotte",
+    "addressRegion": "NC"
+  },
+  "serviceType": "Airbnb Maintenance, Short-Term Rental Maintenance, Turnover Punch List, Handyman",
+  "url": canonical
+};
+
+const beforeAfters = [
+  {
+    service: 'TV Mounting',
+    location: 'Uptown Charlotte',
+    problem: 'TV still in the box. Guests arriving in two days.',
+    result: 'TV installed, level and secure. Room reset for guests.',
+    before: '/images/airbnb/tv-mounting-airbnb-before.png',
+    after: '/images/airbnb/tv-mounting-airbnb-after.png',
+    beforeAlt: 'Unboxed 55-inch TV leaning against wall in Uptown Charlotte Airbnb before mounting',
+    afterAlt: 'Mounted Samsung TV on living room wall in Charlotte short-term rental after installation',
+  },
+  {
+    service: 'Drywall Repair',
+    location: 'NoDa',
+    problem: 'Guest damage. Large hole in the bedroom wall before the next turnover.',
+    result: 'Wall patched, textured, and blended. No visible trace.',
+    before: '/images/airbnb/drywall-repair-airbnb-before.png',
+    after: '/images/airbnb/drywall-repair-airbnb-after.png',
+    beforeAlt: 'Large hole in drywall from guest damage in NoDa Airbnb rental before repair',
+    afterAlt: 'Repaired and painted drywall in NoDa rental property after patch and texture',
+  },
+  {
+    service: 'Door Hardware',
+    location: 'South End',
+    problem: 'Knob punched through door. Handle damaged and door unusable.',
+    result: 'New lever hardware installed. Door functional and presentable.',
+    before: '/images/airbnb/door-handle-airbnb-before.png',
+    after: '/images/airbnb/door-handle-airbnb-after.png',
+    beforeAlt: 'Door handle hole punched through interior door in South End rental before repair',
+    afterAlt: 'New matte black lever door handle installed on white door in Charlotte rental property',
+  },
+  {
+    service: 'Bathroom Caulking',
+    location: 'Plaza Midwood',
+    problem: 'Failing caulk and mold at the tub edge. Guest-facing condition issue.',
+    result: 'Old caulk removed, new bead applied. Clean and sealed.',
+    before: '/images/airbnb/bathroom-caulk-airbnb-before.png',
+    after: '/images/airbnb/bathroom-caulk-airbnb-after.png',
+    beforeAlt: 'Moldy and failing caulk along bathtub edge in Plaza Midwood Airbnb before refresh',
+    afterAlt: 'Clean white caulk line along bathtub edge in Charlotte rental bathroom after replacement',
+  },
+  {
+    service: 'Light Fixture',
+    location: 'Dilworth',
+    problem: 'No fixture installed. Open wiring in ceiling. Property not guest-ready.',
+    result: 'New ceiling fixture installed and working.',
+    before: '/images/airbnb/light-fixture-airbnb-before.png',
+    after: '/images/airbnb/light-fixture-airbnb-after.png',
+    beforeAlt: 'Open ceiling wiring with no light fixture installed in Dilworth short-term rental',
+    afterAlt: 'Installed modern drum ceiling light fixture in Dilworth Charlotte rental property',
+  },
+  {
+    service: 'Furniture Assembly',
+    location: 'Ballantyne',
+    problem: 'New bedroom furniture delivered flat-packed. No setup.',
+    result: 'Bed, nightstands assembled and room staged for guests.',
+    before: '/images/airbnb/furniture-assembly-airbnb-before.png',
+    after: '/images/airbnb/furniture-assembly-airbnb-after.png',
+    beforeAlt: 'Flat-pack furniture boxes stacked in empty bedroom in Ballantyne rental before assembly',
+    afterAlt: 'Assembled king bed and nightstands in staged Ballantyne Charlotte rental bedroom',
+  },
+  {
+    service: 'Faucet Replacement',
+    location: 'Steele Creek',
+    problem: 'Old chrome faucet worn and dripping. Bathroom needed updating.',
+    result: 'New black faucet installed. Bathroom back to guest-ready condition.',
+    before: '/images/airbnb/faucet-replacement-airbnb-before.png',
+    after: '/images/airbnb/faucet-replacement-airbnb-after.png',
+    beforeAlt: 'Old worn chrome bathroom faucet at Steele Creek rental property before replacement',
+    afterAlt: 'New matte black widespread bathroom faucet installed in Steele Creek Charlotte rental',
+  },
+];
+
+const services = [
+  'Drywall Repair',
+  'Wall Patching',
+  'TV Mounting',
+  'Furniture Assembly',
+  'Door Hardware',
+  'Cabinet Hardware & Hinges',
+  'Bathroom Caulking',
+  'Faucet Replacement',
+  'Light Fixture Replacement',
+  'Wall Anchors',
+  'Paint Touch-Ups',
+  'Curtain & Blind Hardware',
+  'Smoke / CO Detectors',
+  'Minor Handyman Repairs',
+  'Turnover Fixes',
+  'Property Setup Tasks',
+];
+
+const steps = [
+  {
+    n: '1',
+    title: 'Build Your List',
+    body: 'Write down everything that needs attention at the property. One item or fifteen.',
+  },
+  {
+    n: '2',
+    title: 'Send Photos',
+    body: 'Photos help us understand scope before scheduling. Attach what you have.',
+  },
+  {
+    n: '3',
+    title: 'We Organize the Work',
+    body: 'We determine which tasks can be grouped and whether any trade beyond handyman is needed.',
+  },
+  {
+    n: '4',
+    title: 'Repair and Reset',
+    body: 'Work is completed with the goal of getting the property back into guest-ready condition.',
+  },
+  {
+    n: '5',
+    title: 'Keep One Contact',
+    body: 'Next turnover, send the next list. Same team. No re-explaining from scratch.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What is an Airbnb maintenance punch list?',
+    a: "A punch list is a written list of repair and maintenance tasks for a property. For short-term rental owners, it typically includes everything that needs attention between guests: damaged walls, loose hardware, furniture that needs assembly, fixtures that need replacing, or caulking that is failing. Instead of making separate calls for each item, you send the whole list to Home Heroes and we help organize the work.",
+  },
+  {
+    q: 'Can I send multiple repairs in one punch list?',
+    a: 'Yes. That is the point. You do not need to figure out which contractor handles which task before reaching out. Send everything on your list together, and we will sort through what can be handled in the same visit.',
+  },
+  {
+    q: 'Can Home Heroes handle an Airbnb turnover punch list?',
+    a: 'Yes. Turnover punch lists are a common request. Guest checks out, the cleaner or owner finds issues, and the list gets sent to us. Not every task can always be completed in one visit, but compatible small repairs can often be grouped together to reduce the number of appointments.',
+  },
+  {
+    q: 'Do you work with property managers in Charlotte?',
+    a: 'Yes. We work with property managers handling single-unit rentals and those managing multiple properties. If you need a consistent point of contact for recurring punch lists across your portfolio, that is something we can support.',
+  },
+  {
+    q: 'Can I send photos with my punch list?',
+    a: 'Yes, and we encourage it. Photos help us understand the scope before scheduling, which means fewer surprises on the day of the visit. Use the form on this page or send them directly when you contact us.',
+  },
+  {
+    q: 'Can several handyman jobs be completed in one visit?',
+    a: 'Often yes, depending on the scope of each task. Patching drywall, remounting a TV, swapping door hardware, and assembling furniture can all fit in the same visit. When the scope is larger, we let you know upfront.',
+  },
+  {
+    q: 'Do you provide Airbnb handyman services in Charlotte?',
+    a: 'Yes. Home Heroes provides handyman services for short-term rental properties throughout Charlotte and the surrounding metro. See our full Charlotte handyman service for a detailed list of what we handle.',
+  },
+  {
+    q: 'Can you help with drywall, TV mounting and furniture assembly in the same visit?',
+    a: 'Frequently yes. These are all handyman-scope tasks that can be grouped together. Include all of them in your punch list and we will confirm what fits in a single visit based on the scope of each item.',
+  },
+  {
+    q: 'Do you offer recurring maintenance for multiple rental properties?',
+    a: 'Yes. If you manage several units and want a consistent contact for recurring punch lists and turnover maintenance, reach out and we can discuss what a regular maintenance relationship looks like.',
+  },
+  {
+    q: 'Can you coordinate larger electrical or plumbing work?',
+    a: 'Home Heroes handles general handyman and maintenance tasks. For licensed electrical or plumbing work, we will let you know when a task falls outside our scope so you can bring in the right trade, rather than discovering that on the day of service.',
+  },
+];
+---
+
+<SeoPageLayout
+  title="Airbnb Maintenance & Punch List Service in Charlotte, NC | Home Heroes"
+  description="Home Heroes helps Airbnb hosts and property managers in Charlotte with maintenance, turnover repairs and punch lists including drywall, TV mounting, fixtures, furniture, faucets and handyman work."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/airbnb/tv-mounting-airbnb-after.png"
+>
+
+<StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Send Punch List" />
+
+<!-- ================================================================
+  HERO
+================================================================ -->
+<section style="background:linear-gradient(150deg,#080f1e 0%,#0e1a32 55%,#131e3a 100%);padding:80px 24px 88px;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22%3E%3Cpath d=%22M0 0h60v60H0z%22 fill=%22none%22/%3E%3Cpath d=%22M0 0L60 0M0 60L60 60M0 0L0 60M60 0L60 60%22 stroke=%22white%22 stroke-width=%221%22/%3E%3C/svg%3E')" aria-hidden="true"></div>
+  <div style="max-width:760px;margin:0 auto;position:relative;text-align:center">
+    <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.14em;color:#dc2626;text-transform:uppercase;margin:0 0 18px">
+      For Airbnb Hosts, STR Owners &amp; Property Managers
+    </p>
+    <h1 style="font-size:clamp(2rem,5.5vw,3.5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.06;margin:0 0 20px">
+      Airbnb Maintenance &amp; Punch List Service<br />
+      <span style="color:#dc2626">in Charlotte, NC</span>
+    </h1>
+    <p style="font-size:1.2rem;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.04em;margin:0 0 24px">
+      One property. One punch list. One team.
+    </p>
+    <p style="font-size:1.05rem;color:rgba(200,215,240,0.82);line-height:1.7;margin:0 auto 16px;max-width:600px">
+      Guest damaged the drywall?
+      TV still needs mounting?
+      Door handle is loose?
+      Bathroom caulk is failing?
+      New furniture needs assembly?
+    </p>
+    <p style="font-size:1.15rem;font-weight:700;color:#fff;margin:0 auto 36px;max-width:560px">
+      Send us the whole list.
+    </p>
+    <p style="font-size:0.9rem;color:rgba(200,215,240,0.65);margin:0 auto 36px;max-width:540px;line-height:1.6">
+      Home Heroes helps Charlotte short-term rental owners organize small repairs, turnover maintenance and mixed handyman work without calling five different contractors.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <a href="#punch-list-form"
+         style="display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:#fff;font-weight:800;font-size:1rem;padding:15px 32px;border-radius:10px;text-decoration:none;box-shadow:0 6px 24px rgba(220,38,38,0.36)">
+        <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        Send Us Your Punch List
+      </a>
+      <a href={phoneHref}
+         style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:1rem;padding:15px 28px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.07)">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        Schedule Airbnb Maintenance
+      </a>
+    </div>
+    <p style="font-size:0.74rem;color:rgba(255,255,255,0.35);margin:16px 0 0;font-weight:500">
+      Send photos, property location and the list of what needs attention.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 1: THE PROBLEM IS THE LIST
+================================================================ -->
+<section style="background:#f8f9fc;padding:72px 24px">
+  <div style="max-width:760px;margin:0 auto">
+    <h2 style="font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;line-height:1.1;margin:0 0 24px">
+      The Problem Usually Isn't One Repair. It's the List.
+    </h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:0 0 32px">
+      {['A loose door handle. Easy.','A drywall hole. Easy.','A faucet replacement. Easy.','A TV mount. Easy.'].map(item => (
+        <div style="background:#fff;border-radius:12px;padding:18px 20px;border:1.5px solid rgba(30,50,80,0.1);display:flex;align-items:center;gap:12px">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <span style="font-size:0.9rem;font-weight:600;color:#1a2a40">{item}</span>
+        </div>
+      ))}
+    </div>
+    <p style="font-size:1.05rem;color:#2a3a52;line-height:1.72;margin:0 0 20px">
+      The frustrating part is when they all need attention at the same property before the next guest arrives. That is where the punch-list model matters.
+    </p>
+    <blockquote style="border-left:4px solid #dc2626;padding:16px 24px;margin:0 0 24px;background:#fff;border-radius:0 10px 10px 0">
+      <p style="font-size:1.1rem;font-weight:700;color:#080f1e;margin:0;font-style:italic;line-height:1.5">
+        "The repair is rarely the hard part. Coordinating five different contractors is."
+      </p>
+    </blockquote>
+    <p style="font-size:1.05rem;color:#2a3a52;line-height:1.72;margin:0">
+      Home Heroes is set up to help combine compatible small jobs into one organized visit where possible. Not every combination works, but the goal is fewer appointments, less back-and-forth, and a property that is back online faster.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 2: SEND US THE WHOLE PUNCH LIST
+================================================================ -->
+<section style="background:linear-gradient(135deg,#080f1e 0%,#101c38 100%);padding:72px 24px">
+  <div style="max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+    <div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin:0 0 20px">
+        Send Us the Whole Punch List
+      </h2>
+      <p style="font-size:1rem;color:rgba(200,215,240,0.8);line-height:1.7;margin:0 0 24px">
+        You do not need to figure out which small task belongs to which contractor before contacting us. Send the complete list.
+      </p>
+      <blockquote style="border-left:3px solid #dc2626;padding:12px 20px;margin:0 0 28px;background:rgba(255,255,255,0.05);border-radius:0 8px 8px 0">
+        <p style="font-size:1rem;font-weight:700;color:#fff;margin:0;font-style:italic">
+          "One message is easier than eight contractor calls."
+        </p>
+      </blockquote>
+      <a href="#punch-list-form"
+         style="display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:#fff;font-weight:800;font-size:0.95rem;padding:13px 26px;border-radius:9px;text-decoration:none">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        Send Us Your Punch List
+      </a>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:14px;padding:28px;border:1px solid rgba(255,255,255,0.1)">
+      <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 16px">Example Punch List</p>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+        {[
+          'Patch drywall damage in guest bedroom',
+          'Remount bedroom TV (fell off bracket)',
+          'Replace loose bathroom faucet',
+          'Fix cabinet hinge in kitchen',
+          'Assemble new nightstand',
+          'Recaulk shower edge',
+          'Replace damaged door handle',
+          'Install smoke detector',
+        ].map(item => (
+          <li style="display:flex;align-items:flex-start;gap:10px">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span style="font-size:0.875rem;color:rgba(220,235,255,0.85);line-height:1.5">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 3: SERVICE GRID
+================================================================ -->
+<section style="background:#f8f9fc;padding:72px 24px">
+  <div style="max-width:900px;margin:0 auto">
+    <h2 style="font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 10px;text-align:center">
+      What Can Go on an Airbnb Maintenance Punch List?
+    </h2>
+    <p style="text-align:center;color:#4a5e74;font-size:0.95rem;margin:0 0 40px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6">
+      A rental maintenance punch list can include any combination of these handyman-scope tasks.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
+      {services.map(s => (
+        <div style="background:#fff;border-radius:10px;padding:14px 16px;border:1.5px solid rgba(30,50,80,0.09);display:flex;align-items:center;gap:10px">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <span style="font-size:0.85rem;font-weight:600;color:#1a2a40;line-height:1.3">{s}</span>
+        </div>
+      ))}
+    </div>
+    <p style="text-align:center;font-size:0.88rem;color:#6a7a8e;margin:28px 0 0;line-height:1.6">
+      For a full breakdown of handyman services available in Charlotte, see the
+      <a href="/charlotte-nc/handyman" style="color:#dc2626;font-weight:700;text-decoration:none">Charlotte handyman service page</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 4: BEFORE / AFTER GALLERY
+================================================================ -->
+<section style="background:#fff;padding:72px 24px">
+  <div style="max-width:1040px;margin:0 auto">
+    <h2 style="font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 10px;text-align:center">
+      Different Properties. Different Problems. One Punch List Mindset.
+    </h2>
+    <p style="text-align:center;color:#4a5e74;font-size:0.95rem;margin:0 0 44px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">
+      These are separate rental properties, separate visits, separate jobs. All part of the same kind of work.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
+      {beforeAfters.map(card => (
+        <div style="background:#f8f9fc;border-radius:14px;overflow:hidden;border:1.5px solid rgba(30,50,80,0.08)">
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="position:relative">
+              <img src={card.before} alt={card.beforeAlt} loading="lazy" width="200" height="150"
+                   style="width:100%;height:150px;object-fit:cover;display:block" />
+              <span style="position:absolute;top:8px;left:8px;background:rgba(8,15,30,0.78);color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.1em;padding:3px 8px;border-radius:4px;text-transform:uppercase">Before</span>
+            </div>
+            <div style="position:relative">
+              <img src={card.after} alt={card.afterAlt} loading="lazy" width="200" height="150"
+                   style="width:100%;height:150px;object-fit:cover;display:block" />
+              <span style="position:absolute;top:8px;left:8px;background:rgba(176,22,22,0.82);color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.1em;padding:3px 8px;border-radius:4px;text-transform:uppercase">After</span>
+            </div>
+          </div>
+          <div style="padding:16px 18px">
+            <div style="display:flex;align-items:center;gap:8px;margin:0 0 6px">
+              <span style="font-size:0.78rem;font-weight:800;color:#dc2626;letter-spacing:0.06em;text-transform:uppercase">{card.service}</span>
+              <span style="font-size:0.72rem;color:#8a9ab0;font-weight:500">{card.location}</span>
+            </div>
+            <p style="font-size:0.82rem;color:#4a5e74;margin:0 0 4px;line-height:1.5">{card.problem}</p>
+            <p style="font-size:0.82rem;font-weight:600;color:#1a2a40;margin:0;line-height:1.5">{card.result}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  PUNCH LIST FORM
+================================================================ -->
+<section id="punch-list-form" style="background:#f8f9fc;padding:72px 24px">
+  <div style="max-width:660px;margin:0 auto">
+    <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 32px rgba(8,15,30,0.1);border:1.5px solid rgba(30,50,80,0.08)">
+      <div style="padding:28px 32px 24px;border-bottom:1px solid rgba(30,50,80,0.08);background:linear-gradient(135deg,#080f1e,#101c38)">
+        <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 8px">Airbnb Maintenance Charlotte</p>
+        <h2 style="font-size:1.5rem;font-weight:900;color:#fff;letter-spacing:-0.02em;margin:0 0 8px;line-height:1.2">
+          Send Us Your Punch List
+        </h2>
+        <p style="font-size:0.88rem;color:rgba(200,215,240,0.75);margin:0;line-height:1.5">
+          List everything that needs attention. Add photos if you have them. We'll help organize the work and determine what can be handled together.
+        </p>
+      </div>
+
+      <form id="punch-list-submit" style="padding:28px 32px;display:flex;flex-direction:column;gap:16px"
+            name="airbnb-punch-list" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="98673c2a-0528-45c5-a5d0-2561df9d62fb" />
+        <input type="hidden" name="subject" value="New HomeHeroes Airbnb Punch List Request" />
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div>
+            <label for="pl-name" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">YOUR NAME</label>
+            <input type="text" id="pl-name" name="name" autocomplete="name" required placeholder="First and last name"
+                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+          </div>
+          <div>
+            <label for="pl-phone" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PHONE</label>
+            <input type="tel" id="pl-phone" name="phone" autocomplete="tel" required placeholder="(704) 555-0100"
+                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+          </div>
+        </div>
+
+        <div>
+          <label for="pl-email" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">EMAIL</label>
+          <input type="email" id="pl-email" name="email" autocomplete="email" placeholder="you@example.com"
+                 style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+                 onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div>
+            <label for="pl-location" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PROPERTY AREA</label>
+            <input type="text" id="pl-location" name="property_location" placeholder="e.g. NoDa, Uptown, Ballantyne"
+                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+          </div>
+          <div>
+            <label for="pl-timing" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PREFERRED TIMING</label>
+            <input type="text" id="pl-timing" name="preferred_timing" placeholder="e.g. Before next weekend"
+                   style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+                   onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+          </div>
+        </div>
+
+        <div>
+          <label for="pl-tasks" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">YOUR PUNCH LIST</label>
+          <textarea id="pl-tasks" name="punch_list" rows="5" required
+                    placeholder="Drywall hole in bedroom, mount living room TV, replace bathroom faucet, fix cabinet hinge..."
+                    style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;resize:vertical;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+                    onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'"></textarea>
+          <p style="font-size:0.72rem;color:#8a9ab0;margin:5px 0 0">List every item. No need to categorize by contractor type.</p>
+        </div>
+
+        <div>
+          <label for="pl-properties" style="display:block;font-size:0.71rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">NUMBER OF PROPERTIES (OPTIONAL)</label>
+          <input type="text" id="pl-properties" name="num_properties" placeholder="e.g. 1, 3, 8+"
+                 style="width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#f9fafb;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit;transition:border-color 0.15s"
+                 onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'" />
+        </div>
+
+        <button id="pl-submit-btn" type="submit"
+                style="width:100%;padding:14px;font-size:1rem;font-weight:800;color:#fff;background:#dc2626;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.15s">
+          <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          Send My Punch List
+        </button>
+        <p style="font-size:0.68rem;color:#9aaabe;text-align:center;margin:0">Your info is never sold or shared.</p>
+      </form>
+
+      <div id="pl-success" style="display:none;padding:48px 32px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#d42222,#8e1010);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        </div>
+        <p style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 8px">Punch list received.</p>
+        <p style="font-size:0.9rem;color:#4a5e74;margin:0;line-height:1.5">We'll review it and follow up to confirm next steps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const plForm = document.getElementById('punch-list-submit') as HTMLFormElement | null;
+  const plSuccess = document.getElementById('pl-success');
+  const plBtn = document.getElementById('pl-submit-btn') as HTMLButtonElement | null;
+
+  plForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!plBtn) return;
+    plBtn.disabled = true;
+    plBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(plForm),
+      });
+      const data = await res.json();
+      if (data.success) {
+        plForm.style.display = 'none';
+        if (plSuccess) plSuccess.style.display = 'block';
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: 'generate_lead', method: 'airbnb_punch_list_form' });
+      } else {
+        plBtn.disabled = false;
+        plBtn.textContent = 'Send My Punch List';
+        alert('Something went wrong. Please call us directly at {phone}.');
+      }
+    } catch {
+      plBtn.disabled = false;
+      plBtn.textContent = 'Send My Punch List';
+      alert('Something went wrong. Please call us directly.');
+    }
+  });
+</script>
+
+<!-- ================================================================
+  SECTION 5: TURNOVER WORKFLOW
+================================================================ -->
+<section style="background:#fff;padding:72px 24px">
+  <div style="max-width:800px;margin:0 auto">
+    <h2 style="font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 16px">
+      Turnover Punch Lists for Airbnb &amp; Short-Term Rentals
+    </h2>
+    <p style="font-size:1rem;color:#4a5e74;line-height:1.7;margin:0 0 36px">
+      After a guest checkout, the cleaner or owner often finds issues that need repair before the next booking. That is the moment a turnover punch list gets created.
+    </p>
+    <div style="display:flex;flex-direction:column;gap:0;margin:0 0 32px;position:relative">
+      {[
+        'Guest checks out',
+        'Owner or cleaner finds issues',
+        'Punch list is created',
+        'Photos are sent',
+        'Repairs are organized',
+        'Property is reset',
+        'Next guest arrives',
+      ].map((step, i) => (
+        <div style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid rgba(30,50,80,0.07)">
+          <div style={`width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.78rem;font-weight:800;${i === 6 ? 'background:#dc2626;color:#fff' : 'background:#f0f1f4;color:#4a5e74'}`}>{i + 1}</div>
+          <span style={`font-size:0.95rem;font-weight:${i === 6 ? '700' : '500'};color:${i === 6 ? '#080f1e' : '#2a3a52'}`}>{step}</span>
+        </div>
+      ))}
+    </div>
+    <blockquote style="border-left:4px solid #dc2626;padding:16px 24px;margin:0 0 24px;background:#f8f9fc;border-radius:0 10px 10px 0">
+      <p style="font-size:1.05rem;font-weight:700;color:#080f1e;margin:0;font-style:italic">"Turnover maintenance is about time, not just tools."</p>
+    </blockquote>
+    <p style="font-size:0.95rem;color:#4a5e74;line-height:1.7;margin:0">
+      Not every task can always be completed in one visit. When compatible tasks can be grouped, the goal is to reduce the number of appointments between checkout and the next guest arrival.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 6 + 7: FOR PROPERTY MANAGERS / FOR OWNERS (TWO-COLUMN)
+================================================================ -->
+<section style="background:#f8f9fc;padding:72px 24px">
+  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px">
+    <div style="background:#fff;border-radius:16px;padding:36px;border:1.5px solid rgba(30,50,80,0.08)">
+      <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 12px">Property Managers</p>
+      <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.02em;line-height:1.2;margin:0 0 16px">
+        Less Vendor Management. More Property Management.
+      </h2>
+      <p style="font-size:0.92rem;color:#4a5e74;line-height:1.7;margin:0 0 20px">
+        Managing multiple units means scattered maintenance requests, cleaners reporting issues, and owners asking for updates. Coordinating different vendors for every small repair takes time that should go toward managing the portfolio.
+      </p>
+      <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:8px">
+        {[
+          'Recurring punch-list service',
+          'Mixed-task visits',
+          'One point of contact',
+          'Photo documentation available',
+          'Multi-property coordination',
+        ].map(item => (
+          <li style="display:flex;align-items:center;gap:10px">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span style="font-size:0.875rem;color:#1a2a40;font-weight:500">{item}</span>
+          </li>
+        ))}
+      </ul>
+      <a href="#punch-list-form"
+         style="display:inline-flex;align-items:center;gap:7px;background:#dc2626;color:#fff;font-weight:800;font-size:0.9rem;padding:12px 22px;border-radius:9px;text-decoration:none">
+        Send a Property Punch List
+      </a>
+    </div>
+
+    <div style="background:#fff;border-radius:16px;padding:36px;border:1.5px solid rgba(30,50,80,0.08)">
+      <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;color:#dc2626;text-transform:uppercase;margin:0 0 12px">Airbnb Owners</p>
+      <h2 style="font-size:1.4rem;font-weight:900;color:#080f1e;letter-spacing:-0.02em;line-height:1.2;margin:0 0 16px">
+        For Owners Who Don't Want to Manage Five Contractors
+      </h2>
+      <p style="font-size:0.92rem;color:#4a5e74;line-height:1.7;margin:0 0 20px">
+        An owner may need a handyman, a fixture installer and a furniture assembler in the same week. The goal of the punch-list model is to reduce that coordination wherever practical.
+      </p>
+      <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:8px">
+        {[
+          'Guest damage repairs',
+          'Turnover fixes',
+          'New furniture setup',
+          'Small property improvements',
+          'Post-cleaning repair lists',
+        ].map(item => (
+          <li style="display:flex;align-items:center;gap:10px">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span style="font-size:0.875rem;color:#1a2a40;font-weight:500">{item}</span>
+          </li>
+        ))}
+      </ul>
+      <a href="#punch-list-form"
+         style="display:inline-flex;align-items:center;gap:7px;background:#080f1e;color:#fff;font-weight:800;font-size:0.9rem;padding:12px 22px;border-radius:9px;text-decoration:none">
+        Send Us What Needs Fixing
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 8: THE PUNCH LIST EXPERIENCE (5 STEPS)
+================================================================ -->
+<section style="background:linear-gradient(135deg,#080f1e 0%,#101c38 100%);padding:72px 24px">
+  <div style="max-width:900px;margin:0 auto">
+    <h2 style="font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#fff;letter-spacing:-0.03em;margin:0 0 10px;text-align:center">
+      The Home Heroes Punch List Experience
+    </h2>
+    <p style="text-align:center;color:rgba(200,215,240,0.7);font-size:0.95rem;margin:0 0 44px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6">
+      Simple, repeatable, and designed to reduce the work on your end.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px">
+      {steps.map(step => (
+        <div style="background:rgba(255,255,255,0.07);border-radius:14px;padding:28px;border:1px solid rgba(255,255,255,0.1)">
+          <div style="width:36px;height:36px;border-radius:10px;background:#dc2626;display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:900;color:#fff;margin:0 0 16px">{step.n}</div>
+          <h3 style="font-size:1rem;font-weight:800;color:#fff;margin:0 0 8px;letter-spacing:-0.01em">{step.title}</h3>
+          <p style="font-size:0.87rem;color:rgba(200,215,240,0.75);margin:0;line-height:1.6">{step.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 9: WHY A PUNCH LIST
+================================================================ -->
+<section style="background:#fff;padding:72px 24px">
+  <div style="max-width:800px;margin:0 auto">
+    <h2 style="font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 24px">
+      Why Owners Use a Punch List Instead of Making Separate Repair Calls
+    </h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:0 0 28px">
+      {[
+        ['Fewer messages', 'One contact thread instead of separate conversations with each contractor.'],
+        ['Fewer appointments', 'Compatible tasks grouped into fewer visits where possible.'],
+        ['Easier scheduling', 'Coordinate one time slot instead of multiple separate windows.'],
+        ['Lower coordination burden', 'Less time spent figuring out who handles what.'],
+        ['Turnover planning', 'One organized workflow from checkout issue to property reset.'],
+        ['Property documentation', 'A record of what was repaired and when for each property.'],
+      ].map(([title, desc]) => (
+        <div style="background:#f8f9fc;border-radius:12px;padding:18px 20px;border:1.5px solid rgba(30,50,80,0.07)">
+          <p style="font-size:0.85rem;font-weight:800;color:#080f1e;margin:0 0 6px">{title}</p>
+          <p style="font-size:0.82rem;color:#4a5e74;margin:0;line-height:1.55">{desc}</p>
+        </div>
+      ))}
+    </div>
+    <p style="font-size:0.9rem;color:#6a7a8e;line-height:1.6;margin:0;border-top:1px solid rgba(30,50,80,0.08);padding-top:20px">
+      Grouping work can reduce coordination and may make scheduling more efficient. Results depend on the specific tasks and scope.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 10: EXAMPLE PUNCH LISTS
+================================================================ -->
+<section style="background:#f8f9fc;padding:72px 24px">
+  <div style="max-width:900px;margin:0 auto">
+    <h2 style="font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 10px;text-align:center">
+      Common Airbnb Punch List Examples
+    </h2>
+    <p style="text-align:center;color:#4a5e74;font-size:0.9rem;margin:0 0 36px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6">
+      These are example punch lists to illustrate the format, not records of specific completed jobs.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px">
+      {[
+        {
+          label: 'Example 1',
+          title: 'Guest Bedroom Reset',
+          items: ['Patch wall anchors','Remount bedroom TV','Tighten door handle','Assemble nightstand'],
+        },
+        {
+          label: 'Example 2',
+          title: 'Bathroom Turnover',
+          items: ['Recaulk tub edge','Replace faucet','Install towel hardware','Repair small wall damage'],
+        },
+        {
+          label: 'Example 3',
+          title: 'New Property Setup',
+          items: ['Assemble furniture','Mount TVs','Install curtain hardware','Install smoke detectors','Hang mirrors and wall decor'],
+        },
+      ].map(ex => (
+        <div style="background:#fff;border-radius:14px;padding:28px;border:1.5px solid rgba(30,50,80,0.08)">
+          <p style="font-size:0.68rem;font-weight:800;letter-spacing:0.1em;color:#dc2626;text-transform:uppercase;margin:0 0 6px">{ex.label}</p>
+          <h3 style="font-size:1rem;font-weight:800;color:#080f1e;margin:0 0 16px">{ex.title}</h3>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+            {ex.items.map(item => (
+              <li style="display:flex;align-items:flex-start;gap:9px">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                <span style="font-size:0.875rem;color:#2a3a52;line-height:1.45">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  SECTION 11: LOCAL + SECTION 12: MULTIPLE PROPERTIES
+================================================================ -->
+<section style="background:#fff;padding:72px 24px">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+    <div>
+      <h2 style="font-size:1.5rem;font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 16px;line-height:1.2">
+        Airbnb Maintenance in Charlotte, NC
+      </h2>
+      <p style="font-size:0.95rem;color:#4a5e74;line-height:1.7;margin:0 0 16px">
+        Home Heroes works with rental owners and property managers throughout Charlotte and the surrounding service areas. Whether the property is in Uptown, NoDa, South End, Dilworth, Ballantyne or the surrounding suburbs, the punch-list process is the same.
+      </p>
+      <p style="font-size:0.88rem;color:#4a5e74;line-height:1.65;margin:0 0 20px">
+        For general handyman service coverage, see
+        <a href="/charlotte-nc/handyman" style="color:#dc2626;font-weight:700;text-decoration:none">Charlotte handyman services</a>.
+        For repair case examples, see
+        <a href="/repairs/drywall-repair-short-term-rental-charlotte" style="color:#dc2626;font-weight:700;text-decoration:none">the drywall repair case</a>.
+      </p>
+    </div>
+    <div style="background:#f8f9fc;border-radius:14px;padding:32px;border:1.5px solid rgba(30,50,80,0.08)">
+      <h2 style="font-size:1.3rem;font-weight:900;color:#080f1e;letter-spacing:-0.02em;margin:0 0 14px;line-height:1.2">
+        Managing Multiple Rentals?
+      </h2>
+      <p style="font-size:0.9rem;color:#4a5e74;line-height:1.65;margin:0 0 18px">
+        For operators with several units, consistency is the real value. Rather than finding someone new every time a small problem appears, you send recurring punch lists to the same contact.
+      </p>
+      <ul style="list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:7px">
+        {['Turnover punch lists','Monthly maintenance','Guest damage','Property resets','New-unit setup','Small improvement projects'].map(item => (
+          <li style="display:flex;align-items:center;gap:9px">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span style="font-size:0.85rem;color:#1a2a40;font-weight:500">{item}</span>
+          </li>
+        ))}
+      </ul>
+      <a href="#punch-list-form"
+         style="display:inline-flex;align-items:center;gap:7px;background:#dc2626;color:#fff;font-weight:800;font-size:0.875rem;padding:11px 20px;border-radius:8px;text-decoration:none">
+        Talk to Us About Multiple Properties
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  FAQ
+================================================================ -->
+<section style="background:#f8f9fc;padding:72px 24px">
+  <div style="max-width:760px;margin:0 auto">
+    <h2 style="font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#080f1e;letter-spacing:-0.03em;margin:0 0 36px;text-align:center">
+      Frequently Asked Questions
+    </h2>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      {faqs.map((faq, i) => (
+        <details style="background:#fff;border-radius:10px;overflow:hidden;border:1.5px solid rgba(30,50,80,0.08)" open={i === 0}>
+          <summary style="padding:18px 22px;font-size:0.95rem;font-weight:700;color:#080f1e;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4">
+            {faq.q}
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:#dc2626"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div style="padding:0 22px 18px">
+            <p style="font-size:0.9rem;color:#4a5e74;line-height:1.7;margin:0">{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  FINAL CTA
+================================================================ -->
+<section style="background:linear-gradient(135deg,#080f1e 0%,#101c38 100%);padding:80px 24px 88px">
+  <div style="max-width:660px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.06;margin:0 0 18px">
+      Got a Punch List?<br /><span style="color:#dc2626">Send It.</span>
+    </h2>
+    <p style="font-size:1rem;color:rgba(200,215,240,0.78);line-height:1.7;margin:0 auto 36px;max-width:480px">
+      Whether it is three small repairs or a full turnover list, send us the property details, photos and everything that needs attention. We'll help organize the work and determine the next step.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:0 0 14px">
+      <a href="#punch-list-form"
+         style="display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:#fff;font-weight:800;font-size:1rem;padding:15px 32px;border-radius:10px;text-decoration:none;box-shadow:0 6px 24px rgba(220,38,38,0.3)">
+        <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        Send Us Your Punch List
+      </a>
+      <a href={phoneHref}
+         style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:1rem;padding:15px 28px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.07)">
+        Schedule Airbnb Maintenance
+      </a>
+    </div>
+    <a href="#punch-list-form"
+       style="display:inline-block;font-size:0.88rem;color:rgba(200,215,240,0.55);font-weight:500;text-decoration:underline;text-underline-offset:3px">
+      Managing Multiple Properties? Talk to Us
+    </a>
+  </div>
+</section>
+
+</SeoPageLayout>
