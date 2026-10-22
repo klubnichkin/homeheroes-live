@@ -1,0 +1,459 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/drywall-repair-short-term-rental-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Drywall Repair for a Short-Term Rental in Charlotte, NC | Home Heroes",
+  "description": "See how Home Heroes repaired damaged drywall in a Charlotte short-term rental, patched the wall, blended the finish and got the space guest-ready again.",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "image": `${base}/images/repairs/drywall-repair-rental-before.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Repair Case Studies",
+  "keywords": "drywall repair Charlotte NC, Airbnb drywall repair Charlotte, short term rental handyman Charlotte, wall repair Charlotte NC, property manager handyman Charlotte"
+};
+---
+
+<SeoPageLayout
+  title="Drywall Repair for a Short-Term Rental in Charlotte, NC | Home Heroes"
+  description="See how Home Heroes repaired damaged drywall in a Charlotte short-term rental, patched the wall, blended the finish and got the space guest-ready again."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/drywall-repair-rental-before.webp"
+  ogType="article"
+  heroImage="/images/repairs/drywall-repair-rental-before.webp"
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">Drywall Repair</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">Handyman</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Drywall Repair</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Short-Term Rental</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">Drywall Repair for a Charlotte Short-Term Rental</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Visible wall damage in a high-traffic area. Next guest check-in approaching. Patch installed, compound applied, surface blended. Wall restored.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Service', 'Drywall Repair'],
+          ['Property', 'Short-Term Rental'],
+          ['Location', 'Charlotte, NC'],
+          ['Outcome', 'Guest-Ready'],
+        ].map(([label, value]) => (
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 18px;min-width:120px">
+            <div style="font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">{label}</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#e8edf5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div style="background:#f8f9fc;padding:52px 24px 80px">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+
+      <!-- Opening -->
+      <div>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">For a homeowner, a hole in the drywall is annoying. For a short-term rental owner, it becomes part of the guest experience.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">This Charlotte rental had visible wall damage in a high-traffic area near the bedroom and living space. Not structural. Not an emergency. But noticeable the moment someone walked through the door, and the kind of thing that shows up in reviews.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">The goal was simple: repair the damaged section properly, blend it into the surrounding wall, and get the property guest-ready again. Not cover it. Not hide it. Make it look like nothing happened.</p>
+      </div>
+
+      <!-- BEFORE PHOTO -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/drywall-repair-rental-before.webp"
+          alt="Damaged drywall in Charlotte short term rental before repair"
+          width="900"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Damaged drywall before repair. The hole was in a visible wall between the bedroom and common area, with broken gypsum and cracked surrounding material.</figcaption>
+      </figure>
+
+      <!-- REPAIR SNAPSHOT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;overflow:hidden">
+        <div style="background:#060c19;color:#fff;font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:12px 22px">Repair Snapshot</div>
+        <div>
+          {[
+            ['Service',       'Drywall repair'],
+            ['Property',      'Short-term rental / Airbnb-style property'],
+            ['Location',      'Charlotte, NC'],
+            ['Problem',       'Broken drywall with damaged surrounding surface'],
+            ['Repair',        'Remove damaged material, install patch, tape, compound, sand and blend'],
+            ['Result',        'Wall restored and ready for final finish / paint'],
+            ['Pricing',       'Depends on damage size, access, finish and paint requirements'],
+          ].map(([label, value], i) => (
+            <div style={`display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:11px 22px;border-bottom:1px solid rgba(30,50,80,0.05);background:${i % 2 === 1 ? 'rgba(248,249,252,0.6)' : 'transparent'}`}>
+              <span style="font-size:0.79rem;font-weight:700;color:#6a7a8e">{label}</span>
+              <span style="font-size:0.82rem;color:#1a2c44;font-weight:500">{value}</span>
+            </div>
+          ))}
+        </div>
+        <div style="padding:12px 22px;background:#f0f2f7;border-top:1px solid rgba(30,50,80,0.07)">
+          <p style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;margin:0">Photos used on this page illustrate the repair process. Specific details of the property are not disclosed.</p>
+        </div>
+      </div>
+
+      <!-- WHY IT MATTERS MORE IN A RENTAL -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🏠</span>
+          Why Wall Condition Matters More in a Rental
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Guests do not know whether the damage happened yesterday or six months ago. They only see the condition when they check in.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A clean, well-maintained property earns better reviews and fewer complaints. Visible damage in a bedroom or living area signals neglect, even when everything else is in good shape. It also photographs poorly, which matters when potential guests are browsing listings.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">Fixing the wall before the next turnover is cheaper than managing a bad review after it.</p>
+      </div>
+
+      <!-- PULL QUOTE -->
+      <blockquote style="margin:0;padding:22px 26px 22px 30px;background:rgba(176,22,22,0.04);border:1px solid rgba(176,22,22,0.15);border-left:4px solid #dc2626;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;font-weight:600;color:#1a2c44;line-height:1.5">
+        "A drywall repair should disappear into the wall."
+      </blockquote>
+
+      <!-- WHAT WAS WRONG -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔍</span>
+          What Was Wrong with the Wall
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The damaged area showed a broken drywall face with an irregular opening, loose gypsum, and cracking in the material around the hole. The kind of damage that tends to get worse if it is left alone, and the kind that looks much worse than it is to fix.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Simply packing joint compound into an opening this size is not a durable repair. Compound alone will shrink as it dries, crack, and leave a visible depression. Under paint, the patch telegraphs through the surface and is obvious in raking light.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The goal is not to make the hole smaller. The goal is to restore the wall.</p>
+      </div>
+
+      <!-- REPAIR PROCESS -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔧</span>
+          The Repair Process
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">A proper drywall patch follows a set sequence. Skipping steps is what creates the patches that stand out under paint.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['1', 'Remove loose and damaged material', 'The broken drywall and unsound edges were cleared to create a stable, defined repair area.'],
+            ['2', 'Square and stabilize the opening', 'The repair area was prepared so the new patch would have solid backing and clean edges.'],
+            ['3', 'Install and secure a new drywall patch', 'A properly sized patch was cut, fitted and secured into the opening.'],
+            ['4', 'Tape the seams', 'Mesh tape was applied over all seams before any compound was added.'],
+            ['5', 'Apply joint compound in multiple passes', 'Compound was applied in stages, allowing each coat to dry before the next was added.'],
+            ['6', 'Feather the edges', 'Each coat was feathered outward to blend the repair into the surrounding wall surface.'],
+            ['7', 'Sand and blend', 'The repair area was sanded smooth and blended with the surrounding texture.'],
+            ['8', 'Prepare for final finish', 'The repaired area was left ready for primer and paint by the property owner or their painter.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2);color:#b01616;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">{num}</div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{step}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- DURING PHOTO -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/drywall-repair-rental-during.webp"
+          alt="Drywall patch repair in progress in Charlotte rental property"
+          width="900"
+          height="675"
+          loading="lazy"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">New drywall patch installed, taped and first coat of joint compound applied.</figcaption>
+      </figure>
+
+      <!-- FINISHING PHOTO -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/drywall-repair-rental-finishing.webp"
+          alt="Drywall compound and sanding stage during Charlotte drywall repair"
+          width="900"
+          height="675"
+          loading="lazy"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Joint compound feathered and blended around the repaired area before final sanding.</figcaption>
+      </figure>
+
+      <!-- WHY NOT JUST FILL IT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💡</span>
+          Why Not Just Fill the Hole?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Nail holes and small surface nicks can be filled and painted directly. A broken section of drywall is a different problem.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Without a proper backing and patch, compound fill shrinks, cracks, and falls away. Even when it holds, the surface telegraphs under any directional light. Guests and photographers notice.</p>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">A proper repair takes longer than a quick fill. It also lasts and looks right.</p>
+        </div>
+      </div>
+
+      <!-- BEFORE / DURING / AFTER GRID -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📸</span>
+          Before and After
+        </h2>
+        <div class="repair-photo-grid" style="gap:16px">
+          <figure style="margin:0">
+            <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+              <img
+                src="/images/repairs/drywall-repair-rental-before.webp"
+                alt="Damaged drywall in Charlotte short term rental before repair"
+                width="420"
+                height="315"
+                loading="lazy"
+                style="width:100%;height:200px;object-fit:cover;object-position:50% 40%;display:block"
+              />
+            </div>
+            <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>Before</strong> — Broken drywall with loose gypsum and cracked surrounding surface.</figcaption>
+          </figure>
+          <figure style="margin:0">
+            <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+              <img
+                src="/images/repairs/drywall-repair-rental-during.webp"
+                alt="Drywall patch repair in progress Charlotte rental"
+                width="420"
+                height="315"
+                loading="lazy"
+                style="width:100%;height:200px;object-fit:cover;object-position:50% 40%;display:block"
+              />
+            </div>
+            <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>During</strong> — Patch installed, seams taped, first coat applied.</figcaption>
+          </figure>
+          <figure style="margin:0">
+            <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+              <img
+                src="/images/repairs/drywall-repair-rental-after.webp"
+                alt="Finished drywall repair in Charlotte short term rental"
+                width="420"
+                height="315"
+                loading="lazy"
+                style="width:100%;height:200px;object-fit:cover;object-position:50% 40%;display:block"
+              />
+            </div>
+            <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>After</strong> — Wall restored and blended, ready for primer and final paint.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- AFTER PHOTO FULL WIDTH -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/drywall-repair-rental-after.webp"
+          alt="Finished drywall repair in Charlotte short term rental after blending"
+          width="900"
+          height="675"
+          loading="lazy"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Wall restored after the repair sequence was completed. Ready for primer and final paint by the property owner or their painter.</figcaption>
+      </figure>
+
+      <!-- DRYWALL REPAIR COST -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💰</span>
+          What Affects Drywall Repair Cost in Charlotte
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The size of the hole alone does not determine the price. A small repair can still require patching, taping, multiple coats of compound, drying time, sanding, texture work, and paint. A large repair may involve additional framing or backing work.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            'Size and depth of the damage',
+            'Wall versus ceiling location',
+            'Number of damaged areas on the visit',
+            'Wall texture requirements (smooth, orange peel, knock-down)',
+            'Paint matching or full repaint',
+            'Access conditions',
+            'Presence of hidden water damage or framing damage',
+            'Whether the repair requires more than one visit to allow drying',
+          ].map(item => (
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.88rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">Price depends on damage size, access, finish and paint requirements. Contact Home Heroes for a specific estimate.</p>
+      </div>
+
+      <!-- SHORT-TERM RENTAL ANGLE -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🗓️</span>
+          Drywall Repair for Short-Term Rentals and Airbnb Hosts
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Rental properties often need repairs on a tighter timeline than a primary residence. The next guest may arrive in days, and the property needs to look right before they walk in.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Home Heroes works with homeowners, Airbnb hosts, short-term rental operators, landlords, property managers, and real estate investors. A drywall repair scheduled around a turnover window is a normal request.</p>
+        <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));margin-top:4px">
+          {[
+            ['Fast scheduling', 'Work scheduled around turnover windows'],
+            ['Clear estimate', 'Know the scope before work starts'],
+            ['Clean work area', 'Property left clean and guest-ready'],
+            ['Finish ready', 'Repair completed to paint-ready standard'],
+          ].map(([title, detail]) => (
+            <div style="padding:14px 16px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:4px">{title}</div>
+              <div style="font-size:0.8rem;color:#4a5e74;line-height:1.5">{detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- BUNDLE WORK -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📋</span>
+          One Repair Is Rarely the Only Thing a Rental Needs
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Most turnover visits involve more than one item. Instead of coordinating separate contractors for each small task, a single Home Heroes visit can address the full punch list.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            'Drywall repair and patching',
+            'TV mounting or remounting after a wall was patched',
+            'Door handle and hardware repair',
+            'Baseboard and trim repair',
+            'Paint touch-up',
+            'Furniture assembly',
+            'Light fixture replacement',
+            'Curtain rod and blind repair',
+            'Minor plumbing fixes',
+            'General punch-list work',
+          ].map(item => (
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </div>
+          ))}
+        </div>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">One visit. One invoice. Property back online faster.</p>
+        </div>
+      </div>
+
+      <!-- COMMON RENTAL DAMAGE -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">⚠️</span>
+          Common Drywall Damage in Rental Properties
+        </h2>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['Door handle impacts', 'One of the most common causes. A door swung too hard pushes the handle through the wall. Easy to prevent with a proper door stop.'],
+            ['TV mount removal', 'Removing a mounted TV can leave anchor holes, pull-out damage, or a larger opening depending on how the mount was installed.'],
+            ['Furniture impacts', 'Moving furniture in and out of a rental puts pressure on walls and corners. Edges, baseboards, and corners near doorways take the most damage.'],
+            ['Luggage and equipment damage', 'Rolling cases, equipment, and large bags catch corners and edges, especially in narrow hallways and near doorways.'],
+            ['Old anchor damage', 'Multiple round-trip anchor installations leave a wall full of holes that expand each time a new anchor is drilled or pulled.'],
+            ['Corner bead damage', 'Outside corners are vulnerable in high-traffic areas. A sharp corner impact can dent or crack the corner bead under the compound.'],
+          ].map(([type, detail]) => (
+            <div style="padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:4px">{type}</div>
+              <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- LOCAL SECTION -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📍</span>
+          Drywall Repair in Charlotte, NC
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Home Heroes provides drywall repair and general handyman service across Charlotte and the surrounding area. From a single wall repair to a full rental turnover punch list, the scope is flexible.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">If the property needs to be guest-ready, the goal is straightforward: make it look right before the next check-in.</p>
+      </div>
+
+      <!-- RELATED LINKS -->
+      <div style="padding:22px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#9aaabe;margin-bottom:14px">Related Pages</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {[
+            ['Handyman Charlotte', '/charlotte-nc/handyman'],
+            ['All Repair Cases', '/blog/recent-repairs'],
+          ].map(([label, href]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">
+              → {label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <section style="padding:64px 24px 72px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 14px;letter-spacing:-0.03em">Need the Wall Fixed Before the Next Guest?</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 auto 32px;max-width:560px">If a guest damaged a wall, a TV mount was removed, or the property just needs to look clean again before turnover, Home Heroes can help. We work with homeowners, Airbnb hosts, short-term rental operators, landlords, property managers, and real estate investors across Charlotte.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;padding:14px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:0 4px 18px rgba(176,22,22,0.35)">
+          Schedule Drywall Repair
+        </a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C7.82 21 2 15.18 2 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call {phone}
+        </a>
+      </div>
+      <a href="/blog/recent-repairs" style="font-size:0.82rem;font-weight:600;color:#4a6a8a;text-decoration:none">← View All Repair Cases</a>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Repair" />
+
+</SeoPageLayout>
+
+<style>
+  @media (min-width: 640px) {
+    .repair-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 639px) {
+    .repair-photo-grid { display: flex; flex-direction: column; }
+  }
+</style>
