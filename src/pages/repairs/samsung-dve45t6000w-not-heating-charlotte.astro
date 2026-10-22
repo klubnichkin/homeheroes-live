@@ -1,0 +1,504 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/samsung-dve45t6000w-not-heating-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Samsung DVE45T6000W Not Heating in Charlotte, NC | Heating Element Repair",
+  "description": "See how Home Heroes repaired a Samsung DVE45T6000W dryer that ran but did not heat in Charlotte, including diagnosis, heating element replacement, part cost and total repair price.",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "image": `${base}/images/repairs/samsung-dve45t6000w-not-heating-before.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "Samsung DVE45T6000W not heating, heating element DC47-00019A, Samsung dryer repair Charlotte NC, dryer runs but no heat"
+};
+---
+
+<SeoPageLayout
+  title="Samsung DVE45T6000W Not Heating in Charlotte, NC | Home Heroes"
+  description="See how Home Heroes repaired a Samsung DVE45T6000W dryer that ran but did not heat in Charlotte, including diagnosis, heating element replacement, part cost and total repair price."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/samsung-dve45t6000w-not-heating-before.webp"
+  ogType="article"
+  heroImage="/images/repairs/samsung-dve45t6000w-not-heating-before.webp"
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">Samsung DVE45T6000W</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">Samsung</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Electric Dryer</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">October 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">Samsung DVE45T6000W Not Heating in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Dryer running. Drum turning. Clothes coming out damp. Heating element confirmed failed. Diagnosed and repaired same day.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$400.98'],
+          ['Outcome', 'Heat Restored'],
+          ['Service', 'Same-Day'],
+          ['Part', 'DC47-00019A'],
+        ].map(([label, value]) => (
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 18px;min-width:120px">
+            <div style="font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">{label}</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#e8edf5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div style="background:#f8f9fc;padding:52px 24px 80px">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+
+      <!-- Opening -->
+      <div>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">A Charlotte homeowner called Home Heroes because their Samsung DVE45T6000W electric dryer still ran, but the clothes were coming out damp at the end of every cycle. The drum turned. The controls worked. The timer ran to zero. But there was no real heat.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The dryer was running. It just was not drying.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">This is one of the more misleading dryer problems because the machine can look completely normal from the outside while the heating circuit has failed entirely.</p>
+      </div>
+
+      <!-- BEFORE PHOTO -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/samsung-dve45t6000w-not-heating-before.webp"
+          alt="Samsung DVE45T6000W dryer not heating in Charlotte NC"
+          width="900"
+          height="900"
+          loading="eager"
+          fetchpriority="high"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Samsung DVE45T6000W at arrival. The dryer appeared fully operational. The problem was not visible from the outside.</figcaption>
+      </figure>
+
+      <!-- REPAIR SNAPSHOT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;overflow:hidden">
+        <div style="background:#060c19;color:#fff;font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:12px 22px">Repair Snapshot</div>
+        <div>
+          {[
+            ['Appliance',                'Samsung electric dryer'],
+            ['Model',                    'DVE45T6000W'],
+            ['Location',                 'Charlotte, NC'],
+            ['Customer Complaint',       'Dryer runs but does not heat; clothes remain damp'],
+            ['Diagnosis',                'Failed heating element (open / no continuity)'],
+            ['Repair',                   'Access heater section, confirm failed element, replace DC47-00019A, reassemble and test'],
+            ['Part',                     'Samsung heating element DC47-00019A'],
+            ['Part Cost',                '$126.98'],
+            ['Service Call / Diagnosis', '$89.00'],
+            ['Labor',                    '$185.00'],
+            ['Customer Total',           '$400.98'],
+            ['Result',                   'Heat restored; dryer completed a normal heated cycle'],
+          ].map(([label, value], i) => (
+            <div style={`display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:11px 22px;border-bottom:1px solid rgba(30,50,80,0.05);background:${i % 2 === 1 ? 'rgba(248,249,252,0.6)' : 'transparent'}`}>
+              <span style="font-size:0.79rem;font-weight:700;color:#6a7a8e">{label}</span>
+              <span style="font-size:0.82rem;color:#1a2c44;font-weight:500">{value}</span>
+            </div>
+          ))}
+        </div>
+        <div style="padding:12px 22px;background:#f0f2f7;border-top:1px solid rgba(30,50,80,0.07)">
+          <p style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;margin:0">Repair notes on this page describe this specific Samsung DVE45T6000W service call. The same symptom on another dryer may have a different cause, part requirement and repair price.</p>
+        </div>
+      </div>
+
+      <!-- WHAT THE CUSTOMER WAS SEEING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">👀</span>
+          What the Customer Was Seeing
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The dryer started normally. The drum turned. Cycles ran the full duration. But the clothes came out damp every time. Drying time kept getting longer until eventually the machine was not drying at all.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Reaching into the drum during a cycle, the air felt cool. The machine was moving air, just not heated air.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">A dryer that tumbles normally can still have a failed heating circuit. The drum motor and the heating element run on different parts of the electrical system.</p>
+      </div>
+
+      <!-- PULL QUOTE -->
+      <blockquote style="margin:0;padding:22px 26px 22px 30px;background:rgba(176,22,22,0.04);border:1px solid rgba(176,22,22,0.15);border-left:4px solid #dc2626;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;font-weight:600;color:#1a2c44;line-height:1.5">
+        "The dryer was running. It just wasn't drying."
+      </blockquote>
+
+      <!-- RUNNING DOES NOT MEAN THE HEATER IS WORKING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">⚡</span>
+          Running Does Not Mean the Heater Is Working
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">An electric dryer like the DVE45T6000W runs on 240 volts, but the motor and the heating element are not the same circuit. The drum motor typically runs on 120 volts. The heating element requires the full 240-volt supply.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">If only one leg of the 240-volt supply is lost, the drum can still turn while the heating element produces no heat at all. This means "it still runs" does not confirm that the electrical supply is fully intact.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">A Samsung DVE45T6000W can tumble normally while the heating circuit is completely offline.</p>
+      </div>
+
+      <!-- NOT HEATING DOES NOT MEAN ELEMENT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔍</span>
+          Not Heating Does Not Automatically Mean the Element
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A no-heat complaint on a Samsung electric dryer can come from several different failures. The element is one of them.</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            'Failed heating element',
+            'Thermal cut-off (one-time safety fuse)',
+            'High-limit thermostat',
+            'Restricted exhaust vent causing repeated overheating',
+            'Wiring damage or failed connector',
+            'Incomplete 240V power supply at the outlet or breaker',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">The symptom tells us which system to inspect. It does not tell us which part to order.</p>
+        </div>
+      </div>
+
+      <!-- WHAT WE FOUND -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📋</span>
+          What We Found on This DVE45T6000W
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The heating circuit was accessed and each component was tested. The simpler causes were checked before assuming the element was the problem.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The heating element failed continuity testing, confirming an open element. An open element means the electrical circuit through the coil is broken and no heat is produced regardless of what else the dryer is doing.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">With the element confirmed failed, replacement was indicated. The heater section was accessed and the repair proceeded from there.</p>
+      </div>
+
+      <!-- DURING REPAIR PHOTO -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/samsung-dve45t6000w-not-heating-during.webp"
+          alt="Samsung DVE45T6000W dryer opened for heating system repair in Charlotte NC"
+          width="900"
+          height="900"
+          loading="lazy"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Dryer opened during this service call with the heater section accessible. The heating element and related components were tested before any parts were ordered or replaced.</figcaption>
+      </figure>
+
+      <!-- THE HEATING ELEMENT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔩</span>
+          Samsung DVE45T6000W Heating Element
+        </h2>
+        <h3 style="font-size:0.98rem;font-weight:700;color:#060c19;margin:0 0 10px">DC47-00019A</h3>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">DC47-00019A is the heating element used in the DVE45T6000W heating system. The element converts electrical energy into heat, and airflow from the blower moves that heat through the drum.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">When the element coil breaks or burns open, the heating circuit is interrupted. The blower still moves air. The drum still turns. But there is no heat source for that air to carry.</p>
+        <div style="padding:12px 16px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:10px;margin-bottom:16px">
+          <p style="font-size:0.82rem;color:#4a5e74;line-height:1.6;margin:0">Note: DC47-00019A is the heating element for this model. A complete heater assembly is a different part that includes the housing together with the element. They are not interchangeable descriptions.</p>
+        </div>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">Part cost on this repair: <strong>$126.98</strong>. Part pricing shown here is for reference from this repair and can change by supplier and availability.</p>
+      </div>
+
+      <!-- FAILED PART PHOTO -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/samsung-dc47-00019a-element-removed.webp"
+          alt="Samsung DVE45T6000W heating element DC47-00019A removed during dryer repair in Charlotte NC"
+          width="900"
+          height="900"
+          loading="lazy"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Removed Samsung heating element from this service call. The element failed continuity testing, confirming an open circuit.</figcaption>
+      </figure>
+
+      <!-- WHY ELEMENTS FAIL -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💡</span>
+          Why Heating Elements Fail
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Heating elements wear out over time. The coil expands and contracts through thousands of heat cycles, and eventually the metal fatigues and the coil opens.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Restricted airflow can accelerate this. A blocked or improperly routed exhaust vent forces the heating system to run hotter than it should, stressing the element, the thermostats, and the thermal cut-off. A failed heater can sometimes be the final symptom of an ongoing airflow problem.</p>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">A failed heater can be the final symptom of an airflow problem, so the repair should not stop at simply installing a new element.</p>
+        </div>
+      </div>
+
+      <!-- THE REPAIR -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔧</span>
+          The Repair
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">Once the element was confirmed failed, the repair followed a straightforward sequence.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['1', 'Disconnect power', 'The dryer was unplugged before any panels were opened.'],
+            ['2', 'Access the heater section', 'The rear or lower panel was removed to reach the heating assembly.'],
+            ['3', 'Test the heating circuit', 'Each component in the circuit was tested before replacing anything.'],
+            ['4', 'Confirm failed element', 'The element tested open, confirming no continuity through the coil.'],
+            ['5', 'Remove DC47-00019A', 'The failed heating element was disconnected and removed.'],
+            ['6', 'Install replacement', 'A new DC47-00019A heating element was installed in place of the failed one.'],
+            ['7', 'Reconnect wiring and reassemble', 'Wiring connections were reattached and the dryer was reassembled.'],
+            ['8', 'Run a heated test cycle', 'A full heated cycle was run to confirm normal heat output before the job was closed.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2);color:#b01616;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">{num}</div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{step}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:16px 0 0">The dryer produced normal heat and completed the test cycle before we left.</p>
+      </div>
+
+      <!-- BEFORE / DURING / AFTER -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📸</span>
+          Before and After
+        </h2>
+        <div class="repair-photo-grid" style="gap:16px">
+          <figure style="margin:0">
+            <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+              <img
+                src="/images/repairs/samsung-dve45t6000w-not-heating-before.webp"
+                alt="Samsung DVE45T6000W dryer not heating in Charlotte NC before repair"
+                width="420"
+                height="420"
+                loading="lazy"
+                style="width:100%;height:220px;object-fit:cover;object-position:50% 20%;display:block"
+              />
+            </div>
+            <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>Before</strong> — Dryer at arrival. Running normally but producing no heat.</figcaption>
+          </figure>
+          <figure style="margin:0">
+            <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+              <img
+                src="/images/repairs/samsung-dc47-00019a-element-removed.webp"
+                alt="Samsung DC47-00019A heating element removed during dryer repair in Charlotte NC"
+                width="420"
+                height="420"
+                loading="lazy"
+                style="width:100%;height:220px;object-fit:cover;object-position:50% 50%;display:block"
+              />
+            </div>
+            <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>Failed part</strong> — Removed DC47-00019A heating element. Tested open, no continuity.</figcaption>
+          </figure>
+          <figure style="margin:0">
+            <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+              <img
+                src="/images/repairs/samsung-dve45t6000w-not-heating-after.png"
+                alt="Samsung DVE45T6000W after heating element replacement in Charlotte NC"
+                width="420"
+                height="420"
+                loading="lazy"
+                style="width:100%;height:220px;object-fit:cover;object-position:50% 20%;display:block"
+              />
+            </div>
+            <figcaption style="font-size:0.8rem;color:#4a5e74;line-height:1.5;padding:10px 4px 0;display:block"><strong>After</strong> — Dryer reassembled, test cycle completed, heat confirmed.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- COST BREAKDOWN -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💰</span>
+          Cost Breakdown
+        </h2>
+        <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;overflow:hidden;margin-bottom:16px">
+          {[
+            ['Service call / diagnosis', '$89.00'],
+            ['Heating element DC47-00019A', '$126.98'],
+            ['Labor', '$185.00'],
+          ].map(([label, amount]) => (
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(30,50,80,0.06);background:#fff">
+              <span style="font-size:0.85rem;color:#1a2c44;font-weight:500">{label}</span>
+              <span style="font-size:0.92rem;font-weight:800;color:#060c19;white-space:nowrap;margin-left:16px">{amount}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(6,12,25,0.03)">
+            <span style="font-size:0.88rem;font-weight:800;color:#060c19;text-transform:uppercase;letter-spacing:0.04em">Customer Total</span>
+            <span style="font-size:1.25rem;font-weight:900;color:#b01616">$400.98</span>
+          </div>
+        </div>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This was the total for this specific confirmed heating-element failure. Another Samsung dryer with the same "no heat" complaint could cost less or more depending on the actual cause.</p>
+      </div>
+
+      <!-- COULD IT COST LESS / MORE -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💡</span>
+          Could a No-Heat Repair Cost More or Less?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px"><strong>It could cost less.</strong> If the cause is a failed thermal cut-off, a tripped breaker, or a loose wiring connection, the repair may be simpler and the part cost lower than a heating element replacement.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px"><strong>It could cost more.</strong> If the heater housing is damaged, if wiring or terminals have been heat-damaged, or if a vent restriction has caused multiple safety components to fail, the repair scope expands.</p>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">Diagnosis comes before parts.</p>
+        </div>
+      </div>
+
+      <!-- WHY CHECK THE VENT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🌀</span>
+          Why the Vent Matters
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A restricted exhaust vent makes the heating system run hotter than it was designed to. Over time, that extra heat stresses the thermostats, the thermal cut-off, and the element itself. It can also increase drying time well before anything actually fails.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">Replacing a heating element in a dryer with a restricted vent may lead to another failure sooner than expected. Checking the vent path is part of a complete heating-system repair, not an add-on.</p>
+      </div>
+
+      <!-- WAS IT WORTH REPAIRING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">✅</span>
+          Was This Dryer Worth Repairing?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">At $400.98, repairing a Samsung electric dryer in otherwise good condition can make sense compared with replacing it. A comparable new dryer can cost considerably more.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The answer is not always repair. It would be a different conversation if the machine also had drum damage, failing bearings or rollers, control board problems, or a history of repeated expensive repairs.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">On this service call, the confirmed failure was the heating element. Once that was replaced and normal heat output was verified, the repair was done.</p>
+      </div>
+
+      <!-- FAQ -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">❓</span>
+          Common Questions
+        </h2>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          {[
+            [
+              'Why does my Samsung DVE45T6000W run but not heat?',
+              'The most common reasons are a failed heating element, a tripped thermal cut-off, a failed high-limit thermostat, or an incomplete 240V power supply. The drum motor can continue running even when the heating circuit has failed entirely.',
+            ],
+            [
+              'Can a Samsung dryer run with a bad heating element?',
+              'Yes. The drum motor and the heating element are separate parts of the system. A failed element stops heat production but does not stop the drum from turning or the cycle from running.',
+            ],
+            [
+              'What is the heating element part number for the Samsung DVE45T6000W?',
+              'DC47-00019A is the heating element used in the DVE45T6000W heating system. A complete heater assembly is a different part that includes the housing together with the element.',
+            ],
+            [
+              'How much does Samsung DVE45T6000W heating element replacement cost?',
+              'On this specific repair the total was $400.98 ($89 service call, $126.98 element, $185 labor). The actual cost depends on the confirmed failure. A different cause may require a different repair at a different price.',
+            ],
+            [
+              'Can a clogged dryer vent cause a no-heat problem?',
+              'A restricted vent does not directly fail the element, but it makes the heating system run hotter than designed. Over time that heat stress can cause the element, thermal cut-off, or high-limit thermostat to fail.',
+            ],
+            [
+              'Can a dryer run without full 240V power?',
+              'Yes. An electric dryer needs 240V for the heating circuit, but the drum motor typically runs on 120V. If one leg of the 240V supply is lost, the drum can still turn while the heating element produces nothing.',
+            ],
+          ].map(([q, a]) => (
+            <div style="border-bottom:1px solid rgba(30,50,80,0.07);padding-bottom:16px">
+              <p style="font-size:0.9rem;font-weight:800;color:#060c19;margin:0 0 8px">{q}</p>
+              <p style="font-size:0.86rem;color:#4a5e74;line-height:1.65;margin:0">{a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- LOCAL SECTION -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📍</span>
+          Samsung Dryer Repair in Charlotte, NC
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Home Heroes handles Samsung dryer diagnostics and repair throughout Charlotte and the surrounding area. If your dryer is running but not heating, or taking much longer than it used to, the useful first step is finding out which part of the heating system actually failed.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">We diagnose before we replace anything.</p>
+      </div>
+
+      <!-- RELATED LINKS -->
+      <div style="padding:22px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#9aaabe;margin-bottom:14px">Related Pages</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {[
+            ['Dryer Repair Charlotte', '/charlotte-nc/dryer-repair'],
+            ['Samsung Appliance Repair', '/charlotte-nc/samsung-appliance-repair'],
+            ['Appliance Repair Charlotte', '/charlotte-nc'],
+            ['Dryer Not Heating', '/charlotte-nc/dryer-not-heating'],
+            ['All Repair Cases', '/blog/recent-repairs'],
+          ].map(([label, href]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">
+              → {label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <section style="padding:64px 24px 72px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 14px;letter-spacing:-0.03em">Samsung Dryer Running but Not Heating?</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 auto 32px;max-width:560px">If your dryer still turns but clothes keep coming out damp, do not assume the whole machine is done. The issue may be the heating element. It may also be another part of the heating circuit, the exhaust system, or the power supply. The useful first step is finding the actual failure. Home Heroes diagnoses and repairs Samsung dryers throughout Charlotte.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;padding:14px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:0 4px 18px rgba(176,22,22,0.35)">
+          Schedule Dryer Diagnosis
+        </a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C7.82 21 2 15.18 2 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call {phone}
+        </a>
+      </div>
+      <a href="/blog/recent-repairs" style="font-size:0.82rem;font-weight:600;color:#4a6a8a;text-decoration:none">← View All Repair Cases</a>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Repair" />
+
+</SeoPageLayout>
+
+<style>
+  @media (min-width: 640px) {
+    .repair-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 639px) {
+    .repair-photo-grid { display: flex; flex-direction: column; }
+  }
+</style>
