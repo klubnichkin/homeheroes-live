@@ -1,0 +1,397 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/samsung-rf28r7351sg-ice-maker-not-making-ice-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Samsung RF28R7351SG Ice Maker Not Making Ice in Charlotte, NC | Ice Maker Assembly Repair",
+  "description": "See how HomeHeroes repaired a Samsung RF28R7351SG that stopped producing ice in Charlotte, NC. Includes diagnosis, ice maker assembly replacement with part DA97-15217D, parts cost, labor, and the $398.32 total.",
+  "datePublished": "2026-10-23",
+  "dateModified": "2026-10-23",
+  "image": `${base}/images/repairs/samsung-rf28r7351sg-ice-maker-fridge.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "Samsung RF28R7351SG ice maker not making ice, DA97-15217D ice maker assembly, refrigerator repair Charlotte NC"
+};
+---
+
+<SeoPageLayout
+  title="Samsung RF28R7351SG Ice Maker Not Making Ice Charlotte, NC | Assembly Repair"
+  description="HomeHeroes repaired a Samsung RF28R7351SG that stopped producing ice in Charlotte, NC. Failed ice maker assembly confirmed on diagnosis. Replaced with OEM part DA97-15217D. Total: $398.32."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/samsung-rf28r7351sg-ice-maker-fridge.webp"
+  ogType="article"
+  heroImage="/images/repairs/samsung-rf28r7351sg-ice-maker-fridge.webp"
+>
+
+  <!-- HERO -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">Samsung RF28R7351SG</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">Samsung</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">French-Door Refrigerator</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">October 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">Samsung RF28R7351SG Ice Maker Not Making Ice in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">No ice production. Freezer temperature normal. Ice maker assembly confirmed failed on diagnosis. Replaced same day with OEM part DA97-15217D.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$398.32'],
+          ['Outcome', 'Ice Production Restored'],
+          ['Service', 'Same-Day'],
+          ['Part', 'DA97-15217D'],
+        ].map(([label, value]) => (
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 18px;min-width:120px">
+            <div style="font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">{label}</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#e8edf5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div style="background:#f8f9fc;padding:52px 24px 80px">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+
+      <!-- Opening paragraphs -->
+      <div>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">A homeowner in Charlotte called us after their Samsung RF28R7351SG stopped producing ice entirely. The refrigerator was cooling normally, the freezer temperature was in range, and the unit was otherwise operating. The complaint was specific: no ice, and had not been for several days.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">On diagnosis, we confirmed that the ice maker assembly had failed. The repair was completed the same day using Samsung OEM ice maker assembly DA97-15217D.</p>
+      </div>
+
+      <!-- BEFORE PHOTO (LCP) -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/samsung-rf28r7351sg-ice-maker-fridge.webp"
+          alt="Samsung RF28R7351SG black stainless French-door refrigerator in Charlotte NC kitchen before ice maker repair"
+          width="900"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">The Samsung RF28R7351SG as presented for service in Charlotte, NC. Freezer temperature was normal. The ice maker assembly was confirmed failed on diagnosis.</figcaption>
+      </figure>
+
+      <!-- REPAIR SNAPSHOT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;overflow:hidden">
+        <div style="background:#060c19;color:#fff;font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:12px 22px">Repair Snapshot</div>
+        <div>
+          {[
+            ['Appliance',                'Samsung French-door refrigerator'],
+            ['Model',                    'RF28R7351SG'],
+            ['Location',                 'Charlotte, NC'],
+            ['Problem',                  'Ice maker not producing ice; freezer otherwise normal'],
+            ['Root Cause',               'Failed ice maker assembly'],
+            ['Repair',                   'Replace ice maker assembly with OEM DA97-15217D'],
+            ['Part Used',                'Samsung DA97-15217D ice maker assembly (OEM)'],
+            ['OEM Part Price',           '$134.32'],
+            ['Service Call / Diagnosis', '$89.00'],
+            ['Labor',                    '$175.00'],
+            ['Customer Total',           '$398.32'],
+            ['Result',                   'Ice production restored'],
+          ].map(([label, value], i) => (
+            <div style={`display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:11px 22px;border-bottom:1px solid rgba(30,50,80,0.05);background:${i % 2 === 1 ? 'rgba(248,249,252,0.6)' : 'transparent'}`}>
+              <span style="font-size:0.79rem;font-weight:700;color:#6a7a8e">{label}</span>
+              <span style="font-size:0.82rem;color:#1a2c44;font-weight:500">{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- WHAT THE CUSTOMER WAS SEEING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">👀</span>
+          What the Customer Was Seeing
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The refrigerator was cooling normally. The freezer was at a normal temperature. The ice bucket was empty and had been for days. There was no unusual noise, no error display on the panel, and nothing visible that suggested a bigger problem. The complaint was simply that the ice maker had stopped working.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">This is one of the more common patterns in ice maker calls: the rest of the appliance appears completely functional, which can make the failure feel like a minor inconvenience. That framing leads some customers to delay service or attempt DIY fixes that address the wrong component.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">A no-ice complaint is a symptom, not a diagnosis. There are multiple reasons a Samsung French-door refrigerator can stop producing ice:</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+          {[
+            'Failed ice maker assembly (this case)',
+            'Freezer temperature too warm for ice production (needs to be at or near 0°F)',
+            'Ice maker arm or switch left in the off position',
+            'Restricted or clogged water filter reducing water pressure to the ice maker',
+            'Water supply line not reaching the ice maker inlet',
+            'Defrost system issue preventing the freezer from maintaining proper temperature',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:16px 0 0">On this unit, the confirmed failure was the ice maker assembly itself. That determination required diagnosis. The same symptom on a different RF28R7351SG could have a different cause.</p>
+      </div>
+
+      <!-- PULL QUOTE -->
+      <blockquote style="margin:0;padding:22px 26px 22px 30px;background:rgba(176,22,22,0.04);border:1px solid rgba(176,22,22,0.15);border-left:4px solid #dc2626;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;font-weight:600;color:#1a2c44;line-height:1.5">
+        "No ice is a complaint. It is not a diagnosis. A correct repair starts with confirming which component actually failed."
+      </blockquote>
+
+      <!-- ICE MAKER VS ICE BUCKET -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🧊</span>
+          Ice Maker Assembly vs. Ice Bucket vs. Auger: What Is What
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">These three components are often confused, and the confusion leads to parts being replaced unnecessarily. They do different jobs:</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          {[
+            ['Ice maker assembly', 'The module that actually produces ice. It receives water, freezes it in a mold, and releases the ice cubes into the bucket. When this fails, no new ice is made. This is the part that was replaced in this repair (DA97-15217D).'],
+            ['Ice bucket', 'The container that holds ice after it has been made. It does not produce ice. A bucket that is empty or cracked does not mean the ice maker itself has failed.'],
+            ['Auger motor', 'The motor that pushes ice from the bucket toward the dispenser when the dispenser lever is pressed. A failed auger motor means ice does not dispense. It does not affect whether ice is being made.'],
+          ].map(([title, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#b01616;flex-shrink:0;margin-top:5px"></div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{title}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">In this case, the symptom was no ice production. The bucket was empty because nothing was being made. The confirmed failure was the ice maker assembly. The bucket and auger were not part of this repair.</p>
+      </div>
+
+      <!-- WHAT WE FOUND -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔍</span>
+          What We Found
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The freezer was at a normal operating temperature. The water supply to the refrigerator was confirmed adequate. The ice maker arm was in the correct position. Nothing in the operating environment pointed to an external cause.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">We accessed the ice maker assembly in the freezer compartment and tested the module directly. The assembly was not initiating the ice-making cycle as expected. The module had failed.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">With external causes ruled out and the assembly confirmed as the failure point, the correct repair was a direct replacement. No other component was found to be at fault on this service call.</p>
+      </div>
+
+      <!-- HOW WE DIAGNOSED IT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📋</span>
+          How We Diagnosed It
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The diagnostic process for a no-ice complaint starts with the environment, not the part. Before assuming the assembly has failed, we confirm the conditions the ice maker needs in order to operate.</p>
+        <div style="margin:16px 0;padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">Diagnosis comes before parts. The correct replacement is the one that was confirmed to have failed.</p>
+        </div>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:14px 0 14px">On this call, we verified freezer temperature was in the operating range for ice production, confirmed water supply was adequate, checked that the ice maker arm was not in the off position, and ruled out a clogged water filter as a contributing factor. Each of those checks came back normal.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">With external conditions cleared, we tested the ice maker assembly directly. It was not cycling. The assembly had failed internally. That confirmed the part and the repair.</p>
+      </div>
+
+      <!-- THE REPAIR -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔧</span>
+          The Repair
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">Once the assembly failure was confirmed, the repair was a direct replacement.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['1', 'Access the ice maker compartment', 'The freezer compartment was accessed and the ice maker assembly was exposed. The ice bucket was removed and set aside.'],
+            ['2', 'Disconnect and remove the failed assembly', 'The wiring harness was disconnected and the mounting hardware removed. The failed ice maker assembly was taken out of the unit.'],
+            ['3', 'Install OEM replacement assembly', 'Samsung OEM ice maker assembly DA97-15217D was installed in the original mounting position. The wiring harness was reconnected and the assembly secured.'],
+            ['4', 'Restore and verify', 'The ice bucket was reinstalled, the freezer was closed, and the unit was allowed to run through an initial cycle. Ice production was confirmed before the service call was closed.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2);color:#b01616;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">{num}</div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{step}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <figure style="margin:20px 0 0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-rf28r7351sg-ice-maker-steps.webp"
+            alt="Ice maker assembly removal and installation steps for Samsung RF28R7351SG repair in Charlotte NC"
+            width="860"
+            height="540"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Ice maker assembly access and replacement steps on the RF28R7351SG. The assembly mounts directly in the freezer compartment and is accessed after removing the ice bucket.</figcaption>
+        </figure>
+      </div>
+
+      <!-- PART USED -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔩</span>
+          Part Used in This Repair
+        </h2>
+        <h3 style="font-size:0.98rem;font-weight:700;color:#060c19;margin:0 0 10px">Samsung Ice Maker Assembly DA97-15217D</h3>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">DA97-15217D is the current OEM ice maker assembly used in the Samsung RF28R7351SG. It is the module responsible for receiving water, forming ice in the mold, and releasing cubes into the ice bucket. When this assembly fails, the ice-making cycle stops entirely.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Part number DA97-15217B is an older superseded reference for earlier versions of this assembly. DA97-15217D is the current replacement used for this model. These are not the same part, and substituting an older reference in an order can result in receiving a different revision of the module.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 20px">Retail reference price at the time of this repair: <strong>$134.32</strong></p>
+
+        <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-rf28r7351sg-ice-maker-repair-sequence.webp"
+            alt="Samsung RF28R7351SG ice maker assembly repair sequence showing removal, part DA97-15217D, and reinstallation in Charlotte NC"
+            width="860"
+            height="540"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Repair sequence for the RF28R7351SG ice maker assembly replacement. DA97-15217D is the OEM part used in this repair.</figcaption>
+        </figure>
+      </div>
+
+      <!-- COST BREAKDOWN -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💰</span>
+          Cost Breakdown
+        </h2>
+        <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;overflow:hidden;margin-bottom:16px">
+          {[
+            ['Service call / diagnosis', '$89.00'],
+            ['OEM ice maker assembly (DA97-15217D)', '$134.32'],
+            ['Labor', '$175.00'],
+          ].map(([label, amount]) => (
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(30,50,80,0.06);background:#fff">
+              <span style="font-size:0.85rem;color:#1a2c44;font-weight:500">{label}</span>
+              <span style="font-size:0.92rem;font-weight:800;color:#060c19;white-space:nowrap;margin-left:16px">{amount}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(6,12,25,0.03)">
+            <span style="font-size:0.88rem;font-weight:800;color:#060c19;text-transform:uppercase;letter-spacing:0.04em">Customer Total</span>
+            <span style="font-size:1.25rem;font-weight:900;color:#b01616">$398.32</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;color:#4a5e74;line-height:1.65;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0 0 10px">For a Samsung French-door refrigerator with a confirmed ice maker assembly failure, $398.32 is a straightforward value decision. The refrigerator was otherwise operating normally. A direct part replacement restored full function in a single visit.</p>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This was the total for this specific repair. Another RF28R7351SG with a no-ice complaint may have a different cause and a different repair cost depending on what is actually found on diagnosis.</p>
+      </div>
+
+      <!-- COULD THE SAME SYMPTOM MEAN SOMETHING ELSE -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">❓</span>
+          Could the Same Symptom Mean Something Else?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Yes. A Samsung RF28R7351SG that is not making ice can fail for more than one reason. The repair depends on which one is confirmed on this specific unit.</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            'Failed ice maker assembly (this case)',
+            'Freezer temperature above the operating range for ice production',
+            'Ice maker switch or arm left in the off position',
+            'Restricted water filter reducing water pressure to the ice inlet',
+            'A defrost system problem gradually warming the freezer compartment',
+            'Water supply shut off or line not reaching the ice maker inlet correctly',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Replacing the ice maker assembly before ruling out temperature, water supply, and control issues is how customers end up with a new assembly in a refrigerator that still does not make ice. Diagnosis comes before parts.</p>
+        <p style="font-size:0.83rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">Repair notes on this page are based on this specific RF28R7351SG service call. The same symptom on another unit may have a different cause and should be diagnosed before any part is replaced.</p>
+      </div>
+
+      <!-- WAS IT WORTH REPAIRING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">✅</span>
+          Was It Worth Repairing?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">This repair totaled $398.32. The RF28R7351SG was cooling normally, the freezer was operating correctly, and the only failure was the ice maker assembly. For an otherwise functioning Samsung French-door refrigerator, a single component replacement at this cost is generally a sensible decision compared with replacing the entire unit.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The repair was completed in one visit. No sealed-system or compressor work was indicated. Ice production was restored before we left.</p>
+      </div>
+
+      <!-- RELATED LINKS -->
+      <div style="padding:22px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#9aaabe;margin-bottom:14px">Related Pages</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {[
+            ['Refrigerator Not Cooling Charlotte', '/charlotte-nc/refrigerator-not-cooling'],
+            ['Refrigerator Ice Buildup', '/charlotte-nc/refrigerator-ice-buildup'],
+            ['How to Prevent Ice Maker Failure', '/blog/useful-info/how-to-prevent-ice-maker-failure'],
+            ['Samsung RF28T5001SR Not Cooling Case', '/repairs/samsung-rf28t5001sr-not-cooling-ballantyne'],
+            ['All Repair Cases', '/blog/recent-repairs'],
+          ].map(([label, href]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">
+              → {label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <section style="padding:64px 24px 72px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 14px;letter-spacing:-0.03em">Samsung Ice Maker Not Working?</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 auto 32px;max-width:540px">Before replacing parts, get a proper diagnosis first. HomeHeroes repairs Samsung refrigerators across Charlotte and the surrounding area. A no-ice complaint has more than one possible cause. Same-day service available.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;padding:14px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:0 4px 18px rgba(176,22,22,0.35)">
+          Schedule Refrigerator Repair
+        </a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C7.82 21 2 15.18 2 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call {phone}
+        </a>
+      </div>
+      <a href="/blog/recent-repairs" style="font-size:0.82rem;font-weight:600;color:#4a6a8a;text-decoration:none">← View All Repair Cases</a>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Repair" />
+
+</SeoPageLayout>
+
+<style>
+  @media (min-width: 640px) {
+    .photo-split { display: grid; grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 639px) {
+    .photo-split { display: flex; flex-direction: column; }
+  }
+</style>
