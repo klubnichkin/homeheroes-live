@@ -1,0 +1,299 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/samsung-ne63a6511ss-oven-not-heating-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Samsung NE63A6511SS Oven Not Heating in Charlotte, NC | Bake Element Replacement",
+  "description": "See how HomeHeroes diagnosed and repaired a Samsung NE63A6511SS electric oven that would not heat in Charlotte, NC, including bake element DG47-00071C, part cost, labor, and total repair price.",
+  "datePublished": "2026-10-23",
+  "dateModified": "2026-10-23",
+  "image": `${base}/images/repairs/samsung-ne63a6511ss-before.webp`,
+  "author": { "@type": "Organization", "name": "HomeHeroes Appliance Repair", "url": base },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "Samsung NE63A6511SS not heating, Samsung oven not heating Charlotte NC, DG47-00071C bake element, Samsung electric range repair Charlotte, oven bake element replacement"
+};
+---
+
+<SeoPageLayout
+  title="Samsung NE63A6511SS Oven Not Heating in Charlotte, NC | HomeHeroes"
+  description="Samsung NE63A6511SS electric oven not heating in Charlotte. See the diagnosis, DG47-00071C bake element replacement, repair process and $491.00 total."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/samsung-ne63a6511ss-before.webp"
+  ogType="article"
+  heroImage="/images/repairs/samsung-ne63a6511ss-before.webp"
+>
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">Samsung NE63A6511SS</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">Samsung</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Electric Range</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">October 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">Samsung NE63A6511SS Oven Not Heating in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">The cooktop worked. The display worked. The oven accepted a Bake command. But the cavity was not getting up to temperature. Diagnosis isolated a failed bottom bake element.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$491.00'],
+          ['Outcome', 'Bake Heat Restored'],
+          ['Part', 'DG47-00071C'],
+          ['Model', 'NE63A6511SS/AA-00'],
+        ].map(([label, value]) => (
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 18px;min-width:120px">
+            <div style="font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">{label}</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#e8edf5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div style="background:#f8f9fc;padding:52px 24px 80px">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+
+      <div>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">A Charlotte homeowner called HomeHeroes after their Samsung NE63A6511SS/AA-00 electric range stopped baking properly. The cooktop still heated. The control panel still responded. The oven would accept a Bake setting, but food was taking far too long and the cavity was not developing normal bake heat.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">That symptom points us toward the oven heating system, but it does not automatically condemn the bake element. An electric range can have a power-supply issue, a temperature sensor problem, a control problem, damaged wiring, a failed safety device, or a failed heating element. On this call, diagnosis isolated the bottom bake element as the failed component.</p>
+      </div>
+
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img src="/images/repairs/samsung-ne63a6511ss-before.webp" alt="Samsung NE63A6511SS electric range before oven repair in Charlotte NC" width="900" height="1200" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block" />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Samsung NE63A6511SS/AA-00 electric range before service. The controls and cooktop could still operate while the oven had a separate bake-heating problem.</figcaption>
+      </figure>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;overflow:hidden">
+        <div style="background:#060c19;color:#fff;font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:12px 22px">Repair Snapshot</div>
+        <div>
+          {[
+            ['Appliance', 'Samsung electric range'],
+            ['Model', 'NE63A6511SS/AA-00'],
+            ['Location', 'Charlotte, NC'],
+            ['Customer Complaint', 'Oven accepts Bake command but does not heat normally'],
+            ['Diagnosis', 'Failed bottom bake element'],
+            ['Repair', 'Access bake-heating system, replace DG47-00071C, reassemble and test'],
+            ['Part Used', 'Samsung bake element DG47-00071C'],
+            ['Part Reference Price', '$217.00'],
+            ['Service Call / Diagnosis', '$89.00'],
+            ['Labor', '$185.00'],
+            ['Customer Total', '$491.00'],
+            ['Result', 'Normal bake heating restored after repair and testing'],
+          ].map(([label, value], i) => (
+            <div style={`display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:11px 22px;border-bottom:1px solid rgba(30,50,80,0.05);background:${i % 2 === 1 ? 'rgba(248,249,252,0.6)' : 'transparent'}`}>
+              <span style="font-size:0.79rem;font-weight:700;color:#6a7a8e">{label}</span>
+              <span style="font-size:0.82rem;color:#1a2c44;font-weight:500">{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px">What the Customer Was Seeing</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The confusing part was that the range did not look dead. Surface burners still worked. The display still worked. The oven controls still responded. But selecting Bake did not produce normal heat from the bottom of the oven.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">That distinction matters. A range can be partially functional while one heating circuit has failed. “The stove still works” does not prove that every oven circuit is healthy.</p>
+      </div>
+
+      <blockquote style="margin:0;padding:22px 26px 22px 30px;background:rgba(176,22,22,0.04);border:1px solid rgba(176,22,22,0.15);border-left:4px solid #dc2626;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;font-weight:600;color:#1a2c44;line-height:1.5">
+        “An oven that turns on is not necessarily an oven that is heating correctly.”
+      </blockquote>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px">Not Heating Does Not Automatically Mean “Bake Element”</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Several faults can produce a weak-heat or no-bake complaint on an electric range:</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+          {[
+            'Failed bottom bake element',
+            'Loss of one leg of the 240V power supply',
+            'Oven temperature sensor problem',
+            'Damaged wiring or element connection',
+            'Control-board or relay failure',
+            'High-limit or other safety-device issue',
+            'Incorrect operating mode or Demo Mode on applicable models',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px">›</span>{item}
+            </li>
+          ))}
+        </ul>
+        <div style="margin-top:16px;padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">The symptom tells us which system to inspect. It does not tell us which part to order.</p>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px">What We Found on This NE63A6511SS</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The range was otherwise responsive, so the bake-heating circuit was checked rather than assuming the entire appliance had lost power. The bottom bake element was isolated as the failed component.</p>
+
+        <figure style="margin:18px 0 14px;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img src="/images/repairs/samsung-ne63a6511ss-during.webp" alt="Samsung NE63A6511SS oven opened for bake element repair in Charlotte NC" width="900" height="900" loading="lazy" style="width:100%;height:auto;display:block" />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Bake-heating area accessed during the repair. The element is part of the oven’s lower heating circuit and should be diagnosed before replacement.</figcaption>
+        </figure>
+
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">Once the failed element was confirmed, the correct repair was replacement of Samsung part DG47-00071C. There was no reason to replace the entire range over an isolated heating-element failure.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px">Samsung NE63A6511SS Bake Element: DG47-00071C</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">For Samsung NE63A6511SS/AA-00, parts catalogs identify DG47-00071C as the bottom bake element. This is the heating component responsible for supplying a major portion of the heat used during normal Bake operation.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">The reference part price used for this case is <strong>$217.00</strong>. Retail pricing can change by supplier and availability.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+          <figure style="margin:0;border-radius:10px;overflow:hidden;background:#f0f2f7">
+            <img src="/images/repairs/samsung-ne63a6511ss-failed.webp" alt="Removed Samsung oven bake element during NE63A6511SS repair" width="700" height="525" loading="lazy" style="width:100%;height:auto;display:block" />
+            <figcaption style="font-size:0.76rem;color:#6a7a8e;line-height:1.5;padding:9px 12px">Removed bake element from the service call.</figcaption>
+          </figure>
+          <figure style="margin:0;border-radius:10px;overflow:hidden;background:#f0f2f7">
+            <img src="/images/repairs/samsung-ne63a6511ss-replacement.webp" alt="Replacement Samsung DG47-00071C bake element for NE63A6511SS" width="700" height="525" loading="lazy" style="width:100%;height:auto;display:block" />
+            <figcaption style="font-size:0.76rem;color:#6a7a8e;line-height:1.5;padding:9px 12px">Replacement bake element prepared for installation. Part reference: DG47-00071C.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px">Bake Element vs. Broil Element</h2>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['Bake element', 'Supplies lower oven heat during baking. On this repair, the bottom bake element was the failed component.'],
+            ['Broil element', 'Supplies intense upper heat for broiling and may also assist in some preheat or cooking modes. A working broil circuit does not prove the bake circuit is healthy.'],
+          ].map(([title, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#b01616;flex-shrink:0;margin-top:5px"></div>
+              <div><div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{title}</div><div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div></div>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.9rem;color:#2a3c54;line-height:1.7;margin:16px 0 0"><strong>One element can work while the other has failed.</strong> That is why “the oven gets a little warm” or “Broil works” does not rule out a bake-element problem.</p>
+      </div>
+
+      <div style="background:#060c19;border-radius:14px;padding:26px 28px;color:#fff">
+        <h2 style="font-size:1.12rem;font-weight:800;margin:0 0 16px;color:#fff">The Repair</h2>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px">
+          {[
+            ['1', 'Confirm the complaint', 'Verify that normal Bake operation is not producing expected heat.'],
+            ['2', 'Check the heating system', 'Separate a bake-circuit failure from power, sensor and control possibilities.'],
+            ['3', 'Access the lower heating area', 'Open the service area required to reach the bottom bake element.'],
+            ['4', 'Remove the failed element', 'Disconnect and remove the failed DG47-00071C bake element.'],
+            ['5', 'Install the replacement', 'Fit the replacement element and restore the electrical connections.'],
+            ['6', 'Reassemble and test', 'Reassemble the oven and verify normal heat production during a Bake test.'],
+          ].map(([n, title, detail]) => (
+            <li style="display:flex;gap:14px;align-items:flex-start">
+              <div style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#b01616;color:#fff;font-size:0.72rem;font-weight:800;flex-shrink:0">{n}</div>
+              <div><div style="font-size:0.85rem;font-weight:800;color:#fff;margin-bottom:2px">{title}</div><div style="font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.55">{detail}</div></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px">How Much Did This Samsung Oven Repair Cost?</h2>
+        <div style="border:1px solid rgba(30,50,80,0.09);border-radius:10px;overflow:hidden;margin-bottom:16px">
+          {[
+            ['Service call / diagnosis', '$89.00'],
+            ['Samsung bake element DG47-00071C', '$217.00'],
+            ['Labor', '$185.00'],
+          ].map(([label, value]) => (
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 16px;border-bottom:1px solid rgba(30,50,80,0.06);font-size:0.86rem;color:#2a3c54"><span>{label}</span><strong style="color:#060c19">{value}</strong></div>
+          ))}
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:15px 16px;background:#060c19;font-size:1rem;color:#fff"><strong>Total</strong><strong>$491.00</strong></div>
+        </div>
+        <p style="font-size:0.82rem;color:#6a7a8e;line-height:1.6;margin:0">This was the total for this specific confirmed bake-element failure. Another NE63A6511SS with the same “not heating” complaint may require a different repair and a different price.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+        <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:22px">
+          <h2 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 10px">Could the Same Symptom Cost Less?</h2>
+          <p style="font-size:0.86rem;color:#2a3c54;line-height:1.68;margin:0">Yes. A breaker or supply issue, operating-mode problem, loose connection or another smaller fault can create a similar complaint without requiring a bake element. Diagnosis comes before parts.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:22px">
+          <h2 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 10px">Could It Cost More?</h2>
+          <p style="font-size:0.86rem;color:#2a3c54;line-height:1.68;margin:0">Yes. Damaged wiring, control-board faults, sensor issues or multiple failed components can increase repair cost. Those problems were not assumed to be present in this case.</p>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px">Was This Range Worth Repairing?</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">At $491.00, repairing an otherwise serviceable modern Samsung electric range can make sense when the confirmed failure is isolated to the bake element. The appliance did not need a new cooktop, new control system or full replacement just because the oven stopped baking normally.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">That decision changes if a range also has major control-board problems, extensive wiring damage, cracked glass, repeated expensive failures or other serious issues. Repair-versus-replace should be based on the whole appliance, not one symptom.</p>
+      </div>
+
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img src="/images/repairs/samsung-ne63a6511ss-after.webp" alt="Samsung NE63A6511SS electric oven after bake element replacement in Charlotte NC" width="900" height="1200" loading="lazy" style="width:100%;height:auto;display:block" />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Range reassembled after the bake-element replacement and heat test. The repair restored normal Bake operation.</figcaption>
+      </figure>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px">Common Questions About Samsung NE63A6511SS No-Heat Problems</h2>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          {[
+            ['Why is my Samsung NE63A6511SS oven not heating?', 'Possible causes include the bake element, power supply, temperature sensor, wiring, control system or a safety device. The symptom needs diagnosis before a part is selected.'],
+            ['What bake element fits Samsung NE63A6511SS/AA-00?', 'Parts catalogs list Samsung bake element DG47-00071C for NE63A6511SS/AA-00.'],
+            ['Can the cooktop work while the oven does not heat?', 'Yes. Surface heating and oven heating use different circuits and components. A working cooktop does not prove the bake circuit is healthy.'],
+            ['Can Broil work if the bake element is bad?', 'Yes. The broil and bake elements are separate heating components, so one can operate while the other has failed.'],
+            ['How much does Samsung oven bake element replacement cost?', 'Cost depends on the model, part price, diagnosis and access. This specific repair totaled $491.00 including diagnosis, part and labor.'],
+          ].map(([q, a]) => (
+            <div>
+              <h3 style="font-size:0.9rem;font-weight:800;color:#060c19;margin:0 0 5px">{q}</h3>
+              <p style="font-size:0.84rem;color:#4a5e74;line-height:1.62;margin:0">{a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style="padding:16px 20px;background:#eef1f6;border-radius:10px;border:1px solid rgba(30,50,80,0.07)">
+        <p style="font-size:0.78rem;color:#68798d;line-height:1.6;margin:0"><strong>Repair note:</strong> This page describes this specific Samsung NE63A6511SS repair scenario. The same symptom on another range may have a different cause, part requirement and repair price.</p>
+      </div>
+
+      <div style="background:#060c19;border-radius:16px;padding:30px 28px;text-align:center">
+        <h2 style="font-size:1.35rem;font-weight:900;color:#fff;margin:0 0 10px">Samsung Oven Not Heating in Charlotte?</h2>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.62);line-height:1.65;margin:0 auto 20px;max-width:620px">If the range turns on but the oven does not bake normally, do not assume the entire appliance is finished. It may be the bake element, but it may also be another part of the heating circuit. The useful first step is finding the actual failure.</p>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;justify-content:center;background:#b01616;color:#fff;text-decoration:none;font-weight:800;font-size:0.9rem;padding:13px 22px;border-radius:9px">Call {phone}</a>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:22px 24px">
+        <h2 style="font-size:0.95rem;font-weight:800;color:#060c19;margin:0 0 12px">Related Samsung Repair Cases</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a href="/repairs/samsung-dve45t6000w-not-heating-charlotte" style="font-size:0.8rem;color:#b01616;text-decoration:none;font-weight:700">Samsung Dryer Not Heating →</a>
+          <a href="/repairs/samsung-dw80r5060us-not-draining-charlotte" style="font-size:0.8rem;color:#b01616;text-decoration:none;font-weight:700">Samsung Dishwasher Not Draining →</a>
+          <a href="/repairs/samsung-wf45t6000aw-not-draining-charlotte" style="font-size:0.8rem;color:#b01616;text-decoration:none;font-weight:700">Samsung Washer Not Draining →</a>
+          <a href="/repairs/samsung-rf28r7351sg-ice-maker-not-making-ice-charlotte" style="font-size:0.8rem;color:#b01616;text-decoration:none;font-weight:700">Samsung Refrigerator Ice Maker →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <ContactCTA />
+  <StickyMobileCTA />
+</SeoPageLayout>
