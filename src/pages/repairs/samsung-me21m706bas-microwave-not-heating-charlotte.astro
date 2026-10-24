@@ -1,0 +1,496 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/samsung-me21m706bas-microwave-not-heating-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Samsung ME21M706BAS Microwave Running but Not Heating in Charlotte, NC | Magnetron Replacement",
+  "description": "See how HomeHeroes diagnosed a Samsung ME21M706BAS microwave that ran but would not heat in Charlotte, including magnetron OM75P-21-ESGN replacement, repair cost and safety testing.",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24",
+  "image": `${base}/images/repairs/samsung-me21m706bas-before.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "Samsung ME21M706BAS not heating, ME21M706BAS magnetron, OM75P-21-ESGN, Samsung microwave runs but does not heat, Samsung microwave repair Charlotte NC, over the range microwave not heating"
+};
+---
+
+<SeoPageLayout
+  title="Samsung ME21M706BAS Microwave Not Heating in Charlotte, NC | HomeHeroes"
+  description="See how HomeHeroes diagnosed a Samsung ME21M706BAS microwave that ran but would not heat in Charlotte. Magnetron OM75P-21-ESGN replacement, repair cost and safety testing. Total: $456.57."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/samsung-me21m706bas-before.webp"
+  ogType="article"
+  heroImage="/images/repairs/samsung-me21m706bas-before.webp"
+>
+
+  <!-- HERO -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">Samsung ME21M706BAS</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">Samsung</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Over-the-Range Microwave</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">October 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">Samsung ME21M706BAS Microwave Running but Not Heating in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Display worked. Timer counted down. Fan and turntable ran. Food stayed cold. Magnetron diagnosed as the failed component. Repaired same day.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$456.57'],
+          ['Outcome', 'Heating Restored'],
+          ['Service', 'Same-Day'],
+          ['Part', 'OM75P-21-ESGN'],
+        ].map(([label, value]) => (
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 18px;min-width:120px">
+            <div style="font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">{label}</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#e8edf5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div style="background:#f8f9fc;padding:52px 24px 80px">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+
+      <!-- Opening -->
+      <div>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The microwave looked normal. The display worked. The timer counted down. The fan ran. The turntable moved. But the food stayed cold. This Samsung ME21M706BAS/AA-00 over-the-range microwave had a "runs but does not heat" complaint in Charlotte.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">Running and heating are two different things. A working display, fan and turntable do not prove the high-voltage heating circuit is functioning. In this case, the high-voltage circuit was diagnosed and the magnetron was confirmed as the failed component. The repair was completed the same day using replacement magnetron OM75P-21-ESGN.</p>
+      </div>
+
+      <!-- BEFORE PHOTO (LCP) -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/samsung-me21m706bas-before.webp"
+          alt="Samsung ME21M706BAS over the range microwave before repair in Charlotte NC"
+          width="900"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">Samsung ME21M706BAS/AA-00 installed before diagnosis. The unit looked and operated normally from the outside while producing no microwave energy.</figcaption>
+      </figure>
+
+      <!-- REPAIR SNAPSHOT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;overflow:hidden">
+        <div style="background:#060c19;color:#fff;font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:12px 22px">Repair Snapshot</div>
+        <div>
+          {[
+            ['Appliance',                'Samsung over-the-range microwave'],
+            ['Model',                    'ME21M706BAS/AA-00'],
+            ['Location',                 'Charlotte, NC'],
+            ['Customer Complaint',       'Microwave runs but does not heat food'],
+            ['Diagnosis',                'Failed magnetron'],
+            ['Repair',                   'Professional high-voltage diagnosis, magnetron replacement, reassembly and safety testing'],
+            ['Part Used',                'OM75P-21-ESGN magnetron'],
+            ['Part Reference Price',     '$142.57'],
+            ['Service Call / Diagnosis', '$89.00'],
+            ['Labor',                    '$225.00'],
+            ['Customer Total',           '$456.57'],
+            ['Result',                   'Heating operation restored after repair and testing'],
+          ].map(([label, value], i) => (
+            <div style={`display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:11px 22px;border-bottom:1px solid rgba(30,50,80,0.05);background:${i % 2 === 1 ? 'rgba(248,249,252,0.6)' : 'transparent'}`}>
+              <span style="font-size:0.79rem;font-weight:700;color:#6a7a8e">{label}</span>
+              <span style="font-size:0.82rem;color:#1a2c44;font-weight:500">{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- WHAT THE CUSTOMER WAS SEEING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">👀</span>
+          What the Customer Was Seeing
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Every outward sign pointed to a working microwave. The display was on. Cooking mode started normally. The timer counted down in real time. The interior light was on. The turntable rotated. The ventilation fan ran. By all appearances, the appliance was functioning.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The food stayed cold.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The microwave was running. The heating circuit was not. A microwave can look completely alive and still produce no microwave energy.</p>
+
+        <!-- NO-HEAT TEST PHOTO -->
+        <figure style="margin:18px 0 0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-me21m706bas-no-heat-test.webp"
+            alt="Samsung ME21M706BAS microwave running but not heating during water test in Charlotte NC"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">The microwave operated normally from the outside. A water-heating test confirmed the no-heat complaint. The timer ran, but the water did not heat.</figcaption>
+        </figure>
+      </div>
+
+      <!-- PULL QUOTE -->
+      <blockquote style="margin:0;padding:22px 26px 22px 30px;background:rgba(176,22,22,0.04);border:1px solid rgba(176,22,22,0.15);border-left:4px solid #dc2626;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;font-weight:600;color:#1a2c44;line-height:1.5">
+        "A microwave can look completely alive and still produce no microwave energy."
+      </blockquote>
+
+      <!-- WHY THIS SYMPTOM IS DECEPTIVE -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💡</span>
+          Why "Runs but Does Not Heat" Is a Deceptive Symptom
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A microwave has several separate systems. The user interface, the interior light, the turntable motor and the ventilation fan can all operate independently of the high-voltage heating circuit that actually generates microwave energy.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">When the heating circuit fails, the rest of the appliance continues to respond normally. A cycle starts, the timer runs, the fan comes on, and the machine behaves exactly as expected until you notice the food is still cold. The symptom looks like a normal running microwave because most of it is still working.</p>
+      </div>
+
+      <!-- NO HEAT DOES NOT MEAN MAGNETRON -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔍</span>
+          No Heat Does Not Automatically Mean "Bad Magnetron"
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Several components in the high-voltage system can fail and produce the same no-heat complaint. The magnetron is one of them:</p>
+        <ul style="margin:0 0 16px;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+          {[
+            'Failed magnetron (this case)',
+            'High-voltage diode failure',
+            'High-voltage capacitor failure',
+            'High-voltage transformer failure',
+            'Door interlock switch fault',
+            'Control relay or PCB problem',
+            'Wiring or connection issue',
+            'Thermal protection device open',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">The symptom identifies the system to inspect. Diagnosis identifies the failed part.</p>
+        </div>
+      </div>
+
+      <!-- WHAT WE FOUND -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📋</span>
+          What We Found on This ME21M706BAS
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The microwave's normal control functions did not explain the no-heat complaint. The unit started, timed, and ran its accessory systems correctly. The issue was in the heating circuit. Professional diagnosis of the high-voltage system isolated the magnetron as the failed component.</p>
+
+        <!-- SERVICE ACCESS PHOTO -->
+        <figure style="margin:18px 0 14px;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-me21m706bas-service-access.webp"
+            alt="Samsung ME21M706BAS opened for professional microwave diagnosis in Charlotte NC"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Internal service access during professional diagnosis of the high-voltage heating circuit. Microwave high-voltage systems require professional handling -- the capacitor retains dangerous energy even after the unit is unplugged.</figcaption>
+        </figure>
+
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">With the magnetron confirmed as the failed component, the repair was a direct replacement. No other high-voltage component was found to be at fault on this service call.</p>
+      </div>
+
+      <!-- SAFETY WARNING -->
+      <div style="background:#fff;border:1px solid rgba(220,38,38,0.2);border-radius:14px;padding:22px 24px">
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:36px;height:36px;border-radius:8px;background:rgba(176,22,22,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#b01616" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.82rem;font-weight:800;color:#b01616;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Safety Note</div>
+            <p style="font-size:0.88rem;color:#2a3c54;line-height:1.68;margin:0">Microwave high-voltage systems operate at voltages that can be lethal. The high-voltage capacitor can retain a dangerous charge even after the microwave has been unplugged. Magnetron replacement is not a DIY repair. This work requires proper discharge procedures, professional high-voltage handling, and post-repair operational and microwave leakage testing before the unit returns to service.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- THE MAGNETRON -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔩</span>
+          Samsung ME21M706BAS Magnetron: OM75P-21-ESGN
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The magnetron is the component that generates microwave energy. It is part of the high-voltage system and is responsible for converting electrical energy into the microwave radiation that heats food. When it fails, the oven section of the microwave produces no heat, regardless of what the display and controls are doing.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 20px">The replacement magnetron used in this case was OM75P-21-ESGN. Reference part price at the time of this repair: <strong>$142.57</strong>. Retail pricing can change by supplier and availability.</p>
+
+        <!-- OLD MAGNETRON PHOTO -->
+        <figure style="margin:0 0 16px;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-me21m706bas-old-magnetron.webp"
+            alt="Removed Samsung OM75P-21-ESGN magnetron from ME21M706BAS microwave"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Removed magnetron from this ME21M706BAS repair scenario.</figcaption>
+        </figure>
+
+        <!-- NEW MAGNETRON PHOTO -->
+        <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-me21m706bas-new-magnetron.webp"
+            alt="Samsung OM75P-21-ESGN replacement magnetron before installation in Charlotte NC"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Replacement OM75P-21-ESGN magnetron before installation.</figcaption>
+        </figure>
+      </div>
+
+      <!-- MAGNETRON VS OTHER HV COMPONENTS -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">⚡</span>
+          Magnetron vs. Other High-Voltage Components
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Multiple components work together to produce microwave energy. A no-heat complaint can involve any of them:</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          {[
+            ['Magnetron', 'Generates the actual microwave energy used to heat food. This is the component replaced in this case.'],
+            ['High-voltage transformer', 'Steps up line voltage to power the microwave-generation circuit. A failed transformer also produces a no-heat result.'],
+            ['High-voltage capacitor', 'Part of the power circuit that supplies the magnetron. Retains dangerous charge after unplugging.'],
+            ['High-voltage diode', 'Converts AC to the DC voltage the magnetron requires. A failed diode can stop heat production.'],
+            ['Control relay / PCB', 'Controls when power is supplied to the high-voltage circuit. A relay or board fault can stop the heating stage without affecting controls.'],
+          ].map(([title, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#b01616;flex-shrink:0;margin-top:5px"></div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{title}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">Several components participate in making heat. Replacing the magnetron without diagnosis is guessing.</p>
+        </div>
+      </div>
+
+      <!-- THE REPAIR -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔧</span>
+          The Repair
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">Once the magnetron was confirmed as the failed component, the repair followed a professional high-voltage service sequence.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['1', 'Confirm the no-heat complaint', 'Water-heating test confirms the microwave runs but produces no heat.'],
+            ['2', 'Disconnect power and prepare for service', 'Unit disconnected. High-voltage capacitor safely discharged before internal access.'],
+            ['3', 'Access internal components', 'Over-the-range microwave accessed for high-voltage circuit diagnosis.'],
+            ['4', 'Diagnose the heating circuit', 'High-voltage system components evaluated. Magnetron isolated as the failed part.'],
+            ['5', 'Remove the failed magnetron', 'Magnetron disconnected and removed from the high-voltage assembly.'],
+            ['6', 'Install OM75P-21-ESGN', 'Replacement magnetron fitted and connected.'],
+            ['7', 'Reassemble the microwave', 'Internal components and covers restored to service position.'],
+            ['8', 'Operational heating test', 'Water-heating test confirms normal heat production.'],
+            ['9', 'Microwave leakage check', 'Post-repair microwave leakage testing performed before returning the unit to service.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2);color:#b01616;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">{num}</div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{step}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- AFTER PHOTO -->
+        <figure style="margin:20px 0 0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/samsung-me21m706bas-after.webp"
+            alt="Samsung ME21M706BAS after magnetron replacement in Charlotte NC microwave heating test"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Microwave reassembled after magnetron replacement. Operational heating test and microwave leakage check completed before the unit returned to service.</figcaption>
+        </figure>
+      </div>
+
+      <!-- WHY MAGNETRON SERVICE COSTS MORE -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💰</span>
+          Why Magnetron Service Costs More Than a Simple Microwave Repair
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">This is an over-the-range microwave mounted under a cabinet. Access to the internal high-voltage section is significantly more involved than a countertop unit sitting on a table. Depending on installation, accessing the microwave assembly may require repositioning the unit. High-voltage safety procedures -- including capacitor discharge before any internal contact -- add time that a simpler repair does not require. Post-repair leakage testing is also part of responsible microwave service.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The labor on this repair was $225. That reflects the access difficulty, the safety requirements and the testing involved, not just the time to swap a part.</p>
+      </div>
+
+      <!-- COST BREAKDOWN -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📊</span>
+          Cost Breakdown
+        </h2>
+        <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;overflow:hidden;margin-bottom:16px">
+          {[
+            ['Service call / diagnosis', '$89.00'],
+            ['Magnetron OM75P-21-ESGN', '$142.57'],
+            ['Labor', '$225.00'],
+          ].map(([label, amount]) => (
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(30,50,80,0.06);background:#fff">
+              <span style="font-size:0.85rem;color:#1a2c44;font-weight:500">{label}</span>
+              <span style="font-size:0.92rem;font-weight:800;color:#060c19;white-space:nowrap;margin-left:16px">{amount}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(6,12,25,0.03)">
+            <span style="font-size:0.88rem;font-weight:800;color:#060c19;text-transform:uppercase;letter-spacing:0.04em">Customer Total</span>
+            <span style="font-size:1.25rem;font-weight:900;color:#b01616">$456.57</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;color:#4a5e74;line-height:1.65;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0 0 10px">This total applies to this specific confirmed magnetron repair scenario. Another ME21M706BAS with the same no-heat symptom may require a different component and a different repair price.</p>
+
+        <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:4px">
+          <div style="padding:16px 18px;background:#f0f6f0;border:1px solid rgba(20,120,40,0.15);border-radius:10px">
+            <div style="font-size:0.72rem;font-weight:800;color:#1a6030;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Could Cost Less</div>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px">
+              {['Door-switch issue','High-voltage diode','Loose connection','Smaller electrical fault'].map(item => (
+                <li style="font-size:0.8rem;color:#2a4a30;line-height:1.5">{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div style="padding:16px 18px;background:#f8f0f0;border:1px solid rgba(176,22,22,0.12);border-radius:10px">
+            <div style="font-size:0.72rem;font-weight:800;color:#8a1010;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Could Cost More</div>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px">
+              {['Transformer failure','Control board problem','Multiple HV components','Damaged wiring','Difficult removal / installation'].map(item => (
+                <li style="font-size:0.8rem;color:#4a1010;line-height:1.5">{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- WAS IT WORTH REPAIRING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">✅</span>
+          Was This Microwave Worth Repairing?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">This is an over-the-range microwave, not a $120 countertop unit. Replacing it is not just buying a new microwave -- it also means removal of the existing unit, a new appliance, installation, cabinet and mounting fit, and vent alignment. That total can easily exceed the cost of a single-component repair.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">For a ME21M706BAS with an isolated magnetron failure and no other problems, $456.57 is a reasonable decision to evaluate against the full cost of replacement plus installation.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The math changes if the unit is old, has multiple system failures, door or cavity damage, a control board that also needs repair, or if the replacement cost including installation is close to or below the repair cost.</p>
+        <p style="font-size:0.83rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This page describes a specific Samsung ME21M706BAS repair scenario. The same symptom on another microwave may have a different cause, part requirement and repair price.</p>
+      </div>
+
+      <!-- FAQ -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">❓</span>
+          Common Questions
+        </h2>
+        <div style="display:flex;flex-direction:column;gap:0">
+          {[
+            ['Why is my Samsung ME21M706BAS running but not heating?', 'Several components in the microwave high-voltage circuit can fail and cause a no-heat complaint while the rest of the appliance appears to operate normally. Possible causes include the magnetron, high-voltage diode, capacitor, transformer, door-switch or control relay. Diagnosis is required to find which one.'],
+            ['What magnetron fits Samsung ME21M706BAS/AA-00?', 'The replacement magnetron used in this case was OM75P-21-ESGN. Always confirm compatibility with the full model and serial number before ordering.'],
+            ['What is OM75P-21-ESGN?', 'OM75P-21-ESGN is the magnetron used in the Samsung ME21M706BAS repair described on this page. The magnetron is the component that generates microwave energy to heat food.'],
+            ['Can the turntable and fan work if the magnetron is bad?', 'Yes. The turntable motor, fan, interior light and display operate independently of the high-voltage heating circuit. A failed magnetron does not stop those systems from running normally.'],
+            ['Does no heat always mean the magnetron is bad?', 'No. A no-heat complaint can involve the diode, capacitor, transformer, door switch, control relay or wiring. Not every microwave that stops heating needs a magnetron. Diagnosis determines which component has failed.'],
+            ['How much does Samsung microwave magnetron replacement cost?', 'For this specific ME21M706BAS repair the total was $456.57, including service call ($89), magnetron ($142.57) and labor ($225). A different microwave or a different failed component will have a different cost.'],
+            ['Is it worth repairing an over-the-range microwave?', 'Often yes, compared to the combined cost of a new unit plus removal and installation. The decision depends on the age of the unit, the scope of the repair, and whether any other systems have also failed.'],
+            ['Is magnetron replacement safe to DIY?', 'No. Microwave high-voltage systems can be dangerous even after the unit is unplugged. The high-voltage capacitor retains a charge that can cause serious injury. This repair requires professional handling and post-repair leakage testing.'],
+          ].map(([q, a], i) => (
+            <details style={`border-bottom:1px solid rgba(30,50,80,0.07);${i === 0 ? 'border-top:1px solid rgba(30,50,80,0.07);' : ''}`}>
+              <summary style="font-size:0.88rem;font-weight:700;color:#060c19;padding:14px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px">
+                {q}
+                <span style="font-size:1.1rem;color:#b01616;flex-shrink:0" aria-hidden="true">+</span>
+              </summary>
+              <p style="font-size:0.84rem;color:#2a3c54;line-height:1.7;margin:0 0 14px;padding:0">{a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <!-- RELATED LINKS -->
+      <div style="padding:22px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#9aaabe;margin-bottom:14px">Related Pages</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {[
+            ['Microwave Not Heating Charlotte', '/charlotte-nc/microwave-not-heating'],
+            ['Samsung NE63A6511SS Oven Not Heating Case', '/repairs/samsung-ne63a6511ss-oven-not-heating-charlotte'],
+            ['Samsung DW80R5060US Dishwasher Not Draining Case', '/repairs/samsung-dw80r5060us-not-draining-charlotte'],
+            ['Samsung DVE45T6000W Dryer Not Heating Case', '/repairs/samsung-dve45t6000w-not-heating-charlotte'],
+            ['Samsung WF45T6000AW Washer Not Draining Case', '/repairs/samsung-wf45t6000aw-not-draining-charlotte'],
+            ['Samsung RF28R7351SG Ice Maker Case', '/repairs/samsung-rf28r7351sg-ice-maker-not-making-ice-charlotte'],
+            ['All Repair Cases', '/blog/recent-repairs'],
+          ].map(([label, href]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">
+              → {label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <section style="padding:64px 24px 72px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 14px;letter-spacing:-0.03em">Samsung Microwave Running but Not Heating in Charlotte?</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 auto 32px;max-width:560px">If the microwave starts normally but food stays cold, the issue is in the heating circuit. It may be the magnetron. It may be another high-voltage component. The useful first step is identifying the failed part before replacing anything. HomeHeroes diagnoses and repairs Samsung microwaves in Charlotte, same day.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;padding:14px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:0 4px 18px rgba(176,22,22,0.35)">
+          Schedule Microwave Diagnosis
+        </a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C7.82 21 2 15.18 2 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call {phone}
+        </a>
+      </div>
+      <a href="/blog/recent-repairs" style="font-size:0.82rem;font-weight:600;color:#4a6a8a;text-decoration:none">← View All Repair Cases</a>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Repair" />
+
+</SeoPageLayout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+</style>
