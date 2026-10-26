@@ -1,0 +1,739 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/blog/best-refrigerator-for-airbnb`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Choose the Best Refrigerator for an Airbnb",
+  "description": "Learn how to choose an Airbnb refrigerator by size, guest capacity, price, reliability, warranty and repair cost, plus ways to save on purchase and installation.",
+  "datePublished": "2026-10-26",
+  "dateModified": "2026-10-26",
+  "image": `${base}/images/repairs/lg-lfxs26973s-before.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical }
+};
+---
+
+<SeoPageLayout
+  title="Best Refrigerator for Airbnb: Size, Price, Reliability & Warranty Guide | HomeHeroes"
+  description="Learn how to choose an Airbnb refrigerator by size, guest capacity, price, reliability, warranty and repair cost, plus ways to save on purchase and installation."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/lg-lfxs26973s-before.webp"
+  ogType="article"
+>
+
+  <!-- HERO -->
+  <section style="background:#080f1e;padding:52px 24px 48px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:860px;margin:0 auto">
+      <nav aria-label="Breadcrumb" style="margin-bottom:18px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/useful-info" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Guides</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.6)">Airbnb Refrigerator Guide</li>
+        </ol>
+      </nav>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">Buyer's Guide</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">Airbnb / Short-Term Rental</span>
+      </div>
+      <h1 style="color:#fff;font-size:clamp(26px,4vw,44px);font-weight:900;line-height:1.12;margin:0 0 18px;letter-spacing:-0.03em">How to Choose the Best Refrigerator for an Airbnb</h1>
+      <p style="color:rgba(255,255,255,0.55);font-size:17px;line-height:1.65;margin:0 0 28px;max-width:680px">Size, reliability, price, warranty, installation and what actually matters when a refrigerator is working for your rental instead of your household.</p>
+      <!-- TOC -->
+      <nav aria-label="Contents" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 22px;display:inline-block;max-width:100%">
+        <div style="font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:10px">Contents</div>
+        <ol style="margin:0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:5px">
+          {[
+            ['Why Airbnb Changes the Calculation','#why-airbnb'],
+            ['Start With the Property','#start-with-property'],
+            ['What Size Refrigerator?','#what-size'],
+            ['Refrigerator Types Compared','#types'],
+            ['Ice Maker and Water Dispenser','#ice-water'],
+            ['Smart Refrigerators','#smart'],
+            ['What Matters for Reliability','#reliability'],
+            ['How Much to Spend','#pricing'],
+            ['New vs Open-Box vs Used','#condition'],
+            ['How to Save Without Buying a Problem','#save'],
+            ['Used Refrigerator Inspection Checklist','#inspection'],
+            ['Warranty: What Actually Covers You','#warranty'],
+            ['Energy Cost','#energy'],
+            ['Delivery and Installation','#installation'],
+            ['Quick Decision Matrix','#matrix'],
+            ['The "Walk Away" List','#walkaway'],
+            ['Buying Checklist','#checklist'],
+            ['Get an Installation Quote','#install-form'],
+          ].map(([label, href]) => (
+            <li style="font-size:0.8rem;color:rgba(255,255,255,0.65);font-weight:500"><a href={href} style="color:inherit;text-decoration:none">{label}</a></li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <div style="background:#f8f9fc;padding:52px 24px 80px">
+    <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+
+      <!-- WHY AIRBNB CHANGES THE CALCULATION -->
+      <div id="why-airbnb">
+        <h2 style="font-size:1.35rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">Why Airbnb Changes What "Best" Means</h2>
+        <p style="font-size:1rem;color:#2a3c54;line-height:1.78;margin:0 0 14px">A refrigerator in your own house can be annoying when it breaks. A refrigerator in an Airbnb can create spoiled groceries, guest complaints, refund requests, emergency service calls, bad reviews and lost nights between reservations.</p>
+        <p style="font-size:1rem;color:#2a3c54;line-height:1.78;margin:0 0 14px">For an Airbnb, refrigerator downtime can cost more than the refrigerator repair.</p>
+        <p style="font-size:1rem;color:#2a3c54;line-height:1.78;margin:0">That changes the calculation. The appliance that looks best in a showroom is not necessarily the appliance that makes the most sense in a rental property. The best Airbnb refrigerator is not necessarily the nicest refrigerator. It is the one guests barely notice and owners rarely have to think about.</p>
+      </div>
+
+      <!-- START WITH THE PROPERTY -->
+      <div id="start-with-property" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">Start With the Property, Not the Refrigerator</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">Measure the house before comparing refrigerators. A refrigerator that does not fit the opening, the hallways or the kitchen layout creates problems no feature or price point can fix.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Before shopping, document:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+          {[
+            ['Maximum guest count','Typical stay length'],
+            ['Kitchen opening: width, height, depth','Cabinet depth clearance'],
+            ['Door swing and hinge clearance','Whether counter-depth is required'],
+            ['Walking path width','Doorway and hallway dimensions'],
+            ['Water line location and condition','Electrical outlet location'],
+            ['Whether ice / water is actually necessary','Budget and replacement timeline'],
+          ].map(([a,b]) => (
+            <div style="display:contents">
+              <div style="font-size:0.82rem;color:#1a2c44;padding:9px 14px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:8px">› {a}</div>
+              <div style="font-size:0.82rem;color:#1a2c44;padding:9px 14px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:8px">› {b}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style="background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:16px">
+          <p style="font-size:0.88rem;color:#1a2c44;margin:0;font-weight:700">Measurement rule: manufacturer dimensions are not enough.</p>
+          <p style="font-size:0.85rem;color:#2a3c54;margin:6px 0 0;line-height:1.6">A refrigerator needs room for: door swing, hinges, handles, ventilation, water connection, and the ability to pull the unit forward for service. Add at least 1 inch on each side, 1 inch at the top and 2 inches at the back to manufacturer dimensions before deciding a unit fits.</p>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:10px;overflow:hidden">
+          <div style="background:#060c19;color:#fff;font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;padding:9px 16px">Measurement Checklist</div>
+          <div style="padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            {['Opening width','Opening height','Opening depth','Cabinet depth','Door swing arc','Hinge side clearance','Handle clearance','Walking path','Widest doorway and hallway','Distance to water connection','Distance to outlet','Floor leveling'].map(item => (
+              <div style="font-size:0.8rem;color:#2a3c54;display:flex;align-items:center;gap:7px"><span style="width:14px;height:14px;border:1.5px solid rgba(30,50,80,0.2);border-radius:3px;flex-shrink:0;display:inline-block"></span>{item}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT SIZE -->
+      <div id="what-size" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">What Size Refrigerator Does an Airbnb Need?</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">There is no single formula. Guest count, stay length and kitchen type all affect how much storage is actually used. These are practical planning ranges, not manufacturer requirements:</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            ['Studio / 1-2 guests','10-18 cu. ft.','Weekend stays use less. Small full kitchens may need more.'],
+            ['1-bedroom / 2-4 guests','14-20 cu. ft.','Most common single-bedroom Airbnb range.'],
+            ['2-3 bedroom / 4-6 guests','18-25 cu. ft.','Family stays and weekly bookings need meaningful storage.'],
+            ['Large rental / 6+ guests','22-30+ cu. ft.','Full kitchens serving groups need real capacity.'],
+          ].map(([type, range, note]) => (
+            <div style="display:grid;grid-template-columns:1fr 0.6fr 1.8fr;gap:12px;align-items:start;padding:12px 16px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="font-size:0.82rem;font-weight:700;color:#060c19">{type}</div>
+              <div style="font-size:0.85rem;font-weight:800;color:#b01616">{range}</div>
+              <div style="font-size:0.78rem;color:#4a5e74;line-height:1.5">{note}</div>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.85rem;color:#6a7a8e;line-height:1.6;margin:0">Kitchenette properties (microwave and mini-fridge only) have different requirements than full-kitchen rentals. Long stays and family bookings consistently use more freezer space than short weekend visits.</p>
+      </div>
+
+      <!-- REFRIGERATOR TYPES -->
+      <div id="types" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 18px;letter-spacing:-0.02em">Refrigerator Types for Airbnb Use</h2>
+
+        <!-- comparison table -->
+        <div style="overflow-x:auto;margin-bottom:20px">
+          <table style="width:100%;border-collapse:collapse;font-size:0.78rem;min-width:580px">
+            <thead>
+              <tr style="background:#060c19;color:#fff">
+                {['Type','Price Range','Capacity','Complexity','Repair Cost','Best For'].map(h => (
+                  <th style="padding:10px 12px;text-align:left;font-weight:700;white-space:nowrap">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Top-freezer','$400-$900','Good for price','Low','Low','Budget / value rentals'],
+                ['Bottom-freezer','$600-$1,200','Good','Moderate','Moderate','Mid-range rentals'],
+                ['Side-by-side','$800-$1,600','Moderate','Moderate-High','Moderate','Narrow-door kitchens'],
+                ['French-door','$1,000-$3,000+','Excellent','High','Higher','Premium Airbnb'],
+                ['Counter-depth','$1,200-$3,500+','Less per dollar','Varies','Varies','Tight-fit premium kitchens'],
+                ['Compact full-size','$350-$700','Limited','Low','Low','Studios / kitchenettes'],
+              ].map(([type, price, cap, comp, repair, use], i) => (
+                <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                  <td style="padding:10px 12px;font-weight:700;color:#060c19">{type}</td>
+                  <td style="padding:10px 12px;color:#2a3c54">{price}</td>
+                  <td style="padding:10px 12px;color:#2a3c54">{cap}</td>
+                  <td style="padding:10px 12px;color:#2a3c54">{comp}</td>
+                  <td style="padding:10px 12px;color:#2a3c54">{repair}</td>
+                  <td style="padding:10px 12px;color:#2a3c54">{use}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.78rem;color:#9aaabe;margin:0 0 20px">Price ranges reflect approximate current U.S. retail. Verify current pricing before purchasing.</p>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="padding:16px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+            <div style="font-size:0.85rem;font-weight:800;color:#060c19;margin-bottom:6px">Top-Freezer: Often the Rational Airbnb Choice</div>
+            <p style="font-size:0.83rem;color:#2a3c54;line-height:1.65;margin:0">Mechanically simple. Inexpensive to purchase and replace. Parts are commonly stocked and widely serviced. Fewer luxury systems means fewer luxury-system failures. For a value-focused rental, boring can be a feature.</p>
+          </div>
+          <div style="padding:16px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+            <div style="font-size:0.85rem;font-weight:800;color:#060c19;margin-bottom:6px">French-Door: Worth It in the Right Listing</div>
+            <p style="font-size:0.83rem;color:#2a3c54;line-height:1.65;margin:0">Premium appearance. Wide refrigerator compartment. Attractive for higher-end properties where aesthetics affect booking value. But: more doors, more gaskets, more moving components. Ice maker and dispenser systems add complexity and maintenance exposure. Repair costs run higher. Makes sense in a luxury Airbnb or large family rental. Less obvious in a simple 1-bedroom.</p>
+          </div>
+          <div style="padding:16px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+            <div style="font-size:0.85rem;font-weight:800;color:#060c19;margin-bottom:6px">Side-by-Side: Good for Narrow Door-Swing Situations</div>
+            <p style="font-size:0.83rem;color:#2a3c54;line-height:1.65;margin:0">Each door opens narrower, which can work well in tight kitchens. Freezer shelving is accessible and organized. Downside: the narrow compartments make fitting wide items like pizza boxes or sheet pans difficult. Dispenser systems add the usual complexity.</p>
+          </div>
+          <div style="padding:16px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+            <div style="font-size:0.85rem;font-weight:800;color:#060c19;margin-bottom:6px">Counter-Depth: A Layout Decision, Not a Reliability Decision</div>
+            <p style="font-size:0.83rem;color:#2a3c54;line-height:1.65;margin:0">Counter-depth refrigerators sit flush with cabinetry and look built-in. You are paying partly for fit and aesthetics rather than usable volume -- they deliver less capacity per dollar than standard-depth units. Worth it in a premium kitchen with tight walkways. Not worth it in a basic rental where the visual difference does not affect bookings.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ICE MAKER AND WATER -->
+      <div id="ice-water" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">Ice Maker and Water Dispenser: Do You Actually Want Them?</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Every additional feature creates another system that can fail. An ice maker and water dispenser add: the ice maker assembly, a water inlet valve, a water filter housing, a dispenser door and solenoid, water tubing, door wiring and a connection to the water supply. Any of those components can fail independently.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The question is not whether ice makers are reliable or unreliable in general. The question is whether the feature materially improves your guests' experience enough to justify the maintenance exposure and installation complexity.</p>
+        <blockquote style="margin:0 0 16px;padding:16px 20px 16px 22px;background:rgba(176,22,22,0.04);border:1px solid rgba(176,22,22,0.12);border-left:3px solid #dc2626;border-radius:0 8px 8px 0;font-size:0.95rem;font-style:italic;font-weight:600;color:#1a2c44">If guests barely care about a feature but you have to repair it, the feature may not be worth owning.</blockquote>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Practical alternatives to consider:</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px">
+          {['A refrigerator without an external dispenser (simpler, lower failure surface)','An internal-only ice maker with no external water dispenser','Ice cube trays for very simple short-term rentals','A countertop ice maker that is easy to clean and replace if it fails'].map(item => (
+            <li style="font-size:0.88rem;color:#2a3c54;line-height:1.6;display:flex;gap:9px;align-items:flex-start"><span style="color:#dc2626;font-weight:800;flex-shrink:0">›</span>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- SMART REFRIGERATORS -->
+      <div id="smart" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">Smart Refrigerators</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Wi-Fi connectivity, touchscreens, interior cameras and voice integration add purchase cost and additional electronic systems. For most rental properties, these features provide limited operational value relative to that added cost and complexity.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The one exception worth evaluating: remote temperature monitoring. If the refrigerator can alert you to a temperature problem before a guest's groceries spoil, that has real operational value for a remotely managed property. Whether any specific model's implementation is useful depends on the product -- read actual owner reviews of how the feature functions in practice, not just the spec sheet.</p>
+      </div>
+
+      <!-- RELIABILITY -->
+      <div id="reliability" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">What Actually Matters for Reliability</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Reliability is easier to discuss at the model and platform level than at the brand level. A single manufacturer can produce simple, durable workhorses and also feature-laden units with complicated electronics. The brand badge alone does not tell you which you are buying.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            ['Proven platform','Established model families with a track record in the field matter more than new releases.'],
+            ['Parts availability','A failed refrigerator that cannot be repaired within a reasonable time and cost is effectively a total loss. Check whether common replacement parts (evaporator fan, drain pump, compressor start relay, door gaskets, control boards) are in stock at major distributors.'],
+            ['Local service availability','A unit that requires a brand-specific factory technician or a 2-week parts wait is a liability in a rental property. Common brands with a broad service network are easier to support in Charlotte.'],
+            ['Simplicity','Fewer moving systems means fewer failure modes. A top-freezer without a dispenser has less that can go wrong than a French-door with dual icemakers, a water dispenser, LED control panels and a touchscreen.'],
+            ['Compressor and sealed-system architecture','Linear compressors, two-speed compressors and conventional single-speed compressors each have different repair economics. Research before buying.'],
+            ['Ice / water complexity','External dispensers and in-door ice systems are among the most frequently serviced components on modern refrigerators.'],
+            ['Door and gasket design','Door gaskets are wear items. Simpler gasket designs are easier to replace.'],
+          ].map(([title, detail]) => (
+            <div style="display:flex;gap:12px;padding:12px 16px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:9px">
+              <div style="width:6px;height:6px;border-radius:50%;background:#b01616;flex-shrink:0;margin-top:5px"></div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{title}</div>
+                <div style="font-size:0.79rem;color:#4a5e74;line-height:1.55">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="padding:13px 16px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.85rem;color:#1a2c44;margin:0;font-weight:600">Commonly available brands in the U.S. market include Whirlpool, GE, Frigidaire, LG and Samsung, among others. Each has strengths and weaknesses at the model level. Research specific model reliability before purchasing, and check current parts availability for the model you are considering -- not the brand overall.</p>
+        </div>
+      </div>
+
+      <!-- PRICING -->
+      <div id="pricing" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">How Much Should an Airbnb Owner Spend?</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Purchase price is only the first invoice. The real question is total ownership cost over the expected service life:</p>
+        <blockquote style="margin:0 0 20px;padding:14px 18px 14px 20px;background:rgba(6,12,25,0.03);border-left:3px solid #060c19;border-radius:0 8px 8px 0;font-size:0.9rem;color:#1a2c44;font-weight:600">Purchase price + delivery and installation + expected repairs + downtime cost + eventual replacement</blockquote>
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          {[
+            ['Budget tier (~$400-$800)','Basic top-freezer and simple units. Best per dollar of usable storage. Lowest repair cost when something fails. Easy to replace. Best choice for value properties and secondary bedrooms / kitchenettes.'],
+            ['Mid-range tier (~$800-$1,500)','Larger capacity, better finish, some additional features. More guest appeal. Moderate feature complexity. Appropriate for most standard 1-3 bedroom Airbnb properties.'],
+            ['Premium tier (~$1,500-$3,500+)','French-door, counter-depth and advanced configurations. Justified in luxury listings where kitchen aesthetics affect booking rates and pricing. Budget for more complex service needs.'],
+          ].map(([tier, desc]) => (
+            <div style="padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="font-size:0.82rem;font-weight:800;color:#060c19;margin-bottom:5px">{tier}</div>
+              <div style="font-size:0.81rem;color:#4a5e74;line-height:1.6">{desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:16px 20px;background:#fff3f3;border:1px solid rgba(176,22,22,0.15);border-radius:10px">
+          <div style="font-size:0.78rem;font-weight:800;color:#8a1010;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Illustrative Example</div>
+          <p style="font-size:0.83rem;color:#1a2c44;line-height:1.65;margin:0">A $2,400 French-door needs to generate additional booking revenue or justify premium pricing to recover $1,600 more than an $800 mid-range unit -- before accounting for higher repair exposure. In a luxury listing where the kitchen photos meaningfully affect bookings, the math can work. In a basic 1-bedroom property, it is harder to make the case.</p>
+        </div>
+      </div>
+
+      <!-- NEW VS USED -->
+      <div id="condition" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 18px;letter-spacing:-0.02em">New vs. Open-Box vs. Scratch-and-Dent vs. Used</h2>
+
+        <div style="overflow-x:auto;margin-bottom:14px">
+          <table style="width:100%;border-collapse:collapse;font-size:0.78rem;min-width:500px">
+            <thead>
+              <tr style="background:#060c19;color:#fff">
+                {['Option','Pros','Cons'].map(h => (
+                  <th style="padding:10px 12px;text-align:left;font-weight:700">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['New','Full warranty. Known history. Easy returns. Current efficiency ratings.','Highest acquisition cost.'],
+                ['Open-box','Potential meaningful discount. May still carry warranty.','Warranty and condition vary. Inspect before accepting.'],
+                ['Scratch-and-dent','Substantial savings possible. Cosmetic damage may be irrelevant if it is hidden by cabinetry.','Inspect doors, cabinet and seals carefully. Warranty terms vary.'],
+                ['Used','Lowest purchase price.','Unknown operating history. Likely no manufacturer warranty. Transport damage risk. Harder to return. Shorter remaining service life.'],
+              ].map(([opt,pro,con], i) => (
+                <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                  <td style="padding:10px 12px;font-weight:700;color:#060c19;white-space:nowrap">{opt}</td>
+                  <td style="padding:10px 12px;color:#2a3c54">{pro}</td>
+                  <td style="padding:10px 12px;color:#2a3c54">{con}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:13px 16px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.86rem;color:#1a2c44;margin:0;font-weight:600">A dent on the side hidden by a cabinet can save money. A damaged door seal cannot.</p>
+        </div>
+      </div>
+
+      <!-- HOW TO SAVE -->
+      <div id="save" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">How to Save Money Without Buying a Problem</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+          {['Look at scratch-and-dent outlets and appliance clearance centers','Buy open-box units with warranty confirmation','Consider the previous-year model when a new generation launches','Shop major retailer sales around holidays','Buy from local appliance dealers who may bundle delivery and installation','Choose standard depth and standard sizes: custom-fit units cost more to source and replace','Skip features the property does not actually use','Compare total installed price, not just sticker price: delivery, installation and haul-away add up','Check whether haul-away of the old unit is included','Reuse the existing water line only if it is in clearly good condition','Buy common models with widely stocked parts'].map(item => (
+            <div style="font-size:0.8rem;color:#1a2c44;padding:9px 13px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:8px;display:flex;gap:8px;align-items:flex-start"><span style="color:#dc2626;flex-shrink:0">›</span>{item}</div>
+          ))}
+        </div>
+        <p style="font-size:0.85rem;color:#4a5e74;line-height:1.65;margin:0">The cheapest refrigerator becomes expensive when it does not fit the opening, delivery fails, the water connection leaks, parts cannot be sourced, or it fails during a guest stay. Evaluating total installed cost from the start saves more money than chasing the lowest sticker price.</p>
+      </div>
+
+      <!-- USED INSPECTION CHECKLIST -->
+      <div id="inspection" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">Used Refrigerator Inspection Checklist</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Never buy a used refrigerator without knowing exactly what refrigerator you are buying. Photograph the model and serial number sticker before agreeing to a purchase. This allows you to research the unit's age, check for any known recalls, find the manual, verify parts availability and look up the approximate production date from the serial number.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">Before completing a used refrigerator purchase, inspect:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px">
+          {['Model and serial number sticker','Estimated age from serial number','Door gaskets on all doors','Door alignment (gaps, sag)','Cabinet: dents, rust, damage','Interior: cracks, discoloration','Shelves and drawers present and intact','Unusual compressor or fan noise','Temperature in refrigerator section','Temperature in freezer section','Ice maker if equipped','Water dispenser if equipped','Evidence of past leaks under or behind unit','Drain pan area where accessible','Power cord condition','Display and controls functional','Water supply connection condition','Signs of prior repair or service'].map(item => (
+            <div style="font-size:0.8rem;color:#2a3c54;display:flex;align-items:center;gap:7px;padding:7px 10px;background:#f8f9fc;border-radius:6px"><span style="width:14px;height:14px;border:1.5px solid rgba(30,50,80,0.2);border-radius:3px;flex-shrink:0;display:inline-block"></span>{item}</div>
+          ))}
+        </div>
+        <div style="padding:13px 16px;background:rgba(6,12,25,0.04);border-radius:8px">
+          <p style="font-size:0.84rem;color:#1a2c44;margin:0;line-height:1.6">A brief plug-in test does not verify refrigerator health. Reaching and holding proper cooling temperatures takes time. If you cannot evaluate a used unit over an adequate period, factor that uncertainty into the price you are willing to pay.</p>
+        </div>
+      </div>
+
+      <!-- WARRANTY -->
+      <div id="warranty" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">Warranty: What Actually Covers You</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Manufacturer warranties are not all the same, and the language matters significantly for Airbnb owners.</p>
+
+        <div style="padding:16px 18px;background:#fff3f3;border:1px solid rgba(176,22,22,0.2);border-radius:10px;margin-bottom:18px">
+          <div style="font-size:0.78rem;font-weight:800;color:#8a1010;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Critical for Short-Term Rental Owners</div>
+          <p style="font-size:0.86rem;color:#1a2c44;line-height:1.65;margin:0">Many residential appliance warranties explicitly exclude or restrict coverage for commercial use, rental-property use, or non-residential applications. Whether Airbnb / short-term-rental use qualifies as "residential" under a manufacturer's terms depends on the specific warranty document. Short-term rental owners should read the actual warranty language before assuming a residential warranty applies to their property.</p>
+        </div>
+
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Layers to understand before purchasing:</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">
+          {[
+            ['Manufacturer full coverage period','Typically covers parts and labor for defects. Verify the duration -- "one year" is common but not universal.'],
+            ['Parts-only period','After initial labor coverage ends, many manufacturers cover parts only. You pay labor.'],
+            ['Sealed-system / compressor warranty','Often extends beyond the base period (commonly 5-10 years for the sealed system). Verify whether it includes labor.'],
+            ['Commercial / rental use exclusion','Read carefully. Some warranties explicitly exclude non-residential use or short-term rental properties.'],
+            ['Registration requirements','Some warranties require registration to activate or extend coverage. Complete this at purchase.'],
+            ['Authorized service requirement','Using an unauthorized repair service may void remaining warranty coverage.'],
+          ].map(([title, detail]) => (
+            <div style="display:flex;gap:12px;padding:12px 16px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:9px">
+              <div style="width:6px;height:6px;border-radius:50%;background:#b01616;flex-shrink:0;margin-top:5px"></div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{title}</div>
+                <div style="font-size:0.79rem;color:#4a5e74;line-height:1.55">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <h3 style="font-size:0.98rem;font-weight:800;color:#060c19;margin:0 0 10px">Extended Warranties: Are They Worth It?</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+          <div style="padding:14px 16px;background:#f0f6f0;border:1px solid rgba(20,120,40,0.15);border-radius:9px">
+            <div style="font-size:0.72rem;font-weight:800;color:#1a6030;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:7px">More Valuable When</div>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px">
+              {['Refrigerator is expensive','Complex electronics or ice systems','Remotely managed property','Downtime cost is high','Plan includes labor and service calls'].map(item => (
+                <li style="font-size:0.79rem;color:#2a4a30;line-height:1.5">{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div style="padding:14px 16px;background:#f8f0f0;border:1px solid rgba(176,22,22,0.12);border-radius:9px">
+            <div style="font-size:0.72rem;font-weight:800;color:#8a1010;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:7px">Less Valuable When</div>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px">
+              {['Refrigerator is inexpensive','Unit is simple and easy to replace','Deductible / service fee is high','Exclusions are broad','Plan does not cover rental use'].map(item => (
+                <li style="font-size:0.79rem;color:#4a1010;line-height:1.5">{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p style="font-size:0.83rem;color:#4a5e74;line-height:1.65;margin:0">Always check: deductible per service call, claim limits, waiting periods, food-loss reimbursement, replacement policy and whether rental-property use is explicitly covered or excluded.</p>
+      </div>
+
+      <!-- ENERGY -->
+      <div id="energy" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">Energy Cost</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Every new refrigerator sold in the U.S. carries an EnergyGuide label showing estimated annual electricity usage in kilowatt-hours. A modern energy-efficient refrigerator typically uses $30-$80 per year in electricity depending on size and type. An old, inefficient unit can consume significantly more.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">That said, replacing a working refrigerator primarily for energy savings rarely pencils out quickly. A $50/year electricity savings does not recover $800 in replacement cost for many years. Avoiding one emergency service call or one premature replacement typically has more financial impact than a marginal efficiency difference. Factor energy cost into the decision, but do not let it be the primary driver.</p>
+      </div>
+
+      <!-- INSTALLATION -->
+      <div id="installation" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">Delivery and Installation: More Than "Plug It In"</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Purchasing a refrigerator is one step. Getting it operational is another. Before scheduling delivery, verify:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+          {['All measurements cleared','Delivery team knows about any stairs','Doors can be removed if needed','Outlet is in the correct location and accessible','Floor is level and able to support the unit','Old refrigerator removal and haul-away confirmed','Packaging disposal plan in place','Water line exists and is in good condition (if needed)','Shutoff valve is functional','Supply line matches refrigerator connection'].map(item => (
+            <div style="font-size:0.8rem;color:#1a2c44;padding:9px 13px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:8px;display:flex;gap:8px;align-items:flex-start"><span style="color:#dc2626;flex-shrink:0">›</span>{item}</div>
+          ))}
+        </div>
+
+        <h3 style="font-size:0.95rem;font-weight:800;color:#060c19;margin:0 0 10px">Water Line Installation</h3>
+        <p style="font-size:0.88rem;color:#2a3c54;line-height:1.68;margin:0 0 12px">A refrigerator with an ice maker or water dispenser requires a cold-water supply connection. This means a functioning shutoff valve, an appropriate supply line and enough pressure to the valve. If no water supply line exists near the refrigerator, running one adds to installation cost and complexity. Do not reuse a visibly aged, kinked or previously leaking supply line -- the cost of water damage far exceeds the cost of a new line.</p>
+
+        <h3 style="font-size:0.95rem;font-weight:800;color:#060c19;margin:0 0 10px">When Installation Gets Complicated</h3>
+        <p style="font-size:0.88rem;color:#2a3c54;line-height:1.68;margin:0">Situations that add time and cost: unit barely fits and requires careful maneuvering, doors must be removed to clear an entry, flooring is uneven, cabinet interference requires adjustment, refrigerator doors need leveling after placement, counter-depth models require precise fit adjustments, or old appliance removal requires more than basic sliding out.</p>
+      </div>
+
+      <!-- MATRIX -->
+      <div id="matrix" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Quick Decision Matrix</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:0.79rem;min-width:520px">
+            <thead>
+              <tr style="background:#060c19;color:#fff">
+                {['Airbnb Type','Recommended Approach'].map(h => (
+                  <th style="padding:10px 14px;text-align:left;font-weight:700">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Budget studio / 1BR','Simple top-freezer, moderate capacity, no external dispenser. Replace easily when needed.'],
+                ['Family rental (4-6 guests)','Larger top-freezer or bottom-freezer. Consider French-door if budget allows and kitchen layout fits.'],
+                ['Premium Airbnb','French-door or counter-depth where aesthetics drive booking value. Budget for higher service costs.'],
+                ['Remote rental','Simple, common platform with strong local service network. Avoid exotic configurations.'],
+                ['High-turnover rental','Durable interior, easy-clean design, minimal features that require maintenance.'],
+                ['Long-stay rental','Prioritize capacity and freezer space. Guests use storage more like home occupants.'],
+                ['Large luxury property','Larger French-door or premium configuration. Water / ice may be expected by guests at this price point.'],
+              ].map(([type, approach], i) => (
+                <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8f9fc'}`}>
+                  <td style="padding:10px 14px;font-weight:700;color:#060c19;white-space:nowrap">{type}</td>
+                  <td style="padding:10px 14px;color:#2a3c54;line-height:1.5">{approach}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.78rem;color:#9aaabe;margin:10px 0 0">These are recommendations, not rules. Your specific property layout and market may point to a different choice.</p>
+      </div>
+
+      <!-- WALK AWAY -->
+      <div id="walkaway" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 14px;letter-spacing:-0.02em">The "Walk Away" List</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Walk away, or investigate substantially further, if:</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px">
+          {[
+            'The unit does not physically fit the opening or the access path',
+            'The model or serial label is missing or illegible',
+            'Door gaskets are torn, compressed flat or pulling away from the cabinet',
+            'There is significant rust on the cabinet exterior or visible water-damage patterns',
+            'The refrigerator cannot demonstrate actual cooling during an evaluation period',
+            'Unusual compressor noise, loud fan noise or clicking on startup',
+            'Water leak evidence under or around the unit',
+            'Cracked door liner or damaged interior',
+            'Hinge damage affecting door alignment',
+            'Major replacement parts are unavailable from common distributors',
+            'A used smart or premium unit is priced very cheaply with no ownership history',
+            'The seller refuses to allow basic inspection or power testing',
+          ].map(item => (
+            <li style="font-size:0.87rem;color:#2a3c54;line-height:1.6;display:flex;gap:9px;align-items:flex-start;padding:8px 12px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:8px"><span style="color:#b01616;font-weight:800;flex-shrink:0">✕</span>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- BUYING CHECKLIST -->
+      <div id="checklist" style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="font-size:1.2rem;font-weight:900;color:#060c19;margin:0 0 18px;letter-spacing:-0.02em">Airbnb Owner Checklist Before Buying</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+          <div>
+            <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#9aaabe;margin-bottom:10px">Property</div>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              {['Guest capacity','Kitchen measurements','Doorway and hallway dimensions','Water connection','Door swing clearance','Budget'].map(item => (
+                <div style="font-size:0.79rem;color:#2a3c54;display:flex;gap:6px;align-items:center"><span style="width:13px;height:13px;border:1.5px solid rgba(30,50,80,0.2);border-radius:3px;flex-shrink:0;display:inline-block"></span>{item}</div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#9aaabe;margin-bottom:10px">Refrigerator</div>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              {['Correct dimensions verified','Capacity appropriate','Model number recorded','Parts availability checked','Warranty confirmed','Ice / water actually needed','EnergyGuide reviewed','Delivery cost','Installation cost','Haul-away included'].map(item => (
+                <div style="font-size:0.79rem;color:#2a3c54;display:flex;gap:6px;align-items:center"><span style="width:13px;height:13px;border:1.5px solid rgba(30,50,80,0.2);border-radius:3px;flex-shrink:0;display:inline-block"></span>{item}</div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#9aaabe;margin-bottom:10px">Used / Open-Box</div>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              {['Warranty terms confirmed','Cosmetic vs functional damage noted','Door seals inspected','Cooling verified','Serial number photographed','Return policy understood'].map(item => (
+                <div style="font-size:0.79rem;color:#2a3c54;display:flex;gap:6px;align-items:center"><span style="width:13px;height:13px;border:1.5px solid rgba(30,50,80,0.2);border-radius:3px;flex-shrink:0;display:inline-block"></span>{item}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RELATED -->
+      <div style="padding:20px 22px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div style="font-size:0.63rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#9aaabe;margin-bottom:12px">Related Resources</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {[
+            ['Refrigerator Not Cooling Charlotte', '/charlotte-nc/refrigerator-not-cooling'],
+            ['Repair vs Replace a Refrigerator', '/charlotte-nc/repair-vs-replace-refrigerator'],
+            ['Airbnb Appliance Maintenance Charlotte', '/airbnb-maintenance-charlotte'],
+            ['LG LFXS26973S Not Cooling Case', '/repairs/lg-lfxs26973s-refrigerator-warm-freezer-cold-charlotte'],
+            ['Samsung RF28T5001SR Not Cooling Case', '/repairs/samsung-rf28t5001sr-not-cooling-ballantyne'],
+            ['Samsung RF28R7351SG Ice Maker Case', '/repairs/samsung-rf28r7351sg-ice-maker-not-making-ice-charlotte'],
+            ['All Repair Cases', '/blog/recent-repairs'],
+          ].map(([label, href]) => (
+            <a href={href} style="font-size:0.81rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 13px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">→ {label}</a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INSTALLATION CTA BRIDGE -->
+  <section style="background:#060c19;padding:56px 24px 60px;border-top:2px solid #7a0e0e;border-bottom:1px solid rgba(255,255,255,0.06)">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 14px;letter-spacing:-0.03em">Already Picked Your Refrigerator?</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 auto 0;max-width:560px">Buying the right refrigerator solves only half the problem. It still has to fit the opening, clear the cabinets and walls, sit level, connect safely to an existing water supply where required, and have the old unit removed. HomeHeroes handles refrigerator installation in Charlotte and surrounding areas.</p>
+    </div>
+  </section>
+
+  <!-- INSTALLATION FORM -->
+  <section id="install-form" style="background:#f8f9fc;padding:64px 24px 80px">
+    <div style="max-width:640px;margin:0 auto">
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(6,12,25,0.07)">
+        <div style="padding:24px 32px;border-bottom:1px solid rgba(30,50,80,0.08);background:#fafbfd">
+          <h2 style="font-size:1.18rem;font-weight:900;color:#060c19;margin:0 0 4px;letter-spacing:-0.02em">Get a Refrigerator Installation Quote</h2>
+          <p style="font-size:0.78rem;color:#6a7a8e;margin:0">Send us the details. We'll confirm what's needed before scheduling.</p>
+        </div>
+
+        <form id="install-quote-form" style="padding:26px 32px;display:flex;flex-direction:column;gap:16px" name="refrigerator-installation" method="POST" action="https://api.web3forms.com/submit">
+          <input type="hidden" name="access_key" value="98673c2a-0528-45c5-a5d0-2561df9d62fb" />
+          <input type="hidden" name="subject" value="Refrigerator Installation Quote — HomeHeroes" />
+
+          <!-- Name + Phone -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label for="inst-name" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">NAME *</label>
+              <input type="text" id="inst-name" name="name" required autocomplete="name" placeholder="Your name"
+                style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+            </div>
+            <div>
+              <label for="inst-phone" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PHONE *</label>
+              <input type="tel" id="inst-phone" name="phone" required autocomplete="tel" placeholder="(704) 555-0100"
+                style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+            </div>
+          </div>
+
+          <!-- Email + ZIP -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label for="inst-email" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">EMAIL</label>
+              <input type="email" id="inst-email" name="email" autocomplete="email" placeholder="you@email.com"
+                style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+            </div>
+            <div>
+              <label for="inst-zip" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">ZIP CODE *</label>
+              <input type="text" id="inst-zip" name="zip" required autocomplete="postal-code" placeholder="28202" maxlength="10"
+                style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+            </div>
+          </div>
+
+          <!-- Property type -->
+          <div>
+            <label for="inst-property" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">PROPERTY TYPE</label>
+            <select id="inst-property" name="property_type"
+              style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;appearance:none;box-sizing:border-box;font-family:inherit"
+              onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+              <option value="" selected>Select…</option>
+              <option value="Airbnb / Short-Term Rental">Airbnb / Short-Term Rental</option>
+              <option value="Primary Residence">Primary Residence</option>
+              <option value="Long-Term Rental">Long-Term Rental</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Refrigerator status + brand -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label for="inst-status" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">REFRIGERATOR STATUS *</label>
+              <select id="inst-status" name="refrigerator_status" required
+                style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;appearance:none;box-sizing:border-box;font-family:inherit"
+                onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+                <option value="" disabled selected>Select…</option>
+                <option value="Already purchased">Already purchased</option>
+                <option value="Planning to purchase">Planning to purchase</option>
+                <option value="Need help choosing">Need help choosing</option>
+              </select>
+            </div>
+            <div>
+              <label for="inst-brand" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">REFRIGERATOR BRAND</label>
+              <input type="text" id="inst-brand" name="refrigerator_brand" placeholder="LG, Samsung, Whirlpool…"
+                style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;box-sizing:border-box;font-family:inherit"
+                onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+                onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'" />
+            </div>
+          </div>
+
+          <!-- Installation type + water line -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label for="inst-type" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">INSTALLATION TYPE</label>
+              <select id="inst-type" name="installation_type"
+                style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;appearance:none;box-sizing:border-box;font-family:inherit"
+                onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+                <option value="" selected>Select…</option>
+                <option value="Standard refrigerator">Standard refrigerator</option>
+                <option value="Refrigerator with ice maker / water">With ice maker / water line</option>
+                <option value="Built-in / counter-depth">Built-in / counter-depth</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+            <div>
+              <label for="inst-water" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">EXISTING WATER LINE</label>
+              <select id="inst-water" name="water_line"
+                style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;appearance:none;box-sizing:border-box;font-family:inherit"
+                onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+                <option value="" selected>Select…</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Not sure">Not sure</option>
+                <option value="No water connection needed">No water connection needed</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Old refrigerator -->
+          <div>
+            <label for="inst-old" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">OLD REFRIGERATOR</label>
+            <select id="inst-old" name="old_refrigerator"
+              style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;appearance:none;box-sizing:border-box;font-family:inherit"
+              onfocus="this.style.borderColor='#b01616'" onblur="this.style.borderColor='rgba(30,50,80,0.16)'">
+              <option value="" selected>Select…</option>
+              <option value="Needs removal">Needs removal / haul-away</option>
+              <option value="Staying">Staying in place</option>
+              <option value="Already removed">Already removed</option>
+            </select>
+          </div>
+
+          <!-- Notes -->
+          <div>
+            <label for="inst-notes" style="display:block;font-size:0.7rem;font-weight:800;color:#060c19;margin-bottom:5px;letter-spacing:0.06em">NOTES OR QUESTIONS</label>
+            <textarea id="inst-notes" name="message" rows="3" placeholder="Refrigerator model, access details, questions about fit or water connection…"
+              style="width:100%;padding:11px 13px;border-radius:9px;border:1.5px solid rgba(30,50,80,0.16);background:#fff;font-size:0.875rem;color:#060c19;outline:none;resize:none;box-sizing:border-box;font-family:inherit"
+              onfocus="this.style.borderColor='#b01616';this.style.boxShadow='0 0 0 3px rgba(176,22,22,0.08)'"
+              onblur="this.style.borderColor='rgba(30,50,80,0.16)';this.style.boxShadow='none'"></textarea>
+          </div>
+
+          <button id="inst-submit" type="submit" style="width:100%;padding:14px;font-size:0.97rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#b01616,#dc2626);border:none;border-radius:10px;cursor:pointer;letter-spacing:0.01em;box-shadow:0 4px 18px rgba(176,22,22,0.3)">
+            Get Installation Quote →
+          </button>
+          <p style="font-size:0.68rem;color:#9aaabe;text-align:center;margin:0">Your info is never sold or shared.</p>
+        </form>
+
+        <div id="inst-success" style="display:none;padding:44px 32px;text-align:center">
+          <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#d42222,#8e1010);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          </div>
+          <p style="font-size:1.05rem;font-weight:800;color:#060c19;margin:0 0 6px">Quote request received.</p>
+          <p style="font-size:0.88rem;color:#4a5e74;margin:0">We'll be in touch shortly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Get Install Quote" />
+
+</SeoPageLayout>
+
+<script>
+  const form = document.getElementById('install-quote-form') as HTMLFormElement | null;
+  const success = document.getElementById('inst-success');
+  const btn = document.getElementById('inst-submit') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!btn) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.style.display = 'none';
+        if (success) success.style.display = 'block';
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', method: 'refrigerator_install_form' });
+        console.log('[GTM] generate_lead pushed');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Get Installation Quote →';
+        alert('Something went wrong. Please call us directly.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Get Installation Quote →';
+      alert('Something went wrong. Please call us directly.');
+    }
+  });
+</script>
