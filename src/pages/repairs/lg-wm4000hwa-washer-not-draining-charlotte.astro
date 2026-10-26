@@ -1,0 +1,509 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/lg-wm4000hwa-washer-not-draining-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "LG WM4000HWA Washer Not Draining in Charlotte, NC | Drain Pump AHA75853813",
+  "description": "See how HomeHeroes diagnosed an LG WM4000HWA front-load washer that would not drain in Charlotte, including drain pump AHA75853813, repair cost and testing.",
+  "datePublished": "2026-10-26",
+  "dateModified": "2026-10-26",
+  "image": `${base}/images/repairs/lg-wm4000hwa-before.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "LG WM4000HWA not draining, LG WM4000HWA drain pump, AHA75853813, LG washer drain pump replacement, LG front load washer not draining, LG washer water in drum, LG washer repair Charlotte NC, washer repair Charlotte"
+};
+---
+
+<SeoPageLayout
+  title="LG WM4000HWA Washer Not Draining in Charlotte, NC | HomeHeroes"
+  description="See how HomeHeroes diagnosed an LG WM4000HWA front-load washer that would not drain in Charlotte, including drain pump AHA75853813, repair cost and testing. Total: $311.03."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/lg-wm4000hwa-before.webp"
+  ogType="article"
+  heroImage="/images/repairs/lg-wm4000hwa-before.webp"
+>
+
+  <!-- HERO -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">LG WM4000HWA</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">LG</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Front-Load Washer</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">October 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">LG WM4000HWA Washer Not Draining in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Washer filled and tumbled normally. Drain system did not move the water out. Failed drain pump assembly diagnosed and replaced same day.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$311.03'],
+          ['Outcome', 'Draining Restored'],
+          ['Service', 'Same-Day'],
+          ['Part', 'AHA75853813'],
+        ].map(([label, value]) => (
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 18px;min-width:120px">
+            <div style="font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">{label}</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#e8edf5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div style="background:#f8f9fc;padding:52px 24px 80px">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+
+      <!-- Opening -->
+      <div>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The washer started normally. It filled. The drum turned. The wash portion of the cycle ran. But when it was time to drain, water stayed inside the machine.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">This LG WM4000HWA repair scenario involved a front-load washer in Charlotte that was still capable of washing and tumbling but could no longer remove water correctly. The washer can move the load without moving the water.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0">A no-drain symptom does not automatically mean the drain pump needs replacement. Several components and conditions can cause a washer to hold water.</p>
+      </div>
+
+      <!-- BEFORE PHOTO (LCP) -->
+      <figure style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(6,12,25,0.1)">
+        <img
+          src="/images/repairs/lg-wm4000hwa-before.webp"
+          alt="LG WM4000HWA front load washer before repair in Charlotte NC"
+          width="900"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+          style="width:100%;height:auto;display:block"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block">LG WM4000HWA before drain-system diagnosis. The machine ran normally through the wash portion of the cycle.</figcaption>
+      </figure>
+
+      <!-- REPAIR SNAPSHOT -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;overflow:hidden">
+        <div style="background:#060c19;color:#fff;font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:12px 22px">Repair Snapshot</div>
+        <div>
+          {[
+            ['Appliance',                'LG front-load washer'],
+            ['Model',                    'WM4000HWA'],
+            ['Location',                 'Charlotte, NC'],
+            ['Customer Complaint',       'Washer not draining / water remaining in drum'],
+            ['Diagnosis',                'Failed drain pump assembly'],
+            ['Repair',                   'Drain-system diagnosis and drain-pump replacement'],
+            ['Part Used',                'AHA75853813 drain pump assembly'],
+            ['Part Reference Price',     '$57.03'],
+            ['Service Call / Diagnosis', '$89.00'],
+            ['Labor',                    '$165.00'],
+            ['Customer Total',           '$311.03'],
+            ['Result',                   'Normal drain operation restored after repair and testing'],
+          ].map(([label, value], i) => (
+            <div style={`display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:11px 22px;border-bottom:1px solid rgba(30,50,80,0.05);background:${i % 2 === 1 ? 'rgba(248,249,252,0.6)' : 'transparent'}`}>
+              <span style="font-size:0.79rem;font-weight:700;color:#6a7a8e">{label}</span>
+              <span style="font-size:0.82rem;color:#1a2c44;font-weight:500">{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- WHAT THE CUSTOMER WAS SEEING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">👀</span>
+          What the Customer Was Seeing
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The washer appeared to be operating. It accepted a load, filled with water, and tumbled through the wash portion of the cycle. The problem showed up at the drain stage: water was not being removed from the drum. The machine could not progress normally into spin, and clothes were left sitting in water.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">The washer was still operating. The drainage system was not.</p>
+
+        <!-- WATER IN DRUM PHOTO -->
+        <figure style="margin:18px 0 0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/lg-wm4000hwa-water-in-drum.webp"
+            alt="LG WM4000HWA washer not draining water from drum"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Water remained inside the washer after the machine failed to complete normal drainage.</figcaption>
+        </figure>
+      </div>
+
+      <!-- PULL QUOTE -->
+      <blockquote style="margin:0;padding:22px 26px 22px 30px;background:rgba(176,22,22,0.04);border:1px solid rgba(176,22,22,0.15);border-left:4px solid #dc2626;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;font-weight:600;color:#1a2c44;line-height:1.5">
+        "The washer can move the load without moving the water."
+      </blockquote>
+
+      <!-- WHY NO-DRAIN IS NOT A DIAGNOSIS -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💡</span>
+          Why a No-Drain Symptom Is Not a Diagnosis
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Several different problems can prevent a front-load washer from draining correctly. The symptom tells you where to look. It does not tell you what failed.</p>
+        <ul style="margin:0 0 16px;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+          {[
+            'Clogged drain pump filter',
+            'Blocked or kinked drain hose',
+            'Debris in the pump housing or internal drain path',
+            'Failed drain pump (this case)',
+            'Wiring or connector issue',
+            'Control or water-level sensing problem',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div style="padding:14px 20px;background:rgba(176,22,22,0.05);border-left:3px solid #dc2626;border-radius:0 8px 8px 0">
+          <p style="font-size:0.88rem;color:#1a2c44;line-height:1.6;margin:0;font-style:italic;font-weight:600">The symptom identifies the drain system. Diagnosis identifies the failed part.</p>
+        </div>
+      </div>
+
+      <!-- FIRST THING TO CHECK: THE FILTER -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔎</span>
+          First Thing to Check: The Drain Pump Filter
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">LG front-load washers have a serviceable drain-pump filter accessible through a small panel at the lower front of the machine. This filter is designed to catch lint, debris, and small objects before they reach the pump. A blocked filter can restrict drainage enough to create symptoms similar to a weak or failed drain pump.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A clogged filter can imitate a failed pump.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">For this repair, the filter area and obvious drain restrictions were checked first before any component was replaced.</p>
+
+        <!-- FILTER ACCESS PHOTO -->
+        <figure style="margin:18px 0 0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/lg-wm4000hwa-filter-access.webp"
+            alt="LG WM4000HWA drain pump filter inspection"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">The lower drain-filter area was checked before replacing the pump.</figcaption>
+        </figure>
+      </div>
+
+      <!-- WHAT WE FOUND -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📋</span>
+          What We Found on This WM4000HWA
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The obvious drainage restrictions and serviceable filter area were checked first. With those basic causes ruled out, diagnosis isolated the drain pump assembly as the failed component.</p>
+
+        <!-- SERVICE ACCESS PHOTO -->
+        <figure style="margin:18px 0 0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/lg-wm4000hwa-drain-pump-access.webp"
+            alt="LG WM4000HWA drain pump access during washer repair"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Drain-pump area accessed during professional diagnosis and repair.</figcaption>
+        </figure>
+      </div>
+
+      <!-- THE PART -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔩</span>
+          LG WM4000HWA Drain Pump: AHA75853813
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The drain pump moves wastewater from the washer tub through the drain system and out of the machine during the drain portion of the cycle. When it fails, the washer can continue washing and tumbling while being unable to remove water.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 20px">The replacement drain pump assembly used in this case was <strong>AHA75853813</strong>. Reference part price at the time of this repair: <strong>$57.03</strong>. Retail pricing can change by supplier and availability.</p>
+
+        <!-- OLD PUMP PHOTO -->
+        <figure style="margin:0 0 16px;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/lg-wm4000hwa-old-drain-pump.webp"
+            alt="LG drain pump removed from WM4000HWA washer"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Removed drain pump assembly from this repair scenario.</figcaption>
+        </figure>
+
+        <!-- NEW PUMP PHOTO -->
+        <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/lg-wm4000hwa-new-drain-pump.webp"
+            alt="LG AHA75853813 replacement drain pump assembly"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Replacement AHA75853813 drain pump assembly before installation.</figcaption>
+        </figure>
+      </div>
+
+      <!-- FILTER VS DRAIN PUMP -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">⚡</span>
+          Drain Filter vs. Drain Pump
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">The filter protects the path. The pump moves the water.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          {[
+            ['Drain pump filter', 'A passive catch point that traps debris before it reaches the pump. Located behind the lower access panel and designed to be cleaned periodically. A blocked filter restricts flow through the system -- sometimes enough to stop drainage entirely.'],
+            ['Drain pump (AHA75853813)', 'The active component that actually removes wastewater from the tub. It draws water through the filter and pushes it out through the drain hose. When it fails, water stays in the drum regardless of filter condition.'],
+          ].map(([title, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#b01616;flex-shrink:0;margin-top:5px"></div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{title}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- THE REPAIR -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">🔧</span>
+          The Repair
+        </h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+          {[
+            ['1',  'Confirm the no-drain complaint',                    'Verify water is retained in the drum and the machine is not completing the drain cycle.'],
+            ['2',  'Inspect drain hose and obvious external restrictions','Check for kinks, blockages, or incorrect drain-hose height.'],
+            ['3',  'Check the serviceable drain pump filter area',       'Access and inspect the lower filter. Clear any restriction before proceeding.'],
+            ['4',  'Access the drain-pump system',                       'Remove access panels to reach the pump assembly.'],
+            ['5',  'Diagnose pump operation',                            'Confirm the pump is the failed component rather than a wiring or control issue.'],
+            ['6',  'Remove the failed pump assembly',                    'Disconnect and extract the original pump.'],
+            ['7',  'Install AHA75853813',                                'Fit the replacement drain pump assembly and reconnect.'],
+            ['8',  'Reassemble the washer',                              'Reinstall panels and restore to operating configuration.'],
+            ['9',  'Run drain / spin test',                              'Run a drain cycle to confirm the pump moves water correctly.'],
+            ['10', 'Verify normal water removal',                        'Confirm no water remains in the drum after the test cycle completes.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px">
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(176,22,22,0.1);border:1px solid rgba(176,22,22,0.2);color:#b01616;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">{num}</div>
+              <div>
+                <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{step}</div>
+                <div style="font-size:0.82rem;color:#4a5e74;line-height:1.58">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- AFTER PHOTO -->
+        <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(6,12,25,0.08)">
+          <img
+            src="/images/repairs/lg-wm4000hwa-after.webp"
+            alt="LG WM4000HWA washer after drain pump replacement in Charlotte NC"
+            width="860"
+            height="645"
+            loading="lazy"
+            style="width:100%;height:auto;display:block"
+          />
+          <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:9px 14px;background:#f0f2f7;display:block">Washer reassembled after normal drain operation was restored and verified.</figcaption>
+        </figure>
+      </div>
+
+      <!-- WHY LABOR COSTS MORE THAN THE PART -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">💰</span>
+          Why Labor Costs More Than the Part
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The part is inexpensive. Access and diagnosis are the work.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">AHA75853813 has a reference price of $57.03. But getting to the drain pump in a front-load washer means removing the front or rear access panels, checking simpler drainage causes first so the right component gets replaced, disconnecting the pump assembly from the hose and wiring, installing the replacement, reassembling the machine, and running a complete test cycle to verify the repair.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">Labor on this repair was $165. That reflects the access time, the diagnostic process, and the functional testing -- not just the physical pump swap.</p>
+      </div>
+
+      <!-- COST BREAKDOWN -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">📊</span>
+          Cost Breakdown
+        </h2>
+        <div style="background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:12px;overflow:hidden;margin-bottom:16px">
+          {[
+            ['Service call / diagnosis', '$89.00'],
+            ['LG drain pump AHA75853813', '$57.03'],
+            ['Labor', '$165.00'],
+          ].map(([label, amount]) => (
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(30,50,80,0.06);background:#fff">
+              <span style="font-size:0.85rem;color:#1a2c44;font-weight:500">{label}</span>
+              <span style="font-size:0.92rem;font-weight:800;color:#060c19;white-space:nowrap;margin-left:16px">{amount}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(6,12,25,0.03)">
+            <span style="font-size:0.88rem;font-weight:800;color:#060c19;text-transform:uppercase;letter-spacing:0.04em">Customer Total</span>
+            <span style="font-size:1.25rem;font-weight:900;color:#b01616">$311.03</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;color:#4a5e74;line-height:1.65;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0 0 16px">This total applies to this specific confirmed drain-pump repair scenario. Another LG WM4000HWA with the same no-drain symptom may require a different repair and a different price.</p>
+
+        <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr">
+          <div style="padding:16px 18px;background:#f0f6f0;border:1px solid rgba(20,120,40,0.15);border-radius:10px">
+            <div style="font-size:0.72rem;font-weight:800;color:#1a6030;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Could Cost Less</div>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px">
+              {['Blocked filter','Kinked drain hose','Minor hose restriction','Removable debris'].map(item => (
+                <li style="font-size:0.8rem;color:#2a4a30;line-height:1.5">{item}</li>
+              ))}
+            </ul>
+            <p style="font-size:0.77rem;color:#2a6030;line-height:1.5;margin:10px 0 0;font-style:italic">Not every washer that will not drain needs a new pump.</p>
+          </div>
+          <div style="padding:16px 18px;background:#f8f0f0;border:1px solid rgba(176,22,22,0.12);border-radius:10px">
+            <div style="font-size:0.72rem;font-weight:800;color:#8a1010;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Could Cost More</div>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px">
+              {['Damaged wiring or connector','Control-board problem','Multiple drain-system faults','Additional failed components','Unrelated mechanical damage'].map(item => (
+                <li style="font-size:0.8rem;color:#4a1010;line-height:1.5">{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- WAS IT WORTH REPAIRING -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">✅</span>
+          Was This Washer Worth Repairing?
+        </h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The WM4000HWA is a modern front-load washer. For an otherwise functional machine with an isolated $311.03 drain-system repair, replacing the entire unit is unlikely to make financial sense. The tub, drum, motor, and all other systems were working. The problem was one drain pump.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Replacement can become the better option when:</p>
+        <ul style="margin:0 0 16px;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px">
+          {[
+            'Tub or bearing problems are also present',
+            'Multiple major components are failing at the same time',
+            'The machine has a pattern of repeated expensive repairs',
+            'There is significant physical damage to the cabinet or drum',
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:#2a3c54;line-height:1.6">
+              <span style="color:#dc2626;font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px" aria-hidden="true">›</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style="font-size:0.83rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">For this scenario, the failure was isolated enough that full appliance replacement was not necessary.</p>
+      </div>
+
+      <!-- FAQ -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:14px;padding:26px 28px">
+        <h2 style="display:flex;align-items:center;gap:10px;font-size:1.12rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">
+          <span style="font-size:1.25rem" aria-hidden="true">❓</span>
+          Common Questions
+        </h2>
+        <div style="display:flex;flex-direction:column;gap:0">
+          {[
+            ['Why is my LG WM4000HWA not draining?', 'Several things can prevent a front-load washer from draining: a clogged filter, a blocked or kinked drain hose, a failed drain pump, debris in the drain path, or a wiring or control issue. The filter and basic restrictions should be checked before any component is replaced.'],
+            ['What drain pump fits LG WM4000HWA?', 'The replacement drain pump assembly used in this repair was AHA75853813. Confirm compatibility with the full model number before ordering.'],
+            ['What is LG part AHA75853813?', 'AHA75853813 is the drain pump assembly replaced in this WM4000HWA repair. It moves wastewater from the tub through the drain system during the drain portion of the wash cycle.'],
+            ['Can a clogged drain filter stop an LG washer from draining?', 'Yes. A heavily clogged filter can restrict flow enough to prevent normal drainage. The filter should be inspected and cleared before replacing the drain pump.'],
+            ['Can an LG washer still tumble if the drain pump is bad?', 'Yes. The drum motor and drain pump are separate systems. A failed drain pump does not stop the washer from washing and tumbling. It stops water from being removed.'],
+            ['Why is water left in my LG front-load washer?', 'Water remaining in the drum after a cycle usually indicates a drainage problem. Common causes include a clogged filter, blocked hose, or failed pump. An error code such as OE may accompany the symptom on some LG models, though not all no-drain situations display a code.'],
+            ['Why are my clothes still wet after the wash cycle?', 'If the washer cannot complete the drain phase, it may not reach full spin speed, leaving clothes wetter than normal. The root cause is drainage, not spin.'],
+            ['Does an OE error always mean the drain pump is bad?', 'No. An OE code indicates a drain problem was detected. It can be triggered by a clogged filter, blocked hose, or pump failure. The code identifies the symptom, not the failed component.'],
+            ['How much does LG washer drain pump replacement cost in Charlotte?', 'For this specific WM4000HWA repair the total was $311.03, including service call ($89), drain pump ($57.03) and labor ($165). A different cause of the same symptom would have a different cost.'],
+            ['Is it worth repairing an LG WM4000HWA washer?', 'For an isolated drain-pump failure on an otherwise functional machine, repair typically costs significantly less than replacement. Whether repair makes sense depends on the age of the washer, whether other systems are also failing, and the full replacement cost.'],
+          ].map(([q, a], i) => (
+            <details style={`border-bottom:1px solid rgba(30,50,80,0.07);${i === 0 ? 'border-top:1px solid rgba(30,50,80,0.07);' : ''}`}>
+              <summary style="font-size:0.88rem;font-weight:700;color:#060c19;padding:14px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px">
+                {q}
+                <span style="font-size:1.1rem;color:#b01616;flex-shrink:0" aria-hidden="true">+</span>
+              </summary>
+              <p style="font-size:0.84rem;color:#2a3c54;line-height:1.7;margin:0 0 14px;padding:0">{a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <!-- CASE NOTE -->
+      <div style="padding:16px 20px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:10px">
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;margin:0">This page describes a specific LG WM4000HWA repair scenario. The same symptom on another washer may have a different cause, part requirement and repair price.</p>
+      </div>
+
+      <!-- RELATED LINKS -->
+      <div style="padding:22px 24px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px">
+        <div style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#9aaabe;margin-bottom:14px">Related Pages</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {[
+            ['Washer Not Draining Charlotte', '/charlotte-nc/washer-not-draining'],
+            ['Appliance Repair Charlotte', '/appliance-repair-charlotte'],
+            ['LG LFXS26973S Refrigerator Warm / Freezer Cold', '/repairs/lg-lfxs26973s-refrigerator-warm-freezer-cold-charlotte'],
+            ['Samsung WF45T6000AW Washer Not Draining Case', '/repairs/samsung-wf45t6000aw-not-draining-charlotte'],
+            ['Samsung DVE45T6000W Dryer Not Heating Case', '/repairs/samsung-dve45t6000w-not-heating-charlotte'],
+            ['Samsung DW80R5060US Dishwasher Not Draining Case', '/repairs/samsung-dw80r5060us-not-draining-charlotte'],
+            ['Samsung ME21M706BAS Microwave Not Heating Case', '/repairs/samsung-me21m706bas-microwave-not-heating-charlotte'],
+            ['All Repair Cases', '/blog/recent-repairs'],
+          ].map(([label, href]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#b01616;text-decoration:none;padding:7px 14px;border:1px solid rgba(176,22,22,0.2);border-radius:8px">
+              → {label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <section style="padding:64px 24px 72px;background:#060c19;border-top:2px solid #7a0e0e">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 14px;letter-spacing:-0.03em">LG Washer Not Draining in Charlotte?</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 auto 32px;max-width:560px">If water stays inside the drum or the washer stops around the drain and spin portion of the cycle, the problem is somewhere in the drainage system. It might be the filter. It might be the hose. It might be the pump. It might be an electrical or control issue. The useful first step is finding the actual failed component. HomeHeroes diagnoses LG washers in Charlotte, same day.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:9px;padding:14px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:0 4px 18px rgba(176,22,22,0.35)">
+          Schedule Washer Diagnosis
+        </a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C7.82 21 2 15.18 2 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call HomeHeroes
+        </a>
+      </div>
+      <a href="/blog/recent-repairs" style="font-size:0.82rem;font-weight:600;color:#4a6a8a;text-decoration:none">← View All Repair Cases</a>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Repair" />
+
+</SeoPageLayout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+</style>
