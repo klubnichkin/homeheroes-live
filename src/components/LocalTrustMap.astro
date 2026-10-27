@@ -1,0 +1,115 @@
+---
+import { phone, phoneHref } from '../data/siteData';
+
+interface Props {
+  title?:       string;
+  description?: string;
+  compact?:     boolean;
+  showServices?: boolean;
+}
+
+const {
+  title        = 'Home Heroes Services in Charlotte',
+  description  = 'Home Heroes Services provides local home services across Charlotte, NC and surrounding areas.',
+  compact      = false,
+  showServices = true,
+} = Astro.props;
+
+const MAP_URL  = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.6408651321476!2d-80.8770019!3d35.1655764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88569f6d8c10cfab%3A0x1aa6d8c35a781ead!2sHome%20Heroes%20Services!5e0!3m2!1sru!2sus!4v1793103152453!5m2!1sru!2sus';
+const DIR_URL  = 'https://maps.google.com/?q=Home+Heroes+Services,+1101+Tyvola+Rd,+Charlotte,+NC';
+const PADDING  = compact ? '44px 24px' : '56px 24px';
+---
+
+<section style={`background:#060c19;border-top:2px solid #7a0e0e;padding:${PADDING}`} aria-label="Local business location">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="ltm-grid">
+
+      <!-- Left: trust info -->
+      <div class="ltm-info">
+        <div style="display:inline-block;font-size:0.65rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626;margin-bottom:14px">Local Charlotte Business</div>
+
+        <h2 style="font-size:clamp(18px,2.2vw,26px);font-weight:900;color:#fff;margin:0 0 12px;letter-spacing:-0.02em;line-height:1.15">{title}</h2>
+
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.65;margin:0 0 22px;max-width:360px">{description}</p>
+
+        <!-- Address & info -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#dc2626" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <div>
+              <div style="font-size:0.78rem;font-weight:700;color:#e8edf5">Home Heroes Services</div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.5">1101 Tyvola Road<br />Charlotte, NC</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#dc2626" style="flex-shrink:0" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <a href={phoneHref} style="font-size:0.78rem;font-weight:700;color:#e8edf5;text-decoration:none">{phone}</a>
+          </div>
+          {showServices && (
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#dc2626" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6">Charlotte and surrounding communities<br /><span style="color:rgba(255,255,255,0.3);font-size:0.72rem">Ballantyne · South End · Huntersville · Matthews · Concord</span></div>
+            </div>
+          )}
+        </div>
+
+        <!-- CTAs -->
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a
+            href={DIR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style="display:inline-flex;align-items:center;gap:7px;padding:10px 18px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:0.8rem;border-radius:8px;text-decoration:none"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+            Get Directions
+          </a>
+          <a
+            href={phoneHref}
+            style="display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:0.8rem;border-radius:8px;text-decoration:none"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call Home Heroes
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: map -->
+      <div class="ltm-map">
+        <iframe
+          src={MAP_URL}
+          width="100%"
+          height="420"
+          style="border:0;border-radius:10px;display:block"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Home Heroes Services location in Charlotte, NC"
+        ></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .ltm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.45fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .ltm-map iframe {
+    height: 420px;
+  }
+  @media (max-width: 900px) {
+    .ltm-map iframe { height: 360px; }
+  }
+  @media (max-width: 640px) {
+    .ltm-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .ltm-map iframe { height: 300px; }
+  }
+</style>

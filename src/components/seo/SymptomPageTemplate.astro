@@ -11,6 +11,7 @@ import InternalLinks from './InternalLinks.astro';
 import SEOCTA from './SEOCTA.astro';
 import InlineCTA from '../cro/InlineCTA.astro';
 import StickyMobileCTA from '../cro/StickyMobileCTA.astro';
+import LocalTrustMap from '../LocalTrustMap.astro';
 
 interface Props {
   symptom: SymptomPage;
@@ -318,7 +319,10 @@ const relatedSymptomLinks = symptom.relatedSymptomSlugs
   <!-- 8. FAQ -->
   <FAQSection faqs={symptom.faq} heading={`${symptom.symptomShort} — Frequently Asked Questions`} />
 
-  <!-- 9. CTA -->
+  <!-- 9. Local trust map -->
+  <LocalTrustMap title={`${symptom.appliance} Repair in Charlotte`} description={`HomeHeroes technicians repair ${symptom.appliance.toLowerCase()}s across Charlotte, NC and surrounding communities. Same-day service, 90-day warranty.`} />
+
+  <!-- 10. CTA -->
   <SEOCTA phone={city.phone} phoneHref={city.phoneHref} />
 
   <!-- Sticky mobile bottom bar — fixed, no CLS, hides when form visible -->

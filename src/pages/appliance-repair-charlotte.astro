@@ -23,6 +23,7 @@ import { premiumPages } from '../data/premium';
 import { business, businessGraph, priceRanges, sealedSystemRange, servicePromise } from '../data/business';
 import { breadcrumbSchema, faqSchema, abs } from '../lib/seo';
 import { neighborhoodLinks, cityLinks } from '../data/locations';
+import LocalTrustMap from '../components/LocalTrustMap.astro';
 
 const canonical = abs('/appliance-repair-charlotte');
 const title = 'Appliance Repair Charlotte, NC | Same-Day Service | HomeHeroes';
@@ -339,6 +340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <CitationProfiles />
+    <LocalTrustMap title="Appliance Repair in Charlotte" description="HomeHeroes technicians repair refrigerators, washers, dryers, dishwashers, ovens, and more across Charlotte, NC and the surrounding metro." />
     <ContactCTA />
   </main>
   <Footer />

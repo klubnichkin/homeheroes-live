@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import ServiceAreas from '../../components/ServiceAreas.astro';
 import Footer from '../../components/Footer.astro';
 import { phone, phoneHref } from '../../data/siteData';
+import LocalTrustMap from '../../components/LocalTrustMap.astro';
 
 const problems = [
   {
@@ -1046,6 +1047,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </section>
+
+    <!-- ═══════════════════════════════════════════
+         LOCAL TRUST MAP
+    ═══════════════════════════════════════════ -->
+    <LocalTrustMap title="HVAC Service in Charlotte" description="HomeHeroes provides HVAC repair, maintenance, and installation across Charlotte, NC and surrounding communities." />
 
     <!-- ═══════════════════════════════════════════
          FINAL CTA
