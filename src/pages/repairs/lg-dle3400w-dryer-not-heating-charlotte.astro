@@ -1,0 +1,527 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/lg-dle3400w-dryer-not-heating-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "LG DLE3400W Dryer Running but Not Heating in Charlotte, NC | Heating Element 5301EL1001J",
+  "description": "See how Home Heroes diagnosed an LG DLE3400W electric dryer that ran but would not heat in Charlotte, including heating element 5301EL1001J, repair cost and testing.",
+  "datePublished": "2026-10-28",
+  "dateModified": "2026-10-28",
+  "image": `${base}/images/repairs/lg-dle3400w-before.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "LG DLE3400W not heating, LG DLE3400W dryer not heating, LG DLE3400W heating element, 5301EL1001J, LG dryer heating element replacement, LG electric dryer runs but no heat, LG dryer no heat Charlotte, dryer repair Charlotte NC, LG dryer repair Charlotte, electric dryer not heating"
+};
+---
+
+<SeoPageLayout
+  title="LG DLE3400W Dryer Not Heating in Charlotte, NC | Home Heroes"
+  description="See how Home Heroes diagnosed an LG DLE3400W electric dryer that ran but would not heat in Charlotte, including heating element 5301EL1001J, repair cost and testing."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/lg-dle3400w-before.webp"
+  ogType="article"
+  heroImage="/images/repairs/lg-dle3400w-before.webp"
+>
+
+  <!-- HERO -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">LG DLE3400W</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">LG</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Electric Dryer</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">October 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">LG DLE3400W Dryer Running but Not Heating in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Dryer powered on. Drum rotated. Timer ran. Clothes stayed wet. Heating element assembly 5301EL1001J diagnosed as failed and replaced same day.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$510.31'],
+          ['Outcome', 'Heating Restored'],
+          ['Service', 'Same-Day'],
+          ['Part', '5301EL1001J'],
+        ].map(([label, value]) => (
+          <div style="padding:10px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;min-width:110px">
+            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px">{label}</div>
+            <div style="font-size:15px;font-weight:800;color:#fff">{value}</div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HERO IMAGE -->
+  <section style="background:#060c19;padding:0">
+    <div style="max-width:900px;margin:0 auto;padding:0 24px">
+      <figure style="margin:0">
+        <img
+          src="/images/repairs/lg-dle3400w-before.webp"
+          alt="LG DLE3400W electric dryer before repair in Charlotte NC"
+          width="900"
+          height="543"
+          loading="eager"
+          style="width:100%;height:auto;display:block;border-radius:0 0 10px 10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 0 0;display:block">LG DLE3400W before heating-system diagnosis. Dryer appeared operational but produced no useful heat.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE BODY -->
+  <div style="background:#f8f9fc">
+  <div style="max-width:900px;margin:0 auto;padding:48px 24px 64px;display:grid;grid-template-columns:1fr min(300px,34%);gap:48px;align-items:start" class="repair-body-grid">
+
+    <!-- LEFT: ARTICLE -->
+    <article>
+
+      <!-- Opening -->
+      <section style="margin-bottom:44px">
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The dryer still turned on.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The drum rotated. The timer ran. The clothes moved normally through the cycle.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">But there was no useful heat. This LG DLE3400W repair scenario involved an electric front-load dryer in Charlotte that appeared mechanically alive but could no longer produce the heat needed to dry a load.</p>
+        <p style="font-size:1.05rem;font-weight:700;color:#060c19;line-height:1.65;margin:0;border-left:3px solid #dc2626;padding-left:16px">A dryer can tumble normally and still have a completely separate heating problem.</p>
+      </section>
+
+      <!-- What the customer was seeing -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What the Customer Was Seeing</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The complaint was consistent: the dryer ran through a full cycle and the clothes came out still damp. The dryer powered on without issue. The drum turned. Air moved through the machine.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">What was missing was heat. Air from the dryer may have felt noticeably cooler than expected, and drying times were far beyond normal even for larger loads.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">The dryer was moving the clothes. It was not delivering the heat.</p>
+      </section>
+
+      <!-- Photo 2: running but no heat -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-dle3400w-running-no-heat.webp"
+          alt="LG DLE3400W dryer running but not heating"
+          width="900"
+          height="543"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">The dryer could still tumble, but normal drying heat was not being produced.</figcaption>
+      </figure>
+
+      <!-- Why runs but doesn't heat is not a diagnosis -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">"Runs but Doesn't Heat" Is Not a Diagnosis</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A no-heat complaint identifies a category of problem. It does not identify which component failed. The heating system in an electric dryer involves several parts, and any one of them can produce the same symptom.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 16px;border-left:3px solid #dc2626;padding-left:16px">The symptom identifies the heating system. Diagnosis identifies the failed part.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Possible causes of an electric dryer that runs but does not heat include:</p>
+        <ul style="margin:0 0 14px;padding-left:20px;display:flex;flex-direction:column;gap:6px">
+          {[
+            'Heating element failure',
+            'Power supply issue -- partial or missing 240V circuit',
+            'Tripped breaker or partial power',
+            'Thermal fuse / safety device that has opened',
+            'High-limit thermostat failure',
+            'Thermistor providing incorrect temperature readings',
+            'Wiring or connection issue',
+            'Control relay or control board problem',
+            'Restricted exhaust airflow',
+          ].map(item => (
+            <li style="font-size:0.88rem;color:#2a3c54;line-height:1.65">
+              <svg width="14" height="14" fill="#dc2626" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">In this repair scenario, the heating element assembly was the confirmed failed component. But confirming that requires ruling out the other possibilities first.</p>
+      </section>
+
+      <!-- Check power first -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Check Power Before Replacing Parts</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Electric dryers require a full 240V circuit to operate the heating element correctly. The motor and drum controls run on a portion of that supply, so it is possible for a dryer to tumble normally even when the heating circuit is not receiving the expected full voltage.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">A breaker that has partially tripped can leave the motor circuit energized while cutting the heating circuit. Before replacing any heating component, electrical supply and breaker condition should be considered. This is not a DIY voltage-testing step -- it is part of professional diagnosis.</p>
+      </section>
+
+      <!-- Check airflow -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Check Airflow Before Condemning the Heater</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Restricted exhaust airflow is one of the most overlooked contributors to dryer heating problems. When a dryer cannot exhaust properly, heat builds up inside the machine. Safety devices are designed to open under those conditions to prevent damage or fire risk. Once a safety device opens, the heating system stops working -- even if the element itself is functional.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 12px;border-left:3px solid #dc2626;padding-left:16px">A dryer that makes heat but cannot move air can fail just as badly as a dryer that makes no heat at all.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Airflow checks worth including before any heating-component diagnosis:</p>
+        <ul style="margin:0 0 12px;padding-left:20px;display:flex;flex-direction:column;gap:5px">
+          {['Lint screen cleaned and unobstructed', 'Exhaust hose not kinked, crushed, or disconnected', 'Duct run not excessively long or restricted', 'Exterior vent hood operating and not blocked'].map(item => (
+            <li style="font-size:0.88rem;color:#2a3c54;line-height:1.6">{item}</li>
+          ))}
+        </ul>
+        <p style="font-size:0.88rem;color:#4a5e74;line-height:1.65;margin:0;font-style:italic">Replacing a heater without checking airflow can leave the reason it failed untouched.</p>
+      </section>
+
+      <!-- Photo 3: service access -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-dle3400w-service-access.webp"
+          alt="LG DLE3400W heating system access during dryer repair"
+          width="900"
+          height="543"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Heating-system area accessed during professional diagnosis.</figcaption>
+      </figure>
+
+      <!-- What we found -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What We Found on This DLE3400W</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">After basic power and airflow conditions were considered, diagnosis isolated the heating element assembly as the failed component on this dryer. The DLE3400W uses a resistance-coil heating assembly to convert electrical energy into heat for the drying cycle.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0">When the heating element assembly fails, the motor continues to run and the drum continues to turn. The airflow system keeps moving air through the machine. But the air is not being heated. That is what produces the symptom this dryer presented: mechanically normal operation with no useful heat output.</p>
+      </section>
+
+      <!-- Photo 4: failed element -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-dle3400w-failed-element.webp"
+          alt="LG 5301EL1001J heating element removed from DLE3400W"
+          width="900"
+          height="543"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Removed heating element assembly from this repair scenario.</figcaption>
+      </figure>
+
+      <!-- The part -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">LG DLE3400W Heating Element: 5301EL1001J</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">5301EL1001J is a compatible LG heating element assembly listed for the DLE3400W. Its function is to convert electrical energy into heat for the drying cycle. Without a functioning heating element, the motor can still run the drum and the blower, but no heat is produced.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The reference part price used for this repair was $236.31. Retail pricing varies by supplier and availability and may be different at the time of another repair.</p>
+        <div style="padding:16px 20px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px;margin-top:8px">
+          <div style="display:flex;flex-wrap:wrap;gap:16px">
+            {[
+              ['Part Number', '5301EL1001J'],
+              ['Description', 'Heating Element Assembly'],
+              ['Compatible Model', 'LG DLE3400W'],
+              ['Reference Price', '$236.31'],
+            ].map(([label, val]) => (
+              <div style="min-width:140px">
+                <div style="font-size:10px;font-weight:700;color:#6a7a8e;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">{label}</div>
+                <div style="font-size:0.88rem;font-weight:700;color:#060c19">{val}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Component comparison -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Heating Element vs. Thermal Fuse vs. Thermostat</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">These parts work in the same heating system, but they do different jobs.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          {[
+            ['Heating Element', 'Produces heat by converting electrical energy into radiant heat inside the drum area.'],
+            ['Thermal Fuse / Safety Device', 'A one-time-use safety component that opens permanently if the dryer overheats. Once open, heat stops.'],
+            ['High-Limit Thermostat', 'Monitors and limits the operating temperature. A failed thermostat can cause heating to stop or become inconsistent.'],
+            ['Thermistor', 'Provides temperature-related sensing data to the control system. Inaccurate readings can cause heating cycle problems.'],
+          ].map(([name, desc]) => (
+            <div style="padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px">
+              <div style="font-size:0.8rem;font-weight:800;color:#b01616;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">{name}</div>
+              <p style="font-size:0.88rem;color:#2a3c54;line-height:1.65;margin:0">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.88rem;color:#4a5e74;line-height:1.65;margin:0">These parts work in the same heating system, but they do different jobs. In this DLE3400W case, the heating element assembly was the confirmed failed component. No thermal fuse or thermostat failure was involved in this repair.</p>
+      </section>
+
+      <!-- Photo 5: replacement element -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-dle3400w-replacement-element.webp"
+          alt="LG 5301EL1001J replacement heating element"
+          width="900"
+          height="543"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Replacement 5301EL1001J heating element assembly before installation.</figcaption>
+      </figure>
+
+      <!-- The repair sequence -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">The Repair</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">A no-heat complaint on an electric dryer follows a logical diagnostic sequence before any component is replaced.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            ['1', 'Confirm the no-heat complaint', 'The dryer was run and the symptom was confirmed. Drum operation was normal. Heat output was not present.'],
+            ['2', 'Check basic power and breaker condition', 'Electrical supply and circuit condition were assessed. A dryer with only partial voltage can continue to run while producing no heat.'],
+            ['3', 'Inspect lint screen and exhaust airflow', 'Lint screen, exhaust hose, and ductwork were inspected. Restricted airflow is a contributing factor in many heating-system failures.'],
+            ['4', 'Access the heating system', 'The dryer was professionally opened to reach the heating component area.'],
+            ['5', 'Diagnose heating components', 'Heating-system components were evaluated to isolate the specific failure.'],
+            ['6', 'Confirm failed heating element assembly', 'The heating element assembly was isolated as the failed component.'],
+            ['7', 'Remove failed heater', 'The failed heating element was removed from the dryer.'],
+            ['8', 'Install 5301EL1001J', 'The replacement heating element assembly was installed.'],
+            ['9', 'Reassemble dryer', 'The dryer was reassembled with all panels and components returned to proper position.'],
+            ['10', 'Run heating and airflow test', 'A full drying cycle was run to confirm heat output, airflow, and normal operation.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 16px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:10px">
+              <div style="font-size:0.7rem;font-weight:800;color:#b01616;border:1.5px solid rgba(176,22,22,0.3);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">{num}</div>
+              <div>
+                <div style="font-size:0.88rem;font-weight:700;color:#060c19;margin-bottom:4px">{step}</div>
+                <div style="font-size:0.83rem;color:#4a5e74;line-height:1.6">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Photo 6: installation -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-dle3400w-installation.webp"
+          alt="LG DLE3400W heating element replacement in Charlotte NC"
+          width="900"
+          height="543"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Replacement heating element installed and dryer reassembled.</figcaption>
+      </figure>
+
+      <!-- Why labor matters -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why the Part Is Not the Whole Repair</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The heating element assembly is one component. Getting to the correct diagnosis is the repair.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Labor on this repair covered: confirming the complaint, ruling out power supply and airflow problems, accessing the heating system, removing the failed element, installing 5301EL1001J, reassembling the dryer, and running a functional heating and airflow test.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">The heater is one component. Getting to the correct diagnosis is the repair.</p>
+      </section>
+
+      <!-- Photo 7: after -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-dle3400w-after.webp"
+          alt="LG DLE3400W dryer after heating element replacement"
+          width="900"
+          height="543"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Dryer reassembled after heating operation was restored and verified.</figcaption>
+      </figure>
+
+      <!-- Could it cost less / more -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Could the Same Symptom Cost Less?</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Yes. A dryer that runs but does not heat can sometimes have a simpler and less expensive cause than a failed heating element. A tripped breaker or partial power issue, a wiring connection problem, or a smaller safety or sensing component can produce the same no-heat symptom at a lower repair cost.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 24px;border-left:3px solid #dc2626;padding-left:16px">Not every dryer that runs without heat needs a heating element.</p>
+
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Could It Cost More?</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0">Yes. More complex scenarios can drive a higher repair cost. Multiple failed heating-system components, damaged internal wiring, control board problems, or significant airflow damage can each increase the scope of a dryer not-heating repair. None of those conditions were present in this case.</p>
+      </section>
+
+      <!-- Repair vs replace -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Was This Dryer Worth Repairing?</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">The LG DLE3400W is a modern front-load electric dryer. At $510.31 for an isolated heating element failure, repair can be a reasonable choice compared to replacing the appliance, particularly when the rest of the dryer is in good mechanical condition.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Replacement may make more sense when drum bearings or other major mechanical systems are also failing, when multiple expensive components have failed, when there is physical damage, or when the total repair cost approaches the realistic cost of a comparable replacement dryer.</p>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This was the total for this specific repair. Another DLE3400W with the same no-heat complaint may require a different component and a different repair price.</p>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">Frequently Asked Questions</h2>
+        <div style="display:flex;flex-direction:column;gap:1px;border:1px solid rgba(30,50,80,0.09);border-radius:12px;overflow:hidden">
+          {[
+            ['Why is my LG DLE3400W running but not heating?', 'Several components can cause this symptom: the heating element, thermal fuse, thermostat, thermistor, power supply, or a wiring issue. The motor and drum can continue to operate normally while the heating circuit has a separate failure. Diagnosis is needed to identify which component failed.'],
+            ['What heating element fits LG DLE3400W?', '5301EL1001J is a compatible heating element assembly listed for the LG DLE3400W. Verify part compatibility before ordering.'],
+            ['What is LG part 5301EL1001J?', 'It is a heating element assembly used in the LG DLE3400W heating system. It converts electrical energy into radiant heat inside the dryer. When it fails, the dryer can still run the drum but produces no useful heat.'],
+            ['Can an electric dryer tumble without heating?', 'Yes. The drum motor and the heating element are on separate circuits. The drum can tumble even when the heating element is not receiving power or has failed.'],
+            ['Can a breaker issue cause a dryer to run but not heat?', 'Yes. An electric dryer requires a 240V circuit. If one leg of that circuit trips, the motor may still run while the heating element receives no power. A partially tripped breaker should be checked before replacing heating components.'],
+            ['Can a clogged vent cause heating problems?', 'Yes. Restricted exhaust airflow can cause heat to build up inside the dryer. Safety devices are designed to open under overheating conditions, cutting off the heating system. A clogged vent can also cause a heating element to fail over time from repeated overheating.'],
+            ['Does no heat always mean the heating element is bad?', 'No. The heating element is one of several components that can cause a dryer to run without heat. Other possibilities include the thermal fuse, thermostat, thermistor, power supply, and wiring. Diagnosis is required to confirm the failed part.'],
+            ['How much does LG dryer heating element replacement cost?', 'This specific repair totaled $510.31, including $89.00 service call, $236.31 for part 5301EL1001J, and $185.00 labor. Actual cost depends on the confirmed diagnosis and which component has failed.'],
+            ['Is it worth repairing an LG DLE3400W dryer?', 'For an isolated heating element failure on an otherwise functional dryer, repair can be cost-effective compared to replacement. A technician can assess the overall condition of the appliance after diagnosing the specific failure.'],
+          ].map(([q, a], i) => (
+            <details style={`padding:16px 20px;background:#fff;${i > 0 ? 'border-top:1px solid rgba(30,50,80,0.07)' : ''}`}>
+              <summary style="font-size:0.92rem;font-weight:700;color:#060c19;cursor:pointer;line-height:1.4">{q}</summary>
+              <p style="font-size:0.86rem;color:#4a5e74;line-height:1.7;margin:10px 0 0">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Case note -->
+      <p style="font-size:0.82rem;color:#6a7a8e;line-height:1.65;padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin-bottom:44px">This page describes a specific LG DLE3400W repair scenario. The same symptom on another dryer may have a different cause, part requirement and repair price.</p>
+
+      <!-- Related repair cases -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Related Repair Cases</h2>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          {[
+            ['/repairs/lg-wm4000hwa-washer-not-draining-charlotte', 'LG WM4000HWA Washer Not Draining -- Drain Pump AHA75853813', '$311.03'],
+            ['/repairs/lg-lfxs26973s-refrigerator-warm-freezer-cold-charlotte', 'LG LFXS26973S Refrigerator Warm / Freezer Cold -- Evaporator Fan EAU63923603', '$367.69'],
+            ['/repairs/samsung-dve45t6000w-not-heating-charlotte', 'Samsung DVE45T6000W Dryer Not Heating -- Heating Element Replacement', '$400.98'],
+            ['/repairs/samsung-ne63a6511ss-oven-not-heating-charlotte', 'Samsung NE63A6511SS Oven Not Heating -- Bake Element DG47-00071C', '$443.17'],
+          ].map(([href, label, total]) => (
+            <a href={href} style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px;text-decoration:none;transition:border-color 0.15s">
+              <span style="font-size:0.86rem;font-weight:600;color:#1e3a5f;line-height:1.4">{label}</span>
+              <span style="font-size:0.82rem;font-weight:800;color:#34d399;white-space:nowrap">{total}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside style="position:sticky;top:24px;display:flex;flex-direction:column;gap:20px">
+
+      <!-- Repair Snapshot -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;overflow:hidden">
+        <div style="padding:14px 18px;background:#060c19;border-bottom:2px solid #7a0e0e">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#dc2626;margin-bottom:3px">Repair Snapshot</div>
+          <div style="font-size:14px;font-weight:800;color:#fff">LG DLE3400W</div>
+        </div>
+        <div style="padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+          {[
+            ['Appliance', 'LG Electric Dryer'],
+            ['Model', 'DLE3400W'],
+            ['Location', 'Charlotte, NC'],
+            ['Complaint', 'Runs but does not heat'],
+            ['Diagnosis', 'Failed heating element assembly'],
+            ['Repair', 'Heating element replacement'],
+            ['Part', '5301EL1001J'],
+            ['Part Price', '$236.31'],
+            ['Service Call', '$89.00'],
+            ['Labor', '$185.00'],
+            ['Result', 'Normal heating restored'],
+          ].map(([label, value]) => (
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;font-size:0.78rem;border-bottom:1px solid rgba(30,50,80,0.06);padding-bottom:8px">
+              <span style="color:#6a7a8e;font-weight:600;flex-shrink:0">{label}</span>
+              <span style="color:#060c19;font-weight:700;text-align:right">{value}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#060c19;border-radius:8px;margin-top:2px">
+            <span style="font-size:0.72rem;font-weight:800;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em">Total Repair</span>
+            <span style="font-size:1.15rem;font-weight:900;color:#34d399">$510.31</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book CTA -->
+      <div style="background:#060c19;border-radius:14px;padding:20px">
+        <div style="font-size:0.82rem;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">LG Dryer Repair Charlotte</div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.6;margin:0 0 16px">Same-day service. $89 diagnostic waived with repair. 90-day warranty on parts and labor.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="#contact-form" style="display:flex;align-items:center;justify-content:center;padding:12px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:0.85rem;border-radius:8px;text-decoration:none;text-align:center">Schedule Dryer Diagnosis</a>
+          <a href={phoneHref} style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:0.82rem;border-radius:8px;text-decoration:none;text-align:center">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call {phone}
+          </a>
+        </div>
+      </div>
+
+      <!-- Internal links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:18px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#6a7a8e;margin-bottom:12px">Related Services</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          {[
+            ['/charlotte-nc/dryer-not-heating', 'Dryer Not Heating Charlotte'],
+            ['/charlotte-nc/lg-appliance-repair', 'LG Appliance Repair Charlotte'],
+            ['/appliance-repair-charlotte', 'Appliance Repair Charlotte'],
+            ['/blog/recent-repairs', 'All Repair Cases'],
+          ].map(([href, label]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#1e3a5f;text-decoration:none;padding:7px 0;border-bottom:1px solid rgba(30,50,80,0.06);display:block">{label} →</a>
+          ))}
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+  </div>
+
+  <!-- LOCAL CTA SECTION -->
+  <section style="padding:64px 24px 72px;background:#080f1e;border-top:2px solid #7a0e0e">
+    <div style="max-width:700px;margin:0 auto;text-align:center">
+      <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#dc2626;margin-bottom:12px">Dryer Repair Charlotte</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 16px;letter-spacing:-0.03em">LG Dryer Running but Not Heating in Charlotte?</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75;margin:0 auto 32px;max-width:520px">
+        If the dryer turns on and tumbles but clothes stay wet, the issue is in the heating system.<br /><br />
+        It could be power. It could be airflow. It could be the heating element. It could be another safety or control component.<br /><br />
+        The useful first step is identifying which one.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">Schedule Dryer Diagnosis</a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border:2px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call Home Heroes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST BREAKDOWN SECTION -->
+  <section style="padding:56px 24px 64px;background:#f8f9fc;border-top:1px solid rgba(30,50,80,0.08)">
+    <div style="max-width:600px;margin:0 auto">
+      <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em;text-align:center">Repair Cost Breakdown</h2>
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;overflow:hidden">
+        {[
+          ['Service Call / Diagnosis', '$89.00', false],
+          ['LG Heating Element 5301EL1001J', '$236.31', false],
+          ['Labor', '$185.00', false],
+          ['Total', '$510.31', true],
+        ].map(([label, amount, isTotal]) => (
+          <div style={`display:flex;justify-content:space-between;align-items:center;padding:14px 20px;${isTotal ? 'background:#060c19;' : 'border-bottom:1px solid rgba(30,50,80,0.07);'}`}>
+            <span style={`font-size:0.88rem;font-weight:${isTotal ? '800' : '600'};color:${isTotal ? 'rgba(255,255,255,0.7)' : '#4a5e74'}`}>{label}</span>
+            <span style={`font-size:${isTotal ? '1.2rem' : '0.95rem'};font-weight:900;color:${isTotal ? '#34d399' : '#060c19'}`}>{amount}</span>
+          </div>
+        ))}
+      </div>
+      <p style="font-size:0.8rem;color:#8a9ab0;line-height:1.65;margin:14px 0 0;text-align:center">This total applies to this specific confirmed heating-element repair scenario. Another LG DLE3400W with the same no-heat symptom may require a different component and a different repair price.</p>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Dryer Diagnosis" />
+
+</SeoPageLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .repair-body-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
