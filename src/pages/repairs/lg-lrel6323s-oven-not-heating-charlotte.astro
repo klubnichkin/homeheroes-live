@@ -1,0 +1,517 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/lg-lrel6323s-oven-not-heating-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "LG LREL6323S Oven Not Heating in Bake Mode in Charlotte, NC | Bake Element MEE62306405",
+  "description": "See how Home Heroes diagnosed an LG LREL6323S electric oven that would not heat in Bake mode in Charlotte, including bake element MEE62306405, repair cost and testing.",
+  "datePublished": "2026-10-31",
+  "dateModified": "2026-10-31",
+  "image": `${base}/images/repairs/lg-lrel6323s-before.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "LG LREL6323S not heating, LG LREL6323S oven not heating, LG LREL6323S bake element, MEE62306405, LG oven bake element replacement, LG electric range not heating, LG oven repair Charlotte, oven repair Charlotte NC, LG range repair Charlotte, LG oven slow preheat"
+};
+---
+
+<SeoPageLayout
+  title="LG LREL6323S Oven Not Heating in Charlotte, NC | Home Heroes"
+  description="See how Home Heroes diagnosed an LG LREL6323S electric oven that would not heat in Bake mode in Charlotte, including bake element MEE62306405, repair cost and testing."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/lg-lrel6323s-before.webp"
+  ogType="article"
+  heroImage="/images/repairs/lg-lrel6323s-before.webp"
+>
+
+  <!-- HERO -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">LG LREL6323S</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">LG</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Electric Range</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">October 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">LG LREL6323S Oven Not Heating in Bake Mode in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Display worked. Controls responded. But the oven was not producing normal heat in Bake mode. Bake element MEE62306405 diagnosed as failed and replaced same day.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$379.01'],
+          ['Outcome', 'Bake Heating Restored'],
+          ['Service', 'Same-Day'],
+          ['Part', 'MEE62306405'],
+        ].map(([label, value]) => (
+          <div style="padding:10px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;min-width:110px">
+            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px">{label}</div>
+            <div style="font-size:15px;font-weight:800;color:#fff">{value}</div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HERO IMAGE -->
+  <section style="background:#060c19;padding:0">
+    <div style="max-width:900px;margin:0 auto;padding:0 24px">
+      <figure style="margin:0">
+        <img
+          src="/images/repairs/lg-lrel6323s-before.webp"
+          alt="LG LREL6323S electric range before repair in Charlotte NC"
+          width="900"
+          height="512"
+          loading="eager"
+          style="width:100%;height:auto;display:block;border-radius:0 0 10px 10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 0 0;display:block">LG LREL6323S/00 before heating-system diagnosis. Oven appeared operational from the control panel but could not heat the cavity correctly.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- MAIN BODY -->
+  <div style="background:#f8f9fc">
+  <div style="max-width:900px;margin:0 auto;padding:48px 24px 64px;display:grid;grid-template-columns:1fr min(300px,34%);gap:48px;align-items:start" class="repair-body-grid">
+
+    <!-- LEFT: ARTICLE -->
+    <article>
+
+      <!-- Opening -->
+      <section style="margin-bottom:44px">
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The display worked.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The controls responded. The oven accepted the Bake command.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">But the cavity was not producing normal heat. This LG LREL6323S/00 repair scenario involved an electric range in Charlotte that appeared completely functional from the control panel but could not heat the oven correctly in Bake mode.</p>
+        <p style="font-size:1.05rem;font-weight:700;color:#060c19;line-height:1.65;margin:0;border-left:3px solid #dc2626;padding-left:16px">An oven can look completely alive and still fail at the one job that matters: making heat.</p>
+      </section>
+
+      <!-- What the customer was seeing -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What the Customer Was Seeing</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The display operated normally. The oven accepted input and responded to the Bake setting. From the front of the range, nothing appeared wrong.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The issue was in the cavity. The oven stayed cooler than expected, heated very slowly, or never reached the cooking temperature it should have. Food took longer than normal to cook or did not cook correctly.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">The controls were working. The heating system was not.</p>
+      </section>
+
+      <!-- Photo 2: no heat -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-lrel6323s-no-heat.webp"
+          alt="LG LREL6323S oven not heating in Bake mode"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">The oven accepted the Bake command but normal heating was not occurring.</figcaption>
+      </figure>
+
+      <!-- No heat is not a diagnosis -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">"Oven Not Heating" Is Not a Diagnosis</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A no-heat complaint identifies a category of problem. It does not identify which component failed. Several different parts can produce the same symptom, and the right repair depends on which one actually failed.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 16px;border-left:3px solid #dc2626;padding-left:16px">The symptom identifies the heating system. Diagnosis identifies the failed part.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Possible causes of an electric oven that will not heat correctly include:</p>
+        <ul style="margin:0 0 14px;padding-left:20px;display:flex;flex-direction:column;gap:6px">
+          {[
+            'Failed bake element',
+            'Failed broil element',
+            'Power-supply problem',
+            'Oven temperature sensor',
+            'Control relay or control board issue',
+            'Wiring or connector problem',
+            'Safety thermostat',
+            'Calibration or sensing issue',
+          ].map(item => (
+            <li style="font-size:0.88rem;color:#2a3c54;line-height:1.65">
+              <svg width="14" height="14" fill="#dc2626" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">In this LREL6323S case, the bake element was the confirmed failed component. But reaching that conclusion required ruling out the other possibilities first.</p>
+      </section>
+
+      <!-- How the bake system works -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">How the Bake System Works</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">In Bake mode, the oven relies on its heating system to raise and maintain cavity temperature. The bake element is one of the primary heating components. The control system commands the heating circuit, while the temperature sensor provides feedback about actual cavity conditions.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">The control tells the oven to heat. The element actually makes the heat.</p>
+      </section>
+
+      <!-- Check power first -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Check Power Before Replacing Parts</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">An electric range requires proper supply power for normal oven heating. A control panel can still appear functional even when the heating circuit has a supply problem.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">Supply conditions and circuit integrity are part of the diagnosis. This is not a DIY live-voltage step -- it is part of professional heating-system evaluation.</p>
+      </section>
+
+      <!-- Photo 3: service access -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-lrel6323s-service-access.webp"
+          alt="LG LREL6323S bake element service access during oven repair"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Heating-system area accessed during professional diagnosis.</figcaption>
+      </figure>
+
+      <!-- What we found -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What We Found on This LREL6323S</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">After basic power and heating-system conditions were considered, diagnosis isolated the bake element as the failed component on this range.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0">The bake element converts electrical energy into heat during Bake operation. When it fails, the control system can still accept commands and the display can still operate normally. But without a functioning bake element, the cavity cannot reach or maintain normal cooking temperatures.</p>
+      </section>
+
+      <!-- Photo 4: old element -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-lrel6323s-old-bake-element.webp"
+          alt="LG MEE62306405 bake element removed from LREL6323S"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Removed bake element from this repair scenario.</figcaption>
+      </figure>
+
+      <!-- The part -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">LG LREL6323S Bake Element: MEE62306405</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">MEE62306405 is a compatible LG bake element used for the LREL6323S model family. Its job is to produce heat during Bake operation by converting electrical energy into radiant heat inside the oven cavity.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The reference part price for this repair was $105.01. Retail pricing varies by supplier and availability.</p>
+        <div style="padding:16px 20px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px;margin-top:8px">
+          <div style="display:flex;flex-wrap:wrap;gap:16px">
+            {[
+              ['Part Number', 'MEE62306405'],
+              ['Description', 'Bake Element'],
+              ['Compatible Model', 'LG LREL6323S/00'],
+              ['Reference Price', '$105.01'],
+            ].map(([label, val]) => (
+              <div style="min-width:140px">
+                <div style="font-size:10px;font-weight:700;color:#6a7a8e;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">{label}</div>
+                <div style="font-size:0.88rem;font-weight:700;color:#060c19">{val}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Bake vs broil vs sensor -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Bake Element vs. Broil Element vs. Sensor</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">These parts work in the same oven, but they do different things. Understanding the difference matters when diagnosing a no-heat complaint.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          {[
+            ['Bake Element', 'Produces heat for Bake operation. Located at the bottom of the oven cavity. The primary heating component for baking and general oven use.'],
+            ['Broil Element', 'Provides high upper heat for Broil operation. May also contribute during some oven cycles. A broil element failure typically affects broiling more than baking.'],
+            ['Temperature Sensor', 'Reports actual oven cavity temperature back to the control system. An inaccurate sensor reading can cause heating cycles to run incorrectly even when the element is functional.'],
+          ].map(([name, desc]) => (
+            <div style="padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px">
+              <div style="font-size:0.8rem;font-weight:800;color:#b01616;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">{name}</div>
+              <p style="font-size:0.88rem;color:#2a3c54;line-height:1.65;margin:0">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.88rem;color:#4a5e74;line-height:1.65;margin:0">These parts work together, but they do different jobs. In this LREL6323S case, the bake element was the confirmed failed component. No broil element or sensor failure was involved in this repair.</p>
+      </section>
+
+      <!-- Photo 5: new element -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-lrel6323s-new-bake-element.webp"
+          alt="LG MEE62306405 replacement bake element"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Replacement MEE62306405 bake element before installation.</figcaption>
+      </figure>
+
+      <!-- The repair sequence -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">The Repair</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">A no-heat complaint on an electric oven follows a diagnostic sequence before any component is replaced.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            ['1', 'Confirm the no-heat complaint', 'The oven was tested and the symptom was confirmed. Controls were functional. Heating was not.'],
+            ['2', 'Check basic power conditions', 'Supply conditions and circuit integrity were assessed before any internal component was evaluated.'],
+            ['3', 'Inspect the heating system', 'Oven heating components were evaluated to identify the failure point.'],
+            ['4', 'Access the bake-element circuit', 'The range was professionally opened to reach the heating component area.'],
+            ['5', 'Diagnose heating components', 'Bake element, broil element, and associated components were evaluated.'],
+            ['6', 'Isolate the failed bake element', 'The bake element was confirmed as the failed component.'],
+            ['7', 'Remove the failed element', 'The failed bake element was removed from the oven cavity.'],
+            ['8', 'Install MEE62306405', 'The replacement bake element was installed.'],
+            ['9', 'Reassemble the range', 'The range was reassembled with all panels and components returned to proper position.'],
+            ['10', 'Run Bake heating test', 'A full Bake cycle was run to confirm normal temperature achievement and heating performance.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 16px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:10px">
+              <div style="font-size:0.7rem;font-weight:800;color:#b01616;border:1.5px solid rgba(176,22,22,0.3);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">{num}</div>
+              <div>
+                <div style="font-size:0.88rem;font-weight:700;color:#060c19;margin-bottom:4px">{step}</div>
+                <div style="font-size:0.83rem;color:#4a5e74;line-height:1.6">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Photo 6: installation -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-lrel6323s-installation.webp"
+          alt="LG LREL6323S bake element replacement in Charlotte NC"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Replacement bake element installed and range reassembled.</figcaption>
+      </figure>
+
+      <!-- Why labor is more than the part -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why Labor Is More Than the Part</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">MEE62306405 is not an expensive part. At $105.01, the element cost is a relatively small portion of the total. The labor on this repair covered the work that actually makes a repair correct rather than lucky.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Labor included: confirming the complaint, evaluating supply conditions, ruling out control and sensor failures, safely accessing the bake-element circuit, removing the failed element, installing MEE62306405, reassembling the range, and running a Bake heating test.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">The element is the part. Diagnosis and access are the work.</p>
+      </section>
+
+      <!-- Photo 7: after -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/lg-lrel6323s-after.webp"
+          alt="LG LREL6323S oven after bake element replacement"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Oven reassembled after normal Bake heating was restored and verified.</figcaption>
+      </figure>
+
+      <!-- Could it cost less / more -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Could the Same Symptom Cost Less?</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Yes. An oven that will not heat can sometimes have a simpler and less expensive root cause. A supply issue, a tripped breaker, a minor wiring connection, or a smaller safety or sensing component can produce the same no-heat symptom at a lower repair cost.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 24px;border-left:3px solid #dc2626;padding-left:16px">Not every oven that will not heat needs a bake element.</p>
+
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Could It Cost More?</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0">Yes. A control-board problem, damaged wiring harness, multiple failed heating components, or additional electrical damage can each drive a higher repair cost. None of those conditions were present in this case.</p>
+      </section>
+
+      <!-- Repair vs replace -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Was This Range Worth Repairing?</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">The LG LREL6323S is a modern electric slide-in range. At $379.01 for an isolated bake-element failure, repair can be a reasonable choice compared to replacing the appliance, particularly when the rest of the range is in good condition.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Replacement may make more sense when multiple major systems are failing, when the cooktop has physical damage, when a control board and other expensive components have also failed, or when total repair cost approaches the realistic cost of a comparable replacement range.</p>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This was the total for this specific repair. Another LREL6323S with the same no-heat complaint may require a different component and a different repair price.</p>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">Frequently Asked Questions</h2>
+        <div style="display:flex;flex-direction:column;gap:1px;border:1px solid rgba(30,50,80,0.09);border-radius:12px;overflow:hidden">
+          {[
+            ['Why is my LG LREL6323S oven not heating?', 'An electric oven can fail to heat for several reasons: a failed bake element, broil element, temperature sensor, power-supply problem, control relay, wiring issue, or safety thermostat. The controls and display can still operate normally while the heating circuit has a separate failure. Diagnosis identifies the specific cause.'],
+            ['What bake element fits LG LREL6323S/00?', 'MEE62306405 is a compatible bake element used for the LG LREL6323S model family. Verify part compatibility before ordering.'],
+            ['What is LG part MEE62306405?', 'It is a bake element used in the LG LREL6323S heating system. It converts electrical energy into radiant heat during Bake operation. When it fails, the oven accepts the Bake command and the display functions normally, but the cavity cannot reach correct cooking temperatures.'],
+            ['Can an electric oven power on but still not heat?', 'Yes. The control system, display, and user interface run on a portion of the supply that is separate from the heating circuit. An oven can accept input and appear fully operational while the heating system has a completely independent failure.'],
+            ['Does no heat always mean the bake element is bad?', 'No. Other components can produce the same symptom: a broil element, temperature sensor, relay, supply problem, or wiring issue. Diagnosis is required to confirm which part failed before replacing anything.'],
+            ['Can a breaker or power issue cause an oven not to heat?', 'Yes. Electric ranges require a full 240V circuit. A partially tripped breaker or supply problem can leave the display and controls functional while cutting power to the heating elements. Circuit condition should be evaluated as part of diagnosis.'],
+            ['How much does LG bake element replacement cost?', 'This specific repair totaled $379.01, including $89.00 service call, $105.01 for part MEE62306405, and $185.00 labor. Actual cost depends on which component failed and the confirmed diagnosis.'],
+            ['Is an LG LREL6323S worth repairing?', 'For an isolated bake element failure on an otherwise functional modern range, repair can be cost-effective. A technician can assess overall condition after diagnosing the specific failure and help compare repair cost to realistic replacement cost.'],
+          ].map(([q, a], i) => (
+            <details style={`padding:16px 20px;background:#fff;${i > 0 ? 'border-top:1px solid rgba(30,50,80,0.07)' : ''}`}>
+              <summary style="font-size:0.92rem;font-weight:700;color:#060c19;cursor:pointer;line-height:1.4">{q}</summary>
+              <p style="font-size:0.86rem;color:#4a5e74;line-height:1.7;margin:10px 0 0">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Case note -->
+      <p style="font-size:0.82rem;color:#6a7a8e;line-height:1.65;padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin-bottom:44px">This page describes a specific LG LREL6323S repair scenario. The same symptom on another oven may have a different cause, part requirement and repair price.</p>
+
+      <!-- Related repair cases -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Related Repair Cases</h2>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          {[
+            ['/repairs/lg-dle3400w-dryer-not-heating-charlotte', 'LG DLE3400W Dryer Not Heating -- Heating Element 5301EL1001J', '$510.31'],
+            ['/repairs/lg-wm4000hwa-washer-not-draining-charlotte', 'LG WM4000HWA Washer Not Draining -- Drain Pump AHA75853813', '$311.03'],
+            ['/repairs/lg-lfxs26973s-refrigerator-warm-freezer-cold-charlotte', 'LG LFXS26973S Refrigerator Warm / Freezer Cold -- Evaporator Fan EAU63923603', '$367.69'],
+            ['/repairs/samsung-ne63a6511ss-oven-not-heating-charlotte', 'Samsung NE63A6511SS Oven Not Heating -- Bake Element DG47-00071C', '$443.17'],
+          ].map(([href, label, total]) => (
+            <a href={href} style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px;text-decoration:none">
+              <span style="font-size:0.86rem;font-weight:600;color:#1e3a5f;line-height:1.4">{label}</span>
+              <span style="font-size:0.82rem;font-weight:800;color:#34d399;white-space:nowrap">{total}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside style="position:sticky;top:24px;display:flex;flex-direction:column;gap:20px">
+
+      <!-- Repair Snapshot -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;overflow:hidden">
+        <div style="padding:14px 18px;background:#060c19;border-bottom:2px solid #7a0e0e">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#dc2626;margin-bottom:3px">Repair Snapshot</div>
+          <div style="font-size:14px;font-weight:800;color:#fff">LG LREL6323S/00</div>
+        </div>
+        <div style="padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+          {[
+            ['Appliance', 'LG Electric Range'],
+            ['Model', 'LREL6323S/00'],
+            ['Location', 'Charlotte, NC'],
+            ['Complaint', 'Oven not heating in Bake'],
+            ['Diagnosis', 'Failed bake element'],
+            ['Repair', 'Bake element replacement'],
+            ['Part', 'MEE62306405'],
+            ['Part Price', '$105.01'],
+            ['Service Call', '$89.00'],
+            ['Labor', '$185.00'],
+            ['Result', 'Normal bake heating restored'],
+          ].map(([label, value]) => (
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;font-size:0.78rem;border-bottom:1px solid rgba(30,50,80,0.06);padding-bottom:8px">
+              <span style="color:#6a7a8e;font-weight:600;flex-shrink:0">{label}</span>
+              <span style="color:#060c19;font-weight:700;text-align:right">{value}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#060c19;border-radius:8px;margin-top:2px">
+            <span style="font-size:0.72rem;font-weight:800;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em">Total Repair</span>
+            <span style="font-size:1.15rem;font-weight:900;color:#34d399">$379.01</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book CTA -->
+      <div style="background:#060c19;border-radius:14px;padding:20px">
+        <div style="font-size:0.82rem;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">LG Oven Repair Charlotte</div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.6;margin:0 0 16px">Same-day service. $89 diagnostic waived with repair. 90-day warranty on parts and labor.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="#contact-form" style="display:flex;align-items:center;justify-content:center;padding:12px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:0.85rem;border-radius:8px;text-decoration:none;text-align:center">Schedule Oven Diagnosis</a>
+          <a href={phoneHref} style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:0.82rem;border-radius:8px;text-decoration:none;text-align:center">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call {phone}
+          </a>
+        </div>
+      </div>
+
+      <!-- Internal links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:18px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#6a7a8e;margin-bottom:12px">Related Services</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          {[
+            ['/charlotte-nc/oven-not-heating-properly', 'Oven Not Heating Charlotte'],
+            ['/charlotte-nc/lg-appliance-repair', 'LG Appliance Repair Charlotte'],
+            ['/appliance-repair-charlotte', 'Appliance Repair Charlotte'],
+            ['/blog/recent-repairs', 'All Repair Cases'],
+          ].map(([href, label]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#1e3a5f;text-decoration:none;padding:7px 0;border-bottom:1px solid rgba(30,50,80,0.06);display:block">{label} →</a>
+          ))}
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+  </div>
+
+  <!-- LOCAL CTA -->
+  <section style="padding:64px 24px 72px;background:#080f1e;border-top:2px solid #7a0e0e">
+    <div style="max-width:700px;margin:0 auto;text-align:center">
+      <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#dc2626;margin-bottom:12px">Oven Repair Charlotte</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 16px;letter-spacing:-0.03em">LG Oven Not Heating in Charlotte?</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75;margin:0 auto 32px;max-width:520px">
+        If the controls work but the oven will not heat normally, the problem is somewhere in the heating system.<br /><br />
+        It may be power. It may be the bake element. It may be a sensor. It may be a control or wiring issue.<br /><br />
+        Diagnosis tells you which one.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">Schedule Oven Diagnosis</a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border:2px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call Home Heroes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST BREAKDOWN -->
+  <section style="padding:56px 24px 64px;background:#f8f9fc;border-top:1px solid rgba(30,50,80,0.08)">
+    <div style="max-width:600px;margin:0 auto">
+      <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em;text-align:center">Repair Cost Breakdown</h2>
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;overflow:hidden">
+        {[
+          ['Service Call / Diagnosis', '$89.00', false],
+          ['LG Bake Element MEE62306405', '$105.01', false],
+          ['Labor', '$185.00', false],
+          ['Total', '$379.01', true],
+        ].map(([label, amount, isTotal]) => (
+          <div style={`display:flex;justify-content:space-between;align-items:center;padding:14px 20px;${isTotal ? 'background:#060c19;' : 'border-bottom:1px solid rgba(30,50,80,0.07);'}`}>
+            <span style={`font-size:0.88rem;font-weight:${isTotal ? '800' : '600'};color:${isTotal ? 'rgba(255,255,255,0.7)' : '#4a5e74'}`}>{label}</span>
+            <span style={`font-size:${isTotal ? '1.2rem' : '0.95rem'};font-weight:900;color:${isTotal ? '#34d399' : '#060c19'}`}>{amount}</span>
+          </div>
+        ))}
+      </div>
+      <p style="font-size:0.8rem;color:#8a9ab0;line-height:1.65;margin:14px 0 0;text-align:center">This total applies to this specific confirmed bake-element repair scenario. Another LREL6323S with the same no-heat symptom may require a different component and a different repair price.</p>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Oven Diagnosis" />
+
+</SeoPageLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .repair-body-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
