@@ -1,0 +1,509 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/ge-gne27jymfs-refrigerator-warm-freezer-cold-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "GE GNE27JYMFS Refrigerator Warm While Freezer Is Cold in Charlotte, NC | Evaporator Fan WR60X39625",
+  "description": "See how Home Heroes diagnosed a GE GNE27JYMFS refrigerator with a warm fresh-food section and cold freezer, including evaporator fan WR60X39625 and repair cost.",
+  "datePublished": "2026-11-02",
+  "dateModified": "2026-11-02",
+  "image": `${base}/images/repairs/ge-gne27jymfs-before.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "GE GNE27JYMFS refrigerator not cooling, GE GNE27JYMFS warm refrigerator, GE refrigerator warm freezer cold, GE GNE27JYMFS evaporator fan, WR60X39625, GE evaporator fan replacement, GE refrigerator repair Charlotte, refrigerator repair Charlotte NC, GE French door refrigerator not cooling"
+};
+---
+
+<SeoPageLayout
+  title="GE GNE27JYMFS Refrigerator Warm, Freezer Cold | Charlotte Repair"
+  description="See how Home Heroes diagnosed a GE GNE27JYMFS refrigerator with a warm fresh-food section and cold freezer, including evaporator fan WR60X39625 and repair cost."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/ge-gne27jymfs-before.webp"
+  ogType="article"
+  heroImage="/images/repairs/ge-gne27jymfs-before.webp"
+>
+
+  <!-- HERO -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">GE GNE27JYMFS</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">GE</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">French-Door Refrigerator</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">November 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">GE GNE27JYMFS Refrigerator Warm While Freezer Is Cold in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">Freezer still cold. Fresh-food section warming up. Evaporator fan motor WR60X39625 diagnosed as failed and replaced, restoring normal airflow to both compartments.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$345.83'],
+          ['Outcome', 'Airflow Restored'],
+          ['Service', 'Same-Day'],
+          ['Part', 'WR60X39625'],
+        ].map(([label, value]) => (
+          <div style="padding:10px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;min-width:110px">
+            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px">{label}</div>
+            <div style="font-size:15px;font-weight:800;color:#fff">{value}</div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HERO IMAGE -->
+  <section style="background:#060c19;padding:0">
+    <div style="max-width:900px;margin:0 auto;padding:0 24px">
+      <figure style="margin:0">
+        <img
+          src="/images/repairs/ge-gne27jymfs-before.webp"
+          alt="GE GNE27JYMFS French door refrigerator before repair in Charlotte NC"
+          width="900"
+          height="512"
+          loading="eager"
+          style="width:100%;height:auto;display:block;border-radius:0 0 10px 10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 0 0;display:block">GE GNE27JYMFS before airflow diagnosis. Freezer remained cold while the fresh-food section was not cooling normally.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- MAIN BODY -->
+  <div style="background:#f8f9fc">
+  <div style="max-width:900px;margin:0 auto;padding:48px 24px 64px;display:grid;grid-template-columns:1fr min(300px,34%);gap:48px;align-items:start" class="repair-body-grid">
+
+    <!-- LEFT: ARTICLE -->
+    <article>
+
+      <!-- Opening -->
+      <section style="margin-bottom:44px">
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The freezer still felt cold.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The refrigerator section did not.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">This GE GNE27JYMFS repair scenario involved a French-door refrigerator in Charlotte where the cooling system was still producing cold air, but that air was not reaching the fresh-food compartment normally.</p>
+        <p style="font-size:1.05rem;font-weight:700;color:#060c19;line-height:1.65;margin:0;border-left:3px solid #dc2626;padding-left:16px">The refrigerator was making cold air. It was not moving it where it needed to go.</p>
+      </section>
+
+      <!-- What the customer was seeing -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What the Customer Was Seeing</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The freezer compartment still felt cold. Frozen items remained frozen. But the fresh-food section was noticeably warmer than it should have been -- food was not staying cold, and the refrigerator may not have been reaching its set temperature.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">In some cases, airflow from the refrigerator vents may have felt weaker than expected, or the compressor may have been running longer than normal trying to compensate.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">Cold freezer temperatures do not guarantee proper refrigerator airflow.</p>
+      </section>
+
+      <!-- Photo 2: warm fridge -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/ge-gne27jymfs-warm-fridge.webp"
+          alt="GE GNE27JYMFS refrigerator warm while freezer cold"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Fresh-food cooling was weaker than expected while the freezer remained cold.</figcaption>
+      </figure>
+
+      <!-- Why this symptom can be misleading -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why "Warm Fridge, Cold Freezer" Is Not a Diagnosis</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">This symptom pattern is one of the most common refrigerator complaints, and it has multiple possible causes. The fact that the freezer is cold tells you the sealed system is likely working. But it does not tell you why the fresh-food section is not cooling properly.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 16px;border-left:3px solid #dc2626;padding-left:16px">The symptom points to an airflow problem. Diagnosis identifies why the airflow failed.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Possible causes of a warm refrigerator with a cold freezer include:</p>
+        <ul style="margin:0 0 14px;padding-left:20px;display:flex;flex-direction:column;gap:6px">
+          {[
+            'Failed evaporator fan motor',
+            'Frost or ice accumulation blocking the airflow path',
+            'Defrost system failure',
+            'Air damper stuck closed or failed',
+            'Temperature sensor or thermistor problem',
+            'Control system issue',
+            'Blocked air channel or vent',
+            'Sealed-system problem in some scenarios',
+          ].map(item => (
+            <li style="font-size:0.88rem;color:#2a3c54;line-height:1.65">
+              <svg width="14" height="14" fill="#dc2626" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">In this GNE27JYMFS case, diagnosis isolated the evaporator fan motor as the failed component. But confirming that required ruling out the other possibilities first.</p>
+      </section>
+
+      <!-- How the airflow system works -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">How the Airflow System Works</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">The evaporator creates cold air by absorbing heat from the refrigerant circuit. The evaporator fan then moves that cold air through the refrigerator's internal airflow system, distributing it across both the freezer and fresh-food compartments.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">If the fan cannot move enough air, the freezer may still feel cold near the evaporator while the fresh-food section warms up because cooled air is not circulating effectively to reach it.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">Making cold air and moving cold air are two different jobs.</p>
+      </section>
+
+      <!-- Photo 3: freezer access -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/ge-gne27jymfs-freezer-access.webp"
+          alt="GE GNE27JYMFS freezer opened for evaporator fan diagnosis"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Freezer area accessed during airflow-system diagnosis.</figcaption>
+      </figure>
+
+      <!-- What we found -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What We Found on This GNE27JYMFS</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">After airflow and cooling conditions were checked, diagnosis isolated the evaporator fan motor as the failed component on this refrigerator.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0">The evaporator fan motor is responsible for circulating cold air from the evaporator through the airflow system. Without a functioning fan motor, cold air production can continue near the evaporator, but that cold air cannot be distributed effectively to the fresh-food section. The result is the split-temperature symptom this refrigerator presented: cold freezer, warm refrigerator.</p>
+      </section>
+
+      <!-- Photo 4: evaporator access -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/ge-gne27jymfs-evaporator-access.webp"
+          alt="GE GNE27JYMFS evaporator fan access during refrigerator repair"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Evaporator airflow components accessed for inspection.</figcaption>
+      </figure>
+
+      <!-- The part -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">GE GNE27JYMFS Evaporator Fan Motor: WR60X39625</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">WR60X39625 is the evaporator fan motor used for this GE GNE27JYMFS repair scenario. The evaporator fan motor circulates cold air from the evaporator area through the refrigerator's airflow system and into both the freezer and fresh-food compartments.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">When it fails, the cold-air production system can still function, but circulation stops or becomes insufficient. The freezer may stay cold near the evaporator while the refrigerator section warms.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The reference part price for this repair was $81.83. Retail pricing varies by supplier and availability.</p>
+        <div style="padding:16px 20px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px;margin-top:8px">
+          <div style="display:flex;flex-wrap:wrap;gap:16px">
+            {[
+              ['Part Number', 'WR60X39625'],
+              ['Description', 'Evaporator Fan Motor'],
+              ['Compatible Model', 'GE GNE27JYMFS'],
+              ['Reference Price', '$81.83'],
+            ].map(([label, val]) => (
+              <div style="min-width:140px">
+                <div style="font-size:10px;font-weight:700;color:#6a7a8e;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">{label}</div>
+                <div style="font-size:0.88rem;font-weight:700;color:#060c19">{val}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Fan vs defrost -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Evaporator Fan Failure vs. Defrost Problem</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">Both issues can produce the same warm-refrigerator symptom, but the underlying cause is different.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          {[
+            ['Failed Evaporator Fan', 'The evaporator can still cool the air near it, but the fan cannot circulate that cold air through the system. The refrigerator section warms because cold air is not being moved to it.'],
+            ['Defrost System Problem', 'Ice accumulation builds up on or around the evaporator over time. Even if the fan is running, airflow through the evaporator becomes restricted by frost. The effect can be similar -- reduced or absent fresh-food cooling.'],
+          ].map(([name, desc]) => (
+            <div style="padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px">
+              <div style="font-size:0.8rem;font-weight:800;color:#b01616;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">{name}</div>
+              <p style="font-size:0.88rem;color:#2a3c54;line-height:1.65;margin:0">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 12px;border-left:3px solid #dc2626;padding-left:16px">Poor airflow can be caused by the fan, or by something preventing the fan from moving air.</p>
+        <p style="font-size:0.88rem;color:#4a5e74;line-height:1.65;margin:0">In this GNE27JYMFS case, the evaporator fan motor was the confirmed failed component. A defrost system failure was not part of this repair.</p>
+      </section>
+
+      <!-- Photo 5: old fan -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/ge-gne27jymfs-old-fan.webp"
+          alt="GE WR60X39625 evaporator fan motor removed from refrigerator"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Removed evaporator fan motor from this repair scenario.</figcaption>
+      </figure>
+
+      <!-- The repair sequence -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">The Repair</h2>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            ['1', 'Confirm the fresh-food cooling complaint', 'Both compartments were evaluated. Freezer cooling conditions were compared to fresh-food conditions.'],
+            ['2', 'Compare freezer and refrigerator cooling', 'The split-temperature pattern was confirmed -- cold freezer, insufficient refrigerator cooling.'],
+            ['3', 'Inspect airflow', 'Airflow from refrigerator vents and through the cooling circuit was assessed.'],
+            ['4', 'Access the evaporator compartment', 'The freezer and evaporator area were professionally opened for inspection.'],
+            ['5', 'Diagnose the evaporator fan system', 'Fan motor operation and airflow circuit components were evaluated.'],
+            ['6', 'Isolate the failed fan motor', 'The evaporator fan motor was confirmed as the failed component.'],
+            ['7', 'Replace WR60X39625', 'The replacement fan motor was installed.'],
+            ['8', 'Reassemble the compartment', 'The evaporator cover and freezer components were returned to proper position.'],
+            ['9', 'Verify airflow and cooling operation', 'Airflow was confirmed through both compartments and the refrigerator was allowed to return to normal operating temperature.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 16px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:10px">
+              <div style="font-size:0.7rem;font-weight:800;color:#b01616;border:1.5px solid rgba(176,22,22,0.3);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">{num}</div>
+              <div>
+                <div style="font-size:0.88rem;font-weight:700;color:#060c19;margin-bottom:4px">{step}</div>
+                <div style="font-size:0.83rem;color:#4a5e74;line-height:1.6">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Photo 6: new fan -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/ge-gne27jymfs-new-fan.webp"
+          alt="GE WR60X39625 replacement evaporator fan motor"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Replacement GE WR60X39625 fan motor before installation.</figcaption>
+      </figure>
+
+      <!-- Why labor costs more than the part -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Why Labor Costs More Than the Part</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">WR60X39625 is a relatively inexpensive component at $81.83. The labor covers the work that turns a part into a correct repair.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Labor on this repair included: confirming the symptom, ruling out defrost and sealed-system causes, disassembling the freezer compartment, accessing the evaporator area, inspecting the airflow circuit, replacing the fan motor, reassembling all components, and verifying that airflow and cooling were restored to both compartments.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">The fan motor is the part. Getting to the correct diagnosis is the work.</p>
+      </section>
+
+      <!-- Photo 7: after -->
+      <figure style="margin:0 0 44px">
+        <img
+          src="/images/repairs/ge-gne27jymfs-after.webp"
+          alt="GE GNE27JYMFS refrigerator after evaporator fan replacement"
+          width="900"
+          height="512"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 16px;background:#f0f2f7;display:block;border-radius:0 0 10px 10px">Refrigerator reassembled after normal airflow was restored and verified.</figcaption>
+      </figure>
+
+      <!-- Cost range -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Could the Same Symptom Cost Less?</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">Yes. A blocked air vent, a simple airflow obstruction, or a minor wiring issue can produce the same warm-refrigerator symptom at a lower repair cost. Not every refrigerator with a warm fresh-food section needs a fan motor replacement.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 24px;border-left:3px solid #dc2626;padding-left:16px">Not every warm refrigerator needs a fan motor.</p>
+
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Could It Cost More?</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0">Yes. A defrost-system repair, control-board failure, multiple failed components, or a sealed-system problem can each increase the scope of a warm-refrigerator repair significantly. None of those conditions were present in this case.</p>
+      </section>
+
+      <!-- Repair vs replace -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Was This Refrigerator Worth Repairing?</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">The GE GNE27JYMFS is a modern French-door refrigerator. At $345.83 for an isolated fan motor failure, repair typically makes sense compared to replacing the appliance, particularly when the sealed system and major mechanical components are functioning correctly.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Replacement may make more sense when the sealed system is also failing, when multiple major components have failed, when the cabinet or liner has damage, when the appliance is near the end of its useful life, or when the economics of replacement clearly favor it over repair.</p>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">This was the total for this specific repair. Another GNE27JYMFS with the same symptom may require a different component and a different repair price.</p>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">Frequently Asked Questions</h2>
+        <div style="display:flex;flex-direction:column;gap:1px;border:1px solid rgba(30,50,80,0.09);border-radius:12px;overflow:hidden">
+          {[
+            ['Why is my GE refrigerator warm while the freezer is cold?', 'This symptom pattern usually points to an airflow problem. Cold air is being produced by the evaporator but is not circulating properly to the fresh-food section. Possible causes include a failed evaporator fan motor, frost accumulation from a defrost failure, a stuck air damper, a sensor problem, or a blocked air channel. Diagnosis identifies the specific cause.'],
+            ['What evaporator fan fits GE GNE27JYMFS?', 'WR60X39625 is the evaporator fan motor used in this GE GNE27JYMFS repair. Verify part compatibility for your specific unit before ordering.'],
+            ['What is GE part WR60X39625?', 'It is the evaporator fan motor for the GE GNE27JYMFS. It circulates cold air from the evaporator area through the refrigerator system to both the freezer and fresh-food compartments. When it fails, cold-air circulation is reduced or absent.'],
+            ['Can the freezer stay cold with a failed evaporator fan?', 'Yes. The freezer compartment, which houses the evaporator, can remain relatively cold even when the fan is not circulating air effectively. The cold stays concentrated near the evaporator rather than being distributed throughout the system.'],
+            ['Could frost cause the same symptom?', 'Yes. If the defrost system fails, frost accumulates around the evaporator and restricts airflow even if the fan is working. This can produce the same warm-refrigerator symptom. Distinguishing between a fan failure and a defrost failure is part of the diagnostic process.'],
+            ['How much does GE evaporator fan replacement cost?', 'This specific repair totaled $345.83, including $89.00 service call, $81.83 for part WR60X39625, and $175.00 labor. Actual cost depends on which component failed and the diagnosis.'],
+            ['Is a GE GNE27JYMFS worth repairing?', 'For an isolated fan motor failure on an otherwise functional refrigerator, repair is typically cost-effective. A technician can assess the overall condition of the appliance and help compare repair cost against realistic replacement cost.'],
+          ].map(([q, a], i) => (
+            <details style={`padding:16px 20px;background:#fff;${i > 0 ? 'border-top:1px solid rgba(30,50,80,0.07)' : ''}`}>
+              <summary style="font-size:0.92rem;font-weight:700;color:#060c19;cursor:pointer;line-height:1.4">{q}</summary>
+              <p style="font-size:0.86rem;color:#4a5e74;line-height:1.7;margin:10px 0 0">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Case note -->
+      <p style="font-size:0.82rem;color:#6a7a8e;line-height:1.65;padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin-bottom:44px">This page describes a specific GE GNE27JYMFS repair scenario. The same symptom on another refrigerator may have a different cause, part requirement and repair price.</p>
+
+      <!-- Related cases -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Related Repair Cases</h2>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          {[
+            ['/repairs/lg-lfxs26973s-refrigerator-warm-freezer-cold-charlotte', 'LG LFXS26973S Refrigerator Warm / Freezer Cold -- Evaporator Fan EAU63923603', '$367.69'],
+            ['/repairs/samsung-rf28t5001sr-not-cooling-ballantyne', 'Samsung RF28T5001SR Refrigerator Not Cooling -- Ballantyne', ''],
+            ['/repairs/lg-wm4000hwa-washer-not-draining-charlotte', 'LG WM4000HWA Washer Not Draining -- Drain Pump AHA75853813', '$311.03'],
+            ['/repairs/lg-dle3400w-dryer-not-heating-charlotte', 'LG DLE3400W Dryer Not Heating -- Heating Element 5301EL1001J', '$510.31'],
+          ].map(([href, label, total]) => (
+            <a href={href} style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px;text-decoration:none">
+              <span style="font-size:0.86rem;font-weight:600;color:#1e3a5f;line-height:1.4">{label}</span>
+              {total && <span style="font-size:0.82rem;font-weight:800;color:#34d399;white-space:nowrap">{total}</span>}
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside style="position:sticky;top:24px;display:flex;flex-direction:column;gap:20px">
+
+      <!-- Repair Snapshot -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;overflow:hidden">
+        <div style="padding:14px 18px;background:#060c19;border-bottom:2px solid #7a0e0e">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#dc2626;margin-bottom:3px">Repair Snapshot</div>
+          <div style="font-size:14px;font-weight:800;color:#fff">GE GNE27JYMFS</div>
+        </div>
+        <div style="padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+          {[
+            ['Appliance', 'GE French-Door Refrigerator'],
+            ['Model', 'GNE27JYMFS'],
+            ['Location', 'Charlotte, NC'],
+            ['Complaint', 'Fridge warm, freezer cold'],
+            ['Diagnosis', 'Failed evaporator fan motor'],
+            ['Repair', 'Fan motor replacement'],
+            ['Part', 'WR60X39625'],
+            ['Part Price', '$81.83'],
+            ['Service Call', '$89.00'],
+            ['Labor', '$175.00'],
+            ['Result', 'Normal airflow restored'],
+          ].map(([label, value]) => (
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;font-size:0.78rem;border-bottom:1px solid rgba(30,50,80,0.06);padding-bottom:8px">
+              <span style="color:#6a7a8e;font-weight:600;flex-shrink:0">{label}</span>
+              <span style="color:#060c19;font-weight:700;text-align:right">{value}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#060c19;border-radius:8px;margin-top:2px">
+            <span style="font-size:0.72rem;font-weight:800;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em">Total Repair</span>
+            <span style="font-size:1.15rem;font-weight:900;color:#34d399">$345.83</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book CTA -->
+      <div style="background:#060c19;border-radius:14px;padding:20px">
+        <div style="font-size:0.82rem;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">GE Refrigerator Repair Charlotte</div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.6;margin:0 0 16px">Same-day service. $89 diagnostic waived with repair. 90-day warranty on parts and labor.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="#contact-form" style="display:flex;align-items:center;justify-content:center;padding:12px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:0.85rem;border-radius:8px;text-decoration:none;text-align:center">Schedule Refrigerator Diagnosis</a>
+          <a href={phoneHref} style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:0.82rem;border-radius:8px;text-decoration:none;text-align:center">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call {phone}
+          </a>
+        </div>
+      </div>
+
+      <!-- Internal links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:18px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#6a7a8e;margin-bottom:12px">Related Services</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          {[
+            ['/charlotte-nc/refrigerator-not-cooling', 'Refrigerator Not Cooling Charlotte'],
+            ['/charlotte-nc/ge-appliance-repair', 'GE Appliance Repair Charlotte'],
+            ['/appliance-repair-charlotte', 'Appliance Repair Charlotte'],
+            ['/blog/recent-repairs', 'All Repair Cases'],
+          ].map(([href, label]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#1e3a5f;text-decoration:none;padding:7px 0;border-bottom:1px solid rgba(30,50,80,0.06);display:block">{label} →</a>
+          ))}
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+  </div>
+
+  <!-- LOCAL CTA -->
+  <section style="padding:64px 24px 72px;background:#080f1e;border-top:2px solid #7a0e0e">
+    <div style="max-width:700px;margin:0 auto;text-align:center">
+      <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#dc2626;margin-bottom:12px">Refrigerator Repair Charlotte</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 16px;letter-spacing:-0.03em">GE Refrigerator Warm but Freezer Still Cold in Charlotte?</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75;margin:0 auto 32px;max-width:520px">
+        If your freezer is cold but your refrigerator section is warming up, the problem is often somewhere in the airflow system.<br /><br />
+        It may be the fan. It may be frost. It may be a damper. It may be a sensor or control issue.<br /><br />
+        Diagnosis tells you which one.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">Schedule Refrigerator Diagnosis</a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border:2px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call Home Heroes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST BREAKDOWN -->
+  <section style="padding:56px 24px 64px;background:#f8f9fc;border-top:1px solid rgba(30,50,80,0.08)">
+    <div style="max-width:600px;margin:0 auto">
+      <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em;text-align:center">Repair Cost Breakdown</h2>
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;overflow:hidden">
+        {[
+          ['Service Call / Diagnosis', '$89.00', false],
+          ['GE Evaporator Fan Motor WR60X39625', '$81.83', false],
+          ['Labor', '$175.00', false],
+          ['Total', '$345.83', true],
+        ].map(([label, amount, isTotal]) => (
+          <div style={`display:flex;justify-content:space-between;align-items:center;padding:14px 20px;${isTotal ? 'background:#060c19;' : 'border-bottom:1px solid rgba(30,50,80,0.07);'}`}>
+            <span style={`font-size:0.88rem;font-weight:${isTotal ? '800' : '600'};color:${isTotal ? 'rgba(255,255,255,0.7)' : '#4a5e74'}`}>{label}</span>
+            <span style={`font-size:${isTotal ? '1.2rem' : '0.95rem'};font-weight:900;color:${isTotal ? '#34d399' : '#060c19'}`}>{amount}</span>
+          </div>
+        ))}
+      </div>
+      <p style="font-size:0.8rem;color:#8a9ab0;line-height:1.65;margin:14px 0 0;text-align:center">This total applies to this specific confirmed evaporator-fan repair scenario. Another GNE27JYMFS with the same symptom may require a different repair and a different price.</p>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Refrigerator Diagnosis" />
+
+</SeoPageLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .repair-body-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
