@@ -1,0 +1,432 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+import { business, businessGraph } from '../../data/business';
+import { breadcrumbSchema, abs } from '../../lib/seo';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/charlotte-nc/dryer-repair`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...businessGraph(),
+    {
+      '@type': 'Service',
+      '@id': `${canonical}#service`,
+      name: 'Dryer Repair in Charlotte, NC',
+      serviceType: 'Dryer Repair',
+      url: canonical,
+      provider: { '@id': abs('/#business') },
+      areaServed: { '@type': 'City', name: 'Charlotte', containedInPlace: { '@type': 'AdministrativeArea', name: 'Mecklenburg County, NC' } },
+      offers: {
+        '@type': 'Offer',
+        description: `$${business.diagnosticFee} diagnostic visit, waived when the repair is approved`,
+        price: String(business.diagnosticFee),
+        priceCurrency: 'USD',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        { '@type': 'Question', name: 'Why is my dryer not heating?', acceptedAnswer: { '@type': 'Answer', text: 'For electric dryers, the most common causes are a blown thermal fuse or a burned-out heating element. For gas dryers, we look at the igniter, gas valve coils, and flame sensor. All are diagnosable on the first visit.' } },
+        { '@type': 'Question', name: 'How much does dryer repair cost in Charlotte?', acceptedAnswer: { '@type': 'Answer', text: `Dryer repairs in Charlotte typically run $89 to $200 depending on the failure and parts needed. HomeHeroes charges an $${business.diagnosticFee} diagnostic fee that is waived when you proceed with the repair.` } },
+        { '@type': 'Question', name: 'Do you repair gas and electric dryers?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. HomeHeroes services both gas and electric dryers across Charlotte, including front-load, stackable, and standard residential models.' } },
+      ],
+    },
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Appliance Repair Charlotte', path: '/appliance-repair-charlotte' },
+      { name: 'Dryer Repair Charlotte', path: '/charlotte-nc/dryer-repair' },
+    ]),
+  ],
+};
+---
+
+<SeoPageLayout
+  title="Dryer Repair Charlotte, NC | Home Heroes"
+  description="Dryer repair in Charlotte, NC for dryers that are not heating, not spinning, taking too long to dry, making noise, or showing error codes. Schedule Home Heroes today."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/services/washer-dryer-repair.webp"
+  heroImage="/images/services/washer-dryer-repair.webp"
+>
+
+  <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
+  <section style="background:#080f1e;padding:0;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:1100px;margin:0 auto;padding:52px 24px 56px;display:grid;grid-template-columns:1fr min(380px,42%);gap:40px;align-items:start" class="hero-grid">
+
+      <!-- Left -->
+      <div>
+        <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+          <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+            <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+            <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+            <li><a href="/appliance-repair-charlotte" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Appliance Repair Charlotte</a></li>
+            <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+            <li style="font-size:12px;color:rgba(255,255,255,0.7)">Dryer Repair</li>
+          </ol>
+        </nav>
+
+        <div style="font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626;margin-bottom:14px">Charlotte, NC</div>
+
+        <h1 style="color:#fff;font-size:clamp(28px,4vw,50px);font-weight:900;line-height:1.1;margin:0 0 18px;letter-spacing:-0.03em">Dryer Repair<br>in Charlotte, NC</h1>
+
+        <p style="color:rgba(255,255,255,0.75);font-size:1.08rem;line-height:1.65;margin:0 0 12px;max-width:560px">No heat? Clothes still damp? Dryer making noise or refusing to start?</p>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.7;margin:0 0 32px;max-width:540px">Home Heroes repairs gas and electric dryers across Charlotte. We diagnose no-heat problems, long drying times, drum issues, startup failures, loud noises, overheating, sensor problems, and vent-related drying issues.</p>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">Schedule Dryer Repair</a>
+          <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call Home Heroes
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Diagnostic card -->
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#dc2626;margin-bottom:6px">Diagnostic Visit</div>
+        <div style="font-size:2rem;font-weight:900;color:#fff;line-height:1;margin-bottom:4px">$89</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:20px">Waived when you approve the repair</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          {[
+            'Professional on-site dryer diagnosis',
+            'Clear repair estimate before work begins',
+            'Same-day or next-day availability when possible',
+            `${business.warrantyDays}-day warranty on parts and labor`,
+            'Service across Charlotte and surrounding areas',
+          ].map(item => (
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:0.86rem;color:rgba(255,255,255,0.75);line-height:1.5">
+              <svg width="15" height="15" fill="#4ade80" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              {item}
+            </div>
+          ))}
+        </div>
+        <a href="#contact-form" style="display:flex;align-items:center;justify-content:center;margin-top:22px;padding:12px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:0.88rem;border-radius:9px;text-decoration:none">Schedule Dryer Repair</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ PROBLEMS ══════════════════════════════════════════════════════ -->
+  <section style="background:#f8f9fc;padding:72px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:48px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b01616;margin-bottom:12px">What We Fix</div>
+        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#060c19;margin:0;letter-spacing:-0.02em">Common Dryer Problems We Repair</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px">
+        {[
+          ['Dryer not heating', 'Electric or gas, no heat is the most common dryer complaint. We identify whether the issue is the element, fuse, igniter, or gas valve before replacing anything.'],
+          ['Dryer takes too long to dry', 'If your dryer needs three cycles to dry one load, it\'s basically just an expensive clothes warmer. Usually an airflow or heating problem.'],
+          ['Dryer will not start', 'Door switch, thermal fuse, start switch, or power supply. Complete startup failure is usually a quick diagnostic.'],
+          ['Drum not spinning', 'A broken drive belt is the most common cause. If the motor is not running either, we check the motor start switch and thermal cutoff.'],
+          ['Dryer stops mid-cycle', 'Often a thermal safety tripping from restricted airflow or an overheating element. The root cause matters as much as the failing part.'],
+          ['Dryer overheating', 'Dangerous and usually related to restricted venting. We diagnose the heat source and clear or repair the airflow path.'],
+          ['Loud noise -- squealing or thumping', 'Squealing is worn drum felt, bearing, or idler pulley. Thumping is usually flat-spotted drum support rollers. Both are mechanical repairs.'],
+          ['Clothes still damp after a full cycle', 'Heat is there but moisture sensors, vent restriction, or a weak blower can prevent clothes from reaching dry. We test the full drying system.'],
+          ['Dryer showing error codes', 'Control boards and sensors generate codes for specific failures. We read and diagnose the actual cause rather than clearing the code.'],
+          ['Burning smell', 'Lint accumulation near heating components is a fire risk. We clear the heat path and replace any compromised components.'],
+          ['Vent and airflow-related drying problems', 'Blocked or undersized exhaust ducts are behind a large share of dryer failures. We inspect and clear the full vent run.'],
+        ].map(([title, detail]) => (
+          <div style="background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:12px;padding:20px 22px">
+            <div style="display:flex;align-items:flex-start;gap:12px">
+              <div style="width:32px;height:32px;border-radius:7px;background:#fef2f2;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">
+                <svg width="16" height="16" fill="#b01616" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+              </div>
+              <div>
+                <h3 style="font-size:14px;font-weight:700;color:#060c19;margin:0 0 6px;line-height:1.3">{title}</h3>
+                <p style="font-size:13px;color:#4a5568;line-height:1.6;margin:0">{detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DRYER TYPES ═══════════════════════════════════════════════════ -->
+  <section style="background:#fff;padding:72px 24px;border-top:1px solid rgba(30,50,80,0.07)">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start" class="types-grid">
+      <div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b01616;margin-bottom:12px">What We Service</div>
+        <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:900;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">Dryers We Service</h2>
+        <p style="font-size:0.95rem;color:#4a5568;line-height:1.75;margin:0 0 24px">We service gas and electric dryers from all major residential brands, including front-load, stackable, and laundry-center configurations.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          {[
+            'Electric dryers',
+            'Gas dryers',
+            'Front-load dryers',
+            'Top-load dryers',
+            'Stackable dryers',
+            'Washer-dryer combos',
+            'Samsung dryers',
+            'LG dryers',
+            'Whirlpool dryers',
+            'Maytag dryers',
+            'GE dryers',
+            'Bosch dryers',
+          ].map(item => (
+            <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:8px;font-size:0.82rem;font-weight:600;color:#2a3c54">
+              <svg width="12" height="12" fill="#b01616" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b01616;margin-bottom:12px">Parts We Diagnose</div>
+        <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:900;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What Actually Fails</h2>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;border-left:3px solid #dc2626;padding-left:14px;margin:0 0 20px;line-height:1.6">The symptom tells you what the dryer is doing. Diagnosis tells you which part actually failed.</p>
+        <p style="font-size:0.9rem;color:#4a5568;line-height:1.75;margin:0 0 20px">We carry parts for the most common failures and diagnose the full system before recommending any replacement.</p>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          {[
+            ['Heating system', 'Heating elements, thermal fuses, thermostats, igniters, gas valve coils, flame sensors'],
+            ['Drive system', 'Drive belts, drum support rollers, idler pulleys, drum bearings, drum felt seals'],
+            ['Motor and controls', 'Drive motors, start switches, control boards, moisture sensors, door switches'],
+            ['Airflow system', 'Blower wheels, vent ducts, exhaust hoods, lint obstructions'],
+            ['Wiring', 'Internal wiring harnesses, connectors, terminal blocks'],
+          ].map(([heading, detail]) => (
+            <div style="padding:12px 16px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:9px">
+              <div style="font-size:0.8rem;font-weight:800;color:#060c19;margin-bottom:3px">{heading}</div>
+              <div style="font-size:0.78rem;color:#6a7a8e;line-height:1.5">{detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS ═══════════════════════════════════════════════════════ -->
+  <section style="background:#060c19;padding:72px 24px;border-top:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:48px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626;margin-bottom:12px">How It Works</div>
+        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0;letter-spacing:-0.02em">Service From Call to Completion</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px">
+        {[
+          ['1', 'Schedule a visit', 'Call or submit online. We confirm a same-day or next-day window when available.'],
+          ['2', 'On-site diagnosis', 'The technician inspects the dryer, identifies the specific failure, and tests the full system.'],
+          ['3', 'Clear estimate', 'You receive repair options and a firm price before any work begins. No surprises.'],
+          ['4', 'Repair completed', 'Approved repairs are completed on the same visit whenever possible.'],
+          ['5', 'Tested before we leave', 'The dryer is run through a cycle to confirm it heats, tumbles, and dries correctly before the technician leaves.'],
+        ].map(([num, step, detail]) => (
+          <div style="padding:22px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+            <div style="font-size:1.6rem;font-weight:900;color:#dc2626;line-height:1;margin-bottom:10px">{num}</div>
+            <div style="font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3">{step}</div>
+            <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.6">{detail}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GAS VS ELECTRIC ═══════════════════════════════════════════════ -->
+  <section style="background:#f8f9fc;padding:72px 24px;border-top:1px solid rgba(30,50,80,0.07)">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b01616;margin-bottom:12px;text-align:center">Fuel Type</div>
+      <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:900;color:#060c19;margin:0 0 32px;letter-spacing:-0.02em;text-align:center">Gas Dryer Repair vs. Electric Dryer Repair</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px" class="gas-elec-grid">
+        <div style="background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px;padding:28px">
+          <div style="font-size:11px;font-weight:800;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px">Electric Dryers</div>
+          <p style="font-size:0.9rem;color:#4a5568;line-height:1.75;margin:0 0 16px">Electric dryers use a resistance heating element to generate heat. No-heat failures are typically the heating element, thermal fuse, or cycling thermostat. These are among the most straightforward and cost-effective appliance repairs.</p>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            {['Heating element', 'Thermal fuse', 'High-limit thermostat', 'Cycling thermostat', 'Moisture sensor'].map(item => (
+              <div style="font-size:0.82rem;color:#2a3c54;display:flex;align-items:center;gap:8px">
+                <svg width="12" height="12" fill="#b01616" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px;padding:28px">
+          <div style="font-size:11px;font-weight:800;color:#b01616;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px">Gas Dryers</div>
+          <p style="font-size:0.9rem;color:#4a5568;line-height:1.75;margin:0 0 16px">Gas dryers use a burner ignited by a spark igniter. No-heat failures involve the igniter, gas valve coils, or flame sensor -- components that require gas-system familiarity to diagnose correctly.</p>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            {['Igniter', 'Gas valve coils', 'Flame sensor', 'Thermal fuse', 'Radiant sensor'].map(item => (
+              <div style="font-size:0.82rem;color:#2a3c54;display:flex;align-items:center;gap:8px">
+                <svg width="12" height="12" fill="#b01616" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LOCAL ══════════════════════════════════════════════════════════ -->
+  <section style="background:#fff;padding:72px 24px;border-top:1px solid rgba(30,50,80,0.07)">
+    <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr min(360px,45%);gap:48px;align-items:start" class="local-grid">
+      <div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b01616;margin-bottom:12px">Service Area</div>
+        <h2 style="font-size:clamp(20px,2.5vw,30px);font-weight:900;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Dryer Repair Across Charlotte</h2>
+        <p style="font-size:0.95rem;color:#4a5568;line-height:1.75;margin:0 0 20px">Home Heroes technicians cover Charlotte and the surrounding metro area, from the city center out to nearby communities.</p>
+        <p style="font-size:0.95rem;color:#4a5568;line-height:1.75;margin:0 0 24px">We regularly serve homes in the Tyvola area, SouthPark, Dilworth, Myers Park, South End, Madison Park, and Pineville, as well as across the broader Charlotte metro.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:7px">
+          {['Tyvola Area', 'SouthPark', 'Dilworth', 'Myers Park', 'South End', 'Madison Park', 'Pineville', 'Ballantyne', 'Steele Creek', 'University City', 'NoDa', 'Plaza Midwood'].map(n => (
+            <span style="font-size:0.78rem;font-weight:600;padding:5px 11px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.09);border-radius:20px;color:#2a3c54">{n}</span>
+          ))}
+        </div>
+      </div>
+      <div style="background:#060c19;border-radius:14px;padding:28px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#dc2626;margin-bottom:16px">Need Dryer Repair?</div>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.65;margin:0 0 20px">Same-day visits available. Diagnosis fee waived with repair. {business.warrantyDays}-day warranty on parts and labor.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#contact-form" style="display:flex;align-items:center;justify-content:center;padding:13px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:0.88rem;border-radius:9px;text-decoration:none">Schedule Dryer Repair</a>
+          <a href={phoneHref} style="display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.8);font-weight:600;font-size:0.85rem;border-radius:9px;text-decoration:none">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call {phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REPAIR VS REPLACE ══════════════════════════════════════════════ -->
+  <section style="background:#060c19;padding:72px 24px;border-top:2px solid #7a0e0e">
+    <div style="max-width:1000px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:40px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#dc2626;margin-bottom:12px">Decision Guide</div>
+        <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0;letter-spacing:-0.02em">Should You Repair or Replace Your Dryer?</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px" class="rvr-grid">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px">
+          <h3 style="color:#4ade80;font-size:0.9rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 18px">Repair when...</h3>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            {[
+              'Heating element replaced -- one of the most cost-effective appliance repairs',
+              'Thermal fuse blown once -- affordable repair with vent cleaning included',
+              'Belt, pulley, or drum roller wear -- mechanical repair under $150',
+              'Unit is under 10 years old with a single system failure',
+            ].map(point => (
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:0.86rem;color:rgba(255,255,255,0.75);line-height:1.55">
+                <svg width="15" height="15" fill="#4ade80" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                {point}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:28px">
+          <h3 style="color:#f87171;font-size:0.9rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 18px">Replace when...</h3>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            {[
+              'Motor seized on a unit over 12 years old',
+              'Drum cracked or structurally damaged',
+              'Repair cost exceeds 60% of comparable new dryer',
+              'Thermal fuse blowing repeatedly despite vent cleaning',
+            ].map(point => (
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:0.86rem;color:rgba(255,255,255,0.75);line-height:1.55">
+                <svg width="15" height="15" fill="#f87171" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                {point}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ════════════════════════════════════════════════════════════ -->
+  <section style="background:#f8f9fc;padding:72px 24px;border-top:1px solid rgba(30,50,80,0.07)">
+    <div style="max-width:760px;margin:0 auto">
+      <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#060c19;margin:0 0 32px;text-align:center;letter-spacing:-0.02em">Dryer Repair Questions</h2>
+      <div style="display:flex;flex-direction:column;gap:1px;border:1px solid rgba(30,50,80,0.09);border-radius:12px;overflow:hidden">
+        {[
+          ['Why is my dryer not heating?', 'For electric dryers, the most common causes are a blown thermal fuse or a burned-out heating element. For gas dryers, we look at the igniter, gas valve coils, and flame sensor. All are diagnosable on the first visit.'],
+          ['Is it normal for a dryer to need two cycles to dry clothes?', 'No. A properly functioning dryer should fully dry a standard load in one cycle. Double-cycling almost always means restricted airflow in the duct, a weak blower, or a heating element running at reduced capacity. It is also a lint fire risk.'],
+          ['Gas vs electric dryer -- which is cheaper to repair?', 'Electric dryers are typically less expensive to repair. Heating element replacement on an electric dryer is straightforward and the part is relatively inexpensive. Gas dryer igniter and valve work involves more components and requires gas-system experience.'],
+          ['How often should I clean my dryer vent?', 'At minimum once every 12 months, more often if you run many loads per week. A clogged vent is the leading cause of dryer fires and the top reason thermal fuses blow repeatedly.'],
+          ['What does dryer repair cost in Charlotte?', `Dryer repairs in Charlotte typically run $89 to $200 depending on the failure and parts needed. HomeHeroes charges an $${business.diagnosticFee} diagnostic fee that is waived when you proceed with the repair.`],
+          ['Can a dryer start but not heat?', 'Yes. The motor and heating circuits are independent. A dryer can tumble normally while having a completely separate failure in the heating system. This is one of the most common presentations we see.'],
+          ['Do you service both gas and electric dryers?', 'Yes. Home Heroes services both gas and electric dryers across Charlotte, including front-load, stackable, and laundry-set configurations.'],
+        ].map(([q, a], i) => (
+          <details style={`padding:16px 20px;background:#fff;${i > 0 ? 'border-top:1px solid rgba(30,50,80,0.07)' : ''}`}>
+            <summary style="font-size:0.92rem;font-weight:700;color:#060c19;cursor:pointer;line-height:1.4">{q}</summary>
+            <p style="font-size:0.86rem;color:#4a5e74;line-height:1.7;margin:10px 0 0">{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DRYER REPAIR CASES ════════════════════════════════════════════ -->
+  <section style="background:#fff;padding:72px 24px;border-top:1px solid rgba(30,50,80,0.07)">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b01616;margin-bottom:12px">Real Repairs</div>
+      <h2 style="font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#060c19;margin:0 0 24px;letter-spacing:-0.02em">Dryer Repair Cases</h2>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+        {[
+          ['/repairs/lg-dle3400w-dryer-not-heating-charlotte', 'LG DLE3400W Dryer Not Heating -- Heating Element 5301EL1001J', 'Charlotte, NC', '$510.31'],
+          ['/repairs/samsung-dve45t6000w-not-heating-charlotte', 'Samsung DVE45T6000W Dryer Not Heating -- Heating Element Replacement', 'Charlotte, NC', '$400.98'],
+        ].map(([href, label, location, total]) => (
+          <a href={href} style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.08);border-radius:11px;text-decoration:none">
+            <div>
+              <div style="font-size:0.88rem;font-weight:700;color:#1e3a5f;line-height:1.3;margin-bottom:3px">{label}</div>
+              <div style="font-size:0.76rem;color:#8a9ab0">{location}</div>
+            </div>
+            <span style="font-size:0.88rem;font-weight:800;color:#34d399;white-space:nowrap">{total}</span>
+          </a>
+        ))}
+      </div>
+      <a href="/blog/recent-repairs" style="font-size:0.85rem;font-weight:700;color:#b01616;text-decoration:none">View all repair cases →</a>
+    </div>
+  </section>
+
+  <!-- ═══ INTERNAL LINKS ══════════════════════════════════════════════════ -->
+  <section style="background:#f8f9fc;padding:48px 24px;border-top:1px solid rgba(30,50,80,0.07)">
+    <div style="max-width:1000px;margin:0 auto">
+      <h2 style="font-size:1rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.01em">Related Services and Resources</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        {[
+          ['/appliance-repair-charlotte', 'Appliance Repair Charlotte'],
+          ['/charlotte-nc/washer-repair', 'Washer Repair Charlotte'],
+          ['/charlotte-nc/oven-repair', 'Oven Repair Charlotte'],
+          ['/charlotte-nc/dryer-not-heating', 'Dryer Not Heating'],
+          ['/charlotte-nc/dryer-not-spinning', 'Dryer Not Spinning'],
+          ['/charlotte-nc/dryer-taking-too-long-to-dry', 'Dryer Taking Too Long to Dry'],
+          ['/charlotte-nc/dryer-making-loud-noise', 'Dryer Making Loud Noise'],
+          ['/charlotte-nc/dryer-squeaking', 'Dryer Squeaking'],
+          ['/charlotte-nc/appliance-repair-cost', 'Appliance Repair Cost Guide'],
+          ['/blog/recent-repairs', 'All Repair Cases'],
+        ].map(([href, label]) => (
+          <a href={href} style="font-size:0.82rem;font-weight:600;padding:7px 14px;background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:20px;color:#1e3a5f;text-decoration:none">{label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECOND CTA ══════════════════════════════════════════════════════ -->
+  <section style="padding:72px 24px;background:#080f1e;border-top:2px solid #7a0e0e">
+    <div style="max-width:640px;margin:0 auto;text-align:center">
+      <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#dc2626;margin-bottom:12px">Dryer Repair Charlotte</div>
+      <h2 style="font-size:clamp(22px,3vw,36px);font-weight:900;color:#fff;margin:0 0 16px;letter-spacing:-0.03em">Need Dryer Repair in Charlotte?</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75;margin:0 auto 32px;max-width:500px">If your dryer is not heating, not spinning, taking too long to dry, or making unusual noise, schedule a diagnostic visit and find out what is actually wrong.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">Schedule Dryer Repair</a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border:2px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call Home Heroes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Dryer Repair" />
+
+</SeoPageLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .hero-grid,
+    .types-grid,
+    .local-grid,
+    .gas-elec-grid,
+    .rvr-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
