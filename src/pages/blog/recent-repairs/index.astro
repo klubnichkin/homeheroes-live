@@ -7,6 +7,50 @@ const canonical = `${base}/blog/recent-repairs`;
 
 const repairListings = [
   {
+    href: '/repairs/lg-oven-not-heating-bake-element-charlotte',
+    image: '/images/repairs/lg-oven-bake-element-charlotte.webp',
+    brand: 'LG',
+    applianceType: 'Oven',
+    area: 'Charlotte',
+    date: 'November 2026',
+    title: 'LG Oven Not Heating in Bake Mode',
+    issueShort: 'LG electric range powered on and accepted the Bake command, but the oven was not producing enough heat to cook normally. Bake element replacement restored normal oven heating.',
+    repairTotal: '$432.42',
+  },
+  {
+    href: '/repairs/ge-gne27jymfs-refrigerator-warm-freezer-cold-charlotte',
+    image: '/images/repairs/ge-gne27jymfs-before.webp',
+    brand: 'GE',
+    applianceType: 'Refrigerator',
+    area: 'Charlotte',
+    date: 'November 2026',
+    title: 'GE Refrigerator Warm, Freezer Cold',
+    issueShort: 'GE GNE27JYMFS French-door refrigerator section stopped cooling while the freezer held temperature. Evaporator fan motor WR60X39625 had failed and was replaced.',
+    repairTotal: '$345.83',
+  },
+  {
+    href: '/repairs/lg-lrel6323s-oven-not-heating-charlotte',
+    image: '/images/repairs/lg-lrel6323s-before.webp',
+    brand: 'LG',
+    applianceType: 'Oven',
+    area: 'Charlotte',
+    date: 'October 2026',
+    title: 'LG LREL6323S Oven Not Heating in Bake Mode',
+    issueShort: 'LG LREL6323S/00 electric range display and controls worked normally, but the oven would not heat in Bake mode. Bake element MEE62306405 was confirmed failed and replaced.',
+    repairTotal: '$379.01',
+  },
+  {
+    href: '/repairs/lg-dle3400w-dryer-not-heating-charlotte',
+    image: '/images/repairs/lg-dle3400w-before.webp',
+    brand: 'LG',
+    applianceType: 'Dryer',
+    area: 'Charlotte',
+    date: 'October 2026',
+    title: 'LG Dryer Tumbles But Produces No Heat',
+    issueShort: 'LG DLE3400W electric dryer ran normally but clothes came out damp after every cycle. Heating element 5301EL1001J had failed and was replaced.',
+    repairTotal: '$510.31',
+  },
+  {
     href: '/repairs/samsung-me21m706bas-microwave-not-heating-charlotte',
     image: '/images/repairs/samsung-me21m706bas-before.webp',
     brand: 'Samsung',
@@ -43,7 +87,7 @@ const repairListings = [
     href: '/repairs/samsung-rf28r7351sg-ice-maker-not-making-ice-charlotte',
     image: '/images/repairs/samsung-rf28r7351sg-ice-maker-fridge.webp',
     brand: 'Samsung',
-    applianceType: 'Ice Maker',
+    applianceType: 'Refrigerator',
     area: 'Charlotte',
     date: 'October 2026',
     title: 'French-Door Refrigerator Stopped Making Ice',
@@ -165,7 +209,7 @@ const schema = {
   <div style="background:#060c19;border-bottom:1px solid rgba(255,255,255,0.05)">
     <div style="max-width:900px;margin:0 auto;padding:18px 24px;display:flex;flex-wrap:wrap;gap:0;justify-content:center">
       {[
-        ['9', 'Recent Repairs Logged'],
+        ['13', 'Recent Repairs Logged'],
         ['Same Day', 'Every Job Below'],
         ['$0', 'Hidden Fees'],
         ['90-Day', 'Parts & Labor Guarantee'],
