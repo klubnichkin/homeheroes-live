@@ -1,0 +1,437 @@
+---
+import SeoPageLayout from '../../layouts/SeoPageLayout.astro';
+import StickyMobileCTA from '../../components/cro/StickyMobileCTA.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { phone, phoneHref } from '../../data/siteData';
+
+const base = 'https://tryhomeheroes.com';
+const canonical = `${base}/repairs/lg-oven-not-heating-bake-element-charlotte`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "LG Oven Not Heating in Charlotte, NC | Bake Element Replacement",
+  "description": "LG oven not heating properly in Charlotte, NC. See how Home Heroes repaired the range by replacing the failed bake element and restored normal heating.",
+  "datePublished": "2026-11-09",
+  "dateModified": "2026-11-09",
+  "image": `${base}/images/repairs/lg-oven-bake-element-charlotte.webp`,
+  "author": {
+    "@type": "Organization",
+    "name": "HomeHeroes Appliance Repair",
+    "url": base
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "HomeHeroes Appliance Repair",
+    "@id": `${base}/#business`,
+    "telephone": phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Charlotte",
+      "addressRegion": "NC",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  "articleSection": "Appliance Repair Case Studies",
+  "keywords": "LG oven not heating Charlotte, LG oven repair Charlotte, LG range repair Charlotte, LG bake element replacement, electric oven repair Charlotte, oven not reaching temperature, oven not heating Charlotte"
+};
+---
+
+<SeoPageLayout
+  title="LG Oven Not Heating in Charlotte, NC | Bake Element Replacement"
+  description="LG oven not heating properly in Charlotte, NC. See how Home Heroes repaired the range by replacing the failed bake element and restored normal heating."
+  canonical={canonical}
+  schema={schema}
+  ogImage="/images/repairs/lg-oven-bake-element-charlotte.webp"
+  ogType="article"
+  heroImage="/images/repairs/lg-oven-bake-element-charlotte.webp"
+>
+
+  <!-- HERO -->
+  <section style="background:#080f1e;padding:56px 24px 52px;border-bottom:2px solid #7a0e0e">
+    <div style="max-width:900px;margin:0 auto">
+
+      <nav aria-label="Breadcrumb" style="margin-bottom:20px">
+        <ol style="display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap">
+          <li><a href="/" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Home</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li><a href="/blog/recent-repairs" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none">Repair Cases</a></li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.2)" aria-hidden="true">›</li>
+          <li style="font-size:12px;color:rgba(255,255,255,0.7)">LG Oven Bake Element</li>
+        </ol>
+      </nav>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(176,22,22,0.15);border:1px solid rgba(176,22,22,0.3);color:#dc2626">LG</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Electric Range</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">Charlotte, NC</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">November 2026</span>
+      </div>
+
+      <h1 style="color:#fff;font-size:clamp(24px,3.5vw,40px);font-weight:900;line-height:1.15;margin:0 0 16px;letter-spacing:-0.03em">LG Oven Not Heating in Charlotte, NC</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:17px;line-height:1.6;margin:0 0 30px;max-width:700px">The oven powered on and the controls worked. But it was not producing enough heat to cook normally. Diagnosed and repaired with a bake element replacement.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {[
+          ['Repair Total', '$432.42'],
+          ['Outcome', 'Bake Heating Restored'],
+          ['Service', 'Same-Day'],
+          ['Repair', 'Bake Element'],
+        ].map(([label, value]) => (
+          <div style="padding:10px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;min-width:110px">
+            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px">{label}</div>
+            <div style="font-size:15px;font-weight:800;color:#fff">{value}</div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HERO IMAGE -->
+  <section style="background:#060c19;padding:0">
+    <div style="max-width:900px;margin:0 auto;padding:0 24px">
+      <figure style="margin:0">
+        <img
+          src="/images/repairs/lg-oven-bake-element-charlotte.webp"
+          alt="LG oven bake element replacement in Charlotte NC"
+          width="900"
+          height="675"
+          loading="eager"
+          style="width:100%;height:auto;display:block;border-radius:0 0 10px 10px"
+        />
+        <figcaption style="font-size:0.78rem;color:#6a7a8e;line-height:1.55;padding:10px 0 0;display:block">LG electric range during bake element replacement. Oven door open, old element removed, multimeter and tools on the range surface.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- MAIN BODY -->
+  <div style="background:#f8f9fc">
+  <div style="max-width:900px;margin:0 auto;padding:48px 24px 64px;display:grid;grid-template-columns:1fr min(300px,34%);gap:48px;align-items:start" class="repair-body-grid">
+
+    <!-- LEFT: ARTICLE -->
+    <article>
+
+      <!-- Opening -->
+      <section style="margin-bottom:44px">
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The oven powered on.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">The display was active. The controls responded normally. The range accepted the Bake command without issue.</p>
+        <p style="font-size:1.02rem;color:#2a3c54;line-height:1.78;margin:0 0 16px">But the oven was not producing enough heat to cook correctly. This LG electric range repair in Charlotte involved a range that looked fully functional from the outside but could not deliver normal oven heating.</p>
+        <p style="font-size:1.05rem;font-weight:700;color:#060c19;line-height:1.65;margin:0;border-left:3px solid #dc2626;padding-left:16px">When an electric oven runs but does not heat properly, the bake element is one of the first components worth checking.</p>
+      </section>
+
+      <!-- What the customer was seeing -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">What the Customer Was Seeing</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The range appeared operational. The oven would accept a temperature setting and begin its preheat cycle. But the results were not right.</p>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">The oven heated slowly or stopped heating before reaching the selected temperature. Food took longer to cook than it should, and the bake function felt weak or unreliable. At some points the oven would not reach the set temperature at all.</p>
+        <ul style="margin:0 0 14px;padding-left:20px;display:flex;flex-direction:column;gap:6px">
+          {[
+            'Oven turns on and controls respond',
+            'Oven heats slowly or stops short of set temperature',
+            'Food takes much longer to cook than expected',
+            'Bake function is weak or inconsistent',
+            'Range and cooktop operate normally',
+          ].map(item => (
+            <li style="font-size:0.88rem;color:#2a3c54;line-height:1.65">
+              <svg width="14" height="14" fill="#dc2626" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0;border-left:3px solid #dc2626;padding-left:16px">The controls were working. The heating system was not.</p>
+      </section>
+
+      <!-- Not a diagnosis -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">"Oven Not Heating" Is Not a Diagnosis</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 14px">A no-heat complaint identifies a category of problem. It does not identify which component failed. Several different parts can produce the same symptom on an electric range, and replacing a component before confirming the failure can waste money without solving the actual problem.</p>
+        <p style="font-size:1rem;font-weight:700;color:#060c19;line-height:1.6;margin:0 0 16px;border-left:3px solid #dc2626;padding-left:16px">The symptom identifies the heating system. Diagnosis identifies the failed part.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Possible causes of an electric oven that will not heat correctly include:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px" class="diag-grid">
+          {[
+            'Failed bake element',
+            'Failed broil element',
+            'Temperature sensor',
+            'Thermal fuse or safety thermostat',
+            'Control relay or control board',
+            'Wiring or connector problem',
+            'Incoming power supply',
+            'Calibration or sensing issue',
+          ].map(item => (
+            <div style="padding:10px 14px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:8px;font-size:0.82rem;font-weight:600;color:#2a3c54;line-height:1.5">
+              <svg width="12" height="12" fill="#dc2626" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              {item}
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0">In this case, the bake element was the confirmed failed component. But reaching that conclusion required ruling out the other possibilities first.</p>
+      </section>
+
+      <!-- What we checked -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">What We Checked</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Before any part was replaced, the heating system was evaluated from the supply to the element circuit. The normal diagnostic path for an LG electric oven with a heating problem covers:</p>
+        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:12px">
+          {[
+            ['Bake element', 'Primary heating component for Bake operation'],
+            ['Broil element', 'Upper element, also active in some oven cycles'],
+            ['Temperature sensor', 'Reports cavity temperature back to the control'],
+            ['Thermal fuse and safety components', 'Cut power if the oven overheats'],
+            ['Wiring and connectors', 'Connection integrity throughout the heating circuit'],
+            ['Control board and relay operation', 'Whether control signals are reaching the heating circuit'],
+            ['Incoming power supply', 'Electric ranges require a full 240V supply; a partial supply can leave controls functional while cutting heating'],
+          ].map(([name, desc]) => (
+            <div style="padding:11px 15px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:8px">
+              <div style="font-size:0.82rem;font-weight:700;color:#060c19;margin-bottom:3px">{name}</div>
+              <div style="font-size:0.78rem;color:#4a5e74;line-height:1.6">{desc}</div>
+            </div>
+          ))}
+        </div>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;margin:0">The bake element should not be replaced before confirming the problem. The same no-heat symptom can come from a supply issue, a sensor, or a control component at a different repair cost.</p>
+      </section>
+
+      <!-- The repair -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">The Repair</h2>
+        <p style="font-size:0.95rem;color:#2a3c54;line-height:1.73;margin:0 0 16px">Once the bake element was confirmed as the failed component, the replacement process followed a standard sequence.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          {[
+            ['1', 'Power disconnected', 'The range was safely de-energized before any internal work began.'],
+            ['2', 'Oven racks removed', 'Racks were removed to allow clear access to the oven cavity.'],
+            ['3', 'Mounting screws removed', 'The fasteners securing the bake element were removed.'],
+            ['4', 'Element pulled forward', 'The bake element was carefully pulled forward to expose the terminal connections at the back of the oven cavity.'],
+            ['5', 'Wiring disconnected', 'The terminal leads were disconnected from the failed element.'],
+            ['6', 'Failed element removed', 'The old bake element was removed from the range.'],
+            ['7', 'Replacement element installed', 'The new bake element was connected and seated correctly in the oven cavity.'],
+            ['8', 'Terminals secured', 'All wiring connections were secured and checked.'],
+            ['9', 'Oven reassembled', 'Racks and all components were returned to their normal positions.'],
+            ['10', 'Heating operation tested', 'A full Bake cycle was run to confirm normal heating and temperature performance.'],
+          ].map(([num, step, detail]) => (
+            <div style="display:flex;gap:14px;padding:14px 16px;background:#fff;border:1px solid rgba(30,50,80,0.08);border-radius:10px">
+              <div style="font-size:0.7rem;font-weight:800;color:#b01616;border:1.5px solid rgba(176,22,22,0.3);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">{num}</div>
+              <div>
+                <div style="font-size:0.88rem;font-weight:700;color:#060c19;margin-bottom:4px">{step}</div>
+                <div style="font-size:0.83rem;color:#4a5e74;line-height:1.6">{detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Why elements fail -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Why Oven Bake Elements Fail</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Bake elements carry electrical current and generate heat every time the oven runs. Over time, that repeated stress takes a toll.</p>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          {[
+            ['Heating and cooling cycles', 'The element expands and contracts with every use. Over years of service, this cycling can cause breaks in the resistance coil.'],
+            ['Age and normal wear', 'Most bake element failures happen after years of regular use rather than from a single dramatic event.'],
+            ['Overheating or electrical stress', 'An overvoltage condition or unusual load can shorten element life.'],
+            ['Damaged terminals or wiring', 'A loose or corroded terminal connection can cause the element to run hot at one point and fail prematurely.'],
+          ].map(([name, desc]) => (
+            <div style="padding:11px 15px;background:#f8f9fc;border:1px solid rgba(30,50,80,0.07);border-radius:8px">
+              <div style="font-size:0.82rem;font-weight:700;color:#060c19;margin-bottom:3px">{name}</div>
+              <div style="font-size:0.78rem;color:#4a5e74;line-height:1.6">{desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Common signs -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Common Signs of an Oven Heating Problem</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" class="signs-grid">
+          {[
+            'Oven not heating',
+            'Oven heats very slowly',
+            'Oven does not reach set temperature',
+            'Food cooks unevenly',
+            'Bake function does not work',
+            'Visible damage to heating element',
+            'Oven heats intermittently',
+            'Breaker trips during heating',
+          ].map(item => (
+            <div style="padding:12px 15px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px;font-size:0.85rem;font-weight:600;color:#2a3c54;line-height:1.5;display:flex;align-items:flex-start;gap:8px">
+              <svg width="14" height="14" fill="#34d399" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Repair vs replace -->
+      <section style="margin-bottom:44px;padding:24px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">Repair or Replace?</h2>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Bake element replacement is often worth considering when the rest of the range is in good working order. If the cooktop is functional, the controls are reliable, the oven cavity is in good condition, and the failure is isolated to the element, the repair cost is typically well below the cost of a comparable replacement range.</p>
+        <p style="font-size:0.92rem;color:#2a3c54;line-height:1.73;margin:0 0 12px">Replacement may make more sense if multiple major components have failed, if the control board has also gone out, or if total repair cost approaches what a similar range would cost new.</p>
+        <p style="font-size:0.84rem;color:#6a7a8e;line-height:1.65;padding:12px 16px;background:#f0f2f7;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin:0">A technician can assess the overall condition of the range after diagnosing the specific failure and help you compare repair cost to realistic replacement cost.</p>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 20px;letter-spacing:-0.02em">Frequently Asked Questions</h2>
+        <div style="display:flex;flex-direction:column;gap:1px;border:1px solid rgba(30,50,80,0.09);border-radius:12px;overflow:hidden">
+          {[
+            ['Why is my LG oven not heating?', 'An electric oven can fail to heat for several reasons: a failed bake element, broil element, temperature sensor, power supply issue, control relay, wiring fault, or safety thermostat. The controls and display can function normally while the heating circuit has a separate failure. Diagnosis identifies which component actually failed.'],
+            ['Can an electric oven power on but still not heat?', 'Yes. The control system, display, and user interface run on a portion of the supply that is separate from the main heating circuit. An oven can accept input, show the right temperature, and appear fully operational while the heating system has an independent failure.'],
+            ['Does no heat always mean the bake element is bad?', 'No. Other components can produce the same symptom. A broil element failure, temperature sensor problem, relay issue, or supply condition can all cause the oven to heat poorly or not at all. Diagnosis is required before replacing any part.'],
+            ['Can a breaker cause my LG oven not to heat?', 'Yes. Electric ranges require a full 240V circuit with two legs of power. A partially tripped breaker can leave the display and controls functional -- which run on a smaller portion of the supply -- while cutting power to the heating elements. Circuit condition is part of the standard diagnostic evaluation.'],
+            ['How much does LG oven repair cost in Charlotte?', 'This specific repair totaled $432.42, including an $89.00 service call, $158.42 for the bake element, and $185.00 labor. Actual LG oven repair pricing varies depending on the model, the specific component that failed, and whether any additional parts are involved.'],
+            ['How long does a bake element last?', 'Most bake elements last many years under normal use. Failure typically results from accumulated thermal stress over time rather than a single event. Very heavy use, power fluctuations, or terminal connection problems can shorten the lifespan.'],
+            ['Is an LG electric range worth repairing?', 'For an isolated bake element failure on an otherwise functional range, repair is often a reasonable choice compared to replacing the appliance. If the cooktop is good, the controls are working, and the failure is confined to the element, the repair cost is usually well below the price of a comparable new range.'],
+          ].map(([q, a], i) => (
+            <details style={`padding:16px 20px;background:#fff;${i > 0 ? 'border-top:1px solid rgba(30,50,80,0.07)' : ''}`}>
+              <summary style="font-size:0.92rem;font-weight:700;color:#060c19;cursor:pointer;line-height:1.4">{q}</summary>
+              <p style="font-size:0.86rem;color:#4a5e74;line-height:1.7;margin:10px 0 0">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Case note -->
+      <p style="font-size:0.82rem;color:#6a7a8e;line-height:1.65;padding:14px 18px;background:#fff;border:1px solid rgba(30,50,80,0.07);border-radius:10px;margin-bottom:44px">This page describes a specific LG electric range repair scenario. The same no-heat symptom on another oven may have a different cause, different part requirement, and different repair price.</p>
+
+      <!-- Related repair cases -->
+      <section style="margin-bottom:44px">
+        <h2 style="font-size:1.1rem;font-weight:800;color:#060c19;margin:0 0 16px;letter-spacing:-0.02em">Related Repair Cases</h2>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          {[
+            ['/repairs/samsung-ne63a6511ss-oven-not-heating-charlotte', 'Samsung NE63A6511SS Oven Not Heating -- Bake Element DG47-00071C', '$443.17'],
+            ['/repairs/lg-dle3400w-dryer-not-heating-charlotte', 'LG DLE3400W Dryer Not Heating -- Heating Element 5301EL1001J', '$510.31'],
+            ['/repairs/lg-wm4000hwa-washer-not-draining-charlotte', 'LG WM4000HWA Washer Not Draining -- Drain Pump AHA75853813', '$311.03'],
+            ['/repairs/samsung-me21m706bas-microwave-not-heating-charlotte', 'Samsung ME21M706BAS Microwave Not Heating -- Magnetron Replacement', ''],
+          ].map(([href, label, total]) => (
+            <a href={href} style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:10px;text-decoration:none">
+              <span style="font-size:0.86rem;font-weight:600;color:#1e3a5f;line-height:1.4">{label}</span>
+              {total && <span style="font-size:0.82rem;font-weight:800;color:#34d399;white-space:nowrap">{total}</span>}
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside style="position:sticky;top:24px;display:flex;flex-direction:column;gap:20px">
+
+      <!-- Repair Snapshot -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;overflow:hidden">
+        <div style="padding:14px 18px;background:#060c19;border-bottom:2px solid #7a0e0e">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#dc2626;margin-bottom:3px">Repair Snapshot</div>
+          <div style="font-size:14px;font-weight:800;color:#fff">LG Electric Range</div>
+        </div>
+        <div style="padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+          {[
+            ['Appliance', 'LG Electric Range'],
+            ['Location', 'Charlotte, NC'],
+            ['Complaint', 'Oven not heating properly'],
+            ['Diagnosis', 'Failed bake element'],
+            ['Repair', 'Bake element replacement'],
+            ['Part Price', '$158.42'],
+            ['Service Call', '$89.00'],
+            ['Labor', '$185.00'],
+            ['Result', 'Normal oven heating restored'],
+          ].map(([label, value]) => (
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;font-size:0.78rem;border-bottom:1px solid rgba(30,50,80,0.06);padding-bottom:8px">
+              <span style="color:#6a7a8e;font-weight:600;flex-shrink:0">{label}</span>
+              <span style="color:#060c19;font-weight:700;text-align:right">{value}</span>
+            </div>
+          ))}
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#060c19;border-radius:8px;margin-top:2px">
+            <span style="font-size:0.72rem;font-weight:800;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em">Total Repair</span>
+            <span style="font-size:1.15rem;font-weight:900;color:#34d399">$432.42</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book CTA -->
+      <div style="background:#060c19;border-radius:14px;padding:20px">
+        <div style="font-size:0.82rem;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">LG Oven Repair Charlotte</div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.6;margin:0 0 16px">Same-day service. $89 diagnostic waived with repair. 90-day warranty on parts and labor.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="#contact-form" style="display:flex;align-items:center;justify-content:center;padding:12px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:0.85rem;border-radius:8px;text-decoration:none;text-align:center">Schedule Oven Repair</a>
+          <a href={phoneHref} style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:0.82rem;border-radius:8px;text-decoration:none;text-align:center">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call {phone}
+          </a>
+        </div>
+      </div>
+
+      <!-- Internal links -->
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;padding:18px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#6a7a8e;margin-bottom:12px">Related Services</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          {[
+            ['/charlotte-nc/oven-not-heating-properly', 'Oven Not Heating Charlotte'],
+            ['/charlotte-nc/lg-appliance-repair', 'LG Appliance Repair Charlotte'],
+            ['/appliance-repair-charlotte', 'Appliance Repair Charlotte'],
+            ['/blog/recent-repairs', 'All Repair Cases'],
+          ].map(([href, label]) => (
+            <a href={href} style="font-size:0.82rem;font-weight:600;color:#1e3a5f;text-decoration:none;padding:7px 0;border-bottom:1px solid rgba(30,50,80,0.06);display:block">{label} →</a>
+          ))}
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+  </div>
+
+  <!-- LOCAL CTA -->
+  <section style="padding:64px 24px 72px;background:#080f1e;border-top:2px solid #7a0e0e">
+    <div style="max-width:700px;margin:0 auto;text-align:center">
+      <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#dc2626;margin-bottom:12px">Oven Repair Charlotte</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin:0 0 16px;letter-spacing:-0.03em">Need LG Oven Repair in Charlotte?</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75;margin:0 auto 32px;max-width:520px">
+        If your LG oven is not heating, takes too long to reach temperature, or the bake function has stopped working, Home Heroes can diagnose the problem and provide a clear repair estimate.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,#b01616,#dc2626);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none">Schedule Oven Repair</a>
+        <a href={phoneHref} style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border:2px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-weight:600;font-size:15px;border-radius:10px;text-decoration:none">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1h-2C7.82 18 2 12.18 2 5V3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call Home Heroes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST BREAKDOWN -->
+  <section style="padding:56px 24px 64px;background:#f8f9fc;border-top:1px solid rgba(30,50,80,0.08)">
+    <div style="max-width:600px;margin:0 auto">
+      <h2 style="font-size:1.25rem;font-weight:800;color:#060c19;margin:0 0 8px;letter-spacing:-0.02em;text-align:center">How Much Did This LG Oven Repair Cost?</h2>
+      <p style="font-size:0.88rem;color:#6a7a8e;text-align:center;margin:0 0 24px;line-height:1.6">Cost breakdown for this specific bake element replacement in Charlotte.</p>
+      <div style="background:#fff;border:1px solid rgba(30,50,80,0.1);border-radius:14px;overflow:hidden">
+        {[
+          ['Diagnostic / Service Call', '$89.00', false],
+          ['Bake Element', '$158.42', false],
+          ['Labor', '$185.00', false],
+          ['Total', '$432.42', true],
+        ].map(([label, amount, isTotal]) => (
+          <div style={`display:flex;justify-content:space-between;align-items:center;padding:14px 20px;${isTotal ? 'background:#060c19;' : 'border-bottom:1px solid rgba(30,50,80,0.07);'}`}>
+            <span style={`font-size:0.88rem;font-weight:${isTotal ? '800' : '600'};color:${isTotal ? 'rgba(255,255,255,0.7)' : '#4a5e74'}`}>{label}</span>
+            <span style={`font-size:${isTotal ? '1.2rem' : '0.95rem'};font-weight:900;color:${isTotal ? '#34d399' : '#060c19'}`}>{amount}</span>
+          </div>
+        ))}
+      </div>
+      <p style="font-size:0.8rem;color:#8a9ab0;line-height:1.65;margin:14px 0 0;text-align:center">Actual LG oven repair pricing can vary depending on the exact model, part availability, and whether any additional components are damaged. This total applies to this specific confirmed repair scenario.</p>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <StickyMobileCTA phone={phone} phoneHref={phoneHref} label="Schedule Oven Repair" />
+
+</SeoPageLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .repair-body-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .diag-grid,
+    .signs-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
