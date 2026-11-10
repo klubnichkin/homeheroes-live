@@ -77,10 +77,11 @@ const suburbIntroAddon = isCharlotte
     );
 const intro = fill(service.intro, city) + suburbIntroAddon;
 
-const quickAnswer =
-  `${service.name} in ${city.displayName}: ${servicePromise}` +
-  (range ? ` Most ${nounLower} repairs cost ${range} including the visit.` : '') +
-  ` Call ${business.phone} to book.`;
+const quickAnswer = service.quickAnswerText
+  ? fill(service.quickAnswerText, city)
+  : `${service.name} in ${city.displayName}: ${servicePromise}` +
+    (range ? ` Most ${nounLower} repairs cost ${range} including the visit.` : '') +
+    ` Call ${business.phone} to book.`;
 
 // Charlotte gets the full guide; suburb pages keep a stable subset so the shared text stays small.
 const firstSentence = (t: string) => (t.match(/^.*?[.!?](\s|$)/)?.[0] ?? t).trim();

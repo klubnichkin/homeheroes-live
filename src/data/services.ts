@@ -43,6 +43,7 @@ export interface ServicePage {
   relatedServices: string[];
   relatedBrands: string[];
   repairCases?: RepairCaseCard[];
+  quickAnswerText?: string;
 }
 
 export const services: ServicePage[] = [
@@ -154,13 +155,9 @@ export const services: ServicePage[] = [
       },
     ],
     relatedServices: ['freezer-repair', 'ice-maker-repair', 'dishwasher-repair'],
-    relatedBrands: [
-      'samsung-appliance-repair',
-      'lg-appliance-repair',
-      'whirlpool-appliance-repair',
-      'ge-appliance-repair',
-      'sub-zero-appliance-repair',
-    ],
+    relatedBrands: [],
+    quickAnswerText:
+      'Refrigerator Repair in {cityState}: Same-day appointments 7 days a week, 8am–7pm. Diagnostic visit is $89 and is waived when you approve the repair. Final pricing depends on the failed part, refrigerator model, and labor required. 90-day warranty on parts and labor. Call (704) 512-0111 to book.',
     repairCases: [
       {
         href: '/repairs/samsung-rf28t5001sr-not-cooling-ballantyne',
