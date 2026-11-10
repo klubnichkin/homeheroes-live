@@ -298,6 +298,43 @@ const imageAlt = `${service.name} technician in ${city.displayName} — HomeHero
     </div>
   </section>
 
+  {isCharlotte && service.repairCases && service.repairCases.length > 0 && (
+    <section class="bg-pearl-section" style="padding:72px 24px">
+      <div style="max-width:1200px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="sec-label" style="margin-bottom:14px">Recent Repairs</div>
+          <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#060c19;margin:0 0 12px;letter-spacing:-0.02em">
+            Recent {noun} Repairs in Charlotte
+          </h2>
+          <p style="font-size:16px;color:#4a5568;line-height:1.6;margin:0 auto;max-width:580px">
+            Real repairs completed by HomeHeroes technicians. Each entry shows what failed, how it was fixed, and what it cost.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:32px">
+          {service.repairCases.map(c => (
+            <a href={c.href} style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(30,50,80,0.09);border-radius:14px;padding:22px 24px;text-decoration:none;transition:box-shadow 0.15s" class="repair-case-card">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+                <span style="font-size:11px;font-weight:800;padding:3px 10px;border-radius:4px;background:rgba(176,22,22,0.08);color:#b01616;text-transform:uppercase;letter-spacing:0.06em">{c.brand}</span>
+                <span style="font-size:12px;font-weight:600;color:#6a7a8e">{c.model}</span>
+              </div>
+              <div style="font-size:15px;font-weight:700;color:#060c19;line-height:1.4;margin-bottom:8px">{c.symptom}</div>
+              <div style="font-size:13px;color:#4a5568;line-height:1.55;margin-bottom:16px;flex:1">{c.repair}</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid rgba(30,50,80,0.07)">
+                <span style="font-size:1.1rem;font-weight:900;color:#34d399">{c.total}</span>
+                <span style="font-size:12px;font-weight:700;color:#b01616">Read Case →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div style="text-align:center">
+          <a href="/blog/recent-repairs" style="display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border:1.5px solid rgba(30,50,80,0.14);border-radius:9px;font-size:14px;font-weight:600;color:#1e3a5f;text-decoration:none">
+            View All Repair Cases →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
   {brandApplianceLinks.length > 0 && (
     <section class="bg-white-section" style="padding:64px 24px">
       <InternalLinks heading={`${noun} Repair by Brand`} links={brandApplianceLinks} />
@@ -362,4 +399,5 @@ const imageAlt = `${service.name} technician in ${city.displayName} — HomeHero
 <style>
   .rvr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 767px) { .rvr-grid { grid-template-columns: 1fr; } }
+  .repair-case-card:hover { box-shadow: 0 6px 24px rgba(6,12,25,0.1); }
 </style>

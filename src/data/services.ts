@@ -16,6 +16,15 @@ export interface FAQ {
   a: string;
 }
 
+export interface RepairCaseCard {
+  href: string;
+  brand: string;
+  model: string;
+  symptom: string;
+  repair: string;
+  total: string;
+}
+
 export interface ServicePage {
   slug: string;
   name: string;
@@ -33,18 +42,19 @@ export interface ServicePage {
   faq: FAQ[];
   relatedServices: string[];
   relatedBrands: string[];
+  repairCases?: RepairCaseCard[];
 }
 
 export const services: ServicePage[] = [
   {
     slug: 'refrigerator-repair',
     name: 'Refrigerator Repair',
-    seoTitle: 'Refrigerator Repair {cityState} | Same-Day Service | HomeHeroes',
+    seoTitle: 'Refrigerator Repair {cityState} | Home Heroes',
     metaDescription:
-      'Same-day refrigerator repair in {cityState}. Expert techs fix cooling issues, ice makers, water dispensers & compressors. Licensed & insured. Call (704) 512-0111.',
+      'Refrigerator repair in {cityState}. Home Heroes diagnoses cooling failures, ice maker problems, water dispenser leaks and more. $89 service call, waived with repair. Call (704) 512-0111.',
     h1: 'Refrigerator Repair in {cityState}',
     intro:
-      'Your refrigerator runs 24 hours a day, 365 days a year — so when it stops working, you need fast, reliable repair. HomeHeroes technicians are dispatched same-day across {city} with the most common parts already on the truck. We diagnose and fix cooling failures, ice maker malfunctions, water dispenser leaks, and compressor issues on all major brands.',
+      'Your refrigerator runs every hour of every day, so when it stops cooling correctly you need a diagnosis fast. HomeHeroes technicians are dispatched same-day across {city} with the most common parts already on the truck. We diagnose and fix cooling failures, ice maker malfunctions, water dispenser leaks, evaporator fan failures, and defrost system problems on all major brands.',
     imagePath: '/images/hero/hero-technician.webp',
     commonProblems: [
       {
@@ -150,6 +160,32 @@ export const services: ServicePage[] = [
       'whirlpool-appliance-repair',
       'ge-appliance-repair',
       'sub-zero-appliance-repair',
+    ],
+    repairCases: [
+      {
+        href: '/repairs/samsung-rf28t5001sr-not-cooling-ballantyne',
+        brand: 'Samsung',
+        model: 'RF28T5001SR',
+        symptom: 'Refrigerator not cooling despite running',
+        repair: 'Evaporator fan motor DA31-00334C replaced',
+        total: '$389.37',
+      },
+      {
+        href: '/repairs/lg-lfxs26973s-refrigerator-warm-freezer-cold-charlotte',
+        brand: 'LG',
+        model: 'LFXS26973S/02',
+        symptom: 'Refrigerator section warm, freezer holding temperature',
+        repair: 'Evaporator fan motor EAU63923603 replaced',
+        total: '$367.69',
+      },
+      {
+        href: '/repairs/samsung-rf28r7351sg-ice-maker-not-making-ice-charlotte',
+        brand: 'Samsung',
+        model: 'RF28R7351SG',
+        symptom: 'Ice maker stopped producing ice',
+        repair: 'Ice maker assembly DA97-15217D replaced',
+        total: '$398.32',
+      },
     ],
   },
 
